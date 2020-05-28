@@ -6,4 +6,6 @@ interface MainView {
 
 interface MainPresenter {
 
+    fun viewReady()
+
 }
