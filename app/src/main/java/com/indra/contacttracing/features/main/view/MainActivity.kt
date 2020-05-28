@@ -1,7 +1,8 @@
-package com.indra.contacttracing
+package com.indra.contacttracing.features.main.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.indra.contacttracing.R
 
 class MainActivity : AppCompatActivity() {
 
