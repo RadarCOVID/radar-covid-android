@@ -14,4 +14,5 @@ class GetExampleUseCase @Inject constructor(private val exampleRepository: Examp
             }
         }
     }
+
 }

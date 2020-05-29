@@ -28,6 +28,7 @@ ext {
     daggerVersion = '2.27'
     retrofitVersion = '2.9.0'
     coroutinesVersion = '1.3.7'
+    glideVersion = '4.11.0'
 }
 
 task clean(type: Delete) {

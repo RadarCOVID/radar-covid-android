@@ -12,10 +12,13 @@ class MainPresenterImpl @Inject constructor(
 ) : MainPresenter {
 
     override fun viewReady() {
+        view.showLoading()
         exampleUseCase.getExample(onSuccess = {
+            view.hideLoading()
             Log.d("Test", it)
         }, onError = {
-
+            view.hideLoading()
+            view.showError(it)
         })
     }
 
