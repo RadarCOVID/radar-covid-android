@@ -7,6 +7,8 @@ import dagger.android.support.DaggerApplication
 class ContactTracingApplication : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
-        DaggerApplicationComponent.create()
+        DaggerApplicationComponent.builder()
+            .applicationContext(this)
+            .build()
 
 }
