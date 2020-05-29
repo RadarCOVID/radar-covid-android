@@ -12,7 +12,6 @@ import dagger.Provides
 class MainModule {
 
     @Provides
-    @PerActivity
     fun providesView(activity: MainActivity): MainView = activity
 
     @Provides

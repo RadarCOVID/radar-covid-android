@@ -8,21 +8,26 @@ import dagger.android.support.DaggerAppCompatActivity
 
 abstract class BaseActivity : DaggerAppCompatActivity() {
 
-    private lateinit var progressBar: TransparentProgressDialog
+    private var progressBar: TransparentProgressDialog? = null
+
+    override fun onDestroy() {
+        super.onDestroy()
+        progressBar?.dismiss()
+    }
 
     fun showLoading() {
-        if (!::progressBar.isInitialized)
+        if (progressBar == null)
             progressBar = TransparentProgressDialog(this)
-        progressBar.setCanceledOnTouchOutside(false)
-        progressBar.setCancelable(false)
-        if (!progressBar.isShowing) {
-            progressBar.show()
+        progressBar?.setCanceledOnTouchOutside(false)
+        progressBar?.setCancelable(false)
+        progressBar?.let {
+            if(!it.isShowing)
+                it.show()
         }
     }
 
     fun hideLoading() {
-        if (::progressBar.isInitialized)
-            progressBar.dismiss()
+        progressBar?.hide()
     }
 
     fun showError(error: Throwable) {
