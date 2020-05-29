@@ -9,7 +9,7 @@ class GetExampleUseCase @Inject constructor(private val exampleRepository: Examp
 
     fun getExample(onSuccess: (String) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess = onSuccess, onError = onError) {
-            mapperScope {//WRAP INTO mapperScope to do the map async
+            mapperScope { //WRAP INTO mapperScope to do the map async
                 exampleRepository.exampleRequest().right().get()
             }
         }
