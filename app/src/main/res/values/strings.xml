@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Contact Tracing</string>
+
+    /********** ERROR MESSAGES ************/
+    <string name="error_generic">Hubo un error, por favor inténtelo más tarde</string>
+
 </resources>
