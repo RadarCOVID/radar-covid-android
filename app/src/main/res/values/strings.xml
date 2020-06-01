@@ -1,12 +1,26 @@
 <resources>
-    <string name="app_name">Contact Tracing</string>
+    <string name="app_name">Covid Monitor</string>
 
     /********** ERROR MESSAGES ************/
     <string name="error_generic">Hubo un error, por favor inténtelo más tarde</string>
 
+    /********** Dialog Internet ************/
+    <string name="warning_connection_title">Sin conexión a internet.</string>
+    <string name="warning_connection_description">Por favor, comprueba tu conexión.</string>
+    <string name="warning_connection_button">Reintentar</string>
+
+
+    /********** Splash ************/
+    <string name="splash_title_l1">Covid</string>
+    <string name="splash_title_l2">Monitor</string>
+    <string name="splash_subtitle">Seguimiento de tu exposición al Covid-19</string>
+
+    /********** Menu ************/
     <string name="title_home">Home</string>
     <string name="title_health">Mi salud</string>
     <string name="title_profile">Mis datos</string>
     <string name="title_helpline">Helpline</string>
+
+
 
 </resources>

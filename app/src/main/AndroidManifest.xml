@@ -3,6 +3,7 @@
     package="com.indra.contacttracing">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".ContactTracingApplication"
@@ -13,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/FullscreenTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".features.splash.view.SplashActivity">
+        <activity
+            android:name=".features.splash.view.SplashActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
