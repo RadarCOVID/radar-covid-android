@@ -6,6 +6,7 @@ import com.indra.contacttracing.common.base.BaseActivity
 import com.indra.contacttracing.datamanager.usecase.GetExampleUseCase
 import com.indra.contacttracing.features.main.protocols.MainPresenter
 import com.indra.contacttracing.features.main.protocols.MainView
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainView {
@@ -19,7 +20,22 @@ class MainActivity : BaseActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        initViews()
         presenter.viewReady()
+    }
+
+    private fun initViews() {
+        bottomNavigation.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.menuItemHome -> presenter.onHomeButtonClick()
+                R.id.menuItemHealth -> presenter.onHealthButtonClick()
+                R.id.menuItemProfile -> presenter.onProfileButtonClick()
+                R.id.menuItemHelpline -> presenter.onHelplineButtonClick()
+            }
+            true
+        }
+
     }
 
 }

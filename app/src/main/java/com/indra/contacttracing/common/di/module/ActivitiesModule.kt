@@ -22,7 +22,7 @@ abstract class ActivitiesModule {
     abstract fun bindsOnboardingActivity(): OnboardingActivity
 
     @PerActivity
-    @ContributesAndroidInjector(modules = [MainModule::class])
+    @ContributesAndroidInjector(modules = [MainModule::class, MainFragmentsModule::class])
     abstract fun bindsMainActivity(): MainActivity
 
 }

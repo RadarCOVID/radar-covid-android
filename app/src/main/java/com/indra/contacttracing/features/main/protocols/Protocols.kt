@@ -10,4 +10,24 @@ interface MainPresenter {
 
     fun viewReady()
 
+    fun onHomeButtonClick()
+
+    fun onHealthButtonClick()
+
+    fun onProfileButtonClick()
+
+    fun onHelplineButtonClick()
+
+}
+
+interface MainRouter {
+
+    fun navigateToHome()
+
+    fun navigateToHealth()
+
+    fun navigateToProfile()
+
+    fun navigateToHelpline()
+
 }

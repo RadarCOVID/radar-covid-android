@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuItemHome"
+        android:enabled="true"
+        android:title="@string/title_home"/>
+    <item
+        android:id="@+id/menuItemHealth"
+        android:enabled="true"
+        android:title="@string/title_health"/>
+    <item
+        android:id="@+id/menuItemProfile"
+        android:enabled="true"
+        android:title="@string/title_profile"/>
+    <item
+        android:id="@+id/menuItemHelpline"
+        android:enabled="true"
+        android:title="@string/title_helpline"/>
+</menu>

@@ -7,7 +7,7 @@ import javax.inject.Inject
 class ProfilePresenterImpl @Inject constructor(private val view: ProfileView) : ProfilePresenter {
 
     override fun viewReady() {
-        TODO("Not yet implemented")
+
     }
 
 }

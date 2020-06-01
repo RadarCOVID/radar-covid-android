@@ -7,7 +7,7 @@ import javax.inject.Inject
 class HelpLinePresenterImpl @Inject constructor(private val view:HelplineView):HelplinePresenter {
 
     override fun viewReady() {
-        TODO("Not yet implemented")
+
     }
 
 }
