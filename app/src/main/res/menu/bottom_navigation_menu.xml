@@ -3,17 +3,21 @@
     <item
         android:id="@+id/menuItemHome"
         android:enabled="true"
-        android:title="@string/title_home"/>
+        android:icon="@drawable/ic_home"
+        android:title="@string/title_home" />
     <item
         android:id="@+id/menuItemHealth"
         android:enabled="true"
-        android:title="@string/title_health"/>
+        android:icon="@drawable/ic_health"
+        android:title="@string/title_health" />
     <item
         android:id="@+id/menuItemProfile"
         android:enabled="true"
-        android:title="@string/title_profile"/>
+        android:icon="@drawable/ic_profile"
+        android:title="@string/title_profile" />
     <item
         android:id="@+id/menuItemHelpline"
         android:enabled="true"
-        android:title="@string/title_helpline"/>
+        android:icon="@drawable/ic_helpline"
+        android:title="@string/title_helpline" />
 </menu>
