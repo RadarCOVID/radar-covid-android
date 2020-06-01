@@ -9,3 +9,11 @@ interface SplashPresenter {
     fun viewReady()
 
 }
+
+interface SplashRouter {
+
+    fun navigateToOnboarding()
+
+    fun navigateToMain()
+
+}

@@ -8,7 +8,7 @@ class HomePresenterImpl @Inject constructor(private val view: HomeView):
     HomePresenter {
 
     override fun viewReady() {
-        TODO("Not yet implemented")
+
     }
 
 }

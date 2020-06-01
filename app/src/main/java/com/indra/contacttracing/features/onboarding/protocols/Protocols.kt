@@ -8,4 +8,12 @@ interface OnboardingPresenter {
 
     fun viewReady()
 
+    fun onNavigateToMainButtonClick()
+
+}
+
+interface OnboardingRouter {
+
+    fun navigateToMain()
+
 }

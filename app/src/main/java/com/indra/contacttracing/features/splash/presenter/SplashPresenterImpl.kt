@@ -1,13 +1,20 @@
 package com.indra.contacttracing.features.splash.presenter
 
-import com.indra.contacttracing.features.profile.protocols.ProfileView
+import android.os.Handler
 import com.indra.contacttracing.features.splash.protocols.SplashPresenter
+import com.indra.contacttracing.features.splash.protocols.SplashRouter
+import com.indra.contacttracing.features.splash.protocols.SplashView
 import javax.inject.Inject
 
-class SplashPresenterImpl @Inject constructor(private val view: ProfileView) : SplashPresenter {
+class SplashPresenterImpl @Inject constructor(
+    private val view: SplashView,
+    private val router: SplashRouter
+) : SplashPresenter {
 
     override fun viewReady() {
-        TODO("Not yet implemented")
+        Handler().postDelayed({
+            router.navigateToOnboarding()
+        }, 2000)
     }
 
 }
