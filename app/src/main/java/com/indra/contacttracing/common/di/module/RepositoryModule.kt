@@ -1,15 +1,17 @@
 package com.indra.contacttracing.common.di.module
 
 import com.indra.contacttracing.common.di.scope.PerApplication
-import com.indra.contacttracing.datamanager.repository.ExampleRepository
-import com.indra.contacttracing.datamanager.repository.ExampleRepositoryImpl
-import com.indra.contacttracing.datamanager.repository.PreferencesRepository
-import com.indra.contacttracing.datamanager.repository.PreferencesRepositoryImpl
+import com.indra.contacttracing.datamanager.repository.*
 import dagger.Module
 import dagger.Provides
 
 @Module
 class RepositoryModule {
+
+    @Provides
+    @PerApplication
+    fun providesSystemInfoRepository(repository: SystemInfoRepositoryImpl): SystemInfoRepository =
+        repository
 
     @Provides
     @PerApplication
