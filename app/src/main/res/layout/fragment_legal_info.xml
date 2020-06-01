@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".features.onboarding.pages.legal.view.LegalInfoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_content">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            style="@style/TitleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
+            android:paddingBottom="13dp"
+            android:text="@string/legal_info_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/legal_info_description"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+        <Button
+            android:id="@+id/buttonTermsAndConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/shape_rounded_corners_white"
+            android:text="@string/legal_info_terms_and_conditions"
+            app:layout_constraintTop_toBottomOf="@id/textViewDescription" />
+
+        <com.indra.contacttracing.common.view.CMCheckBox
+            android:id="@+id/checkBoxTermsAndConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/legal_info_check"
+            app:layout_constraintTop_toBottomOf="@id/buttonTermsAndConditions" />
+
+        <Button
+            android:id="@+id/buttonAccept"
+            style="@style/ButtonNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="80dp"
+            android:text="@string/legal_info_button"
+            app:layout_constraintTop_toBottomOf="@id/checkBoxTermsAndConditions" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

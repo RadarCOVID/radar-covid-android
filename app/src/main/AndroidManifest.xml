@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/FullscreenTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name="com.indra.contacttracing.features.onboarding.pages.legal.view.LegalInfoFragment"></activity>
         <activity
             android:name=".features.splash.view.SplashActivity"
             android:noHistory="true">
