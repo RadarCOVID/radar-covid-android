@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_margin="9dp"
+        android:src="@drawable/ic_ellipse_selected" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/TextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Lávate las manos con frecuencia. Usa agua y jabón o un desinfectante de manos a base de alcohol." />
+
+</merge>

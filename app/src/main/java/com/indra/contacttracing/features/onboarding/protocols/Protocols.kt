@@ -2,13 +2,21 @@ package com.indra.contacttracing.features.onboarding.protocols
 
 interface OnboardingView {
 
+    fun showPreviousPage()
+
+    fun showNextPage()
+
+    fun finish()
+
 }
 
 interface OnboardingPresenter {
 
     fun viewReady()
 
-    fun onNavigateToMainButtonClick()
+    fun onBackButtonPressed()
+
+    fun onContinueButtonClick(page: Int, totalPages: Int)
 
 }
 

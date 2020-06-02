@@ -9,18 +9,47 @@
     <string name="warning_connection_description">Por favor, comprueba tu conexión.</string>
     <string name="warning_connection_button">Reintentar</string>
 
-
     /********** Splash ************/
     <string name="splash_title_l1">Covid</string>
     <string name="splash_title_l2">Monitor</string>
     <string name="splash_subtitle">Seguimiento de tu exposición al Covid-19</string>
+
+    /********** Legal Info ************/
+    <string name="legal_info_title">Información legal</string>
+    <string name="legal_info_description">!Bienvenido a Covid Monitor!\nEn Covid Monitor somos conscientes de la relevancia que tiene proteger la privacidad de tus datos personales.\n\nPor favor, acepta nuestra política antes de continuar.</string>
+    <string name="legal_info_terms_and_conditions">Términos y condiciones</string>
+    <string name="legal_info_check">Acepto la política de privacidad y doy mi consentimiento al tratamiento de mis datos personales</string>
+    <string name="legal_info_button">Entendido</string>
+
+    /********** Onboarding ************/
+    <string name="onboarding_title_step_1">FUNCIONAMIENTO</string>
+    <string name="onboarding_descrption_step1">Queremos suministrarte una herramienta para mantenerte seguro. Con esta aplicación conocerás si has estado expuesto al coronavirus, ayudándote a protegerte y proteger a los tuyos. Además, podrás cooperar con el resto de ciudadanos en el esfuerzo común de solucionar la situación lo más rápido posible: solo reporta si se te ha diagnosticado Covid, y la aplicación se encarga del resto.</string>
+
+    <string name="onboarding_title_step_2">PRIVACIDAD</string>
+    <string name="onboarding_descrption_step2">Mientras usas esta aplicación, estamos recogiendo los datos de tus interacciones Bluetooth de forma anonimizada. En ningún momento se revelará la identidad de los usuarios de los dispositivos. Estos datos se utilizan exclusivamente para enviar una alerta en tu dispositivo en caso de detectar tu exposición al Covid-19, sin indicar cuándo ni por parte de qué dispositivo se ha dado esta exposición al virus. Su única finalidad es protegerte, y los datos serán borrados una vez finalice la pandemia. En todo momento, podrás desactivar tu rastreo o dejar de utilizar la app, con total libertad.</string>
+
+    <string name="onboarding_title_step_3">PROXIMIDAD</string>
+    <string name="onboarding_descrption_step3">Gracias a la tecnología contact tracing Bluetooth, guardamos las interacciones entre los teléfonos que están próximos entre sí: así, si un usuario confirma que tiene Covid-19, el histórico de teléfonos cercanos nos permite alertar a aquellos que estuvieron cerca para que tomen precauciones . Pero ¡siempre con privacidad asegurada! Los teléfonos cercanos se almacenan con ids cambiantes, de modo que el usuario o el dispositivo no son identificables . ¿Quieres ser alertado en caso de haber estado expuesto al Covid-19? Autoriza tu contact tracing Bluetooth en la app y mantén encendido el Bluetooth de tu móvil.</string>
+
+    <string name="onboarding_title_step_4">RECOMENDACIONES</string>
+    <string name="onboarding_descrption_step4_p1">Protégete a sí mismo y a quienes te rodean informándote y tomando las precauciones adecuadas. Sigue los consejos de tu organismo de salud pública local.  Para evitar la propagación de la COVID-19:</string>
+    <string name="onboarding_descrption_step4_p2">Evitar las visitas innecesarias a los centros de atención médica permite que los sistemas sanitarios funcionen con mayor eficacia, lo que redunda en su protección y en la de los demás</string>
+    <string name="onboarding_descrption_step4_t1">Lávate las manos con frecuencia. Usa agua y jabón o un desinfectante de manos a base de alcohol.</string>
+    <string name="onboarding_descrption_step4_t2">Manténte a una distancia segura de cualquier persona que tosa o estornude. </string>
+    <string name="onboarding_descrption_step4_t3">No te toque los ojos, la nariz o la boca.</string>
+    <string name="onboarding_descrption_step4_t4">Cuando tosas o estornudes, cúbrete la nariz y la boca con el codo flexionado o con un pañuelo desechable. </string>
+    <string name="onboarding_descrption_step4_t5">Quédate en casa si te sientes mal.</string>
+    <string name="onboarding_descrption_step4_t6">Si tienen fiebre, tos y dificultad para respirar, solicita atención médica. Llama con antelación.</string>
+    <string name="onboarding_descrption_step4_t7">Sigue las instrucciones de tu organismo sanitario local.</string>
+
+    <string name="onboarding_button">Continuar</string>
+    <string name="onboarding_button_step_3">Autorizo</string>
 
     /********** Menu ************/
     <string name="title_home">Home</string>
     <string name="title_health">Mi salud</string>
     <string name="title_profile">Mis datos</string>
     <string name="title_helpline">Helpline</string>
-
 
 
 </resources>

@@ -18,7 +18,7 @@ abstract class ActivitiesModule {
     abstract fun bindsSplashActivity(): SplashActivity
 
     @PerActivity
-    @ContributesAndroidInjector(modules = [OnboardingModule::class])
+    @ContributesAndroidInjector(modules = [OnboardingModule::class, OnboardingFragmentsModule::class])
     abstract fun bindsOnboardingActivity(): OnboardingActivity
 
     @PerActivity
