@@ -42,10 +42,21 @@
 
     <style name="TitleBig" parent="Title">
         <item name="android:lineSpacingMultiplier">0.9</item>
-        <item name="android:fontFamily">@font/multi_bold</item>
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">44sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleExtraBold">
+        <item name="fontFamily">@font/multi_extrabold</item>
+    </style>
+
+    <style name="TitleExtraBoldSmall" parent="TitleExtraBold">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TitleExtraBoldMedium" parent="TitleExtraBold">
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="TextSmall">

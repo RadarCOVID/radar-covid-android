@@ -53,16 +53,16 @@
     <string name="title_helpline">Helpline</string>
 
     /********** Home ************/
-    <string name="exposition_block_low">Exposición baja</string>
-    <string name="exposition_block_medium">Exposición media</string>
-    <string name="exposition_block_high">Exposición alta</string>
+    <string name="exposition_block_low_title">Exposición baja</string>
+    <string name="exposition_block_medium_title">Exposición media</string>
+    <string name="exposition_block_high_title">Exposición alta</string>
 
     <string name="exposition_block_low_description">Te informaremos en el caso de un posible contacto o infección.</string>
     <string name="exposition_block_medium_description">Contacto posible con persona con pesona contagiada de Covid-19</string>
     <string name="exposition_block_high_description">Has estado en contacto con una persona contagiada de Covid-19</string>
 
-    <string name="bluetooth_block_enabled">Radar Bluetooth activo</string>
-    <string name="bluetooth_block_disable">Radar Bluetooth inactivo</string>
+    <string name="bluetooth_block_enabled_title">Radar Bluetooth activo</string>
+    <string name="bluetooth_block_disable_title">Radar Bluetooth inactivo</string>
 
     <string name="bluetooth_block_enabled_description">Las interacciones con móviles cercanos se registrarán de manera anónima. </string>
     <string name="bluetooth_block_disable_description">Activa el rastreo Bluetooth para poder detectar posibles contagios.</string>
