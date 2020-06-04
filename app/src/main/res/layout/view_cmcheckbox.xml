@@ -6,13 +6,14 @@
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:button="@drawable/selector_checkbox" />
+        android:button="@drawable/selector_checkbox"
+        android:paddingEnd="5dp" />
 
     <TextView
         android:id="@+id/textView"
         style="@style/TextSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:textColor="@color/black_28"
         tools:text="@string/legal_info_check" />
 </merge>

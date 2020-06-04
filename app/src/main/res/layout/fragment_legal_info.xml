@@ -35,10 +35,10 @@
 
         <Button
             android:id="@+id/buttonTermsAndConditions"
+            style="@style/ButtonWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:background="@drawable/shape_rounded_corners_white"
             android:text="@string/legal_info_terms_and_conditions"
             app:layout_constraintTop_toBottomOf="@id/textViewDescription" />
 

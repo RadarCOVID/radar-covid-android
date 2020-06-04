@@ -33,6 +33,7 @@
         android:background="@drawable/background_navigation_menu"
         app:itemIconTint="@color/selector_bottombar_text"
         app:itemTextColor="@color/selector_bottombar_text"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
 

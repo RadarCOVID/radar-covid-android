@@ -10,8 +10,7 @@
     <string name="warning_connection_button">Reintentar</string>
 
     /********** Splash ************/
-    <string name="splash_title_l1">Covid</string>
-    <string name="splash_title_l2">Monitor</string>
+    <string name="splash_title_l1">Covid\nMonitor</string>
     <string name="splash_subtitle">Seguimiento de tu exposición al Covid-19</string>
 
     /********** Legal Info ************/
