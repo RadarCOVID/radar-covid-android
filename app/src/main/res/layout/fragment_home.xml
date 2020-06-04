@@ -104,7 +104,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
-                    android:text="@string/bluetooth_block_disabled_title"
+                    android:text="@string/radar_block_disabled_title"
                     app:layout_constraintEnd_toStartOf="@id/switchRadar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -116,8 +116,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/multi_bold"
-                    android:text="@string/bluetooth_block_disabled_description"
+                    android:text="@string/radar_block_disabled_description"
                     android:textColor="@color/red"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textViewRadarTitle" />
 
