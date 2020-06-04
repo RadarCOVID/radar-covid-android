@@ -62,10 +62,10 @@
     <string name="exposition_block_high_description">Has estado en contacto con una persona contagiada de Covid-19</string>
 
     <string name="bluetooth_block_enabled_title">Radar Bluetooth activo</string>
-    <string name="bluetooth_block_disable_title">Radar Bluetooth inactivo</string>
+    <string name="bluetooth_block_disabled_title">Radar Bluetooth inactivo</string>
 
     <string name="bluetooth_block_enabled_description">Las interacciones con móviles cercanos se registrarán de manera anónima. </string>
-    <string name="bluetooth_block_disable_description">Activa el rastreo Bluetooth para poder detectar posibles contagios.</string>
+    <string name="bluetooth_block_disabled_description">Activa el rastreo Bluetooth para poder detectar posibles contagios.</string>
 
 
     /********** Common ************/

@@ -53,10 +53,7 @@
 
     <style name="TitleExtraBoldSmall" parent="TitleExtraBold">
         <item name="android:textSize">20sp</item>
-    </style>
-
-    <style name="TitleExtraBoldMedium" parent="TitleExtraBold">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextSmall">
