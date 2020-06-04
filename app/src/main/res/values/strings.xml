@@ -18,6 +18,7 @@
     <string name="legal_info_description">!Bienvenido a Covid Monitor!\nEn Covid Monitor somos conscientes de la relevancia que tiene proteger la privacidad de tus datos personales.\n\nPor favor, acepta nuestra política antes de continuar.</string>
     <string name="legal_info_terms_and_conditions">Términos y condiciones</string>
     <string name="legal_info_check">Acepto la política de privacidad y doy mi consentimiento al tratamiento de mis datos personales</string>
+    <string name="legal_info_check_warning">Recuerda que tienes que aceptar la política de privacidad para continuar</string>
     <string name="legal_info_button">Entendido</string>
 
     /********** Onboarding ************/

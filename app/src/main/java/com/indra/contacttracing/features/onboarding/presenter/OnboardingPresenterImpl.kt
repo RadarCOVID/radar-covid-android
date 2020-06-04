@@ -10,6 +10,10 @@ class OnboardingPresenterImpl @Inject constructor(
     private val router: OnboardingRouter
 ) : OnboardingPresenter {
 
+    companion object {
+
+    }
+
     override fun viewReady() {
 
     }
