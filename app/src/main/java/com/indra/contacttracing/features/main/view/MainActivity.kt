@@ -38,4 +38,10 @@ class MainActivity : BaseActivity(), MainView {
 
     }
 
+    override fun onBackPressed() {
+        if (bottomNavigation.selectedItemId == R.id.menuItemHome)
+            super.onBackPressed()
+        else
+            bottomNavigation.selectedItemId = R.id.menuItemHome
+    }
 }
