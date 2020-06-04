@@ -46,7 +46,10 @@ class OnboardingStepPageFragment : Fragment() {
                 wrapperStep3.visibility = View.VISIBLE
                 button.setText(R.string.onboarding_button_step_3)
             }
-            ONBOARDING_PAGE_INDEX_STEP_4 -> wrapperStep4.visibility = View.VISIBLE
+            ONBOARDING_PAGE_INDEX_STEP_4 -> {
+                wrapperStep4.visibility = View.VISIBLE
+                button.setText(R.string.onboarding_button_finish)
+            }
         }
     }
 
