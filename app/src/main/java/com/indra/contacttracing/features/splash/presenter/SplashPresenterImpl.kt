@@ -2,6 +2,7 @@ package com.indra.contacttracing.features.splash.presenter
 
 import android.os.Handler
 import com.indra.contacttracing.datamanager.usecase.GetInternetInfoUseCase
+import com.indra.contacttracing.datamanager.usecase.OnboardingCompletedUseCase
 import com.indra.contacttracing.features.splash.protocols.SplashPresenter
 import com.indra.contacttracing.features.splash.protocols.SplashRouter
 import com.indra.contacttracing.features.splash.protocols.SplashView
@@ -10,7 +11,8 @@ import javax.inject.Inject
 class SplashPresenterImpl @Inject constructor(
     private val view: SplashView,
     private val router: SplashRouter,
-    private val useCaseInternetInfo: GetInternetInfoUseCase
+    private val useCaseInternetInfo: GetInternetInfoUseCase,
+    private val onboardingCompletedUseCase: OnboardingCompletedUseCase
 ) : SplashPresenter {
 
     override fun viewReady() {
@@ -30,7 +32,10 @@ class SplashPresenterImpl @Inject constructor(
 
     private fun navigateToHomeWithDelay() {
         Handler().postDelayed({
-            router.navigateToOnboarding()
+            if (onboardingCompletedUseCase.isOnBoardingCompleted())
+                router.navigateToMain()
+            else
+                router.navigateToOnboarding()
         }, 2000)
     }
 

@@ -44,6 +44,7 @@
 
     <string name="onboarding_button">Continuar</string>
     <string name="onboarding_button_step_3">Autorizo</string>
+    <string name="onboarding_button_finish">Finalizar</string>
 
     /********** Menu ************/
     <string name="title_home">Home</string>
