@@ -5,50 +5,74 @@
     android:background="@color/background"
     android:orientation="vertical">
 
-    <TextView
-        style="@style/TitleSmall"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_title_step_2" />
+        android:layout_gravity="end">
 
-    <TextView
-        style="@style/TextNormal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="@string/onboarding_descrption_step2" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_background_corner_purple" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:src="@drawable/img_step2" />
+    </FrameLayout>
 
     <LinearLayout
-        android:layout_width="64dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="@dimen/padding_content">
 
-        <ImageView
-            android:layout_width="0dp"
+        <TextView
+            style="@style/TitleSmall"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_ellipse" />
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_title_step_2" />
 
-        <ImageView
-            android:layout_width="0dp"
+        <TextView
+            style="@style/TextNormal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_ellipse_selected" />
+            android:layout_marginBottom="100dp"
+            android:text="@string/onboarding_descrption_step2" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_ellipse" />
 
-        <ImageView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="64dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_ellipse" />
+            android:layout_gravity="bottom|center_horizontal"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_ellipse" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_ellipse_selected" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_ellipse" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_ellipse" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

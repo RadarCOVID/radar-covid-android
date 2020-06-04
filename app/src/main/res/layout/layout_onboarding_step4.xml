@@ -5,100 +5,124 @@
     android:background="@color/background"
     android:orientation="vertical">
 
-    <TextView
-        style="@style/TitleSmall"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_title_step_4" />
+        android:layout_gravity="end">
 
-    <TextView
-        style="@style/TextNormal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_descrption_step4_p1" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_background_corner_purple" />
 
-    <com.indra.contacttracing.common.view.DottedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_descrption_step4_t1" />
-
-    <com.indra.contacttracing.common.view.DottedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_descrption_step4_t2" />
-
-    <com.indra.contacttracing.common.view.DottedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_descrption_step4_t3" />
-
-    <com.indra.contacttracing.common.view.DottedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_descrption_step4_t4" />
-
-    <com.indra.contacttracing.common.view.DottedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_descrption_step4_t5" />
-
-    <com.indra.contacttracing.common.view.DottedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_descrption_step4_t6" />
-
-    <com.indra.contacttracing.common.view.DottedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_descrption_step4_t7" />
-
-    <TextView
-        style="@style/TextNormal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/onboarding_descrption_step4_p2" />
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:src="@drawable/img_step4" />
+    </FrameLayout>
 
     <LinearLayout
-        android:layout_width="64dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="@dimen/padding_content">
 
-        <ImageView
-            android:layout_width="0dp"
+        <TextView
+            style="@style/TitleSmall"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_ellipse" />
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_title_step_4" />
 
-        <ImageView
-            android:layout_width="0dp"
+        <TextView
+            style="@style/TextNormal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_ellipse" />
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_descrption_step4_p1" />
 
-        <ImageView
-            android:layout_width="0dp"
+        <com.indra.contacttracing.common.view.DottedTextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_ellipse" />
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_descrption_step4_t1" />
 
-        <ImageView
-            android:layout_width="0dp"
+        <com.indra.contacttracing.common.view.DottedTextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_ellipse_selected" />
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_descrption_step4_t2" />
+
+        <com.indra.contacttracing.common.view.DottedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_descrption_step4_t3" />
+
+        <com.indra.contacttracing.common.view.DottedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_descrption_step4_t4" />
+
+        <com.indra.contacttracing.common.view.DottedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_descrption_step4_t5" />
+
+        <com.indra.contacttracing.common.view.DottedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_descrption_step4_t6" />
+
+        <com.indra.contacttracing.common.view.DottedTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_descrption_step4_t7" />
+
+        <TextView
+            style="@style/TextNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_descrption_step4_p2" />
+
+
+        <LinearLayout
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_ellipse" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_ellipse" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_ellipse" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_ellipse_selected" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
