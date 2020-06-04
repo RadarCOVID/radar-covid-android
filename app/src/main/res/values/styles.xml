@@ -1,11 +1,18 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="FloatingDialog" parent="Theme.AppCompat.Light.Dialog">
@@ -15,13 +22,6 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:backgroundDimAmount">0</item>
-    </style>
-
-    <style name="FullscreenTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="Title">
@@ -42,10 +42,18 @@
 
     <style name="TitleBig" parent="Title">
         <item name="android:lineSpacingMultiplier">0.9</item>
-        <item name="android:fontFamily">@font/multi_bold</item>
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">44sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleExtraBold">
+        <item name="fontFamily">@font/multi_extrabold</item>
+    </style>
+
+    <style name="TitleExtraBoldSmall" parent="TitleExtraBold">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextSmall">
