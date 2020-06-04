@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@drawable/background_navigation_menu"
-        app:itemIconTint="@color/selector_bottombar_text"
-        app:itemTextColor="@color/selector_bottombar_text"
+        app:itemIconTint="@color/color_bottombar_text"
+        app:itemTextColor="@color/color_bottombar_text"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation_menu" />

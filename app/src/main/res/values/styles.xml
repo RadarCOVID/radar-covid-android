@@ -82,6 +82,8 @@
 
     <style name="ButtonNormal" parent="Button">
         <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/color_tint_button_normal</item>
+        <item name="backgroundTintMode">src_over</item>
         <item name="android:background">@drawable/background_button</item>
     </style>
 
