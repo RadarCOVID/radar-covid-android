@@ -12,12 +12,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/FullscreenTheme"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name="com.indra.contacttracing.features.onboarding.pages.legal.view.LegalInfoFragment"></activity>
         <activity
             android:name=".features.splash.view.SplashActivity"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
