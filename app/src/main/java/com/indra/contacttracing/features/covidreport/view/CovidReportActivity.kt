@@ -5,11 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import com.indra.contacttracing.R
 import com.indra.contacttracing.common.base.BaseActivity
+import com.indra.contacttracing.common.base.BaseBackNavigationActivity
 import com.indra.contacttracing.features.covidreport.protocols.CovidReportPresenter
 import com.indra.contacttracing.features.covidreport.protocols.CovidReportView
 import javax.inject.Inject
 
-class CovidReportActivity : BaseActivity(), CovidReportView {
+class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
     companion object {
 

@@ -5,11 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import com.indra.contacttracing.R
 import com.indra.contacttracing.common.base.BaseActivity
+import com.indra.contacttracing.common.base.BaseBackNavigationActivity
 import com.indra.contacttracing.features.exposition.protocols.ExpositionPresenter
 import com.indra.contacttracing.features.exposition.protocols.ExpositionView
 import javax.inject.Inject
 
-class ExpositionActivity : BaseActivity(), ExpositionView {
+class ExpositionActivity : BaseBackNavigationActivity(), ExpositionView {
 
     companion object {
 
