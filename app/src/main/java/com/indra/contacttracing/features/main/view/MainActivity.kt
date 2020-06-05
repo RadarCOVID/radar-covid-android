@@ -29,7 +29,7 @@ class MainActivity : BaseActivity(), MainView {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menuItemHome -> presenter.onHomeButtonClick()
-                R.id.menuItemHealth -> presenter.onHealthButtonClick()
+//                R.id.menuItemHealth -> presenter.onHealthButtonClick()
                 R.id.menuItemProfile -> presenter.onProfileButtonClick()
                 R.id.menuItemHelpline -> presenter.onHelplineButtonClick()
             }
