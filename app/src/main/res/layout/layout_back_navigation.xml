@@ -9,7 +9,10 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:onClick="onBackArrowClick"
-        android:padding="20dp"
-        android:src="@drawable/ic_arrow_right" />
+        android:paddingLeft="22dp"
+        android:paddingTop="22dp"
+        android:paddingRight="22dp"
+        android:paddingBottom="42dp"
+        android:src="@drawable/ic_arrow_left" />
     
 </FrameLayout>
