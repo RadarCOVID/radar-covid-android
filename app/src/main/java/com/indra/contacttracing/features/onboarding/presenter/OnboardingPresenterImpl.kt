@@ -1,6 +1,7 @@
 package com.indra.contacttracing.features.onboarding.presenter
 
 import com.indra.contacttracing.datamanager.usecase.OnboardingCompletedUseCase
+import com.indra.contacttracing.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_3
 import com.indra.contacttracing.features.onboarding.protocols.OnboardingPresenter
 import com.indra.contacttracing.features.onboarding.protocols.OnboardingRouter
 import com.indra.contacttracing.features.onboarding.protocols.OnboardingView
@@ -12,10 +13,6 @@ class OnboardingPresenterImpl @Inject constructor(
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase
 ) : OnboardingPresenter {
 
-    companion object {
-
-    }
-
     override fun viewReady() {
 
     }
@@ -25,13 +22,26 @@ class OnboardingPresenterImpl @Inject constructor(
     }
 
     override fun onContinueButtonClick(page: Int, totalPages: Int) {
-        if (page == totalPages - 1) {
-            onboardingCompletedUseCase.setOnboardingCompleted(true)
-            router.navigateToMain()
-            view.finish()
-        } else {
-            view.showNextPage()
+        when (page) {
+            totalPages - 1 -> {
+                onboardingCompletedUseCase.setOnboardingCompleted(true)
+                router.navigateToMain()
+                view.finish()
+            }
+            ONBOARDING_PAGE_INDEX_STEP_3 -> {
+                if (view.isBluetoothEnabled())
+                    view.showNextPage()
+                else
+                    view.showBluetoothRequest()
+            }
+            else -> {
+                view.showNextPage()
+            }
         }
+    }
+
+    override fun onBluetoothEnabled() {
+        view.showNextPage()
     }
 
 }

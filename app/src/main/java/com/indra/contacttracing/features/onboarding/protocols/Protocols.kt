@@ -12,6 +12,10 @@ interface OnboardingView {
 
     fun showNextPage()
 
+    fun isBluetoothEnabled(): Boolean
+
+    fun showBluetoothRequest()
+
     fun finish()
 
 }
@@ -23,6 +27,8 @@ interface OnboardingPresenter {
     fun onBackButtonPressed()
 
     fun onContinueButtonClick(page: Int, totalPages: Int)
+
+    fun onBluetoothEnabled()
 
 }
 
