@@ -1,6 +1,5 @@
 package com.indra.contacttracing.features.main.presenter
 
-import android.util.Log
 import com.indra.contacttracing.datamanager.usecase.GetExampleUseCase
 import com.indra.contacttracing.features.main.protocols.MainPresenter
 import com.indra.contacttracing.features.main.protocols.MainRouter
@@ -14,15 +13,14 @@ class MainPresenterImpl @Inject constructor(
 ) : MainPresenter {
 
     override fun viewReady() {
-        view.showLoading()
-        exampleUseCase.getExample(onSuccess = {
-            view.hideLoading()
-            Log.d("Test", it)
-        }, onError = {
-            view.hideLoading()
-            view.showError(it)
-        })
-
+//        view.showLoading()
+//        exampleUseCase.getExample(onSuccess = {
+//            view.hideLoading()
+//            Log.d("Test", it)
+//        }, onError = {
+//            view.hideLoading()
+//            view.showError(it)
+//        })
         router.navigateToHome()
     }
 

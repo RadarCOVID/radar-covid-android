@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.indra.contacttracing">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,11 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name="com.indra.contacttracing.features.onboarding.pages.legal.view.LegalInfoFragment"></activity>
+        android:usesCleartextTraffic="true"
+        tools:ignore="LockedOrientationActivity">
         <activity
             android:name=".features.splash.view.SplashActivity"
             android:noHistory="true"
+            android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +27,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".features.onboarding.view.OnboardingActivity" />
-        <activity android:name=".features.main.view.MainActivity" />
+        <activity
+            android:name=".features.onboarding.view.OnboardingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.onboarding.pages.legal.view.LegalInfoFragment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.main.view.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.covidreport.view.CovidReportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.exposition.view.ExpositionActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

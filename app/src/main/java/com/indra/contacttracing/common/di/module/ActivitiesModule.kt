@@ -1,6 +1,10 @@
 package com.indra.contacttracing.common.di.module
 
 import com.indra.contacttracing.common.di.scope.PerActivity
+import com.indra.contacttracing.features.covidreport.di.CovidReportModule
+import com.indra.contacttracing.features.covidreport.view.CovidReportActivity
+import com.indra.contacttracing.features.exposition.di.ExpositionModule
+import com.indra.contacttracing.features.exposition.view.ExpositionActivity
 import com.indra.contacttracing.features.main.di.MainModule
 import com.indra.contacttracing.features.main.view.MainActivity
 import com.indra.contacttracing.features.onboarding.di.OnboardingModule
@@ -24,5 +28,13 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [MainModule::class, MainFragmentsModule::class])
     abstract fun bindsMainActivity(): MainActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [ExpositionModule::class])
+    abstract fun bindsExpositionActivity(): ExpositionActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [CovidReportModule::class])
+    abstract fun bindsReportActivity(): CovidReportActivity
 
 }

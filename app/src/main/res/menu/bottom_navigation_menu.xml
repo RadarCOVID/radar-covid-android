@@ -5,11 +5,11 @@
         android:enabled="true"
         android:icon="@drawable/ic_home"
         android:title="@string/title_home" />
-    <item
-        android:id="@+id/menuItemHealth"
-        android:enabled="true"
-        android:icon="@drawable/ic_health"
-        android:title="@string/title_health" />
+<!--    <item-->
+<!--        android:id="@+id/menuItemHealth"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_health"-->
+<!--        android:title="@string/title_health" />-->
     <item
         android:id="@+id/menuItemProfile"
         android:enabled="true"

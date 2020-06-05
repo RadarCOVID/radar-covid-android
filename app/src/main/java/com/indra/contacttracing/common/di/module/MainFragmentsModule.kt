@@ -1,5 +1,6 @@
 package com.indra.contacttracing.common.di.module
 
+import com.indra.contacttracing.common.di.scope.PerFragment
 import com.indra.contacttracing.features.health.di.HealthModule
 import com.indra.contacttracing.features.health.view.HealthFragment
 import com.indra.contacttracing.features.helpline.di.HelplineModule
@@ -14,15 +15,20 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class MainFragmentsModule {
 
+    @PerFragment
     @ContributesAndroidInjector(modules = [HomeModule::class])
     abstract fun bindsHomeFragment(): HomeFragment
 
+    @PerFragment
     @ContributesAndroidInjector(modules = [HealthModule::class])
     abstract fun bindsHealthFragment(): HealthFragment
 
+    @PerFragment
     @ContributesAndroidInjector(modules = [ProfileModule::class])
     abstract fun bindsProfileFragment(): ProfileFragment
 
+    @PerFragment
     @ContributesAndroidInjector(modules = [HelplineModule::class])
     abstract fun bindsHelplineFragment(): HelplineFragment
+
 }
