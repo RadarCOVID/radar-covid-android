@@ -5,6 +5,8 @@ import com.indra.contacttracing.features.main.di.MainModule
 import com.indra.contacttracing.features.main.view.MainActivity
 import com.indra.contacttracing.features.onboarding.di.OnboardingModule
 import com.indra.contacttracing.features.onboarding.view.OnboardingActivity
+import com.indra.contacttracing.features.covidreport.di.CovidReportModule
+import com.indra.contacttracing.features.covidreport.view.CovidReportActivity
 import com.indra.contacttracing.features.splash.di.SplashModule
 import com.indra.contacttracing.features.splash.view.SplashActivity
 import dagger.Module
@@ -24,5 +26,9 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [MainModule::class, MainFragmentsModule::class])
     abstract fun bindsMainActivity(): MainActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [CovidReportModule::class])
+    abstract fun bindsReportActivity(): CovidReportActivity
 
 }

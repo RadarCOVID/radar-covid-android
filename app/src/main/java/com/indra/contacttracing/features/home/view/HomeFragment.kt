@@ -43,6 +43,7 @@ class HomeFragment : BaseFragment(), HomeView {
         switchRadar.setOnCheckedChangeListener { _, isChecked ->
             setBluetoothBlockEnabled(isChecked)
         }
+        buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
     }
 
     override fun showLowExpositionLevel() {

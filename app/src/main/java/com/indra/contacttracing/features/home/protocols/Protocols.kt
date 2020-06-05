@@ -18,4 +18,12 @@ interface HomePresenter {
 
     fun viewReady()
 
+    fun onReportButtonClick()
+
+}
+
+interface HomeRouter {
+
+    fun navigateToCovidReport()
+
 }
