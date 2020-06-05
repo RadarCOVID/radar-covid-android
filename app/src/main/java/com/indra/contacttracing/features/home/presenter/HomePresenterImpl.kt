@@ -14,6 +14,10 @@ class HomePresenterImpl @Inject constructor(
 
     }
 
+    override fun onExpositionBlockClick() {
+        router.navigateToExpositionDetail()
+    }
+
     override fun onReportButtonClick() {
         router.navigateToCovidReport()
     }

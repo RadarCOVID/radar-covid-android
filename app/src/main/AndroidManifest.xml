@@ -39,6 +39,9 @@
         <activity
             android:name=".features.covidreport.view.CovidReportActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.exposition.view.ExpositionActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

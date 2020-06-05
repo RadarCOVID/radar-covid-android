@@ -18,11 +18,15 @@ interface HomePresenter {
 
     fun viewReady()
 
+    fun onExpositionBlockClick()
+
     fun onReportButtonClick()
 
 }
 
 interface HomeRouter {
+
+    fun navigateToExpositionDetail()
 
     fun navigateToCovidReport()
 
