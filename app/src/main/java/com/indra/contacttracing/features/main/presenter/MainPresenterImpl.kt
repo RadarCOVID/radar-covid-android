@@ -40,4 +40,12 @@ class MainPresenterImpl @Inject constructor(
         router.navigateToHelpline()
     }
 
+    override fun onBackPressed() {
+        view.showExitConfirmationDialog()
+    }
+
+    override fun onExitConfirmed() {
+        view.finish()
+    }
+
 }

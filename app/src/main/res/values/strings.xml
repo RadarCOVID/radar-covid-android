@@ -94,6 +94,9 @@
 
     <string name="button_covid_report">Comunica tu positivo Covid</string>
 
+    <string name="warning_exit_application_message">¿Está seguro de que desea salir de la aplicación?</string>
+    <string name="warning_exit_application_button">Confirmar</string>
+
     <plurals name="days">
         <item quantity="one">hace %d día</item>
         <item quantity="other">hace %d días</item>
