@@ -89,6 +89,32 @@
 
     <string name="exposition_detail_covid_report_message">Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
 
+    /********** Covid Report ************/
+
+    <string name="covid_report_title">MI SALUD</string>
+    <string name="covid_report_subtitle">¿Cómo te encuentras hoy?</string>
+    <string name="covid_report_p1">Reportando tu diagnóstico Covid-19, estás contribuyendo a detener la propagación del virus.</string>
+    <string name="covid_report_p2">¡Ayúdanos a mantener a tus conocidos seguros!\n\n¿Has sido diagnosticado Covid-19?</string>
+    <string name="covid_report_qr_button">Escanear QR</string>
+    <string name="covid_report_code_hint">Introduce tu código</string>
+    <string name="covid_report_send_button">Enviar</string>
+    <string name="covid_report_abort_warning_title">¿Seguro que no quieres reportar tu diagnóstico?</string>
+    <string name="covid_report_abort_warning_message">¡Ayúdanos a evitar que el Covid-19 se extienda!</string>
+    <string name="covid_report_abort_warning_button">Cancelar</string>
+
+    /********** Report Confirmation ************/
+
+    <string name="confirmation_title">¡Gracias por informarnos!</string>
+    <string name="confirmation_subtitle">Acabas de contribuir a la seguridad de tus conocidos.</string>
+    <string name="confirmation_p1">Sin revelar tu identidad en ningún momento, vamos a rastrear qué móviles han estado cerca de ti en los últimos días y enviarles una alerta para su seguridad.</string>
+    <string name="confirmation_tips_title">Recomendaciones</string>
+    <string name="confirmation_tips_into">La mayoría de las personas que se infectan de Covid-19 padecen una enfermedad leve y se recuperan, pero en otros casos puede ser más grave. Cuida tu salud y protege a los demás a través de las siguientes medidas:</string>
+    <string name="confirmation_tip_1">Al toser o estornudar, cúbrete la boca y la nariz con el codo flexionado o con un pañuelo; tira el pañuelo inmediatamente y lávese las manos con un desinfectante de manos a base de alcohol, o con agua y jabón.</string>
+    <string name="confirmation_tip_2">Minimiza el contacto social para evitar poner en peligro a los tuyos. Mantén al menos 1 metro de distancia con otras personas</string>
+    <string name="confirmation_tip_3">Si tiene fiebre, tos y dificultad para respirar, busque rápidamente asesoramiento médico, ya que podría deberse a una infección respiratoria u otra afección grave. Llame con antelación que su dispensador de atención de salud le dirija rápidamente hacia el centro de salud adecuado.</string>
+    <string name="confirmation_tip_4">Lávese las manos con frecuencia con un desinfectante de manos a base de alcohol o con agua y jabón</string>
+
+
 
     /********** Common ************/
 

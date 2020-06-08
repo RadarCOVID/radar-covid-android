@@ -4,7 +4,7 @@ import android.view.View
 
 abstract class BaseBackNavigationActivity : BaseActivity() {
 
-    fun onBackArrowClick(view: View) {
+    open fun onBackArrowClick(view: View) {
         onBackPressed()
     }
 

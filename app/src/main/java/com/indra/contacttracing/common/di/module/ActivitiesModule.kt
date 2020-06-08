@@ -1,8 +1,8 @@
 package com.indra.contacttracing.common.di.module
 
 import com.indra.contacttracing.common.di.scope.PerActivity
-import com.indra.contacttracing.features.covidreport.di.CovidReportModule
-import com.indra.contacttracing.features.covidreport.view.CovidReportActivity
+import com.indra.contacttracing.features.covidreport.form.di.CovidReportModule
+import com.indra.contacttracing.features.covidreport.form.view.CovidReportActivity
 import com.indra.contacttracing.features.exposition.di.ExpositionModule
 import com.indra.contacttracing.features.exposition.view.ExpositionActivity
 import com.indra.contacttracing.features.main.di.MainModule
