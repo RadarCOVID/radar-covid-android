@@ -6,7 +6,7 @@ import com.indra.contacttracing.features.health.view.HealthFragment
 import com.indra.contacttracing.features.helpline.view.HelplineFragment
 import com.indra.contacttracing.features.home.view.HomeFragment
 import com.indra.contacttracing.features.main.protocols.MainRouter
-import com.indra.contacttracing.features.profile.view.ProfileFragment
+import com.indra.contacttracing.features.mydata.view.MyDataFragment
 import javax.inject.Inject
 
 class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity) : MainRouter {
@@ -31,7 +31,7 @@ class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity
         activity
             .supportFragmentManager
             .beginTransaction()
-            .replace(R.id.wrapperContent, ProfileFragment.newInstance())
+            .replace(R.id.wrapperContent, MyDataFragment.newInstance())
             .commit()
     }
 

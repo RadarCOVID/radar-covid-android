@@ -7,8 +7,8 @@ import com.indra.contacttracing.features.helpline.di.HelplineModule
 import com.indra.contacttracing.features.helpline.view.HelplineFragment
 import com.indra.contacttracing.features.home.di.HomeModule
 import com.indra.contacttracing.features.home.view.HomeFragment
-import com.indra.contacttracing.features.profile.di.ProfileModule
-import com.indra.contacttracing.features.profile.view.ProfileFragment
+import com.indra.contacttracing.features.mydata.di.MyDataModule
+import com.indra.contacttracing.features.mydata.view.MyDataFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -24,8 +24,8 @@ abstract class MainFragmentsModule {
     abstract fun bindsHealthFragment(): HealthFragment
 
     @PerFragment
-    @ContributesAndroidInjector(modules = [ProfileModule::class])
-    abstract fun bindsProfileFragment(): ProfileFragment
+    @ContributesAndroidInjector(modules = [MyDataModule::class])
+    abstract fun bindsMyDataFragment(): MyDataFragment
 
     @PerFragment
     @ContributesAndroidInjector(modules = [HelplineModule::class])

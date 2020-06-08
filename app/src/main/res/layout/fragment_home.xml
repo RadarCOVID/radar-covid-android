@@ -129,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/multi_bold"
+                    android:fontFamily="@font/muli_bold"
                     android:text="@string/radar_block_disabled_description"
                     android:textColor="@color/red"
                     android:textStyle="bold"
