@@ -17,6 +17,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file("../app.keystore")
+            storePassword "indra2020"
+            keyAlias "covid19"
+            keyPassword "covid19"
+        }
+    }
+
     buildTypes {
         debug {
             buildConfigField "String", 'API_URL', '"http://www.google.com/"'
@@ -25,6 +34,8 @@ android {
             buildConfigField "String", 'API_URL', '"http://www.google.com/"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
         }
     }
 
