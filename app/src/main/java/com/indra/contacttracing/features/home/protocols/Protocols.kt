@@ -2,13 +2,13 @@ package com.indra.contacttracing.features.home.protocols
 
 interface HomeView {
 
-    fun showLowExpositionLevel()
+    fun showExpositionLevelLow()
 
-    fun showMediumExpositionLevel()
+    fun showExpositionLevelMedium()
 
-    fun showHighExpositionLevel()
+    fun showExpositionLevelHigh()
 
-    fun setLastUpdateTime(lastUpdateTime: String)
+    fun setLastUpdateTime(daysElapsed: Int, hoursElapsed: Int, minutesElapsed: Int)
 
     fun setBluetoothBlockEnabled(enabled: Boolean)
 
@@ -17,6 +17,8 @@ interface HomeView {
 interface HomePresenter {
 
     fun viewReady()
+
+    fun onResume()
 
     fun onExpositionBlockClick()
 

@@ -67,10 +67,40 @@
     <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán de manera anónima. </string>
     <string name="radar_block_disabled_description">Activa el rastreo Bluetooth para poder detectar posibles contagios.</string>
 
+    /********** Exposition detail ************/
+    <string name="exposition_detail_title">EXPOSICIÓN</string>
+
+    <string name="exposition_detail_low">Tu exposición es baja</string>
+    <string name="exposition_detail_medium">Tu exposición es media</string>
+    <string name="exposition_detail_high">Tu exposición es alta</string>
+
+    <string name="exposition_detail_last_update">%1$s / %2$s</string>
+
+    <string name="exposition_detail_message_low">Sin contactos ni infecciones aparentes.</string>
+    <string name="exposition_detail_message_medium">Podrías estar infectado</string>
+    <string name="exposition_detail_message_high">Podrías estar infectado</string>
+
+    <string name="exposition_detail_tips_title">¿Qué debo de hacer?</string>
+
+    <string name="exposition_detail_covid_report_message">Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
+
 
     /********** Common ************/
 
     <string name="button_covid_report">Comunica tu positivo Covid</string>
+
+    <plurals name="days">
+        <item quantity="one">hace %d día</item>
+        <item quantity="other">hace %d días</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">hace %d hora</item>
+        <item quantity="other">hace %d horas</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">hace %d min</item>
+        <item quantity="other">hace %d mins</item>
+    </plurals>
 
 
 </resources>
