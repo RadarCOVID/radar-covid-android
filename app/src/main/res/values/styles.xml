@@ -68,6 +68,12 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextSemibold">
+        <item name="fontFamily">@font/multi_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextDialogTitle" parent="Title">
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">14sp</item>
@@ -96,6 +102,13 @@
         <item name="backgroundTint">@color/color_tint_button_normal</item>
         <item name="backgroundTintMode">src_over</item>
         <item name="android:background">@drawable/background_button</item>
+    </style>
+
+    <style name="EditTextNormal" parent="TextSmall">
+        <item name="android:minHeight">60dp</item>
+        <item name="android:lines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/shape_rounded_corners_white</item>
     </style>
 
 </resources>

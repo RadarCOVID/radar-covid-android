@@ -89,6 +89,16 @@
 
     <string name="exposition_detail_covid_report_message">Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
 
+    /********** Covid Report ************/
+
+    <string name="covid_report_title">MI SALUD</string>
+    <string name="covid_report_subtitle">¿Cómo te encuentras hoy?</string>
+    <string name="covid_report_p1">Reportando tu diagnóstico Covid-19, estás contribuyendo a detener la propagación del virus.</string>
+    <string name="covid_report_p2">¡Ayúdanos a mantener a tus conocidos seguros!\n\n¿Has sido diagnosticado Covid-19?</string>
+    <string name="covid_report_qr_button">Escanear QR</string>
+    <string name="covid_report_code_hint">Introduce tu código</string>
+    <string name="covid_report_send_button">Enviar</string>
+
 
     /********** Common ************/
 

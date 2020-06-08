@@ -1,10 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".features.covidreport.view.CovidReportActivity">
 
-    <include layout="@layout/layout_back_navigation" />
+    <include
+        android:id="@+id/layoutBackButton"
+        layout="@layout/layout_back_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutBackButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:paddingBottom="22dp">
+
+            <TextView
+                style="@style/TitleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/covid_report_title"
+                android:textColor="@color/gray" />
+
+            <TextView
+                style="@style/TitleMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="13dp"
+                android:text="@string/covid_report_subtitle" />
+
+            <TextView
+                style="@style/TextSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/covid_report_p1"
+                android:textColor="@color/black" />
+
+            <TextView
+                style="@style/TextSemibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="56sp"
+                android:text="@string/covid_report_p2"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/buttonQRScan"
+                style="@style/ButtonNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/covid_report_qr_button"
+                android:visibility="gone" />
+
+            <TextView
+                style="@style/TextSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/covid_report_code_hint" />
+
+            <EditText
+                android:id="@+id/editTextCode"
+                style="@style/EditTextNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/buttonSend"
+                style="@style/ButtonNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/covid_report_send_button" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
