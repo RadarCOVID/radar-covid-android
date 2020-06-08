@@ -1,4 +1,4 @@
-package com.indra.contacttracing.features.covidreport.view
+package com.indra.contacttracing.features.covidreport.form.view
 
 import android.content.Context
 import android.content.Intent
@@ -7,8 +7,8 @@ import android.view.View
 import com.indra.contacttracing.R
 import com.indra.contacttracing.common.base.BaseBackNavigationActivity
 import com.indra.contacttracing.common.view.CMDialog
-import com.indra.contacttracing.features.covidreport.protocols.CovidReportPresenter
-import com.indra.contacttracing.features.covidreport.protocols.CovidReportView
+import com.indra.contacttracing.features.covidreport.form.protocols.CovidReportPresenter
+import com.indra.contacttracing.features.covidreport.form.protocols.CovidReportView
 import kotlinx.android.synthetic.main.activity_covid_report.*
 import javax.inject.Inject
 
@@ -29,7 +29,12 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_covid_report)
 
+        initViews()
         presenter.viewReady()
+    }
+
+    private fun initViews() {
+        buttonSend.setOnClickListener { presenter.onSendButtonClick() }
     }
 
     override fun onBackPressed() {

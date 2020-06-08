@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
@@ -40,10 +39,13 @@
             android:name=".features.main.view.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".features.covidreport.view.CovidReportActivity"
+            android:name=".features.covidreport.form.view.CovidReportActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.exposition.view.ExpositionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.covidreport.confirmation.Confirmation"
             android:screenOrientation="portrait" />
     </application>
 

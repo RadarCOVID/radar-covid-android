@@ -1,4 +1,4 @@
-package com.indra.contacttracing.features.covidreport.protocols
+package com.indra.contacttracing.features.covidreport.form.protocols
 
 interface CovidReportView {
 
@@ -20,5 +20,10 @@ interface CovidReportPresenter {
 
     fun onSendButtonClick()
 
+}
+
+interface CovidReportRouter {
+
+    fun navigateToConfirmation()
 
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".features.covidreport.view.CovidReportActivity">
+    tools:context=".features.covidreport.form.view.CovidReportActivity">
 
     <include
         android:id="@+id/layoutBackButton"
@@ -81,8 +81,7 @@
                 style="@style/EditTextNormal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:inputType="number" />
+                android:layout_marginBottom="16dp" />
 
             <Button
                 android:id="@+id/buttonSend"
