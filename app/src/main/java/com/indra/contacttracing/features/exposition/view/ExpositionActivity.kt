@@ -58,7 +58,33 @@ class ExpositionActivity : BaseBackNavigationActivity(), ExpositionView {
         wrapperReportButton.visibility = View.VISIBLE
     }
 
-    override fun setLastUpdateTime(text: String) {
+    override fun setLastUpdateTime(
+        date: String,
+        daysElapsed: Int,
+        hoursElapsed: Int,
+        minutesElapsed: Int
+    ) {
+        val text = when {
+            daysElapsed > 0 ->
+                getString(
+                    R.string.exposition_detail_last_update,
+                    date,
+                    resources.getQuantityString(R.plurals.days, daysElapsed, daysElapsed)
+                )
+
+            hoursElapsed > 0 ->
+                getString(
+                    R.string.exposition_detail_last_update,
+                    date,
+                    resources.getQuantityString(R.plurals.hours, hoursElapsed, hoursElapsed)
+                )
+            else ->
+                getString(
+                    R.string.exposition_detail_last_update,
+                    date,
+                    resources.getQuantityString(R.plurals.minutes, minutesElapsed, minutesElapsed)
+                )
+        }
         textViewExpositionLastUpdate.text = text
     }
 

@@ -47,26 +47,40 @@ class HomeFragment : BaseFragment(), HomeView {
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
     }
 
-    override fun showLowExpositionLevel() {
+    override fun showExpositionLevelLow() {
         textViewExpositionTitle.setText(R.string.exposition_block_low_title)
         textViewExpositionDescription.setText(R.string.exposition_block_low_description)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.green))
     }
 
-    override fun showMediumExpositionLevel() {
-        textViewExpositionTitle.setText(R.string.exposition_block_low_title)
-        textViewExpositionDescription.setText(R.string.exposition_block_low_description)
+    override fun showExpositionLevelMedium() {
+        textViewExpositionTitle.setText(R.string.exposition_block_medium_title)
+        textViewExpositionDescription.setText(R.string.exposition_block_medium_description)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.orange))
     }
 
-    override fun showHighExpositionLevel() {
-        textViewExpositionTitle.setText(R.string.exposition_block_low_title)
-        textViewExpositionDescription.setText(R.string.exposition_block_low_description)
+    override fun showExpositionLevelHigh() {
+        textViewExpositionTitle.setText(R.string.exposition_block_high_title)
+        textViewExpositionDescription.setText(R.string.exposition_block_medium_description)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
     }
 
-    override fun setLastUpdateTime(lastUpdateTime: String) {
-        textViewExpositionUpdateTime.text = lastUpdateTime
+    override fun setLastUpdateTime(
+        daysElapsed: Int,
+        hoursElapsed: Int,
+        minutesElapsed: Int
+    ) {
+        when {
+            daysElapsed > 0 ->
+                textViewExpositionLastUpdate.text =
+                    resources.getQuantityString(R.plurals.days, daysElapsed, daysElapsed)
+            hoursElapsed > 0 ->
+                textViewExpositionLastUpdate.text =
+                    resources.getQuantityString(R.plurals.hours, hoursElapsed, hoursElapsed)
+            else ->
+                textViewExpositionLastUpdate.text =
+                    resources.getQuantityString(R.plurals.minutes, minutesElapsed, minutesElapsed)
+        }
     }
 
     override fun setBluetoothBlockEnabled(enabled: Boolean) {

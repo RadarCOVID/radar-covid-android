@@ -15,6 +15,10 @@ class RepositoryModule {
 
     @Provides
     @PerApplication
+    fun providesDomainRepository(repository: DomainRepositoryImpl): DomainRepository = repository
+
+    @Provides
+    @PerApplication
     fun providesPreferencesRepository(repository: PreferencesRepositoryImpl): PreferencesRepository =
         repository
 

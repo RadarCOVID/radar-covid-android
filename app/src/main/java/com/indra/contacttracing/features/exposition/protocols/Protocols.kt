@@ -8,13 +8,15 @@ interface ExpositionView {
 
     fun showExpositionLevelHigh()
 
-    fun setLastUpdateTime(text: String)
+    fun setLastUpdateTime(date: String, daysElapsed: Int, hoursElapsed: Int, minutesElapsed: Int)
 
 }
 
 interface ExpositionPresenter {
 
     fun viewReady()
+
+    fun onResume()
 
     fun onReportButtonClick()
 
