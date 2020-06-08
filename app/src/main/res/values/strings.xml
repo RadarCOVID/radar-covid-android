@@ -98,6 +98,9 @@
     <string name="covid_report_qr_button">Escanear QR</string>
     <string name="covid_report_code_hint">Introduce tu código</string>
     <string name="covid_report_send_button">Enviar</string>
+    <string name="covid_report_abort_warning_title">¿Seguro que no quieres reportar tu diagnóstico?</string>
+    <string name="covid_report_abort_warning_message">¡Ayúdanos a evitar que el Covid-19 se extienda!</string>
+    <string name="covid_report_abort_warning_button">Cancelar</string>
 
 
     /********** Common ************/
