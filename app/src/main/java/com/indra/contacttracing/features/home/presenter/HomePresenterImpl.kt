@@ -1,5 +1,6 @@
 package com.indra.contacttracing.features.home.presenter
 
+import android.util.Log
 import com.indra.contacttracing.datamanager.usecase.domain.ExpositionInfoUseCase
 import com.indra.contacttracing.features.home.protocols.HomePresenter
 import com.indra.contacttracing.features.home.protocols.HomeRouter
@@ -40,6 +41,10 @@ class HomePresenterImpl @Inject constructor(
 
     override fun onReportButtonClick() {
         router.navigateToCovidReport()
+    }
+
+    override fun onSwitchRadarStatusChange(enabled: Boolean) {
+        Log.d("test", "radar status changed $enabled")
     }
 
     private fun showExpositionInfo(expositionInfo: ExpositionInfo) {

@@ -68,12 +68,15 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="TextDialogTitle">
+    <style name="TextDialogTitle" parent="Title">
         <item name="android:textColor">@color/black_26</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextDialogDescription">
+        <item name="fontFamily">@font/multi_light</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black_26</item>
     </style>
 

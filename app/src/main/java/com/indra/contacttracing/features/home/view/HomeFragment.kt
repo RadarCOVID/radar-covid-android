@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.indra.contacttracing.R
 import com.indra.contacttracing.common.base.BaseFragment
+import com.indra.contacttracing.common.view.CMDialog
 import com.indra.contacttracing.features.home.protocols.HomePresenter
 import com.indra.contacttracing.features.home.protocols.HomeView
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -40,9 +41,25 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     private fun initViews() {
-        switchRadar.setOnCheckedChangeListener { _, isChecked ->
-            setBluetoothBlockEnabled(isChecked)
+        switchRadar.setOnClickListener {
+            if (!switchRadar.isChecked) { // The status is already change when onclick is executed
+                switchRadar.isChecked = true
+                switchRadar.jumpDrawablesToCurrentState();
+                CMDialog.createDialog(
+                    context!!, R.string.radar_warning_title,
+                    R.string.radar_warning_message,
+                    R.string.radar_warning_button, null
+                ) {
+                    switchRadar.isChecked = false
+                    setBluetoothBlockEnabled(false)
+                    presenter.onSwitchRadarStatusChange(false)
+                }.show()
+            } else {
+                setBluetoothBlockEnabled(true)
+                presenter.onSwitchRadarStatusChange(true)
+            }
         }
+
         wrapperExposition.setOnClickListener { presenter.onExpositionBlockClick() }
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
     }

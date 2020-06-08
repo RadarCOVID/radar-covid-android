@@ -25,11 +25,11 @@ class SplashActivity : BaseActivity(), SplashView {
             this,
             R.string.warning_connection_title,
             R.string.warning_connection_description, R.string.warning_connection_button,
-            onButtonClick = {
-                presenter.onNetworkRetryButtonClick()
-            },
             onCloseButtonClick = {
                 presenter.onNetworkDialogCloseButtonClick()
+            },
+            onButtonClick = {
+                presenter.onNetworkRetryButtonClick()
             }
         ).show()
     }
