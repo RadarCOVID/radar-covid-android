@@ -18,15 +18,15 @@ object CMDialog {
         title: Int,
         description: Int,
         buttonText: Int,
-        onButtonClick: () -> Unit,
-        onCloseButtonClick: (() -> Unit)?
+        onCloseButtonClick: (() -> Unit)?,
+        onButtonClick: () -> Unit
     ): AlertDialog = createDialog(
         context,
         context.getString(title),
         context.getString(description),
         context.getString(buttonText),
-        onButtonClick,
-        onCloseButtonClick
+        onCloseButtonClick,
+        onButtonClick
     )
 
     fun createDialog(
@@ -34,8 +34,8 @@ object CMDialog {
         title: String,
         description: String,
         buttonText: String,
-        onButtonClick: () -> Unit,
-        onCloseButtonClick: (() -> Unit)?
+        onCloseButtonClick: (() -> Unit)?,
+        onButtonClick: () -> Unit
     ): AlertDialog {
         val view: View =
             LayoutInflater.from(context).inflate(R.layout.dialog, null)

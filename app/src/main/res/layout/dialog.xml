@@ -37,15 +37,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginBottom="35dp"
         tools:text="description" />
 
     <Button
         android:id="@+id/button"
-        style="@style/Button"
+        style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/background_button_gradient"
         android:textColor="@color/white"
         tools:text="Button" />
 

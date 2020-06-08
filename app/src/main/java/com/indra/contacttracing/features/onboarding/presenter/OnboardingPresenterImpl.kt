@@ -17,8 +17,15 @@ class OnboardingPresenterImpl @Inject constructor(
 
     }
 
-    override fun onBackButtonPressed() {
-        view.showPreviousPage()
+    override fun onExitConfirmed() {
+        view.finish()
+    }
+
+    override fun onBackButtonPressed(isFirstItem: Boolean) {
+        if (isFirstItem)
+            view.showExitConfirmationDialog()
+        else
+            view.showPreviousPage()
     }
 
     override fun onContinueButtonClick(page: Int, totalPages: Int) {

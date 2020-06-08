@@ -4,6 +4,10 @@ import com.indra.contacttracing.common.view.RequestView
 
 interface MainView : RequestView {
 
+    fun showExitConfirmationDialog()
+
+    fun finish()
+
 }
 
 interface MainPresenter {
@@ -17,6 +21,10 @@ interface MainPresenter {
     fun onProfileButtonClick()
 
     fun onHelplineButtonClick()
+
+    fun onBackPressed()
+
+    fun onExitConfirmed()
 
 }
 

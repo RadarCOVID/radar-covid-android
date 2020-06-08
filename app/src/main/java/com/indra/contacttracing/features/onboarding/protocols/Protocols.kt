@@ -16,6 +16,8 @@ interface OnboardingView {
 
     fun showBluetoothRequest()
 
+    fun showExitConfirmationDialog()
+
     fun finish()
 
 }
@@ -24,7 +26,9 @@ interface OnboardingPresenter {
 
     fun viewReady()
 
-    fun onBackButtonPressed()
+    fun onExitConfirmed()
+
+    fun onBackButtonPressed(isFirstItem: Boolean)
 
     fun onContinueButtonClick(page: Int, totalPages: Int)
 

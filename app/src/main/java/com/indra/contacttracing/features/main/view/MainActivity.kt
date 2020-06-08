@@ -3,6 +3,7 @@ package com.indra.contacttracing.features.main.view
 import android.os.Bundle
 import com.indra.contacttracing.R
 import com.indra.contacttracing.common.base.BaseActivity
+import com.indra.contacttracing.common.view.CMDialog
 import com.indra.contacttracing.datamanager.usecase.GetExampleUseCase
 import com.indra.contacttracing.features.main.protocols.MainPresenter
 import com.indra.contacttracing.features.main.protocols.MainView
@@ -40,8 +41,18 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun onBackPressed() {
         if (bottomNavigation.selectedItemId == R.id.menuItemHome)
-            super.onBackPressed()
+            presenter.onBackPressed()
         else
             bottomNavigation.selectedItemId = R.id.menuItemHome
+    }
+
+    override fun showExitConfirmationDialog() {
+        CMDialog.createDialog(
+            this, "",
+            getString(R.string.warning_exit_application_message),
+            getString(R.string.warning_exit_application_button), null
+        ) {
+            presenter.onExitConfirmed()
+        }.show()
     }
 }

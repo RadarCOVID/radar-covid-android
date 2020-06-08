@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.indra.contacttracing.R
 import com.indra.contacttracing.common.base.BaseActivity
+import com.indra.contacttracing.common.view.CMDialog
 import com.indra.contacttracing.features.onboarding.pages.OnboardingStepPageFragment
 import com.indra.contacttracing.features.onboarding.pages.legal.view.LegalInfoFragment
 import com.indra.contacttracing.features.onboarding.protocols.OnboardingPresenter
@@ -48,10 +49,7 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingStepPageFra
     }
 
     override fun onBackPressed() {
-        if (viewPager.currentItem == 0)
-            super.onBackPressed()
-        else
-            presenter.onBackButtonPressed()
+        presenter.onBackButtonPressed(viewPager.currentItem == 0)
     }
 
     override fun onContinueButtonClick() {
@@ -74,6 +72,16 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingStepPageFra
             Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE),
             REQUEST_CODE_BLUETOOTH
         )
+    }
+
+    override fun showExitConfirmationDialog() {
+        CMDialog.createDialog(
+            this, "",
+            getString(R.string.warning_exit_application_message),
+            getString(R.string.warning_exit_application_button), null
+        ) {
+            presenter.onExitConfirmed()
+        }.show()
     }
 
     private class OnboardingAdapter(fragmentActivity: FragmentActivity) :

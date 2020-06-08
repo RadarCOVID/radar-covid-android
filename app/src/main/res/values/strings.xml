@@ -67,6 +67,11 @@
     <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán de manera anónima. </string>
     <string name="radar_block_disabled_description">Activa el rastreo Bluetooth para poder detectar posibles contagios.</string>
 
+    <string name="radar_warning_title">¿Estás seguro?</string>
+    <string name="radar_warning_message">Si desactivas el Radar Bluetooth, no podremos avisarte.</string>
+    <string name="radar_warning_button">Desactivar</string>
+
+
     /********** Exposition detail ************/
     <string name="exposition_detail_title">EXPOSICIÓN</string>
 
@@ -88,6 +93,9 @@
     /********** Common ************/
 
     <string name="button_covid_report">Comunica tu positivo Covid</string>
+
+    <string name="warning_exit_application_message">¿Está seguro de que desea salir de la aplicación?</string>
+    <string name="warning_exit_application_button">Confirmar</string>
 
     <plurals name="days">
         <item quantity="one">hace %d día</item>

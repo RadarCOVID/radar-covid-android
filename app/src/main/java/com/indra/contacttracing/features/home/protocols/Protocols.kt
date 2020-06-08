@@ -24,6 +24,8 @@ interface HomePresenter {
 
     fun onReportButtonClick()
 
+    fun onSwitchRadarStatusChange(enabled: Boolean)
+
 }
 
 interface HomeRouter {
