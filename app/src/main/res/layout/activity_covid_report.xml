@@ -83,6 +83,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp" />
 
+            <com.indra.contacttracing.common.view.CodeEditText
+                android:id="@+id/codeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
+
             <Button
                 android:id="@+id/buttonSend"
                 style="@style/ButtonNormal"
