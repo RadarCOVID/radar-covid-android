@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="38dp"
-                android:fontFamily="@font/multi_italic"
+                android:fontFamily="@font/muli_italic"
                 android:text="@string/covid_report_code_input_example"
                 android:textColor="@color/black"
                 android:textSize="13sp" />

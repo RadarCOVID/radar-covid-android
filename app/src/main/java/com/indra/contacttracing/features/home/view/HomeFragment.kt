@@ -110,7 +110,7 @@ class HomeFragment : BaseFragment(), HomeView {
             textViewRadarDescription.setText(R.string.radar_block_enabled_description)
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.multi_light),
+                ResourcesCompat.getFont(context!!, R.font.muli_light),
                 Typeface.NORMAL
             )
         } else {
@@ -118,7 +118,7 @@ class HomeFragment : BaseFragment(), HomeView {
             textViewRadarDescription.setText(R.string.radar_block_disabled_description)
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.red))
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.multi_bold),
+                ResourcesCompat.getFont(context!!, R.font.muli_bold),
                 Typeface.BOLD
             )
         }

@@ -128,6 +128,16 @@
     <string name="confirmation_tip_3">Si tiene fiebre, tos y dificultad para respirar, busque rápidamente asesoramiento médico, ya que podría deberse a una infección respiratoria u otra afección grave. Llame con antelación que su dispensador de atención de salud le dirija rápidamente hacia el centro de salud adecuado.</string>
     <string name="confirmation_tip_4">Lávese las manos con frecuencia con un desinfectante de manos a base de alcohol o con agua y jabón</string>
 
+    /********** My data ************/
+
+    <string name="my_data_title">MIS DATOS</string>
+    <string name="my_data_subtitle">Tu privacidad es lo más importante</string>
+    <string name="my_data_l1"><b>NO</b> recogemos ningún dato pesonal (nombre, dirección, edad, teléfono, correo electrónico...)</string>
+    <string name="my_data_l2"><b>NO</b> recogemos ningún dato de geolocalización, incluidos los datos del GPS</string>
+    <string name="my_data_l3_title">Por tanto:</string>
+    <string name="my_data_l3"><b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
+    <string name="my_data_encription_info">Los datos son guardados en tu teléfono y la conexión con el servidor están encriptados</string>
+
 
     /********** Common ************/
 
