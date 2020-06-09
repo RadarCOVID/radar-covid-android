@@ -76,18 +76,30 @@
     <string name="exposition_detail_title">EXPOSICIÓN</string>
 
     <string name="exposition_detail_low">Tu exposición es baja</string>
+    <string name="exposition_detail_message_low">Sin contactos ni infecciones aparentes.</string>
+    <string name="exposition_detail_tips_subtitle_low">Por favor, manten las medidas de seguridad y distanciamiento social.</string>
+
     <string name="exposition_detail_medium">Tu exposición es media</string>
+    <string name="exposition_detail_message_medium">Podrías estar infectado</string>
+    <string name="exposition_detail_tips_subtitle_medium">Por favor, presta atención a posibles síntomas:</string>
+
     <string name="exposition_detail_high">Tu exposición es alta</string>
+    <string name="exposition_detail_message_high">Podrías estar infectado</string>
+    <string name="exposition_detail_tips_subtitle_high">Por favor, aíslate y presta atención a posíbles sintomas:</string>
+
+    <string name="exposition_detail_clinic_indications">Sigue los consejos de tu centro de salud. Más información <b>aquí</b></string>
+    <string name="exposition_detail_more_info_tips">Tienes más información sobre consejos, sintomas y medidas <b>aquí</b></string>
+
+    <string name="exposition_detail_covid_report_message"><b>Ayúdanos a cuidar a los demás.</b> Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
+    <string name="exposition_detail_acknowledgement_message">Gracias por seguir cuidándote y cuidando a los demás.</string>
 
     <string name="exposition_detail_last_update">%1$s / %2$s</string>
-
-    <string name="exposition_detail_message_low">Sin contactos ni infecciones aparentes.</string>
-    <string name="exposition_detail_message_medium">Podrías estar infectado</string>
-    <string name="exposition_detail_message_high">Podrías estar infectado</string>
-
     <string name="exposition_detail_tips_title">¿Qué debo de hacer?</string>
 
-    <string name="exposition_detail_covid_report_message">Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
+    <string name="exposition_detail_symptom_cough">Tos persistente</string>
+    <string name="exposition_detail_symptom_fever">Fiebre alta continua</string>
+    <string name="exposition_detail_symptom_taste_and_smell">Perdida del gusto\ny el olfato</string>
+
 
     /********** Covid Report ************/
 

@@ -38,24 +38,39 @@ class ExpositionActivity : BaseBackNavigationActivity(), ExpositionView {
     }
 
     override fun showExpositionLevelLow() {
+        wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
         textViewExpositionDetailTitle.setText(R.string.exposition_detail_low)
-        textViewExpositionDetailTitle.setTextColor(ContextCompat.getColor(this, R.color.green))
         textViewExpositionDetailMessage.setText(R.string.exposition_detail_message_low)
-        wrapperReportButton.visibility = View.GONE
+
+        textViewTipsSubtitle.setText(R.string.exposition_detail_tips_subtitle_low)
+        textViewTipsSubtitle.setTextColor(ContextCompat.getColor(this, R.color.green))
+
+        wrapperTipsAndAcknowledge.visibility = View.VISIBLE
     }
 
     override fun showExpositionLevelMedium() {
+        wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_medium)
         textViewExpositionDetailTitle.setText(R.string.exposition_detail_medium)
-        textViewExpositionDetailTitle.setTextColor(ContextCompat.getColor(this, R.color.orange))
         textViewExpositionDetailMessage.setText(R.string.exposition_detail_message_medium)
-        wrapperReportButton.visibility = View.VISIBLE
+
+        textViewTipsSubtitle.setText(R.string.exposition_detail_tips_subtitle_medium)
+        textViewTipsSubtitle.setTextColor(ContextCompat.getColor(this, R.color.orange))
+
+        wrapperTipsAndIndications.visibility = View.VISIBLE
+        textViewReportButtonMessage.visibility = View.VISIBLE
+        buttonCovidReport.visibility = View.VISIBLE
     }
 
     override fun showExpositionLevelHigh() {
+        wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
         textViewExpositionDetailTitle.setText(R.string.exposition_detail_high)
-        textViewExpositionDetailTitle.setTextColor(ContextCompat.getColor(this, R.color.red))
         textViewExpositionDetailMessage.setText(R.string.exposition_detail_message_high)
-        wrapperReportButton.visibility = View.VISIBLE
+
+        textViewTipsSubtitle.setText(R.string.exposition_detail_tips_subtitle_high)
+        textViewTipsSubtitle.setTextColor(ContextCompat.getColor(this, R.color.red))
+
+        wrapperTipsAndIndications.visibility = View.VISIBLE
+        buttonCovidReport.visibility = View.VISIBLE
     }
 
     override fun setLastUpdateTime(
