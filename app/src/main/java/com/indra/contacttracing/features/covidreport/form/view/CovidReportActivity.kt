@@ -55,6 +55,6 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
         }.show()
     }
 
-    override fun getReportCode(): String = editTextCode.text.toString()
+    override fun getReportCode(): String = codeEditText.getText()
 
 }

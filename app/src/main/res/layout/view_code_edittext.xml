@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/shape_rounded_corners_white"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/editTextCode1"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <EditText
+        android:id="@+id/editTextCode2"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <EditText
+        android:id="@+id/editTextCode3"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <EditText
+        android:id="@+id/editTextCode4"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <EditText
+        android:id="@+id/editTextCode5"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <EditText
+        android:id="@+id/editTextCode6"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <EditText
+        android:id="@+id/editTextCode7"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <EditText
+        android:id="@+id/editTextCode8"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <EditText
+        android:id="@+id/editTextCode9"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <EditText
+        android:id="@+id/editTextCode10"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:text="1" />
+
+
+</LinearLayout>
