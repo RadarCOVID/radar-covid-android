@@ -27,9 +27,9 @@ class HomePresenterImpl @Inject constructor(
     }
 
     override fun onResume() {
-        expositionInfo?.let {
-            setLastUpdateTime(it.lastUpdateTime)
-        }
+//        expositionInfo?.let {
+//            setLastUpdateTime(it.lastUpdateTime)
+//        }
     }
 
     override fun onExpositionBlockClick() {
@@ -54,7 +54,7 @@ class HomePresenterImpl @Inject constructor(
             ExpositionInfo.Level.HIGH -> view.showExpositionLevelHigh()
         }
 
-        setLastUpdateTime(expositionInfo.lastUpdateTime)
+        //setLastUpdateTime(expositionInfo.lastUpdateTime)
     }
 
     private fun setLastUpdateTime(lastUpdateTime: Date) {
@@ -74,11 +74,12 @@ class HomePresenterImpl @Inject constructor(
             time = Date()
             add(Calendar.DAY_OF_YEAR, -2)
 
-
             add(Calendar.HOUR, -1)
 
             add(Calendar.MINUTE, -12)
         }.time
+
+        res.level = ExpositionInfo.Level.MEDIUM
 
         return res
     }
