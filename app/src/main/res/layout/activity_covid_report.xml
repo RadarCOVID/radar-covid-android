@@ -7,6 +7,13 @@
     android:background="@color/background"
     tools:context=".features.covidreport.form.view.CovidReportActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_covid_report"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <include
         android:id="@+id/layoutBackButton"
         layout="@layout/layout_back_navigation"
@@ -43,7 +50,7 @@
                 style="@style/TitleMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="13dp"
+                android:layout_marginBottom="24dp"
                 android:text="@string/covid_report_subtitle" />
 
             <TextView
@@ -57,7 +64,7 @@
                 style="@style/TextSemibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="56sp"
+                android:layout_marginBottom="36dp"
                 android:text="@string/covid_report_p2"
                 android:textColor="@color/black" />
 
@@ -69,25 +76,61 @@
                 android:text="@string/covid_report_qr_button"
                 android:visibility="gone" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textViewHintTitle"
+                    style="@style/TitleSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/covid_report_code_hint_title"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@id/imageViewCovidReport"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textViewHintSubtitle"
+                    style="@style/TextSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/covid_report_code_hint_subtitle"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@id/imageViewCovidReport"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewHintTitle" />
+
+                <ImageView
+                    android:id="@+id/imageViewCovidReport"
+                    android:layout_width="166dp"
+                    android:layout_height="161dp"
+                    android:src="@drawable/img_covid_report"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.indra.contacttracing.common.view.CodeEditText
+                    android:id="@+id/codeEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="150dp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
-                style="@style/TextSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/covid_report_code_hint" />
-
-            <EditText
-                android:id="@+id/editTextCode"
-                style="@style/EditTextNormal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp" />
-
-            <com.indra.contacttracing.common.view.CodeEditText
-                android:id="@+id/codeEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="38dp"
+                android:fontFamily="@font/multi_italic"
+                android:text="@string/covid_report_code_input_example"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
 
             <Button
                 android:id="@+id/buttonSend"

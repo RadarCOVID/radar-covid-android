@@ -96,8 +96,10 @@
     <string name="covid_report_p1">Reportando tu diagnóstico Covid-19, estás contribuyendo a detener la propagación del virus.</string>
     <string name="covid_report_p2">¡Ayúdanos a mantener a tus conocidos seguros!\n\n¿Has sido diagnosticado Covid-19?</string>
     <string name="covid_report_qr_button">Escanear QR</string>
-    <string name="covid_report_code_hint">Introduce tu código</string>
-    <string name="covid_report_send_button">Enviar</string>
+    <string name="covid_report_code_hint_title">Código de diagnóstico</string>
+    <string name="covid_report_code_hint_subtitle">Introduce el código que te han enviado</string>
+    <string name="covid_report_code_input_example">ej. ABC1234567</string>
+    <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
     <string name="covid_report_abort_warning_title">¿Seguro que no quieres reportar tu diagnóstico?</string>
     <string name="covid_report_abort_warning_message">¡Ayúdanos a evitar que el Covid-19 se extienda!</string>
     <string name="covid_report_abort_warning_button">Cancelar</string>
@@ -113,7 +115,6 @@
     <string name="confirmation_tip_2">Minimiza el contacto social para evitar poner en peligro a los tuyos. Mantén al menos 1 metro de distancia con otras personas</string>
     <string name="confirmation_tip_3">Si tiene fiebre, tos y dificultad para respirar, busque rápidamente asesoramiento médico, ya que podría deberse a una infección respiratoria u otra afección grave. Llame con antelación que su dispensador de atención de salud le dirija rápidamente hacia el centro de salud adecuado.</string>
     <string name="confirmation_tip_4">Lávese las manos con frecuencia con un desinfectante de manos a base de alcohol o con agua y jabón</string>
-
 
 
     /********** Common ************/
