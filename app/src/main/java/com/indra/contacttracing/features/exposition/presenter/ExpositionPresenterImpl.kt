@@ -17,7 +17,6 @@ class ExpositionPresenterImpl @Inject constructor(
 ) : ExpositionPresenter {
 
     override fun viewReady() {
-        view.showExpositionLevelHigh()
         expositionInfoUseCase.getExpositionInfo()?.let {
             showExpositionInfo(it)
         }
@@ -57,22 +56,6 @@ class ExpositionPresenterImpl @Inject constructor(
             hoursElapsed.toInt(),
             minutesElapsed.toInt()
         )
-    }
-
-    private fun getMockExpositionInfo(): ExpositionInfo {
-        val res = ExpositionInfo()
-
-        res.lastUpdateTime = Calendar.getInstance().apply {
-            time = Date()
-            add(Calendar.DAY_OF_YEAR, -2)
-
-
-            add(Calendar.HOUR, -1)
-
-            add(Calendar.MINUTE, -12)
-        }.time
-
-        return res
     }
 
 }

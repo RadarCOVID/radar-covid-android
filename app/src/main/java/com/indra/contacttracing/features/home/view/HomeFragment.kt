@@ -65,21 +65,21 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     override fun showExpositionLevelLow() {
-        wrapperExposition.setBackgroundResource(R.drawable.background_exposition_low)
+        wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
         textViewExpositionTitle.setText(R.string.exposition_block_low_title)
         textViewExpositionDescription.setText(R.string.exposition_block_low_description)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.green))
     }
 
     override fun showExpositionLevelMedium() {
-        wrapperExposition.setBackgroundResource(R.drawable.background_exposition_medium)
+        wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_medium)
         textViewExpositionTitle.setText(R.string.exposition_block_medium_title)
         textViewExpositionDescription.setText(R.string.exposition_block_medium_description)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.orange))
     }
 
     override fun showExpositionLevelHigh() {
-        wrapperExposition.setBackgroundResource(R.drawable.background_exposition_high)
+        wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
         textViewExpositionTitle.setText(R.string.exposition_block_high_title)
         textViewExpositionDescription.setText(R.string.exposition_block_medium_description)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
