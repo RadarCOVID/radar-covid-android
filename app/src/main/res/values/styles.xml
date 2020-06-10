@@ -28,11 +28,18 @@
         <item name="fontFamily">@font/muli_bold</item>
     </style>
 
+    <style name="TitleTip" parent="Title">
+        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TitleSmall" parent="Title">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
 
     <style name="TitleMedium" parent="Title">
         <item name="android:textColor">@color/black_26</item>
@@ -48,12 +55,25 @@
     </style>
 
     <style name="TitleExtraBold">
+        <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/muli_extrabold</item>
     </style>
 
     <style name="TitleExtraBoldSmall" parent="TitleExtraBold">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TitleExtraBoldPurpleSmall" parent="TitleExtraBold">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextRegular">
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/muli_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black_26</item>
     </style>
 
     <style name="TextSmall">

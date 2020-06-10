@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
+        android:id="@+id/imageViewDot"
         android:layout_width="8dp"
         android:layout_height="8dp"
         android:layout_margin="9dp"

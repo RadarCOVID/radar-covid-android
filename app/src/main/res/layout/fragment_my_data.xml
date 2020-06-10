@@ -48,12 +48,14 @@
                 android:text="@string/my_data_subtitle" />
 
             <com.indra.contacttracing.common.view.DottedTextView
+                android:id="@+id/dottedTextViewL1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/my_data_l1" />
 
             <com.indra.contacttracing.common.view.DottedTextView
+                android:id="@+id/dottedTextViewL2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -67,10 +69,12 @@
                 android:text="@string/my_data_l3_title" />
 
             <com.indra.contacttracing.common.view.DottedTextView
+                android:id="@+id/dottedTextViewL3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/my_data_l3" />
+                android:text="@string/my_data_l3"
+                app:dotVisibility="invisible" />
 
             <TextView
                 android:layout_width="wrap_content"
