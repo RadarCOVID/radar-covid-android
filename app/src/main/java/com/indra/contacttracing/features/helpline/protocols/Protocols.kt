@@ -8,4 +8,12 @@ interface HelplinePresenter {
 
     fun viewReady()
 
+    fun onStartButtonClick()
+
+}
+
+interface HelplineRouter {
+
+    fun navigateToBrowser(url:String)
+
 }
