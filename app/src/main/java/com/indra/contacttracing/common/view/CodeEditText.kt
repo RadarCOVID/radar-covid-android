@@ -4,8 +4,6 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.util.Log
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -18,7 +16,7 @@ class CodeEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayoutCompat(context, attrs, defStyleAttr) {
 
-    private var editTexts: Array<EditText>
+    private var editTexts: Array<DeleteDetectionEditText>
 
     private var currentFocusIndex: Int = 0
 
@@ -67,15 +65,10 @@ class CodeEditText @JvmOverloads constructor(
                 }
             })
 
-            editText.setOnKeyListener { _, _, event ->
-                if (event.keyCode == KeyEvent.KEYCODE_DEL && event.action == KeyEvent.ACTION_UP) {
-                    if (index > 0) {
-                        editTexts[index + -1].apply { setText("") }.requestFocus()
-                        currentFocusIndex--
-                    }
-                    true
-                } else {
-                    false
+            editText.onDeleteButtonClickListener = {
+                if (index > 0) {
+                    editTexts[index + -1].apply { setText("") }.requestFocus()
+                    currentFocusIndex--
                 }
             }
 
