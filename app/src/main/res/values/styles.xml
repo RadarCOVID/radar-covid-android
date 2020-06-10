@@ -34,6 +34,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TitleTipSmall" parent="TitleTip">
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="TitleSmall" parent="Title">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">12sp</item>
@@ -79,6 +83,12 @@
     <style name="TextSmall">
         <item name="android:fontFamily">@font/muli_light</item>
         <item name="android:textColor">@color/black_26</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextSmallBlack">
+        <item name="android:fontFamily">@font/muli_light</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
 
