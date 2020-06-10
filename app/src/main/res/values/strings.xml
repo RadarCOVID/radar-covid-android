@@ -141,6 +141,13 @@
     <string name="my_data_l3"><b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
     <string name="my_data_encription_info">Los datos son guardados en tu teléfono y la conexión con el servidor están encriptados</string>
 
+    /********** Helpline ************/
+
+    <string name="helpline_title">AYÚDANOS A MEJORAR</string>
+    <string name="helpline_subtitle">¿Te está gustando la app?</string>
+    <string name="helpline_message_p1">Texto explicativo lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec egestas metus. Nulla vel arcu laoreet, faucibus risus sed, aliquam leo.</string>
+    <string name="helpline_message_p2">¡Ayúdanos a mejorar!</string>
+    <string name="helpline_button_start">Comenzar</string>
 
     /********** Common ************/
 
