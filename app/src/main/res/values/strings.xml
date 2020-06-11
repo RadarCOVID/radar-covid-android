@@ -4,6 +4,11 @@
     /********** ERROR MESSAGES ************/
     <string name="error_generic">Hubo un error, por favor inténtelo más tarde</string>
 
+    /********** Play services dialog ************/
+
+    <string name="play_services_dialog_title">Google Play Services</string>
+    <string name="play_services_dialog_message">Es necesario disponer de una versión actualizada de Google Play Services</string>
+
     /********** Dialog Internet ************/
     <string name="warning_connection_title">Sin conexión a internet.</string>
     <string name="warning_connection_description">Por favor, comprueba tu conexión.</string>
@@ -150,6 +155,8 @@
     <string name="helpline_button_start">Comenzar</string>
 
     /********** Common ************/
+
+    <string name="accept">Aceptar</string>
 
     <string name="button_covid_report">Comunica tu positivo Covid</string>
 

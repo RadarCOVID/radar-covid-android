@@ -5,6 +5,7 @@ import com.indra.coronaradar.common.di.scope.PerActivity
 import com.indra.coronaradar.datamanager.mapper.ExpositionInfoDataMapper
 import com.indra.coronaradar.models.domain.ExposureInfo
 import org.dpppt.android.sdk.DP3T
+import org.dpppt.android.sdk.GaenAvailability
 import org.dpppt.android.sdk.backend.ResponseCallback
 import org.dpppt.android.sdk.models.ExposeeAuthMethodAuthorization
 import java.util.*
@@ -15,6 +16,16 @@ class ContactTracingRepositoryImpl @Inject constructor(
     private val expositionInfoDataMapper: ExpositionInfoDataMapper,
     private val activity: AppCompatActivity
 ) : ContactTracingRepository {
+
+    override fun checkGaenAvailability(callback: (Boolean) -> Unit) {
+        DP3T.checkGaenAvailability(activity) { availability ->
+            val result = when (availability) {
+                GaenAvailability.AVAILABLE -> true
+                else -> false
+            }
+            callback(result)
+        }
+    }
 
     override fun startRadar(
         onSuccess: () -> Unit,

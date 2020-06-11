@@ -6,6 +6,8 @@ import com.indra.coronaradar.models.domain.ExposureInfo
 @PerActivity
 interface ContactTracingRepository {
 
+    fun checkGaenAvailability(callback: (Boolean) -> Unit)
+
     fun startRadar(onSuccess: () -> Unit, onError: (Exception) -> Unit, onCancelled: () -> Unit)
 
     fun stopRadar()
