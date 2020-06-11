@@ -10,7 +10,7 @@ interface HomeView {
 
     fun setLastUpdateTime(daysElapsed: Int, hoursElapsed: Int, minutesElapsed: Int)
 
-    fun setBluetoothBlockEnabled(enabled: Boolean)
+    fun setRadarBlockChecked(isChecked: Boolean)
 
 }
 
