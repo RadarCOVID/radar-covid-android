@@ -1,6 +1,8 @@
 package com.indra.coronaradar.features.covidreport.form.protocols
 
-interface CovidReportView {
+import com.indra.coronaradar.common.view.RequestView
+
+interface CovidReportView : RequestView {
 
     fun showExitConfirmationDialog()
 

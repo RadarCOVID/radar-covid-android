@@ -6,7 +6,7 @@ import com.indra.coronaradar.datamanager.mapper.ExpositionInfoDataMapper
 import com.indra.coronaradar.models.domain.ExposureInfo
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.backend.ResponseCallback
-import org.dpppt.android.sdk.models.ExposeeAuthMethodJson
+import org.dpppt.android.sdk.models.ExposeeAuthMethodAuthorization
 import java.util.*
 import javax.inject.Inject
 
@@ -47,19 +47,19 @@ class ContactTracingRepositoryImpl @Inject constructor(
     override fun notifyInfected(
         authCode: String,
         onSuccess: () -> Unit,
-        onError: (Exception) -> Unit
+        onError: (Throwable) -> Unit
     ) {
         //TODO: REVIEW ONSET DATE AND AUTH CODE MANAGEMENT
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DATE, -14)
-        DP3T.sendIAmInfected(activity, calendar.time, ExposeeAuthMethodJson(authCode),
+        DP3T.sendIAmInfected(activity, calendar.time, ExposeeAuthMethodAuthorization(authCode),
             object : ResponseCallback<Void> {
                 override fun onSuccess(response: Void?) {
                     onSuccess()
                 }
 
                 override fun onError(throwable: Throwable?) {
-                    onError(throwable)
+                    onError(throwable ?: Exception("Error notifying infection"))
                 }
 
             })
