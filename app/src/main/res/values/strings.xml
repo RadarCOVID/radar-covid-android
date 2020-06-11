@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Covid Monitor</string>
+    <string name="app_name">Corona Radar</string>
 
     /********** ERROR MESSAGES ************/
     <string name="error_generic">Hubo un error, por favor inténtelo más tarde</string>
