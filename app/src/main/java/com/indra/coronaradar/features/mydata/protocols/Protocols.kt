@@ -8,4 +8,6 @@ interface MyDataPresenter {
 
     fun viewReady()
 
+    fun onClearDataButtonClick()
+
 }
