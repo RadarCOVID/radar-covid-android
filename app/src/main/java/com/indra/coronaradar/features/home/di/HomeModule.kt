@@ -1,5 +1,6 @@
 package com.indra.coronaradar.features.home.di
 
+import android.app.Activity
 import android.content.Context
 import com.indra.coronaradar.common.di.scope.PerFragment
 import com.indra.coronaradar.features.home.presenter.HomePresenterImpl
@@ -16,6 +17,9 @@ class HomeModule {
 
     @Provides
     fun providesContext(fragment: HomeFragment): Context = fragment.context!!
+
+    @Provides
+    fun providesActivity(fragment: HomeFragment): Activity = fragment.activity!!
 
     @Provides
     fun providesView(fragment: HomeFragment): HomeView = fragment
