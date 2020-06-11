@@ -2,7 +2,7 @@ package com.indra.coronaradar.features.home.router
 
 import android.content.Context
 import com.indra.coronaradar.features.covidreport.form.view.CovidReportActivity
-import com.indra.coronaradar.features.exposition.view.ExpositionActivity
+import com.indra.coronaradar.features.exposure.view.ExpositionActivity
 import com.indra.coronaradar.features.home.protocols.HomeRouter
 import javax.inject.Inject
 

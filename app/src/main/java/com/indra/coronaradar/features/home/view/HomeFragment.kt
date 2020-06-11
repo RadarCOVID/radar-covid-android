@@ -40,6 +40,11 @@ class HomeFragment : BaseFragment(), HomeView {
         presenter.viewReady()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume()
+    }
+
     private fun initViews() {
         switchRadar.setOnClickListener {
             if (!switchRadar.isChecked) { // The status is already change when onclick is executed

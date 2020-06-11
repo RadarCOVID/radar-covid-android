@@ -1,10 +1,10 @@
-package com.indra.coronaradar.features.exposition.presenter
+package com.indra.coronaradar.features.exposure.presenter
 
 import com.indra.coronaradar.common.extensions.format
-import com.indra.coronaradar.datamanager.usecase.domain.DomainInfoUseCase
-import com.indra.coronaradar.features.exposition.protocols.ExpositionPresenter
-import com.indra.coronaradar.features.exposition.protocols.ExpositionRouter
-import com.indra.coronaradar.features.exposition.protocols.ExpositionView
+import com.indra.coronaradar.datamanager.usecase.GetExposureInfoUseCase
+import com.indra.coronaradar.features.exposure.protocols.ExpositionPresenter
+import com.indra.coronaradar.features.exposure.protocols.ExpositionRouter
+import com.indra.coronaradar.features.exposure.protocols.ExpositionView
 import com.indra.coronaradar.models.domain.ExposureInfo
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -13,26 +13,22 @@ import javax.inject.Inject
 class ExpositionPresenterImpl @Inject constructor(
     private val view: ExpositionView,
     private val router: ExpositionRouter,
-    private val domainInfoUseCase: DomainInfoUseCase
+    private val getExposureInfoUseCase: GetExposureInfoUseCase
 ) : ExpositionPresenter {
 
     override fun viewReady() {
-        domainInfoUseCase.getExposureInfo()?.let {
-            showExpositionInfo(it)
-        }
+
     }
 
     override fun onResume() {
-        domainInfoUseCase.getExposureInfo()?.let {
-            setLastUpdateTime(it.lastUpdateTime)
-        }
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onReportButtonClick() {
         router.navigateToCovidReport()
     }
 
-    private fun showExpositionInfo(exposureInfo: ExposureInfo) {
+    private fun showExposureInfo(exposureInfo: ExposureInfo) {
         when (exposureInfo.level) {
             ExposureInfo.Level.LOW -> view.showExpositionLevelLow()
             ExposureInfo.Level.MEDIUM -> view.showExpositionLevelMedium()
@@ -40,7 +36,6 @@ class ExpositionPresenterImpl @Inject constructor(
         }
 
         setLastUpdateTime(exposureInfo.lastUpdateTime)
-
     }
 
     private fun setLastUpdateTime(lastUpdateTime: Date) {
@@ -56,6 +51,23 @@ class ExpositionPresenterImpl @Inject constructor(
             hoursElapsed.toInt(),
             minutesElapsed.toInt()
         )
+    }
+
+    private fun getMockExposureInfo(): ExposureInfo {
+        val res = ExposureInfo()
+
+        res.lastUpdateTime = Calendar.getInstance().apply {
+            time = Date()
+            add(Calendar.DAY_OF_YEAR, -2)
+
+            add(Calendar.HOUR, -1)
+
+            add(Calendar.MINUTE, -12)
+        }.time
+
+        res.level = ExposureInfo.Level.MEDIUM
+
+        return res
     }
 
 }

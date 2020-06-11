@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".features.exposition.view.ExpositionActivity">
+    tools:context=".features.exposure.view.ExpositionActivity">
 
     <include
         android:id="@+id/layoutBackButton"
