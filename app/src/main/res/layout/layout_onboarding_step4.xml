@@ -44,43 +44,43 @@
             android:layout_marginBottom="20dp"
             android:text="@string/onboarding_descrption_step4_p1" />
 
-        <com.indra.contacttracing.common.view.DottedTextView
+        <com.indra.coronaradar.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/onboarding_descrption_step4_t1" />
 
-        <com.indra.contacttracing.common.view.DottedTextView
+        <com.indra.coronaradar.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/onboarding_descrption_step4_t2" />
 
-        <com.indra.contacttracing.common.view.DottedTextView
+        <com.indra.coronaradar.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/onboarding_descrption_step4_t3" />
 
-        <com.indra.contacttracing.common.view.DottedTextView
+        <com.indra.coronaradar.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/onboarding_descrption_step4_t4" />
 
-        <com.indra.contacttracing.common.view.DottedTextView
+        <com.indra.coronaradar.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/onboarding_descrption_step4_t5" />
 
-        <com.indra.contacttracing.common.view.DottedTextView
+        <com.indra.coronaradar.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/onboarding_descrption_step4_t6" />
 
-        <com.indra.contacttracing.common.view.DottedTextView
+        <com.indra.coronaradar.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
