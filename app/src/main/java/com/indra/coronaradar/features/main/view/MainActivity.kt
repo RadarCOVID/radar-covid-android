@@ -26,6 +26,11 @@ class MainActivity : BaseActivity(), MainView {
         presenter.viewReady()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume()
+    }
+
     private fun initViews() {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
