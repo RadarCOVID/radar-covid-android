@@ -51,11 +51,11 @@ class HomeFragment : BaseFragment(), HomeView {
                     R.string.radar_warning_button, null
                 ) {
                     switchRadar.isChecked = false
-                    setBluetoothBlockEnabled(false)
+                    showRadarBlockEnabled(false)
                     presenter.onSwitchRadarStatusChange(false)
                 }.show()
             } else {
-                setBluetoothBlockEnabled(true)
+                showRadarBlockEnabled(true)
                 presenter.onSwitchRadarStatusChange(true)
             }
         }
@@ -104,7 +104,12 @@ class HomeFragment : BaseFragment(), HomeView {
         }
     }
 
-    override fun setBluetoothBlockEnabled(enabled: Boolean) {
+    override fun setRadarBlockChecked(isChecked: Boolean) {
+        switchRadar.isChecked = isChecked
+        showRadarBlockEnabled(isChecked)
+    }
+
+    private fun showRadarBlockEnabled(enabled: Boolean) {
         if (enabled) {
             textViewRadarTitle.setText(R.string.radar_block_enabled_title)
             textViewRadarDescription.setText(R.string.radar_block_enabled_description)

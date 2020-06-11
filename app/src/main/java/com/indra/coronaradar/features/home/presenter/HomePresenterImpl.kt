@@ -24,6 +24,8 @@ class HomePresenterImpl @Inject constructor(
         expositionInfo?.let {
             showExpositionInfo(it)
         }
+
+        view.setRadarBlockChecked(true)
     }
 
     override fun onResume() {
