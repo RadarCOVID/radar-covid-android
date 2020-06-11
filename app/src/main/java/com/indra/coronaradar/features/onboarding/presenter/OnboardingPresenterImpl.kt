@@ -1,6 +1,5 @@
 package com.indra.coronaradar.features.onboarding.presenter
 
-import com.indra.coronaradar.datamanager.usecase.OnboardingCompletedUseCase
 import com.indra.coronaradar.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_3
 import com.indra.coronaradar.features.onboarding.protocols.OnboardingPresenter
 import com.indra.coronaradar.features.onboarding.protocols.OnboardingRouter
@@ -9,8 +8,7 @@ import javax.inject.Inject
 
 class OnboardingPresenterImpl @Inject constructor(
     private val view: OnboardingView,
-    private val router: OnboardingRouter,
-    private val onboardingCompletedUseCase: OnboardingCompletedUseCase
+    private val router: OnboardingRouter
 ) : OnboardingPresenter {
 
     override fun viewReady() {
@@ -31,7 +29,6 @@ class OnboardingPresenterImpl @Inject constructor(
     override fun onContinueButtonClick(page: Int, totalPages: Int) {
         when (page) {
             totalPages - 1 -> {
-                onboardingCompletedUseCase.setOnboardingCompleted(true)
                 router.navigateToMain()
                 view.finish()
             }

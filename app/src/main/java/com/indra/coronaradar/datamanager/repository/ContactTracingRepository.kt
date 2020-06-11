@@ -1,7 +1,7 @@
 package com.indra.coronaradar.datamanager.repository
 
 import com.indra.coronaradar.common.di.scope.PerActivity
-import com.indra.coronaradar.models.domain.ExpositionInfo
+import com.indra.coronaradar.models.domain.ExposureInfo
 
 @PerActivity
 interface ContactTracingRepository {
@@ -10,11 +10,13 @@ interface ContactTracingRepository {
 
     fun stopRadar()
 
+    fun isRadarEnabled(): Boolean
+
     fun syncData()
 
     fun clearData()
 
-    fun getExpositionInfo(): ExpositionInfo
+    fun getExposureInfo(): ExposureInfo
 
     fun notifyInfected(authCode: String, onSuccess: () -> Unit, onError: (Exception) -> Unit)
 

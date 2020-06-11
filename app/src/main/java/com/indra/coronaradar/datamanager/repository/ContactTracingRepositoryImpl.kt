@@ -3,7 +3,7 @@ package com.indra.coronaradar.datamanager.repository
 import androidx.appcompat.app.AppCompatActivity
 import com.indra.coronaradar.common.di.scope.PerActivity
 import com.indra.coronaradar.datamanager.mapper.ExpositionInfoDataMapper
-import com.indra.coronaradar.models.domain.ExpositionInfo
+import com.indra.coronaradar.models.domain.ExposureInfo
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.backend.ResponseCallback
 import org.dpppt.android.sdk.models.ExposeeAuthMethodJson
@@ -31,6 +31,8 @@ class ContactTracingRepositoryImpl @Inject constructor(
         DP3T.stop(activity)
     }
 
+    override fun isRadarEnabled(): Boolean = DP3T.isTracingEnabled(activity)
+
     override fun syncData() {
         DP3T.sync(activity)
     }
@@ -39,7 +41,7 @@ class ContactTracingRepositoryImpl @Inject constructor(
         DP3T.clearData(activity)
     }
 
-    override fun getExpositionInfo(): ExpositionInfo =
+    override fun getExposureInfo(): ExposureInfo =
         expositionInfoDataMapper.transform(DP3T.getStatus(activity))
 
     override fun notifyInfected(

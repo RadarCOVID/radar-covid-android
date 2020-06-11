@@ -50,13 +50,12 @@ class HomeFragment : BaseFragment(), HomeView {
                     R.string.radar_warning_message,
                     R.string.radar_warning_button, null
                 ) {
-                    switchRadar.isChecked = false
-                    showRadarBlockEnabled(false)
-                    presenter.onSwitchRadarStatusChange(false)
+                    presenter.onSwitchRadarClick(true)
                 }.show()
             } else {
-                showRadarBlockEnabled(true)
-                presenter.onSwitchRadarStatusChange(true)
+                switchRadar.isChecked = false
+                switchRadar.jumpDrawablesToCurrentState();
+                presenter.onSwitchRadarClick(false)
             }
         }
 

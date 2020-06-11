@@ -1,11 +1,11 @@
 package com.indra.coronaradar.features.exposition.presenter
 
 import com.indra.coronaradar.common.extensions.format
-import com.indra.coronaradar.datamanager.usecase.domain.ExpositionInfoUseCase
+import com.indra.coronaradar.datamanager.usecase.domain.DomainInfoUseCase
 import com.indra.coronaradar.features.exposition.protocols.ExpositionPresenter
 import com.indra.coronaradar.features.exposition.protocols.ExpositionRouter
 import com.indra.coronaradar.features.exposition.protocols.ExpositionView
-import com.indra.coronaradar.models.domain.ExpositionInfo
+import com.indra.coronaradar.models.domain.ExposureInfo
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -13,17 +13,17 @@ import javax.inject.Inject
 class ExpositionPresenterImpl @Inject constructor(
     private val view: ExpositionView,
     private val router: ExpositionRouter,
-    private val expositionInfoUseCase: ExpositionInfoUseCase
+    private val domainInfoUseCase: DomainInfoUseCase
 ) : ExpositionPresenter {
 
     override fun viewReady() {
-        expositionInfoUseCase.getExpositionInfo()?.let {
+        domainInfoUseCase.getExposureInfo()?.let {
             showExpositionInfo(it)
         }
     }
 
     override fun onResume() {
-        expositionInfoUseCase.getExpositionInfo()?.let {
+        domainInfoUseCase.getExposureInfo()?.let {
             setLastUpdateTime(it.lastUpdateTime)
         }
     }
@@ -32,14 +32,14 @@ class ExpositionPresenterImpl @Inject constructor(
         router.navigateToCovidReport()
     }
 
-    private fun showExpositionInfo(expositionInfo: ExpositionInfo) {
-        when (expositionInfo.level) {
-            ExpositionInfo.Level.LOW -> view.showExpositionLevelLow()
-            ExpositionInfo.Level.MEDIUM -> view.showExpositionLevelMedium()
-            ExpositionInfo.Level.HIGH -> view.showExpositionLevelHigh()
+    private fun showExpositionInfo(exposureInfo: ExposureInfo) {
+        when (exposureInfo.level) {
+            ExposureInfo.Level.LOW -> view.showExpositionLevelLow()
+            ExposureInfo.Level.MEDIUM -> view.showExpositionLevelMedium()
+            ExposureInfo.Level.HIGH -> view.showExpositionLevelHigh()
         }
 
-        setLastUpdateTime(expositionInfo.lastUpdateTime)
+        setLastUpdateTime(exposureInfo.lastUpdateTime)
 
     }
 
