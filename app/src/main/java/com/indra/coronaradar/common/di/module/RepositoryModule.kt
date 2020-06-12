@@ -8,6 +8,7 @@ import dagger.Provides
 @Module
 class RepositoryModule {
 
+
     @Provides
     @PerApplication
     fun providesSystemInfoRepository(repository: SystemInfoRepositoryImpl): SystemInfoRepository =
@@ -25,5 +26,9 @@ class RepositoryModule {
     @Provides
     @PerApplication
     fun providesExampleRepository(repository: ExampleRepositoryImpl): ExampleRepository = repository
+
+    @Provides
+    @PerApplication
+    fun providesApiRepository(repository: ApiRepositoryImpl): ApiRepository = repository
 
 }
