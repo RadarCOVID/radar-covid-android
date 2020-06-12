@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
-        android:name="com.indra.coronaradar.ContactTracingApplication"
+        android:name=".ContactTracingApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,8 +18,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity">
+        <activity android:name=".features.onboarding.pages.legal.view.LegalInfoDetailActivity"></activity>
         <activity
-            android:name="com.indra.coronaradar.features.splash.view.SplashActivity"
+            android:name=".features.splash.view.SplashActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
@@ -30,22 +31,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.indra.coronaradar.features.onboarding.view.OnboardingActivity"
+            android:name=".features.onboarding.view.OnboardingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.indra.coronaradar.features.onboarding.pages.legal.view.LegalInfoFragment"
+            android:name=".features.onboarding.pages.legal.view.LegalInfoFragment"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.indra.coronaradar.features.main.view.MainActivity"
+            android:name=".features.main.view.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.indra.coronaradar.features.covidreport.form.view.CovidReportActivity"
+            android:name=".features.covidreport.form.view.CovidReportActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.indra.coronaradar.features.exposure.view.ExpositionActivity"
+            android:name=".features.exposure.view.ExpositionActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.indra.coronaradar.features.covidreport.confirmation.Confirmation"
+            android:name=".features.covidreport.confirmation.Confirmation"
             android:screenOrientation="portrait" />
     </application>
 

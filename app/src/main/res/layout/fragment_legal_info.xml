@@ -14,15 +14,26 @@
         android:padding="@dimen/padding_content">
 
         <TextView
+            android:id="@+id/textViewTitleSmall"
+            style="@style/TitleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/my_data_title"
+            android:textColor="@color/gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/textViewTitle"
             style="@style/TitleMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="10dp"
             android:paddingBottom="13dp"
             android:text="@string/legal_info_title"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/textViewTitleSmall" />
 
         <TextView
             android:id="@+id/textViewDescription"
