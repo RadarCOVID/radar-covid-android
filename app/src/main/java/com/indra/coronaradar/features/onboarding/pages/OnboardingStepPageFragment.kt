@@ -9,7 +9,6 @@ import com.indra.coronaradar.R
 import com.indra.coronaradar.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_1
 import com.indra.coronaradar.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_2
 import com.indra.coronaradar.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_3
-import com.indra.coronaradar.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_4
 import kotlinx.android.synthetic.main.fragment_onboarding_step.*
 
 class OnboardingStepPageFragment : Fragment() {
@@ -45,10 +44,6 @@ class OnboardingStepPageFragment : Fragment() {
             ONBOARDING_PAGE_INDEX_STEP_3 -> {
                 wrapperStep3.visibility = View.VISIBLE
                 button.setText(R.string.onboarding_button_step_3)
-            }
-            ONBOARDING_PAGE_INDEX_STEP_4 -> {
-                wrapperStep4.visibility = View.VISIBLE
-                button.setText(R.string.onboarding_button_finish)
             }
         }
     }

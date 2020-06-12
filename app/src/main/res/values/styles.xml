@@ -68,6 +68,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="TitleEnumPurple">
+        <item name="android:fontFamily">@font/muli_light</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/purple_9C</item>
+    </style>
+
     <style name="TitleExtraBoldPurpleSmall" parent="TitleExtraBold">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">20sp</item>

@@ -87,7 +87,7 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingStepPageFra
     private class OnboardingAdapter(fragmentActivity: FragmentActivity) :
         FragmentStateAdapter(fragmentActivity) {
 
-        private val totalPages = 5
+        private val totalPages = 4
 
         override fun getItemCount(): Int = totalPages
 
