@@ -6,6 +6,8 @@ interface LegalInfoView {
 
     fun hideCheckWarning()
 
+    fun setLegalTermsChecked()
+
     fun setContinueButtonEnabled(enabled: Boolean)
 
 }
@@ -13,6 +15,8 @@ interface LegalInfoView {
 interface LegalInfoPresenter {
 
     fun viewReady()
+
+    fun onLegalTermsAccepted()
 
     fun onLegalTermsButtonClick()
 

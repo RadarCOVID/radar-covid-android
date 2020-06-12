@@ -28,6 +28,7 @@
     <string name="legal_info_button">Entendido</string>
 
     /********** Legal Detail ************/
+    <string name="legal_info_detail_title">Términos y condiciones de uso Corona radar</string>
     <string name="legal_info_intro">Estos Términos y Condiciones regulan la descarga, acceso y utilización de la aplicación Corona radar.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="legal_info_p1_title">1. Objeto</string>
     <string name="legal_info_p1_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
