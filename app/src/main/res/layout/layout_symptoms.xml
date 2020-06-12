@@ -24,7 +24,7 @@
             style="@style/TextSemibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/exposition_detail_symptom_cough" />
+            android:text="@string/exposure_detail_symptom_cough" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,7 +45,7 @@
             style="@style/TextSemibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/exposition_detail_symptom_fever" />
+            android:text="@string/exposure_detail_symptom_fever" />
     </LinearLayout>
 
     <LinearLayout
@@ -68,7 +68,7 @@
             style="@style/TextSemibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/exposition_detail_symptom_taste_and_smell" />
+            android:text="@string/exposure_detail_symptom_taste_and_smell" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

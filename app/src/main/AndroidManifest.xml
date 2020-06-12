@@ -43,7 +43,7 @@
             android:name=".features.covidreport.form.view.CovidReportActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".features.exposure.view.ExpositionActivity"
+            android:name=".features.exposure.view.ExposureActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.covidreport.confirmation.Confirmation"

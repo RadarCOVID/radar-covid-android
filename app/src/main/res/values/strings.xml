@@ -96,9 +96,9 @@
     <string name="exposition_block_medium_title">Exposición media</string>
     <string name="exposition_block_high_title">Exposición alta</string>
 
-    <string name="exposition_block_low_description">Te informaremos en el caso de un posible contacto o infección.</string>
+    <string name="exposition_block_low_description">Te informaremos en el caso de un posible contacto.\nCuídate y cuida a los demás.</string>
     <string name="exposition_block_medium_description">Contacto posible con persona con pesona contagiada de Covid-19</string>
-    <string name="exposition_block_high_description">Has estado en contacto con una persona contagiada de Covid-19</string>
+    <string name="exposition_block_high_description">Has estado en contacto con una persona contagiada de Covid-19.\nCuídate y cuida a los demás.</string>
 
     <string name="radar_block_enabled_title">CORONA Radar activo</string>
     <string name="radar_block_disabled_title">CORONA Radar inactivo</string>
@@ -111,33 +111,47 @@
     <string name="radar_warning_button">Desactivar</string>
 
 
-    /********** Exposition detail ************/
-    <string name="exposition_detail_title">EXPOSICIÓN</string>
+    /********** Exposition detail common ************/
+    <string name="exposure_detail_title">EXPOSICIÓN</string>
+    <string name="exposure_detail_what_to_do">¿Qué debo de hacer?</string>
+    <string name="exposure_detail_more_info">Más información a través de <b>este enlace</b></string>
+    <string name="exposure_detail_acknowledgement_message">Gracias por seguir cuidándote y cuidando a los demás.</string>
 
-    <string name="exposition_detail_low">Tu exposición es baja</string>
-    <string name="exposition_detail_message_low">Sin contactos ni infecciones aparentes.</string>
-    <string name="exposition_detail_tips_subtitle_low">Por favor, manten las medidas de seguridad y distanciamiento social.</string>
+    <string name="exposure_detail_medium">Tu exposición es media</string>
+    <string name="exposure_detail_message_medium">Podrías estar infectado</string>
+    <string name="exposure_detail_tips_subtitle_medium">Por favor, presta atención a posibles síntomas:</string>
+    <string name="exposure_detail_clinic_indications">Sigue los consejos de tu centro de salud. Más información <b>aquí</b></string>
+    <string name="exposure_detail_more_info_tips">Tienes más información sobre consejos, sintomas y medidas <b>aquí</b></string>
+    <string name="exposure_detail_covid_report_message"><b>Ayúdanos a cuidar a los demás.</b> Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
+    <string name="exposure_detail_last_update">%1$s / %2$s</string>
 
-    <string name="exposition_detail_medium">Tu exposición es media</string>
-    <string name="exposition_detail_message_medium">Podrías estar infectado</string>
-    <string name="exposition_detail_tips_subtitle_medium">Por favor, presta atención a posibles síntomas:</string>
+    /********** Exposition detail low ************/
+    <string name="exposure_detail_low">Tu exposición es baja</string>
+    <string name="exposure_detail_message_low">Sin contactos de riesgo aparentes.</string>
+    <string name="exposure_detail_tips_title_low">Manten las medidas de seguridad y distanciamiento social.</string>
 
-    <string name="exposition_detail_high">Tu exposición es alta</string>
-    <string name="exposition_detail_message_high">Podrías estar infectado</string>
-    <string name="exposition_detail_tips_subtitle_high">Por favor, aíslate y presta atención a posíbles sintomas:</string>
+    <string name="exposure_detail_tip_mask">Usa siempre mascarilla quirúrgica</string>
+    <string name="exposure_detail_tip_wash_hands">Lávate las manos frecuentemente</string>
 
-    <string name="exposition_detail_clinic_indications">Sigue los consejos de tu centro de salud. Más información <b>aquí</b></string>
-    <string name="exposition_detail_more_info_tips">Tienes más información sobre consejos, sintomas y medidas <b>aquí</b></string>
 
-    <string name="exposition_detail_covid_report_message"><b>Ayúdanos a cuidar a los demás.</b> Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
-    <string name="exposition_detail_acknowledgement_message">Gracias por seguir cuidándote y cuidando a los demás.</string>
+    <string name="exposure_detail_tip_distance">Mantén la distancia de seguridad de 1,5 metros</string>
+    <string name="exposure_detail_tip_rules">Respeta las normas particulares en tu territorio sobre aforos y actividades permitidas</string>
+    <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
+    <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos deshechables o la parte interior del codo</string>
 
-    <string name="exposition_detail_last_update">%1$s / %2$s</string>
-    <string name="exposition_detail_tips_title">¿Qué debo de hacer?</string>
+    /********** Exposition detail high ************/
+    <string name="exposure_detail_high">Tu exposición es alta</string>
+    <string name="exposure_detail_message_high">Podrías estar infectado</string>
 
-    <string name="exposition_detail_symptom_cough">Tos persistente</string>
-    <string name="exposition_detail_symptom_fever">Fiebre alta continua</string>
-    <string name="exposition_detail_symptom_taste_and_smell">Perdida del gusto\ny el olfato</string>
+    <string name="exposure_detail_symptoms_title">Por favor, aíslate durante 14 días y presta atención a posíbles sintomas:</string>
+    <string name="exposure_detail_symptom_cough">Tos persistente</string>
+    <string name="exposure_detail_symptom_fever">Fiebre alta continua</string>
+    <string name="exposure_detail_symptom_taste_and_smell">Perdida del gusto\ny el olfato</string>
+
+    <string name="exposure_detail_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
+    <string name="exposure_detail_tip_home">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
+    <string name="exposure_detail_tip_avoid_people">Evita el contacto con otras personas</string>
+
 
 
     /********** Covid Report ************/
