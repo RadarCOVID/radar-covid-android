@@ -1,15 +1,14 @@
 package com.indra.coronaradar.features.onboarding.pages.legal.router
 
-import android.content.Context
-import android.content.Intent
+import androidx.fragment.app.Fragment
 import com.indra.coronaradar.features.onboarding.pages.legal.protocols.LegalInfoRouter
-import com.indra.coronaradar.features.onboarding.view.OnboardingActivity
+import com.indra.coronaradar.features.onboarding.pages.legal.view.LegalInfoDetailActivity
 import javax.inject.Inject
 
-class LegalInfoRouterImpl @Inject constructor(private val context: Context) : LegalInfoRouter {
+class LegalInfoRouterImpl @Inject constructor(private val fragment: Fragment) : LegalInfoRouter {
 
-    override fun navigateToOnboardingSteps() {
-        context.startActivity(Intent(context, OnboardingActivity::class.java))
+    override fun navigateToLegalInfoDetail() {
+        LegalInfoDetailActivity.openForResult(fragment)
     }
 
 }

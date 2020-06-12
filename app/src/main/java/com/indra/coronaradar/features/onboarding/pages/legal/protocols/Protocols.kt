@@ -14,12 +14,14 @@ interface LegalInfoPresenter {
 
     fun viewReady()
 
+    fun onLegalTermsButtonClick()
+
     fun onLegalTermsCheckedChange(checked: Boolean)
 
 }
 
 interface LegalInfoRouter {
 
-    fun navigateToOnboardingSteps()
+    fun navigateToLegalInfoDetail()
 
 }

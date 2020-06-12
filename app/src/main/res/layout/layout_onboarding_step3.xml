@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:orientation="vertical">
+    android:background="@color/background">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -27,22 +26,63 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
         android:orientation="vertical"
         android:padding="@dimen/padding_content">
 
         <TextView
-            style="@style/TitleSmall"
+            style="@style/TitleMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_title_step_3"
+            android:textColor="@color/black" />
+
+        <TextView
+            style="@style/TitleEnumPurple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="@string/onboarding_step_3_instructions_title_1" />
+
+        <TextView
+            style="@style/TextRegular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="@string/onboarding_title_step_3" />
+            android:text="@string/onboarding_step_3_instructions_detail_1"
+            android:textColor="@color/black" />
 
         <TextView
-            style="@style/TextNormal"
+            style="@style/TitleEnumPurple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="@string/onboarding_step_3_instructions_title_2" />
+
+        <TextView
+            style="@style/TextRegular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:text="@string/onboarding_descrption_step3" />
+            android:layout_marginBottom="20dp"
+            android:text="@string/onboarding_step_3_instructions_detail_2"
+            android:textColor="@color/black" />
+
+        <TextView
+            style="@style/TitleEnumPurple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="@string/onboarding_step_3_instructions_title_3" />
+
+        <TextView
+            style="@style/TextRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:text="@string/onboarding_step_3_instructions_detail_3"
+            android:textColor="@color/black" />
 
 
         <LinearLayout
@@ -70,11 +110,6 @@
                 android:layout_weight="1"
                 android:src="@drawable/ic_ellipse_selected" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_ellipse" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

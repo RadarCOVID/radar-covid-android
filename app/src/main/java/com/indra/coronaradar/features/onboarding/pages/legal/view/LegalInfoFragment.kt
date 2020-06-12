@@ -39,6 +39,7 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
     }
 
     private fun initViews() {
+        buttonTermsAndConditions.setOnClickListener { presenter.onLegalTermsButtonClick() }
         checkBoxTermsAndConditions.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
             presenter.onLegalTermsCheckedChange(
                 isChecked
@@ -52,7 +53,7 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
     }
 
     override fun hideCheckWarning() {
-        wrapperCheckWarning.visibility = View.GONE
+        wrapperCheckWarning.visibility = View.INVISIBLE
     }
 
     override fun setContinueButtonEnabled(enabled: Boolean) {
