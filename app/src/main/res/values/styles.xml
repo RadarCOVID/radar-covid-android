@@ -26,36 +26,37 @@
 
     <style name="Title">
         <item name="fontFamily">@font/muli_bold</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TitleTip" parent="Title">
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TitleTipSmall" parent="TitleTip">
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="TitleSmall" parent="Title">
+    <style name="TitleXSmall" parent="Title">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TitleSmall" parent="Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 
     <style name="TitleMedium" parent="Title">
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">28sp</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TitleBig" parent="Title">
         <item name="android:lineSpacingMultiplier">0.9</item>
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">44sp</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TitleExtraBold">

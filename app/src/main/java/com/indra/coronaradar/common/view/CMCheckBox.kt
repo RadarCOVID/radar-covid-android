@@ -11,6 +11,14 @@ import kotlinx.android.synthetic.main.view_cmcheckbox.view.*
 class CMCheckBox @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
+
+    var isChecked: Boolean = false
+        set(value) {
+            field = value
+            checkBox.isChecked = value
+        }
+        get() = checkBox.isChecked
+
     init {
         orientation = HORIZONTAL
         LayoutInflater.from(context).inflate(R.layout.view_cmcheckbox, this)
@@ -24,7 +32,5 @@ class CMCheckBox @JvmOverloads constructor(
     fun setOnCheckedChangeListener(listener: CompoundButton.OnCheckedChangeListener?) {
         checkBox.setOnCheckedChangeListener(listener)
     }
-
-    fun isChecked(): Boolean = checkBox.isChecked
 
 }

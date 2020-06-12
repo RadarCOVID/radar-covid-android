@@ -1,5 +1,7 @@
 package com.indra.coronaradar.features.onboarding.pages.legal.view
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +25,12 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
 
     @Inject
     lateinit var presenter: LegalInfoPresenter
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == LegalInfoDetailActivity.REQUEST_CODE_LEGAL_TERMS && resultCode == Activity.RESULT_OK)
+            presenter.onLegalTermsAccepted()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +62,10 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
 
     override fun hideCheckWarning() {
         wrapperCheckWarning.visibility = View.INVISIBLE
+    }
+
+    override fun setLegalTermsChecked() {
+        checkBoxTermsAndConditions.isChecked = true
     }
 
     override fun setContinueButtonEnabled(enabled: Boolean) {

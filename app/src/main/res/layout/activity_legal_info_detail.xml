@@ -15,25 +15,93 @@
 
         <TextView
             android:id="@+id/textViewTitleSmall"
-            style="@style/TitleSmall"
+            style="@style/TitleXSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="@string/my_data_title"
+            android:layout_marginBottom="10dp"
+            android:text="@string/legal_info_title_small"
             android:textColor="@color/gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewTitle"
+            android:id="@+id/textViewDropdownTitle"
             style="@style/TitleMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:paddingBottom="13dp"
-            android:text="@string/legal_info_title"
+            android:text="@string/legal_info_detail_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewTitleSmall" />
+
+        <TextView
+            style="@style/TextNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/legal_info_intro"
+            android:textColor="@color/black_26" />
+
+        <com.indra.coronaradar.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/legal_info_p1_content"
+            app:title="@string/legal_info_p1_title" />
+
+        <com.indra.coronaradar.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/legal_info_p2_content"
+            app:title="@string/legal_info_p2_title" />
+
+        <com.indra.coronaradar.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/legal_info_p3_content"
+            app:title="@string/legal_info_p3_title" />
+
+        <com.indra.coronaradar.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/legal_info_p4_content"
+            app:title="@string/legal_info_p4_title" />
+
+        <com.indra.coronaradar.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/legal_info_p5_content"
+            app:title="@string/legal_info_p5_title" />
+
+        <com.indra.coronaradar.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            app:dropdownText="@string/legal_info_p6_content"
+            app:title="@string/legal_info_p6_title" />
+
+        <Button
+            android:id="@+id/buttonAccept"
+            style="@style/ButtonNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:text="@string/accept" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            style="@style/ButtonNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/back" />
+
     </LinearLayout>
 
 </ScrollView>
