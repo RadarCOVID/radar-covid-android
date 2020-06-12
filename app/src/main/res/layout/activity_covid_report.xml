@@ -38,7 +38,7 @@
             android:paddingBottom="22dp">
 
             <TextView
-                style="@style/TitleSmall"
+                style="@style/TitleXSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
@@ -83,7 +83,7 @@
 
                 <TextView
                     android:id="@+id/textViewHintTitle"
-                    style="@style/TitleSmall"
+                    style="@style/TitleXSmall"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"

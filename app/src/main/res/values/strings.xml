@@ -19,12 +19,28 @@
     <string name="splash_subtitle">Seguimiento de tu exposición al Covid-19</string>
 
     /********** Legal Info ************/
+    <string name="legal_info_title_small">LEGAL</string>
     <string name="legal_info_title">Información legal</string>
     <string name="legal_info_description">!Bienvenido a Covid Monitor!\nEn Covid Monitor somos conscientes de la relevancia que tiene proteger la privacidad de tus datos personales.\n\nPor favor, acepta nuestra política antes de continuar.</string>
     <string name="legal_info_terms_and_conditions">Términos y condiciones</string>
     <string name="legal_info_check">Acepto la política de privacidad y doy mi consentimiento al tratamiento de mis datos personales</string>
     <string name="legal_info_check_warning">Recuerda que tienes que aceptar la política de privacidad para continuar</string>
     <string name="legal_info_button">Entendido</string>
+
+    /********** Legal Detail ************/
+    <string name="legal_info_intro">Estos Términos y Condiciones regulan la descarga, acceso y utilización de la aplicación Corona radar.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="legal_info_p1_title">1. Objeto</string>
+    <string name="legal_info_p1_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+    <string name="legal_info_p2_title">2. Derechos de propiedad</string>
+    <string name="legal_info_p2_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+    <string name="legal_info_p3_title">3. Política de privacidad</string>
+    <string name="legal_info_p3_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+    <string name="legal_info_p4_title">4. Excepteur sint occasionecat</string>
+    <string name="legal_info_p4_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+    <string name="legal_info_p5_title">5. Duis aute irure dolor</string>
+    <string name="legal_info_p5_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+    <string name="legal_info_p6_title">6. Laboris nisi ut aliquip ex</string>
+    <string name="legal_info_p6_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
 
     /********** Onboarding ************/
     <string name="onboarding_title_step_1">Cuídate y cuida a los demás</string>
@@ -174,6 +190,7 @@
     /********** Common ************/
 
     <string name="accept">Aceptar</string>
+    <string name="back">Volver</string>
 
     <string name="button_covid_report">Comunica tu positivo Covid</string>
 

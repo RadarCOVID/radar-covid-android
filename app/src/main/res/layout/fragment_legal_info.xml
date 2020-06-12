@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/textViewTitleSmall"
-            style="@style/TitleSmall"
+            style="@style/TitleXSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
