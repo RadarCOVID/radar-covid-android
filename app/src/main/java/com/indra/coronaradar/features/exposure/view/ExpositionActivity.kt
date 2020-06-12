@@ -1,4 +1,4 @@
-package com.indra.coronaradar.features.exposition.view
+package com.indra.coronaradar.features.exposure.view
 
 import android.content.Context
 import android.content.Intent
@@ -7,8 +7,8 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.indra.coronaradar.R
 import com.indra.coronaradar.common.base.BaseBackNavigationActivity
-import com.indra.coronaradar.features.exposition.protocols.ExpositionPresenter
-import com.indra.coronaradar.features.exposition.protocols.ExpositionView
+import com.indra.coronaradar.features.exposure.protocols.ExpositionPresenter
+import com.indra.coronaradar.features.exposure.protocols.ExpositionView
 import kotlinx.android.synthetic.main.activity_exposition.*
 import javax.inject.Inject
 
@@ -31,6 +31,11 @@ class ExpositionActivity : BaseBackNavigationActivity(), ExpositionView {
 
         initViews()
         presenter.viewReady()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume()
     }
 
     private fun initViews() {

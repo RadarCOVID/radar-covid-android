@@ -42,7 +42,7 @@
             android:name="com.indra.coronaradar.features.covidreport.form.view.CovidReportActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.indra.coronaradar.features.exposition.view.ExpositionActivity"
+            android:name="com.indra.coronaradar.features.exposure.view.ExpositionActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.indra.coronaradar.features.covidreport.confirmation.Confirmation"

@@ -3,8 +3,8 @@ package com.indra.coronaradar.common.di.module
 import com.indra.coronaradar.common.di.scope.PerActivity
 import com.indra.coronaradar.features.covidreport.form.di.CovidReportModule
 import com.indra.coronaradar.features.covidreport.form.view.CovidReportActivity
-import com.indra.coronaradar.features.exposition.di.ExpositionModule
-import com.indra.coronaradar.features.exposition.view.ExpositionActivity
+import com.indra.coronaradar.features.exposure.di.ExpositionModule
+import com.indra.coronaradar.features.exposure.view.ExpositionActivity
 import com.indra.coronaradar.features.main.di.MainModule
 import com.indra.coronaradar.features.main.view.MainActivity
 import com.indra.coronaradar.features.onboarding.di.OnboardingModule

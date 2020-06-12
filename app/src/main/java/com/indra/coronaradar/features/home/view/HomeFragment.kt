@@ -40,6 +40,11 @@ class HomeFragment : BaseFragment(), HomeView {
         presenter.viewReady()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume()
+    }
+
     private fun initViews() {
         switchRadar.setOnClickListener {
             if (!switchRadar.isChecked) { // The status is already change when onclick is executed
@@ -50,13 +55,12 @@ class HomeFragment : BaseFragment(), HomeView {
                     R.string.radar_warning_message,
                     R.string.radar_warning_button, null
                 ) {
-                    switchRadar.isChecked = false
-                    showRadarBlockEnabled(false)
-                    presenter.onSwitchRadarStatusChange(false)
+                    presenter.onSwitchRadarClick(true)
                 }.show()
             } else {
-                showRadarBlockEnabled(true)
-                presenter.onSwitchRadarStatusChange(true)
+                switchRadar.isChecked = false
+                switchRadar.jumpDrawablesToCurrentState();
+                presenter.onSwitchRadarClick(false)
             }
         }
 

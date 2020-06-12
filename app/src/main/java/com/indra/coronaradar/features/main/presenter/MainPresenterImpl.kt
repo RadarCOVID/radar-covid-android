@@ -1,6 +1,6 @@
 package com.indra.coronaradar.features.main.presenter
 
-import com.indra.coronaradar.datamanager.usecase.GetExampleUseCase
+import com.indra.coronaradar.datamanager.usecase.SyncExposureDataUseCase
 import com.indra.coronaradar.features.main.protocols.MainPresenter
 import com.indra.coronaradar.features.main.protocols.MainRouter
 import com.indra.coronaradar.features.main.protocols.MainView
@@ -9,7 +9,7 @@ import javax.inject.Inject
 class MainPresenterImpl @Inject constructor(
     private val view: MainView,
     private val router: MainRouter,
-    private val exampleUseCase: GetExampleUseCase
+    private val syncExposureDataUseCase: SyncExposureDataUseCase
 ) : MainPresenter {
 
     override fun viewReady() {
@@ -22,6 +22,10 @@ class MainPresenterImpl @Inject constructor(
 //            view.showError(it)
 //        })
         router.navigateToHome()
+    }
+
+    override fun onResume() {
+        syncExposureDataUseCase.syncExposureData()
     }
 
     override fun onHomeButtonClick() {

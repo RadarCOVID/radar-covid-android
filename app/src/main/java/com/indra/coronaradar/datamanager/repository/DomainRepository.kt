@@ -1,9 +1,9 @@
 package com.indra.coronaradar.datamanager.repository
 
-import com.indra.coronaradar.models.domain.ExpositionInfo
+import com.indra.coronaradar.models.domain.ExposureInfo
 
 interface DomainRepository {
 
-    var expositionInfo: ExpositionInfo?
+    var exposureInfo: ExposureInfo?
 
 }

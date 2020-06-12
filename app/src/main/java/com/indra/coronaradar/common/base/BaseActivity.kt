@@ -16,12 +16,12 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     }
 
     fun showLoading() {
-        if (progressBar == null)
-            progressBar = TransparentProgressDialog(this)
+        hideLoading()
+        progressBar = TransparentProgressDialog(this)
         progressBar?.setCanceledOnTouchOutside(false)
         progressBar?.setCancelable(false)
         progressBar?.let {
-            if(!it.isShowing)
+            if (!it.isShowing)
                 it.show()
         }
     }

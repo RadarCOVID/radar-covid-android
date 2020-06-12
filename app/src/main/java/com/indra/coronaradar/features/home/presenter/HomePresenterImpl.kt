@@ -1,11 +1,12 @@
 package com.indra.coronaradar.features.home.presenter
 
-import android.util.Log
-import com.indra.coronaradar.datamanager.usecase.domain.ExpositionInfoUseCase
+import com.indra.coronaradar.datamanager.usecase.EnableExposureRadarUseCase
+import com.indra.coronaradar.datamanager.usecase.GetExposureInfoUseCase
+import com.indra.coronaradar.datamanager.usecase.OnboardingCompletedUseCase
 import com.indra.coronaradar.features.home.protocols.HomePresenter
 import com.indra.coronaradar.features.home.protocols.HomeRouter
 import com.indra.coronaradar.features.home.protocols.HomeView
-import com.indra.coronaradar.models.domain.ExpositionInfo
+import com.indra.coronaradar.models.domain.ExposureInfo
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -13,47 +14,67 @@ import javax.inject.Inject
 class HomePresenterImpl @Inject constructor(
     private val view: HomeView,
     private val router: HomeRouter,
-    private val expositionInfoUseCase: ExpositionInfoUseCase
+    private val onboardingCompletedUseCase: OnboardingCompletedUseCase,
+    private val enableExposureRadarUseCase: EnableExposureRadarUseCase,
+    private val getExposureInfoUseCase: GetExposureInfoUseCase
 ) : HomePresenter {
 
-    private var expositionInfo: ExpositionInfo? = null
 
     override fun viewReady() {
-        expositionInfo = getMockExpositionInfo()
 
-        expositionInfo?.let {
-            showExpositionInfo(it)
+        if (onboardingCompletedUseCase.isOnBoardingCompleted()) {
+            view.setRadarBlockChecked(enableExposureRadarUseCase.isRadarEnabled())
+        } else {
+            onboardingCompletedUseCase.setOnboardingCompleted(true)
+            onSwitchRadarClick(false)
         }
-
-        view.setRadarBlockChecked(true)
     }
 
     override fun onResume() {
-//        expositionInfo?.let {
-//            setLastUpdateTime(it.lastUpdateTime)
-//        }
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onExpositionBlockClick() {
-        expositionInfo?.let {
-            expositionInfoUseCase.setExpositionInfo(it)
-            router.navigateToExpositionDetail()
-        }
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
+        router.navigateToExpositionDetail()
     }
 
     override fun onReportButtonClick() {
         router.navigateToCovidReport()
     }
 
-    override fun onSwitchRadarStatusChange(enabled: Boolean) {
-        Log.d("test", "radar status changed $enabled")
+    override fun onSwitchRadarClick(currentlyEnabled: Boolean) {
+        if (currentlyEnabled) {
+            view.setRadarBlockChecked(false)
+            enableExposureRadarUseCase.setRadarDisabled()
+        } else {
+            view.showLoading()
+//            Handler().postDelayed({
+//                view.setRadarBlockChecked(true)
+//                view.hideLoading()
+//            }, 2000)
+            enableExposureRadarUseCase.setRadarEnabled(
+                onSuccess = {
+                    view.hideLoading()
+                    view.setRadarBlockChecked(true)
+                },
+                onError = {
+                    view.setRadarBlockChecked(false)
+                    view.hideLoading()
+                    view.showError(it)
+                },
+                onCancelled = {
+                    view.setRadarBlockChecked(false)
+                    view.hideLoading()
+                })
+        }
     }
 
-    private fun showExpositionInfo(expositionInfo: ExpositionInfo) {
-        when (expositionInfo.level) {
-            ExpositionInfo.Level.LOW -> view.showExpositionLevelLow()
-            ExpositionInfo.Level.MEDIUM -> view.showExpositionLevelMedium()
-            ExpositionInfo.Level.HIGH -> view.showExpositionLevelHigh()
+    private fun showExposureInfo(exposureInfo: ExposureInfo) {
+        when (exposureInfo.level) {
+            ExposureInfo.Level.LOW -> view.showExpositionLevelLow()
+            ExposureInfo.Level.MEDIUM -> view.showExpositionLevelMedium()
+            ExposureInfo.Level.HIGH -> view.showExpositionLevelHigh()
         }
 
         //setLastUpdateTime(expositionInfo.lastUpdateTime)
@@ -69,8 +90,8 @@ class HomePresenterImpl @Inject constructor(
         view.setLastUpdateTime(daysElapsed.toInt(), hoursElapsed.toInt(), minutesElapsed.toInt())
     }
 
-    private fun getMockExpositionInfo(): ExpositionInfo {
-        val res = ExpositionInfo()
+    private fun getMockExposureInfo(): ExposureInfo {
+        val res = ExposureInfo()
 
         res.lastUpdateTime = Calendar.getInstance().apply {
             time = Date()
@@ -81,7 +102,7 @@ class HomePresenterImpl @Inject constructor(
             add(Calendar.MINUTE, -12)
         }.time
 
-        res.level = ExpositionInfo.Level.MEDIUM
+        res.level = ExposureInfo.Level.MEDIUM
 
         return res
     }

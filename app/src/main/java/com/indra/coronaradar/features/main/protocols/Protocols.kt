@@ -14,6 +14,8 @@ interface MainPresenter {
 
     fun viewReady()
 
+    fun onResume()
+
     fun onHomeButtonClick()
 
     fun onHealthButtonClick()

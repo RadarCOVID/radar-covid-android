@@ -1,7 +1,10 @@
 package com.indra.coronaradar.features.covidreport.form.di
 
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import com.indra.coronaradar.common.di.scope.PerActivity
+import com.indra.coronaradar.datamanager.repository.ContactTracingRepository
+import com.indra.coronaradar.datamanager.repository.ContactTracingRepositoryImpl
 import com.indra.coronaradar.features.covidreport.form.presenter.CovidReportPresenterImpl
 import com.indra.coronaradar.features.covidreport.form.protocols.CovidReportPresenter
 import com.indra.coronaradar.features.covidreport.form.protocols.CovidReportRouter
@@ -18,6 +21,9 @@ class CovidReportModule {
     fun providesContext(activity: CovidReportActivity): Context = activity
 
     @Provides
+    fun providesActivity(activity: CovidReportActivity): AppCompatActivity = activity
+
+    @Provides
     fun providesView(activity: CovidReportActivity): CovidReportView = activity
 
     @Provides
@@ -27,5 +33,10 @@ class CovidReportModule {
     @Provides
     @PerActivity
     fun providesCovidReportRouter(router: CovidReportRouterImpl): CovidReportRouter = router
+
+    @Provides
+    @PerActivity
+    fun providesContactTracingRepository(repository: ContactTracingRepositoryImpl): ContactTracingRepository =
+        repository
 
 }

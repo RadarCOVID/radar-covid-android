@@ -1,6 +1,8 @@
 package com.indra.coronaradar.features.home.protocols
 
-interface HomeView {
+import com.indra.coronaradar.common.view.RequestView
+
+interface HomeView : RequestView {
 
     fun showExpositionLevelLow()
 
@@ -24,7 +26,7 @@ interface HomePresenter {
 
     fun onReportButtonClick()
 
-    fun onSwitchRadarStatusChange(enabled: Boolean)
+    fun onSwitchRadarClick(currentlyEnabled: Boolean)
 
 }
 

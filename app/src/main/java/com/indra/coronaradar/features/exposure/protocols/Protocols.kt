@@ -1,4 +1,4 @@
-package com.indra.coronaradar.features.exposition.protocols
+package com.indra.coronaradar.features.exposure.protocols
 
 interface ExpositionView {
 

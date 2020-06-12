@@ -2,6 +2,8 @@ package com.indra.coronaradar.features.main.di
 
 import androidx.appcompat.app.AppCompatActivity
 import com.indra.coronaradar.common.di.scope.PerActivity
+import com.indra.coronaradar.datamanager.repository.ContactTracingRepository
+import com.indra.coronaradar.datamanager.repository.ContactTracingRepositoryImpl
 import com.indra.coronaradar.features.main.presenter.MainPresenterImpl
 import com.indra.coronaradar.features.main.protocols.MainPresenter
 import com.indra.coronaradar.features.main.protocols.MainRouter
@@ -27,5 +29,10 @@ class MainModule {
     @Provides
     @PerActivity
     fun providesRouter(router: MainRouterImpl): MainRouter = router
+
+    @Provides
+    @PerActivity
+    fun providesContactTracingRepository(repository: ContactTracingRepositoryImpl): ContactTracingRepository =
+        repository
 
 }
