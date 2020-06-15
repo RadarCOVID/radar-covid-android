@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity">
-        <activity android:name=".features.onboarding.pages.legal.view.LegalInfoDetailActivity"></activity>
+        <activity android:name=".features.poll.view.PollActivity"></activity>
+        <activity android:name=".features.onboarding.pages.legal.view.LegalInfoDetailActivity" />
         <activity
             android:name=".features.splash.view.SplashActivity"
             android:noHistory="true"

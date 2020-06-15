@@ -16,4 +16,6 @@ interface HelplineRouter {
 
     fun navigateToBrowser(url:String)
 
+    fun navigateToPoll()
+
 }

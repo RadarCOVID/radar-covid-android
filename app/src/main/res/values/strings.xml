@@ -153,7 +153,6 @@
     <string name="exposure_detail_tip_avoid_people">Evita el contacto con otras personas</string>
 
 
-
     /********** Covid Report ************/
 
     <string name="covid_report_title">MI SALUD</string>
@@ -201,6 +200,8 @@
     <string name="helpline_message_p1">Texto explicativo lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec egestas metus. Nulla vel arcu laoreet, faucibus risus sed, aliquam leo.</string>
     <string name="helpline_message_p2">¡Ayúdanos a mejorar!</string>
     <string name="helpline_button_start">Comenzar</string>
+
+    <string name="step_indicator_text">%1$d / %2$d</string>
 
     /********** Common ************/
 
