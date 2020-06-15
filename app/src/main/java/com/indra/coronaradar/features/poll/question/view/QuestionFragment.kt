@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.indra.coronaradar.R
 import com.indra.coronaradar.common.base.BaseFragment
+import com.indra.coronaradar.common.view.MultipleChoiceView
 import com.indra.coronaradar.common.view.RateView
 import com.indra.coronaradar.common.viewmodel.QuestionViewModel
 import com.indra.coronaradar.features.poll.question.protocols.QuestionPresenter
@@ -47,6 +48,12 @@ class QuestionFragment : BaseFragment(), QuestionView {
         when (question) {
             is QuestionViewModel.Rate -> {
                 wrapperQuestion.addView(RateView(context!!).apply {
+                    this.question = question
+                })
+                textViewQuestion.text = question.text
+            }
+            is QuestionViewModel.MultipleChoice -> {
+                wrapperQuestion.addView(MultipleChoiceView(context!!).apply {
                     this.question = question
                 })
                 textViewQuestion.text = question.text

@@ -14,17 +14,11 @@ sealed class QuestionViewModel : Parcelable {
     ) : QuestionViewModel()
 
     @Parcelize
-    class SingleSelection(
+    class MultipleChoice(
         val id: String = "",
         val text: String = "",
-        val answers: List<AnswerViewModel> = emptyList()
-    ) : QuestionViewModel()
-
-    @Parcelize
-    class MultipleSelection(
-        val id: String = "",
-        val text: String = "",
-        val answers: List<AnswerViewModel> = emptyList()
+        val answers: List<AnswerViewModel> = emptyList(),
+        val allowMultipleSelection: Boolean = false
     ) : QuestionViewModel()
 
 }

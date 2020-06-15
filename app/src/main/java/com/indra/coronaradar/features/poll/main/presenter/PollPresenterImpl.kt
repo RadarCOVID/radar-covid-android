@@ -10,7 +10,7 @@ class PollPresenterImpl @Inject constructor(private val view: PollView) : PollPr
 
     override fun viewReady() {
 
-        view.showQuestion(getMockRateQuestion())
+        view.showQuestion(getMockMultipleChoice())
 
     }
 
@@ -23,6 +23,16 @@ class PollPresenterImpl @Inject constructor(private val view: PollView) : PollPr
             add(AnswerViewModel("id", "3", false))
             add(AnswerViewModel("id", "4", false))
             add(AnswerViewModel("id", "5", false))
+        })
+
+    private fun getMockMultipleChoice() = QuestionViewModel.MultipleChoice(
+        "id",
+        "¿Seguiste las recomendaciones sanitarias y de prevención indicadas en la aplicación?",
+        ArrayList<AnswerViewModel>().apply {
+            add(AnswerViewModel("id", "Sí, todas", false))
+            add(AnswerViewModel("id", "Sí, algunas", false))
+            add(AnswerViewModel("id", "No, las seguí", false))
+
         })
 
 }
