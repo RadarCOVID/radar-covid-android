@@ -18,8 +18,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity">
-        <activity android:name="com.indra.coronaradar.features.poll.main.view.PollActivity"></activity>
-        <activity android:name=".features.onboarding.pages.legal.view.LegalInfoDetailActivity" />
         <activity
             android:name=".features.splash.view.SplashActivity"
             android:noHistory="true"
@@ -38,6 +36,9 @@
             android:name=".features.onboarding.pages.legal.view.LegalInfoFragment"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".features.onboarding.pages.legal.view.LegalInfoDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".features.main.view.MainActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -49,6 +50,10 @@
         <activity
             android:name=".features.covidreport.confirmation.Confirmation"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.indra.coronaradar.features.poll.main.view.PollActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

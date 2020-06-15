@@ -4,21 +4,26 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 
-sealed class QuestionViewModel : Parcelable {
+sealed class QuestionViewModel : Parcelable, Cloneable {
 
     @Parcelize
-    class Rate(
-        val id: String = "",
-        val text: String = "",
-        val answers: List<AnswerViewModel> = emptyList()
+    class RateQuestion(
+        var id: String = "",
+        var text: String = "",
+        var answers: List<AnswerViewModel> = emptyList()
     ) : QuestionViewModel()
 
     @Parcelize
-    class MultipleChoice(
-        val id: String = "",
-        val text: String = "",
-        val answers: List<AnswerViewModel> = emptyList(),
-        val allowMultipleSelection: Boolean = false
+    class MultipleChoiceQuestion(
+        var id: String = "",
+        var text: String = "",
+        var answers: List<AnswerViewModel> = emptyList(),
+        var allowMultipleSelection: Boolean = false
     ) : QuestionViewModel()
+
+    fun isAnswered(): Boolean = when (this) {
+        is RateQuestion -> answers.any { it.isSelected }
+        is MultipleChoiceQuestion -> answers.any { it.isSelected }
+    }
 
 }

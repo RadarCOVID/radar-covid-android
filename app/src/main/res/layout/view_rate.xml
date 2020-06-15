@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.indra.coronaradar.common.view.SelectableGroupLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/wrapperContent"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-</com.indra.coronaradar.common.view.SelectableGroupLinearLayout>

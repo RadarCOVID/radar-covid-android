@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.indra.coronaradar.R
 import com.indra.coronaradar.common.base.BaseFragment
+import com.indra.coronaradar.common.view.AnswerView
 import com.indra.coronaradar.common.view.MultipleChoiceView
 import com.indra.coronaradar.common.view.RateView
 import com.indra.coronaradar.common.viewmodel.QuestionViewModel
@@ -18,13 +19,18 @@ class QuestionFragment : BaseFragment(), QuestionView {
 
     companion object {
 
-        private const val ARG_QUESTION = "arg_question"
+        const val TAG = "QuestionFragment"
 
-        fun newInstance(question: QuestionViewModel) = QuestionFragment().apply {
-            arguments = Bundle().apply {
-                putParcelable(ARG_QUESTION, question)
+        private const val ARG_QUESTION = "arg_question"
+        private const val ARG_IS_LAST_QUESTION = "arg_is_last_question"
+
+        fun newInstance(isLastQuestion: Boolean, question: QuestionViewModel) =
+            QuestionFragment().apply {
+                arguments = Bundle().apply {
+                    putBoolean(ARG_IS_LAST_QUESTION, isLastQuestion)
+                    putParcelable(ARG_QUESTION, question)
+                }
             }
-        }
 
     }
 
@@ -41,18 +47,28 @@ class QuestionFragment : BaseFragment(), QuestionView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.viewReady(arguments?.getParcelable(ARG_QUESTION) ?: QuestionViewModel.Rate())
+        arguments?.let {
+            presenter.viewReady(
+                it.getBoolean(ARG_IS_LAST_QUESTION, false),
+                it.getParcelable(ARG_QUESTION) ?: QuestionViewModel.RateQuestion()
+            )
+        }
+        initViews()
+    }
+
+    private fun initViews() {
+        buttonNext.setOnClickListener { presenter.onNextButtonClick() }
     }
 
     override fun showQuestion(question: QuestionViewModel) {
         when (question) {
-            is QuestionViewModel.Rate -> {
+            is QuestionViewModel.RateQuestion -> {
                 wrapperQuestion.addView(RateView(context!!).apply {
                     this.question = question
                 })
                 textViewQuestion.text = question.text
             }
-            is QuestionViewModel.MultipleChoice -> {
+            is QuestionViewModel.MultipleChoiceQuestion -> {
                 wrapperQuestion.addView(MultipleChoiceView(context!!).apply {
                     this.question = question
                 })
@@ -60,4 +76,22 @@ class QuestionFragment : BaseFragment(), QuestionView {
             }
         }
     }
+
+    override fun showButtonFinish() {
+        buttonNext.setText(R.string.poll_button_finish)
+    }
+
+    override fun notifyButtonNextClick(answers: QuestionViewModel) {
+        (activity as? Callback)?.onContinueButtonClick(answers)
+    }
+
+    override fun getSelectedAnswers(): QuestionViewModel =
+        (wrapperQuestion.getChildAt(0) as AnswerView).getSelectedAnswers()
+
+    interface Callback {
+
+        fun onContinueButtonClick(answers: QuestionViewModel)
+
+    }
+
 }

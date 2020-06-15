@@ -6,10 +6,22 @@ interface PollPresenter {
 
     fun viewReady()
 
+    fun onBackButtonPressed()
+
+    fun onNextButtonClick(answers: QuestionViewModel)
+
+    fun onContinueWithoutAnswer()
+
 }
 
 interface PollView {
 
-    fun showQuestion(question: QuestionViewModel)
+    fun showPollProgress(currentQuestion: Int, totalQuestions: Int)
+
+    fun showQuestion(isLastQuestion: Boolean, question: QuestionViewModel)
+
+    fun showSkipQuestionDialog()
+
+    fun finish()
 
 }

@@ -15,7 +15,11 @@ class StepIndicator @JvmOverloads constructor(
     }
 
     fun setProgress(currentStep: Int, totalSteps: Int) {
-        val currentProgress = (100 / totalSteps) * currentStep
+        val currentProgress = if (currentStep == totalSteps)
+            100
+        else
+            (100 / totalSteps) * currentStep
+
         progressBar.progress = currentProgress
 
         textViewStep.text = context.getString(R.string.step_indicator_text, currentStep, totalSteps)

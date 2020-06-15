@@ -6,10 +6,18 @@ interface QuestionView {
 
     fun showQuestion(question: QuestionViewModel)
 
+    fun showButtonFinish()
+
+    fun notifyButtonNextClick(answers: QuestionViewModel)
+
+    fun getSelectedAnswers(): QuestionViewModel
+
 }
 
 interface QuestionPresenter {
 
-    fun viewReady(question: QuestionViewModel)
+    fun viewReady(isLastQuestion: Boolean, question: QuestionViewModel)
+
+    fun onNextButtonClick()
 
 }

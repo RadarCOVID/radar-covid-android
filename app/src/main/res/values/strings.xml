@@ -202,8 +202,14 @@
     <string name="helpline_button_start">Comenzar</string>
 
     <string name="step_indicator_text">%1$d / %2$d</string>
-    
+
     <string name="poll_title">CUÉNTANOS TU EXPERIENCIA</string>
+    <string name="poll_button_next">Siguiente</string>
+    <string name="poll_button_finish">Finalizar</string>
+
+    <string name="question_dialog_message">No has respondido a una pregunta</string>
+    <string name="question_dialog_ok">Continuar sin respuesta</string>
+    <string name="question_dialog_cancel">Responder</string>
 
     /********** Common ************/
 

@@ -12,17 +12,17 @@ import kotlinx.android.synthetic.main.view_multiple_choice_item.view.*
 
 class MultipleChoiceView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : SelectableGroupLinearLayout(context, attrs, defStyleAttr) {
+) : SelectableGroupLinearLayout(context, attrs, defStyleAttr), AnswerView {
 
-    var question:QuestionViewModel.MultipleChoice? = null
+    var question: QuestionViewModel.MultipleChoiceQuestion? = null
         set(value) {
             field = value
             value?.let {
                 allowMultipleSelection = it.allowMultipleSelection
-                it.answers.forEach {
-                    addView(MultipleChoiceItemView(context).apply {
-                        answer = it
-                    })
+                it.answers.forEach { answer ->
+                    val multipleChoiceItemView = MultipleChoiceItemView(context)
+                    addView(multipleChoiceItemView)
+                    multipleChoiceItemView.answer = answer
                 }
             }
         }
@@ -33,7 +33,7 @@ class MultipleChoiceView @JvmOverloads constructor(
 
     }
 
-    class MultipleChoiceItemView @JvmOverloads constructor(
+    private class MultipleChoiceItemView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     ) : LinearLayout(context, attrs, defStyleAttr) {
 
@@ -41,6 +41,8 @@ class MultipleChoiceView @JvmOverloads constructor(
             set(value) {
                 field = value
                 setText(field?.text ?: "")
+                if (value?.isSelected == true)
+                    (parent as? SelectableGroup)?.onChildSelected(this)
             }
 
         init {
@@ -54,11 +56,16 @@ class MultipleChoiceView @JvmOverloads constructor(
                 imageViewCheck.visibility = View.VISIBLE
             else
                 imageViewCheck.visibility = View.GONE
+
+            answer?.isSelected = selected
         }
 
-        fun setText(text: String) {
+        private fun setText(text: String) {
             textViewAnswer.text = text
         }
     }
+
+    override fun getSelectedAnswers(): QuestionViewModel =
+        question ?: QuestionViewModel.RateQuestion()
 
 }
