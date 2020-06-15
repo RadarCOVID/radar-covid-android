@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context="com.indra.coronaradar.features.poll.view.PollActivity">
+    tools:context=".features.poll.main.view.PollActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,12 +39,16 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.indra.coronaradar.common.view.RateView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <com.indra.coronaradar.common.view.MultipleChoiceView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <FrameLayout
+            android:id="@+id/wrapperQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp" />
+    </ScrollView>
 
 </LinearLayout>

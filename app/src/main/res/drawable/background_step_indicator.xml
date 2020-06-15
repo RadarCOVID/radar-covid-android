@@ -4,7 +4,7 @@
     <item android:id="@android:id/background">
         <shape>
             <corners android:radius="8dp" />
-            <solid android:color="@color/gray_e0" />
+            <solid android:color="@color/white" />
         </shape>
     </item>
 
