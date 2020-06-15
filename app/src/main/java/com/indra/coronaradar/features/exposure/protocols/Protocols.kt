@@ -1,6 +1,6 @@
 package com.indra.coronaradar.features.exposure.protocols
 
-interface ExpositionView {
+interface ExposureView {
 
     fun showExpositionLevelLow()
 
@@ -12,7 +12,7 @@ interface ExpositionView {
 
 }
 
-interface ExpositionPresenter {
+interface ExposurePresenter {
 
     fun viewReady()
 
@@ -22,7 +22,7 @@ interface ExpositionPresenter {
 
 }
 
-interface ExpositionRouter {
+interface ExposureRouter {
 
     fun navigateToCovidReport()
 

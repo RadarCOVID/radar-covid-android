@@ -56,24 +56,24 @@
 
                 <TextView
                     android:id="@+id/textViewExpositionTitle"
-                    style="@style/TitleExtraBoldSmall"
+                    style="@style/TitleExtraBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/exposition_block_low_title"
                     android:textColor="@color/green"
+                    android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textViewExpositionDescription"
-                    style="@style/TextNormal"
+                    style="@style/TextSmallBlack"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="30dp"
                     android:text="@string/exposition_block_low_description"
-                    android:textColor="@color/black"
                     app:layout_constraintBottom_toTopOf="@id/textViewExpositionLastUpdate"
                     app:layout_constraintEnd_toStartOf="@id/imageButtonArrow"
                     app:layout_constraintStart_toStartOf="parent"

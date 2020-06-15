@@ -35,7 +35,6 @@ class HomePresenterImpl @Inject constructor(
     }
 
     override fun onExpositionBlockClick() {
-        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
         router.navigateToExpositionDetail()
     }
 
@@ -102,7 +101,7 @@ class HomePresenterImpl @Inject constructor(
             add(Calendar.MINUTE, -12)
         }.time
 
-        res.level = ExposureInfo.Level.MEDIUM
+        res.level = ExposureInfo.Level.HIGH
 
         return res
     }

@@ -2,19 +2,19 @@ package com.indra.coronaradar.features.exposure.presenter
 
 import com.indra.coronaradar.common.extensions.format
 import com.indra.coronaradar.datamanager.usecase.GetExposureInfoUseCase
-import com.indra.coronaradar.features.exposure.protocols.ExpositionPresenter
-import com.indra.coronaradar.features.exposure.protocols.ExpositionRouter
-import com.indra.coronaradar.features.exposure.protocols.ExpositionView
+import com.indra.coronaradar.features.exposure.protocols.ExposurePresenter
+import com.indra.coronaradar.features.exposure.protocols.ExposureRouter
+import com.indra.coronaradar.features.exposure.protocols.ExposureView
 import com.indra.coronaradar.models.domain.ExposureInfo
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class ExpositionPresenterImpl @Inject constructor(
-    private val view: ExpositionView,
-    private val router: ExpositionRouter,
+class ExposurePresenterImpl @Inject constructor(
+    private val view: ExposureView,
+    private val router: ExposureRouter,
     private val getExposureInfoUseCase: GetExposureInfoUseCase
-) : ExpositionPresenter {
+) : ExposurePresenter {
 
     override fun viewReady() {
 
@@ -65,7 +65,7 @@ class ExpositionPresenterImpl @Inject constructor(
             add(Calendar.MINUTE, -12)
         }.time
 
-        res.level = ExposureInfo.Level.MEDIUM
+        res.level = ExposureInfo.Level.HIGH
 
         return res
     }

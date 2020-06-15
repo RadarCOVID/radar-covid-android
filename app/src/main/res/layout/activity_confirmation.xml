@@ -84,10 +84,10 @@
                 android:text="@string/confirmation_tip_1" />
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_avoid_people" />
+                android:src="@drawable/ic_distance_people" />
 
             <TextView
                 style="@style/TextSmallBlack"
