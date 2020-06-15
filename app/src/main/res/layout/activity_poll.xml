@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical"
     tools:context="com.indra.coronaradar.features.poll.view.PollActivity">
 
@@ -39,6 +40,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.indra.coronaradar.common.view.RateView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.indra.coronaradar.common.view.MultipleChoiceView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
