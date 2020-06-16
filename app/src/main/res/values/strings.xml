@@ -211,6 +211,14 @@
     <string name="question_dialog_ok">Continuar sin respuesta</string>
     <string name="question_dialog_cancel">Responder</string>
 
+    <string name="poll_completed_t1">Gracias por ayudarnos a mejorar.</string>
+    <string name="poll_completed_p1">Muchas gracias por participar en el piloto de la APP Covid-19, tu opinión será clave para mejorarla y contribuir a prevenir futuros contagios.</string>
+    <string name="poll_completed_t2">Un paso más</string>
+    <string name="poll_completed_p2">¿Te interesaría participar en una entrevista telefónica para concoer más sobre tu experiencia con Covid Radar?\n\nSi es así, escríbenos al siguiente correo electrónico para poder participar. Uno de  nuestros colaboradores se pondrá en contacto contigo para fijar el día y la hora que se adapte mejor a tí:</string>
+    <string name="poll_completed_email">ayudacovidradar@email.com</string>
+    <string name="poll_completed_button">Volver a la página de inicio</string>
+
+
     /********** Common ************/
 
     <string name="accept">Aceptar</string>

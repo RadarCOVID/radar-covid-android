@@ -2,6 +2,18 @@ package com.indra.coronaradar.features.poll.main.protocols
 
 import com.indra.coronaradar.common.viewmodel.QuestionViewModel
 
+interface PollView {
+
+    fun showPollProgress(currentQuestion: Int, totalQuestions: Int)
+
+    fun showQuestion(isLastQuestion: Boolean, question: QuestionViewModel)
+
+    fun showSkipQuestionDialog()
+
+    fun finish()
+
+}
+
 interface PollPresenter {
 
     fun viewReady()
@@ -14,14 +26,8 @@ interface PollPresenter {
 
 }
 
-interface PollView {
+interface PollRouter {
 
-    fun showPollProgress(currentQuestion: Int, totalQuestions: Int)
-
-    fun showQuestion(isLastQuestion: Boolean, question: QuestionViewModel)
-
-    fun showSkipQuestionDialog()
-
-    fun finish()
+    fun navigateToPollCompleted()
 
 }

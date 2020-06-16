@@ -18,6 +18,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity">
+        <activity android:name=".features.poll.completed.PollCompletedActivity"></activity>
         <activity
             android:name=".features.splash.view.SplashActivity"
             android:noHistory="true"
@@ -51,9 +52,8 @@
             android:name=".features.covidreport.confirmation.Confirmation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.indra.coronaradar.features.poll.main.view.PollActivity"
+            android:name=".features.poll.main.view.PollActivity"
             android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>

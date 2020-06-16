@@ -5,10 +5,14 @@ import com.indra.coronaradar.common.extensions.toJson
 import com.indra.coronaradar.common.viewmodel.AnswerViewModel
 import com.indra.coronaradar.common.viewmodel.QuestionViewModel
 import com.indra.coronaradar.features.poll.main.protocols.PollPresenter
+import com.indra.coronaradar.features.poll.main.protocols.PollRouter
 import com.indra.coronaradar.features.poll.main.protocols.PollView
 import javax.inject.Inject
 
-class PollPresenterImpl @Inject constructor(private val view: PollView) : PollPresenter {
+class PollPresenterImpl @Inject constructor(
+    private val view: PollView,
+    private val router: PollRouter
+) : PollPresenter {
 
     private lateinit var questions: List<QuestionViewModel>
     private var currentQuestionIndex: Int = 0
@@ -56,7 +60,9 @@ class PollPresenterImpl @Inject constructor(private val view: PollView) : PollPr
             )
             view.showPollProgress(currentQuestionIndex + 1, questions.size)
         } else {
-            //MANAGE LAST STEP
+            //TODO MAKE REQUEST
+            router.navigateToPollCompleted()
+            view.finish()
         }
     }
 
