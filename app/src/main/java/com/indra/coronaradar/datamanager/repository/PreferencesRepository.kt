@@ -6,4 +6,8 @@ interface PreferencesRepository {
 
     fun setOnboardingCompleted(onboardingCompleted: Boolean)
 
+    fun getUuid(): String
+
+    fun setUuid(uuid: String)
+
 }

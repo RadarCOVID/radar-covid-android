@@ -10,7 +10,7 @@ interface ApiInterface {
     @GET("/")
     fun test(): Call<String>
 
-    @GET("/token/uuid")
+    @GET("/configuration/token/uuid")
     fun getUuid(): Call<ResponseUuid>
 
     @GET("/settings")
