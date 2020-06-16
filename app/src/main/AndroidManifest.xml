@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity">
-        <activity android:name=".features.onboarding.pages.legal.view.LegalInfoDetailActivity"></activity>
+        <activity android:name=".features.poll.completed.PollCompletedActivity"></activity>
         <activity
             android:name=".features.splash.view.SplashActivity"
             android:noHistory="true"
@@ -37,6 +37,9 @@
             android:name=".features.onboarding.pages.legal.view.LegalInfoFragment"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".features.onboarding.pages.legal.view.LegalInfoDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".features.main.view.MainActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -47,6 +50,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.covidreport.confirmation.Confirmation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.poll.main.view.PollActivity"
             android:screenOrientation="portrait" />
     </application>
 

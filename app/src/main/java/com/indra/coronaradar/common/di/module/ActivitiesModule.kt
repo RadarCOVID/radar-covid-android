@@ -9,6 +9,8 @@ import com.indra.coronaradar.features.main.di.MainModule
 import com.indra.coronaradar.features.main.view.MainActivity
 import com.indra.coronaradar.features.onboarding.di.OnboardingModule
 import com.indra.coronaradar.features.onboarding.view.OnboardingActivity
+import com.indra.coronaradar.features.poll.main.di.PollModule
+import com.indra.coronaradar.features.poll.main.view.PollActivity
 import com.indra.coronaradar.features.splash.di.SplashModule
 import com.indra.coronaradar.features.splash.view.SplashActivity
 import dagger.Module
@@ -36,5 +38,9 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [CovidReportModule::class])
     abstract fun bindsReportActivity(): CovidReportActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [PollModule::class, PollFragmentsModule::class])
+    abstract fun bindsPollActivity(): PollActivity
 
 }

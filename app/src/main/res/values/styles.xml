@@ -111,6 +111,11 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="TextSemiboldNormal" parent="TextSemibold">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black_26</item>
+    </style>
+
     <style name="TextDialogTitle" parent="Title">
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">14sp</item>

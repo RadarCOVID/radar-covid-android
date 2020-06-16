@@ -12,8 +12,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#FF939393</color>
     <color name="gray_f0">#FFF0F0F0</color>
+    <color name="gray_e0">#FFE7E4E0</color>
+
     <color name="purple">#FF836FAC</color>
     <color name="purple_9C">#FF70509C</color>
+    <color name="blue">#FF7494ED</color>
 
     <color name="red">#FFE06C57</color>
     <color name="orange">#FFF19A5A</color>
