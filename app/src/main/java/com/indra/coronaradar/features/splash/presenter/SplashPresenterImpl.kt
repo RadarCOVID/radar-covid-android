@@ -3,6 +3,7 @@ package com.indra.coronaradar.features.splash.presenter
 import android.os.Handler
 import com.indra.coronaradar.datamanager.usecase.CheckGaenUseCase
 import com.indra.coronaradar.datamanager.usecase.GetInternetInfoUseCase
+import com.indra.coronaradar.datamanager.usecase.GetUuidUseCase
 import com.indra.coronaradar.datamanager.usecase.OnboardingCompletedUseCase
 import com.indra.coronaradar.features.splash.protocols.SplashPresenter
 import com.indra.coronaradar.features.splash.protocols.SplashRouter
@@ -14,24 +15,28 @@ class SplashPresenterImpl @Inject constructor(
     private val router: SplashRouter,
     private val useCaseInternetInfo: GetInternetInfoUseCase,
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase,
-    private val checkGaenUseCase: CheckGaenUseCase
+    private val checkGaenUseCase: CheckGaenUseCase,
+    private val getUuidUseCase: GetUuidUseCase
 ) : SplashPresenter {
 
     private var isWaitingToStart: Boolean = false
 
     override fun viewReady() {
-
+        if (!getUuidUseCase.isUuidInitialized())
+            requestUuid()
     }
 
     override fun onResume() {
-        if (!useCaseInternetInfo.isInternetAvailable()) {
-            view.showNoInternetWarning()
-        } else {
-            checkGaenUseCase.checkGaenAvailability { available ->
-                if (available)
-                    navigateToHomeWithDelay()
-                else
-                    view.showPlayServicesRequiredDialog()
+        if (getUuidUseCase.isUuidInitialized()) {
+            if (!useCaseInternetInfo.isInternetAvailable()) {
+                view.showNoInternetWarning()
+            } else {
+                checkGaenUseCase.checkGaenAvailability { available ->
+                    if (available)
+                        navigateToHomeWithDelay()
+                    else
+                        view.showPlayServicesRequiredDialog()
+                }
             }
         }
     }
@@ -49,6 +54,15 @@ class SplashPresenterImpl @Inject constructor(
 
     override fun onInstallPlayServicesButtonClick() {
         router.navigateToPlayServicesPage()
+    }
+
+    private fun requestUuid() {
+        getUuidUseCase.getUuid(onSuccess = { uuid ->
+            getUuidUseCase.persistUuid(uuid)
+            onResume()
+        }, onError = {
+
+        })
     }
 
     private fun navigateToHomeWithDelay() {
