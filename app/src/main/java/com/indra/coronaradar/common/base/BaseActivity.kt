@@ -30,11 +30,11 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         progressBar?.hide()
     }
 
-    fun showError(error: Throwable) {
-        showError(message = error.message ?: getString(R.string.error_generic))
+    fun showError(error: Throwable, finishOnDismiss: Boolean = false) {
+        showError(title = null, message = error.message ?: getString(R.string.error_generic), finishOnDismiss = finishOnDismiss)
     }
 
-    private fun showError(title: String? = null, message: String) {
+    private fun showError(title: String? = null, message: String, finishOnDismiss: Boolean) {
         if (!isFinishing) {
             val builder: androidx.appcompat.app.AlertDialog.Builder =
                 androidx.appcompat.app.AlertDialog.Builder(this)
@@ -43,6 +43,8 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
             builder.setView(view)
             builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
                 dialog.dismiss()
+                if (finishOnDismiss)
+                    finish()
             }
             val dialog: androidx.appcompat.app.AlertDialog = builder.create()
             dialog.show()

@@ -1,5 +1,6 @@
 package com.indra.coronaradar.datamanager.api
 
+import com.indra.coronaradar.models.response.ResponseQuestions
 import com.indra.coronaradar.models.response.ResponseSettings
 import com.indra.coronaradar.models.response.ResponseUuid
 import retrofit2.Call
@@ -15,5 +16,8 @@ interface ApiInterface {
 
     @GET("/settings")
     fun getSettings(): Call<ResponseSettings>
+
+    @GET("/questionnaire/questions")
+    fun getQuestions(): Call<ResponseQuestions>
 
 }

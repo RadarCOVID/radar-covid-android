@@ -1,8 +1,13 @@
 package com.indra.coronaradar.features.poll.main.protocols
 
+import com.indra.coronaradar.common.view.RequestView
 import com.indra.coronaradar.common.viewmodel.QuestionViewModel
 
-interface PollView {
+interface PollView : RequestView {
+
+    fun showContent()
+
+    fun hideContent()
 
     fun showPollProgress(currentQuestion: Int, totalQuestions: Int)
 
