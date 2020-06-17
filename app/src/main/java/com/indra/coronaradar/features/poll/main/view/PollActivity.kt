@@ -3,6 +3,7 @@ package com.indra.coronaradar.features.poll.main.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.indra.coronaradar.R
 import com.indra.coronaradar.common.base.BaseActivity
 import com.indra.coronaradar.common.view.CMDialog
@@ -40,6 +41,14 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
     override fun onBackPressed() {
         super.onBackPressed()
         presenter.onBackButtonPressed()
+    }
+
+    override fun showContent() {
+        wrapperContent.visibility = View.VISIBLE
+    }
+
+    override fun hideContent() {
+        wrapperContent.visibility = View.GONE
     }
 
     override fun showPollProgress(currentQuestion: Int, totalQuestions: Int) {

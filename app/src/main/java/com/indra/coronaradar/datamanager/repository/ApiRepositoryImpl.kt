@@ -2,6 +2,7 @@ package com.indra.coronaradar.datamanager.repository
 
 import com.indra.coronaradar.common.base.BaseRepository
 import com.indra.coronaradar.datamanager.api.ApiInterface
+import com.indra.coronaradar.models.response.ResponseQuestions
 import com.indra.coronaradar.models.response.ResponseSettings
 import com.indra.coronaradar.models.response.ResponseUuid
 import org.funktionale.either.Either
@@ -16,6 +17,10 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
 
     override fun getSettings(): Either<Throwable, ResponseSettings> = callService {
         apiInterface.getSettings()
+    }
+
+    override fun getQuestions(): Either<Throwable, ResponseQuestions> = callService {
+        apiInterface.getQuestions()
     }
 
 }

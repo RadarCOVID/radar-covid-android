@@ -8,14 +8,14 @@ sealed class QuestionViewModel : Parcelable, Cloneable {
 
     @Parcelize
     class RateQuestion(
-        var id: String = "",
+        var id: Int = -1,
         var text: String = "",
         var answers: List<AnswerViewModel> = emptyList()
     ) : QuestionViewModel()
 
     @Parcelize
     class MultipleChoiceQuestion(
-        var id: String = "",
+        var id: Int = -1,
         var text: String = "",
         var answers: List<AnswerViewModel> = emptyList(),
         var allowMultipleSelection: Boolean = false

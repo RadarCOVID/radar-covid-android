@@ -4,6 +4,8 @@ import android.util.Log
 import com.indra.coronaradar.common.extensions.toJson
 import com.indra.coronaradar.common.viewmodel.AnswerViewModel
 import com.indra.coronaradar.common.viewmodel.QuestionViewModel
+import com.indra.coronaradar.common.viewmodel.QuestionViewModelFactory
+import com.indra.coronaradar.datamanager.usecase.GetQuestionsUseCase
 import com.indra.coronaradar.features.poll.main.protocols.PollPresenter
 import com.indra.coronaradar.features.poll.main.protocols.PollRouter
 import com.indra.coronaradar.features.poll.main.protocols.PollView
@@ -11,7 +13,9 @@ import javax.inject.Inject
 
 class PollPresenterImpl @Inject constructor(
     private val view: PollView,
-    private val router: PollRouter
+    private val router: PollRouter,
+    private val getQuestionsUseCase: GetQuestionsUseCase,
+    private val questionViewModelFactory: QuestionViewModelFactory
 ) : PollPresenter {
 
     private lateinit var questions: List<QuestionViewModel>
@@ -19,13 +23,7 @@ class PollPresenterImpl @Inject constructor(
 
     override fun viewReady() {
 
-        questions = getMockQuestionsList()
-
-        view.showQuestion(
-            currentQuestionIndex == questions.size - 1,
-            questions[currentQuestionIndex]
-        )
-        view.showPollProgress(currentQuestionIndex + 1, questions.size)
+        requestQuestions()
 
     }
 
@@ -51,6 +49,26 @@ class PollPresenterImpl @Inject constructor(
         showNextQuestion()
     }
 
+    private fun requestQuestions() {
+        view.hideContent()
+        view.showLoading()
+        getQuestionsUseCase.getQuestions(
+            onSuccess = {
+                questions = questionViewModelFactory.createQuestionsListViewModel(it)
+                view.showQuestion(
+                    currentQuestionIndex == questions.size - 1,
+                    questions[currentQuestionIndex]
+                )
+                view.showPollProgress(currentQuestionIndex + 1, questions.size)
+                view.showContent()
+                view.hideLoading()
+            },
+            onError = {
+                view.showError(it, true)
+                view.hideLoading()
+            })
+    }
+
     private fun showNextQuestion() {
         if (currentQuestionIndex + 1 < questions.size) {
             currentQuestionIndex++
@@ -66,6 +84,7 @@ class PollPresenterImpl @Inject constructor(
         }
     }
 
+
     private fun getMockQuestionsList() =
         arrayListOf(
             getMockRateQuestion(),
@@ -74,33 +93,33 @@ class PollPresenterImpl @Inject constructor(
         )
 
     private fun getMockRateQuestion() = QuestionViewModel.RateQuestion(
-        "id",
+        1,
         "¿Cómo valoras la información recibida al introducir el código?",
         ArrayList<AnswerViewModel>().apply {
-            add(AnswerViewModel("id", "1", false))
-            add(AnswerViewModel("id", "2", false))
-            add(AnswerViewModel("id", "3", false))
-            add(AnswerViewModel("id", "4", false))
-            add(AnswerViewModel("id", "5", false))
+            add(AnswerViewModel(1, "1", false))
+            add(AnswerViewModel(1, "2", false))
+            add(AnswerViewModel(1, "3", false))
+            add(AnswerViewModel(1, "4", false))
+            add(AnswerViewModel(1, "5", false))
         })
 
     private fun getMockMultipleChoiceSingleSelection() = QuestionViewModel.MultipleChoiceQuestion(
-        "id",
+        1,
         "¿Seguiste las recomendaciones sanitarias y de prevención indicadas en la aplicación?",
         ArrayList<AnswerViewModel>().apply {
-            add(AnswerViewModel("id", "Sí, todas", false))
-            add(AnswerViewModel("id", "Sí, algunas", false))
-            add(AnswerViewModel("id", "No, las seguí", false))
+            add(AnswerViewModel(1, "Sí, todas", false))
+            add(AnswerViewModel(1, "Sí, algunas", false))
+            add(AnswerViewModel(1, "No, las seguí", false))
 
         })
 
     private fun getMockMultipleChoiceMultipleSelection() = QuestionViewModel.MultipleChoiceQuestion(
-        "id",
+        1,
         "¿Seguiste las recomendaciones sanitarias y de prevención indicadas en la aplicación?",
         ArrayList<AnswerViewModel>().apply {
-            add(AnswerViewModel("id", "Sí, todas", false))
-            add(AnswerViewModel("id", "Sí, algunas", false))
-            add(AnswerViewModel("id", "No, las seguí", false))
+            add(AnswerViewModel(1, "Sí, todas", false))
+            add(AnswerViewModel(1, "Sí, algunas", false))
+            add(AnswerViewModel(1, "No, las seguí", false))
 
         }, true
     )
