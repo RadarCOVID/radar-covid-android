@@ -20,4 +20,11 @@
         android:layout_marginStart="47dp"
         android:src="@drawable/img_splash_logo" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/img_government_logo" />
+
 </FrameLayout>

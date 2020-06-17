@@ -12,7 +12,7 @@ interface MainView : RequestView {
 
 interface MainPresenter {
 
-    fun viewReady()
+    fun viewReady(activateRadar: Boolean)
 
     fun onResume()
 
@@ -32,7 +32,7 @@ interface MainPresenter {
 
 interface MainRouter {
 
-    fun navigateToHome()
+    fun navigateToHome(activateRadar: Boolean)
 
     fun navigateToHealth()
 

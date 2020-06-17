@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:name=".ContactTracingApplication"
@@ -18,7 +17,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity">
-        <activity android:name=".features.poll.completed.PollCompletedActivity"></activity>
         <activity
             android:name=".features.splash.view.SplashActivity"
             android:noHistory="true"
@@ -37,7 +35,10 @@
             android:name=".features.onboarding.pages.legal.view.LegalInfoFragment"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".features.onboarding.pages.legal.view.LegalInfoDetailActivity"
+            android:name=".features.onboarding.pages.legal.view.TermsAndConditionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.onboarding.pages.legal.view.PrivacyActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.main.view.MainActivity"
@@ -54,6 +55,10 @@
         <activity
             android:name=".features.poll.main.view.PollActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.poll.completed.PollCompletedActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

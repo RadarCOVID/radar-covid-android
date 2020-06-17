@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.indra.coronaradar.R
 import com.indra.coronaradar.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_1
-import com.indra.coronaradar.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_2
 import com.indra.coronaradar.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_3
 import kotlinx.android.synthetic.main.fragment_onboarding_step.*
+import kotlinx.android.synthetic.main.layout_onboarding_step1.*
+import kotlinx.android.synthetic.main.layout_onboarding_step3.*
 
 class OnboardingStepPageFragment : Fragment() {
 
@@ -35,22 +36,29 @@ class OnboardingStepPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button.setOnClickListener {
+        buttonContinue.setOnClickListener {
             (activity as? Callback)?.onContinueButtonClick()
         }
-        when (arguments?.getInt(ARG_STEP) ?: 0) {
-            ONBOARDING_PAGE_INDEX_STEP_1 -> wrapperStep1.visibility = View.VISIBLE
-            ONBOARDING_PAGE_INDEX_STEP_2 -> wrapperStep2.visibility = View.VISIBLE
-            ONBOARDING_PAGE_INDEX_STEP_3 -> {
-                wrapperStep3.visibility = View.VISIBLE
-                button.setText(R.string.onboarding_button_step_3)
+        buttonActivate.setOnClickListener {
+            (activity as? Callback)?.onFinishButtonClick(true)
+        }
+        buttonFinish.setOnClickListener {
+            (activity as? Callback)?.onFinishButtonClick(false)
+        }
+        (arguments?.getInt(ARG_STEP) ?: 0).let { pageIndex ->
+            when (pageIndex) {
+                ONBOARDING_PAGE_INDEX_STEP_1 -> wrapperStep1.visibility = View.VISIBLE
+                ONBOARDING_PAGE_INDEX_STEP_3 -> wrapperStep3.visibility = View.VISIBLE
             }
         }
+
     }
 
     interface Callback {
 
         fun onContinueButtonClick()
+
+        fun onFinishButtonClick(activateRadar: Boolean)
 
     }
 

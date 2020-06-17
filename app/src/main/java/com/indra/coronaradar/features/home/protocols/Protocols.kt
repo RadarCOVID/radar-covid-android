@@ -18,7 +18,7 @@ interface HomeView : RequestView {
 
 interface HomePresenter {
 
-    fun viewReady()
+    fun viewReady(activateRadar: Boolean)
 
     fun onResume()
 

@@ -16,43 +16,16 @@
             layout="@layout/layout_onboarding_step1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
             android:visibility="gone"
             tools:visibility="visible" />
-
-        <include
-            android:id="@+id/wrapperStep2"
-            layout="@layout/layout_onboarding_step2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:visibility="gone" />
 
         <include
             android:id="@+id/wrapperStep3"
             layout="@layout/layout_onboarding_step3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
             android:visibility="gone" />
 
-        <include
-            android:id="@+id/wrapperStep4"
-            layout="@layout/layout_onboarding_step4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/button"
-            style="@style/ButtonNormal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_content"
-            android:layout_marginEnd="@dimen/padding_content"
-            android:layout_marginBottom="@dimen/padding_content"
-            android:text="@string/onboarding_button" />
     </LinearLayout>
 
 </ScrollView>

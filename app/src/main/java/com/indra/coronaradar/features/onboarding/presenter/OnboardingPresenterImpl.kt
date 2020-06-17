@@ -1,6 +1,5 @@
 package com.indra.coronaradar.features.onboarding.presenter
 
-import com.indra.coronaradar.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_3
 import com.indra.coronaradar.features.onboarding.protocols.OnboardingPresenter
 import com.indra.coronaradar.features.onboarding.protocols.OnboardingRouter
 import com.indra.coronaradar.features.onboarding.protocols.OnboardingView
@@ -26,26 +25,27 @@ class OnboardingPresenterImpl @Inject constructor(
             view.showPreviousPage()
     }
 
-    override fun onContinueButtonClick(page: Int, totalPages: Int) {
-        when (page) {
-            totalPages - 1 -> {
-                router.navigateToMain()
+    override fun onContinueButtonClick() {
+        view.showNextPage()
+    }
+
+    override fun onFinishButtonClick(activateRadar: Boolean) {
+        if (activateRadar) {
+            if (view.isBluetoothEnabled()) {
+                router.navigateToMain(true)
                 view.finish()
+            } else {
+                view.showBluetoothRequest()
             }
-            ONBOARDING_PAGE_INDEX_STEP_3 -> {
-                if (view.isBluetoothEnabled())
-                    view.showNextPage()
-                else
-                    view.showBluetoothRequest()
-            }
-            else -> {
-                view.showNextPage()
-            }
+        } else {
+            router.navigateToMain(false)
+            view.finish()
         }
     }
 
     override fun onBluetoothEnabled() {
-        view.showNextPage()
+        router.navigateToMain(true)
+        view.finish()
     }
 
 }

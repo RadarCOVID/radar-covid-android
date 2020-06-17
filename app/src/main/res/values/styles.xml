@@ -71,7 +71,7 @@
 
     <style name="TitleEnumPurple">
         <item name="android:fontFamily">@font/muli_light</item>
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/purple_9C</item>
     </style>
 
@@ -135,6 +135,7 @@
     </style>
 
     <style name="ButtonWhite" parent="Button">
+        <item name="android:minHeight">56dp</item>
         <item name="android:textColor">@color/black_26</item>
         <item name="android:background">@drawable/shape_rounded_corners_white</item>
     </style>

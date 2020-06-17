@@ -23,7 +23,7 @@
     <string name="legal_info_title">Información legal</string>
     <string name="legal_info_description">!Bienvenido a Covid Monitor!\nEn Covid Monitor somos conscientes de la relevancia que tiene proteger la privacidad de tus datos personales.\n\nPor favor, acepta nuestra política antes de continuar.</string>
     <string name="legal_info_terms_and_conditions">Términos y condiciones</string>
-    <string name="legal_info_check">Acepto la política de privacidad y doy mi consentimiento al tratamiento de mis datos personales</string>
+    <string name="legal_info_check">Acepto las <b><u>condiciones de uso</u></b> y la <b><u>política de privacidad</u></b></string>
     <string name="legal_info_check_warning">Recuerda que tienes que aceptar la política de privacidad para continuar</string>
     <string name="legal_info_button">Entendido</string>
 
@@ -42,9 +42,11 @@
     <string name="legal_info_p5_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
     <string name="legal_info_p6_title">6. Laboris nisi ut aliquip ex</string>
     <string name="legal_info_p6_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+    <string name="privacy_detail_title">Política de privacidad</string>
+    <string name="privacy_intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
 
     /********** Onboarding ************/
-    <string name="onboarding_title_step_1">Cuídate y cuida a los demás</string>
+    <string name="onboarding_title_step_1">Bienvenido a Corona Radar</string>
     <string name="onboarding_descrption_step1">Queremos suministrarte una herramienta para mantenerte seguro. Con esta aplicación conocerás si has estado expuesto al coronavirus, ayudándote a protegerte y proteger a los tuyos. Además, podrás cooperar con el resto de ciudadanos en el esfuerzo común de solucionar la situación lo más rápido posible: solo reporta si se te ha diagnosticado Covid, y la aplicación se encarga del resto.</string>
     <string name="onboarding_step1_message_1">Conoce en todo momento si te expones al coronavirus, ayudándote a protegerte y proteger a los demás.</string>
     <string name="onboarding_step1_message_2">Comunica de forma anónima tu diagnóstico Covid positivo.</string>
@@ -81,9 +83,9 @@
     <string name="onboarding_descrption_step4_t6">Si tienen fiebre, tos y dificultad para respirar, solicita atención médica. Llama con antelación.</string>
     <string name="onboarding_descrption_step4_t7">Sigue las instrucciones de tu organismo sanitario local.</string>
 
-    <string name="onboarding_button">Continuar</string>
-    <string name="onboarding_button_step_3">Activar rastreo Bluetooth</string>
-    <string name="onboarding_button_finish">Finalizar</string>
+    <string name="onboarding_button_continue">Continuar</string>
+    <string name="onboarding_button_activate">Activar rastreo Bluetooth</string>
+    <string name="onboarding_button_finish">Continuar sin activar</string>
 
     /********** Menu ************/
     <string name="title_home">Home</string>

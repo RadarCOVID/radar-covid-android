@@ -20,14 +20,16 @@ class HomePresenterImpl @Inject constructor(
 ) : HomePresenter {
 
 
-    override fun viewReady() {
+    override fun viewReady(activateRadar: Boolean) {
 
         if (onboardingCompletedUseCase.isOnBoardingCompleted()) {
             view.setRadarBlockChecked(enableExposureRadarUseCase.isRadarEnabled())
         } else {
             onboardingCompletedUseCase.setOnboardingCompleted(true)
-            onSwitchRadarClick(false)
+            if (activateRadar)
+                onSwitchRadarClick(false)
         }
+        
     }
 
     override fun onResume() {
