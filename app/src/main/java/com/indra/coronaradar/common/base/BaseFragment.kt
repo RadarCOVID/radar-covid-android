@@ -31,11 +31,15 @@ abstract class BaseFragment : DaggerFragment() {
         progressBar?.hide()
     }
 
-    fun showError(error: Throwable) {
-        showError(message = error.message ?: getString(R.string.error_generic))
+    fun showError(error: Throwable, finishOnDismiss: Boolean = false) {
+        showError(
+            title = null,
+            message = error.message ?: getString(R.string.error_generic),
+            finishOnDismiss = finishOnDismiss
+        )
     }
 
-    private fun showError(title: String? = null, message: String) {
+    private fun showError(title: String? = null, message: String, finishOnDismiss: Boolean) {
         if (activity?.isFinishing == false) {
             val builder: AlertDialog.Builder =
                 AlertDialog.Builder(context!!)
@@ -44,6 +48,8 @@ abstract class BaseFragment : DaggerFragment() {
             builder.setView(view)
             builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
                 dialog.dismiss()
+                if (finishOnDismiss)
+                    activity?.finish()
             }
             val dialog: AlertDialog = builder.create()
             dialog.show()

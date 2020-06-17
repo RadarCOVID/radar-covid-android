@@ -6,6 +6,6 @@ interface RequestView {
 
     fun hideLoading()
 
-    fun showError(error: Throwable)
+    fun showError(error: Throwable, finishOnDismiss: Boolean = false)
     
 }

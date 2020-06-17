@@ -8,7 +8,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.indra.contacttracing"
+        applicationId "com.indra.coronaradar"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
