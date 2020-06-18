@@ -14,11 +14,11 @@ class MultipleChoiceView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : SelectableGroupLinearLayout(context, attrs, defStyleAttr), AnswerView {
 
-    var question: QuestionViewModel.MultipleChoiceQuestion? = null
+    var question: QuestionViewModel? = null
         set(value) {
             field = value
             value?.let {
-                allowMultipleSelection = it.allowMultipleSelection
+                allowMultipleSelection = it.type == QuestionViewModel.Type.MULTIPLE_SELECTION
                 it.answers.forEach { answer ->
                     val multipleChoiceItemView = MultipleChoiceItemView(context)
                     addView(multipleChoiceItemView)
@@ -66,6 +66,6 @@ class MultipleChoiceView @JvmOverloads constructor(
     }
 
     override fun getSelectedAnswers(): QuestionViewModel =
-        question ?: QuestionViewModel.RateQuestion()
+        question ?: QuestionViewModel()
 
 }

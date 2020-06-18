@@ -7,7 +7,9 @@ data class Question(
     val answers: List<Answer> = emptyList(),
     val minValue: Int = 0,
     val maxValue: Int = 0,
-    val isMandatory: Boolean = false
+    val isMandatory: Boolean = false,
+    val parentQuestionId: Int? = -1,
+    val parentAnswerId: Int? = -1
 ) {
     enum class Type { RATE, SINGLE_SELECTION, MULTIPLE_SELECTION }
 }

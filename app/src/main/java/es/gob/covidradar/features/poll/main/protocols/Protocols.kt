@@ -25,7 +25,7 @@ interface PollPresenter {
 
     fun onBackButtonPressed()
 
-    fun onNextButtonClick(answers: QuestionViewModel)
+    fun onNextButtonClick(currentQuestion: QuestionViewModel)
 
     fun onContinueWithoutAnswer()
 

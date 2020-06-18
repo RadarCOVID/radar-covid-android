@@ -50,7 +50,7 @@ class QuestionFragment : BaseFragment(), QuestionView {
         arguments?.let {
             presenter.viewReady(
                 it.getBoolean(ARG_IS_LAST_QUESTION, false),
-                it.getParcelable(ARG_QUESTION) ?: QuestionViewModel.RateQuestion()
+                it.getParcelable(ARG_QUESTION) ?: QuestionViewModel()
             )
         }
         initViews()
@@ -61,14 +61,15 @@ class QuestionFragment : BaseFragment(), QuestionView {
     }
 
     override fun showQuestion(question: QuestionViewModel) {
-        when (question) {
-            is QuestionViewModel.RateQuestion -> {
+        when (question.type) {
+            QuestionViewModel.Type.RATE -> {
                 wrapperQuestion.addView(RateView(context!!).apply {
                     this.question = question
                 })
                 textViewQuestion.text = question.text
             }
-            is QuestionViewModel.MultipleChoiceQuestion -> {
+            QuestionViewModel.Type.SINGLE_SELECTION,
+            QuestionViewModel.Type.MULTIPLE_SELECTION -> {
                 wrapperQuestion.addView(MultipleChoiceView(context!!).apply {
                     this.question = question
                 })
