@@ -20,6 +20,8 @@ interface LegalInfoPresenter {
 
     fun onLegalTermsButtonClick()
 
+    fun onPrivacyPolicyButtonClick()
+
     fun onLegalTermsCheckedChange(checked: Boolean)
 
 }
@@ -27,5 +29,7 @@ interface LegalInfoPresenter {
 interface LegalInfoRouter {
 
     fun navigateToLegalInfoDetail()
+
+    fun navigateToPrivacyPolicy()
 
 }

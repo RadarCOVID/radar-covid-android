@@ -1,9 +1,8 @@
 package com.indra.coronaradar.features.onboarding.protocols
 
-const val ONBOARDING_PAGE_INDEX_LEGAL_INFO = 0
-const val ONBOARDING_PAGE_INDEX_STEP_1 = 1
-const val ONBOARDING_PAGE_INDEX_STEP_2 = 2
-const val ONBOARDING_PAGE_INDEX_STEP_3 = 3
+const val ONBOARDING_PAGE_INDEX_STEP_1 = 0
+const val ONBOARDING_PAGE_INDEX_STEP_2 = 1
+const val ONBOARDING_PAGE_INDEX_STEP_3 = 2
 
 interface OnboardingView {
 
@@ -29,7 +28,9 @@ interface OnboardingPresenter {
 
     fun onBackButtonPressed(isFirstItem: Boolean)
 
-    fun onContinueButtonClick(page: Int, totalPages: Int)
+    fun onContinueButtonClick()
+
+    fun onFinishButtonClick(activateRadar: Boolean)
 
     fun onBluetoothEnabled()
 
@@ -37,6 +38,6 @@ interface OnboardingPresenter {
 
 interface OnboardingRouter {
 
-    fun navigateToMain()
+    fun navigateToMain(activateRadar: Boolean)
 
 }

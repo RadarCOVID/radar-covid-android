@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="36dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="6dp"
             android:text="@string/onboarding_title_step_3"
             android:textColor="@color/black" />
 
@@ -43,14 +43,13 @@
             style="@style/TitleEnumPurple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
             android:text="@string/onboarding_step_3_instructions_title_1" />
 
         <TextView
             style="@style/TextRegular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/onboarding_step_3_instructions_detail_1"
             android:textColor="@color/black" />
 
@@ -58,14 +57,13 @@
             style="@style/TitleEnumPurple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
             android:text="@string/onboarding_step_3_instructions_title_2" />
 
         <TextView
             style="@style/TextRegular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/onboarding_step_3_instructions_detail_2"
             android:textColor="@color/black" />
 
@@ -73,7 +71,6 @@
             style="@style/TitleEnumPurple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
             android:text="@string/onboarding_step_3_instructions_title_3" />
 
         <TextView
@@ -84,32 +81,22 @@
             android:text="@string/onboarding_step_3_instructions_detail_3"
             android:textColor="@color/black" />
 
-
-        <LinearLayout
-            android:layout_width="64dp"
+        <Button
+            android:id="@+id/buttonActivate"
+            style="@style/ButtonNormal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginBottom="10dp"
+            android:text="@string/onboarding_button_activate" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_ellipse" />
+        <Button
+            android:id="@+id/buttonFinish"
+            style="@style/ButtonWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_content"
+            android:text="@string/onboarding_button_finish" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_ellipse" />
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_ellipse_selected" />
-
-        </LinearLayout>
     </LinearLayout>
+
 </FrameLayout>

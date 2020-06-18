@@ -53,7 +53,11 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingStepPageFra
     }
 
     override fun onContinueButtonClick() {
-        presenter.onContinueButtonClick(viewPager.currentItem, viewPager.adapter?.itemCount ?: 0)
+        presenter.onContinueButtonClick()
+    }
+
+    override fun onFinishButtonClick(activateRadar: Boolean) {
+        presenter.onFinishButtonClick(activateRadar)
     }
 
     override fun showPreviousPage() {
@@ -87,12 +91,12 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingStepPageFra
     private class OnboardingAdapter(fragmentActivity: FragmentActivity) :
         FragmentStateAdapter(fragmentActivity) {
 
-        private val totalPages = 4
+        private val totalPages = 3
 
         override fun getItemCount(): Int = totalPages
 
         override fun createFragment(position: Int): Fragment =
-            if (position == 0)
+            if (position == 1)
                 LegalInfoFragment.newInstance()
             else
                 OnboardingStepPageFragment.newInstance(position)

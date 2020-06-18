@@ -19,7 +19,13 @@ class HomeFragment : BaseFragment(), HomeView {
 
     companion object {
 
-        fun newInstance() = HomeFragment()
+        private const val ARG_ACTIVATE_RADAR = "arg_activate_radar"
+
+        fun newInstance(activateRadar: Boolean) = HomeFragment().apply {
+            arguments = Bundle().apply {
+                putBoolean(ARG_ACTIVATE_RADAR, activateRadar)
+            }
+        }
 
     }
 
@@ -37,7 +43,8 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        presenter.viewReady()
+
+        presenter.viewReady(arguments?.getBoolean(ARG_ACTIVATE_RADAR) ?: false)
     }
 
     override fun onResume() {

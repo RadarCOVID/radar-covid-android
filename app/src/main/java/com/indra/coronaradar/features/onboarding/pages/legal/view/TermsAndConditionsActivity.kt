@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.indra.coronaradar.R
 import kotlinx.android.synthetic.main.activity_legal_info_detail.*
 
-class LegalInfoDetailActivity : AppCompatActivity() {
+class TermsAndConditionsActivity : AppCompatActivity() {
 
     companion object {
 
@@ -18,7 +18,7 @@ class LegalInfoDetailActivity : AppCompatActivity() {
             fragment.startActivityForResult(
                 Intent(
                     fragment.context!!,
-                    LegalInfoDetailActivity::class.java
+                    TermsAndConditionsActivity::class.java
                 ), REQUEST_CODE_LEGAL_TERMS
             )
         }
@@ -33,6 +33,7 @@ class LegalInfoDetailActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
+        imageButtonClose.setOnClickListener { finish() }
         buttonAccept.setOnClickListener {
             setResult(Activity.RESULT_OK)
             finish()

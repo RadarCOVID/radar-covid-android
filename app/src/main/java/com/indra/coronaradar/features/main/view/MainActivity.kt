@@ -1,5 +1,7 @@
 package com.indra.coronaradar.features.main.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.indra.coronaradar.R
 import com.indra.coronaradar.common.base.BaseActivity
@@ -12,6 +14,17 @@ import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainView {
 
+    companion object {
+
+        const val EXTRA_ACTIVATE_RADAR = "extra_activate_radar"
+
+        fun open(context: Context, activateRadar: Boolean) =
+            context.startActivity(Intent(context, MainActivity::class.java).apply {
+                putExtra(EXTRA_ACTIVATE_RADAR, activateRadar)
+            })
+
+    }
+
     @Inject
     lateinit var presenter: MainPresenter
 
@@ -23,7 +36,8 @@ class MainActivity : BaseActivity(), MainView {
         setContentView(R.layout.activity_main)
 
         initViews()
-        presenter.viewReady()
+
+        presenter.viewReady(intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false))
     }
 
     override fun onResume() {

@@ -12,16 +12,10 @@ class MainPresenterImpl @Inject constructor(
     private val syncExposureDataUseCase: SyncExposureDataUseCase
 ) : MainPresenter {
 
-    override fun viewReady() {
-//        view.showLoading()
-//        exampleUseCase.getExample(onSuccess = {
-//            view.hideLoading()
-//            Log.d("Test", it)
-//        }, onError = {
-//            view.hideLoading()
-//            view.showError(it)
-//        })
-        router.navigateToHome()
+    override fun viewReady(activateRadar: Boolean) {
+
+        router.navigateToHome(activateRadar)
+
     }
 
     override fun onResume() {
@@ -29,7 +23,7 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onHomeButtonClick() {
-        router.navigateToHome()
+        router.navigateToHome(false)
     }
 
     override fun onHealthButtonClick() {

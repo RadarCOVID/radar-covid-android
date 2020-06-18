@@ -22,4 +22,9 @@
         <attr name="dropdownText" format="string" localization="suggested" />
     </declare-styleable>
 
+    <declare-styleable name="CircleStepIndicator">
+        <attr name="currentStep" format="integer" />
+        <attr name="maxSteps" format="integer" />
+    </declare-styleable>
+
 </resources>

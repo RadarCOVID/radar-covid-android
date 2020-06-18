@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="com.indra.coronaradar.features.onboarding.pages.legal.view.LegalInfoDetailActivity">
+    tools:context="com.indra.coronaradar.features.onboarding.pages.legal.view.TermsAndConditionsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,17 +13,14 @@
         android:orientation="vertical"
         android:padding="@dimen/padding_content">
 
-        <TextView
-            android:id="@+id/textViewTitleSmall"
-            style="@style/TitleXSmall"
+        <ImageView
+            android:id="@+id/imageButtonClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/legal_info_title_small"
-            android:textColor="@color/gray"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="end"
+            android:layout_marginBottom="30dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_close" />
 
         <TextView
             android:id="@+id/textViewDropdownTitle"
@@ -33,8 +30,7 @@
             android:layout_marginBottom="20dp"
             android:paddingBottom="13dp"
             android:text="@string/legal_info_detail_title"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewTitleSmall" />
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <TextView
             style="@style/TextNormal"
@@ -92,7 +88,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="13dp"
-            android:text="@string/accept" />
+            android:text="@string/accept"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/buttonCancel"
@@ -100,7 +97,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="@string/back" />
+            android:text="@string/back"
+            android:visibility="gone" />
 
     </LinearLayout>
 

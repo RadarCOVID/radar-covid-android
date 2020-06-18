@@ -1,10 +1,12 @@
 package com.indra.coronaradar.common.view
 
 import android.content.Context
+import android.text.method.LinkMovementMethod
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.CompoundButton
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.indra.coronaradar.R
 import kotlinx.android.synthetic.main.view_cmcheckbox.view.*
 
@@ -26,11 +28,16 @@ class CMCheckBox @JvmOverloads constructor(
         val text = typedArray.getText(R.styleable.DottedTextView_android_text)
         typedArray.recycle()
         textView.text = text
-        textView.setOnClickListener { checkBox.isChecked = !checkBox.isChecked }
     }
 
     fun setOnCheckedChangeListener(listener: CompoundButton.OnCheckedChangeListener?) {
         checkBox.setOnCheckedChangeListener(listener)
+    }
+
+    fun setText(text: CharSequence?) {
+        textView.text = text
+        textView.movementMethod = LinkMovementMethod.getInstance()
+        textView.highlightColor = ContextCompat.getColor(context, R.color.black_28)
     }
 
 }

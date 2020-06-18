@@ -22,6 +22,10 @@ class LegalInfoPresenterImpl @Inject constructor(
         router.navigateToLegalInfoDetail()
     }
 
+    override fun onPrivacyPolicyButtonClick() {
+        router.navigateToPrivacyPolicy()
+    }
+
     override fun onLegalTermsCheckedChange(checked: Boolean) {
         if (checked)
             view.hideCheckWarning()
