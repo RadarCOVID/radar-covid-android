@@ -16,10 +16,15 @@ class QuestionsDataMapper @Inject constructor() {
             type = when (questionType) {
                 QUESTION_TYPE_RATE -> Question.Type.RATE
                 QUESTION_TYPE_MULTIPLE_SELECTION -> Question.Type.MULTIPLE_SELECTION
+                QUESTION_TYPE_NUMBER -> Question.Type.FIELD
                 else -> Question.Type.SINGLE_SELECTION
             },
             question = question ?: "",
-            answers = transform(options),
+            answers =
+            if (questionType == QUESTION_TYPE_NUMBER)
+                arrayListOf(Answer())
+            else
+                transform(options),
             minValue = minValue ?: 0,
             maxValue = maxValue ?: 0,
             isMandatory = mandatory ?: false,

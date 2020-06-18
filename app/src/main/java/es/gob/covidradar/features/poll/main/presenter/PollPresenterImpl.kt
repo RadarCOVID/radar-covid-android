@@ -81,7 +81,7 @@ class PollPresenterImpl @Inject constructor(
             val childQuestion = getChildQuestion(currentQuestion)
             if (childQuestion != null)
                 view.showQuestion(
-                    false,
+                    currentQuestionIndex == parentQuestions.size - 1,
                     childQuestion
                 )
             else

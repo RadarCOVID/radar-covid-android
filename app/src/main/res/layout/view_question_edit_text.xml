@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/editTextQuestion"
+    style="@style/TextNormal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_rounded_corners_white"
+    android:gravity="top"
+    android:inputType="textMultiLine"
+    android:minHeight="340dp" />

@@ -28,7 +28,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", 'API_URL', '"https://d1p5vqzn33zen9.cloudfront.net"'
+            buildConfigField "String", 'API_URL', '"https://d3d0clxg4q92wk.cloudfront.net"'
 
             buildConfigField 'String', 'CONFIG_URL', '"https://www.pt-d.bfs.admin.ch/"'
             buildConfigField 'String', 'BUCKET_URL', '"https://www.pt-d.bfs.admin.ch/"'
@@ -40,7 +40,7 @@ android {
 
             signingConfig signingConfigs.release
 
-            buildConfigField "String", 'API_URL', '"https://d1p5vqzn33zen9.cloudfront.net"'
+            buildConfigField "String", 'API_URL', '"https://d3d0clxg4q92wk.cloudfront.net"'
 
             buildConfigField 'String', 'CONFIG_URL', '"https://www.pt-d.bfs.admin.ch/"'
             buildConfigField 'String', 'BUCKET_URL', '"https://www.pt-d.bfs.admin.ch/"'

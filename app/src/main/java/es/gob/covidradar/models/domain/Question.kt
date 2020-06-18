@@ -11,5 +11,5 @@ data class Question(
     val parentQuestionId: Int? = -1,
     val parentAnswerId: Int? = -1
 ) {
-    enum class Type { RATE, SINGLE_SELECTION, MULTIPLE_SELECTION }
+    enum class Type { RATE, SINGLE_SELECTION, MULTIPLE_SELECTION, FIELD }
 }

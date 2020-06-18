@@ -15,6 +15,7 @@ class QuestionViewModelFactory @Inject constructor() {
             Question.Type.RATE -> QuestionViewModel.Type.RATE
             Question.Type.SINGLE_SELECTION -> QuestionViewModel.Type.SINGLE_SELECTION
             Question.Type.MULTIPLE_SELECTION -> QuestionViewModel.Type.MULTIPLE_SELECTION
+            Question.Type.FIELD -> QuestionViewModel.Type.FIELD
         },
         text = question.question,
         answers = when (question.type) {
@@ -25,7 +26,9 @@ class QuestionViewModelFactory @Inject constructor() {
             else -> createAnswerListViewModel(question.answers)
         },
         parentQuestionId = question.parentQuestionId ?: -1,
-        parentAnswerId = question.parentAnswerId ?: -1
+        parentAnswerId = question.parentAnswerId ?: -1,
+        minValue = question.minValue,
+        maxValue = question.maxValue
     )
 
     private fun createAnswerListViewModel(minValue: Int, maxValue: Int): List<AnswerViewModel> {

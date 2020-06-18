@@ -10,9 +10,11 @@ class QuestionViewModel(
     var text: String = "",
     var answers: List<AnswerViewModel> = emptyList(),
     var parentQuestionId: Int = -1,
-    var parentAnswerId: Int = -1
+    var parentAnswerId: Int = -1,
+    var minValue: Int = -1,
+    var maxValue: Int = -1
 ) : Parcelable {
-    enum class Type { RATE, SINGLE_SELECTION, MULTIPLE_SELECTION }
+    enum class Type { RATE, SINGLE_SELECTION, MULTIPLE_SELECTION, FIELD }
 
     fun isAnswered(): Boolean = answers.any { it.isSelected }
 
