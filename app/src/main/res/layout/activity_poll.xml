@@ -34,7 +34,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.indra.coronaradar.common.view.StepIndicator
+            <es.gob.covidradar.common.view.StepIndicator
                 android:id="@+id/stepIndicator"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

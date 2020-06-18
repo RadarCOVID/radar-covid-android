@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="com.indra.coronaradar.features.onboarding.pages.legal.view.TermsAndConditionsActivity">
+    tools:context="es.gob.covidradar.features.onboarding.pages.legal.view.TermsAndConditionsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
