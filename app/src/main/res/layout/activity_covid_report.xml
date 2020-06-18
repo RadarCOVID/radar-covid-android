@@ -114,7 +114,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.indra.coronaradar.common.view.CodeEditText
+                <es.gob.covidradar.common.view.CodeEditText
                     android:id="@+id/codeEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

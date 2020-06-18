@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="com.indra.coronaradar.features.onboarding.pages.legal.view.TermsAndConditionsActivity">
+    tools:context="es.gob.covidradar.features.onboarding.pages.legal.view.TermsAndConditionsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,42 +40,42 @@
             android:text="@string/legal_info_intro"
             android:textColor="@color/black_26" />
 
-        <com.indra.coronaradar.common.view.DropdownView
+        <es.gob.covidradar.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             app:dropdownText="@string/legal_info_p1_content"
             app:title="@string/legal_info_p1_title" />
 
-        <com.indra.coronaradar.common.view.DropdownView
+        <es.gob.covidradar.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             app:dropdownText="@string/legal_info_p2_content"
             app:title="@string/legal_info_p2_title" />
 
-        <com.indra.coronaradar.common.view.DropdownView
+        <es.gob.covidradar.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             app:dropdownText="@string/legal_info_p3_content"
             app:title="@string/legal_info_p3_title" />
 
-        <com.indra.coronaradar.common.view.DropdownView
+        <es.gob.covidradar.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             app:dropdownText="@string/legal_info_p4_content"
             app:title="@string/legal_info_p4_title" />
 
-        <com.indra.coronaradar.common.view.DropdownView
+        <es.gob.covidradar.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             app:dropdownText="@string/legal_info_p5_content"
             app:title="@string/legal_info_p5_title" />
 
-        <com.indra.coronaradar.common.view.DropdownView
+        <es.gob.covidradar.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
