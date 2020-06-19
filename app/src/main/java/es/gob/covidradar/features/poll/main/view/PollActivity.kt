@@ -39,7 +39,6 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         presenter.onBackButtonPressed()
     }
 
@@ -55,16 +54,19 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
         stepIndicator.setProgress(currentQuestion, totalQuestions)
     }
 
+    override fun getCurrentQuestion(): QuestionViewModel =
+        (supportFragmentManager.findFragmentByTag(QuestionFragment.TAG) as QuestionFragment).getCurrentQuestion()
+
     override fun showQuestion(
         isLastQuestion: Boolean,
         question: QuestionViewModel
     ) {
         supportFragmentManager.beginTransaction()
-            .add(R.id.wrapperQuestion, QuestionFragment.newInstance(isLastQuestion, question))
-            .apply {
-                if (wrapperQuestion.childCount != 0)
-                    addToBackStack(QuestionFragment.TAG)
-            }.commit()
+            .add(
+                R.id.wrapperQuestion,
+                QuestionFragment.newInstance(isLastQuestion, question),
+                QuestionFragment.TAG
+            ).commit()
     }
 
     override fun showSkipQuestionDialog() {

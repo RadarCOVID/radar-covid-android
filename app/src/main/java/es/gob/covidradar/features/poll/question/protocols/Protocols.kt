@@ -10,7 +10,7 @@ interface QuestionView {
 
     fun notifyButtonNextClick(answers: QuestionViewModel)
 
-    fun getSelectedAnswers(): QuestionViewModel
+    fun getCurrentQuestion(): QuestionViewModel
 
 }
 

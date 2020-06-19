@@ -11,6 +11,8 @@ interface PollView : RequestView {
 
     fun showPollProgress(currentQuestion: Int, totalQuestions: Int)
 
+    fun getCurrentQuestion(): QuestionViewModel
+
     fun showQuestion(isLastQuestion: Boolean, question: QuestionViewModel)
 
     fun showSkipQuestionDialog()
