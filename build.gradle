@@ -29,7 +29,7 @@ ext {
     retrofitVersion = '2.9.0'
     coroutinesVersion = '1.3.7'
     glideVersion = '4.11.0'
-    dp3tSdkVersion = '0.5.2'
+    dp3tSdkVersion = '1.0.0'
 }
 
 task clean(type: Delete) {

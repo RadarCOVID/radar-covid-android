@@ -2,8 +2,14 @@ package es.gob.radarcovid.features.home.view
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.app.Activity
+import android.content.Context.POWER_SERVICE
+import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
+import android.os.PowerManager
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -23,6 +29,8 @@ class HomeFragment : BaseFragment(), HomeView {
 
     companion object {
 
+        private const val REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS = 1
+
         private const val ARG_ACTIVATE_RADAR = "arg_activate_radar"
 
         fun newInstance(activateRadar: Boolean) = HomeFragment().apply {
@@ -35,6 +43,12 @@ class HomeFragment : BaseFragment(), HomeView {
 
     @Inject
     lateinit var presenter: HomePresenter
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS && resultCode == Activity.RESULT_OK)
+            presenter.onBatteryOptimizationsIgnored()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -143,6 +157,25 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun setRadarBlockChecked(isChecked: Boolean) {
         switchRadar.isChecked = isChecked
         showRadarBlockEnabled(isChecked)
+    }
+
+    override fun areBatteryOptimizationsIgnored(): Boolean {
+        (context!!.getSystemService(POWER_SERVICE) as PowerManager).let { powerManager ->
+            return powerManager.isIgnoringBatteryOptimizations(context!!.packageName)
+        }
+    }
+
+    override fun requestIgnoreBatteryOptimizations() {
+        (context!!.getSystemService(POWER_SERVICE) as PowerManager?)?.let {
+            if (!it.isIgnoringBatteryOptimizations(activity!!.packageName)) {
+
+                startActivityForResult(Intent().apply {
+                    action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+                    //action = Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS
+                    data = Uri.parse("package:${activity!!.packageName}")
+                }, REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS)
+            }
+        }
     }
 
     private fun showRadarBlockEnabled(enabled: Boolean) {

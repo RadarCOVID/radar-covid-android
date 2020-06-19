@@ -51,26 +51,47 @@ class HomePresenterImpl @Inject constructor(
             view.setRadarBlockChecked(false)
             enableExposureRadarUseCase.setRadarDisabled()
         } else {
-            view.showLoading()
+            if (view.areBatteryOptimizationsIgnored())
+                onBatteryOptimizationsIgnored()
+            else
+                view.requestIgnoreBatteryOptimizations()
 //            Handler().postDelayed({
 //                view.setRadarBlockChecked(true)
 //                view.hideLoading()
 //            }, 2000)
-            enableExposureRadarUseCase.setRadarEnabled(
-                onSuccess = {
-                    view.hideLoading()
-                    view.setRadarBlockChecked(true)
-                },
-                onError = {
-                    view.setRadarBlockChecked(false)
-                    view.hideLoading()
-                    view.showError(it)
-                },
-                onCancelled = {
-                    view.setRadarBlockChecked(false)
-                    view.hideLoading()
-                })
+//            enableExposureRadarUseCase.setRadarEnabled(
+//                onSuccess = {
+//                    view.hideLoading()
+//                    view.setRadarBlockChecked(true)
+//                },
+//                onError = {
+//                    view.setRadarBlockChecked(false)
+//                    view.hideLoading()
+//                    view.showError(it)
+//                },
+//                onCancelled = {
+//                    view.setRadarBlockChecked(false)
+//                    view.hideLoading()
+//                })
         }
+    }
+
+    override fun onBatteryOptimizationsIgnored() {
+        view.showLoading()
+        enableExposureRadarUseCase.setRadarEnabled(
+            onSuccess = {
+                view.hideLoading()
+                view.setRadarBlockChecked(true)
+            },
+            onError = {
+                view.setRadarBlockChecked(false)
+                view.hideLoading()
+                view.showError(it)
+            },
+            onCancelled = {
+                view.setRadarBlockChecked(false)
+                view.hideLoading()
+            })
     }
 
     private fun showExposureInfo(exposureInfo: ExposureInfo) {

@@ -11,6 +11,7 @@ import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainView
 import es.gob.radarcovid.features.poll.main.view.PollActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainView {
@@ -31,6 +32,7 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        DP3T.onActivityResult(this, requestCode, resultCode, data)
         if (requestCode == PollActivity.REQUEST_CODE_POLL_COMPLETED && resultCode == Activity.RESULT_OK)
             presenter.onPollCompleted()
     }

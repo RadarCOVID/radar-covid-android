@@ -16,6 +16,10 @@ interface HomeView : RequestView {
 
     fun setRadarBlockChecked(isChecked: Boolean)
 
+    fun areBatteryOptimizationsIgnored():Boolean
+
+    fun requestIgnoreBatteryOptimizations()
+
 }
 
 interface HomePresenter {
@@ -29,6 +33,8 @@ interface HomePresenter {
     fun onReportButtonClick()
 
     fun onSwitchRadarClick(currentlyEnabled: Boolean)
+
+    fun onBatteryOptimizationsIgnored()
 
 }
 
