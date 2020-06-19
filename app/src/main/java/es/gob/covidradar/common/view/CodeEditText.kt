@@ -20,6 +20,8 @@ class CodeEditText @JvmOverloads constructor(
 
     private var currentFocusIndex: Int = 0
 
+    var textChangedListener: ((String) -> Unit)? = null
+
     init {
         LayoutInflater.from(context).inflate(R.layout.view_code_edittext, this)
         editTexts = arrayOf(
@@ -47,7 +49,7 @@ class CodeEditText @JvmOverloads constructor(
                         if (text.length == 1)
                             if (index < editTexts.size - 1)
                                 editTexts[++currentFocusIndex].requestFocus()
-
+                        textChangedListener?.invoke(getText())
                     }
                 }
 
@@ -67,7 +69,7 @@ class CodeEditText @JvmOverloads constructor(
 
             editText.onDeleteButtonClickListener = {
                 if (index > 0) {
-                    editTexts[index + -1].apply { setText("") }.requestFocus()
+                    editTexts[index - 1].apply { setText("") }.requestFocus()
                     currentFocusIndex--
                 }
             }
@@ -88,6 +90,6 @@ class CodeEditText @JvmOverloads constructor(
         )
     }
 
-    public fun getText(): String = editTexts.joinToString { it.text.toString() }
+    fun getText(): String = editTexts.map { it.text }.joinToString("")
 
 }

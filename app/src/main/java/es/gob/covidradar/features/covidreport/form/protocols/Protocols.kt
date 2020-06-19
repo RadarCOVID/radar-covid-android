@@ -8,6 +8,8 @@ interface CovidReportView : RequestView {
 
     fun getReportCode(): String
 
+    fun setButtonSendEnabled(enabled: Boolean)
+
     fun finish()
 
 }
@@ -19,6 +21,8 @@ interface CovidReportPresenter {
     fun onBackPressed()
 
     fun onExitConfirmed()
+
+    fun onCodeChanged(code: String)
 
     fun onSendButtonClick()
 
