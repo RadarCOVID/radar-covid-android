@@ -35,6 +35,9 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
     private fun initViews() {
         buttonSend.setOnClickListener { presenter.onSendButtonClick() }
+        codeEditText.textChangedListener = {
+            presenter.onCodeChanged(it)
+        }
     }
 
     override fun onBackPressed() {
@@ -56,5 +59,9 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun getReportCode(): String = codeEditText.getText()
+
+    override fun setButtonSendEnabled(enabled: Boolean) {
+        buttonSend.isEnabled = enabled
+    }
 
 }
