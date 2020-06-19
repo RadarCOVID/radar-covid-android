@@ -1,5 +1,7 @@
 package es.gob.covidradar.common.di.module
 
+import dagger.Module
+import dagger.android.ContributesAndroidInjector
 import es.gob.covidradar.common.di.scope.PerActivity
 import es.gob.covidradar.features.covidreport.form.di.CovidReportModule
 import es.gob.covidradar.features.covidreport.form.view.CovidReportActivity
@@ -9,12 +11,12 @@ import es.gob.covidradar.features.main.di.MainModule
 import es.gob.covidradar.features.main.view.MainActivity
 import es.gob.covidradar.features.onboarding.di.OnboardingModule
 import es.gob.covidradar.features.onboarding.view.OnboardingActivity
+import es.gob.covidradar.features.poll.completed.di.PollCompletedModule
+import es.gob.covidradar.features.poll.completed.view.PollCompletedActivity
 import es.gob.covidradar.features.poll.main.di.PollModule
 import es.gob.covidradar.features.poll.main.view.PollActivity
 import es.gob.covidradar.features.splash.di.SplashModule
 import es.gob.covidradar.features.splash.view.SplashActivity
-import dagger.Module
-import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivitiesModule {
@@ -42,5 +44,9 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [PollModule::class, PollFragmentsModule::class])
     abstract fun bindsPollActivity(): PollActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [PollCompletedModule::class])
+    abstract fun bindsPollCompletedActivity(): PollCompletedActivity
 
 }

@@ -2,6 +2,7 @@ package es.gob.covidradar.datamanager.repository
 
 import es.gob.covidradar.common.base.BaseRepository
 import es.gob.covidradar.datamanager.api.ApiInterface
+import es.gob.covidradar.models.request.RequestPostAnswers
 import es.gob.covidradar.models.response.ResponseQuestions
 import es.gob.covidradar.models.response.ResponseSettings
 import es.gob.covidradar.models.response.ResponseUuid
@@ -21,6 +22,13 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
 
     override fun getQuestions(): Either<Throwable, ResponseQuestions> = callService {
         apiInterface.getQuestions()
+    }
+
+    override fun postAnswers(
+        uuid: String,
+        requestPostAnswers: RequestPostAnswers
+    ): Either<Throwable, Unit> = callService {
+        apiInterface.postAnswers(uuid, requestPostAnswers)
     }
 
 }

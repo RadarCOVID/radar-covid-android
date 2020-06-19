@@ -8,7 +8,12 @@ import javax.inject.Inject
 class QuestionsDataMapper @Inject constructor() {
 
     fun transform(responseQuestions: ResponseQuestions): List<Question> =
-        responseQuestions.sortedBy { it.order }.map { transform(it) }
+        responseQuestions.sortedBy { it.order }.filter {
+            when (it.questionType) {
+                QUESTION_TYPE_TEXT, QUESTION_TYPE_NUMBER -> false
+                else -> true
+            }
+        }.map { transform(it) }
 
     fun transform(responseQuestion: ResponseQuestion): Question = with(responseQuestion) {
         Question(
