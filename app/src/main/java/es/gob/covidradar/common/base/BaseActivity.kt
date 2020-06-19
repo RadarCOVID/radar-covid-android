@@ -2,9 +2,9 @@ package es.gob.covidradar.common.base
 
 import android.view.LayoutInflater
 import android.widget.TextView
+import dagger.android.support.DaggerAppCompatActivity
 import es.gob.covidradar.R
 import es.gob.covidradar.common.view.TransparentProgressDialog
-import dagger.android.support.DaggerAppCompatActivity
 
 abstract class BaseActivity : DaggerAppCompatActivity() {
 
@@ -16,7 +16,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     }
 
     fun showLoading() {
-        hideLoading()
+        progressBar?.dismiss()
         progressBar = TransparentProgressDialog(this)
         progressBar?.setCanceledOnTouchOutside(false)
         progressBar?.setCancelable(false)
@@ -31,7 +31,11 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     }
 
     fun showError(error: Throwable, finishOnDismiss: Boolean = false) {
-        showError(title = null, message = error.message ?: getString(R.string.error_generic), finishOnDismiss = finishOnDismiss)
+        showError(
+            title = null,
+            message = error.message ?: getString(R.string.error_generic),
+            finishOnDismiss = finishOnDismiss
+        )
     }
 
     private fun showError(title: String? = null, message: String, finishOnDismiss: Boolean) {

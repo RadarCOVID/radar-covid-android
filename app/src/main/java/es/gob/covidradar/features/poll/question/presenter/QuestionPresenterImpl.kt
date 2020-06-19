@@ -18,4 +18,17 @@ class QuestionPresenterImpl @Inject constructor(private val view: QuestionView) 
         view.notifyButtonNextClick(view.getSelectedAnswers())
     }
 
+//    private fun validate(question: QuestionViewModel): Boolean {
+//
+//        when(question.type) {
+//            QuestionViewModel.Type.RATE -> TODO()
+//            QuestionViewModel.Type.SINGLE_SELECTION -> TODO()
+//            QuestionViewModel.Type.MULTIPLE_SELECTION -> TODO()
+//            QuestionViewModel.Type.FIELD -> {
+//
+//            }
+//        }
+//        return true
+//    }
+
 }

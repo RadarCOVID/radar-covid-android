@@ -3,27 +3,23 @@ package es.gob.covidradar.common.viewmodel
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
+@Parcelize
+class QuestionViewModel(
+    var id: Int = -1,
+    val type: Type = Type.RATE,
+    var text: String = "",
+    var answers: List<AnswerViewModel> = emptyList(),
+    var parentQuestionId: Int = -1,
+    var parentAnswerId: Int = -1,
+    var minValue: Int = -1,
+    var maxValue: Int = -1
+) : Parcelable {
+    enum class Type { RATE, SINGLE_SELECTION, MULTIPLE_SELECTION, FIELD }
 
-sealed class QuestionViewModel : Parcelable, Cloneable {
+    fun isAnswered(): Boolean = answers.any { it.isSelected }
 
-    @Parcelize
-    class RateQuestion(
-        var id: Int = -1,
-        var text: String = "",
-        var answers: List<AnswerViewModel> = emptyList()
-    ) : QuestionViewModel()
+    fun isParentQuestion(): Boolean = parentAnswerId == -1
 
-    @Parcelize
-    class MultipleChoiceQuestion(
-        var id: Int = -1,
-        var text: String = "",
-        var answers: List<AnswerViewModel> = emptyList(),
-        var allowMultipleSelection: Boolean = false
-    ) : QuestionViewModel()
-
-    fun isAnswered(): Boolean = when (this) {
-        is RateQuestion -> answers.any { it.isSelected }
-        is MultipleChoiceQuestion -> answers.any { it.isSelected }
-    }
+    fun getAnswerById(answerId: Int): AnswerViewModel? = answers.find { it.id == answerId }
 
 }

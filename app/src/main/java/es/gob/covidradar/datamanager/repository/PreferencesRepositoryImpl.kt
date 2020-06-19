@@ -11,6 +11,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val PREFERENCES_NAME = "app_preferences"
         private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
         private const val KEY_UUID = "uuid"
+        private const val KEY_POLL_COMPLETED = "poll_completed"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -33,6 +34,16 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         preferences
             .edit()
             .putString(KEY_UUID, uuid)
+            .apply()
+    }
+
+    override fun isPollCompleted(): Boolean =
+        preferences.getBoolean(KEY_POLL_COMPLETED, false)
+
+    override fun setPollCompleted(pollCompleted: Boolean) {
+        preferences
+            .edit()
+            .putBoolean(KEY_POLL_COMPLETED, pollCompleted)
             .apply()
     }
 

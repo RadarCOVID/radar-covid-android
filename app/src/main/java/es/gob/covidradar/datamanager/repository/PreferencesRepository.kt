@@ -10,4 +10,8 @@ interface PreferencesRepository {
 
     fun setUuid(uuid: String)
 
+    fun isPollCompleted(): Boolean
+
+    fun setPollCompleted(pollCompleted: Boolean)
+
 }

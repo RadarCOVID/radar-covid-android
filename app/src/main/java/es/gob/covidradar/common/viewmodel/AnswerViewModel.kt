@@ -4,5 +4,5 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class AnswerViewModel(val id: Int, val text: String, var isSelected: Boolean = false) :
+data class AnswerViewModel(val id: Int, var text: String, var isSelected: Boolean = false) :
     Parcelable

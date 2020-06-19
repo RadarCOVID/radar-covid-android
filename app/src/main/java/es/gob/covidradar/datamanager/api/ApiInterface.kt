@@ -1,5 +1,6 @@
 package es.gob.covidradar.datamanager.api
 
+import es.gob.covidradar.models.request.RequestPostAnswers
 import es.gob.covidradar.models.response.ResponseQuestions
 import es.gob.covidradar.models.response.ResponseSettings
 import es.gob.covidradar.models.response.ResponseUuid
@@ -32,7 +33,7 @@ interface ApiInterface {
     @POST("/questionnaire/answers")
     fun postAnswers(
         @Header(SEDIA_USER_TOKEN) uuid: String,
-        @Body body: HashMap<String, String>
-    ): Call<ResponseQuestions>
+        @Body body: RequestPostAnswers
+    ): Call<Unit>
 
 }

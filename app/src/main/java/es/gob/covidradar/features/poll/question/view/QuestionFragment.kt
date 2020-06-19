@@ -8,6 +8,7 @@ import es.gob.covidradar.R
 import es.gob.covidradar.common.base.BaseFragment
 import es.gob.covidradar.common.view.AnswerView
 import es.gob.covidradar.common.view.MultipleChoiceView
+import es.gob.covidradar.common.view.QuestionEditText
 import es.gob.covidradar.common.view.RateView
 import es.gob.covidradar.common.viewmodel.QuestionViewModel
 import es.gob.covidradar.features.poll.question.protocols.QuestionPresenter
@@ -50,7 +51,7 @@ class QuestionFragment : BaseFragment(), QuestionView {
         arguments?.let {
             presenter.viewReady(
                 it.getBoolean(ARG_IS_LAST_QUESTION, false),
-                it.getParcelable(ARG_QUESTION) ?: QuestionViewModel.RateQuestion()
+                it.getParcelable(ARG_QUESTION) ?: QuestionViewModel()
             )
         }
         initViews()
@@ -61,15 +62,22 @@ class QuestionFragment : BaseFragment(), QuestionView {
     }
 
     override fun showQuestion(question: QuestionViewModel) {
-        when (question) {
-            is QuestionViewModel.RateQuestion -> {
+        when (question.type) {
+            QuestionViewModel.Type.RATE -> {
                 wrapperQuestion.addView(RateView(context!!).apply {
                     this.question = question
                 })
                 textViewQuestion.text = question.text
             }
-            is QuestionViewModel.MultipleChoiceQuestion -> {
+            QuestionViewModel.Type.SINGLE_SELECTION,
+            QuestionViewModel.Type.MULTIPLE_SELECTION -> {
                 wrapperQuestion.addView(MultipleChoiceView(context!!).apply {
+                    this.question = question
+                })
+                textViewQuestion.text = question.text
+            }
+            QuestionViewModel.Type.FIELD -> {
+                wrapperQuestion.addView(QuestionEditText(context!!).apply {
                     this.question = question
                 })
                 textViewQuestion.text = question.text

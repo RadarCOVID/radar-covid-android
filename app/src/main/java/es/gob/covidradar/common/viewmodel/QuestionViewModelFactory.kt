@@ -9,25 +9,27 @@ class QuestionViewModelFactory @Inject constructor() {
     fun createQuestionsListViewModel(questions: List<Question>): List<QuestionViewModel> =
         questions.map { createQuestionViewModel(it) }
 
-    private fun createQuestionViewModel(question: Question): QuestionViewModel =
-        when (question.type) {
-            Question.Type.RATE -> QuestionViewModel.RateQuestion(
-                question.id, question.question,
-                createAnswerListViewModel(question.minValue, question.maxValue)
+    private fun createQuestionViewModel(question: Question): QuestionViewModel = QuestionViewModel(
+        id = question.id,
+        type = when (question.type) {
+            Question.Type.RATE -> QuestionViewModel.Type.RATE
+            Question.Type.SINGLE_SELECTION -> QuestionViewModel.Type.SINGLE_SELECTION
+            Question.Type.MULTIPLE_SELECTION -> QuestionViewModel.Type.MULTIPLE_SELECTION
+            Question.Type.FIELD -> QuestionViewModel.Type.FIELD
+        },
+        text = question.question,
+        answers = when (question.type) {
+            Question.Type.RATE -> createAnswerListViewModel(
+                question.minValue,
+                question.maxValue
             )
-            Question.Type.SINGLE_SELECTION -> QuestionViewModel.MultipleChoiceQuestion(
-                question.id,
-                question.question,
-                createAnswerListViewModel(question.answers),
-                false
-            )
-            Question.Type.MULTIPLE_SELECTION -> QuestionViewModel.MultipleChoiceQuestion(
-                question.id,
-                question.question,
-                createAnswerListViewModel(question.answers),
-                true
-            )
-        }
+            else -> createAnswerListViewModel(question.answers)
+        },
+        parentQuestionId = question.parentQuestionId ?: -1,
+        parentAnswerId = question.parentAnswerId ?: -1,
+        minValue = question.minValue,
+        maxValue = question.maxValue
+    )
 
     private fun createAnswerListViewModel(minValue: Int, maxValue: Int): List<AnswerViewModel> {
         val res: MutableList<AnswerViewModel> = ArrayList()

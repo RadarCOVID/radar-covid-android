@@ -16,7 +16,7 @@ class RateView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : SelectableGroupLinearLayout(context, attrs, defStyleAttr), AnswerView {
 
-    var question: QuestionViewModel.RateQuestion? = null
+    var question: QuestionViewModel? = null
         set(value) {
             field = value
             value?.let {
@@ -80,6 +80,6 @@ class RateView @JvmOverloads constructor(
 
     }
 
-    override fun getSelectedAnswers(): QuestionViewModel = question ?: QuestionViewModel.RateQuestion()
+    override fun getSelectedAnswers(): QuestionViewModel = question ?: QuestionViewModel()
 
 }
