@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import es.gob.covidradar.R
-import es.gob.covidradar.common.viewmodel.AnswerViewModel
-import es.gob.covidradar.common.viewmodel.QuestionViewModel
+import es.gob.covidradar.common.view.viewmodel.AnswerViewModel
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModel
 import kotlinx.android.synthetic.main.view_multiple_choice_item.view.*
 
 class MultipleChoiceView @JvmOverloads constructor(

@@ -24,7 +24,7 @@ interface ApiInterface {
     @GET("/configuration/token/uuid")
     fun getUuid(): Call<ResponseUuid>
 
-    @GET("/settings")
+    @GET("/configuration/settings")
     fun getSettings(): Call<ResponseSettings>
 
     @GET("/questionnaire/questions")

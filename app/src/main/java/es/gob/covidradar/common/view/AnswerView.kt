@@ -1,6 +1,6 @@
 package es.gob.covidradar.common.view
 
-import es.gob.covidradar.common.viewmodel.QuestionViewModel
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModel
 
 interface AnswerView {
 

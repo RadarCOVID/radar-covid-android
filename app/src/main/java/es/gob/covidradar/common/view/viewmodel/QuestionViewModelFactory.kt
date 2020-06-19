@@ -1,4 +1,4 @@
-package es.gob.covidradar.common.viewmodel
+package es.gob.covidradar.common.view.viewmodel
 
 import es.gob.covidradar.models.domain.Answer
 import es.gob.covidradar.models.domain.Question

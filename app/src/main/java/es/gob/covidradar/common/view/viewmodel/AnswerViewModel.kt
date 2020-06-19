@@ -1,4 +1,4 @@
-package es.gob.covidradar.common.viewmodel
+package es.gob.covidradar.common.view.viewmodel
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
