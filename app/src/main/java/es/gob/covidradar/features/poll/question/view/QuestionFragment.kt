@@ -93,7 +93,7 @@ class QuestionFragment : BaseFragment(), QuestionView {
         (activity as? Callback)?.onContinueButtonClick(answers)
     }
 
-    override fun getSelectedAnswers(): QuestionViewModel =
+    override fun getCurrentQuestion(): QuestionViewModel =
         (wrapperQuestion.getChildAt(0) as AnswerView).getSelectedAnswers()
 
     interface Callback {

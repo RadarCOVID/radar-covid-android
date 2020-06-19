@@ -15,7 +15,7 @@ class QuestionPresenterImpl @Inject constructor(private val view: QuestionView) 
     }
 
     override fun onNextButtonClick() {
-        view.notifyButtonNextClick(view.getSelectedAnswers())
+        view.notifyButtonNextClick(view.getCurrentQuestion())
     }
 
 //    private fun validate(question: QuestionViewModel): Boolean {

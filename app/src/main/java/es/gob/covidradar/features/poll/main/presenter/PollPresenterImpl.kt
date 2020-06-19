@@ -32,11 +32,18 @@ class PollPresenterImpl @Inject constructor(
     }
 
     override fun onBackButtonPressed() {
-        currentQuestionIndex--
-        if (currentQuestionIndex < 0)
-            view.finish()
-        else
-            view.showPollProgress(currentQuestionIndex + 1, parentQuestions.size)
+        val currentQuestion = view.getCurrentQuestion()
+        if (currentQuestion.isParentQuestion()) {
+            currentQuestionIndex--
+            if (currentQuestionIndex < 0) {
+                view.finish()
+            } else {
+                view.showPollProgress(currentQuestionIndex + 1, parentQuestions.size)
+                view.showQuestion(false, parentQuestions[currentQuestionIndex])
+            }
+        } else {
+            view.showQuestion(false, getParentQuestion(currentQuestion))
+        }
     }
 
     override fun onNextButtonClick(currentQuestion: QuestionViewModel) {
@@ -89,6 +96,9 @@ class PollPresenterImpl @Inject constructor(
             }
         return childQuestion
     }
+
+    private fun getParentQuestion(childQuestion: QuestionViewModel): QuestionViewModel =
+        (parentQuestions + childQuestions).find { childQuestion.parentQuestionId == it.id } ?: QuestionViewModel()
 
     private fun requestQuestions() {
         view.hideContent()
