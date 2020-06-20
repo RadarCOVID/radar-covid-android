@@ -42,39 +42,6 @@ class MyDataFragment : BaseFragment(), MyDataView {
     }
 
     private fun initViews() {
-//        val text1 = SpannableString(getString(R.string.my_data_l1))
-//        text1.setSpan(StyleSpan(Typeface.BOLD), 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-//        text1.setSpan(
-//            TextAppearanceSpan(context, R.style.TitleExtraBoldSmall),
-//            0,
-//            2,
-//            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-//        )
-//        text1.setSpan(StyleSpan(Typeface.BOLD), 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        text1.setSpan(
-//            TextAppearanceSpan(context, R.style.TextRegular),
-//            2,
-//            text1.length,
-//            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-//        )
-//        dottedTextViewL1.setText(text1, TextView.BufferType.SPANNABLE)
-//
-//        val text2 = SpannableString(getString(R.string.my_data_l2))
-//        text2.setSpan(
-//            TextAppearanceSpan(context, R.style.TitleExtraBoldSmall),
-//            0,
-//            2,
-//            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-//        )
-//        text2.setSpan(StyleSpan(Typeface.BOLD), 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        text2.setSpan(
-//            TextAppearanceSpan(context, R.style.TextRegular),
-//            2,
-//            text2.length,
-//            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-//        )
-//        dottedTextViewL2.setText(text2, TextView.BufferType.SPANNABLE)
-
         val text3 = SpannableString(getString(R.string.my_data_l3))
         text3.setSpan(
             TextAppearanceSpan(context, R.style.TitleExtraBoldPurpleSmall),
@@ -90,6 +57,9 @@ class MyDataFragment : BaseFragment(), MyDataView {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         dottedTextViewL3.setText(text3, TextView.BufferType.SPANNABLE)
+
+        textViewConditions.setOnClickListener { presenter.onConditionsButtonClick() }
+        textViewPrivacy.setOnClickListener { presenter.onPrivacyButtonClick() }
 
     }
 

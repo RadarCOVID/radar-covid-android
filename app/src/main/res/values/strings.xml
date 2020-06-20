@@ -194,6 +194,8 @@
     <string name="my_data_l3_title">Por tanto:</string>
     <string name="my_data_l3"><b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
     <string name="my_data_encription_info">Los datos son guardados en tu teléfono y la conexión con el servidor están encriptados</string>
+    <string name="my_data_conditions">Consulta las <b><u>condiciones de uso</u></b></string>
+    <string name="my_data_privacy">Consulta las <b><u>política de privacidad</u></b></string>
 
     /********** Helpline ************/
 
