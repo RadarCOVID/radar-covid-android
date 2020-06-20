@@ -10,7 +10,7 @@ class QuestionsDataMapper @Inject constructor() {
     fun transform(responseQuestions: ResponseQuestions): List<Question> =
         responseQuestions.sortedBy { it.order }.filter {
             when (it.questionType) {
-                QUESTION_TYPE_NUMBER, QUESTION_TYPE_TEXT -> false
+                QUESTION_TYPE_NUMBER -> false
                 else -> true
             }
         }.map { transform(it) }
@@ -27,7 +27,7 @@ class QuestionsDataMapper @Inject constructor() {
             question = question ?: "",
             answers =
             if (questionType == QUESTION_TYPE_TEXT)
-                arrayListOf(Answer())
+                arrayListOf(Answer(id = 0))
             else
                 transform(options),
             minValue = minValue ?: 0,
