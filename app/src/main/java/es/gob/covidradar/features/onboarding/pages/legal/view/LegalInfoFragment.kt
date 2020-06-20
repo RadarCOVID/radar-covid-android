@@ -85,7 +85,7 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
             }
         }
         spannableString.setSpan(clickableSpanConditions, 11, 29, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(clickableSpanPrivacy, 35, 57, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(clickableSpanPrivacy, 43, 65, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         checkBoxTermsAndConditions.setText(spannableString)
 
         buttonAccept.setOnClickListener { (activity as? OnboardingStepPageFragment.Callback)?.onContinueButtonClick() }
