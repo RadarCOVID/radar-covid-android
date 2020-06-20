@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import es.gob.covidradar.common.di.scope.PerActivity
 import es.gob.covidradar.datamanager.mapper.ExpositionInfoDataMapper
 import es.gob.covidradar.models.domain.ExposureInfo
+import es.gob.covidradar.models.domain.Settings
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.GaenAvailability
 import org.dpppt.android.sdk.backend.ResponseCallback
+import org.dpppt.android.sdk.internal.nearby.GoogleExposureClient
 import org.dpppt.android.sdk.models.ExposeeAuthMethodAuthorization
 import java.util.*
 import javax.inject.Inject
@@ -24,6 +26,13 @@ class ContactTracingRepositoryImpl @Inject constructor(
                 else -> false
             }
             callback(result)
+        }
+    }
+
+    override fun updateTracingSettings(settings: Settings) {
+        with(settings.exposureConfiguration.attenuation) {
+            GoogleExposureClient.getInstance(activity)
+                .setParams(riskLevelValue[0], riskLevelValue[1])
         }
     }
 
