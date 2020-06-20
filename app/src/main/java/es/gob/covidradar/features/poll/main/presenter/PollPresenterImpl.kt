@@ -72,7 +72,7 @@ class PollPresenterImpl @Inject constructor(
         } else {
             if (currentQuestion.isParentQuestion()) {
                 view.showPollProgress(
-                    parentQuestions.indexOf(previousQuestion) + 1,
+                    parentQuestions.indexOf(currentQuestion),
                     parentQuestions.size
                 )
                 view.showQuestion(false, previousQuestion)
