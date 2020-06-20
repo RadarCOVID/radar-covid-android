@@ -156,8 +156,11 @@
 
     <style name="EditTextDigit" parent="TextSemibold">
         <item name="android:clickable">true</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:paddingStart">0dp</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_margin">2dp</item>
         <item name="android:lines">1</item>
         <item name="android:maxLength">1</item>
         <item name="android:gravity">center</item>

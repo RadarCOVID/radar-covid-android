@@ -157,17 +157,17 @@
 
     /********** Covid Report ************/
 
-    <string name="covid_report_title">MI SALUD</string>
-    <string name="covid_report_subtitle">¿Cómo te encuentras hoy?</string>
-    <string name="covid_report_p1">Reportando tu diagnóstico Covid-19, estás contribuyendo a detener la propagación del virus.</string>
-    <string name="covid_report_p2">¡Ayúdanos a mantener a tus conocidos seguros!\n\n¿Has sido diagnosticado Covid-19?</string>
+    <string name="covid_report_title">MI DIAGNÓSTICO</string>
+    <string name="covid_report_subtitle">Envía tu diagnóstico COVID positivo</string>
+    <string name="covid_report_p1">Enviando tu diagnóstico anónimo Covid-19, estás contribuyendo a detener la propagación del virus.</string>
+    <string name="covid_report_p2">Gracias por ayudarnos a cuidar a los demás.\n\nTu información está segura y será tratada siempre anonimamente</string>
     <string name="covid_report_qr_button">Escanear QR</string>
     <string name="covid_report_code_hint_title">Código de diagnóstico</string>
     <string name="covid_report_code_hint_subtitle">Introduce el código que te han enviado</string>
     <string name="covid_report_code_input_example">ej. ABC1234567</string>
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
     <string name="covid_report_abort_warning_title">¿Seguro que no quieres reportar tu diagnóstico?</string>
-    <string name="covid_report_abort_warning_message">¡Ayúdanos a evitar que el Covid-19 se extienda!</string>
+    <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demas y evitemos que el Covid-19 se propague.</string>
     <string name="covid_report_abort_warning_button">Cancelar</string>
 
     /********** Report Confirmation ************/

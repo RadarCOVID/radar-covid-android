@@ -34,7 +34,9 @@ class CodeEditText @JvmOverloads constructor(
             editTextCode7,
             editTextCode8,
             editTextCode9,
-            editTextCode10
+            editTextCode10,
+            editTextCode11,
+            editTextCode12
         )
 
         setOnClickListener {
