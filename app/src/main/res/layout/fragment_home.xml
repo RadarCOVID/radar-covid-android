@@ -119,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:text="@string/radar_block_disabled_title"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@id/switchRadar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

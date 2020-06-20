@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Covid Radar</string>
+    <string name="app_name">Corona Radar</string>
 
     /********** ERROR MESSAGES ************/
     <string name="error_generic">Hubo un error, por favor inténtelo más tarde</string>
@@ -46,7 +46,7 @@
     <string name="privacy_intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nDuis aute irure dolor in reprehenderit in volup "Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occasionecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
 
     /********** Onboarding ************/
-    <string name="onboarding_title_step_1">Bienvenido a Covid Radar</string>
+    <string name="onboarding_title_step_1">Bienvenido a Corona Radar</string>
     <string name="onboarding_descrption_step1">Queremos suministrarte una herramienta para mantenerte seguro. Con esta aplicación conocerás si has estado expuesto al coronavirus, ayudándote a protegerte y proteger a los tuyos. Además, podrás cooperar con el resto de ciudadanos en el esfuerzo común de solucionar la situación lo más rápido posible: solo reporta si se te ha diagnosticado Covid, y la aplicación se encarga del resto.</string>
     <string name="onboarding_step1_message_1">Conoce en todo momento si te expones al coronavirus, ayudándote a protegerte y proteger a los demás.</string>
     <string name="onboarding_step1_message_2">Comunica de forma anónima tu diagnóstico Covid positivo.</string>
@@ -102,8 +102,8 @@
     <string name="exposition_block_medium_description">Contacto posible con persona con pesona contagiada de Covid-19</string>
     <string name="exposition_block_high_description">Has estado en contacto con una persona contagiada de Covid-19.\nCuídate y cuida a los demás.</string>
 
-    <string name="radar_block_enabled_title">COVID Radar activo</string>
-    <string name="radar_block_disabled_title">COVID Radar inactivo</string>
+    <string name="radar_block_enabled_title">CORONA Radar activo</string>
+    <string name="radar_block_disabled_title">CORONA Radar inactivo</string>
 
     <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán de manera anónima.</string>
     <string name="radar_block_disabled_description">Por favor, activa el Bluetooth para poder identificar posibles contagios.</string>
@@ -216,7 +216,7 @@
     <string name="poll_completed_t1">Gracias por ayudarnos a mejorar.</string>
     <string name="poll_completed_p1">Muchas gracias por participar en el piloto de la APP Covid-19, tu opinión será clave para mejorarla y contribuir a prevenir futuros contagios.</string>
     <string name="poll_completed_t2">Un paso más</string>
-    <string name="poll_completed_p2">¿Te interesaría participar en una entrevista telefónica para concoer más sobre tu experiencia con Covid Radar?\n\nSi es así, escríbenos al siguiente correo electrónico para poder participar. Uno de  nuestros colaboradores se pondrá en contacto contigo para fijar el día y la hora que se adapte mejor a tí:</string>
+    <string name="poll_completed_p2">¿Te interesaría participar en una entrevista telefónica para concoer más sobre tu experiencia con Corona Radar?\n\nSi es así, escríbenos al siguiente correo electrónico para poder participar. Uno de  nuestros colaboradores se pondrá en contacto contigo para fijar el día y la hora que se adapte mejor a tí:</string>
     <string name="poll_completed_email">ayudacovidradar@email.com</string>
     <string name="poll_completed_button">Volver a la página de inicio</string>
 
