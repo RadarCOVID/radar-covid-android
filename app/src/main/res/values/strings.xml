@@ -175,14 +175,14 @@
     <string name="confirmation_title">Gracias por contribuir a parar el virus</string>
     <string name="confirmation_subtitle">Tu diagnostico nos ayudará a ayudar a los demás.</string>
     <string name="confirmation_p1">Sin revelar tu identidad en ningún momento, vamos a rastrear qué móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
-    <string name="confirmation_tips_title">Recomendaciones</string>
+    <string name="confirmation_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
     <string name="confirmation_tip_1">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
     <string name="confirmation_tip_2">Evita el contacto con otras personas</string>
     <string name="confirmation_tip_3">Usa siempre mascarilla quirúrgica</string>
     <string name="confirmation_tip_4">Lávate las manos frecuentemente</string>
     <string name="confirmation_tip_5">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
     <string name="confirmation_tip_6">Si los síntomas empeoran llama al 112</string>
-    <string name="confirmation_tip_more_info">Consulta más información aquí</string>
+    <string name="confirmation_acknowledge">Gracias por seguir cuidándote y cuidando a los demás.</string>
 
 
     /********** My data ************/

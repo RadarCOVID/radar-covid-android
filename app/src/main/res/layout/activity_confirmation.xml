@@ -51,17 +51,18 @@
                 android:text="@string/confirmation_title" />
 
             <TextView
-                style="@style/TextSemibold"
+                style="@style/TitleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/confirmation_subtitle" />
+                android:text="@string/confirmation_subtitle"
+                android:textSize="18sp" />
 
             <TextView
                 style="@style/TextSmallBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/confirmation_subtitle" />
+                android:text="@string/confirmation_p1" />
 
             <TextView
                 style="@style/TitleTipSmall"
@@ -145,16 +146,19 @@
                 style="@style/TextSmallBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="45dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/confirmation_tip_6" />
 
-            <TextView
-                style="@style/Title"
+            <es.gob.covidradar.common.view.MoreInfoButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="45dp"
-                android:text="@string/confirmation_tip_more_info"
-                android:textColor="@color/purple"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                style="@style/TitleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/confirmation_acknowledge"
                 android:textSize="18sp" />
 
         </LinearLayout>
