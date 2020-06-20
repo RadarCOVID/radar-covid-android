@@ -225,6 +225,8 @@
 
     /********** Common ************/
 
+    <string name="more_info">Mas información</string>
+
     <string name="accept">Aceptar</string>
     <string name="back">Volver</string>
 
