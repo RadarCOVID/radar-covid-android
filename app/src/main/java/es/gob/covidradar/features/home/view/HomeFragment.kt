@@ -1,5 +1,7 @@
 package es.gob.covidradar.features.home.view
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +16,7 @@ import es.gob.covidradar.features.home.protocols.HomePresenter
 import es.gob.covidradar.features.home.protocols.HomeView
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
+
 
 class HomeFragment : BaseFragment(), HomeView {
 
@@ -44,6 +47,7 @@ class HomeFragment : BaseFragment(), HomeView {
         super.onViewCreated(view, savedInstanceState)
         initViews()
 
+
         presenter.viewReady(arguments?.getBoolean(ARG_ACTIVATE_RADAR) ?: false)
     }
 
@@ -73,6 +77,19 @@ class HomeFragment : BaseFragment(), HomeView {
 
         wrapperExposition.setOnClickListener { presenter.onExpositionBlockClick() }
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
+    }
+
+    override fun showInitializationCheckAnimation() {
+        imageViewBackgroundLogo.alpha = 0f
+        imageViewInitializationCheck.alpha = 1f
+        AnimatorSet().apply {
+            playTogether(
+                ObjectAnimator.ofFloat(imageViewBackgroundLogo, View.ALPHA, 0f, 1f),
+                ObjectAnimator.ofFloat(imageViewInitializationCheck, View.ALPHA, 1f, 0f)
+            )
+            duration = 2000 //set duration for animations
+            startDelay = 2000
+        }.start()
     }
 
     override fun showExpositionLevelLow() {

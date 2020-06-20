@@ -26,8 +26,8 @@ class SplashUseCase @Inject constructor(
             getSettingsObservable(),
             getUuidObservable(),
             BiFunction { settings, uuid -> Pair(settings, uuid) })
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .observeOn(Schedulers.newThread())
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
 
     private fun getSettingsObservable(): Observable<Settings> =
         Observable.create { emitter ->

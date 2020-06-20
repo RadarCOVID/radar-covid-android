@@ -4,6 +4,8 @@ import es.gob.covidradar.common.view.RequestView
 
 interface HomeView : RequestView {
 
+    fun showInitializationCheckAnimation()
+
     fun showExpositionLevelLow()
 
     fun showExpositionLevelMedium()
