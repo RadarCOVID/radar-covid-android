@@ -10,4 +10,16 @@ interface MyDataPresenter {
 
     fun onClearDataButtonClick()
 
+    fun onConditionsButtonClick()
+
+    fun onPrivacyButtonClick()
+
+}
+
+interface MyDataRouter {
+
+    fun navigateToConditions()
+
+    fun navigateToPrivacyPolicy()
+
 }

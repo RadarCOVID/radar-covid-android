@@ -16,8 +16,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="47dp"
+        android:layout_gravity="center"
         android:src="@drawable/img_splash_logo" />
 
     <ImageView

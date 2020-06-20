@@ -96,5 +96,20 @@
         android:layout_weight="1"
         tools:text="1" />
 
+    <es.gob.covidradar.common.view.DeleteDetectionEditText
+        android:id="@+id/editTextCode11"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:text="1" />
+
+    <es.gob.covidradar.common.view.DeleteDetectionEditText
+        android:id="@+id/editTextCode12"
+        style="@style/EditTextDigit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:text="1" />
 
 </LinearLayout>

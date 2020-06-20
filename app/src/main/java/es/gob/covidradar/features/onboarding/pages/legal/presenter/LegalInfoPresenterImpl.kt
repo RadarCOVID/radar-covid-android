@@ -27,10 +27,10 @@ class LegalInfoPresenterImpl @Inject constructor(
     }
 
     override fun onLegalTermsCheckedChange(checked: Boolean) {
-        if (checked)
-            view.hideCheckWarning()
-        else
-            view.showCheckWarning()
+//        if (checked)
+//            view.hideCheckWarning()
+//        else
+//            view.showCheckWarning()
 
         view.setContinueButtonEnabled(checked)
 

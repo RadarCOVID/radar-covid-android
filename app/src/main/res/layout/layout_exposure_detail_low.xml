@@ -128,14 +128,10 @@
             android:text="@string/exposure_detail_tip_clinic" />
     </LinearLayout>
 
-    <TextView
-        style="@style/TextRegular"
+    <es.gob.covidradar.common.view.MoreInfoButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:text="@string/exposure_detail_more_info"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:layout_marginBottom="30dp" />
 
     <TextView
         style="@style/TitleSmall"

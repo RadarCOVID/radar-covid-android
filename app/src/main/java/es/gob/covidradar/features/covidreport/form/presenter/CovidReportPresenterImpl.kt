@@ -25,7 +25,7 @@ class CovidReportPresenterImpl @Inject constructor(
     }
 
     override fun onCodeChanged(code: String) {
-        view.setButtonSendEnabled(code.length == 10)
+        view.setButtonSendEnabled(code.length == 12)
     }
 
     override fun onSendButtonClick() {
