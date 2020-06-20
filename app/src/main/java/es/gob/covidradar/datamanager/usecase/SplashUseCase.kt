@@ -7,8 +7,10 @@ import es.gob.covidradar.datamanager.repository.ApiRepository
 import es.gob.covidradar.datamanager.repository.ContactTracingRepository
 import es.gob.covidradar.datamanager.repository.PreferencesRepository
 import es.gob.covidradar.models.domain.Settings
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.functions.BiFunction
+import io.reactivex.rxjava3.schedulers.Schedulers
 import org.funktionale.either.Either
 import javax.inject.Inject
 
@@ -20,10 +22,12 @@ class SplashUseCase @Inject constructor(
 ) {
 
     fun getInitializationObservable(): Observable<Pair<Settings, String>> =
-        Observable.zip(
+        Observable.zip<Settings, String, Pair<Settings, String>>(
             getSettingsObservable(),
             getUuidObservable(),
             BiFunction { settings, uuid -> Pair(settings, uuid) })
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .observeOn(Schedulers.newThread())
 
     private fun getSettingsObservable(): Observable<Settings> =
         Observable.create { emitter ->
