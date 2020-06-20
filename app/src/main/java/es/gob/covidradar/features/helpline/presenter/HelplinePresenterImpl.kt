@@ -23,4 +23,8 @@ class HelplinePresenterImpl @Inject constructor(
         view.showDialerForSupport()
     }
 
+    override fun onInterViewEmailButtonClick() {
+        view.sendMailToInterview()
+    }
+
 }

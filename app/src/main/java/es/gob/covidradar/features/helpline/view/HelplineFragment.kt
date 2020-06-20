@@ -44,6 +44,7 @@ class HelplineFragment : BaseFragment(), HelplineView {
 
         buttonStart.setOnClickListener { presenter.onStartButtonClick() }
         buttonContactSupport.setOnClickListener { presenter.onContactSupportButtonClick() }
+        textViewEmail.setOnClickListener { presenter.onInterViewEmailButtonClick() }
 
     }
 
@@ -51,6 +52,22 @@ class HelplineFragment : BaseFragment(), HelplineView {
         startActivity(Intent(Intent.ACTION_DIAL).apply {
             data = Uri.parse("tel:${getString(R.string.contact_support_phone)}")
         })
+    }
+
+    override fun sendMailToInterview() {
+        val emailIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "plain/text"
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.helpline_interview_email)))
+//            putExtra(Intent.EXTRA_SUBJECT, "Subject")
+//            putExtra(Intent.EXTRA_TEXT, "Text")
+        }
+
+        startActivity(
+            Intent.createChooser(
+                emailIntent,
+                "Send mail..."
+            )
+        )
     }
 
 }

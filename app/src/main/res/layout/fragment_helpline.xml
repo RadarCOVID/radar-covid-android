@@ -94,8 +94,16 @@
                 style="@style/TextSmallBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:text="@string/helpline_message_p3" />
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                style="@style/TitleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/helpline_interview_email"
+                android:textSize="16sp" />
 
 
             <TextView

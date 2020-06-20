@@ -4,6 +4,8 @@ interface HelplineView {
 
     fun showDialerForSupport()
 
+    fun sendMailToInterview()
+
 }
 
 interface HelplinePresenter {
@@ -13,6 +15,8 @@ interface HelplinePresenter {
     fun onStartButtonClick()
 
     fun onContactSupportButtonClick()
+
+    fun onInterViewEmailButtonClick()
 
 }
 

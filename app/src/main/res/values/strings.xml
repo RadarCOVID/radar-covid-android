@@ -204,7 +204,8 @@
     <string name="helpline_title_2">Reportar incidencia</string>
     <string name="helpline_message_p2">Si necesitas ayuda funcional o reportar cualquier tipo de incidencia puedes contactar con nosotros de forma rápida</string>
     <string name="helpline_title_3">Un paso más</string>
-    <string name="helpline_message_p3">¿Te interesaría participar en una entrevista telefónica para concocer más sobre tu experiencia con Covid Radar? Escribe a: <b>piloto.appcovid@economia.gob.es</b></string>
+    <string name="helpline_message_p3">¿Te interesaría participar en una entrevista telefónica para concocer más sobre tu experiencia con Covid Radar? Escribe a:</string>
+    <string name="helpline_interview_email">piloto.appcovid@economia.gob.es</string>
     <string name="helpline_message_p4">Uno de nuestros colaboradores se pondrá en contacto contigo para fijar el día y la hora que se adapte mejor a tí.</string>
     <string name="helpline_button_start">Cuéntanos tu experiencia</string>
 

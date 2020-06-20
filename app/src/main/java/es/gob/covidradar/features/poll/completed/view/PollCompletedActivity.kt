@@ -2,6 +2,7 @@ package es.gob.covidradar.features.poll.completed.view
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import es.gob.covidradar.R
 import es.gob.covidradar.common.base.BaseActivity
@@ -32,17 +33,18 @@ class PollCompletedActivity : BaseActivity(), PollCompletedView {
     }
 
     private fun initViews() {
-        textViewEmail.setOnClickListener { sendMailTo(getString(R.string.poll_completed_email)) }
-        buttonMain.setOnClickListener { finish() }
+        textViewEmail.setOnClickListener { presenter.onMailButtonClick() }
+        buttonContactSupport.setOnClickListener { presenter.onContactSupportButtonClick() }
+        buttonMain.setOnClickListener { presenter.onBackToMainButtonClick() }
     }
 
 
-    private fun sendMailTo(to: String) {
+    override fun sendMailToSupport() {
         val emailIntent = Intent(Intent.ACTION_SEND).apply {
             type = "plain/text"
-            putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
-            putExtra(Intent.EXTRA_SUBJECT, "Subject")
-            putExtra(Intent.EXTRA_TEXT, "Text")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.poll_completed_email)))
+//            putExtra(Intent.EXTRA_SUBJECT, "Subject")
+//            putExtra(Intent.EXTRA_TEXT, "Text")
         }
 
         startActivity(
@@ -52,4 +54,11 @@ class PollCompletedActivity : BaseActivity(), PollCompletedView {
             )
         )
     }
+
+    override fun showDialerForSupport() {
+        startActivity(Intent(Intent.ACTION_DIAL).apply {
+            data = Uri.parse("tel:${getString(R.string.contact_support_phone)}")
+        })
+    }
+
 }
