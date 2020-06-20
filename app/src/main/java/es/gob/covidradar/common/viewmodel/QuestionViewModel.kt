@@ -18,8 +18,12 @@ class QuestionViewModel(
 
     fun isAnswered(): Boolean = answers.any { it.isSelected }
 
+    fun isAnswerSelected(id: Int) = answers.any { it.isSelected && it.id == id }
+
     fun isParentQuestion(): Boolean = parentAnswerId == -1
 
     fun getAnswerById(answerId: Int): AnswerViewModel? = answers.find { it.id == answerId }
+
+    override fun equals(other: Any?): Boolean = (other as? QuestionViewModel)?.id == id
 
 }
