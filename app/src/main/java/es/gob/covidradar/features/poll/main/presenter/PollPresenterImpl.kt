@@ -18,7 +18,6 @@ class PollPresenterImpl @Inject constructor(
 
     private lateinit var parentQuestions: List<QuestionViewModel>
     private lateinit var childQuestions: List<QuestionViewModel>
-    private var currentQuestionIndex: Int = 0
 
     override fun viewReady() {
 
@@ -32,18 +31,7 @@ class PollPresenterImpl @Inject constructor(
     }
 
     override fun onBackButtonPressed() {
-        val currentQuestion = view.getCurrentQuestion()
-        if (currentQuestion.isParentQuestion()) {
-            currentQuestionIndex--
-            if (currentQuestionIndex < 0) {
-                view.finish()
-            } else {
-                view.showPollProgress(currentQuestionIndex + 1, parentQuestions.size)
-                view.showQuestion(false, parentQuestions[currentQuestionIndex])
-            }
-        } else {
-            view.showQuestion(false, getParentQuestion(currentQuestion))
-        }
+        showPreviousQuestion(view.getCurrentQuestion())
     }
 
     override fun onNextButtonClick(currentQuestion: QuestionViewModel) {
@@ -54,51 +42,115 @@ class PollPresenterImpl @Inject constructor(
     }
 
     override fun onContinueWithoutAnswer() {
-        showNextQuestion()
+        showNextQuestion(view.getCurrentQuestion())
     }
 
-    private fun showNextQuestion(currentQuestion: QuestionViewModel? = null) {
-        if (currentQuestion != null) {
-            val childQuestion = getChildQuestion(currentQuestion)
-            if (childQuestion != null)
-                view.showQuestion(
-                    currentQuestionIndex == parentQuestions.size - 1,
-                    childQuestion
-                )
-            else
-                showNextParentQuestion()
-        } else {
-            showNextParentQuestion()
-        }
-    }
-
-    private fun showNextParentQuestion() {
-        if (currentQuestionIndex + 1 < parentQuestions.size) {
-            currentQuestionIndex++
-            view.showQuestion(
-                currentQuestionIndex == parentQuestions.size - 1,
-                parentQuestions[currentQuestionIndex]
-            )
-            view.showPollProgress(currentQuestionIndex + 1, parentQuestions.size)
-        } else {
+    private fun showNextQuestion(currentQuestion: QuestionViewModel) {
+        val nextQuestion = getNextQuestion(currentQuestion)
+        if (nextQuestion == null) {
             requestPostAnswers(parentQuestions + childQuestions)
+        } else {
+            var parentQuestionIndex = 0
+            if (nextQuestion.isParentQuestion()) {
+                parentQuestionIndex = parentQuestions.indexOf(nextQuestion)
+                view.showPollProgress(
+                    parentQuestions.indexOf(nextQuestion) + 1,
+                    parentQuestions.size
+                )
+                view.showQuestion(parentQuestionIndex == parentQuestions.size - 1, nextQuestion)
+            } else {
+                parentQuestionIndex = parentQuestions.indexOf(getParentQuestion(nextQuestion))
+                view.showQuestion(parentQuestionIndex == parentQuestions.size - 1, nextQuestion)
+            }
         }
     }
 
-    private fun getChildQuestion(parentQuestion: QuestionViewModel): QuestionViewModel? {
-        var childQuestion: QuestionViewModel? = null
-        childQuestions.filter { it.parentQuestionId == parentQuestion.id }
-            .forEach { selectedChildQuestion ->
-                parentQuestion.answers.filter { it.isSelected }.forEach { selectedAnswer ->
-                    if (selectedAnswer.id == selectedChildQuestion.parentAnswerId)
-                        childQuestion = selectedChildQuestion
-                }
+    private fun showPreviousQuestion(currentQuestion: QuestionViewModel) {
+        val previousQuestion = getPreviousQuestion(currentQuestion)
+        if (previousQuestion == null) {
+            view.finish()
+        } else {
+            if (currentQuestion.isParentQuestion()) {
+                view.showPollProgress(
+                    parentQuestions.indexOf(previousQuestion) + 1,
+                    parentQuestions.size
+                )
+                view.showQuestion(false, previousQuestion)
+            } else {
+                val parentQuestionIndex =
+                    parentQuestions.indexOf(getParentQuestion(previousQuestion))
+                view.showQuestion(parentQuestionIndex == parentQuestions.size - 1, previousQuestion)
             }
-        return childQuestion
+        }
     }
+
+    private fun getNextQuestion(currentQuestion: QuestionViewModel): QuestionViewModel? =
+        if (currentQuestion.isParentQuestion()) {
+            getFirstChildQuestion(currentQuestion) ?: getNextParentQuestion(currentQuestion)
+        } else {
+            val brothers = childQuestions.filter {
+                it.parentQuestionId == currentQuestion.parentQuestionId
+                        && it.parentAnswerId == currentQuestion.parentAnswerId
+            }
+            if (brothers.last() == currentQuestion) {
+                getNextParentQuestion(getParentQuestion(currentQuestion))
+            } else {
+                brothers[brothers.indexOf(currentQuestion) + 1]
+            }
+        }
+
+    private fun getPreviousQuestion(currentQuestion: QuestionViewModel): QuestionViewModel? =
+        if (currentQuestion.isParentQuestion()) {
+            getPreviousParentQuestion(currentQuestion)?.let { previousParentQuestion ->
+                getLastChildQuestion(previousParentQuestion) ?: previousParentQuestion
+            }
+        } else {
+            val brothers = childQuestions.filter {
+                it.parentQuestionId == currentQuestion.parentQuestionId
+                        && it.parentAnswerId == currentQuestion.parentAnswerId
+            }
+            if (brothers.first() == currentQuestion) {
+                getParentQuestion(currentQuestion)
+            } else {
+                brothers[brothers.indexOf(currentQuestion) - 1]
+            }
+        }
+
+
+    private fun getFirstChildQuestion(parentQuestion: QuestionViewModel): QuestionViewModel? =
+        childQuestions.find {
+            it.parentQuestionId == parentQuestion.id && parentQuestion.isAnswerSelected(
+                it.parentAnswerId
+            )
+        }
+
+    private fun getLastChildQuestion(parentQuestion: QuestionViewModel?): QuestionViewModel? =
+        childQuestions.findLast {
+            it.parentQuestionId == parentQuestion?.id && parentQuestion.isAnswerSelected(
+                it.parentAnswerId
+            )
+        }
+
 
     private fun getParentQuestion(childQuestion: QuestionViewModel): QuestionViewModel =
-        (parentQuestions + childQuestions).find { childQuestion.parentQuestionId == it.id } ?: QuestionViewModel()
+        (parentQuestions + childQuestions).find { childQuestion.parentQuestionId == it.id }
+            ?: QuestionViewModel()
+
+    private fun getNextParentQuestion(parentQuestion: QuestionViewModel): QuestionViewModel? =
+        parentQuestions.indexOf(parentQuestion).let { parentIndex ->
+            if (parentIndex == parentQuestions.size - 1)
+                null
+            else
+                parentQuestions[parentIndex + 1]
+        }
+
+    private fun getPreviousParentQuestion(parentQuestion: QuestionViewModel): QuestionViewModel? =
+        parentQuestions.indexOf(parentQuestion).let { parentIndex ->
+            if (parentIndex == 0)
+                null
+            else
+                parentQuestions[parentIndex - 1]
+        }
 
     private fun requestQuestions() {
         view.hideContent()
@@ -121,10 +173,10 @@ class PollPresenterImpl @Inject constructor(
         parentQuestions = questionViewModelList.filter { it.isParentQuestion() }
         childQuestions = questionViewModelList.filter { !it.isParentQuestion() }
         view.showQuestion(
-            currentQuestionIndex == parentQuestions.size - 1,
-            parentQuestions[currentQuestionIndex]
+            parentQuestions.size == 1,
+            parentQuestions[0]
         )
-        view.showPollProgress(currentQuestionIndex + 1, parentQuestions.size)
+        view.showPollProgress(1, parentQuestions.size)
     }
 
     private fun onRequestQuestionsError(error: Throwable) {
@@ -153,44 +205,4 @@ class PollPresenterImpl @Inject constructor(
     private fun onPostAnswersError(throwable: Throwable) {
         view.showError(throwable)
     }
-
-//    private fun getMockQuestionsList() =
-//        arrayListOf(
-//            getMockRateQuestion(),
-//            getMockMultipleChoiceSingleSelection(),
-//            getMockMultipleChoiceMultipleSelection()
-//        )
-//
-//    private fun getMockRateQuestion() = QuestionViewModel.RateQuestion(
-//        1,
-//        "¿Cómo valoras la información recibida al introducir el código?",
-//        ArrayList<AnswerViewModel>().apply {
-//            add(AnswerViewModel(1, "1", false))
-//            add(AnswerViewModel(1, "2", false))
-//            add(AnswerViewModel(1, "3", false))
-//            add(AnswerViewModel(1, "4", false))
-//            add(AnswerViewModel(1, "5", false))
-//        })
-//
-//    private fun getMockMultipleChoiceSingleSelection() = QuestionViewModel.MultipleChoiceQuestion(
-//        1,
-//        "¿Seguiste las recomendaciones sanitarias y de prevención indicadas en la aplicación?",
-//        ArrayList<AnswerViewModel>().apply {
-//            add(AnswerViewModel(1, "Sí, todas", false))
-//            add(AnswerViewModel(1, "Sí, algunas", false))
-//            add(AnswerViewModel(1, "No, las seguí", false))
-//
-//        })
-//
-//    private fun getMockMultipleChoiceMultipleSelection() = QuestionViewModel.MultipleChoiceQuestion(
-//        1,
-//        "¿Seguiste las recomendaciones sanitarias y de prevención indicadas en la aplicación?",
-//        ArrayList<AnswerViewModel>().apply {
-//            add(AnswerViewModel(1, "Sí, todas", false))
-//            add(AnswerViewModel(1, "Sí, algunas", false))
-//            add(AnswerViewModel(1, "No, las seguí", false))
-//
-//        }, true
-//    )
-
 }

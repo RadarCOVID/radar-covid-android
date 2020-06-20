@@ -10,7 +10,7 @@ class QuestionsDataMapper @Inject constructor() {
     fun transform(responseQuestions: ResponseQuestions): List<Question> =
         responseQuestions.sortedBy { it.order }.filter {
             when (it.questionType) {
-                QUESTION_TYPE_TEXT, QUESTION_TYPE_NUMBER -> false
+                QUESTION_TYPE_NUMBER, QUESTION_TYPE_TEXT -> false
                 else -> true
             }
         }.map { transform(it) }
@@ -21,12 +21,12 @@ class QuestionsDataMapper @Inject constructor() {
             type = when (questionType) {
                 QUESTION_TYPE_RATE -> Question.Type.RATE
                 QUESTION_TYPE_MULTIPLE_SELECTION -> Question.Type.MULTIPLE_SELECTION
-                QUESTION_TYPE_NUMBER -> Question.Type.FIELD
+                QUESTION_TYPE_TEXT -> Question.Type.FIELD
                 else -> Question.Type.SINGLE_SELECTION
             },
             question = question ?: "",
             answers =
-            if (questionType == QUESTION_TYPE_NUMBER)
+            if (questionType == QUESTION_TYPE_TEXT)
                 arrayListOf(Answer())
             else
                 transform(options),
