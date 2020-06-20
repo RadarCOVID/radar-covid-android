@@ -19,4 +19,8 @@ class HelplinePresenterImpl @Inject constructor(
         router.navigateToPoll()
     }
 
+    override fun onContactSupportButtonClick() {
+        view.showDialerForSupport()
+    }
+
 }

@@ -199,11 +199,14 @@
 
     /********** Helpline ************/
 
-    <string name="helpline_title">AYÚDANOS A MEJORAR</string>
-    <string name="helpline_subtitle">¿Te está gustando la app?</string>
-    <string name="helpline_message_p1">Texto explicativo lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec egestas metus. Nulla vel arcu laoreet, faucibus risus sed, aliquam leo.</string>
-    <string name="helpline_message_p2">¡Ayúdanos a mejorar!</string>
-    <string name="helpline_button_start">Comenzar</string>
+    <string name="helpline_title">Ayúdanos a mejorar</string>
+    <string name="helpline_message_p1">Muchas gracias por participar en el piloto de la APP Covid-19, <b>contándonos tu opinión de forma anónima nos ayuda a mejorar</b> y contribuir a prevenir futuros contagios.</string>
+    <string name="helpline_title_2">Reportar incidencia</string>
+    <string name="helpline_message_p2">Si necesitas ayuda funcional o reportar cualquier tipo de incidencia puedes contactar con nosotros de forma rápida</string>
+    <string name="helpline_title_3">Un paso más</string>
+    <string name="helpline_message_p3">¿Te interesaría participar en una entrevista telefónica para concocer más sobre tu experiencia con Covid Radar? Escribe a: <b>piloto.appcovid@economia.gob.es</b></string>
+    <string name="helpline_message_p4">Uno de nuestros colaboradores se pondrá en contacto contigo para fijar el día y la hora que se adapte mejor a tí.</string>
+    <string name="helpline_button_start">Cuéntanos tu experiencia</string>
 
     <string name="step_indicator_text">%1$d / %2$d</string>
 
@@ -224,6 +227,9 @@
 
 
     /********** Common ************/
+
+    <string name="contact_support_title">Teléfono de soporte</string>
+    <string name="contact_support_phone">900 000 000</string>
 
     <string name="more_info">Mas información</string>
 

@@ -24,6 +24,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipToPadding="false"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:orientation="vertical"
@@ -31,21 +32,13 @@
             android:paddingRight="22dp"
             android:paddingBottom="22dp">
 
-            <TextView
-                style="@style/TitleXSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="37dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/helpline_title"
-                android:textColor="@color/gray" />
 
             <TextView
                 style="@style/TitleMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:text="@string/helpline_subtitle" />
+                android:text="@string/helpline_title" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -58,21 +51,59 @@
                 style="@style/TextSmallBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:text="@string/helpline_message_p1" />
-
-            <TextView
-                style="@style/TextSemibold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="60dp"
-                android:text="@string/helpline_message_p2" />
 
             <Button
                 android:id="@+id/buttonStart"
                 style="@style/ButtonNormal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:text="@string/helpline_button_start" />
+
+            <TextView
+                style="@style/TextSemibold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/helpline_title_2" />
+
+            <TextView
+                style="@style/TextSmallBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/helpline_message_p2" />
+
+            <include
+                android:id="@+id/buttonContactSupport"
+                layout="@layout/layout_contact_support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                style="@style/TextSemibold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/helpline_title_3" />
+
+            <TextView
+                style="@style/TextSmallBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/helpline_message_p3" />
+
+
+            <TextView
+                style="@style/TextSmallBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/helpline_message_p4" />
         </LinearLayout>
 
     </ScrollView>
