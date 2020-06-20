@@ -28,8 +28,10 @@ class HomePresenterImpl @Inject constructor(
             onboardingCompletedUseCase.setOnboardingCompleted(true)
             if (activateRadar)
                 onSwitchRadarClick(false)
+            //TODO Uncomment to show the animation
+            //view.showInitializationCheckAnimation()
         }
-        
+
     }
 
     override fun onResume() {

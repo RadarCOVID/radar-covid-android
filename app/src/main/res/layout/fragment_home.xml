@@ -25,10 +25,19 @@
                 android:src="@drawable/img_home_background" />
 
             <ImageView
+                android:id="@+id/imageViewBackgroundLogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@drawable/img_home_background_logo" />
+
+            <ImageView
+                android:id="@+id/imageViewInitializationCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:alpha="0"
+                android:src="@drawable/img_initialization_check" />
         </FrameLayout>
 
         <LinearLayout
