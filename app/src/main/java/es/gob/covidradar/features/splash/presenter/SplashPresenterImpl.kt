@@ -3,8 +3,8 @@ package es.gob.covidradar.features.splash.presenter
 import android.os.Handler
 import es.gob.covidradar.datamanager.usecase.CheckGaenUseCase
 import es.gob.covidradar.datamanager.usecase.GetInternetInfoUseCase
-import es.gob.covidradar.datamanager.usecase.GetUuidUseCase
 import es.gob.covidradar.datamanager.usecase.OnboardingCompletedUseCase
+import es.gob.covidradar.datamanager.usecase.SplashUseCase
 import es.gob.covidradar.features.splash.protocols.SplashPresenter
 import es.gob.covidradar.features.splash.protocols.SplashRouter
 import es.gob.covidradar.features.splash.protocols.SplashView
@@ -16,18 +16,17 @@ class SplashPresenterImpl @Inject constructor(
     private val useCaseInternetInfo: GetInternetInfoUseCase,
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase,
     private val checkGaenUseCase: CheckGaenUseCase,
-    private val getUuidUseCase: GetUuidUseCase
+    private val splashUseCase: SplashUseCase
 ) : SplashPresenter {
 
     private var isWaitingToStart: Boolean = false
 
     override fun viewReady() {
-        if (!getUuidUseCase.isUuidInitialized())
-            requestUuid()
+        requestInitialization()
     }
 
     override fun onResume() {
-        if (getUuidUseCase.isUuidInitialized()) {
+        if (splashUseCase.isUuidInitialized()) {
             if (!useCaseInternetInfo.isInternetAvailable()) {
                 view.showNoInternetWarning()
             } else {
@@ -56,13 +55,14 @@ class SplashPresenterImpl @Inject constructor(
         router.navigateToPlayServicesPage()
     }
 
-    private fun requestUuid() {
-        getUuidUseCase.getUuid(onSuccess = { uuid ->
-            getUuidUseCase.persistUuid(uuid)
-            onResume()
-        }, onError = {
-
-        })
+    private fun requestInitialization() {
+        splashUseCase.getInitializationObservable().subscribe {
+            splashUseCase.updateTracingSettings(it.first)
+            if (it.second.isNotEmpty()) {
+                splashUseCase.persistUuid(it.second)
+                onResume()
+            }
+        }
     }
 
     private fun navigateToHomeWithDelay() {

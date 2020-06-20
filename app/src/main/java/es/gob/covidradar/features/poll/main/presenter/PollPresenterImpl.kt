@@ -1,7 +1,7 @@
 package es.gob.covidradar.features.poll.main.presenter
 
-import es.gob.covidradar.common.viewmodel.QuestionViewModel
-import es.gob.covidradar.common.viewmodel.QuestionViewModelFactory
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModel
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModelFactory
 import es.gob.covidradar.datamanager.usecase.PollUseCase
 import es.gob.covidradar.features.poll.main.protocols.PollPresenter
 import es.gob.covidradar.features.poll.main.protocols.PollRouter

@@ -2,11 +2,14 @@ package es.gob.covidradar.datamanager.repository
 
 import es.gob.covidradar.common.di.scope.PerActivity
 import es.gob.covidradar.models.domain.ExposureInfo
+import es.gob.covidradar.models.domain.Settings
 
 @PerActivity
 interface ContactTracingRepository {
 
     fun checkGaenAvailability(callback: (Boolean) -> Unit)
+
+    fun updateTracingSettings(settings: Settings)
 
     fun startRadar(onSuccess: () -> Unit, onError: (Exception) -> Unit, onCancelled: () -> Unit)
 

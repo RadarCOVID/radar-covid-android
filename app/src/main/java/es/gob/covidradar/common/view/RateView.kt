@@ -8,8 +8,8 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout.LayoutParams
 import androidx.core.content.ContextCompat
 import es.gob.covidradar.R
-import es.gob.covidradar.common.viewmodel.AnswerViewModel
-import es.gob.covidradar.common.viewmodel.QuestionViewModel
+import es.gob.covidradar.common.view.viewmodel.AnswerViewModel
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModel
 import kotlinx.android.synthetic.main.view_rate_item.view.*
 
 class RateView @JvmOverloads constructor(

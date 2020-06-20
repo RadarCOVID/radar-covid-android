@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.widget.addTextChangedListener
 import es.gob.covidradar.R
-import es.gob.covidradar.common.viewmodel.QuestionViewModel
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModel
 import kotlinx.android.synthetic.main.view_question_edit_text.view.*
 
 

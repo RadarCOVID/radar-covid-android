@@ -7,7 +7,7 @@ import android.view.View
 import es.gob.covidradar.R
 import es.gob.covidradar.common.base.BaseActivity
 import es.gob.covidradar.common.view.CMDialog
-import es.gob.covidradar.common.viewmodel.QuestionViewModel
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModel
 import es.gob.covidradar.features.poll.main.protocols.PollPresenter
 import es.gob.covidradar.features.poll.main.protocols.PollView
 import es.gob.covidradar.features.poll.question.view.QuestionFragment

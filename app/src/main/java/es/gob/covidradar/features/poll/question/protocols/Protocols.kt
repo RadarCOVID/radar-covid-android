@@ -1,6 +1,6 @@
 package es.gob.covidradar.features.poll.question.protocols
 
-import es.gob.covidradar.common.viewmodel.QuestionViewModel
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModel
 
 interface QuestionView {
 

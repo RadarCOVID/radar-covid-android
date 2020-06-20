@@ -10,7 +10,7 @@ import es.gob.covidradar.common.view.AnswerView
 import es.gob.covidradar.common.view.MultipleChoiceView
 import es.gob.covidradar.common.view.QuestionEditText
 import es.gob.covidradar.common.view.RateView
-import es.gob.covidradar.common.viewmodel.QuestionViewModel
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModel
 import es.gob.covidradar.features.poll.question.protocols.QuestionPresenter
 import es.gob.covidradar.features.poll.question.protocols.QuestionView
 import kotlinx.android.synthetic.main.fragment_question.*

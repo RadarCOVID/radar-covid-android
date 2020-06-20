@@ -2,7 +2,7 @@ package es.gob.covidradar.datamanager.usecase
 
 import es.gob.covidradar.common.base.asyncRequest
 import es.gob.covidradar.common.base.mapperScope
-import es.gob.covidradar.common.viewmodel.QuestionViewModel
+import es.gob.covidradar.common.view.viewmodel.QuestionViewModel
 import es.gob.covidradar.datamanager.mapper.QuestionsDataMapper
 import es.gob.covidradar.datamanager.repository.ApiRepository
 import es.gob.covidradar.datamanager.repository.PreferencesRepository
