@@ -24,6 +24,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipToPadding="false"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:orientation="vertical"
@@ -73,9 +74,16 @@
                 style="@style/TitleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/poll_completed_email"
                 android:textSize="16sp" />
+
+            <include
+                android:id="@+id/buttonContactSupport"
+                layout="@layout/layout_contact_support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
 
             <Button
                 android:id="@+id/buttonMain"

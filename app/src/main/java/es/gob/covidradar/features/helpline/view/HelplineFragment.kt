@@ -1,5 +1,7 @@
 package es.gob.covidradar.features.helpline.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import es.gob.covidradar.features.helpline.protocols.HelplinePresenter
 import es.gob.covidradar.features.helpline.protocols.HelplineView
 import kotlinx.android.synthetic.main.fragment_helpline.*
 import javax.inject.Inject
+
 
 class HelplineFragment : BaseFragment(), HelplineView {
 
@@ -40,7 +43,31 @@ class HelplineFragment : BaseFragment(), HelplineView {
     private fun initViews() {
 
         buttonStart.setOnClickListener { presenter.onStartButtonClick() }
+        buttonContactSupport.setOnClickListener { presenter.onContactSupportButtonClick() }
+        textViewEmail.setOnClickListener { presenter.onInterViewEmailButtonClick() }
 
+    }
+
+    override fun showDialerForSupport() {
+        startActivity(Intent(Intent.ACTION_DIAL).apply {
+            data = Uri.parse("tel:${getString(R.string.contact_support_phone)}")
+        })
+    }
+
+    override fun sendMailToInterview() {
+        val emailIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "plain/text"
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.helpline_interview_email)))
+//            putExtra(Intent.EXTRA_SUBJECT, "Subject")
+//            putExtra(Intent.EXTRA_TEXT, "Text")
+        }
+
+        startActivity(
+            Intent.createChooser(
+                emailIntent,
+                "Send mail..."
+            )
+        )
     }
 
 }
