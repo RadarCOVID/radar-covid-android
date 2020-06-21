@@ -1,6 +1,7 @@
 package es.gob.covidradar.datamanager.repository
 
 import androidx.appcompat.app.AppCompatActivity
+import es.gob.covidradar.BuildConfig
 import es.gob.covidradar.common.di.scope.PerActivity
 import es.gob.covidradar.datamanager.mapper.ExpositionInfoDataMapper
 import es.gob.covidradar.models.domain.ExposureInfo
@@ -20,12 +21,16 @@ class ContactTracingRepositoryImpl @Inject constructor(
 ) : ContactTracingRepository {
 
     override fun checkGaenAvailability(callback: (Boolean) -> Unit) {
-        DP3T.checkGaenAvailability(activity) { availability ->
-            val result = when (availability) {
-                GaenAvailability.AVAILABLE -> true
-                else -> false
+        if (BuildConfig.isMock) {
+            callback(true)
+        } else {
+            DP3T.checkGaenAvailability(activity) { availability ->
+                val result = when (availability) {
+                    GaenAvailability.AVAILABLE -> true
+                    else -> false
+                }
+                callback(result)
             }
-            callback(result)
         }
     }
 
@@ -41,10 +46,13 @@ class ContactTracingRepositoryImpl @Inject constructor(
         onError: (Exception) -> Unit,
         onCancelled: () -> Unit
     ) {
-        DP3T.start(activity,
-            { onSuccess() },
-            { exception -> onError(exception) },
-            { onCancelled.invoke() })
+        if (BuildConfig.isMock)
+            onSuccess()
+        else
+            DP3T.start(activity,
+                { onSuccess() },
+                { exception -> onError(exception) },
+                { onCancelled.invoke() })
     }
 
     override fun stopRadar() {
@@ -69,19 +77,23 @@ class ContactTracingRepositoryImpl @Inject constructor(
         onSuccess: () -> Unit,
         onError: (Throwable) -> Unit
     ) {
-        //TODO: REVIEW ONSET DATE AND AUTH CODE MANAGEMENT
-        val calendar = Calendar.getInstance()
-        calendar.add(Calendar.DATE, -14)
-        DP3T.sendIAmInfected(activity, calendar.time, ExposeeAuthMethodAuthorization(authCode),
-            object : ResponseCallback<Void> {
-                override fun onSuccess(response: Void?) {
-                    onSuccess()
-                }
+        if (BuildConfig.isMock) {
+            onSuccess()
+        } else {
+            //TODO: REVIEW ONSET DATE AND AUTH CODE MANAGEMENT
+            val calendar = Calendar.getInstance()
+            calendar.add(Calendar.DATE, -14)
+            DP3T.sendIAmInfected(activity, calendar.time, ExposeeAuthMethodAuthorization(authCode),
+                object : ResponseCallback<Void> {
+                    override fun onSuccess(response: Void?) {
+                        onSuccess()
+                    }
 
-                override fun onError(throwable: Throwable?) {
-                    onError(throwable ?: Exception("Error notifying infection"))
-                }
+                    override fun onError(throwable: Throwable?) {
+                        onError(throwable ?: Exception("Error notifying infection"))
+                    }
 
-            })
+                })
+        }
     }
 }
