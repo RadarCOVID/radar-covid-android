@@ -85,4 +85,7 @@ class SplashUseCase @Inject constructor(
     fun updateTracingSettings(settings: Settings) =
         contactTracingRepository.updateTracingSettings(settings)
 
+    fun checkGaenAvailability(callback: (Boolean) -> Unit) =
+        contactTracingRepository.checkGaenAvailability(callback)
+
 }

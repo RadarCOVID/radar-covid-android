@@ -64,4 +64,16 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
         buttonSend.isEnabled = enabled
     }
 
+    override fun showNetworkWarningDialog() {
+        CMDialog.createDialog(
+            this,
+            title = R.string.network_warning_dialog_title,
+            description = R.string.network_warning_dialog_message,
+            buttonText = R.string.network_warning_dialog_button,
+            onCloseButtonClick = null
+        ) {
+            presenter.onRetryButtonClick()
+        }.show()
+    }
+
 }

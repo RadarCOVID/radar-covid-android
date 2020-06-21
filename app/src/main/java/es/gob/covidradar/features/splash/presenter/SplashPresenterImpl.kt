@@ -1,7 +1,6 @@
 package es.gob.covidradar.features.splash.presenter
 
 import android.os.Handler
-import es.gob.covidradar.datamanager.usecase.CheckGaenUseCase
 import es.gob.covidradar.datamanager.usecase.GetInternetInfoUseCase
 import es.gob.covidradar.datamanager.usecase.OnboardingCompletedUseCase
 import es.gob.covidradar.datamanager.usecase.SplashUseCase
@@ -15,7 +14,6 @@ class SplashPresenterImpl @Inject constructor(
     private val router: SplashRouter,
     private val useCaseInternetInfo: GetInternetInfoUseCase,
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase,
-    private val checkGaenUseCase: CheckGaenUseCase,
     private val splashUseCase: SplashUseCase
 ) : SplashPresenter {
 
@@ -26,25 +24,20 @@ class SplashPresenterImpl @Inject constructor(
     }
 
     override fun onResume() {
-        if (splashUseCase.isUuidInitialized()) {
-            if (!useCaseInternetInfo.isInternetAvailable()) {
-                view.showNoInternetWarning()
-            } else {
-                checkGaenUseCase.checkGaenAvailability { available ->
-                    if (available)
-                        navigateToHomeWithDelay()
-                    else
-                        view.showPlayServicesRequiredDialog()
-                }
+        if (!useCaseInternetInfo.isInternetAvailable()) {
+            view.showNoInternetWarning()
+        } else if (splashUseCase.isUuidInitialized()) {
+            splashUseCase.checkGaenAvailability { available ->
+                if (available)
+                    navigateToHomeWithDelay()
+                else
+                    view.showPlayServicesRequiredDialog()
             }
         }
     }
 
     override fun onNetworkRetryButtonClick() {
-        if (!useCaseInternetInfo.isInternetAvailable())
-            view.showNoInternetWarning()
-        else
-            navigateToHomeWithDelay()
+        requestInitialization()
     }
 
     override fun onNetworkDialogCloseButtonClick() {
@@ -56,13 +49,17 @@ class SplashPresenterImpl @Inject constructor(
     }
 
     private fun requestInitialization() {
-        splashUseCase.getInitializationObservable().subscribe {
-            splashUseCase.updateTracingSettings(it.first)
-            if (it.second.isNotEmpty()) {
-                splashUseCase.persistUuid(it.second)
-                onResume()
-            }
-        }
+        splashUseCase.getInitializationObservable()
+            .subscribe(
+                {
+                    splashUseCase.updateTracingSettings(it.first)
+                    if (it.second.isNotEmpty()) {
+                        splashUseCase.persistUuid(it.second)
+                        onResume()
+                    }
+                },
+                { onResume() }
+            )
     }
 
     private fun navigateToHomeWithDelay() {
