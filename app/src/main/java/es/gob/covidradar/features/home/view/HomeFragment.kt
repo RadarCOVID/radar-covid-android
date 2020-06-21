@@ -76,6 +76,7 @@ class HomeFragment : BaseFragment(), HomeView {
         }
 
         wrapperExposition.setOnClickListener { presenter.onExpositionBlockClick() }
+        imageButtonArrow.setOnClickListener { presenter.onExpositionBlockClick() }
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
     }
 
