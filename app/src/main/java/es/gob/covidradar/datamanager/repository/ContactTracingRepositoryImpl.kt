@@ -1,6 +1,7 @@
 package es.gob.covidradar.datamanager.repository
 
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.nearby.exposurenotification.ExposureConfiguration
 import es.gob.covidradar.BuildConfig
 import es.gob.covidradar.common.di.scope.PerActivity
 import es.gob.covidradar.datamanager.mapper.ExpositionInfoDataMapper
@@ -9,7 +10,7 @@ import es.gob.covidradar.models.domain.Settings
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.GaenAvailability
 import org.dpppt.android.sdk.backend.ResponseCallback
-import org.dpppt.android.sdk.internal.nearby.GoogleExposureClient
+import org.dpppt.android.sdk.internal.AppConfigManager
 import org.dpppt.android.sdk.models.ExposeeAuthMethodAuthorization
 import java.util.*
 import javax.inject.Inject
@@ -35,10 +36,19 @@ class ContactTracingRepositoryImpl @Inject constructor(
     }
 
     override fun updateTracingSettings(settings: Settings) {
-        with(settings.exposureConfiguration.attenuation) {
-            GoogleExposureClient.getInstance(activity)
-                .setParams(riskLevelValue[0], riskLevelValue[1])
-        }
+        AppConfigManager.getInstance(activity).setExposureConfiguration(
+            ExposureConfiguration.ExposureConfigurationBuilder()
+                .setTransmissionRiskScores(*settings.exposureConfiguration.transmission.value)
+                .setTransmissionRiskWeight(settings.exposureConfiguration.transmission.weight.toInt())
+                .setDurationScores(*settings.exposureConfiguration.duration.value)
+                .setDurationWeight(settings.exposureConfiguration.duration.weight.toInt())
+                .setDaysSinceLastExposureScores(*settings.exposureConfiguration.days.value)
+                .setDaysSinceLastExposureWeight(settings.exposureConfiguration.days.weight.toInt())
+                .setAttenuationScores(*settings.exposureConfiguration.attenuation.value)
+                .setAttenuationWeight(settings.exposureConfiguration.attenuation.weight.toInt())
+                .setMinimumRiskScore(settings.minRiskScore)
+                .build()
+        )
     }
 
     override fun startRadar(

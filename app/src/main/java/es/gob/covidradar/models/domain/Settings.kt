@@ -14,8 +14,8 @@ data class ExposureConfiguration(
 )
 
 data class SettingsItem(
-    var riskLevelValue: IntArray = IntArray(8),
-    var riskLevelWeight: Float = 0.0f
+    var value: IntArray = IntArray(8),
+    var weight: Float = 0.0f
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -23,15 +23,15 @@ data class SettingsItem(
 
         other as SettingsItem
 
-        if (!riskLevelValue.contentEquals(other.riskLevelValue)) return false
-        if (riskLevelWeight != other.riskLevelWeight) return false
+        if (!value.contentEquals(other.value)) return false
+        if (weight != other.weight) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = riskLevelValue.contentHashCode()
-        result = 31 * result + riskLevelWeight.hashCode()
+        var result = value.contentHashCode()
+        result = 31 * result + weight.hashCode()
         return result
     }
 }
