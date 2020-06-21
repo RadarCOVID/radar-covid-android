@@ -19,7 +19,6 @@
         tools:ignore="LockedOrientationActivity">
         <activity
             android:name=".features.splash.view.SplashActivity"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
