@@ -29,7 +29,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_close"
+        android:src="@drawable/ic_arrow_right_purple"
         app:layout_constraintBottom_toBottomOf="@id/textViewMoreInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/textViewMoreInfo" />
