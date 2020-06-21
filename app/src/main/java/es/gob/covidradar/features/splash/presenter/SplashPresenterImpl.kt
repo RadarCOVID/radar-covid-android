@@ -18,20 +18,23 @@ class SplashPresenterImpl @Inject constructor(
 ) : SplashPresenter {
 
     private var isWaitingToStart: Boolean = false
+    private var isInitializationCompleted: Boolean = false
 
     override fun viewReady() {
         requestInitialization()
     }
 
     override fun onResume() {
-        if (!useCaseInternetInfo.isInternetAvailable()) {
-            view.showNoInternetWarning()
-        } else if (splashUseCase.isUuidInitialized()) {
-            splashUseCase.checkGaenAvailability { available ->
-                if (available)
-                    navigateToHomeWithDelay()
-                else
-                    view.showPlayServicesRequiredDialog()
+        if (isInitializationCompleted) {
+            if (!useCaseInternetInfo.isInternetAvailable()) {
+                view.showNoInternetWarning()
+            } else if (splashUseCase.isUuidInitialized()) {
+                splashUseCase.checkGaenAvailability { available ->
+                    if (available)
+                        navigateToHomeWithDelay()
+                    else
+                        view.showPlayServicesRequiredDialog()
+                }
             }
         }
     }
@@ -50,16 +53,15 @@ class SplashPresenterImpl @Inject constructor(
 
     private fun requestInitialization() {
         splashUseCase.getInitializationObservable()
-            .subscribe(
-                {
-                    splashUseCase.updateTracingSettings(it.first)
-                    if (it.second.isNotEmpty()) {
-                        splashUseCase.persistUuid(it.second)
-                        onResume()
-                    }
-                },
-                { onResume() }
-            )
+            .doFinally {
+                isInitializationCompleted = true
+                onResume()
+            }
+            .subscribe {
+                splashUseCase.updateTracingSettings(it.first)
+                if (it.second.isNotEmpty())
+                    splashUseCase.persistUuid(it.second)
+            }
     }
 
     private fun navigateToHomeWithDelay() {
@@ -70,6 +72,7 @@ class SplashPresenterImpl @Inject constructor(
                     router.navigateToMain()
                 else
                     router.navigateToOnboarding()
+                view.finish()
             }, 2000)
         }
     }

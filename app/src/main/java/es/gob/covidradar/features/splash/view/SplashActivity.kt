@@ -30,10 +30,7 @@ class SplashActivity : BaseActivity(), SplashView {
     }
 
     override fun showNoInternetWarning() {
-        currentDialog?.let {
-            if (it.isShowing)
-                it.dismiss()
-        }
+        currentDialog?.dismiss()
         currentDialog = CMDialog.createDialog(
             this,
             R.string.warning_connection_title,
@@ -49,10 +46,7 @@ class SplashActivity : BaseActivity(), SplashView {
     }
 
     override fun showPlayServicesRequiredDialog() {
-        currentDialog?.let {
-            if (it.isShowing)
-                it.dismiss()
-        }
+        currentDialog?.dismiss()
         currentDialog = AlertDialog.Builder(this)
             .setTitle(R.string.play_services_dialog_title)
             .setMessage(R.string.play_services_dialog_message)
