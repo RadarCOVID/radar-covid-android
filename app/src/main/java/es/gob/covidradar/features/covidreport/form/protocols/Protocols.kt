@@ -10,6 +10,8 @@ interface CovidReportView : RequestView {
 
     fun setButtonSendEnabled(enabled: Boolean)
 
+    fun showNetworkWarningDialog()
+
     fun finish()
 
 }
@@ -23,6 +25,8 @@ interface CovidReportPresenter {
     fun onExitConfirmed()
 
     fun onCodeChanged(code: String)
+
+    fun onRetryButtonClick()
 
     fun onSendButtonClick()
 

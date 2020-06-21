@@ -170,6 +170,12 @@
     <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demas y evitemos que el Covid-19 se propague.</string>
     <string name="covid_report_abort_warning_button">Cancelar</string>
 
+    /********** Network Warning Dialog ************/
+
+    <string name="network_warning_dialog_title">Sin conexión.</string>
+    <string name="network_warning_dialog_message">Por favor, comprueba tu conexión y vuelve a enviar tu código.</string>
+    <string name="network_warning_dialog_button">Reintentar</string>
+
     /********** Report Confirmation ************/
 
     <string name="confirmation_title">Gracias por contribuir a parar el virus</string>
