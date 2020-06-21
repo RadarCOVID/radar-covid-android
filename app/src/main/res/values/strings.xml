@@ -84,7 +84,7 @@
     <string name="onboarding_descrption_step4_t7">Sigue las instrucciones de tu organismo sanitario local.</string>
 
     <string name="onboarding_button_continue">Continuar</string>
-    <string name="onboarding_button_activate">Activar rastreo Bluetooth</string>
+    <string name="onboarding_button_activate">Activar Bluetooth de bajo consumo</string>
     <string name="onboarding_button_finish">Continuar sin activar</string>
 
     /********** Menu ************/
@@ -109,7 +109,7 @@
     <string name="radar_block_disabled_description">Por favor, activa el Bluetooth para poder identificar posibles contagios.</string>
 
     <string name="radar_warning_title">¿Estás seguro?</string>
-    <string name="radar_warning_message">Si desactivas el Radar Bluetooth, no podremos avisarte.</string>
+    <string name="radar_warning_message">¿Estás seguro?  Si desactivas el radar COVID (Bluetooth), no podremos avisarte.</string>
     <string name="radar_warning_button">Desactivar</string>
 
 
@@ -180,7 +180,7 @@
 
     <string name="confirmation_title">Gracias por contribuir a parar el virus</string>
     <string name="confirmation_subtitle">Tu diagnostico nos ayudará a ayudar a los demás.</string>
-    <string name="confirmation_p1">Sin revelar tu identidad en ningún momento, vamos a rastrear qué móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
+    <string name="confirmation_p1">Sin revelar tu identidad en ningún momento, vamos a identificar qué móviles han estado cerca de ti en los últimos días y les enviaremos una alerta anónima para su seguridad.</string>
     <string name="confirmation_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
     <string name="confirmation_tip_1">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
     <string name="confirmation_tip_2">Evita el contacto con otras personas</string>
