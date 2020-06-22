@@ -11,7 +11,6 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.functions.BiFunction
 import io.reactivex.rxjava3.schedulers.Schedulers
-import org.funktionale.either.Either
 import javax.inject.Inject
 
 class SplashUseCase @Inject constructor(
@@ -59,22 +58,18 @@ class SplashUseCase @Inject constructor(
         }
     }
 
-    private fun getSettings(onSuccess: (Settings) -> Unit, onError: (Throwable) -> Unit) {
+    private fun getSettings(onSuccess: (Settings) -> Unit, onError: (Throwable) -> Unit) =
         asyncRequest(onSuccess, onError) {
             mapperScope(apiRepository.getSettings()) {
-                settingsDataMapper.transform(it!!)
+                settingsDataMapper.transform(it)
             }
         }
 
-    }
-
-    fun getUuid(onSuccess: (String) -> Unit, onError: (Throwable) -> Unit) =
+    private fun getUuid(onSuccess: (String) -> Unit, onError: (Throwable) -> Unit) =
         asyncRequest(onSuccess, onError) {
-            val response = apiRepository.getUuid()
-            if (response.isRight())
-                Either.right(response.right().get().uuid)
-            else
-                Either.left(response.left().get())
+            mapperScope(apiRepository.getUuid()) {
+                it.uuid
+            }
         }
 
     fun isUuidInitialized() = preferencesRepository.getUuid().isNotEmpty()
