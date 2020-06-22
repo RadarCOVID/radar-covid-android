@@ -8,14 +8,14 @@ import kotlinx.coroutines.withContext
 import org.funktionale.either.Either
 
 inline fun <A, reified B> mapperScope(
-    requestResult: Either<Throwable, A>? = null,
-    mapperFunction: (A?) -> B
+    requestResult: Either<Throwable, A>,
+    mapperFunction: (A) -> B
 ): Either<Throwable, B> {
     return try {
-        if (requestResult != null && requestResult.isLeft())
+        if (requestResult.isLeft())
             Either.left(requestResult.left().get())
         else
-            Either.right(mapperFunction(requestResult?.right()?.get()))
+            Either.right(mapperFunction(requestResult.right().get()))
     } catch (e: Exception) {
         e.printStackTrace()
         Either.Left(

@@ -25,7 +25,7 @@ class PollUseCase @Inject constructor(
     fun getQuestions(onSuccess: (List<Question>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
             mapperScope(apiRepository.getQuestions()) {
-                questionsDataMapper.transform(it!!)
+                questionsDataMapper.transform(it)
             }
         }
     }
