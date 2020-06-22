@@ -22,7 +22,7 @@
     <string name="legal_info_title_small">LEGAL</string>
     <string name="legal_info_title">Información legal</string>
     <string name="legal_info_terms_and_conditions">Términos y condiciones</string>
-    <string name="legal_info_check">Acepto las <b><u>condiciones de uso</u></b>\n\nHe leido la <b><u>política de privacidad</u></b></string>
+    <string name="legal_info_check">Acepto las <b><u>condiciones de uso</u></b>\n\nHe leído la <b><u>política de privacidad</u></b></string>
     <string name="legal_info_check_warning">Recuerda que tienes que aceptar la política de privacidad para continuar</string>
     <string name="legal_info_button">Entendido</string>s
 
