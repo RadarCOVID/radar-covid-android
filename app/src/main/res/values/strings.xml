@@ -49,7 +49,7 @@
     <string name="onboarding_descrption_step1">Queremos suministrarte una herramienta para mantenerte seguro. Con esta aplicación conocerás si has estado expuesto al coronavirus, ayudándote a protegerte y proteger a los tuyos. Además, podrás cooperar con el resto de ciudadanos en el esfuerzo común de solucionar la situación lo más rápido posible: solo reporta si se te ha diagnosticado Covid, y la aplicación se encarga del resto.</string>
     <string name="onboarding_step1_message_1">Conoce en todo momento si te expones al coronavirus, ayudándote a protegerte y proteger a los demás.</string>
     <string name="onboarding_step1_message_2">Comunica de forma anónima tu diagnóstico Covid positivo.</string>
-    <string name="onboarding_step1_message_3">Si eres positivo, comunicaremos la exposición de forma anónima a las personas con las que has estado en contacto.</string>
+    <string name="onboarding_step1_message_3">Si tu estuvieras afectado, comunicaremos la exposición de forma anonima a las personas con las que has estado en contacto.</string>
     <string name="onboarding_step1_message_end">Gracias por cuidarte y ayudarnos a ayudar a los demás.</string>
 
     <string name="onboarding_title_step_2">Tu privacidad es nuestra prioridad</string>
