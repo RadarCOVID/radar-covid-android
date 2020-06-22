@@ -18,7 +18,7 @@ interface LegalInfoPresenter {
 
     fun onLegalTermsAccepted()
 
-    fun onLegalTermsButtonClick()
+    fun onConditions()
 
     fun onPrivacyPolicyButtonClick()
 
@@ -28,7 +28,7 @@ interface LegalInfoPresenter {
 
 interface LegalInfoRouter {
 
-    fun navigateToLegalInfoDetail()
+    fun navigateToConditions()
 
     fun navigateToPrivacyPolicy()
 

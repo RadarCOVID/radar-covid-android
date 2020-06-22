@@ -61,18 +61,6 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
         })
 
         val spannableString = SpannableString(getString(R.string.legal_info_check))
-        val clickableSpanConditions: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(textView: View) {
-                presenter.onLegalTermsButtonClick()
-            }
-
-            override fun updateDrawState(ds: TextPaint) {
-                super.updateDrawState(ds)
-                ds.color = ContextCompat.getColor(context!!, R.color.black_28)
-                ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
-            }
-        }
-
         val clickableSpanPrivacy: ClickableSpan = object : ClickableSpan() {
             override fun onClick(textView: View) {
                 presenter.onPrivacyPolicyButtonClick()
@@ -84,8 +72,20 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
                 ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
             }
         }
-        spannableString.setSpan(clickableSpanConditions, 11, 29, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(clickableSpanPrivacy, 43, 65, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        val clickableSpanConditions: ClickableSpan = object : ClickableSpan() {
+            override fun onClick(textView: View) {
+                presenter.onConditions()
+            }
+
+            override fun updateDrawState(ds: TextPaint) {
+                super.updateDrawState(ds)
+                ds.color = ContextCompat.getColor(context!!, R.color.black_28)
+                ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+            }
+        }
+        spannableString.setSpan(clickableSpanPrivacy, 10, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(clickableSpanConditions, 47, 65, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         checkBoxTermsAndConditions.setText(spannableString)
 
         buttonAccept.setOnClickListener { (activity as? OnboardingStepPageFragment.Callback)?.onContinueButtonClick() }
