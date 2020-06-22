@@ -9,7 +9,6 @@ import es.gob.covidradar.datamanager.repository.PreferencesRepository
 import es.gob.covidradar.models.domain.Question
 import es.gob.covidradar.models.request.RequestPostAnswer
 import es.gob.covidradar.models.request.RequestPostAnswers
-import org.funktionale.either.Either
 import javax.inject.Inject
 
 class PollUseCase @Inject constructor(
@@ -25,13 +24,9 @@ class PollUseCase @Inject constructor(
 
     fun getQuestions(onSuccess: (List<Question>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
-            val result = apiRepository.getQuestions()
-            if (result.isRight())
-                mapperScope {
-                    questionsDataMapper.transform(result.right().get())
-                }
-            else
-                Either.left(result.left().get())
+            mapperScope(apiRepository.getQuestions()) {
+                questionsDataMapper.transform(it!!)
+            }
         }
     }
 

@@ -61,9 +61,8 @@ class SplashUseCase @Inject constructor(
 
     private fun getSettings(onSuccess: (Settings) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
-            val res = apiRepository.getSettings()
-            mapperScope {
-                settingsDataMapper.transform(res.right().get())
+            mapperScope(apiRepository.getSettings()) {
+                settingsDataMapper.transform(it!!)
             }
         }
 
