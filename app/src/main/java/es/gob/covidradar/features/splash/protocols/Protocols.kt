@@ -1,6 +1,8 @@
 package es.gob.covidradar.features.splash.protocols
 
-interface SplashView {
+import es.gob.covidradar.common.view.RequestView
+
+interface SplashView : RequestView {
 
     fun showNoInternetWarning()
 

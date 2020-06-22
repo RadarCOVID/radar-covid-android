@@ -57,11 +57,14 @@ class SplashPresenterImpl @Inject constructor(
                 isInitializationCompleted = true
                 onResume()
             }
-            .subscribe {
-                splashUseCase.updateTracingSettings(it.first)
-                if (it.second.isNotEmpty())
-                    splashUseCase.persistUuid(it.second)
-            }
+            .subscribe(
+                {
+                    splashUseCase.updateTracingSettings(it.first)
+                    if (it.second.isNotEmpty())
+                        splashUseCase.persistUuid(it.second)
+                },
+                { view.showError(it, true) }
+            )
     }
 
     private fun navigateToHomeWithDelay() {

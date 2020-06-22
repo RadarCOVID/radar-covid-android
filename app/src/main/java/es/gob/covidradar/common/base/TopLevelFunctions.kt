@@ -7,15 +7,20 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.funktionale.either.Either
 
-inline fun <reified T> mapperScope(func: (Any) -> T): Either<Exception, T> {
+inline fun <A, reified B> mapperScope(
+    requestResult: Either<Throwable, A>? = null,
+    mapperFunction: (A?) -> B
+): Either<Throwable, B> {
     return try {
-        val result = func.invoke(Any())
-        Either.Right(result)
+        if (requestResult != null && requestResult.isLeft())
+            Either.left(requestResult.left().get())
+        else
+            Either.right(mapperFunction(requestResult?.right()?.get()))
     } catch (e: Exception) {
         e.printStackTrace()
         Either.Left(
             MapperException(
-                "Error when mapping to " + T::class.java.simpleName,
+                "Error when mapping to " + B::class.java.simpleName,
                 e.message!!
             )
         )

@@ -6,7 +6,6 @@ import android.os.Bundle
 import es.gob.covidradar.R
 import es.gob.covidradar.common.base.BaseActivity
 import es.gob.covidradar.common.view.CMDialog
-import es.gob.covidradar.datamanager.usecase.GetExampleUseCase
 import es.gob.covidradar.features.main.protocols.MainPresenter
 import es.gob.covidradar.features.main.protocols.MainView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,9 +26,6 @@ class MainActivity : BaseActivity(), MainView {
 
     @Inject
     lateinit var presenter: MainPresenter
-
-    @Inject
-    lateinit var useCase: GetExampleUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

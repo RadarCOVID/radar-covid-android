@@ -28,24 +28,14 @@ android {
 
     buildTypes {
         mock {
+            debuggable true
             applicationIdSuffix '.mock'
             signingConfig signingConfigs.release
-
-            buildConfigField "String", 'API_URL', '"https://d3d0clxg4q92wk.cloudfront.net"'
-
-            buildConfigField 'String', 'CONFIG_URL', '"https://www.pt-d.bfs.admin.ch/"'
-            buildConfigField 'String', 'BUCKET_URL', '"https://www.pt-d.bfs.admin.ch/"'
-            buildConfigField 'String', 'REPORT_URL', '"https://www.pt1-d.bfs.admin.ch/"'
 
             buildConfigField 'Boolean', 'isMock', 'true'
         }
         debug {
             applicationIdSuffix '.debug'
-            buildConfigField "String", 'API_URL', '"https://d3d0clxg4q92wk.cloudfront.net"'
-
-            buildConfigField 'String', 'CONFIG_URL', '"https://www.pt-d.bfs.admin.ch/"'
-            buildConfigField 'String', 'BUCKET_URL', '"https://www.pt-d.bfs.admin.ch/"'
-            buildConfigField 'String', 'REPORT_URL', '"https://www.pt1-d.bfs.admin.ch/"'
 
             buildConfigField 'Boolean', 'isMock', 'false'
         }
@@ -55,15 +45,30 @@ android {
 
             signingConfig signingConfigs.release
 
-            buildConfigField "String", 'API_URL', '"https://d3d0clxg4q92wk.cloudfront.net"'
+            buildConfigField 'Boolean', 'isMock', 'false'
+        }
+
+    }
+
+    flavorDimensions 'environment'
+    productFlavors {
+        pre {
+            dimension = 'environment'
+            applicationIdSuffix = '.pre'
+            buildConfigField "String", 'API_URL', '"https://d3d0clxg4q92wk.cloudfront.net/"'
 
             buildConfigField 'String', 'CONFIG_URL', '"https://www.pt-d.bfs.admin.ch/"'
             buildConfigField 'String', 'BUCKET_URL', '"https://www.pt-d.bfs.admin.ch/"'
             buildConfigField 'String', 'REPORT_URL', '"https://www.pt1-d.bfs.admin.ch/"'
-
-            buildConfigField 'Boolean', 'isMock', 'false'
         }
+        pro {
+            dimension = 'environment'
+            buildConfigField "String", 'API_URL', '"https://dqarr2dc0prei.cloudfront.net/"'
 
+            buildConfigField 'String', 'CONFIG_URL', '"https://www.pt-d.bfs.admin.ch/"'
+            buildConfigField 'String', 'BUCKET_URL', '"https://www.pt-d.bfs.admin.ch/"'
+            buildConfigField 'String', 'REPORT_URL', '"https://www.pt1-d.bfs.admin.ch/"'
+        }
     }
 
     compileOptions {
