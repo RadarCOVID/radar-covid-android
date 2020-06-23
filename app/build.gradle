@@ -127,9 +127,17 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
-    //Contact Tracing
-    implementation "org.dpppt:dp3t-sdk-android:$rootProject.dp3tSdkVersion-calibration"
-    implementation "org.dpppt:dp3t-sdk-android:$rootProject.dp3tSdkVersion"
+    //DP3T aar dependencies
     implementation 'com.google.android.gms:play-services-base:17.3.0'
+
+    implementation 'androidx.security:security-crypto:1.1.0-alpha01'
+    implementation 'androidx.work:work-runtime:2.3.4'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.1'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.1'
+    runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.11.1') {
+        exclude group: 'org.json', module: 'json'
+    }
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.65'
+    implementation 'com.google.android.gms:play-services-tasks:17.1.0'
 
 }
