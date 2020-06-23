@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="horizontal">
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode1"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -16,7 +16,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode2"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -25,7 +25,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode3"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -34,7 +34,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode4"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -43,7 +43,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode5"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -52,7 +52,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode6"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -61,7 +61,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode7"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -70,7 +70,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode8"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -79,7 +79,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode9"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -88,7 +88,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode10"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -96,7 +96,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode11"
         style="@style/EditTextDigit"
         android:layout_width="0dp"
@@ -104,7 +104,7 @@
         android:layout_weight="1"
         tools:text="1" />
 
-    <es.gob.covidradar.common.view.DeleteDetectionEditText
+    <es.gob.radarcovid.common.view.DeleteDetectionEditText
         android:id="@+id/editTextCode12"
         style="@style/EditTextDigit"
         android:layout_width="0dp"

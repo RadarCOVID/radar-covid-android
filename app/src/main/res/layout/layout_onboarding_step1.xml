@@ -39,19 +39,19 @@
             android:text="@string/onboarding_title_step_1"
             android:textColor="@color/black" />
 
-        <es.gob.covidradar.common.view.DottedTextView
+        <es.gob.radarcovid.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/onboarding_step1_message_1" />
 
-        <es.gob.covidradar.common.view.DottedTextView
+        <es.gob.radarcovid.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/onboarding_step1_message_2" />
 
-        <es.gob.covidradar.common.view.DottedTextView
+        <es.gob.radarcovid.common.view.DottedTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"

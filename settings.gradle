@@ -1,2 +1,2 @@
-rootProject.name='Corona Radar'
+rootProject.name='Radar COVID'
 include ':app'

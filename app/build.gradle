@@ -8,7 +8,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "es.gob.covidradar"
+        applicationId "es.gob.radarcovid"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
@@ -18,11 +18,18 @@ android {
     }
 
     signingConfigs {
-        release {
+        releaseOld {
+            //THIS KEY WAS THE KEY USED WITH THE OLD PACKAGE NAME (es.gob.covidradar)
             storeFile file("../app.keystore")
-            storePassword "indra2020"
+            storePassword "es.gob"
             keyAlias "covid19"
             keyPassword "covid19"
+        }
+        release {
+            storeFile file("../app.keystore")
+            storePassword "es.gob"
+            keyAlias "radarcovid"
+            keyPassword "radarcovid"
         }
     }
 

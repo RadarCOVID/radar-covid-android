@@ -114,7 +114,7 @@
             android:paddingEnd="@dimen/padding_content"
             android:paddingBottom="@dimen/padding_content">
 
-            <es.gob.covidradar.common.view.CMCheckBox
+            <es.gob.radarcovid.common.view.CMCheckBox
                 android:id="@+id/checkBoxTermsAndConditions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
