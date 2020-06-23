@@ -22,9 +22,9 @@
     <string name="legal_info_title_small">LEGAL</string>
     <string name="legal_info_title">Información legal</string>
     <string name="legal_info_terms_and_conditions">Términos y condiciones</string>
-    <string name="legal_info_check">Acepto las <b><u>condiciones de uso</u></b>\n\nHe leido la <b><u>política de privacidad</u></b></string>
+    <string name="legal_info_check">Acepto la <b><u>política de privacidad</u></b>\n\nHe leído las <b><u>condiciones de uso</u></b></string>
     <string name="legal_info_check_warning">Recuerda que tienes que aceptar la política de privacidad para continuar</string>
-    <string name="legal_info_button">Entendido</string>s
+    <string name="legal_info_button">Continuar</string>
 
     /********** Legal Detail ************/
     <string name="legal_info_detail_title">Términos y condiciones de uso &appname;</string>
@@ -49,14 +49,14 @@
     <string name="onboarding_descrption_step1">Queremos suministrarte una herramienta para mantenerte seguro. Con esta aplicación conocerás si has estado expuesto al coronavirus, ayudándote a protegerte y proteger a los tuyos. Además, podrás cooperar con el resto de ciudadanos en el esfuerzo común de solucionar la situación lo más rápido posible: solo reporta si se te ha diagnosticado Covid, y la aplicación se encarga del resto.</string>
     <string name="onboarding_step1_message_1">Conoce en todo momento si te expones al coronavirus, ayudándote a protegerte y proteger a los demás.</string>
     <string name="onboarding_step1_message_2">Comunica de forma anónima tu diagnóstico Covid positivo.</string>
-    <string name="onboarding_step1_message_3">Si eres positivo, comunicaremos la exposición de forma anónima a las personas con las que has estado en contacto.</string>
+    <string name="onboarding_step1_message_3">Si tu estuvieras afectado, comunicaremos la exposición de forma anonima a las personas con las que has estado en contacto.</string>
     <string name="onboarding_step1_message_end">Gracias por cuidarte y ayudarnos a ayudar a los demás.</string>
 
     <string name="onboarding_title_step_2">Tu privacidad es nuestra prioridad</string>
     <string name="onboarding_descrption_step2">Nuestros compromisos</string>
 
     <string name="onboarding_step_2_commitments_title_1">Anonimato</string>
-    <string name="onboarding_step_2_commitments_detail_1">La aplicación funciona sin revelar tu identidad ni la de tu smartphone. <b>NO</b> se recoge tu nombre, email, geolocalización ni tu telefono</string>
+    <string name="onboarding_step_2_commitments_detail_1">La aplicación funciona sin revelar tu identidad ni la de tu smartphone. <b>NO</b> se recoge tu nombre, email, geolocalización ni tu telefono.</string>
     <string name="onboarding_step_2_commitments_title_2">Discreción</string>
     <string name="onboarding_step_2_commitments_detail_2">Las alertas de exposición se envían sin indicar cuándo y dónde se produjo la exposición.</string>
     <string name="onboarding_step_2_commitments_title_3">Tú decides</string>
@@ -68,7 +68,7 @@
     <string name="onboarding_step_3_instructions_title_2">02</string>
     <string name="onboarding_step_3_instructions_detail_2">Visita la App con frecuencia para visualizar tu grado de exposición al coronavirus.</string>
     <string name="onboarding_step_3_instructions_title_3">03</string>
-    <string name="onboarding_step_3_instructions_detail_3">En caso de haber estado expuesto o reportar un diagnóstico positivo sigue las indicaciones que te enviaremos</string>
+    <string name="onboarding_step_3_instructions_detail_3">En caso de haber estado expuesto o reportar un diagnóstico positivo sigue las indicaciones que te enviaremos.</string>
     <string name="onboarding_descrption_step3">Gracias a la tecnología contact tracing Bluetooth, guardamos las interacciones entre los teléfonos que están próximos entre sí: así, si un usuario confirma que tiene Covid-19, el histórico de teléfonos cercanos nos permite alertar a aquellos que estuvieron cerca para que tomen precauciones . Pero ¡siempre con privacidad asegurada! Los teléfonos cercanos se almacenan con ids cambiantes, de modo que el usuario o el dispositivo no son identificables . ¿Quieres ser alertado en caso de haber estado expuesto al Covid-19? Autoriza tu contact tracing Bluetooth en la app y mantén encendido el Bluetooth de tu móvil.</string>
 
     <string name="onboarding_title_step_4">RECOMENDACIONES</string>
