@@ -68,7 +68,7 @@
     <string name="onboarding_step_3_instructions_title_2">02</string>
     <string name="onboarding_step_3_instructions_detail_2">Visita la App con frecuencia para visualizar tu grado de exposición al coronavirus.</string>
     <string name="onboarding_step_3_instructions_title_3">03</string>
-    <string name="onboarding_step_3_instructions_detail_3">En caso de haber estado expuesto o reportar un diagnóstico positivo sigue las indicaciones que te enviaremos</string>
+    <string name="onboarding_step_3_instructions_detail_3">En caso de haber estado expuesto o reportar un diagnóstico positivo sigue las indicaciones que te enviaremos.</string>
     <string name="onboarding_descrption_step3">Gracias a la tecnología contact tracing Bluetooth, guardamos las interacciones entre los teléfonos que están próximos entre sí: así, si un usuario confirma que tiene Covid-19, el histórico de teléfonos cercanos nos permite alertar a aquellos que estuvieron cerca para que tomen precauciones . Pero ¡siempre con privacidad asegurada! Los teléfonos cercanos se almacenan con ids cambiantes, de modo que el usuario o el dispositivo no son identificables . ¿Quieres ser alertado en caso de haber estado expuesto al Covid-19? Autoriza tu contact tracing Bluetooth en la app y mantén encendido el Bluetooth de tu móvil.</string>
 
     <string name="onboarding_title_step_4">RECOMENDACIONES</string>
