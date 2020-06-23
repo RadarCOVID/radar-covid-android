@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -73,6 +74,9 @@ class HomeFragment : BaseFragment(), HomeView {
                 switchRadar.jumpDrawablesToCurrentState();
                 presenter.onSwitchRadarClick(false)
             }
+        }
+        switchRadar.setOnTouchListener { _, event ->
+            event.actionMasked == MotionEvent.ACTION_MOVE
         }
 
         wrapperExposition.setOnClickListener { presenter.onExpositionBlockClick() }
