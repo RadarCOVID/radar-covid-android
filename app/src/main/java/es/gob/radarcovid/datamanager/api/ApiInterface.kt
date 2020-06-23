@@ -1,5 +1,6 @@
 package es.gob.radarcovid.datamanager.api
 
+import es.gob.radarcovid.models.request.RequestKpiReport
 import es.gob.radarcovid.models.request.RequestPostAnswers
 import es.gob.radarcovid.models.response.ResponseQuestions
 import es.gob.radarcovid.models.response.ResponseSettings
@@ -35,5 +36,8 @@ interface ApiInterface {
         @Header(SEDIA_USER_TOKEN) uuid: String,
         @Body body: RequestPostAnswers
     ): Call<Unit>
+
+    @POST("/kpi-controller/kpi")
+    fun postKpiReport(@Body body: RequestKpiReport): Call<Unit>
 
 }

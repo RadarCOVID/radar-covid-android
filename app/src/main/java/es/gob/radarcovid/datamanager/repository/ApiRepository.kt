@@ -1,5 +1,6 @@
 package es.gob.radarcovid.datamanager.repository
 
+import es.gob.radarcovid.models.request.RequestKpiReport
 import es.gob.radarcovid.models.request.RequestPostAnswers
 import es.gob.radarcovid.models.response.ResponseQuestions
 import es.gob.radarcovid.models.response.ResponseSettings
@@ -15,5 +16,7 @@ interface ApiRepository {
     fun getQuestions(): Either<Throwable, ResponseQuestions>
 
     fun postAnswers(uuid: String, requestPostAnswers: RequestPostAnswers): Either<Throwable, Unit>
+
+    fun postKpiReport(requestKpiReport: RequestKpiReport): Either<Throwable, Unit>
 
 }

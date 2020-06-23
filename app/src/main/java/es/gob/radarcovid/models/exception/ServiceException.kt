@@ -13,8 +13,14 @@ class ServiceException(message: String) : Exception(message) {
 
         private const val MESSAGE_DEFAULT: String = "Internal server error"
 
-        fun <T> from(response: Response<T>): ServiceException =
+        private const val UNSPECIFIED_ERROR: String = "Can't get the detailed error message"
+
+        fun <T> from(response: Response<T>): ServiceException = try {
             ServiceException("${response.code()} - ${getMessageFromErrorBody(response.errorBody())}")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ServiceException(UNSPECIFIED_ERROR)
+        }
 
 
         private fun getMessageFromErrorBody(errorBody: ResponseBody?): String = errorBody?.let {

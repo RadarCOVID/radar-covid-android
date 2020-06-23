@@ -4,6 +4,7 @@ import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastReceiver
 import es.gob.radarcovid.common.di.component.DaggerApplicationComponent
+import es.gob.radarcovid.features.kpireport.KpiReportWorker
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.models.ApplicationInfo
@@ -26,6 +27,7 @@ class RadarCovidApplication : DaggerApplication() {
 
         registerReceiver(ExposureStatusChangeBroadcastReceiver(), DP3T.getUpdateIntentFilter())
 
+        KpiReportWorker.start(this)
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
