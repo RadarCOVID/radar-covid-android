@@ -9,7 +9,7 @@ import org.dpppt.android.sdk.models.ApplicationInfo
 import org.dpppt.android.sdk.util.SignatureUtil
 
 
-class CovidRadarApplication : DaggerApplication() {
+class RadarCovidApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()

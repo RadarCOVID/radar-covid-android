@@ -5,7 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
-import es.gob.radarcovid.CovidRadarApplication
+import es.gob.radarcovid.RadarCovidApplication
 import es.gob.radarcovid.common.di.module.ActivitiesModule
 import es.gob.radarcovid.common.di.module.NetworkModule
 import es.gob.radarcovid.common.di.module.RepositoryModule
@@ -19,7 +19,7 @@ import javax.inject.Named
         ActivitiesModule::class,
         AndroidSupportInjectionModule::class]
 )
-interface ApplicationComponent : AndroidInjector<CovidRadarApplication> {
+interface ApplicationComponent : AndroidInjector<RadarCovidApplication> {
 
     @Component.Builder
     interface Builder {
