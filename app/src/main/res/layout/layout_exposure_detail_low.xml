@@ -128,7 +128,7 @@
             android:text="@string/exposure_detail_tip_clinic" />
     </LinearLayout>
 
-    <es.gob.covidradar.common.view.MoreInfoButton
+    <es.gob.radarcovid.common.view.MoreInfoButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp" />

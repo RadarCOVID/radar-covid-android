@@ -149,7 +149,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="@string/confirmation_tip_6" />
 
-            <es.gob.covidradar.common.view.MoreInfoButton
+            <es.gob.radarcovid.common.view.MoreInfoButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp" />
