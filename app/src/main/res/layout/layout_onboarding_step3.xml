@@ -114,6 +114,7 @@
             style="@style/ButtonNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_content"
             android:text="@string/onboarding_button_activate" />
 
         <Button
@@ -121,7 +122,6 @@
             style="@style/ButtonWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/padding_content"
             android:text="@string/onboarding_button_finish" />
 
     </LinearLayout>

@@ -127,11 +127,12 @@
     <string name="exposure_detail_clinic_indications">Sigue los consejos de tu centro de salud. Más información <b>aquí</b></string>
     <string name="exposure_detail_more_info_tips">Tienes más información sobre consejos, sintomas y medidas <b>aquí</b></string>
     <string name="exposure_detail_covid_report_message"><b>Ayúdanos a cuidar a los demás.</b> Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
-    <string name="exposure_detail_last_update">%1$s / %2$s</string>
 
     /********** Exposition detail low ************/
-    <string name="exposure_detail_low">Tu exposición es baja</string>
-    <string name="exposure_detail_message_low">Sin contactos de riesgo aparentes.</string>
+    <string name="exposure_detail_low_title_small">RIESGO BAJO</string>
+    <string name="exposure_detail_low_title">Tu exposición es baja</string>
+    <string name="exposure_detail_low_last_update">Sin contactos de riesgo aparentes. (actualizado %1$s)</string>
+
     <string name="exposure_detail_tips_title_low">Manten las medidas de seguridad y distanciamiento social.</string>
 
     <string name="exposure_detail_tip_mask">Usa siempre mascarilla quirúrgica</string>
@@ -144,15 +145,17 @@
     <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos deshechables o la parte interior del codo</string>
 
     /********** Exposition detail high ************/
-    <string name="exposure_detail_high">Tu exposición es alta</string>
-    <string name="exposure_detail_message_high">Podrías estar infectado</string>
+    <string name="exposure_detail_high_title_small">RIESGO ALTO</string>
+    <string name="exposure_detail_high_title">Tu exposición es alta</string>
+    <string name="exposure_detail_high_last_update">Podrías estar infectado desde hace <b>%1$s</b> (actualizado %2$s)</string>
 
-    <string name="exposure_detail_symptoms_title">Por favor, aíslate durante 14 días y presta atención a posíbles sintomas:</string>
+    <string name="exposure_detail_phone_title">Por favor, aíslate durante 14 días y llama al siguiente teléfono</string>
+    <string name="exposure_detail_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
     <string name="exposure_detail_symptom_cough">Tos persistente</string>
     <string name="exposure_detail_symptom_fever">Fiebre alta continua</string>
     <string name="exposure_detail_symptom_taste_and_smell">Perdida del gusto\ny el olfato</string>
 
-    <string name="exposure_detail_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
+    <string name="exposure_detail_synthoms_title">Presta atención a la aparición de cualquiera de los siguientes síntomas:</string>
     <string name="exposure_detail_tip_home">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
     <string name="exposure_detail_tip_avoid_people">Evita el contacto con otras personas</string>
 
@@ -237,8 +240,8 @@
 
     /********** Common ************/
 
-    <string name="contact_support_title">Teléfono de soporte</string>
-    <string name="contact_support_phone">900 000 000</string>
+    <string name="contact_support_title">Horario lunes a viernes de 08H a 20H</string>
+    <string name="contact_support_phone">900 112 061</string>
 
     <string name="more_info">Mas información</string>
 
@@ -251,16 +254,16 @@
     <string name="warning_exit_application_button">Confirmar</string>
 
     <plurals name="days">
-        <item quantity="one">hace %d día</item>
-        <item quantity="other">hace %d días</item>
+        <item quantity="one">%d día</item>
+        <item quantity="other">%d días</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">hace %d hora</item>
-        <item quantity="other">hace %d horas</item>
+        <item quantity="one">%d hora</item>
+        <item quantity="other">%d horas</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">hace %d min</item>
-        <item quantity="other">hace %d mins</item>
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d mins</item>
     </plurals>
 
 

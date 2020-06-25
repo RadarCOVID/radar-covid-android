@@ -2,6 +2,7 @@ package es.gob.radarcovid.features.exposure.view
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import es.gob.radarcovid.R
@@ -9,6 +10,7 @@ import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
 import es.gob.radarcovid.features.exposure.protocols.ExposureView
 import kotlinx.android.synthetic.main.activity_exposure.*
+import kotlinx.android.synthetic.main.layout_exposure_detail_high.*
 import javax.inject.Inject
 
 class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
@@ -38,13 +40,12 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
     }
 
     private fun initViews() {
-
+        wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
     }
 
     override fun showExpositionLevelLow() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
-        textViewExpositionDetailTitle.setText(R.string.exposure_detail_low)
-        textViewExpositionDetailMessage.setText(R.string.exposure_detail_message_low)
+        textViewExpositionDetailTitle.setText(R.string.exposure_detail_low_title)
 
         wrapperExposureLow.visibility = View.VISIBLE
         wrapperExposureHigh.visibility = View.GONE
@@ -65,8 +66,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     override fun showExpositionLevelHigh() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
-        textViewExpositionDetailTitle.setText(R.string.exposure_detail_high)
-        textViewExpositionDetailMessage.setText(R.string.exposure_detail_message_high)
+        textViewExpositionDetailTitle.setText(R.string.exposure_detail_high_title)
 
         wrapperExposureHigh.visibility = View.VISIBLE
         wrapperExposureLow.visibility = View.GONE
@@ -79,27 +79,30 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         minutesElapsed: Int
     ) {
         val text = when {
-            daysElapsed > 0 ->
-                getString(
-                    R.string.exposure_detail_last_update,
-                    date,
+            daysElapsed > 0 -> {
+                val daysText =
                     resources.getQuantityString(R.plurals.days, daysElapsed, daysElapsed)
-                )
-
-            hoursElapsed > 0 ->
-                getString(
-                    R.string.exposure_detail_last_update,
-                    date,
+                getString(R.string.exposure_detail_high_last_update, daysText, date)
+            }
+            hoursElapsed > 0 -> {
+                val hoursText =
                     resources.getQuantityString(R.plurals.hours, hoursElapsed, hoursElapsed)
-                )
-            else ->
-                getString(
-                    R.string.exposure_detail_last_update,
-                    date,
+                getString(R.string.exposure_detail_high_last_update, hoursText, date)
+            }
+            minutesElapsed > 0 -> {
+                val daysText =
                     resources.getQuantityString(R.plurals.minutes, minutesElapsed, minutesElapsed)
-                )
+                getString(R.string.exposure_detail_high_last_update, daysText, date)
+            }
+            else -> getString(R.string.exposure_detail_low_last_update, date)
         }
         textViewExpositionLastUpdate.text = text
+    }
+
+    override fun showDialerForSupport() {
+        startActivity(Intent(Intent.ACTION_DIAL).apply {
+            data = Uri.parse("tel:${getString(R.string.contact_support_phone)}")
+        })
     }
 
 }
