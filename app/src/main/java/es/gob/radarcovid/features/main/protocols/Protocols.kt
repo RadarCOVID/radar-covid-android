@@ -24,6 +24,8 @@ interface MainPresenter {
 
     fun onHelplineButtonClick()
 
+    fun onPollCompleted()
+
     fun onBackPressed()
 
     fun onExitConfirmed()
@@ -39,5 +41,7 @@ interface MainRouter {
     fun navigateToProfile()
 
     fun navigateToHelpline()
+
+    fun navigateToPollCompleted()
 
 }

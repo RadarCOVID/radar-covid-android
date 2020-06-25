@@ -21,12 +21,7 @@ class PollPresenterImpl @Inject constructor(
 
     override fun viewReady() {
 
-        if (pollUseCase.isPollCompleted()) {
-            router.navigateToPollCompleted()
-            view.finish()
-        } else {
-            requestQuestions()
-        }
+        requestQuestions()
 
     }
 

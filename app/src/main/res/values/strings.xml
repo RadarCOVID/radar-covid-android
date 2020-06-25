@@ -216,7 +216,6 @@
     <string name="helpline_message_p2">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
     <string name="helpline_title_3">Un paso más</string>
     <string name="helpline_message_p3">¿Te interesaría participar en una entrevista telefónica para concocer más sobre tu experiencia con &appname;? Escribe a:</string>
-    <string name="helpline_interview_email"><u>piloto.appcovid@economia.gob.es</u></string>
     <string name="helpline_message_p4">Nos pondremos en contacto contigo para fijar el día y la hora que se adapte mejor a tí.</string>
     <string name="helpline_button_start">Cuéntanos tu experiencia</string>
 
@@ -233,13 +232,15 @@
     <string name="poll_completed_t1">Gracias por ayudarnos a mejorar.</string>
     <string name="poll_completed_p1">Muchas gracias por participar en el piloto de la APP Covid-19, tu opinión será clave para mejorarla y contribuir a prevenir futuros contagios.</string>
     <string name="poll_completed_t2">Un paso más</string>
-    <string name="poll_completed_p2">¿Te interesaría participar en una entrevista telefónica para concoer más sobre tu experiencia con &appname;?\n\nSi es así, escríbenos al siguiente correo electrónico para poder participar. Uno de  nuestros colaboradores se pondrá en contacto contigo para fijar el día y la hora que se adapte mejor a tí:</string>
-    <string name="poll_completed_email">ayudacovidradar@email.com</string>
+    <string name="poll_completed_p2">¿Te interesaría participar en una entrevista telefónica para conocer más sobre tu experiencia con &appname;?  Escribe a:</string>
+    <string name="poll_completed_phone_attention_title">Atención teléfónica</string>
+    <string name="poll_completed_phone_attention_message">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
     <string name="poll_completed_button">Volver a la página de inicio</string>
 
 
     /********** Common ************/
 
+    <string name="contact_email"><u>piloto.appcovid@economia.gob.es</u></string>
     <string name="contact_support_title">Horario lunes a viernes de 08H a 20H</string>
     <string name="contact_support_phone">900 112 061</string>
 
