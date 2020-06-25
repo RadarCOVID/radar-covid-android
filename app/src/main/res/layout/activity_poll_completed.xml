@@ -50,14 +50,14 @@
                 style="@style/TextSmallBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/poll_completed_p1" />
 
             <TextView
                 style="@style/TitleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/poll_completed_t2"
                 android:textSize="18sp" />
 
@@ -65,9 +65,7 @@
                 style="@style/TextSmallBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
                 android:text="@string/poll_completed_p2" />
-
 
             <TextView
                 android:id="@+id/textViewEmail"
@@ -75,8 +73,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/poll_completed_email"
+                android:text="@string/contact_email"
                 android:textSize="16sp" />
+
+            <TextView
+                style="@style/TitleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/poll_completed_phone_attention_title"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/TextSmallBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="@string/poll_completed_phone_attention_message" />
 
             <include
                 android:id="@+id/buttonContactSupport"
@@ -84,13 +97,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp" />
-
-            <Button
-                android:id="@+id/buttonMain"
-                style="@style/ButtonNormal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/poll_completed_button" />
 
         </LinearLayout>
     </ScrollView>

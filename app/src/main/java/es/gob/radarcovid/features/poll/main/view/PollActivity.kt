@@ -1,6 +1,6 @@
 package es.gob.radarcovid.features.poll.main.view
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -18,8 +18,10 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
 
     companion object {
 
-        fun open(context: Context) =
-            context.startActivity(Intent(context, PollActivity::class.java))
+        const val REQUEST_CODE_POLL_COMPLETED = 1
+
+        fun openForResult(activity: Activity, requestCode: Int) =
+            activity.startActivityForResult(Intent(activity, PollActivity::class.java), requestCode)
 
     }
 

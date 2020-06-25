@@ -1,78 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end">
+    <ScrollView
+        android:id="@+id/wrapperContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonContinue"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_background_corner_purple" />
+            android:background="@color/background">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="21dp"
-            android:src="@drawable/img_step1" />
-    </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end">
 
-    <LinearLayout
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_background_corner_purple" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginEnd="21dp"
+                    android:src="@drawable/img_step1" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_content">
+
+                <TextView
+                    style="@style/TitleMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/onboarding_title_step_1"
+                    android:textColor="@color/black" />
+
+                <es.gob.radarcovid.common.view.DottedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/onboarding_step1_message_1" />
+
+                <es.gob.radarcovid.common.view.DottedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/onboarding_step1_message_2" />
+
+                <es.gob.radarcovid.common.view.DottedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/onboarding_step1_message_3" />
+
+                <TextView
+                    style="@style/TitleTip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:text="@string/onboarding_step1_message_end"
+                    android:textColor="@color/black" />
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/buttonContinue"
+        style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:orientation="vertical"
-        android:padding="@dimen/padding_content">
+        android:layout_margin="@dimen/padding_content"
+        android:text="@string/onboarding_button_continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wrapperContent" />
 
-        <TextView
-            style="@style/TitleMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="20dp"
-            android:text="@string/onboarding_title_step_1"
-            android:textColor="@color/black" />
-
-        <es.gob.radarcovid.common.view.DottedTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="@string/onboarding_step1_message_1" />
-
-        <es.gob.radarcovid.common.view.DottedTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="@string/onboarding_step1_message_2" />
-
-        <es.gob.radarcovid.common.view.DottedTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="@string/onboarding_step1_message_3" />
-
-        <TextView
-            style="@style/TitleTip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:text="@string/onboarding_step1_message_end"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/buttonContinue"
-            style="@style/ButtonNormal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/padding_content"
-            android:text="@string/onboarding_button_continue" />
-
-    </LinearLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

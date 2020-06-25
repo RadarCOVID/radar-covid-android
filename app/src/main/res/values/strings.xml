@@ -97,18 +97,21 @@
     <string name="exposition_block_medium_title">Exposición media</string>
     <string name="exposition_block_high_title">Exposición alta</string>
 
-    <string name="exposition_block_low_description">Te informaremos en el caso de un posible contacto.\nCuídate y cuida a los demás.</string>
-    <string name="exposition_block_medium_description">Contacto posible con persona con pesona contagiada de Covid-19</string>
-    <string name="exposition_block_high_description">Has estado en contacto con una persona contagiada de Covid-19.\nCuídate y cuida a los demás.</string>
+    <string name="exposition_block_low_description_l1">Te informaremos en el caso de un posible contacto de riesgo.</string>
+    <string name="exposition_block_low_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_medium_description_l1">Contacto posible con persona con pesona contagiada de Covid-19</string>
+    <string name="exposition_block_medium_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_high_description_l1">Has estado en contacto con una persona contagiada de Covid-19.</string>
+    <string name="exposition_block_high_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
 
     <string name="radar_block_enabled_title">&appname; activo</string>
     <string name="radar_block_disabled_title">&appname; inactivo</string>
 
-    <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán de manera anónima.</string>
+    <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán siempre anónimamente.</string>
     <string name="radar_block_disabled_description">Por favor, activa el Bluetooth para poder identificar posibles contagios.</string>
 
     <string name="radar_warning_title">¿Estás seguro?</string>
-    <string name="radar_warning_message">¿Estás seguro?  Si desactivas el radar COVID (Bluetooth), no podremos avisarte.</string>
+    <string name="radar_warning_message">Si desactivas el &appname; (el Bluetooth), no podremos avisarte.  Ayúdanos a cuidarte.</string>
     <string name="radar_warning_button">Desactivar</string>
 
 
@@ -124,11 +127,12 @@
     <string name="exposure_detail_clinic_indications">Sigue los consejos de tu centro de salud. Más información <b>aquí</b></string>
     <string name="exposure_detail_more_info_tips">Tienes más información sobre consejos, sintomas y medidas <b>aquí</b></string>
     <string name="exposure_detail_covid_report_message"><b>Ayúdanos a cuidar a los demás.</b> Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
-    <string name="exposure_detail_last_update">%1$s / %2$s</string>
 
     /********** Exposition detail low ************/
-    <string name="exposure_detail_low">Tu exposición es baja</string>
-    <string name="exposure_detail_message_low">Sin contactos de riesgo aparentes.</string>
+    <string name="exposure_detail_low_title_small">RIESGO BAJO</string>
+    <string name="exposure_detail_low_title">Tu exposición es baja</string>
+    <string name="exposure_detail_low_last_update">Sin contactos de riesgo aparentes. (actualizado %1$s)</string>
+
     <string name="exposure_detail_tips_title_low">Manten las medidas de seguridad y distanciamiento social.</string>
 
     <string name="exposure_detail_tip_mask">Usa siempre mascarilla quirúrgica</string>
@@ -141,15 +145,17 @@
     <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos deshechables o la parte interior del codo</string>
 
     /********** Exposition detail high ************/
-    <string name="exposure_detail_high">Tu exposición es alta</string>
-    <string name="exposure_detail_message_high">Podrías estar infectado</string>
+    <string name="exposure_detail_high_title_small">RIESGO ALTO</string>
+    <string name="exposure_detail_high_title">Tu exposición es alta</string>
+    <string name="exposure_detail_high_last_update">Podrías estar infectado desde hace <b>%1$s</b> (actualizado %2$s)</string>
 
-    <string name="exposure_detail_symptoms_title">Por favor, aíslate durante 14 días y presta atención a posíbles sintomas:</string>
+    <string name="exposure_detail_phone_title">Por favor, aíslate durante 14 días y llama al siguiente teléfono</string>
+    <string name="exposure_detail_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
     <string name="exposure_detail_symptom_cough">Tos persistente</string>
     <string name="exposure_detail_symptom_fever">Fiebre alta continua</string>
     <string name="exposure_detail_symptom_taste_and_smell">Perdida del gusto\ny el olfato</string>
 
-    <string name="exposure_detail_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
+    <string name="exposure_detail_synthoms_title">Presta atención a la aparición de cualquiera de los siguientes síntomas:</string>
     <string name="exposure_detail_tip_home">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
     <string name="exposure_detail_tip_avoid_people">Evita el contacto con otras personas</string>
 
@@ -207,11 +213,10 @@
     <string name="helpline_title">Ayúdanos a mejorar</string>
     <string name="helpline_message_p1">Muchas gracias por participar en el piloto de la APP Covid-19, <b>contándonos tu opinión de forma anónima nos ayuda a mejorar</b> y contribuir a prevenir futuros contagios.</string>
     <string name="helpline_title_2">Reportar incidencia</string>
-    <string name="helpline_message_p2">Si necesitas ayuda funcional o reportar cualquier tipo de incidencia puedes contactar con nosotros de forma rápida</string>
+    <string name="helpline_message_p2">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
     <string name="helpline_title_3">Un paso más</string>
     <string name="helpline_message_p3">¿Te interesaría participar en una entrevista telefónica para concocer más sobre tu experiencia con &appname;? Escribe a:</string>
-    <string name="helpline_interview_email">piloto.appcovid@economia.gob.es</string>
-    <string name="helpline_message_p4">Uno de nuestros colaboradores se pondrá en contacto contigo para fijar el día y la hora que se adapte mejor a tí.</string>
+    <string name="helpline_message_p4">Nos pondremos en contacto contigo para fijar el día y la hora que se adapte mejor a tí.</string>
     <string name="helpline_button_start">Cuéntanos tu experiencia</string>
 
     <string name="step_indicator_text">%1$d / %2$d</string>
@@ -227,15 +232,17 @@
     <string name="poll_completed_t1">Gracias por ayudarnos a mejorar.</string>
     <string name="poll_completed_p1">Muchas gracias por participar en el piloto de la APP Covid-19, tu opinión será clave para mejorarla y contribuir a prevenir futuros contagios.</string>
     <string name="poll_completed_t2">Un paso más</string>
-    <string name="poll_completed_p2">¿Te interesaría participar en una entrevista telefónica para concoer más sobre tu experiencia con &appname;?\n\nSi es así, escríbenos al siguiente correo electrónico para poder participar. Uno de  nuestros colaboradores se pondrá en contacto contigo para fijar el día y la hora que se adapte mejor a tí:</string>
-    <string name="poll_completed_email">ayudacovidradar@email.com</string>
+    <string name="poll_completed_p2">¿Te interesaría participar en una entrevista telefónica para conocer más sobre tu experiencia con &appname;?  Escribe a:</string>
+    <string name="poll_completed_phone_attention_title">Atención teléfónica</string>
+    <string name="poll_completed_phone_attention_message">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
     <string name="poll_completed_button">Volver a la página de inicio</string>
 
 
     /********** Common ************/
 
-    <string name="contact_support_title">Teléfono de soporte</string>
-    <string name="contact_support_phone">900 000 000</string>
+    <string name="contact_email"><u>piloto.appcovid@economia.gob.es</u></string>
+    <string name="contact_support_title">Horario lunes a viernes de 08H a 20H</string>
+    <string name="contact_support_phone">900 112 061</string>
 
     <string name="more_info">Mas información</string>
 
@@ -248,16 +255,16 @@
     <string name="warning_exit_application_button">Confirmar</string>
 
     <plurals name="days">
-        <item quantity="one">hace %d día</item>
-        <item quantity="other">hace %d días</item>
+        <item quantity="one">%d día</item>
+        <item quantity="other">%d días</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">hace %d hora</item>
-        <item quantity="other">hace %d horas</item>
+        <item quantity="one">%d hora</item>
+        <item quantity="other">%d horas</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="one">hace %d min</item>
-        <item quantity="other">hace %d mins</item>
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d mins</item>
     </plurals>
 
 

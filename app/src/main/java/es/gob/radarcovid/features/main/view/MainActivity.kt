@@ -1,5 +1,6 @@
 package es.gob.radarcovid.features.main.view
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +9,7 @@ import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainView
+import es.gob.radarcovid.features.poll.main.view.PollActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -26,6 +28,12 @@ class MainActivity : BaseActivity(), MainView {
 
     @Inject
     lateinit var presenter: MainPresenter
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PollActivity.REQUEST_CODE_POLL_COMPLETED && resultCode == Activity.RESULT_OK)
+            presenter.onPollCompleted()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

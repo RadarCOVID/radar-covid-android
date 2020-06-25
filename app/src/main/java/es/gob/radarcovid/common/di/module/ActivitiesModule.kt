@@ -12,7 +12,7 @@ import es.gob.radarcovid.features.main.view.MainActivity
 import es.gob.radarcovid.features.onboarding.di.OnboardingModule
 import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
 import es.gob.radarcovid.features.poll.completed.di.PollCompletedModule
-import es.gob.radarcovid.features.poll.completed.view.PollCompletedActivity
+import es.gob.radarcovid.features.poll.completed.view.PollCompletedFragment
 import es.gob.radarcovid.features.poll.main.di.PollModule
 import es.gob.radarcovid.features.poll.main.view.PollActivity
 import es.gob.radarcovid.features.splash.di.SplashModule
@@ -44,9 +44,5 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [PollModule::class, PollFragmentsModule::class])
     abstract fun bindsPollActivity(): PollActivity
-
-    @PerActivity
-    @ContributesAndroidInjector(modules = [PollCompletedModule::class])
-    abstract fun bindsPollCompletedActivity(): PollCompletedActivity
 
 }

@@ -1,93 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end">
+    <ScrollView
+        android:id="@+id/wrapperContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/wrapperButtons"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/img_background_corner_purple" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_marginTop="22dp"
-            android:layout_marginEnd="24dp"
-            android:src="@drawable/img_step3" />
-    </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_background_corner_purple" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/img_step3" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_content">
+
+                <TextView
+                    style="@style/TitleMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="@string/onboarding_title_step_3"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    style="@style/TitleEnumPurple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/onboarding_step_3_instructions_title_1" />
+
+                <TextView
+                    style="@style/TextRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/onboarding_step_3_instructions_detail_1"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    style="@style/TitleEnumPurple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/onboarding_step_3_instructions_title_2" />
+
+                <TextView
+                    style="@style/TextRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/onboarding_step_3_instructions_detail_2"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    style="@style/TitleEnumPurple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/onboarding_step_3_instructions_title_3" />
+
+                <TextView
+                    style="@style/TextRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="60dp"
+                    android:text="@string/onboarding_step_3_instructions_detail_3"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/wrapperButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:clipToPadding="false"
+        android:layout_margin="@dimen/padding_content"
         android:orientation="vertical"
-        android:padding="@dimen/padding_content">
-
-        <TextView
-            style="@style/TitleMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="6dp"
-            android:text="@string/onboarding_title_step_3"
-            android:textColor="@color/black" />
-
-        <TextView
-            style="@style/TitleEnumPurple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/onboarding_step_3_instructions_title_1" />
-
-        <TextView
-            style="@style/TextRegular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/onboarding_step_3_instructions_detail_1"
-            android:textColor="@color/black" />
-
-        <TextView
-            style="@style/TitleEnumPurple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/onboarding_step_3_instructions_title_2" />
-
-        <TextView
-            style="@style/TextRegular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/onboarding_step_3_instructions_detail_2"
-            android:textColor="@color/black" />
-
-        <TextView
-            style="@style/TitleEnumPurple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/onboarding_step_3_instructions_title_3" />
-
-        <TextView
-            style="@style/TextRegular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
-            android:text="@string/onboarding_step_3_instructions_detail_3"
-            android:textColor="@color/black" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wrapperContent">
 
         <Button
             android:id="@+id/buttonActivate"
             style="@style/ButtonNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/padding_content"
             android:text="@string/onboarding_button_activate" />
 
         <Button
@@ -95,9 +122,8 @@
             style="@style/ButtonWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/padding_content"
             android:text="@string/onboarding_button_finish" />
 
     </LinearLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

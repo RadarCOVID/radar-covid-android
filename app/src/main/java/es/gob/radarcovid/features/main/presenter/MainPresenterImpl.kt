@@ -1,6 +1,6 @@
 package es.gob.radarcovid.features.main.presenter
 
-import es.gob.radarcovid.datamanager.usecase.SyncExposureDataUseCase
+import es.gob.radarcovid.datamanager.usecase.MainUseCase
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.main.protocols.MainView
@@ -9,7 +9,7 @@ import javax.inject.Inject
 class MainPresenterImpl @Inject constructor(
     private val view: MainView,
     private val router: MainRouter,
-    private val syncExposureDataUseCase: SyncExposureDataUseCase
+    private val mainUseCase: MainUseCase
 ) : MainPresenter {
 
     override fun viewReady(activateRadar: Boolean) {
@@ -19,7 +19,7 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onResume() {
-        syncExposureDataUseCase.syncExposureData()
+        mainUseCase.syncExposureData()
     }
 
     override fun onHomeButtonClick() {
@@ -35,7 +35,15 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onHelplineButtonClick() {
-        router.navigateToHelpline()
+        if (mainUseCase.isPollCompleted())
+            router.navigateToPollCompleted()
+        else
+            router.navigateToHelpline()
+    }
+
+    override fun onPollCompleted() {
+        router.navigateToPollCompleted()
+
     }
 
     override fun onBackPressed() {

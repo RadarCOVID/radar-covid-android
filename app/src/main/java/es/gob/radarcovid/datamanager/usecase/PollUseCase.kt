@@ -16,9 +16,7 @@ class PollUseCase @Inject constructor(
     private val preferencesRepository: PreferencesRepository,
     private val questionsDataMapper: QuestionsDataMapper
 ) {
-
-    fun isPollCompleted(): Boolean = preferencesRepository.isPollCompleted()
-
+    
     fun setPollCompleted(pollCompleted: Boolean) =
         preferencesRepository.setPollCompleted(pollCompleted)
 

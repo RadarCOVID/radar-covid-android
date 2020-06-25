@@ -19,8 +19,4 @@ class PollCompletedPresenterImpl @Inject constructor(private val view: PollCompl
         view.showDialerForSupport()
     }
 
-    override fun onBackToMainButtonClick() {
-        view.finish()
-    }
-
 }
