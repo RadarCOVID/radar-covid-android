@@ -110,19 +110,19 @@
         app:layout_constraintTop_toBottomOf="@id/wrapperContent">
 
         <Button
+            android:id="@+id/buttonActivate"
+            style="@style/ButtonNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/onboarding_button_activate" />
+
+        <Button
             android:id="@+id/buttonFinish"
             style="@style/ButtonWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/padding_content"
             android:text="@string/onboarding_button_finish" />
-
-        <Button
-            android:id="@+id/buttonActivate"
-            style="@style/ButtonNormal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/onboarding_button_activate" />
 
     </LinearLayout>
 

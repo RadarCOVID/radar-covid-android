@@ -97,18 +97,21 @@
     <string name="exposition_block_medium_title">Exposición media</string>
     <string name="exposition_block_high_title">Exposición alta</string>
 
-    <string name="exposition_block_low_description">Te informaremos en el caso de un posible contacto.\nCuídate y cuida a los demás.</string>
-    <string name="exposition_block_medium_description">Contacto posible con persona con pesona contagiada de Covid-19</string>
-    <string name="exposition_block_high_description">Has estado en contacto con una persona contagiada de Covid-19.\nCuídate y cuida a los demás.</string>
+    <string name="exposition_block_low_description_l1">Te informaremos en el caso de un posible contacto de riesgo.</string>
+    <string name="exposition_block_low_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_medium_description_l1">Contacto posible con persona con pesona contagiada de Covid-19</string>
+    <string name="exposition_block_medium_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_high_description_l1">Has estado en contacto con una persona contagiada de Covid-19.</string>
+    <string name="exposition_block_high_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
 
     <string name="radar_block_enabled_title">&appname; activo</string>
     <string name="radar_block_disabled_title">&appname; inactivo</string>
 
-    <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán de manera anónima.</string>
+    <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán siempre anónimamente.</string>
     <string name="radar_block_disabled_description">Por favor, activa el Bluetooth para poder identificar posibles contagios.</string>
 
     <string name="radar_warning_title">¿Estás seguro?</string>
-    <string name="radar_warning_message">¿Estás seguro?  Si desactivas el radar COVID (Bluetooth), no podremos avisarte.</string>
+    <string name="radar_warning_message">Si desactivas el &appname; (el Bluetooth), no podremos avisarte.  Ayúdanos a cuidarte.</string>
     <string name="radar_warning_button">Desactivar</string>
 
 
