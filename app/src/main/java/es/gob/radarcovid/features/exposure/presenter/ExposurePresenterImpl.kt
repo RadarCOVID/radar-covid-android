@@ -47,26 +47,32 @@ class ExposurePresenterImpl @Inject constructor(
     }
 
     private fun setLastUpdateTime(exposureLevel: ExposureInfo.Level, lastUpdateTime: Date) {
-        if (exposureLevel == ExposureInfo.Level.LOW) {
-            view.setLastUpdateTime(
-                lastUpdateTime.format(),
-                0,
-                0,
-                0
-            )
-        } else {
-            val millisElapsed = System.currentTimeMillis() - lastUpdateTime.time
-            val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
-            val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
-            val minutesElapsed =
-                TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
+        when {
+            lastUpdateTime == Date(0) -> {
+                view.setLastUpdateNoData()
+            }
+            exposureLevel == ExposureInfo.Level.LOW -> {
+                view.setLastUpdateTime(
+                    lastUpdateTime.format(),
+                    0,
+                    0,
+                    0
+                )
+            }
+            else -> {
+                val millisElapsed = System.currentTimeMillis() - lastUpdateTime.time
+                val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
+                val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
+                val minutesElapsed =
+                    TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
 
-            view.setLastUpdateTime(
-                lastUpdateTime.format(),
-                daysElapsed.toInt(),
-                hoursElapsed.toInt(),
-                minutesElapsed.toInt()
-            )
+                view.setLastUpdateTime(
+                    lastUpdateTime.format(),
+                    daysElapsed.toInt(),
+                    hoursElapsed.toInt(),
+                    minutesElapsed.toInt()
+                )
+            }
         }
 
     }

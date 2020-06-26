@@ -10,6 +10,8 @@ interface ExposureView {
 
     fun setLastUpdateTime(date: String, daysElapsed: Int, hoursElapsed: Int, minutesElapsed: Int)
 
+    fun setLastUpdateNoData()
+
     fun showDialerForSupport()
 
 }

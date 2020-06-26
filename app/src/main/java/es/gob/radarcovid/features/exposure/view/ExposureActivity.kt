@@ -102,6 +102,10 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         textViewExpositionLastUpdate.text = text
     }
 
+    override fun setLastUpdateNoData() {
+        textViewExpositionLastUpdate.setText(R.string.exposure_detail_low_last_update_no_data)
+    }
+
     override fun showDialerForSupport() {
         startActivity(Intent(Intent.ACTION_DIAL).apply {
             data = Uri.parse("tel:${getString(R.string.contact_support_phone)}")
