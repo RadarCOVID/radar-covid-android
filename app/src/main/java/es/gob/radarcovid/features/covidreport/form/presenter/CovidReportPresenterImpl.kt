@@ -36,16 +36,15 @@ class CovidReportPresenterImpl @Inject constructor(
 
     override fun onSendButtonClick() {
         if (getInternetInfoUseCase.isInternetAvailable()) {
-            view.getReportCode()
-            reportInfected()
+            reportInfected(view.getReportCode())
         } else {
             view.showNetworkWarningDialog()
         }
     }
 
-    private fun reportInfected() {
+    private fun reportInfected(reportCode: String) {
         view.showLoading()
-        reportInfectedUseCase.reportInfected(
+        reportInfectedUseCase.reportInfected(reportCode,
             onSuccess = {
                 view.hideLoading()
                 view.finish()
