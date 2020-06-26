@@ -3,6 +3,8 @@ package es.gob.radarcovid.models.domain
 data class Settings(
     val exposureConfiguration: ExposureConfiguration = ExposureConfiguration(),
     val minRiskScore: Int = 0,
+    val attenuationThresholdLow: Int = 0,
+    val attenuationThresholdMedium: Int = 0,
     val riskScoreClassification: List<SettingsRiskScore> = emptyList()
 )
 
