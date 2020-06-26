@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.viewmodel.AnswerViewModel
 import es.gob.radarcovid.common.view.viewmodel.QuestionViewModel
+import kotlinx.android.synthetic.main.view_rate.view.*
 import kotlinx.android.synthetic.main.view_rate_item.view.*
 
 class RateView @JvmOverloads constructor(
@@ -27,14 +28,14 @@ class RateView @JvmOverloads constructor(
                         it.answers.size - 1 -> rateItem.setBackgroundResource(R.drawable.selector_rate_view_end)
                         else -> rateItem.setBackgroundResource(R.drawable.selector_rate_view_mid)
                     }
-                    addView(rateItem)
+                    wrapperContent.addView(rateItem)
                     rateItem.answer = answer
                 }
             }
         }
 
     init {
-        orientation = HORIZONTAL
+        LayoutInflater.from(context).inflate(R.layout.view_rate, this)
     }
 
 
