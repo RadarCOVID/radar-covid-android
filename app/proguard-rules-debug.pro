@@ -21,4 +21,4 @@
 #-renamesourcefileattribute SourceFile
 
 -dontobfuscate
--keep public class es.gob.radarcovid.models.**
+-keep class es.gob.radarcovid.models.** { *; }
