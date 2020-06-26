@@ -32,6 +32,10 @@ class ExposurePresenterImpl @Inject constructor(
         router.navigateToCovidReport()
     }
 
+    override fun onMoreInfoButtonClick() {
+        router.navigateToBrowser("https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm")
+    }
+
     private fun showExposureInfo(exposureInfo: ExposureInfo) {
         when (exposureInfo.level) {
             ExposureInfo.Level.LOW -> view.showExpositionLevelLow()

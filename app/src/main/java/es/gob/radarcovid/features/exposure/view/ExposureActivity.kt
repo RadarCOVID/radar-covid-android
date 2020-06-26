@@ -11,6 +11,7 @@ import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
 import es.gob.radarcovid.features.exposure.protocols.ExposureView
 import kotlinx.android.synthetic.main.activity_exposure.*
 import kotlinx.android.synthetic.main.layout_exposure_detail_high.*
+import kotlinx.android.synthetic.main.layout_exposure_detail_low.*
 import javax.inject.Inject
 
 class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
@@ -41,6 +42,8 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     private fun initViews() {
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
+        buttonMoreInfoLow.setOnClickListener { presenter.onMoreInfoButtonClick() }
+        buttonMoreInfoHigh.setOnClickListener { presenter.onMoreInfoButtonClick() }
     }
 
     override fun showExpositionLevelLow() {

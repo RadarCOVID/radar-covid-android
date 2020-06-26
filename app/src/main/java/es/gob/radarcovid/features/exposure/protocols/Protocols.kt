@@ -24,10 +24,14 @@ interface ExposurePresenter {
 
     fun onReportButtonClick()
 
+    fun onMoreInfoButtonClick()
+
 }
 
 interface ExposureRouter {
 
     fun navigateToCovidReport()
+
+    fun navigateToBrowser(url: String)
 
 }
