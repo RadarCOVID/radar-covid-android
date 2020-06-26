@@ -2,9 +2,16 @@ package es.gob.radarcovid.features.home.view
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.app.Activity
+import android.content.Context.POWER_SERVICE
+import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
+import android.os.PowerManager
+import android.provider.Settings
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -22,6 +29,8 @@ class HomeFragment : BaseFragment(), HomeView {
 
     companion object {
 
+        private const val REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS = 1
+
         private const val ARG_ACTIVATE_RADAR = "arg_activate_radar"
 
         fun newInstance(activateRadar: Boolean) = HomeFragment().apply {
@@ -34,6 +43,12 @@ class HomeFragment : BaseFragment(), HomeView {
 
     @Inject
     lateinit var presenter: HomePresenter
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS && resultCode == Activity.RESULT_OK)
+            presenter.onBatteryOptimizationsIgnored()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,6 +89,9 @@ class HomeFragment : BaseFragment(), HomeView {
                 presenter.onSwitchRadarClick(false)
             }
         }
+        switchRadar.setOnTouchListener { _, event ->
+            event.actionMasked == MotionEvent.ACTION_MOVE
+        }
 
         wrapperExposition.setOnClickListener { presenter.onExpositionBlockClick() }
         imageButtonArrow.setOnClickListener { presenter.onExpositionBlockClick() }
@@ -96,21 +114,24 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun showExpositionLevelLow() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
         textViewExpositionTitle.setText(R.string.exposition_block_low_title)
-        textViewExpositionDescription.setText(R.string.exposition_block_low_description)
+        textViewExpositionDescriptionL1.setText(R.string.exposition_block_low_description_l1)
+        textViewExpositionDescriptionL2.setText(R.string.exposition_block_low_description_l2)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.green))
     }
 
     override fun showExpositionLevelMedium() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_medium)
         textViewExpositionTitle.setText(R.string.exposition_block_medium_title)
-        textViewExpositionDescription.setText(R.string.exposition_block_medium_description)
+        textViewExpositionDescriptionL1.setText(R.string.exposition_block_medium_description_l1)
+        textViewExpositionDescriptionL2.setText(R.string.exposition_block_medium_description_l2)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.orange))
     }
 
     override fun showExpositionLevelHigh() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
         textViewExpositionTitle.setText(R.string.exposition_block_high_title)
-        textViewExpositionDescription.setText(R.string.exposition_block_medium_description)
+        textViewExpositionDescriptionL1.setText(R.string.exposition_block_medium_description_l1)
+        textViewExpositionDescriptionL1.setText(R.string.exposition_block_medium_description_l2)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
     }
 
@@ -136,6 +157,25 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun setRadarBlockChecked(isChecked: Boolean) {
         switchRadar.isChecked = isChecked
         showRadarBlockEnabled(isChecked)
+    }
+
+    override fun areBatteryOptimizationsIgnored(): Boolean {
+        (context!!.getSystemService(POWER_SERVICE) as PowerManager).let { powerManager ->
+            return powerManager.isIgnoringBatteryOptimizations(context!!.packageName)
+        }
+    }
+
+    override fun requestIgnoreBatteryOptimizations() {
+        (context!!.getSystemService(POWER_SERVICE) as PowerManager?)?.let {
+            if (!it.isIgnoringBatteryOptimizations(activity!!.packageName)) {
+
+                startActivityForResult(Intent().apply {
+                    action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+                    //action = Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS
+                    data = Uri.parse("package:${activity!!.packageName}")
+                }, REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS)
+            }
+        }
     }
 
     private fun showRadarBlockEnabled(enabled: Boolean) {

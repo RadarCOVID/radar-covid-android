@@ -24,6 +24,10 @@ class ExposurePresenterImpl @Inject constructor(
         showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
+    override fun onContactButtonClick() {
+        view.showDialerForSupport()
+    }
+
     override fun onReportButtonClick() {
         router.navigateToCovidReport()
     }
@@ -35,22 +39,32 @@ class ExposurePresenterImpl @Inject constructor(
             ExposureInfo.Level.HIGH -> view.showExpositionLevelHigh()
         }
 
-        setLastUpdateTime(exposureInfo.lastUpdateTime)
+        setLastUpdateTime(exposureInfo.level, exposureInfo.lastUpdateTime)
     }
 
-    private fun setLastUpdateTime(lastUpdateTime: Date) {
-        val millisElapsed = System.currentTimeMillis() - lastUpdateTime.time
-        val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
-        val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
-        val minutesElapsed =
-            TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
+    private fun setLastUpdateTime(exposureLevel: ExposureInfo.Level, lastUpdateTime: Date) {
+        if (exposureLevel == ExposureInfo.Level.LOW) {
+            view.setLastUpdateTime(
+                lastUpdateTime.format(),
+                0,
+                0,
+                0
+            )
+        } else {
+            val millisElapsed = System.currentTimeMillis() - lastUpdateTime.time
+            val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
+            val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
+            val minutesElapsed =
+                TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
 
-        view.setLastUpdateTime(
-            lastUpdateTime.format(),
-            daysElapsed.toInt(),
-            hoursElapsed.toInt(),
-            minutesElapsed.toInt()
-        )
+            view.setLastUpdateTime(
+                lastUpdateTime.format(),
+                daysElapsed.toInt(),
+                hoursElapsed.toInt(),
+                minutesElapsed.toInt()
+            )
+        }
+
     }
 
     private fun getMockExposureInfo(): ExposureInfo {

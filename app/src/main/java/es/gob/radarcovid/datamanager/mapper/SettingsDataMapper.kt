@@ -16,6 +16,8 @@ class SettingsDataMapper @Inject constructor() {
         Settings(
             exposureConfiguration = transform(exposureConfiguration),
             minRiskScore = minRiskScore ?: 0,
+            attenuationThresholdLow = attenuationDurationThresholds?.low ?: 50,
+            attenuationThresholdMedium = attenuationDurationThresholds?.medium ?: 55,
             riskScoreClassification = transform(riskScoreClassification)
         )
     }

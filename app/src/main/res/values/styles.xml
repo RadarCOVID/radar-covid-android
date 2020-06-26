@@ -80,6 +80,12 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextMuliMedium">
+        <item name="android:fontFamily">@font/muli_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextRegular">
         <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">@font/muli_regular</item>

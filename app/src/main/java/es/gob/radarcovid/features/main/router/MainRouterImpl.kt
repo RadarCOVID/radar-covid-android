@@ -7,6 +7,7 @@ import es.gob.radarcovid.features.helpline.view.HelplineFragment
 import es.gob.radarcovid.features.home.view.HomeFragment
 import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.mydata.view.MyDataFragment
+import es.gob.radarcovid.features.poll.completed.view.PollCompletedFragment
 import javax.inject.Inject
 
 class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity) : MainRouter {
@@ -40,6 +41,14 @@ class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity
             .supportFragmentManager
             .beginTransaction()
             .replace(R.id.wrapperContent, HelplineFragment.newInstance())
+            .commit()
+    }
+
+    override fun navigateToPollCompleted() {
+        activity
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.wrapperContent, PollCompletedFragment.newInstance())
             .commit()
     }
 

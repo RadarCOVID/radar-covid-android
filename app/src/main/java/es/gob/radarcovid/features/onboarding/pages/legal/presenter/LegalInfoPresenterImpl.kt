@@ -18,8 +18,8 @@ class LegalInfoPresenterImpl @Inject constructor(
         view.setLegalTermsChecked()
     }
 
-    override fun onLegalTermsButtonClick() {
-        router.navigateToLegalInfoDetail()
+    override fun onConditions() {
+        router.navigateToConditions()
     }
 
     override fun onPrivacyPolicyButtonClick() {

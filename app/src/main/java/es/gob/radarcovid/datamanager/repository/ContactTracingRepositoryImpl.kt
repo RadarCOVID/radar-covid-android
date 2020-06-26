@@ -1,7 +1,6 @@
 package es.gob.radarcovid.datamanager.repository
 
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.nearby.exposurenotification.ExposureConfiguration
 import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.common.di.scope.PerActivity
 import es.gob.radarcovid.datamanager.mapper.ExpositionInfoDataMapper
@@ -36,19 +35,23 @@ class ContactTracingRepositoryImpl @Inject constructor(
     }
 
     override fun updateTracingSettings(settings: Settings) {
-        AppConfigManager.getInstance(activity).setExposureConfiguration(
-            ExposureConfiguration.ExposureConfigurationBuilder()
-                .setTransmissionRiskScores(*settings.exposureConfiguration.transmission.value)
-                .setTransmissionRiskWeight(settings.exposureConfiguration.transmission.weight.toInt())
-                .setDurationScores(*settings.exposureConfiguration.duration.value)
-                .setDurationWeight(settings.exposureConfiguration.duration.weight.toInt())
-                .setDaysSinceLastExposureScores(*settings.exposureConfiguration.days.value)
-                .setDaysSinceLastExposureWeight(settings.exposureConfiguration.days.weight.toInt())
-                .setAttenuationScores(*settings.exposureConfiguration.attenuation.value)
-                .setAttenuationWeight(settings.exposureConfiguration.attenuation.weight.toInt())
-                .setMinimumRiskScore(settings.minRiskScore)
-                .build()
-        )
+        AppConfigManager.getInstance(activity).run {
+            attenuationThresholdLow = settings.attenuationThresholdLow
+            attenuationThresholdMedium = settings.attenuationThresholdMedium
+        }
+//        AppConfigManager.getInstance(activity).setExposureConfiguration(
+//            ExposureConfiguration.ExposureConfigurationBuilder()
+//                .setTransmissionRiskScores(*settings.exposureConfiguration.transmission.value)
+//                .setTransmissionRiskWeight(settings.exposureConfiguration.transmission.weight.toInt())
+//                .setDurationScores(*settings.exposureConfiguration.duration.value)
+//                .setDurationWeight(settings.exposureConfiguration.duration.weight.toInt())
+//                .setDaysSinceLastExposureScores(*settings.exposureConfiguration.days.value)
+//                .setDaysSinceLastExposureWeight(settings.exposureConfiguration.days.weight.toInt())
+//                .setAttenuationScores(*settings.exposureConfiguration.attenuation.value)
+//                .setAttenuationWeight(settings.exposureConfiguration.attenuation.weight.toInt())
+//                .setMinimumRiskScore(settings.minRiskScore)
+//                .build()
+//        )
     }
 
     override fun startRadar(
@@ -60,9 +63,15 @@ class ContactTracingRepositoryImpl @Inject constructor(
             onSuccess()
         else
             DP3T.start(activity,
-                { onSuccess() },
-                { exception -> onError(exception) },
-                { onCancelled.invoke() })
+                {
+                    onSuccess()
+                },
+                { exception ->
+                    onError(exception)
+                },
+                {
+                    onCancelled.invoke()
+                })
     }
 
     override fun stopRadar() {

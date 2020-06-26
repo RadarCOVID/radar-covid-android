@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class LegalInfoRouterImpl @Inject constructor(private val fragment: Fragment) : LegalInfoRouter {
 
-    override fun navigateToLegalInfoDetail() {
+    override fun navigateToConditions() {
         TermsAndConditionsActivity.openForResult(fragment)
     }
 

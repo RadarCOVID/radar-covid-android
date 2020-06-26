@@ -6,8 +6,6 @@ interface PollCompletedView {
 
     fun showDialerForSupport()
 
-    fun finish()
-
 }
 
 interface PollCompletedPresenter {
@@ -17,7 +15,5 @@ interface PollCompletedPresenter {
     fun onMailButtonClick()
 
     fun onContactSupportButtonClick()
-
-    fun onBackToMainButtonClick()
 
 }
