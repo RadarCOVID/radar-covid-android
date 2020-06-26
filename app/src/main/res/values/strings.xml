@@ -211,7 +211,7 @@
     /********** Helpline ************/
 
     <string name="helpline_title">Ayúdanos a mejorar</string>
-    <string name="helpline_message_p1">Muchas gracias por participar en el piloto de la APP Covid-19, <b>contándonos tu opinión de forma anónima nos ayuda a mejorar</b> y contribuir a prevenir futuros contagios.</string>
+    <string name="helpline_message_p1">Muchas gracias por participar en el piloto de la APP &appname;, <b>contándonos tu opinión de forma anónima nos ayuda a mejorar</b> y contribuir a prevenir futuros contagios.</string>
     <string name="helpline_title_2">Reportar incidencia</string>
     <string name="helpline_message_p2">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
     <string name="helpline_title_3">Un paso más</string>
@@ -230,9 +230,10 @@
     <string name="question_dialog_cancel">Responder</string>
 
     <string name="poll_completed_t1">Gracias por ayudarnos a mejorar.</string>
-    <string name="poll_completed_p1">Muchas gracias por participar en el piloto de la APP Covid-19, tu opinión será clave para mejorarla y contribuir a prevenir futuros contagios.</string>
+    <string name="poll_completed_p1">Muchas gracias por participar en el piloto de la APP &appname;, tu opinión será clave para mejorarla y contribuir a prevenir futuros contagios.</string>
     <string name="poll_completed_t2">Un paso más</string>
     <string name="poll_completed_p2">¿Te interesaría participar en una entrevista telefónica para conocer más sobre tu experiencia con &appname;?  Escribe a:</string>
+    <string name="poll_completed_p3">Nos pondremos en contacto contigo para fijar el día y la hora que se adapte mejor a tí.</string>
     <string name="poll_completed_phone_attention_title">Atención teléfónica</string>
     <string name="poll_completed_phone_attention_message">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
     <string name="poll_completed_button">Volver a la página de inicio</string>
