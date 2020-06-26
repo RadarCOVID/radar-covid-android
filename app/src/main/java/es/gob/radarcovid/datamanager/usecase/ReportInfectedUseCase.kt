@@ -50,7 +50,7 @@ class ReportInfectedUseCase @Inject constructor(
             .setSubject("androidApp")
             .setIssuedAt(issuedDate)
             .setExpiration(expirationDate)
-            .claim("TAN", reportCode)
+            .claim("tan", reportCode)
             .signWith(key)
             .compact()
 
