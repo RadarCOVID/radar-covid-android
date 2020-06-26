@@ -3,9 +3,9 @@ package es.gob.radarcovid.common.base
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import dagger.android.support.DaggerFragment
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.TransparentProgressDialog
-import dagger.android.support.DaggerFragment
 
 abstract class BaseFragment : DaggerFragment() {
 
@@ -28,7 +28,7 @@ abstract class BaseFragment : DaggerFragment() {
     }
 
     fun hideLoading() {
-        progressBar?.hide()
+        progressBar?.dismiss()
     }
 
     fun showError(error: Throwable, finishOnDismiss: Boolean = false) {
