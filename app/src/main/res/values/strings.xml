@@ -159,6 +159,7 @@
     <string name="exposure_detail_tip_home">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
     <string name="exposure_detail_tip_avoid_people">Evita el contacto con otras personas</string>
 
+    <string name="exposure_detail_low_last_update_no_data">Sin contactos de riesgo aparentes.</string>
 
     /********** Covid Report ************/
 
