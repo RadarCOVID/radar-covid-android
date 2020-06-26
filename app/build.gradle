@@ -37,7 +37,7 @@ android {
         mock {
             debuggable true
             minifyEnabled false
-            shrinkResources true
+            //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules-debug.pro'
             signingConfig signingConfigs.release
 
@@ -45,14 +45,14 @@ android {
         }
         debug {
             minifyEnabled false
-            shrinkResources true
+            //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules-debug.pro'
 
             buildConfigField 'Boolean', 'isMock', 'false'
         }
         release {
             minifyEnabled false
-            shrinkResources true
+            //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             signingConfig signingConfigs.release
