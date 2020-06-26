@@ -1,6 +1,7 @@
 package es.gob.radarcovid.datamanager.usecase
 
 import es.gob.radarcovid.R
+import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import es.gob.radarcovid.datamanager.repository.RawRepository
 import io.jsonwebtoken.Jwts
@@ -12,24 +13,29 @@ import java.security.spec.PKCS8EncodedKeySpec
 import java.util.*
 import javax.inject.Inject
 
+import es.gob.radarcovid.common.base.asyncRequest
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 class ReportInfectedUseCase @Inject constructor(
     private val repository: ContactTracingRepository,
     private val rawRepository: RawRepository
 ) {
 
 
-    fun reportInfected(
-        reportCode: String,
-        onSuccess: () -> Unit,
-        onError: (Throwable) -> Unit
-    ) {
+    fun reportInfected(reportCode: String, onSuccess:() -> Unit, onError: (Throwable) -> Unit) {
+        CoroutineScope(Dispatchers.Main).launch {
+            withContext(Dispatchers.IO) {
+                try {
+                    val token = buildToken(reportCode)
 
-        try {
-            val token = buildToken(reportCode)
-
-            repository.notifyInfected(token, onSuccess, onError)
-        } catch (e: Exception) {
-            onError(e)
+                    repository.notifyInfected(token, onSuccess, onError)
+                } catch (e: Exception) {
+                    onError(e)
+                }
+            }
         }
 
     }
