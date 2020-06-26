@@ -77,6 +77,13 @@
                 android:textSize="16sp" />
 
             <TextView
+                style="@style/TextSmallBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/poll_completed_p3" />
+
+            <TextView
                 style="@style/TitleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
