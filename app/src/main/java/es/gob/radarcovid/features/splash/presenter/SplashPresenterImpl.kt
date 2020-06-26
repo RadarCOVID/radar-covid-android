@@ -7,6 +7,7 @@ import es.gob.radarcovid.datamanager.usecase.SplashUseCase
 import es.gob.radarcovid.features.splash.protocols.SplashPresenter
 import es.gob.radarcovid.features.splash.protocols.SplashRouter
 import es.gob.radarcovid.features.splash.protocols.SplashView
+import java.net.UnknownHostException
 import javax.inject.Inject
 
 class SplashPresenterImpl @Inject constructor(
@@ -63,7 +64,10 @@ class SplashPresenterImpl @Inject constructor(
                     if (it.second.isNotEmpty())
                         splashUseCase.persistUuid(it.second)
                 },
-                { view.showError(it, true) }
+                {
+                    if (it !is UnknownHostException) // IT'S NOT A "NO INTERNET" ERROR
+                        view.showError(it, true)
+                }
             )
     }
 

@@ -83,7 +83,7 @@
     <string name="onboarding_descrption_step4_t7">Sigue las instrucciones de tu organismo sanitario local.</string>
 
     <string name="onboarding_button_continue">Continuar</string>
-    <string name="onboarding_button_activate">Activar Bluetooth de bajo consumo</string>
+    <string name="onboarding_button_activate">Activar Bluetooth</string>
     <string name="onboarding_button_finish">Continuar sin activar</string>
 
     /********** Menu ************/
