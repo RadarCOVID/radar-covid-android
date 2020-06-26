@@ -1,26 +1,26 @@
 package es.gob.radarcovid.datamanager.usecase
 
 import es.gob.radarcovid.R
-import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.repository.RawRepository
 import io.jsonwebtoken.Jwts
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.bouncycastle.util.io.pem.PemReader
 import java.io.StringReader
 import java.security.KeyFactory
 import java.security.PrivateKey
 import java.security.spec.PKCS8EncodedKeySpec
+import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-import es.gob.radarcovid.common.base.asyncRequest
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
 class ReportInfectedUseCase @Inject constructor(
     private val repository: ContactTracingRepository,
+    private val preferencesRepository: PreferencesRepository,
     private val rawRepository: RawRepository
 ) {
 
@@ -29,9 +29,12 @@ class ReportInfectedUseCase @Inject constructor(
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.IO) {
                 try {
-                    val token = buildToken(reportCode)
+                    val onset = Calendar.getInstance()
+                    onset.add(Calendar.DATE, -14)
 
-                    repository.notifyInfected(token, onSuccess, onError)
+                    val token = buildToken(reportCode, onset)
+
+                    repository.notifyInfected(token, onset.time,  onSuccess, onError)
                 } catch (e: Exception) {
                     onError(e)
                 }
@@ -40,14 +43,17 @@ class ReportInfectedUseCase @Inject constructor(
 
     }
 
-    private fun buildToken(reportCode: String) : String {
+    private fun buildToken(reportCode: String, onset: Calendar) : String {
 
-        val id = UUID.randomUUID().toString()
+        val id = preferencesRepository.getUuid()
 
         val issuedDate = Date()
         val expirationDate = getDatePlus(issuedDate, 30)
 
         val key = loadPrivateKey(rawRepository.getRawFileString(R.raw.sedia_rsa_private_key))
+
+        val formatOnSet = SimpleDateFormat("yyyy-MM-dd").format(onset.time)
+
 
         return Jwts.builder()
             .setId(id)
@@ -57,6 +63,8 @@ class ReportInfectedUseCase @Inject constructor(
             .setIssuedAt(issuedDate)
             .setExpiration(expirationDate)
             .claim("tan", reportCode)
+            .claim("scope", "exposed")
+            .claim("onset", formatOnSet)
             .signWith(key)
             .compact()
 
