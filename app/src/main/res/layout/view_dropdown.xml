@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/wrapperHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,11 +16,14 @@
         <TextView
             android:id="@+id/textViewDropdownTitle"
             style="@style/TitleSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:textColor="@color/purple_9C"
+            app:layout_constraintEnd_toStartOf="@id/imageViewDropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="1. Objeto" />
 
         <ImageView
@@ -29,9 +33,12 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_gravity="end"
-            android:src="@drawable/ic_dropdown_closed" />
+            android:src="@drawable/ic_dropdown_closed"
+            app:layout_constraintBottom_toBottomOf="@id/textViewDropdownTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textViewDropdownTitle" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textViewDropdownContent"
