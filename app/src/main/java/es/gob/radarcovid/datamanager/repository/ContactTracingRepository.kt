@@ -3,6 +3,7 @@ package es.gob.radarcovid.datamanager.repository
 import es.gob.radarcovid.common.di.scope.PerActivity
 import es.gob.radarcovid.models.domain.ExposureInfo
 import es.gob.radarcovid.models.domain.Settings
+import java.util.*
 
 @PerActivity
 interface ContactTracingRepository {
@@ -23,6 +24,6 @@ interface ContactTracingRepository {
 
     fun getExposureInfo(): ExposureInfo
 
-    fun notifyInfected(authCode: String, onSuccess: () -> Unit, onError: (Throwable) -> Unit)
+    fun notifyInfected(authCode: String, onSet: Date, onSuccess: () -> Unit, onError: (Throwable) -> Unit)
 
 }

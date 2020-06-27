@@ -93,16 +93,15 @@ class ContactTracingRepositoryImpl @Inject constructor(
 
     override fun notifyInfected(
         authCode: String,
+        onSet: Date,
         onSuccess: () -> Unit,
         onError: (Throwable) -> Unit
     ) {
         if (BuildConfig.isMock) {
             onSuccess()
         } else {
-            //TODO: REVIEW ONSET DATE AND AUTH CODE MANAGEMENT
-            val calendar = Calendar.getInstance()
-            calendar.add(Calendar.DATE, -14)
-            DP3T.sendIAmInfected(activity, calendar.time, ExposeeAuthMethodAuthorization(authCode),
+
+            DP3T.sendIAmInfected(activity, onSet, ExposeeAuthMethodAuthorization(authCode),
                 object : ResponseCallback<Void> {
                     override fun onSuccess(response: Void?) {
                         onSuccess()
