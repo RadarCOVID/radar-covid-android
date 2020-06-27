@@ -16,8 +16,8 @@ class DropdownView @JvmOverloads constructor(
     init {
         LayoutInflater.from(context).inflate(R.layout.view_dropdown, this)
 
-        var title = ""
-        var content = ""
+        var title: CharSequence? = ""
+        var content: CharSequence? = ""
 
         context.theme.obtainStyledAttributes(
             attrs,
@@ -26,8 +26,8 @@ class DropdownView @JvmOverloads constructor(
         ).apply {
 
             try {
-                title = getString(R.styleable.DropdownView_title) ?: ""
-                content = getString(R.styleable.DropdownView_dropdownText) ?: ""
+                title = getText(R.styleable.DropdownView_title)
+                content = getText(R.styleable.DropdownView_dropdownText)
             } finally {
                 recycle()
             }
@@ -36,7 +36,7 @@ class DropdownView @JvmOverloads constructor(
         initViews(context, title, content)
     }
 
-    private fun initViews(context: Context, title: String, content: String) {
+    private fun initViews(context: Context, title: CharSequence?, content: CharSequence?) {
         wrapperHeader.setOnClickListener {
             if (textViewDropdownContent.isVisible) {
                 textViewDropdownTitle.setTextColor(

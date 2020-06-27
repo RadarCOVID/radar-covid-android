@@ -42,7 +42,7 @@
             android:name=".features.onboarding.pages.legal.view.LegalInfoFragment"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".features.onboarding.pages.legal.view.TermsAndConditionsActivity"
+            android:name=".features.onboarding.pages.legal.view.ConditionsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.onboarding.pages.legal.view.PrivacyActivity"

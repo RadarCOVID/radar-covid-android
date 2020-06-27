@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="es.gob.radarcovid.features.onboarding.pages.legal.view.TermsAndConditionsActivity">
+    tools:context="es.gob.radarcovid.features.onboarding.pages.legal.view.ConditionsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,43 +44,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:dropdownText="@string/legal_info_p1_content"
-            app:title="@string/legal_info_p1_title" />
+            app:dropdownText="@string/conditions_p1_content"
+            app:title="@string/conditions_p1_title" />
 
         <es.gob.radarcovid.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:dropdownText="@string/legal_info_p2_content"
-            app:title="@string/legal_info_p2_title" />
+            app:dropdownText="@string/conditions_p2_content"
+            app:title="@string/conditions_p2_title" />
 
         <es.gob.radarcovid.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:dropdownText="@string/legal_info_p3_content"
-            app:title="@string/legal_info_p3_title" />
+            app:dropdownText="@string/conditions_p3_content"
+            app:title="@string/conditions_p3_title" />
 
         <es.gob.radarcovid.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:dropdownText="@string/legal_info_p4_content"
-            app:title="@string/legal_info_p4_title" />
+            app:dropdownText="@string/conditions_p4_content"
+            app:title="@string/conditions_p4_title" />
 
         <es.gob.radarcovid.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:dropdownText="@string/legal_info_p5_content"
-            app:title="@string/legal_info_p5_title" />
+            app:dropdownText="@string/conditions_p5_content"
+            app:title="@string/conditions_p5_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/conditions_p6_content"
+            app:title="@string/conditions_p6_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/conditions_p7_content"
+            app:title="@string/conditions_p7_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/conditions_p8_content"
+            app:title="@string/conditions_p8_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/conditions_p9_content"
+            app:title="@string/conditions_p9_title" />
 
         <es.gob.radarcovid.common.view.DropdownView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
-            app:dropdownText="@string/legal_info_p6_content"
-            app:title="@string/legal_info_p6_title" />
+            app:dropdownText="@string/conditions_p10_content"
+            app:title="@string/conditions_p10_title" />
 
         <Button
             android:id="@+id/buttonAccept"
