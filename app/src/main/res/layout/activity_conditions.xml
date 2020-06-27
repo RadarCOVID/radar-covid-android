@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="es.gob.radarcovid.features.onboarding.pages.legal.view.TermsAndConditionsActivity">
+    tools:context="es.gob.radarcovid.features.onboarding.pages.legal.view.ConditionsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

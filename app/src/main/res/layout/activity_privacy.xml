@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="es.gob.radarcovid.features.onboarding.pages.legal.view.TermsAndConditionsActivity">
+    tools:context="es.gob.radarcovid.features.onboarding.pages.legal.view.ConditionsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,9 +37,92 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="@string/privacy_intro"
+            android:text="@string/legal_info_intro"
             android:textColor="@color/black_26" />
 
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p1_content"
+            app:title="@string/privacy_p1_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p2_content"
+            app:title="@string/privacy_p2_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p3_content"
+            app:title="@string/privacy_p3_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p4_content"
+            app:title="@string/privacy_p4_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p5_content"
+            app:title="@string/privacy_p5_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p6_content"
+            app:title="@string/privacy_p6_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p7_content"
+            app:title="@string/privacy_p7_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p8_content"
+            app:title="@string/privacy_p8_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p9_content"
+            app:title="@string/privacy_p9_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p10_content"
+            app:title="@string/privacy_p10_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:dropdownText="@string/privacy_p11_content"
+            app:title="@string/privacy_p11_title" />
+
+        <es.gob.radarcovid.common.view.DropdownView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            app:dropdownText="@string/privacy_p12_content"
+            app:title="@string/privacy_p12_title" />
 
     </LinearLayout>
 

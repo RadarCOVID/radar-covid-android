@@ -6,9 +6,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import es.gob.radarcovid.R
-import kotlinx.android.synthetic.main.activity_legal_info_detail.*
+import kotlinx.android.synthetic.main.activity_conditions.*
 
-class TermsAndConditionsActivity : AppCompatActivity() {
+class ConditionsActivity : AppCompatActivity() {
 
     companion object {
 
@@ -18,7 +18,7 @@ class TermsAndConditionsActivity : AppCompatActivity() {
             fragment.startActivityForResult(
                 Intent(
                     fragment.context!!,
-                    TermsAndConditionsActivity::class.java
+                    ConditionsActivity::class.java
                 ), REQUEST_CODE_LEGAL_TERMS
             )
         }
@@ -27,7 +27,7 @@ class TermsAndConditionsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_legal_info_detail)
+        setContentView(R.layout.activity_conditions)
 
         initViews()
     }

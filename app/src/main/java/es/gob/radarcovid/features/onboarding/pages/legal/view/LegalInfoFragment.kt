@@ -35,7 +35,7 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == TermsAndConditionsActivity.REQUEST_CODE_LEGAL_TERMS && resultCode == Activity.RESULT_OK)
+        if (requestCode == ConditionsActivity.REQUEST_CODE_LEGAL_TERMS && resultCode == Activity.RESULT_OK)
             presenter.onLegalTermsAccepted()
     }
 
