@@ -216,7 +216,7 @@
     <string name="covid_report_qr_button">Escanear QR</string>
     <string name="covid_report_code_hint_title">Código de diagnóstico</string>
     <string name="covid_report_code_hint_subtitle">Introduce el código que te han enviado</string>
-    <string name="covid_report_code_input_example">ej. ABC1234567</string>
+    <string name="covid_report_code_input_example">ej. 012345679</string>
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
     <string name="covid_report_abort_warning_title">¿Seguro que no quieres reportar tu diagnóstico?</string>
     <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demas y evitemos que el Covid-19 se propague.</string>

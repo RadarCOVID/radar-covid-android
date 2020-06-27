@@ -25,7 +25,7 @@ class ReportInfectedUseCase @Inject constructor(
 ) {
 
 
-    fun reportInfected(reportCode: String, onSuccess:() -> Unit, onError: (Throwable) -> Unit) {
+    fun reportInfected(reportCode: String, onSuccess: () -> Unit, onError: (Throwable) -> Unit) {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.IO) {
                 try {
@@ -34,7 +34,7 @@ class ReportInfectedUseCase @Inject constructor(
 
                     val token = buildToken(reportCode, onset)
 
-                    repository.notifyInfected(token, onset.time,  onSuccess, onError)
+                    repository.notifyInfected(token, onset.time, onSuccess, onError)
                 } catch (e: Exception) {
                     onError(e)
                 }
@@ -43,7 +43,7 @@ class ReportInfectedUseCase @Inject constructor(
 
     }
 
-    private fun buildToken(reportCode: String, onset: Calendar) : String {
+    private fun buildToken(reportCode: String, onset: Calendar): String {
 
         //val id = preferencesRepository.getUuid()
         val id = UUID.randomUUID().toString()
@@ -89,7 +89,7 @@ class ReportInfectedUseCase @Inject constructor(
         return result
     }
 
-    private fun getDatePlus(date: Date, minutes: Int) : Date {
+    private fun getDatePlus(date: Date, minutes: Int): Date {
         val cal = Calendar.getInstance()
         cal.time = date
         cal.add(Calendar.MINUTE, minutes)
