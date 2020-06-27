@@ -45,7 +45,8 @@ class ReportInfectedUseCase @Inject constructor(
 
     private fun buildToken(reportCode: String, onset: Calendar) : String {
 
-        val id = preferencesRepository.getUuid()
+        //val id = preferencesRepository.getUuid()
+        val id = UUID.randomUUID().toString()
 
         val issuedDate = Date()
         val expirationDate = getDatePlus(issuedDate, 30)
@@ -53,7 +54,6 @@ class ReportInfectedUseCase @Inject constructor(
         val key = loadPrivateKey(rawRepository.getRawFileString(R.raw.sedia_rsa_private_key))
 
         val formatOnSet = SimpleDateFormat("yyyy-MM-dd").format(onset.time)
-
 
         return Jwts.builder()
             .setId(id)
