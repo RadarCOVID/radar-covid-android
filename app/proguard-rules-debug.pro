@@ -22,3 +22,10 @@
 
 -dontobfuscate
 -keep class es.gob.radarcovid.models.** { *; }
+
+#Otto
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @com.squareup.otto.Subscribe public *;
+    @com.squareup.otto.Produce public *;
+}

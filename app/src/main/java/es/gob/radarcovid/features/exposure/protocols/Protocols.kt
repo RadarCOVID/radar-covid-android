@@ -22,6 +22,8 @@ interface ExposurePresenter {
 
     fun onResume()
 
+    fun onPause()
+
     fun onContactButtonClick()
 
     fun onReportButtonClick()

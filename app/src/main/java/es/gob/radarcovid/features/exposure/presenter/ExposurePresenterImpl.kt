@@ -1,5 +1,8 @@
 package es.gob.radarcovid.features.exposure.presenter
 
+import com.squareup.otto.Subscribe
+import es.gob.radarcovid.common.base.events.BUS
+import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.common.extensions.format
 import es.gob.radarcovid.datamanager.usecase.GetExposureInfoUseCase
 import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
@@ -17,11 +20,15 @@ class ExposurePresenterImpl @Inject constructor(
 ) : ExposurePresenter {
 
     override fun viewReady() {
-
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onResume() {
-        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
+        BUS.register(this)
+    }
+
+    override fun onPause() {
+        BUS.unregister(this)
     }
 
     override fun onContactButtonClick() {
@@ -34,6 +41,11 @@ class ExposurePresenterImpl @Inject constructor(
 
     override fun onMoreInfoButtonClick() {
         router.navigateToBrowser("https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm")
+    }
+
+    @Subscribe
+    fun onExposureStatusChange(event: EventExposureStatusChange) {
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     private fun showExposureInfo(exposureInfo: ExposureInfo) {

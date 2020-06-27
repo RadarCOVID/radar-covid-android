@@ -40,6 +40,11 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         presenter.onResume()
     }
 
+    override fun onPause() {
+        super.onPause()
+        presenter.onPause()
+    }
+
     private fun initViews() {
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
         buttonMoreInfoLow.setOnClickListener { presenter.onMoreInfoButtonClick() }
