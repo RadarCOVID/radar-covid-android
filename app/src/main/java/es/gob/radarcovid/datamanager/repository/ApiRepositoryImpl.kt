@@ -2,6 +2,7 @@ package es.gob.radarcovid.datamanager.repository
 
 import es.gob.radarcovid.common.base.BaseRepository
 import es.gob.radarcovid.datamanager.api.ApiInterface
+import es.gob.radarcovid.models.request.RequestKpiReport
 import es.gob.radarcovid.models.request.RequestPostAnswers
 import es.gob.radarcovid.models.response.ResponseQuestions
 import es.gob.radarcovid.models.response.ResponseSettings
@@ -30,5 +31,10 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
     ): Either<Throwable, Unit> = callService {
         apiInterface.postAnswers(uuid, requestPostAnswers)
     }
+
+    override fun postKpiReport(requestKpiReport: RequestKpiReport): Either<Throwable, Unit> =
+        callService {
+            apiInterface.postKpiReport(requestKpiReport)
+        }
 
 }

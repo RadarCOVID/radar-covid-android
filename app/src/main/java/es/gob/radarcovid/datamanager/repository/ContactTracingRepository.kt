@@ -24,6 +24,11 @@ interface ContactTracingRepository {
 
     fun getExposureInfo(): ExposureInfo
 
-    fun notifyInfected(authCode: String, onSet: Date, onSuccess: () -> Unit, onError: (Throwable) -> Unit)
+    fun notifyInfected(
+        authCode: String,
+        onSet: Date,
+        onSuccess: () -> Unit,
+        onError: (Throwable) -> Unit
+    )
 
 }
