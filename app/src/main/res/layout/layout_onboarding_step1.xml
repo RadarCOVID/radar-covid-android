@@ -52,6 +52,14 @@
                     android:text="@string/onboarding_title_step_1"
                     android:textColor="@color/black" />
 
+                <TextView
+                    style="@style/TitleTip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/onboarding_step1_description"
+                    android:textColor="@color/black" />
+
                 <es.gob.radarcovid.common.view.DottedTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
