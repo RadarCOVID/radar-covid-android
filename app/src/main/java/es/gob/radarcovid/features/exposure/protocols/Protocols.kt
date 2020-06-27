@@ -8,7 +8,7 @@ interface ExposureView {
 
     fun showExpositionLevelHigh()
 
-    fun setLastUpdateTime(date: String, daysElapsed: Int, hoursElapsed: Int, minutesElapsed: Int)
+    fun setUpdateAndExposureDates(date: String, daysElapsed: Int?, hoursElapsed: Int?, minutesElapsed: Int?)
 
     fun setLastUpdateNoData()
 
