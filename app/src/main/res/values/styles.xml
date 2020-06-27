@@ -170,6 +170,7 @@
         <item name="android:lines">1</item>
         <item name="android:maxLength">1</item>
         <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
         <item name="android:singleLine">true</item>
         <item name="android:backgroundTint">@color/gray_f0</item>
         <item name="android:background">@drawable/shape_rounded_corners_gray</item>

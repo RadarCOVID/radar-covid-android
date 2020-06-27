@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
 import kotlinx.android.synthetic.main.activity_covid_report.*
+import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
 
 class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
@@ -25,6 +27,11 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     @Inject
     lateinit var presenter: CovidReportPresenter
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        DP3T.onActivityResult(this, requestCode, resultCode, data)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_covid_report)
@@ -34,7 +41,17 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     private fun initViews() {
-        buttonSend.setOnClickListener { presenter.onSendButtonClick() }
+        buttonSend.setOnClickListener {
+            try {
+                (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+                    currentFocus?.windowToken,
+                    0
+                )
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            presenter.onSendButtonClick()
+        }
         codeEditText.textChangedListener = {
             presenter.onCodeChanged(it)
         }
