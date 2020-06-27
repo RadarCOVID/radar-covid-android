@@ -2,6 +2,7 @@ package es.gob.radarcovid
 
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
+import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastReceiver
 import es.gob.radarcovid.common.di.component.DaggerApplicationComponent
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import org.dpppt.android.sdk.DP3T
@@ -22,6 +23,8 @@ class RadarCovidApplication : DaggerApplication() {
             SignatureUtil.getPublicKeyFromBase64OrThrow(BuildConfig.PUBLIC_KEY),
             true
         )
+
+        registerReceiver(ExposureStatusChangeBroadcastReceiver(), DP3T.getUpdateIntentFilter())
 
     }
 

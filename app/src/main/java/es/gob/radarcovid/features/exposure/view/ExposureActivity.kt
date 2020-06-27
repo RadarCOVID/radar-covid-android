@@ -40,6 +40,11 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         presenter.onResume()
     }
 
+    override fun onPause() {
+        super.onPause()
+        presenter.onPause()
+    }
+
     private fun initViews() {
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
         buttonMoreInfoLow.setOnClickListener { presenter.onMoreInfoButtonClick() }
@@ -75,30 +80,40 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         wrapperExposureLow.visibility = View.GONE
     }
 
-    override fun setLastUpdateTime(
+    override fun setUpdateAndExposureDates(
         date: String,
-        daysElapsed: Int,
-        hoursElapsed: Int,
-        minutesElapsed: Int
+        daysElapsed: Int?,
+        hoursElapsed: Int?,
+        minutesElapsed: Int?
     ) {
-        val text = when {
-            daysElapsed > 0 -> {
-                val daysText =
-                    resources.getQuantityString(R.plurals.days, daysElapsed, daysElapsed)
-                getString(R.string.exposure_detail_high_last_update, daysText, date)
+
+        var text = ""
+        if (daysElapsed != null && hoursElapsed != null && minutesElapsed != null) {
+            text = when {
+                daysElapsed > 0 -> {
+                    val daysText =
+                        resources.getQuantityString(R.plurals.days, daysElapsed, daysElapsed)
+                    getString(R.string.exposure_detail_high_last_update, daysText, date)
+                }
+                hoursElapsed > 0 -> {
+                    val hoursText =
+                        resources.getQuantityString(R.plurals.hours, hoursElapsed, hoursElapsed)
+                    getString(R.string.exposure_detail_high_last_update, hoursText, date)
+                }
+                else -> {
+                    val minutesText =
+                        resources.getQuantityString(
+                            R.plurals.minutes,
+                            minutesElapsed,
+                            minutesElapsed
+                        )
+                    getString(R.string.exposure_detail_high_last_update, minutesText, date)
+                }
             }
-            hoursElapsed > 0 -> {
-                val hoursText =
-                    resources.getQuantityString(R.plurals.hours, hoursElapsed, hoursElapsed)
-                getString(R.string.exposure_detail_high_last_update, hoursText, date)
-            }
-            minutesElapsed > 0 -> {
-                val daysText =
-                    resources.getQuantityString(R.plurals.minutes, minutesElapsed, minutesElapsed)
-                getString(R.string.exposure_detail_high_last_update, daysText, date)
-            }
-            else -> getString(R.string.exposure_detail_low_last_update, date)
+        } else {
+            text = getString(R.string.exposure_detail_low_last_update, date)
         }
+
         textViewExpositionLastUpdate.text = text
     }
 

@@ -16,6 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="LockedOrientationActivity">
+
+        <receiver
+            android:name=".common.base.StatusChangeBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="org.dpppt.android.sdk.ACTION_UPDATE" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".features.splash.view.SplashActivity"
             android:screenOrientation="portrait"

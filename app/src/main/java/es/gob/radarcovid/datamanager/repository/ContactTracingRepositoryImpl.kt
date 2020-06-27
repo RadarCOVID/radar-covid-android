@@ -3,20 +3,21 @@ package es.gob.radarcovid.datamanager.repository
 import androidx.appcompat.app.AppCompatActivity
 import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.common.di.scope.PerActivity
-import es.gob.radarcovid.datamanager.mapper.ExpositionInfoDataMapper
+import es.gob.radarcovid.datamanager.mapper.ExposureInfoDataMapper
 import es.gob.radarcovid.models.domain.ExposureInfo
 import es.gob.radarcovid.models.domain.Settings
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.GaenAvailability
 import org.dpppt.android.sdk.backend.ResponseCallback
 import org.dpppt.android.sdk.internal.AppConfigManager
+import org.dpppt.android.sdk.internal.ExposureDayStorage
 import org.dpppt.android.sdk.models.ExposeeAuthMethodAuthorization
 import java.util.*
 import javax.inject.Inject
 
 @PerActivity
 class ContactTracingRepositoryImpl @Inject constructor(
-    private val expositionInfoDataMapper: ExpositionInfoDataMapper,
+    private val exposureInfoDataMapper: ExposureInfoDataMapper,
     private val activity: AppCompatActivity
 ) : ContactTracingRepository {
 
@@ -88,8 +89,10 @@ class ContactTracingRepositoryImpl @Inject constructor(
         DP3T.clearData(activity)
     }
 
-    override fun getExposureInfo(): ExposureInfo =
-        expositionInfoDataMapper.transform(DP3T.getStatus(activity))
+    override fun getExposureInfo(): ExposureInfo = exposureInfoDataMapper.transform(
+        DP3T.getStatus(activity),
+        ExposureDayStorage.getInstance(activity).exposureDays
+    )
 
     override fun notifyInfected(
         authCode: String,

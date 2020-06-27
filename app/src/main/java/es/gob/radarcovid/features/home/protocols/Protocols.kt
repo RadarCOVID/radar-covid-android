@@ -16,7 +16,7 @@ interface HomeView : RequestView {
 
     fun setRadarBlockChecked(isChecked: Boolean)
 
-    fun areBatteryOptimizationsIgnored():Boolean
+    fun areBatteryOptimizationsIgnored(): Boolean
 
     fun requestIgnoreBatteryOptimizations()
 
@@ -27,6 +27,8 @@ interface HomePresenter {
     fun viewReady(activateRadar: Boolean)
 
     fun onResume()
+
+    fun onPause()
 
     fun onExpositionBlockClick()
 

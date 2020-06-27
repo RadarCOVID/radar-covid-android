@@ -71,7 +71,7 @@ android {
             buildConfigField 'String', 'CONFIG_URL', '"https://d3d0clxg4q92wk.cloudfront.net/dp3t/"'
             buildConfigField 'String', 'BUCKET_URL', '"https://d3d0clxg4q92wk.cloudfront.net/dp3t/"'
             buildConfigField 'String', 'REPORT_URL', '"https://d3d0clxg4q92wk.cloudfront.net/dp3t/"'
-            buildConfigField 'String', 'PUBLIC_KEY', '"LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFd3o4YllrUWpucjk1eU1vSFo2aUlscXVyWklvUwpmbCtXRXpubXBueGxLak1Sa0d5SnhjdSswWkRRSkhmVGx6RXNGMDZ3ZnlPaFNtYzBkcW16Z1hTbFp3PT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t"'
+            buildConfigField 'String', 'PUBLIC_KEY', '"LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFdmx1bzYyTFVVcFllcVVGM3haWVhYSG03cjBGWApScENFbVBqTUlxUHVERjcvYmRua1FIbndxbVNoVzIvOU9BcllEd09FUUZmdEE4ZDV6T3NEZmh0T2NRPT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t"'
         }
         pro {
             dimension = 'environment'
@@ -80,7 +80,7 @@ android {
             buildConfigField 'String', 'CONFIG_URL', '"https://dqarr2dc0prei.cloudfront.net/dp3t/"'
             buildConfigField 'String', 'BUCKET_URL', '"https://dqarr2dc0prei.cloudfront.net/dp3t/"'
             buildConfigField 'String', 'REPORT_URL', '"https://dqarr2dc0prei.cloudfront.net/dp3t/"'
-            buildConfigField 'String', 'PUBLIC_KEY', '"LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFUEFMemYyNFZwMDRtYk9aRWNKbnhyR1NDc3BUTApKT1VNcURXV1ZCU1JjSWl3NDR3Mm1JaFFIbEtNaHlyc2pHeVFMY0dxQXB2cTR6SEp2eVRNYi80ZE1RPT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg=="'
+            buildConfigField 'String', 'PUBLIC_KEY', '"LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFdmx1bzYyTFVVcFllcVVGM3haWVhYSG03cjBGWApScENFbVBqTUlxUHVERjcvYmRua1FIbndxbVNoVzIvOU9BcllEd09FUUZmdEE4ZDV6T3NEZmh0T2NRPT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t"'
         }
     }
 
@@ -122,6 +122,9 @@ dependencies {
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+
+    //Event bus
+    implementation 'com.squareup:otto:1.3.8'
 
     //Dependency Injection
     api "com.google.dagger:dagger:$rootProject.daggerVersion"

@@ -1,5 +1,8 @@
 package es.gob.radarcovid.features.home.presenter
 
+import com.squareup.otto.Subscribe
+import es.gob.radarcovid.common.base.events.BUS
+import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.datamanager.usecase.EnableExposureRadarUseCase
 import es.gob.radarcovid.datamanager.usecase.GetExposureInfoUseCase
 import es.gob.radarcovid.datamanager.usecase.OnboardingCompletedUseCase
@@ -31,11 +34,15 @@ class HomePresenterImpl @Inject constructor(
             //TODO Uncomment to show the animation
             //view.showInitializationCheckAnimation()
         }
-
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onResume() {
-        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
+        BUS.register(this)
+    }
+
+    override fun onPause() {
+        BUS.unregister(this)
     }
 
     override fun onExpositionBlockClick() {
@@ -92,6 +99,11 @@ class HomePresenterImpl @Inject constructor(
                 view.setRadarBlockChecked(false)
                 view.hideLoading()
             })
+    }
+
+    @Subscribe
+    fun onExposureStatusChange(event: EventExposureStatusChange) {
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     private fun showExposureInfo(exposureInfo: ExposureInfo) {

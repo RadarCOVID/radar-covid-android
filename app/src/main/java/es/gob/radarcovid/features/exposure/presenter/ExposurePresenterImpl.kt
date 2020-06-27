@@ -1,5 +1,8 @@
 package es.gob.radarcovid.features.exposure.presenter
 
+import com.squareup.otto.Subscribe
+import es.gob.radarcovid.common.base.events.BUS
+import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.common.extensions.format
 import es.gob.radarcovid.datamanager.usecase.GetExposureInfoUseCase
 import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
@@ -17,11 +20,15 @@ class ExposurePresenterImpl @Inject constructor(
 ) : ExposurePresenter {
 
     override fun viewReady() {
-
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onResume() {
-        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
+        BUS.register(this)
+    }
+
+    override fun onPause() {
+        BUS.unregister(this)
     }
 
     override fun onContactButtonClick() {
@@ -36,6 +43,11 @@ class ExposurePresenterImpl @Inject constructor(
         router.navigateToBrowser("https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm")
     }
 
+    @Subscribe
+    fun onExposureStatusChange(event: EventExposureStatusChange) {
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
+    }
+
     private fun showExposureInfo(exposureInfo: ExposureInfo) {
         when (exposureInfo.level) {
             ExposureInfo.Level.LOW -> view.showExpositionLevelLow()
@@ -43,30 +55,33 @@ class ExposurePresenterImpl @Inject constructor(
             ExposureInfo.Level.HIGH -> view.showExpositionLevelHigh()
         }
 
-        setLastUpdateTime(exposureInfo.level, exposureInfo.lastUpdateTime)
+        setUpdateAndExposureDates(
+            exposureInfo.level,
+            exposureInfo.lastUpdateTime,
+            exposureInfo.lastExposureDate
+        )
     }
 
-    private fun setLastUpdateTime(exposureLevel: ExposureInfo.Level, lastUpdateTime: Date) {
+    private fun setUpdateAndExposureDates(
+        exposureLevel: ExposureInfo.Level,
+        lastUpdateTime: Date,
+        lastExposureDate: Date
+    ) {
         when {
             lastUpdateTime == Date(0) -> {
                 view.setLastUpdateNoData()
             }
             exposureLevel == ExposureInfo.Level.LOW -> {
-                view.setLastUpdateTime(
-                    lastUpdateTime.format(),
-                    0,
-                    0,
-                    0
-                )
+                view.setUpdateAndExposureDates(lastUpdateTime.format(), null, null, null)
             }
             else -> {
-                val millisElapsed = System.currentTimeMillis() - lastUpdateTime.time
+                val millisElapsed = System.currentTimeMillis() - lastExposureDate.time
                 val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
                 val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
                 val minutesElapsed =
                     TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
 
-                view.setLastUpdateTime(
+                view.setUpdateAndExposureDates(
                     lastUpdateTime.format(),
                     daysElapsed.toInt(),
                     hoursElapsed.toInt(),
