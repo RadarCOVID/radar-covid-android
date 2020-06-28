@@ -6,6 +6,7 @@ import androidx.work.*
 import com.google.android.gms.nearby.exposurenotification.ExposureSummary
 import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.common.extensions.toJson
+import es.gob.radarcovid.common.extensions.toTimeStamp
 import es.gob.radarcovid.datamanager.api.ApiInterface
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.ApiRepositoryImpl
@@ -19,6 +20,7 @@ import org.dpppt.android.sdk.internal.nearby.GoogleExposureClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -38,7 +40,7 @@ class KpiReportWorker(context: Context, workerParams: WorkerParameters) :
                 .setConstraints(constraints)
                 .build()
             WorkManager.getInstance(context)
-                .enqueueUniquePeriodicWork(TAG, ExistingPeriodicWorkPolicy.KEEP, work)
+                .enqueueUniquePeriodicWork(TAG, ExistingPeriodicWorkPolicy.REPLACE, work)
         }
 
     }
@@ -79,12 +81,13 @@ class KpiReportWorker(context: Context, workerParams: WorkerParameters) :
     private fun collectKpi(context: Context): RequestKpiReport? {
         val lastLoadedTimes = AppConfigManager.getInstance(context).lastLoadedTimes
         return lastLoadedTimes.maxBy { it.key.startOfDayTimestamp }?.let {
+            val timeSummary = Date(it.key.startOfDayTimestamp).toTimeStamp()
             val token = it.key.formatAsString()
             runBlocking {
                 suspendCoroutine<RequestKpiReport?> { continuation ->
                     GoogleExposureClient.getInstance(context)
                         .getExposureSummary(token).addOnCompleteListener { task ->
-                            continuation.resume(transform(task.result, token))
+                            continuation.resume(transform(task.result, timeSummary))
                         }
                 }
             }
