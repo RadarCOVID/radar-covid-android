@@ -24,7 +24,6 @@ class HomePresenterImpl @Inject constructor(
 
 
     override fun viewReady(activateRadar: Boolean) {
-
         if (onboardingCompletedUseCase.isOnBoardingCompleted()) {
             view.setRadarBlockChecked(enableExposureRadarUseCase.isRadarEnabled())
         } else {
@@ -38,6 +37,7 @@ class HomePresenterImpl @Inject constructor(
 
     override fun onResume() {
         BUS.register(this)
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onPause() {
