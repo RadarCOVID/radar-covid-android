@@ -12,6 +12,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
         private const val KEY_UUID = "uuid"
         private const val KEY_POLL_COMPLETED = "poll_completed"
+        private const val KEY_INFECTION_REPORTED = "key_infection_reported"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -44,6 +45,17 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         preferences
             .edit()
             .putBoolean(KEY_POLL_COMPLETED, pollCompleted)
+            .apply()
+    }
+
+    override fun isInfectionReported(): Boolean =
+        preferences.getBoolean(KEY_INFECTION_REPORTED, false)
+
+
+    override fun setInfectionReported(reported: Boolean) {
+        preferences
+            .edit()
+            .putBoolean(KEY_INFECTION_REPORTED, reported)
             .apply()
     }
 
