@@ -12,6 +12,8 @@ interface CovidReportView : RequestView {
 
     fun showNetworkWarningDialog()
 
+    fun showReportErrorDialog()
+
     fun finish()
 
 }

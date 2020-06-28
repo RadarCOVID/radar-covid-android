@@ -52,7 +52,8 @@ class CovidReportPresenterImpl @Inject constructor(
             },
             onError = {
                 view.hideLoading()
-                view.showError(it)
+                //view.showError(it)
+                view.showReportErrorDialog()
             }
         )
     }

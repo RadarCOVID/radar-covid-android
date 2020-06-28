@@ -211,6 +211,7 @@
     <string name="covid_report_abort_warning_title">¿Seguro que no quieres reportar tu diagnóstico?</string>
     <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demas y evitemos que el Covid-19 se propague.</string>
     <string name="covid_report_abort_warning_button">Cancelar</string>
+    <string name="covid_report_error">Se ha producido un error al enviar diagnóstico</string>
 
     /********** Network Warning Dialog ************/
 

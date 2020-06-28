@@ -93,4 +93,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
         }.show()
     }
 
+    override fun showReportErrorDialog() {
+        showError(Exception(getString(R.string.covid_report_error)))
+    }
+
 }
