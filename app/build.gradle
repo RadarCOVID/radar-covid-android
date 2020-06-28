@@ -143,17 +143,23 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
-    //DP3T aar dependencies
-    implementation 'com.google.android.gms:play-services-base:17.3.0'
-
-    implementation 'androidx.security:security-crypto:1.1.0-alpha01'
+    //WorkerManager
     implementation 'androidx.work:work-runtime:2.3.4'
+
+    //JWT Token
     implementation 'io.jsonwebtoken:jjwt-api:0.11.1'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.1'
     runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.11.1') {
         exclude group: 'org.json', module: 'json'
     }
     implementation 'org.bouncycastle:bcprov-jdk15on:1.65'
+
+    //DP3T
+    implementation 'org.dpppt:dp3t-sdk-android:1.0.0'
     implementation 'com.google.android.gms:play-services-tasks:17.1.0'
+
+    //DP3T aar dependencies
+//    implementation 'com.google.android.gms:play-services-base:17.3.0'
+//    implementation 'androidx.security:security-crypto:1.1.0-alpha01'
 
 }

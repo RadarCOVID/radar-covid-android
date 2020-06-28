@@ -38,7 +38,6 @@ class HomePresenterImpl @Inject constructor(
 
     override fun onResume() {
         BUS.register(this)
-        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onPause() {
@@ -62,24 +61,6 @@ class HomePresenterImpl @Inject constructor(
                 onBatteryOptimizationsIgnored()
             else
                 view.requestIgnoreBatteryOptimizations()
-//            Handler().postDelayed({
-//                view.setRadarBlockChecked(true)
-//                view.hideLoading()
-//            }, 2000)
-//            enableExposureRadarUseCase.setRadarEnabled(
-//                onSuccess = {
-//                    view.hideLoading()
-//                    view.setRadarBlockChecked(true)
-//                },
-//                onError = {
-//                    view.setRadarBlockChecked(false)
-//                    view.hideLoading()
-//                    view.showError(it)
-//                },
-//                onCancelled = {
-//                    view.setRadarBlockChecked(false)
-//                    view.hideLoading()
-//                })
         }
     }
 
@@ -101,6 +82,8 @@ class HomePresenterImpl @Inject constructor(
             })
     }
 
+    /* THIS METHOD IS CALLED ON RESUME BECAUSE THE MANUAL DP3T SYNC METHOD IN MainPresenterImpl IS
+    SENDING THE BROADCAST WHEN onResume IS EXECUTED */
     @Subscribe
     fun onExposureStatusChange(event: EventExposureStatusChange) {
         showExposureInfo(getExposureInfoUseCase.getExposureInfo())

@@ -40,7 +40,7 @@ class KpiReportWorker(context: Context, workerParams: WorkerParameters) :
                 .setConstraints(constraints)
                 .build()
             WorkManager.getInstance(context)
-                .enqueueUniquePeriodicWork(TAG, ExistingPeriodicWorkPolicy.REPLACE, work)
+                .enqueueUniquePeriodicWork(TAG, ExistingPeriodicWorkPolicy.KEEP, work)
         }
 
     }
