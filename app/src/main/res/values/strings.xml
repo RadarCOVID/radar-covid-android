@@ -142,6 +142,7 @@
     <string name="exposition_block_low_title">Exposición baja</string>
     <string name="exposition_block_medium_title">Exposición media</string>
     <string name="exposition_block_high_title">Exposición alta</string>
+    <string name="exposition_block_infected_title">COVID-19 Positivo</string>
 
     <string name="exposition_block_low_description_l1">Te informaremos en el caso de un posible contacto de riesgo.</string>
     <string name="exposition_block_low_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
@@ -149,6 +150,8 @@
     <string name="exposition_block_medium_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
     <string name="exposition_block_high_description_l1">Has estado en contacto con una persona contagiada de Covid-19.</string>
     <string name="exposition_block_high_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_infected_description_l1">Tu diagnóstico ha sido enviado. Por favor, aíslate durante 14 días.</string>
+    <string name="exposition_block_infected_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
 
     <string name="radar_block_enabled_title">&appname; activo</string>
     <string name="radar_block_disabled_title">&appname; inactivo</string>

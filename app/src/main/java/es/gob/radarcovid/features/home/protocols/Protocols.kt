@@ -8,9 +8,9 @@ interface HomeView : RequestView {
 
     fun showExpositionLevelLow()
 
-    fun showExpositionLevelMedium()
-
     fun showExpositionLevelHigh()
+
+    fun showExpositionLevelInfected()
 
     fun setLastUpdateTime(daysElapsed: Int, hoursElapsed: Int, minutesElapsed: Int)
 
@@ -45,5 +45,7 @@ interface HomeRouter {
     fun navigateToExpositionDetail()
 
     fun navigateToCovidReport()
+
+    fun navigateToCovidReportConfirmation()
 
 }
