@@ -19,11 +19,15 @@ import java.util.*
 import javax.inject.Inject
 
 class ReportInfectedUseCase @Inject constructor(
-    private val repository: ContactTracingRepository,
+    private val contactTracingRepository: ContactTracingRepository,
     private val preferencesRepository: PreferencesRepository,
     private val rawRepository: RawRepository
 ) {
 
+    fun isInfectionReported(): Boolean = preferencesRepository.isInfectionReported()
+
+    fun setInfectionReported(reported: Boolean) =
+        preferencesRepository.setInfectionReported(reported)
 
     fun reportInfected(reportCode: String, onSuccess: () -> Unit, onError: (Throwable) -> Unit) {
         CoroutineScope(Dispatchers.Main).launch {
@@ -34,7 +38,7 @@ class ReportInfectedUseCase @Inject constructor(
 
                     val token = buildToken(reportCode, onset)
 
-                    repository.notifyInfected(token, onset.time, onSuccess, onError)
+                    contactTracingRepository.notifyInfected(token, onset.time, onSuccess, onError)
                 } catch (e: Exception) {
                     onError(e)
                 }
