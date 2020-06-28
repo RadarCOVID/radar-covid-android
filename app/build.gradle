@@ -159,7 +159,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-tasks:17.1.0'
 
     //DP3T aar dependencies
-//    implementation 'com.google.android.gms:play-services-base:17.3.0'
-//    implementation 'androidx.security:security-crypto:1.1.0-alpha01'
+    implementation 'com.google.android.gms:play-services-base:17.3.0'
+    implementation 'androidx.security:security-crypto:1.1.0-alpha01'
 
 }
