@@ -150,6 +150,7 @@
                 android:text="@string/confirmation_tip_6" />
 
             <es.gob.radarcovid.common.view.MoreInfoButton
+                android:id="@+id/buttonMoreInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp" />
