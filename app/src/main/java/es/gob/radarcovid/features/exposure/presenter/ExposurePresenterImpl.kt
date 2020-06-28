@@ -20,11 +20,12 @@ class ExposurePresenterImpl @Inject constructor(
 ) : ExposurePresenter {
 
     override fun viewReady() {
-        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
+
     }
 
     override fun onResume() {
         BUS.register(this)
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onPause() {

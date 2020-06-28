@@ -19,7 +19,7 @@ class ExposureInfoDataMapper @Inject constructor() {
     private fun transform(infectionStatus: InfectionStatus): ExposureInfo.Level {
         return when (infectionStatus) {
             InfectionStatus.HEALTHY -> ExposureInfo.Level.LOW
-            InfectionStatus.EXPOSED -> ExposureInfo.Level.MEDIUM
+            InfectionStatus.EXPOSED -> ExposureInfo.Level.HIGH
             InfectionStatus.INFECTED -> ExposureInfo.Level.HIGH
         }
     }
