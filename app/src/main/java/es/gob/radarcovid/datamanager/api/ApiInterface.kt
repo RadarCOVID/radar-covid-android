@@ -37,7 +37,7 @@ interface ApiInterface {
         @Body body: RequestPostAnswers
     ): Call<Unit>
 
-    @POST("/kpi-controller/kpi")
+    @POST("/kpi/kpi")
     fun postKpiReport(@Body body: RequestKpiReport): Call<Unit>
 
 }
