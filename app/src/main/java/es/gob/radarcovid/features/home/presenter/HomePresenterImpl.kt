@@ -34,11 +34,11 @@ class HomePresenterImpl @Inject constructor(
             //TODO Uncomment to show the animation
             //view.showInitializationCheckAnimation()
         }
-        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onResume() {
         BUS.register(this)
+        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
     }
 
     override fun onPause() {

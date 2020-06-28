@@ -103,7 +103,9 @@ class ContactTracingRepositoryImpl @Inject constructor(
         if (BuildConfig.isMock) {
             onSuccess()
         } else {
-            DP3T.sendIAmInfected(activity, onSet, ExposeeAuthMethodAuthorization(authCode),
+            DP3T.sendIAmInfected(activity,
+                onSet,
+                ExposeeAuthMethodAuthorization("Bearer $authCode"),
                 object : ResponseCallback<Void> {
                     override fun onSuccess(response: Void?) {
                         onSuccess()
