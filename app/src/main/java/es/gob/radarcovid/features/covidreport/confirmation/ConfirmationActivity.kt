@@ -7,12 +7,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import es.gob.radarcovid.R
 
-class Confirmation : AppCompatActivity() {
+class ConfirmationActivity : AppCompatActivity() {
 
     companion object {
 
         fun open(context: Context) {
-            context.startActivity(Intent(context, Confirmation::class.java))
+            context.startActivity(Intent(context, ConfirmationActivity::class.java))
         }
 
     }

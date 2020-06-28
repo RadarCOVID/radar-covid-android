@@ -14,8 +14,4 @@ interface PreferencesRepository {
 
     fun setPollCompleted(pollCompleted: Boolean)
 
-    fun isInfectionReported(): Boolean
-
-    fun setInfectionReported(reported: Boolean)
-
 }

@@ -57,7 +57,7 @@
             android:name=".features.exposure.view.ExposureActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".features.covidreport.confirmation.Confirmation"
+            android:name=".features.covidreport.confirmation.ConfirmationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.poll.main.view.PollActivity"

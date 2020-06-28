@@ -52,7 +52,7 @@ class ExposurePresenterImpl @Inject constructor(
     private fun showExposureInfo(exposureInfo: ExposureInfo) {
         when (exposureInfo.level) {
             ExposureInfo.Level.LOW -> view.showExpositionLevelLow()
-            ExposureInfo.Level.MEDIUM -> view.showExpositionLevelMedium()
+            ExposureInfo.Level.INFECTED -> view.showExpositionLevelMedium()
             ExposureInfo.Level.HIGH -> view.showExpositionLevelHigh()
         }
 

@@ -45,11 +45,17 @@ class HomePresenterImpl @Inject constructor(
     }
 
     override fun onExpositionBlockClick() {
-        router.navigateToExpositionDetail()
+        if (getExposureInfoUseCase.getExposureInfo().level == ExposureInfo.Level.INFECTED)
+            router.navigateToCovidReportConfirmation()
+        else
+            router.navigateToExpositionDetail()
     }
 
     override fun onReportButtonClick() {
-        router.navigateToCovidReport()
+        if (getExposureInfoUseCase.getExposureInfo().level == ExposureInfo.Level.INFECTED)
+            router.navigateToCovidReportConfirmation()
+        else
+            router.navigateToCovidReport()
     }
 
     override fun onSwitchRadarClick(currentlyEnabled: Boolean) {
@@ -92,8 +98,8 @@ class HomePresenterImpl @Inject constructor(
     private fun showExposureInfo(exposureInfo: ExposureInfo) {
         when (exposureInfo.level) {
             ExposureInfo.Level.LOW -> view.showExpositionLevelLow()
-            ExposureInfo.Level.MEDIUM -> view.showExpositionLevelMedium()
             ExposureInfo.Level.HIGH -> view.showExpositionLevelHigh()
+            ExposureInfo.Level.INFECTED -> view.showExpositionLevelInfected()
         }
 
         //setLastUpdateTime(expositionInfo.lastUpdateTime)

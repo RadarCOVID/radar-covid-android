@@ -15,10 +15,7 @@ class CovidReportPresenterImpl @Inject constructor(
 ) : CovidReportPresenter {
 
     override fun viewReady() {
-        if (reportInfectedUseCase.isInfectionReported()) {
-            view.finish()
-            router.navigateToConfirmation()
-        }
+
     }
 
     override fun onBackPressed() {
@@ -49,7 +46,6 @@ class CovidReportPresenterImpl @Inject constructor(
         view.showLoading()
         reportInfectedUseCase.reportInfected(reportCode,
             onSuccess = {
-                reportInfectedUseCase.setInfectionReported(true)
                 view.hideLoading()
                 view.finish()
                 router.navigateToConfirmation()

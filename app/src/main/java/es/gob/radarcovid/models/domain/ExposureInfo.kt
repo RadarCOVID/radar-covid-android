@@ -7,5 +7,5 @@ data class ExposureInfo(
     var lastUpdateTime: Date = Date(),
     var lastExposureDate: Date = Date()
 ) {
-    enum class Level { LOW, MEDIUM, HIGH }
+    enum class Level { LOW, INFECTED, HIGH }
 }

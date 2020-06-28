@@ -48,15 +48,4 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
             .apply()
     }
 
-    override fun isInfectionReported(): Boolean =
-        preferences.getBoolean(KEY_INFECTION_REPORTED, false)
-
-
-    override fun setInfectionReported(reported: Boolean) {
-        preferences
-            .edit()
-            .putBoolean(KEY_INFECTION_REPORTED, reported)
-            .apply()
-    }
-
 }
