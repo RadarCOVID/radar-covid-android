@@ -45,7 +45,7 @@ class SplashPresenterImpl @Inject constructor(
     }
 
     override fun onNetworkDialogCloseButtonClick() {
-        onNetworkRetryButtonClick()
+        view.finish()
     }
 
     override fun onInstallPlayServicesButtonClick() {
