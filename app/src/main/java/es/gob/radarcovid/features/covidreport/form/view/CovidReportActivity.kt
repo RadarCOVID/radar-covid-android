@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.view.CMDialog
@@ -42,14 +41,7 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
     private fun initViews() {
         buttonSend.setOnClickListener {
-            try {
-                (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
-                    currentFocus?.windowToken,
-                    0
-                )
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            hideKeyBoard()
             presenter.onSendButtonClick()
         }
         codeEditText.textChangedListener = {
@@ -62,6 +54,7 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun onBackArrowClick(view: View) {
+        hideKeyBoard()
         presenter.onBackPressed()
     }
 

@@ -1,6 +1,8 @@
 package es.gob.radarcovid.common.base
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import dagger.android.support.DaggerAppCompatActivity
 import es.gob.radarcovid.R
@@ -52,6 +54,17 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
             }
             val dialog: androidx.appcompat.app.AlertDialog = builder.create()
             dialog.show()
+        }
+    }
+
+    fun hideKeyBoard() {
+        try {
+            (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+                currentFocus?.windowToken,
+                0
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 

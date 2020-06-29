@@ -83,6 +83,7 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
     }
 
     override fun onContinueButtonClick(answers: QuestionViewModel) {
+        hideKeyBoard()
         presenter.onNextButtonClick(answers)
     }
 
