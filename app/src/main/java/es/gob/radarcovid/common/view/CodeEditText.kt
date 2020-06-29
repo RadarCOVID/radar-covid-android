@@ -71,8 +71,12 @@ class CodeEditText @JvmOverloads constructor(
 
             editText.onDeleteButtonClickListener = {
                 if (index > 0) {
-                    editTexts[index - 1].apply { setText("") }.requestFocus()
-                    currentFocusIndex--
+                    if (editText.text?.isEmpty() == true) {
+                        editTexts[index - 1].apply { setText("") }.requestFocus()
+                        currentFocusIndex--
+                    } else {
+                        editText.setText("")
+                    }
                 }
             }
 
