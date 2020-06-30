@@ -41,6 +41,7 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
     }
 
     override fun onBackPressed() {
+        hideKeyBoard()
         presenter.onBackButtonPressed()
     }
 
@@ -64,7 +65,7 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
         question: QuestionViewModel
     ) {
         supportFragmentManager.beginTransaction()
-            .add(
+            .replace(
                 R.id.wrapperQuestion,
                 QuestionFragment.newInstance(isLastQuestion, question),
                 QuestionFragment.TAG
