@@ -148,7 +148,9 @@
 
     <string name="radar_warning_title">¿Estás seguro?</string>
     <string name="radar_warning_message">Si desactivas el &appname; (el Bluetooth), no podremos avisarte.  Ayúdanos a cuidarte.</string>
-    <string name="radar_warning_button">Desactivar</string>
+    <string name="radar_warning_button">Aceptar</string>
+
+    <string name="covid_report_warning">Es necesario tener el Radar COVID activo para poder enviar el diagnóstico</string>
 
 
     /********** Exposition detail common ************/
@@ -279,6 +281,7 @@
 
     /********** Common ************/
 
+    <string name="empty_text"> </string>
     <string name="statisfaction_min">muy mala</string>
     <string name="statisfaction_max">excelente</string>
 

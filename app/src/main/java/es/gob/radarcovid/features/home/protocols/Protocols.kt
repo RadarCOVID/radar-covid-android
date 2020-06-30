@@ -20,6 +20,8 @@ interface HomeView : RequestView {
 
     fun requestIgnoreBatteryOptimizations()
 
+    fun showUnableToReportCovidDialog();
+
 }
 
 interface HomePresenter {

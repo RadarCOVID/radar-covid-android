@@ -183,6 +183,14 @@ class HomeFragment : BaseFragment(), HomeView {
         }
     }
 
+    override fun showUnableToReportCovidDialog() {
+        CMDialog.createDialog(
+            context!!, R.string.empty_text,
+            R.string.radar_warning_message,
+            R.string.radar_warning_button, null
+        ) {}.show()
+    }
+
     private fun showRadarBlockEnabled(enabled: Boolean) {
         if (enabled) {
             textViewRadarTitle.setText(R.string.radar_block_enabled_title)

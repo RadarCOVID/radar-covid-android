@@ -52,7 +52,9 @@ class HomePresenterImpl @Inject constructor(
     }
 
     override fun onReportButtonClick() {
-        if (getExposureInfoUseCase.getExposureInfo().level == ExposureInfo.Level.INFECTED)
+        if (!enableExposureRadarUseCase.isRadarEnabled())
+            view.showUnableToReportCovidDialog()
+        else if (getExposureInfoUseCase.getExposureInfo().level == ExposureInfo.Level.INFECTED)
             router.navigateToCovidReportConfirmation()
         else
             router.navigateToCovidReport()
