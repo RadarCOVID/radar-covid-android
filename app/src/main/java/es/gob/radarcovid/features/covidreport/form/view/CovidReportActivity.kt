@@ -39,6 +39,11 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
         presenter.viewReady()
     }
 
+    override fun onPause() {
+        super.onPause()
+        hideKeyBoard()
+    }
+
     private fun initViews() {
         buttonSend.setOnClickListener {
             hideKeyBoard()
