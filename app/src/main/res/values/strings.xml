@@ -210,7 +210,7 @@
     <string name="covid_report_code_hint_subtitle">Introduce el código que te han enviado</string>
     <string name="covid_report_code_input_example">ej. 012345679</string>
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
-    <string name="covid_report_abort_warning_title">¿Seguro que no quieres reportar tu diagnóstico?</string>
+    <string name="covid_report_abort_warning_title">¿Seguro que no quieres enviar tu diagnóstico?</string>
     <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demas y evitemos que el Covid-19 se propague.</string>
     <string name="covid_report_abort_warning_button">Cancelar</string>
     <string name="covid_report_error">Se ha producido un error al enviar diagnóstico</string>
