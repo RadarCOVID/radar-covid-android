@@ -53,6 +53,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     override fun showExpositionLevelLow() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
+        textViewExpositionDetailTitleSmall.setText(R.string.exposure_detail_low_title_small)
         textViewExpositionDetailTitle.setText(R.string.exposure_detail_low_title)
 
         wrapperExposureLow.visibility = View.VISIBLE
@@ -74,6 +75,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     override fun showExpositionLevelHigh() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
+        textViewExpositionDetailTitleSmall.setText(R.string.exposure_detail_high_title_small)
         textViewExpositionDetailTitle.setText(R.string.exposure_detail_high_title)
 
         wrapperExposureHigh.visibility = View.VISIBLE
