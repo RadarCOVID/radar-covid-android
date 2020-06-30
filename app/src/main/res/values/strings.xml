@@ -210,7 +210,7 @@
     <string name="covid_report_code_hint_subtitle">Introduce el código que te han enviado</string>
     <string name="covid_report_code_input_example">ej. 012345679</string>
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
-    <string name="covid_report_abort_warning_title">¿Seguro que no quieres reportar tu diagnóstico?</string>
+    <string name="covid_report_abort_warning_title">¿Seguro que no quieres enviar tu diagnóstico?</string>
     <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demas y evitemos que el Covid-19 se propague.</string>
     <string name="covid_report_abort_warning_button">Cancelar</string>
     <string name="covid_report_error">Se ha producido un error al enviar diagnóstico</string>
@@ -225,7 +225,7 @@
 
     <string name="confirmation_title">Gracias por contribuir a parar el virus</string>
     <string name="confirmation_subtitle">Tu diagnostico nos ayudará a ayudar a los demás.</string>
-    <string name="confirmation_p1">Sin revelar tu identidad en ningún momento, vamos a identificar qué móviles han estado cerca de ti en los últimos días y les enviaremos una alerta anónima para su seguridad.</string>
+    <string name="confirmation_p1">Tu diagnóstico nos ayudará a proteger a los demás. Sin revelar tu identidad en ningún momento, vamos a rastrear qué móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
     <string name="confirmation_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
     <string name="confirmation_tip_1">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
     <string name="confirmation_tip_2">Evita el contacto con otras personas</string>
@@ -252,14 +252,14 @@
 
     <string name="helpline_title">Ayúdanos a mejorar</string>
     <string name="helpline_message_p1">Muchas gracias por participar en el piloto de la APP &appname;. <b>Contándonos tu opinión de forma anónima nos ayuda a mejorar</b> y contribuir a prevenir futuros contagios.</string>
-    <string name="helpline_title_2">Reportar incidencia</string>
+    <string name="helpline_title_2">Atención telefónica</string>
     <string name="helpline_message_p2">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
     <string name="helpline_title_3">Un paso más</string>
     <string name="helpline_message_p3">¿Te interesaría participar en una entrevista telefónica para concocer más sobre tu experiencia con &appname;? Escribe a:</string>
     <string name="helpline_message_p4">Nos pondremos en contacto contigo para fijar el día y la hora que se adapte mejor a ti.</string>
     <string name="helpline_button_start">Cuéntanos tu experiencia</string>
 
-    <string name="step_indicator_text">%1$d / %2$d</string>
+    <string name="step_indicator_text">%1$d de %2$d</string>
 
     <string name="poll_title">CUÉNTANOS TU EXPERIENCIA</string>
     <string name="poll_button_next">Siguiente</string>

@@ -65,7 +65,7 @@
                 style="@style/TextNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginStart="27dp"
                 android:text="@string/my_data_l3_title" />
 
             <es.gob.radarcovid.common.view.DottedTextView
@@ -86,22 +86,22 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textViewConditions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:fontFamily="@font/muli_light"
-                android:text="@string/my_data_conditions"
-                android:textColor="@color/black_28"
-                android:textSize="16sp" />
-
-            <TextView
                 android:id="@+id/textViewPrivacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:fontFamily="@font/muli_light"
                 android:text="@string/my_data_privacy"
+                android:textColor="@color/black_28"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewConditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/muli_light"
+                android:text="@string/my_data_conditions"
                 android:textColor="@color/black_28"
                 android:textSize="16sp" />
 

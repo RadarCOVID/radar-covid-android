@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/textView"
         style="@style/TextSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black_28"
         tools:text="@string/legal_info_check" />
