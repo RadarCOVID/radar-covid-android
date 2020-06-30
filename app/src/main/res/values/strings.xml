@@ -259,7 +259,7 @@
     <string name="helpline_message_p4">Nos pondremos en contacto contigo para fijar el día y la hora que se adapte mejor a ti.</string>
     <string name="helpline_button_start">Cuéntanos tu experiencia</string>
 
-    <string name="step_indicator_text">%1$d / %2$d</string>
+    <string name="step_indicator_text">%1$d de %2$d</string>
 
     <string name="poll_title">CUÉNTANOS TU EXPERIENCIA</string>
     <string name="poll_button_next">Siguiente</string>
