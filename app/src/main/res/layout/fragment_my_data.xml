@@ -65,7 +65,7 @@
                 style="@style/TextNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginStart="27dp"
                 android:text="@string/my_data_l3_title" />
 
             <es.gob.radarcovid.common.view.DottedTextView
