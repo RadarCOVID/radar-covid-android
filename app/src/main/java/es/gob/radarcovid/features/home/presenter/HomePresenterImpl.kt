@@ -28,10 +28,10 @@ class HomePresenterImpl @Inject constructor(
             view.setRadarBlockChecked(enableExposureRadarUseCase.isRadarEnabled())
         } else {
             onboardingCompletedUseCase.setOnboardingCompleted(true)
-            if (activateRadar)
+            if (activateRadar) {
                 onSwitchRadarClick(false)
-            //TODO Uncomment to show the animation
-            //view.showInitializationCheckAnimation()
+                view.showInitializationCheckAnimation()
+            }
         }
     }
 
