@@ -58,6 +58,10 @@ android {
             signingConfig signingConfigs.release
 
             buildConfigField 'Boolean', 'isMock', 'false'
+
+            packagingOptions {
+                exclude 'DebugProbesKt.bin'
+            }
         }
 
     }
