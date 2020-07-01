@@ -186,8 +186,8 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun showUnableToReportCovidDialog() {
         CMDialog.createDialog(
             context!!, R.string.empty_text,
-            R.string.radar_warning_message,
-            R.string.radar_warning_button, null
+            R.string.covid_report_warning,
+            R.string.accept, null
         ) {}.show()
     }
 
