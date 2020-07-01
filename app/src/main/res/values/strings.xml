@@ -281,6 +281,8 @@
 
     /********** Common ************/
 
+    <string name="exposure_change_notification">Su estado de exposición ha cambiado. Por favor, revise la aplicación.</string>
+
     <string name="empty_text"> </string>
     <string name="statisfaction_min">muy mala</string>
     <string name="statisfaction_max">excelente</string>

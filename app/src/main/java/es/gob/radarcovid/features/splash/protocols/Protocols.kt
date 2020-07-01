@@ -29,9 +29,7 @@ interface SplashPresenter {
 interface SplashRouter {
 
     fun navigateToPlayServicesPage()
-
-    fun navigateToLegalInfo()
-
+    
     fun navigateToOnboarding()
 
     fun navigateToMain()
