@@ -9,6 +9,7 @@ import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
 import es.gob.radarcovid.features.splash.protocols.SplashRouter
 import javax.inject.Inject
 
+
 class SplashRouterImpl @Inject constructor(private val context: Context) : SplashRouter {
 
     override fun navigateToPlayServicesPage() {
@@ -36,6 +37,24 @@ class SplashRouterImpl @Inject constructor(private val context: Context) : Splas
 
     override fun navigateToMain() {
         MainActivity.open(context, false)
+    }
+
+    override fun navigateToPlayStore() {
+        try {
+            context.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=${context.packageName}")
+                )
+            )
+        } catch (e: Exception) {
+            context.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
+                )
+            )
+        }
     }
 
 }

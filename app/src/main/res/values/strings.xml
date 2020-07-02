@@ -281,6 +281,8 @@
 
     /********** Common ************/
 
+    <string name="warning_need_update_message">Es necesario actualizar la aplicación para continuar utilizándola.</string>
+    <string name="warning_need_update_button">Actualizar</string>
     <string name="exposure_change_notification">Su estado de exposición ha cambiado. Por favor, revise la aplicación.</string>
 
     <string name="empty_text"> </string>

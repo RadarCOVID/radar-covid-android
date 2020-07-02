@@ -6,6 +6,7 @@ import es.gob.radarcovid.datamanager.mapper.SettingsDataMapper
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
+import es.gob.radarcovid.datamanager.repository.SystemInfoRepository
 import es.gob.radarcovid.models.domain.Settings
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
@@ -17,8 +18,11 @@ class SplashUseCase @Inject constructor(
     private val apiRepository: ApiRepository,
     private val preferencesRepository: PreferencesRepository,
     private val contactTracingRepository: ContactTracingRepository,
-    private val settingsDataMapper: SettingsDataMapper
+    private val settingsDataMapper: SettingsDataMapper,
+    private val systemInfoRepository: SystemInfoRepository
 ) {
+
+    fun getVersionCode():Int = systemInfoRepository.getVersionCode()
 
     fun getInitializationObservable(): Observable<Pair<Settings, String>> =
         Observable.zip<Settings, String, Pair<Settings, String>>(

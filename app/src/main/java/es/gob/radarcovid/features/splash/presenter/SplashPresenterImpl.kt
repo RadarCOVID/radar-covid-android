@@ -7,6 +7,7 @@ import es.gob.radarcovid.datamanager.usecase.SplashUseCase
 import es.gob.radarcovid.features.splash.protocols.SplashPresenter
 import es.gob.radarcovid.features.splash.protocols.SplashRouter
 import es.gob.radarcovid.features.splash.protocols.SplashView
+import es.gob.radarcovid.models.domain.Settings
 import java.net.UnknownHostException
 import javax.inject.Inject
 
@@ -52,23 +53,39 @@ class SplashPresenterImpl @Inject constructor(
         router.navigateToPlayServicesPage()
     }
 
+    override fun onUpdateAppButtonClick() {
+        router.navigateToPlayStore()
+        view.finish()
+    }
+
     private fun requestInitialization() {
         splashUseCase.getInitializationObservable()
-            .doFinally {
-                isInitializationCompleted = true
-                onResume()
-            }
             .subscribe(
-                {
-                    splashUseCase.updateTracingSettings(it.first)
-                    if (it.second.isNotEmpty())
-                        splashUseCase.persistUuid(it.second)
-                },
-                {
-                    if (it !is UnknownHostException) // IT'S NOT A "NO INTERNET" ERROR
-                        view.showError(it, true)
-                }
+                { onInitializationSuccess(it.first, it.second) },
+                { onInitializationError(it) }
             )
+    }
+
+    private fun onInitializationSuccess(settings: Settings, uuid: String) {
+        val versionCode = splashUseCase.getVersionCode()
+        if (versionCode < settings.appInfo.minVersionCode) {
+            view.showNeedUpdateDialog()
+        } else {
+            splashUseCase.updateTracingSettings(settings)
+            if (uuid.isNotEmpty())
+                splashUseCase.persistUuid(uuid)
+            isInitializationCompleted = true
+            onResume()
+        }
+    }
+
+    private fun onInitializationError(error: Throwable) {
+        if (error !is UnknownHostException) { // IT'S NOT A "NO INTERNET" ERROR
+            view.showError(error, true)
+        } else {
+            isInitializationCompleted = true
+            onResume()
+        }
     }
 
     private fun navigateToHomeWithDelay() {

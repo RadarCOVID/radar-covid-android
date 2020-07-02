@@ -4,7 +4,8 @@ data class ResponseSettings(
     val exposureConfiguration: ResponseSettingsExposureConfiguration? = ResponseSettingsExposureConfiguration(),
     val minRiskScore: Int? = 0,
     val riskScoreClassification: List<ResponseSettingsRiskScore>? = emptyList(),
-    val attenuationDurationThresholds: ResponseSettingsAttenuationThresholds? = ResponseSettingsAttenuationThresholds()
+    val attenuationDurationThresholds: ResponseSettingsAttenuationThresholds? = ResponseSettingsAttenuationThresholds(),
+    val applicationVersion: ResponseSettingsAppVersion? = ResponseSettingsAppVersion()
 )
 
 data class ResponseSettingsExposureConfiguration(
@@ -33,3 +34,7 @@ data class ResponseSettingsRiskScore(
 )
 
 data class ResponseSettingsAttenuationThresholds(val low: Int? = 0, val medium: Int? = 0)
+
+data class ResponseSettingsAppVersion(val android: ResponseSettingsAppVersionItem? = ResponseSettingsAppVersionItem())
+
+data class ResponseSettingsAppVersionItem(val version: String? = "1.0", val compilation: Int? = 1)

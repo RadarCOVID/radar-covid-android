@@ -8,6 +8,8 @@ interface SplashView : RequestView {
 
     fun showPlayServicesRequiredDialog()
 
+    fun showNeedUpdateDialog()
+
     fun finish()
 
 }
@@ -24,14 +26,18 @@ interface SplashPresenter {
 
     fun onInstallPlayServicesButtonClick()
 
+    fun onUpdateAppButtonClick()
+
 }
 
 interface SplashRouter {
 
     fun navigateToPlayServicesPage()
-    
+
     fun navigateToOnboarding()
 
     fun navigateToMain()
+
+    fun navigateToPlayStore()
 
 }

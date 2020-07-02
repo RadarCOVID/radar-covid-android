@@ -4,4 +4,6 @@ interface SystemInfoRepository {
 
     fun isInternetAvailable(): Boolean
 
+    fun getVersionCode(): Int
+
 }
