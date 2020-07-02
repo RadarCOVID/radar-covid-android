@@ -19,9 +19,7 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onResume() {
-        /* DON'T REMOVE. IF YOU REMOVE THE MANUAL SYNC, THE METHOD onExposureStatusChange
-        WON'T BE TRIGGERED WHEN onResume IS EXECUTED */
-        mainUseCase.syncExposureData()
+
     }
 
     override fun onHomeButtonClick() {
