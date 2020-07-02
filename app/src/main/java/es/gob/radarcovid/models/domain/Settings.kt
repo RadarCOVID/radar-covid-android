@@ -5,6 +5,9 @@ data class Settings(
     val minRiskScore: Int = 0,
     val attenuationThresholdLow: Int = 0,
     val attenuationThresholdMedium: Int = 0,
+    val attenuationFactorLow: Float = 1.0f,
+    val attenuationFactorMedium: Float = 0.5f,
+    val minDurationForExposure: Int = 15,
     val riskScoreClassification: List<SettingsRiskScore> = emptyList(),
     val appInfo: SettingsAppInfo = SettingsAppInfo()
 )
