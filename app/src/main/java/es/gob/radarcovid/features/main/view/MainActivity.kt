@@ -22,6 +22,7 @@ class MainActivity : BaseActivity(), MainView {
 
         fun open(context: Context, activateRadar: Boolean) =
             context.startActivity(Intent(context, MainActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 putExtra(EXTRA_ACTIVATE_RADAR, activateRadar)
             })
 
