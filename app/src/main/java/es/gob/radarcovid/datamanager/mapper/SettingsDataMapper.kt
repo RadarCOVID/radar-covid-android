@@ -13,7 +13,7 @@ class SettingsDataMapper @Inject constructor() {
             attenuationThresholdLow = attenuationDurationThresholds?.low ?: 50,
             attenuationThresholdMedium = attenuationDurationThresholds?.medium ?: 55,
             riskScoreClassification = transform(riskScoreClassification),
-            appInfo = transform(applicationVersion)
+            appInfo = SettingsAppInfo("", 3)//transform(applicationVersion)
         )
     }
 
