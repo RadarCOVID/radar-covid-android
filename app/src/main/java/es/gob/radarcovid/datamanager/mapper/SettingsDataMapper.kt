@@ -1,13 +1,7 @@
 package es.gob.radarcovid.datamanager.mapper
 
-import es.gob.radarcovid.models.domain.ExposureConfiguration
-import es.gob.radarcovid.models.domain.Settings
-import es.gob.radarcovid.models.domain.SettingsItem
-import es.gob.radarcovid.models.domain.SettingsRiskScore
-import es.gob.radarcovid.models.response.ResponseSettings
-import es.gob.radarcovid.models.response.ResponseSettingsExposureConfiguration
-import es.gob.radarcovid.models.response.ResponseSettingsItem
-import es.gob.radarcovid.models.response.ResponseSettingsRiskScore
+import es.gob.radarcovid.models.domain.*
+import es.gob.radarcovid.models.response.*
 import javax.inject.Inject
 
 class SettingsDataMapper @Inject constructor() {
@@ -18,7 +12,8 @@ class SettingsDataMapper @Inject constructor() {
             minRiskScore = minRiskScore ?: 0,
             attenuationThresholdLow = attenuationDurationThresholds?.low ?: 50,
             attenuationThresholdMedium = attenuationDurationThresholds?.medium ?: 55,
-            riskScoreClassification = transform(riskScoreClassification)
+            riskScoreClassification = transform(riskScoreClassification),
+            appInfo = transform(applicationVersion)
         )
     }
 
@@ -58,4 +53,9 @@ class SettingsDataMapper @Inject constructor() {
         responseSettingsRiskScore?.let {
             SettingsRiskScore(it.label ?: "LOW", it.minValue ?: 0, it.maxValue ?: 0)
         } ?: SettingsRiskScore()
+
+    private fun transform(responseSettingsAppVersion: ResponseSettingsAppVersion?): SettingsAppInfo =
+        responseSettingsAppVersion?.let {
+            SettingsAppInfo(it.android?.version ?: "1.0", it.android?.compilation ?: 1)
+        } ?: SettingsAppInfo()
 }

@@ -5,7 +5,8 @@ data class Settings(
     val minRiskScore: Int = 0,
     val attenuationThresholdLow: Int = 0,
     val attenuationThresholdMedium: Int = 0,
-    val riskScoreClassification: List<SettingsRiskScore> = emptyList()
+    val riskScoreClassification: List<SettingsRiskScore> = emptyList(),
+    val appInfo: SettingsAppInfo = SettingsAppInfo()
 )
 
 data class ExposureConfiguration(
@@ -43,3 +44,5 @@ data class SettingsRiskScore(
     val minValue: Int? = 0,
     val maxValue: Int? = 0
 )
+
+data class SettingsAppInfo(val minVersionName: String = "", val minVersionCode: Int = 1)
