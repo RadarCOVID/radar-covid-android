@@ -60,18 +60,13 @@ class SplashActivity : BaseActivity(), SplashView {
 
     override fun showNeedUpdateDialog() {
         currentDialog?.dismiss()
-        currentDialog = CMDialog.createDialog(
-            this,
-            R.string.empty_text,
-            R.string.warning_need_update_message, R.string.warning_need_update_button,
-            onCloseButtonClick = {
-                finish()
-            },
-            onButtonClick = {
+        currentDialog = CMDialog.Builder(this)
+            .setMessage(R.string.warning_need_update_message)
+            .setPositiveButton(R.string.warning_need_update_button) {
                 presenter.onUpdateAppButtonClick()
             }
-        )
-        currentDialog?.show()
+            .build()
+            .apply { show() }
     }
 
 }
