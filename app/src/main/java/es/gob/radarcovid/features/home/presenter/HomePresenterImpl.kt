@@ -89,9 +89,7 @@ class HomePresenterImpl @Inject constructor(
                 view.hideLoading()
             })
     }
-
-    /* THIS METHOD IS CALLED ON RESUME BECAUSE THE MANUAL DP3T SYNC METHOD IN MainPresenterImpl IS
-    SENDING THE BROADCAST WHEN onResume IS EXECUTED */
+    
     @Subscribe
     fun onExposureStatusChange(event: EventExposureStatusChange) {
         showExposureInfo(getExposureInfoUseCase.getExposureInfo())
