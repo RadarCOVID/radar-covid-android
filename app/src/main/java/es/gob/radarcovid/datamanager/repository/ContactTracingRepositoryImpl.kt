@@ -36,10 +36,14 @@ class ContactTracingRepositoryImpl @Inject constructor(
     }
 
     override fun updateTracingSettings(settings: Settings) {
-        AppConfigManager.getInstance(activity).run {
-            attenuationThresholdLow = settings.attenuationThresholdLow
-            attenuationThresholdMedium = settings.attenuationThresholdMedium
-        }
+        DP3T.setMatchingParameters(
+            activity,
+            settings.attenuationThresholdLow,
+            settings.attenuationThresholdMedium,
+            settings.attenuationFactorLow,
+            settings.attenuationFactorMedium,
+            settings.minDurationForExposure
+        )
 //        AppConfigManager.getInstance(activity).setExposureConfiguration(
 //            ExposureConfiguration.ExposureConfigurationBuilder()
 //                .setTransmissionRiskScores(*settings.exposureConfiguration.transmission.value)

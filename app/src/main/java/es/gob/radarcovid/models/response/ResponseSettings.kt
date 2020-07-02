@@ -3,8 +3,10 @@ package es.gob.radarcovid.models.response
 data class ResponseSettings(
     val exposureConfiguration: ResponseSettingsExposureConfiguration? = ResponseSettingsExposureConfiguration(),
     val minRiskScore: Int? = 0,
+    val minDurationForExposure: Int? = 15,
     val riskScoreClassification: List<ResponseSettingsRiskScore>? = emptyList(),
     val attenuationDurationThresholds: ResponseSettingsAttenuationThresholds? = ResponseSettingsAttenuationThresholds(),
+    val attenuationFactor: ResponseSettingsAttenuationFactor? = ResponseSettingsAttenuationFactor(),
     val applicationVersion: ResponseSettingsAppVersion? = ResponseSettingsAppVersion()
 )
 
@@ -33,7 +35,9 @@ data class ResponseSettingsRiskScore(
     val maxValue: Int? = 0
 )
 
-data class ResponseSettingsAttenuationThresholds(val low: Int? = 0, val medium: Int? = 0)
+data class ResponseSettingsAttenuationThresholds(val low: Int? = 50, val medium: Int? = 55)
+
+data class ResponseSettingsAttenuationFactor(val low: Float? = 0f, val medium: Float? = 0f)
 
 data class ResponseSettingsAppVersion(val android: ResponseSettingsAppVersionItem? = ResponseSettingsAppVersionItem())
 
