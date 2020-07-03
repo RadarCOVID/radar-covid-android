@@ -166,7 +166,7 @@
     <string name="exposure_detail_more_info_tips">Tienes más información sobre consejos, sintomas y medidas <b>aquí</b></string>
     <string name="exposure_detail_covid_report_message"><b>Ayúdanos a cuidar a los demás.</b> Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
 
-    /********** Exposition detail low ************/
+    /********** Exposure detail low ************/
     <string name="exposure_detail_low_title_small">RIESGO BAJO</string>
     <string name="exposure_detail_low_title">Tu exposición es baja</string>
     <string name="exposure_detail_low_last_update">Sin contactos de riesgo aparentes. (actualizado %1$s)</string>
@@ -182,13 +182,13 @@
     <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
     <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>
 
-    /********** Exposition detail high ************/
+    /********** Exposure detail high ************/
     <string name="exposure_detail_high_title_small">RIESGO ALTO</string>
     <string name="exposure_detail_high_title">Tu exposición es alta</string>
     <string name="exposure_detail_high_last_update">Podrías estar infectado desde hace <b>%1$s</b> (actualizado %2$s)</string>
 
     <string name="exposure_detail_phone_title">Por favor, aíslate durante 14 días y llama al siguiente teléfono</string>
-    <string name="exposure_detail_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
+    <string name="exposure_detail_high_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
     <string name="exposure_detail_symptom_cough">Tos persistente</string>
     <string name="exposure_detail_symptom_fever">Fiebre alta continua</string>
     <string name="exposure_detail_symptom_taste_and_smell">Perdida del gusto\ny el olfato</string>
@@ -198,6 +198,30 @@
     <string name="exposure_detail_tip_avoid_people">Evita el contacto con otras personas</string>
 
     <string name="exposure_detail_low_last_update_no_data">Sin contactos de riesgo aparentes.</string>
+
+    /********** Exposure detail infected ************/
+
+    <string name="exposure_detail_infected_title_small">DIAGNÓSTICO COMUNICADO</string>
+    <string name="exposure_detail_infected_title">COVID-19 positivo</string>
+    <string name="exposure_detail_infected_last_update">Tu diagnóstico fue enviado hace <b>%1$s</b> (actualizado %2$s)</string>
+
+    <string name="exposure_detail_infected_t1">Tu diagnóstico nos ayuda a progteger a los demás.</string>
+    <string name="exposure_detail_infected_p1">Sin revelar tu identidad en ningún momento, hemos comunicado tu diagnóstico a móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
+    <string name="exposure_detail_infected_what_to_do_subtitle">Por favor, aíslate durante 14 días.</string>
+
+    <string name="exposure_detail_infected_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
+
+    <!--    <string name="exposure_detail_tips_title_low">Manten las medidas de seguridad y distanciamiento social.</string>-->
+
+<!--    <string name="exposure_detail_tip_mask">Usa siempre mascarilla quirúrgica</string>-->
+<!--    <string name="exposure_detail_tip_wash_hands">Lávate las manos frecuentemente</string>-->
+
+
+<!--    <string name="exposure_detail_tip_distance">Mantén la distancia de seguridad de 1,5 metros</string>-->
+<!--    <string name="exposure_detail_tip_rules">Respeta las normas particulares en tu territorio sobre aforos y actividades permitidas</string>-->
+<!--    <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>-->
+<!--    <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>-->
+
 
     /********** Covid Report ************/
 

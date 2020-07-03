@@ -45,10 +45,7 @@ class HomePresenterImpl @Inject constructor(
     }
 
     override fun onExpositionBlockClick() {
-        if (getExposureInfoUseCase.getExposureInfo().level == ExposureInfo.Level.INFECTED)
-            router.navigateToCovidReportConfirmation()
-        else
-            router.navigateToExpositionDetail()
+        router.navigateToExpositionDetail()
     }
 
     override fun onReportButtonClick() {
@@ -89,7 +86,7 @@ class HomePresenterImpl @Inject constructor(
                 view.hideLoading()
             })
     }
-    
+
     @Subscribe
     fun onExposureStatusChange(event: EventExposureStatusChange) {
         showExposureInfo(getExposureInfoUseCase.getExposureInfo())

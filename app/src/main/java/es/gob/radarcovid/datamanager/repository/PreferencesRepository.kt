@@ -1,5 +1,7 @@
 package es.gob.radarcovid.datamanager.repository
 
+import java.util.*
+
 interface PreferencesRepository {
 
     fun isOnBoardingCompleted(): Boolean
@@ -13,5 +15,9 @@ interface PreferencesRepository {
     fun isPollCompleted(): Boolean
 
     fun setPollCompleted(pollCompleted: Boolean)
+
+    fun getInfectionReportDate(): Date?
+
+    fun setInfectionReportDate(date: Date)
 
 }

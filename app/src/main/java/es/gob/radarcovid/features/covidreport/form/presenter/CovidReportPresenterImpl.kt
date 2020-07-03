@@ -5,6 +5,7 @@ import es.gob.radarcovid.datamanager.usecase.ReportInfectedUseCase
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportRouter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
+import java.util.*
 import javax.inject.Inject
 
 class CovidReportPresenterImpl @Inject constructor(
@@ -48,6 +49,7 @@ class CovidReportPresenterImpl @Inject constructor(
             onSuccess = {
                 view.hideLoading()
                 view.finish()
+                reportInfectedUseCase.setInfectionReportDate(Date())
                 router.navigateToConfirmation()
             },
             onError = {

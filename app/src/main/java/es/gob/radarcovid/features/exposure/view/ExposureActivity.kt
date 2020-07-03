@@ -11,6 +11,7 @@ import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
 import es.gob.radarcovid.features.exposure.protocols.ExposureView
 import kotlinx.android.synthetic.main.activity_exposure.*
 import kotlinx.android.synthetic.main.layout_exposure_detail_high.*
+import kotlinx.android.synthetic.main.layout_exposure_detail_infected.*
 import kotlinx.android.synthetic.main.layout_exposure_detail_low.*
 import javax.inject.Inject
 
@@ -49,37 +50,37 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
         buttonMoreInfoLow.setOnClickListener { presenter.onMoreInfoButtonClick() }
         buttonMoreInfoHigh.setOnClickListener { presenter.onMoreInfoButtonClick() }
+        buttonMoreInfoInfected.setOnClickListener { presenter.onMoreInfoButtonClick() }
     }
 
-    override fun showExpositionLevelLow() {
+    override fun showExposureLevelLow() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
         textViewExpositionDetailTitleSmall.setText(R.string.exposure_detail_low_title_small)
         textViewExpositionDetailTitle.setText(R.string.exposure_detail_low_title)
 
         wrapperExposureLow.visibility = View.VISIBLE
         wrapperExposureHigh.visibility = View.GONE
+        wrapperExposureInfected.visibility = View.GONE
     }
 
-    override fun showExpositionLevelMedium() {
-//        wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_medium)
-//        textViewExpositionDetailTitle.setText(R.string.exposure_detail_medium)
-//        textViewExpositionDetailMessage.setText(R.string.exposure_detail_message_medium)
-//
-//        textViewTipsSubtitle.setText(R.string.exposure_detail_tips_subtitle_medium)
-//        textViewTipsSubtitle.setTextColor(ContextCompat.getColor(this, R.color.orange))
-//
-//        wrapperTipsAndIndications.visibility = View.VISIBLE
-//        textViewReportButtonMessage.visibility = View.VISIBLE
-//        buttonCovidReport.visibility = View.VISIBLE
-    }
-
-    override fun showExpositionLevelHigh() {
+    override fun showExposureLevelHigh() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
         textViewExpositionDetailTitleSmall.setText(R.string.exposure_detail_high_title_small)
         textViewExpositionDetailTitle.setText(R.string.exposure_detail_high_title)
 
         wrapperExposureHigh.visibility = View.VISIBLE
         wrapperExposureLow.visibility = View.GONE
+        wrapperExposureInfected.visibility = View.GONE
+    }
+
+    override fun showExposureLevelInfected() {
+        wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
+        textViewExpositionDetailTitleSmall.setText(R.string.exposure_detail_infected_title_small)
+        textViewExpositionDetailTitle.setText(R.string.exposure_detail_infected_title)
+
+        wrapperExposureInfected.visibility = View.VISIBLE
+        wrapperExposureLow.visibility = View.GONE
+        wrapperExposureHigh.visibility = View.GONE
     }
 
     override fun setUpdateAndExposureDates(
@@ -116,6 +117,39 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
             text = getString(R.string.exposure_detail_low_last_update, date)
         }
 
+        textViewExpositionLastUpdate.text = text
+    }
+
+    override fun setInfectionDates(
+        date: String,
+        daysElapsed: Int?,
+        hoursElapsed: Int?,
+        minutesElapsed: Int?
+    ) {
+        var text = ""
+        if (daysElapsed != null && hoursElapsed != null && minutesElapsed != null) {
+            text = when {
+                daysElapsed > 0 -> {
+                    val daysText =
+                        resources.getQuantityString(R.plurals.days, daysElapsed, daysElapsed)
+                    getString(R.string.exposure_detail_infected_last_update, daysText, date)
+                }
+                hoursElapsed > 0 -> {
+                    val hoursText =
+                        resources.getQuantityString(R.plurals.hours, hoursElapsed, hoursElapsed)
+                    getString(R.string.exposure_detail_infected_last_update, hoursText, date)
+                }
+                else -> {
+                    val minutesText =
+                        resources.getQuantityString(
+                            R.plurals.minutes,
+                            minutesElapsed,
+                            minutesElapsed
+                        )
+                    getString(R.string.exposure_detail_infected_last_update, minutesText, date)
+                }
+            }
+        }
         textViewExpositionLastUpdate.text = text
     }
 

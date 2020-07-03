@@ -9,11 +9,15 @@ import javax.inject.Inject
 
 class ExposureInfoDataMapper @Inject constructor() {
 
-    fun transform(tracingStatus: TracingStatus, exposureDays: List<ExposureDay>?): ExposureInfo =
+    fun transform(
+        tracingStatus: TracingStatus,
+        exposureDays: List<ExposureDay>?,
+        infectionReportDate: Date?
+    ): ExposureInfo =
         ExposureInfo(
             level = transform(tracingStatus.infectionStatus),
             lastUpdateTime = Date(tracingStatus.lastSyncDate),
-            lastExposureDate = transform(exposureDays)
+            lastExposureDate = infectionReportDate ?: transform(exposureDays)
         )
 
     private fun transform(infectionStatus: InfectionStatus): ExposureInfo.Level {
