@@ -54,7 +54,7 @@ class ExposureStatusChangeBroadcastReceiver : BroadcastReceiver() {
                 .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(context.getString(R.string.exposure_change_notification))
                 .setPriority(NotificationCompat.PRIORITY_MAX)
-                .setSmallIcon(R.drawable.ic_warning)
+                .setSmallIcon(R.drawable.ic_notification_small)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .build()
