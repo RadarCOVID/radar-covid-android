@@ -7,10 +7,25 @@
     android:paddingEnd="10dp">
 
     <TextView
+        style="@style/TitleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/exposure_detail_infected_t1"
+        android:textSize="16sp" />
+
+    <TextView
+        style="@style/TextSmallBlack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/exposure_detail_infected_p1" />
+
+    <TextView
         style="@style/TitleExtraBoldSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/exposure_detail_what_to_do"
         android:textSize="22sp" />
 
@@ -18,127 +33,148 @@
         style="@style/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
-        android:text="@string/exposure_detail_tips_title_low"
-        android:textColor="@color/green"
+        android:layout_marginBottom="25dp"
+        android:text="@string/exposure_detail_infected_what_to_do_subtitle"
+        android:textColor="@color/red"
         android:textSize="20sp" />
 
-    <LinearLayout
+    <TextView
+        style="@style/Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:gravity="center">
+        android:text="@string/exposure_detail_infected_tips_title"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_distance_people" />
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/ic_stay_home" />
 
         <TextView
             style="@style/TextSmallBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="34dp"
-            android:text="@string/exposure_detail_tip_distance" />
-    </LinearLayout>
+            android:layout_marginBottom="18dp"
+            android:text="@string/confirmation_tip_1" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_use_mask" />
-
-        <TextView
-            style="@style/TextSmallBlack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:text="@string/exposure_detail_tip_mask" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_wash_your_hands" />
-
-        <TextView
-            style="@style/TextSmallBlack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:text="@string/exposure_detail_tip_wash_hands" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_cough_hand" />
-
-        <TextView
-            style="@style/TextSmallBlack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="34dp"
-            android:text="@string/exposure_detail_tip_cough" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_rules" />
-
-        <TextView
-            style="@style/TextSmallBlack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="43dp"
-            android:text="@string/exposure_detail_tip_rules" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:gravity="center">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="35dp"
+            android:src="@drawable/ic_distance_people" />
+
+        <TextView
+            style="@style/TextSmallBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:text="@string/confirmation_tip_2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="27dp"
+            android:src="@drawable/ic_use_mask" />
+
+        <TextView
+            style="@style/TextSmallBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:text="@string/confirmation_tip_3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/ic_wash_your_hands" />
+
+        <TextView
+            style="@style/TextSmallBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:text="@string/confirmation_tip_4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="8dp"
             android:src="@drawable/ic_clinic" />
 
         <TextView
             style="@style/TextSmallBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:text="@string/exposure_detail_tip_clinic" />
+            android:layout_marginBottom="18dp"
+            android:text="@string/confirmation_tip_5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_emergency_number" />
+
+        <TextView
+            style="@style/TextSmallBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/confirmation_tip_6" />
+
     </LinearLayout>
 
     <es.gob.radarcovid.common.view.MoreInfoButton
-        android:id="@+id/buttonMoreInfoLow"
+        android:id="@+id/buttonMoreInfoInfected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp" />

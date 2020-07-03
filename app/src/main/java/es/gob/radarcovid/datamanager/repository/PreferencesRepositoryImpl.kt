@@ -1,6 +1,7 @@
 package es.gob.radarcovid.datamanager.repository
 
 import android.content.Context
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -12,7 +13,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
         private const val KEY_UUID = "uuid"
         private const val KEY_POLL_COMPLETED = "poll_completed"
-        private const val KEY_INFECTION_REPORTED = "key_infection_reported"
+        private const val KEY_INFECTION_REPORT_DATE = "key_infection_report_date"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -45,6 +46,20 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         preferences
             .edit()
             .putBoolean(KEY_POLL_COMPLETED, pollCompleted)
+            .apply()
+    }
+
+    override fun getInfectionReportDate(): Date? {
+        val infectionReportDateMillis = preferences.getLong(KEY_INFECTION_REPORT_DATE, 0)
+        return if (infectionReportDateMillis == 0L)
+            null
+        else
+            Date(infectionReportDateMillis)
+    }
+
+    override fun setInfectionReportDate(date: Date) {
+        preferences.edit()
+            .putLong(KEY_INFECTION_REPORT_DATE, date.time)
             .apply()
     }
 

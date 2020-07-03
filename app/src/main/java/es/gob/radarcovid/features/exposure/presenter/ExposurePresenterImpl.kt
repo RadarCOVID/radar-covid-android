@@ -51,39 +51,50 @@ class ExposurePresenterImpl @Inject constructor(
 
     private fun showExposureInfo(exposureInfo: ExposureInfo) {
         when (exposureInfo.level) {
-            ExposureInfo.Level.LOW -> view.showExpositionLevelLow()
-            ExposureInfo.Level.INFECTED -> view.showExpositionLevelMedium()
-            ExposureInfo.Level.HIGH -> view.showExpositionLevelHigh()
+            ExposureInfo.Level.LOW -> view.showExposureLevelLow()
+            ExposureInfo.Level.HIGH -> view.showExposureLevelHigh()
+            ExposureInfo.Level.INFECTED -> view.showExposureLevelInfected()
         }
 
-        setUpdateAndExposureDates(
-            exposureInfo.level,
-            exposureInfo.lastUpdateTime,
-            exposureInfo.lastExposureDate
-        )
+        setUpdateAndExposureDates(exposureInfo)
     }
 
-    private fun setUpdateAndExposureDates(
-        exposureLevel: ExposureInfo.Level,
-        lastUpdateTime: Date,
-        lastExposureDate: Date
-    ) {
+    private fun setUpdateAndExposureDates(exposureInfo: ExposureInfo) {
         when {
-            lastUpdateTime == Date(0) -> {
+            exposureInfo.lastUpdateTime == Date(0) -> {
                 view.setLastUpdateNoData()
             }
-            exposureLevel == ExposureInfo.Level.LOW -> {
-                view.setUpdateAndExposureDates(lastUpdateTime.format(), null, null, null)
+            exposureInfo.level == ExposureInfo.Level.LOW -> {
+                view.setUpdateAndExposureDates(
+                    exposureInfo.lastUpdateTime.format(),
+                    null,
+                    null,
+                    null
+                )
+            }
+            exposureInfo.level == ExposureInfo.Level.INFECTED -> {
+                val millisElapsed = System.currentTimeMillis() - exposureInfo.lastExposureDate.time
+                val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
+                val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
+                val minutesElapsed =
+                    TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
+
+                view.setInfectionDates(
+                    exposureInfo.lastUpdateTime.format(),
+                    daysElapsed.toInt(),
+                    hoursElapsed.toInt(),
+                    minutesElapsed.toInt()
+                )
             }
             else -> {
-                val millisElapsed = System.currentTimeMillis() - lastExposureDate.time
+                val millisElapsed = System.currentTimeMillis() - exposureInfo.lastExposureDate.time
                 val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
                 val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
                 val minutesElapsed =
                     TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
 
                 view.setUpdateAndExposureDates(
-                    lastUpdateTime.format(),
+                    exposureInfo.lastUpdateTime.format(),
                     daysElapsed.toInt(),
                     hoursElapsed.toInt(),
                     minutesElapsed.toInt()

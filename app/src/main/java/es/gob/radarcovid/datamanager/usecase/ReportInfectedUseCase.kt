@@ -2,6 +2,7 @@ package es.gob.radarcovid.datamanager.usecase
 
 import es.gob.radarcovid.R
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.repository.RawRepository
 import io.jsonwebtoken.Jwts
 import kotlinx.coroutines.CoroutineScope
@@ -19,6 +20,7 @@ import javax.inject.Inject
 
 class ReportInfectedUseCase @Inject constructor(
     private val contactTracingRepository: ContactTracingRepository,
+    private val preferencesRepository: PreferencesRepository,
     private val rawRepository: RawRepository
 ) {
 
@@ -38,6 +40,10 @@ class ReportInfectedUseCase @Inject constructor(
             }
         }
 
+    }
+
+    fun setInfectionReportDate(date: Date) {
+        preferencesRepository.setInfectionReportDate(date)
     }
 
     private fun buildToken(reportCode: String, onset: Calendar): String {

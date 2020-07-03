@@ -76,15 +76,6 @@
                 android:clipToPadding="false"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/TitleExtraBoldSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="21dp"
-                    android:text="@string/exposure_detail_what_to_do"
-                    android:textSize="22sp" />
-
                 <include
                     android:id="@+id/wrapperExposureLow"
                     layout="@layout/layout_exposure_detail_low"
@@ -96,6 +87,14 @@
                 <include
                     android:id="@+id/wrapperExposureHigh"
                     layout="@layout/layout_exposure_detail_high"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <include
+                    android:id="@+id/wrapperExposureInfected"
+                    layout="@layout/layout_exposure_detail_infected"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"

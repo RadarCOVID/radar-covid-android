@@ -2,13 +2,25 @@ package es.gob.radarcovid.features.exposure.protocols
 
 interface ExposureView {
 
-    fun showExpositionLevelLow()
+    fun showExposureLevelLow()
 
-    fun showExpositionLevelMedium()
+    fun showExposureLevelHigh()
 
-    fun showExpositionLevelHigh()
+    fun showExposureLevelInfected()
 
-    fun setUpdateAndExposureDates(date: String, daysElapsed: Int?, hoursElapsed: Int?, minutesElapsed: Int?)
+    fun setUpdateAndExposureDates(
+        date: String,
+        daysElapsed: Int?,
+        hoursElapsed: Int?,
+        minutesElapsed: Int?
+    )
+
+    fun setInfectionDates(
+        date: String,
+        daysElapsed: Int?,
+        hoursElapsed: Int?,
+        minutesElapsed: Int?
+    )
 
     fun setLastUpdateNoData()
 

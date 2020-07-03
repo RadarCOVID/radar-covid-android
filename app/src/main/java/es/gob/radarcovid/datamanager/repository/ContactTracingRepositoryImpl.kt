@@ -9,7 +9,6 @@ import es.gob.radarcovid.models.domain.Settings
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.GaenAvailability
 import org.dpppt.android.sdk.backend.ResponseCallback
-import org.dpppt.android.sdk.internal.AppConfigManager
 import org.dpppt.android.sdk.internal.ExposureDayStorage
 import org.dpppt.android.sdk.models.ExposeeAuthMethodAuthorization
 import java.util.*
@@ -17,6 +16,7 @@ import javax.inject.Inject
 
 @PerActivity
 class ContactTracingRepositoryImpl @Inject constructor(
+    private val preferencesRepository: PreferencesRepository,
     private val exposureInfoDataMapper: ExposureInfoDataMapper,
     private val activity: AppCompatActivity
 ) : ContactTracingRepository {
@@ -93,10 +93,12 @@ class ContactTracingRepositoryImpl @Inject constructor(
         DP3T.clearData(activity)
     }
 
-    override fun getExposureInfo(): ExposureInfo = exposureInfoDataMapper.transform(
-        DP3T.getStatus(activity),
-        ExposureDayStorage.getInstance(activity).exposureDays
-    )
+    override fun getExposureInfo(): ExposureInfo =
+        exposureInfoDataMapper.transform(
+            DP3T.getStatus(activity),
+            ExposureDayStorage.getInstance(activity).exposureDays,
+            preferencesRepository.getInfectionReportDate()
+        )
 
     override fun notifyInfected(
         authCode: String,
