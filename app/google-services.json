@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "743632374850",
+    "firebase_url": "https://radar-covid-69a1d.firebaseio.com",
+    "project_id": "radar-covid-69a1d",
+    "storage_bucket": "radar-covid-69a1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743632374850:android:8d210fe2ca66269ad431db",
+        "android_client_info": {
+          "package_name": "es.gob.radarcovid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743632374850-rg9smocu2s2ke5rogsjlode6muvpc8be.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7dOemg7KFDuLIK6TvMnMLmjx7ax9S74w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743632374850-rg9smocu2s2ke5rogsjlode6muvpc8be.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
