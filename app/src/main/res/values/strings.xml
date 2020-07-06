@@ -95,7 +95,7 @@
     <string name="onboarding_step_2_commitments_title_3">Tú decides</string>
     <string name="onboarding_step_2_commitments_detail_3">Elige en todo momento si quieres desactivar el servicio o dejar de utilizar la App.</string>
 
-    <string name="onboarding_title_step_3">Cómo funciona en 3 pasos:</string>
+    <string name="onboarding_title_step_3">Cómo funciona</string>
     <string name="onboarding_step_3_instructions_title_1">01</string>
     <string name="onboarding_step_3_instructions_detail_1">Activa tu Bluetooth. Eso es todo lo que te pedimos.</string>
     <string name="onboarding_step_3_instructions_title_2">02</string>
