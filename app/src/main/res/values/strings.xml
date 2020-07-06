@@ -264,7 +264,7 @@
 
     <string name="my_data_title">MIS DATOS</string>
     <string name="my_data_subtitle">Tu privacidad es lo más importante</string>
-    <string name="my_data_l1"><b>NO</b> recogemos ningún dato pesonal (nombre, dirección, edad, teléfono, correo electrónico...)</string>
+    <string name="my_data_l1"><b>NO</b> recogemos ningún dato personal (nombre, dirección, edad, teléfono, correo electrónico...)</string>
     <string name="my_data_l2"><b>NO</b> recogemos ningún dato de geolocalización, incluidos los datos del GPS</string>
     <string name="my_data_l3_title">Por tanto:</string>
     <string name="my_data_l3"><b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
