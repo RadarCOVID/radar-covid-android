@@ -6,9 +6,9 @@ import retrofit2.Call
 
 abstract class BaseRepository {
 
-    protected fun <T> callService(callback: () -> Call<T>): Either<Exception, T> {
+    protected fun <T> callService(call: () -> Call<T>): Either<Exception, T> {
         return try {
-            val response = callback().execute()
+            val response = call().execute()
             when {
                 response.isSuccessful -> {
                     if (response.body() != null) {
