@@ -205,7 +205,7 @@
     <string name="exposure_detail_infected_title">COVID-19 positivo</string>
     <string name="exposure_detail_infected_last_update">Tu diagnóstico fue enviado hace <b>%1$s</b> (actualizado %2$s)</string>
 
-    <string name="exposure_detail_infected_t1">Tu diagnóstico nos ayuda a progteger a los demás.</string>
+    <string name="exposure_detail_infected_t1">Tu diagnóstico nos ayuda a proteger a los demás.</string>
     <string name="exposure_detail_infected_p1">Sin revelar tu identidad en ningún momento, hemos comunicado tu diagnóstico a móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
     <string name="exposure_detail_infected_what_to_do_subtitle">Por favor, aíslate durante 14 días.</string>
 
