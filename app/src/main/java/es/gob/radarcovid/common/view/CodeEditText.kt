@@ -2,12 +2,15 @@ package es.gob.radarcovid.common.view
 
 import android.content.Context
 import android.text.Editable
+import android.text.InputFilter
+import android.text.Spanned
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.text.isDigitsOnly
 import es.gob.radarcovid.R
 import kotlinx.android.synthetic.main.view_code_edittext.view.*
 
@@ -16,9 +19,11 @@ class CodeEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayoutCompat(context, attrs, defStyleAttr) {
 
-    private var editTexts: Array<DeleteDetectionEditText>
+    companion object {
+        private const val NON_VALID_CHARACTER = "-"
+    }
 
-    private var currentFocusIndex: Int = 0
+    private var editTexts: Array<DeleteDetectionEditText>
 
     var textChangedListener: ((String) -> Unit)? = null
 
@@ -40,18 +45,37 @@ class CodeEditText @JvmOverloads constructor(
         )
 
         setOnClickListener {
-            editTexts[currentFocusIndex].requestFocus()
-            showKeyboard(context, editTexts[currentFocusIndex])
+            focusLastEditText()
         }
 
         editTexts.forEachIndexed { index, editText ->
+
+            editText.filters = arrayOf(object : InputFilter {
+                override fun filter(
+                    source: CharSequence?,
+                    start: Int,
+                    end: Int,
+                    dest: Spanned?,
+                    dstart: Int,
+                    dend: Int
+                ): CharSequence {
+                    return if (source?.isDigitsOnly() == true)
+                        source
+                    else
+                        NON_VALID_CHARACTER
+                }
+            }, InputFilter.LengthFilter(1))
+
             editText.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                     s?.let { text ->
-                        if (text.length == 1)
+                        if (text.toString() == NON_VALID_CHARACTER) {
+                            editText.setText("")
+                        } else if (text.length == 1) {
                             if (index < editTexts.size - 1)
-                                editTexts[++currentFocusIndex].requestFocus()
-                        textChangedListener?.invoke(getText())
+                                editTexts[index + 1].requestFocus()
+                            textChangedListener?.invoke(getText())
+                        }
                     }
                 }
 
@@ -73,7 +97,6 @@ class CodeEditText @JvmOverloads constructor(
                 if (index > 0) {
                     if (editText.text?.isEmpty() == true) {
                         editTexts[index - 1].apply { setText("") }.requestFocus()
-                        currentFocusIndex--
                     } else {
                         editText.setText("")
                     }
@@ -81,10 +104,16 @@ class CodeEditText @JvmOverloads constructor(
             }
 
             editText.setOnTouchListener { _, _ ->
-                editTexts[currentFocusIndex].requestFocus()
-                showKeyboard(context, editTexts[currentFocusIndex])
+                focusLastEditText()
                 true
             }
+        }
+    }
+
+    private fun focusLastEditText() {
+        editTexts.find { it.text.isNullOrEmpty() }?.let {
+            it.requestFocus()
+            showKeyboard(context, it)
         }
     }
 

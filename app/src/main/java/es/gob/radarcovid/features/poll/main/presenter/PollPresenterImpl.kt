@@ -159,7 +159,6 @@ class PollPresenterImpl @Inject constructor(
             onError = {
                 onRequestQuestionsError(it)
                 view.hideLoading()
-                view.showContent()
             })
     }
 
