@@ -171,7 +171,7 @@
     <string name="exposure_detail_low_title">Tu exposición es baja</string>
     <string name="exposure_detail_low_last_update">Sin contactos de riesgo aparentes. (actualizado %1$s)</string>
 
-    <string name="exposure_detail_tips_title_low">Manten las medidas de seguridad y distanciamiento social.</string>
+    <string name="exposure_detail_tips_title_low">Mantén las medidas de seguridad y distanciamiento social.</string>
 
     <string name="exposure_detail_tip_mask">Usa siempre mascarilla quirúrgica</string>
     <string name="exposure_detail_tip_wash_hands">Lávate las manos frecuentemente</string>
@@ -248,7 +248,7 @@
     /********** Report Confirmation ************/
 
     <string name="confirmation_title">Gracias por contribuir a parar el virus</string>
-    <string name="confirmation_subtitle">Tu diagnostico nos ayudará a ayudar a los demás.</string>
+    <string name="confirmation_subtitle">Tu diagnóstico nos ayudará a ayudar a los demás.</string>
     <string name="confirmation_p1">Tu diagnóstico nos ayudará a proteger a los demás. Sin revelar tu identidad en ningún momento, vamos a rastrear qué móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
     <string name="confirmation_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
     <string name="confirmation_tip_1">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
@@ -317,7 +317,7 @@
     <string name="contact_support_title">Horario lunes a viernes de 08H a 20H</string>
     <string name="contact_support_phone">900 112 061</string>
 
-    <string name="more_info">Mas información</string>
+    <string name="more_info">Más información</string>
 
     <string name="accept">Aceptar</string>
     <string name="back">Volver</string>
