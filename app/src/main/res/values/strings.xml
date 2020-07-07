@@ -305,7 +305,7 @@
     /********** DP3T ************/
 
     <string name="dp3t_sdk_service_notification_title">&appname;</string>
-    <string name="dp3t_sdk_service_notification_errors">La aplicación no funciona correctamente. Vuelve a intentarlo.</string>
+    <string name="dp3t_sdk_service_notification_errors">No funciona correctamente.</string>
     <string name="dp3t_sdk_service_notification_error_location_service">Localización desactivada.</string>
     <string name="dp3t_sdk_service_notification_error_bluetooth_disabled">Por favor, activa el Bluetooth. Es imprescindible para que &appname; funcione correctamente.</string>
     <string name="dp3t_sdk_service_notification_error_bluetooth_not_supported">El Bluetooth de baja energía no es compatible con este dispositivo.</string>
