@@ -66,76 +66,6 @@ object CMDialog {
 
     }
 
-    fun createCancelableDialog(
-        context: Context,
-        title: Int,
-        description: Int,
-        okButtonText: Int,
-        cancelButtonText: Int,
-        onCloseButtonClick: (() -> Unit)? = null,
-        onOkButtonClick: () -> Unit,
-        onCancelButtonClick: () -> Unit
-    ): AlertDialog = createCancelableDialog(
-        context,
-        context.getString(title),
-        context.getString(description),
-        context.getString(okButtonText),
-        context.getString(cancelButtonText),
-        onCloseButtonClick,
-        onOkButtonClick,
-        onCancelButtonClick
-    )
-
-    fun createCancelableDialog(
-        context: Context,
-        title: String,
-        description: String,
-        okButtonText: String,
-        cancelButtonText: String,
-        onCloseButtonClick: (() -> Unit)? = null,
-        onOkButtonClick: () -> Unit,
-        onCancelButtonClick: () -> Unit
-    ): AlertDialog {
-        val view: View =
-            LayoutInflater.from(context).inflate(R.layout.dialog_cancelable, null)
-        val textViewTitle = view.findViewById<TextView>(R.id.textViewDialogTitle)
-        val textViewDescription = view.findViewById<TextView>(R.id.textViewDialogDescription)
-        val buttonOk = view.findViewById<Button>(R.id.buttonOk)
-        val buttonCancel = view.findViewById<Button>(R.id.buttonCancel)
-        val buttonClose = view.findViewById<Button>(R.id.buttonClose)
-
-        textViewTitle.visibility = View.VISIBLE
-        textViewDescription.visibility = View.VISIBLE
-        buttonOk.visibility = View.VISIBLE
-        buttonCancel.visibility = View.VISIBLE
-        buttonClose.visibility = View.VISIBLE
-
-        textViewTitle.text = title
-        textViewDescription.text = description
-
-        val dialog = AlertDialog.Builder(context)
-            .setView(view)
-            .setCancelable(false)
-            .create()
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        buttonClose.setOnClickListener {
-            onCloseButtonClick?.invoke()
-            dialog.dismiss()
-        }
-        buttonOk.text = okButtonText
-        buttonOk.setOnClickListener {
-            onOkButtonClick.invoke()
-            dialog.dismiss()
-        }
-        buttonCancel.text = cancelButtonText
-        buttonCancel.setOnClickListener {
-            onCancelButtonClick.invoke()
-            dialog.dismiss()
-        }
-        return dialog
-    }
-
     class Builder(private val context: Context) {
 
         private val view: View =
@@ -212,7 +142,6 @@ object CMDialog {
         }
 
         fun build(): AlertDialog = dialog
-
 
     }
 

@@ -17,10 +17,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:fontFamily="@font/muli_light"
             android:minWidth="0dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:text="X"
+            android:textColor="@color/black_26"
+            android:textSize="14sp"
             android:visibility="invisible" />
     </LinearLayout>
 
@@ -39,7 +42,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginBottom="35dp"
         android:visibility="gone"
         tools:text="description" />
 
@@ -48,6 +50,7 @@
         style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:visibility="gone"
         tools:text="Button" />
