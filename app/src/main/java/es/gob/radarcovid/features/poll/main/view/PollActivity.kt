@@ -73,14 +73,13 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
     }
 
     override fun showSkipQuestionDialog() {
-        CMDialog.createCancelableDialog(this,
-            title = "",
-            description = getString(R.string.question_dialog_message),
-            okButtonText = getString(R.string.question_dialog_ok),
-            cancelButtonText = getString(R.string.question_dialog_cancel),
-            onOkButtonClick = { presenter.onContinueWithoutAnswer() },
-            onCancelButtonClick = {}
-        ).show()
+        CMDialog.Builder(this)
+            .setTitle(R.string.question_dialog_message)
+            .setCloseButton { it.dismiss() }
+            .setPositiveButton(R.string.question_dialog_ok) { presenter.onContinueWithoutAnswer() }
+            .setNegativeButton(R.string.question_dialog_cancel) { it.dismiss() }
+            .build()
+            .show()
     }
 
     override fun onContinueButtonClick(answers: QuestionViewModel) {

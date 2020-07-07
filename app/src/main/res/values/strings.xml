@@ -89,7 +89,7 @@
     <string name="onboarding_descrption_step2">Nuestros compromisos</string>
 
     <string name="onboarding_step_2_commitments_title_1">Anonimato</string>
-    <string name="onboarding_step_2_commitments_detail_1">La aplicación funciona sin revelar tu identidad ni la de tu smartphone. <b>NO</b> se recoge tu nombre, email, geolocalización ni tu teléfono.</string>
+    <string name="onboarding_step_2_commitments_detail_1">La aplicación funciona sin revelar tu identidad ni la de tu smartphone. <b>NO</b> se recoge tu nombre, email, geolocalización, ni tu teléfono.</string>
     <string name="onboarding_step_2_commitments_title_2">Discreción</string>
     <string name="onboarding_step_2_commitments_detail_2">Las alertas de exposición se envían sin indicar cuándo y dónde se produjo la exposición.</string>
     <string name="onboarding_step_2_commitments_title_3">Tú decides</string>
@@ -180,7 +180,7 @@
     <string name="exposure_detail_tip_distance">Mantén la distancia de seguridad de 1,5 metros</string>
     <string name="exposure_detail_tip_rules">Respeta las normas particulares en tu territorio sobre aforos y actividades permitidas</string>
     <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
-    <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>
+    <string name="exposure_detail_tip_cough">Al toser o estornudar, tápate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>
 
     /********** Exposure detail high ************/
     <string name="exposure_detail_high_title_small">RIESGO ALTO</string>
@@ -213,14 +213,14 @@
 
     <!--    <string name="exposure_detail_tips_title_low">Manten las medidas de seguridad y distanciamiento social.</string>-->
 
-<!--    <string name="exposure_detail_tip_mask">Usa siempre mascarilla quirúrgica</string>-->
-<!--    <string name="exposure_detail_tip_wash_hands">Lávate las manos frecuentemente</string>-->
+    <!--    <string name="exposure_detail_tip_mask">Usa siempre mascarilla quirúrgica</string>-->
+    <!--    <string name="exposure_detail_tip_wash_hands">Lávate las manos frecuentemente</string>-->
 
 
-<!--    <string name="exposure_detail_tip_distance">Mantén la distancia de seguridad de 1,5 metros</string>-->
-<!--    <string name="exposure_detail_tip_rules">Respeta las normas particulares en tu territorio sobre aforos y actividades permitidas</string>-->
-<!--    <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>-->
-<!--    <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>-->
+    <!--    <string name="exposure_detail_tip_distance">Mantén la distancia de seguridad de 1,5 metros</string>-->
+    <!--    <string name="exposure_detail_tip_rules">Respeta las normas particulares en tu territorio sobre aforos y actividades permitidas</string>-->
+    <!--    <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>-->
+    <!--    <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>-->
 
 
     /********** Covid Report ************/
@@ -264,7 +264,7 @@
 
     <string name="my_data_title">MIS DATOS</string>
     <string name="my_data_subtitle">Tu privacidad es lo más importante</string>
-    <string name="my_data_l1"><b>NO</b> recogemos ningún dato personal (nombre, dirección, edad, teléfono, correo electrónico...)</string>
+    <string name="my_data_l1"><b>NO</b> recogemos ningún dato personal (nombre, dirección, edad, teléfono, correo electrónico…)</string>
     <string name="my_data_l2"><b>NO</b> recogemos ningún dato de geolocalización, incluidos los datos del GPS</string>
     <string name="my_data_l3_title">Por tanto:</string>
     <string name="my_data_l3"><b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
@@ -302,6 +302,22 @@
     <string name="poll_completed_phone_attention_message">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
     <string name="poll_completed_button">Volver a la página de inicio</string>
 
+    /********** DP3T ************/
+
+    <string name="dp3t_sdk_service_notification_title">&appname;</string>
+    <string name="dp3t_sdk_service_notification_errors">No funciona correctamente.</string>
+    <string name="dp3t_sdk_service_notification_error_location_service">Localización desactivada.</string>
+    <string name="dp3t_sdk_service_notification_error_bluetooth_disabled">Por favor, activa el Bluetooth. Es imprescindible para que &appname; funcione correctamente.</string>
+    <string name="dp3t_sdk_service_notification_error_bluetooth_not_supported">El Bluetooth de baja energía no es compatible con este dispositivo.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_server">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_network">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_no_space">Error al cargar nuevos datos de infección. No hay espacio disponible en este dispositivo.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_ssltls">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_timing">Es necesario que configures en Ajustes la actualización automática de fecha y hora.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_signature">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_api">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_gaen_not_available">Las notificaciones de exposición COVID-19 no están disponibles en este dispositivo.</string>
+    <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Por favor, activa las notificaciones de exposición. Es imprescindible para que &appname; funcione correctamente.</string>
 
     /********** Common ************/
 
