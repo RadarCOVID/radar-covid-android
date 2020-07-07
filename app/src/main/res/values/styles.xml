@@ -177,4 +177,10 @@
         <item name="android:background">@drawable/shape_rounded_corners_gray</item>
     </style>
 
+    <style name="ScrollVertical">
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:requiresFadingEdge">vertical</item>
+        <item name="android:fadingEdgeLength">100dp</item>
+    </style>
+
 </resources>
