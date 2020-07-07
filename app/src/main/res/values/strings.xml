@@ -180,7 +180,7 @@
     <string name="exposure_detail_tip_distance">Mantén la distancia de seguridad de 1,5 metros</string>
     <string name="exposure_detail_tip_rules">Respeta las normas particulares en tu territorio sobre aforos y actividades permitidas</string>
     <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
-    <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>
+    <string name="exposure_detail_tip_cough">Al toser o estornudar, tápate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>
 
     /********** Exposure detail high ************/
     <string name="exposure_detail_high_title_small">RIESGO ALTO</string>
