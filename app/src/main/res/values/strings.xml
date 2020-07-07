@@ -89,7 +89,7 @@
     <string name="onboarding_descrption_step2">Nuestros compromisos</string>
 
     <string name="onboarding_step_2_commitments_title_1">Anonimato</string>
-    <string name="onboarding_step_2_commitments_detail_1">La aplicación funciona sin revelar tu identidad ni la de tu smartphone. <b>NO</b> se recoge tu nombre, email, geolocalización ni tu teléfono.</string>
+    <string name="onboarding_step_2_commitments_detail_1">La aplicación funciona sin revelar tu identidad ni la de tu smartphone. <b>NO</b> se recoge tu nombre, email, geolocalización, ni tu teléfono.</string>
     <string name="onboarding_step_2_commitments_title_2">Discreción</string>
     <string name="onboarding_step_2_commitments_detail_2">Las alertas de exposición se envían sin indicar cuándo y dónde se produjo la exposición.</string>
     <string name="onboarding_step_2_commitments_title_3">Tú decides</string>
