@@ -18,7 +18,7 @@ class LegalInfoPresenterImpl @Inject constructor(
         view.setLegalTermsChecked()
     }
 
-    override fun onConditions() {
+    override fun onConditionsButtonClick() {
         router.navigateToConditions()
     }
 
@@ -27,10 +27,6 @@ class LegalInfoPresenterImpl @Inject constructor(
     }
 
     override fun onLegalTermsCheckedChange(checked: Boolean) {
-//        if (checked)
-//            view.hideCheckWarning()
-//        else
-//            view.showCheckWarning()
 
         view.setContinueButtonEnabled(checked)
 

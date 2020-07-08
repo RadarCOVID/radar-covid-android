@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/wrapperButtons"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:requiresFadingEdge="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,45 +118,41 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/padding_content"
                 android:paddingEnd="@dimen/padding_content"
                 android:paddingBottom="@dimen/padding_content">
 
-                <es.gob.radarcovid.common.view.CMCheckBox
+                <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/checkBoxTermsAndConditions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:text="@string/legal_info_check" />
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="5dp"
+                    android:button="@drawable/selector_checkbox"
+                    android:gravity="center_horizontal" />
 
                 <LinearLayout
-                    android:id="@+id/wrapperCheckWarning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/shape_rounded_corners_white"
-                    android:backgroundTint="@color/red"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp"
-                    android:paddingTop="14dp"
-                    android:paddingEnd="20dp"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:src="@drawable/ic_warning" />
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textViewPrivacyPolicy"
+                        style="@style/TextSmall"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli_bold"
-                        android:text="@string/legal_info_check_warning"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
+                        android:paddingBottom="26dp"
+                        android:text="@string/legal_info_privacy_policy"
+                        android:textColor="@color/black_28" />
 
+                    <TextView
+                        android:id="@+id/textViewUsageConditions"
+                        style="@style/TextSmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="26dp"
+                        android:text="@string/legal_info_usage_conditions"
+                        android:textColor="@color/black_28" />
                 </LinearLayout>
 
             </LinearLayout>

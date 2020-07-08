@@ -54,50 +54,17 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
     }
 
     private fun initViews() {
-        checkBoxTermsAndConditions.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
+        checkBoxTermsAndConditions.setOnCheckedChangeListener { _, isChecked ->
             presenter.onLegalTermsCheckedChange(
                 isChecked
             )
-        })
-
-        val spannableString = SpannableString(getString(R.string.legal_info_check))
-        val clickableSpanPrivacy: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(textView: View) {
-                presenter.onPrivacyPolicyButtonClick()
-            }
-
-            override fun updateDrawState(ds: TextPaint) {
-                super.updateDrawState(ds)
-                ds.color = ContextCompat.getColor(context!!, R.color.black_28)
-                ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
-            }
         }
 
-        val clickableSpanConditions: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(textView: View) {
-                presenter.onConditions()
-            }
-
-            override fun updateDrawState(ds: TextPaint) {
-                super.updateDrawState(ds)
-                ds.color = ContextCompat.getColor(context!!, R.color.black_28)
-                ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
-            }
-        }
-        spannableString.setSpan(clickableSpanPrivacy, 10, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(clickableSpanConditions, 47, 65, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        checkBoxTermsAndConditions.setText(spannableString)
+        textViewPrivacyPolicy.setOnClickListener { presenter.onPrivacyPolicyButtonClick() }
+        textViewUsageConditions.setOnClickListener { presenter.onConditionsButtonClick() }
 
         buttonAccept.setOnClickListener { (activity as? OnboardingStepPageFragment.Callback)?.onContinueButtonClick() }
 
-    }
-
-    override fun showCheckWarning() {
-        wrapperCheckWarning.visibility = View.VISIBLE
-    }
-
-    override fun hideCheckWarning() {
-        wrapperCheckWarning.visibility = View.INVISIBLE
     }
 
     override fun setLegalTermsChecked() {
