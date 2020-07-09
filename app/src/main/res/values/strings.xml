@@ -22,7 +22,8 @@
     <string name="legal_info_title_small">LEGAL</string>
     <string name="legal_info_title">Información legal</string>
     <string name="legal_info_terms_and_conditions">Términos y condiciones</string>
-    <string name="legal_info_check">Acepto la <b><u>política de privacidad</u></b>\n\nHe leído las <b><u>condiciones de uso</u></b></string>
+    <string name="legal_info_privacy_policy">Acepto la <b><u>política de privacidad</u></b></string>
+    <string name="legal_info_usage_conditions">He leído las <b><u>condiciones de uso</u></b></string>
     <string name="legal_info_check_warning">Recuerda que tienes que aceptar la política de privacidad para continuar</string>
     <string name="legal_info_button">Continuar</string>
 
@@ -307,7 +308,8 @@
     <string name="dp3t_sdk_service_notification_title">&appname;</string>
     <string name="dp3t_sdk_service_notification_errors">No funciona correctamente.</string>
     <string name="dp3t_sdk_service_notification_error_location_service">Localización desactivada.</string>
-    <string name="dp3t_sdk_service_notification_error_bluetooth_disabled">Por favor, activa el Bluetooth. Es imprescindible para que &appname; funcione correctamente.</string>
+    <string name="dp3t_sdk_service_notification_error_bluetooth_disabled">Por favor, activa el Bluetooth. Es imprescindible para que &appname;
+        funcione correctamente.</string>
     <string name="dp3t_sdk_service_notification_error_bluetooth_not_supported">El Bluetooth de baja energía no es compatible con este dispositivo.</string>
     <string name="dp3t_sdk_service_notification_error_sync_server">Error al cargar nuevos datos de infección.</string>
     <string name="dp3t_sdk_service_notification_error_sync_network">Error al cargar nuevos datos de infección.</string>
@@ -317,7 +319,13 @@
     <string name="dp3t_sdk_service_notification_error_sync_signature">Error al cargar nuevos datos de infección.</string>
     <string name="dp3t_sdk_service_notification_error_sync_api">Error al cargar nuevos datos de infección.</string>
     <string name="dp3t_sdk_service_notification_error_gaen_not_available">Las notificaciones de exposición COVID-19 no están disponibles en este dispositivo.</string>
-    <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Por favor, activa las notificaciones de exposición. Es imprescindible para que &appname; funcione correctamente.</string>
+    <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Por favor, activa las notificaciones de exposición. Es imprescindible para que &appname;
+        funcione correctamente.</string>
+
+    /********** Accesibility ************/
+
+    <string name="description_arrow_button_back">Botón atrás</string>
+    <string name="description_arrow_button_enter">Botón entrar</string>
 
     /********** Common ************/
 
