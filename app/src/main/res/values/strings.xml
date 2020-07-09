@@ -145,7 +145,7 @@
     <string name="radar_block_disabled_title">&appname; inactivo</string>
 
     <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán siempre anónimamente.</string>
-    <string name="radar_block_disabled_description">Por favor, activa el Bluetooth para poder identificar posibles contagios.</string>
+    <string name="radar_block_disabled_description">Por favor, activa esta opción para que la aplicación funcione.</string>
 
     <string name="radar_warning_title">¿Estás seguro?</string>
     <string name="radar_warning_message">Si desactivas el &appname; (el Bluetooth), no podremos avisarte.  Ayúdanos a cuidarte.</string>
