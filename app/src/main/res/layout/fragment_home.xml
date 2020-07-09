@@ -65,7 +65,7 @@
                 android:paddingEnd="15dp"
                 android:paddingBottom="8dp">
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExpositionTitle"
                     style="@style/TitleExtraBold"
                     android:layout_width="wrap_content"

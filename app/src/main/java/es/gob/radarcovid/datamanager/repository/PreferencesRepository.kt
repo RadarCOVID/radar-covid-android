@@ -20,4 +20,8 @@ interface PreferencesRepository {
 
     fun setInfectionReportDate(date: Date)
 
+    fun setLabels(labels: Map<String, String>)
+
+    fun getLabels(): Map<String, String>
+
 }
