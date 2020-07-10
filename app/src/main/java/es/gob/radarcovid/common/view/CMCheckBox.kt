@@ -25,7 +25,7 @@ class CMCheckBox @JvmOverloads constructor(
         orientation = HORIZONTAL
         LayoutInflater.from(context).inflate(R.layout.view_cmcheckbox, this)
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CMCheckBox)
-        val text = typedArray.getText(R.styleable.DottedTextView_android_text)
+        val text = typedArray.getText(R.styleable.CMCheckBox_android_text)
         typedArray.recycle()
         textView.text = text
     }

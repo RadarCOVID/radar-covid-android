@@ -43,5 +43,4 @@ class LabelTextView @JvmOverloads constructor(
         text = getLabelUseCase.getText(labelId, defaultText)
     }
 
-
 }

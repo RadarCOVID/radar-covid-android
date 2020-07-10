@@ -61,19 +61,19 @@
                     android:text="@string/onboarding_step1_description"
                     android:textColor="@color/black" />
 
-                <es.gob.radarcovid.common.view.DottedTextView
+                <es.gob.radarcovid.common.view.LabelDotTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:text="@string/onboarding_step1_message_1" />
 
-                <es.gob.radarcovid.common.view.DottedTextView
+                <es.gob.radarcovid.common.view.LabelDotTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:text="@string/onboarding_step1_message_2" />
 
-                <es.gob.radarcovid.common.view.DottedTextView
+                <es.gob.radarcovid.common.view.LabelDotTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
