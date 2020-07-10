@@ -27,4 +27,9 @@
         <attr name="maxSteps" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="LabelTextView">
+        <attr name="labelId" format="string" />
+        <attr name="android:text" />
+    </declare-styleable>
+
 </resources>

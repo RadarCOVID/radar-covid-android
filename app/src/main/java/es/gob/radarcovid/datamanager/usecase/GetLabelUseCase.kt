@@ -16,12 +16,7 @@ class GetLabelUseCase @Inject constructor(
 
     private var labels: Map<String, String> = repository.getLabels()
 
-    fun test() {
-        Log.d("test", repository.getUuid())
-        labels.toJson()
-    }
-
-    fun getText(labelId: String, default: Int): String =
-        labels[labelId] ?: context.getString(default)
+    fun getText(labelId: String?, default: CharSequence): String =
+        labels[labelId] ?: default.toString()
 
 }

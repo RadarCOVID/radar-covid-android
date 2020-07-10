@@ -75,7 +75,10 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
 
     override fun getLabels(): Map<String, String> {
         val itemType = object : TypeToken<HashMap<String, String>>() {}.type
-        return Gson().fromJson(preferences.getString(KEY_LABELS, "{}"), itemType)
+        return Gson().fromJson(
+            preferences.getString(KEY_LABELS, "{\"test\":\"Hola Label\"}"),
+            itemType
+        )
     }
 
 }
