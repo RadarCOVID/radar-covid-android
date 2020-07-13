@@ -12,6 +12,8 @@ data class RequestKpi(val kpi: String, val timestamp: String, val value: Int) {
         const val MATCHED_KEY_COUNT = "MATCHED_KEY_COUNT"
         const val MAXIMUM_RISK_SCORE = "MAXIMUM_RISK_SCORE"
         const val SUMMATION_RISK_SCORE = "SUMMATION_RISK_SCORE"
+
+        const val MATCH_CONFIRMED = "MATCH_CONFIRMED"
     }
 
 }
