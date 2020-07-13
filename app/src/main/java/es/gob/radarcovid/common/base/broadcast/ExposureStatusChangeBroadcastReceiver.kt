@@ -33,7 +33,7 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
         when (intent?.action) {
             ExposureNotificationClient.ACTION_EXPOSURE_STATE_UPDATED -> context?.let {
                 if (isExposureLevelHigh(it)) {
-                    showExposureLevelChangeNotification(it)
+                    showHighExposureNotification(it)
                     reportMatchUseCase.reportMatch()
                 }
             }
@@ -41,7 +41,7 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
         }
     }
 
-    private fun showExposureLevelChangeNotification(context: Context) {
+    private fun showHighExposureNotification(context: Context) {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -61,8 +61,8 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
             PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         val notification =
             NotificationCompat.Builder(context, context.packageName)
-                .setContentTitle(context.getString(R.string.app_name))
-                .setContentText(context.getString(R.string.exposure_change_notification))
+                .setContentTitle(context.getString(R.string.exposure_high_notification_title))
+                .setContentText(context.getString(R.string.exposure_high_notification))
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setSmallIcon(R.drawable.ic_handshakes)
                 .setContentIntent(pendingIntent)
