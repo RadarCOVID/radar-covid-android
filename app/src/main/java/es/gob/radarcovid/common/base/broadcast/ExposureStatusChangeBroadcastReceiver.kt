@@ -16,6 +16,7 @@ import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.datamanager.usecase.ReportMatchUseCase
 import es.gob.radarcovid.features.splash.view.SplashActivity
 import org.dpppt.android.sdk.DP3T
+import org.dpppt.android.sdk.InfectionStatus
 import javax.inject.Inject
 
 class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
@@ -31,8 +32,10 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
         super.onReceive(context, intent)
         when (intent?.action) {
             ExposureNotificationClient.ACTION_EXPOSURE_STATE_UPDATED -> context?.let {
-                showExposureLevelChangeNotification(it)
-                reportMatchUseCase.reportMatch()
+                if (isExposureLevelHigh(it)) {
+                    showExposureLevelChangeNotification(it)
+                    reportMatchUseCase.reportMatch()
+                }
             }
             DP3T.ACTION_UPDATE -> BUS.post(EventExposureStatusChange())
         }
@@ -71,4 +74,6 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
 
     }
 
+    private fun isExposureLevelHigh(context: Context) =
+        DP3T.getStatus(context).infectionStatus == InfectionStatus.EXPOSED
 }
