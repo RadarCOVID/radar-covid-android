@@ -22,7 +22,7 @@ class RadarCovidApplication : DaggerApplication() {
             this,
             ApplicationInfo(packageName, BuildConfig.REPORT_URL, BuildConfig.BUCKET_URL),
             SignatureUtil.getPublicKeyFromBase64OrThrow(BuildConfig.PUBLIC_KEY),
-            true
+            BuildConfig.DEBUG
         )
 
         registerReceiver(ExposureStatusChangeBroadcastReceiver(), DP3T.getUpdateIntentFilter())
