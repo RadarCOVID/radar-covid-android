@@ -81,13 +81,13 @@ class KpiReportWorker(context: Context, workerParams: WorkerParameters) :
     private fun collectKpi(context: Context): RequestKpiReport? {
         val lastLoadedTimes = AppConfigManager.getInstance(context).lastLoadedTimes
         return lastLoadedTimes.maxBy { it.key.startOfDayTimestamp }?.let {
-            val timeSummary = Date(it.key.startOfDayTimestamp).toTimeStamp()
+            val timeStamp = Date(it.key.startOfDayTimestamp).toTimeStamp()
             val token = it.key.formatAsString()
             runBlocking {
                 suspendCoroutine<RequestKpiReport?> { continuation ->
                     GoogleExposureClient.getInstance(context)
                         .getExposureSummary(token).addOnCompleteListener { task ->
-                            continuation.resume(transform(task.result, timeSummary))
+                            continuation.resume(transform(task.result, timeStamp))
                         }
                 }
             }
