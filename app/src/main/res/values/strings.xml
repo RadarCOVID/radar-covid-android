@@ -136,8 +136,8 @@
     <string name="exposition_block_low_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
     <string name="exposition_block_medium_description_l1">Contacto posible con persona con pesona contagiada de Covid-19</string>
     <string name="exposition_block_medium_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
-    <string name="exposition_block_high_description_l1">Has estado en contacto con una persona contagiada de Covid-19.</string>
-    <string name="exposition_block_high_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_high_description_l1">Has estado en contacto con una persona contagiada de COVID-19.</string>
+    <string name="exposition_block_high_description_l2">Infórmalo en el 900 112 061 (gratuito). Recuerda que las alertas son simuladas.</string>
     <string name="exposition_block_infected_description_l1">Tu diagnóstico ha sido enviado. Por favor, aíslate durante 14 días.</string>
     <string name="exposition_block_infected_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
 

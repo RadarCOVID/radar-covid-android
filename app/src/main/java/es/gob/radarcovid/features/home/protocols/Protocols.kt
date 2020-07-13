@@ -6,11 +6,11 @@ interface HomeView : RequestView {
 
     fun showInitializationCheckAnimation()
 
-    fun showExpositionLevelLow()
+    fun showExposureLevelLow()
 
-    fun showExpositionLevelHigh()
+    fun showExposureLevelHigh()
 
-    fun showExpositionLevelInfected()
+    fun showExposureLevelInfected()
 
     fun setLastUpdateTime(daysElapsed: Int, hoursElapsed: Int, minutesElapsed: Int)
 

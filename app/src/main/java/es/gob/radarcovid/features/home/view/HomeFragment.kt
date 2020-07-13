@@ -115,7 +115,7 @@ class HomeFragment : BaseFragment(), HomeView {
         }.start()
     }
 
-    override fun showExpositionLevelLow() {
+    override fun showExposureLevelLow() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
         textViewExpositionTitle.setText(R.string.exposition_block_low_title)
         textViewExpositionDescriptionL1.setText(R.string.exposition_block_low_description_l1)
@@ -123,15 +123,15 @@ class HomeFragment : BaseFragment(), HomeView {
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.green))
     }
 
-    override fun showExpositionLevelHigh() {
+    override fun showExposureLevelHigh() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
         textViewExpositionTitle.setText(R.string.exposition_block_high_title)
-        textViewExpositionDescriptionL1.setText(R.string.exposition_block_medium_description_l1)
-        textViewExpositionDescriptionL2.setText(R.string.exposition_block_medium_description_l2)
+        textViewExpositionDescriptionL1.setText(R.string.exposition_block_high_description_l1)
+        textViewExpositionDescriptionL2.setText(R.string.exposition_block_high_description_l2)
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
     }
 
-    override fun showExpositionLevelInfected() {
+    override fun showExposureLevelInfected() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
         textViewExpositionTitle.setText(R.string.exposition_block_infected_title)
         textViewExpositionDescriptionL1.setText(R.string.exposition_block_infected_description_l1)
