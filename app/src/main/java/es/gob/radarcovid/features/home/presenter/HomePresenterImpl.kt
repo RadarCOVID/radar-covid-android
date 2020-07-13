@@ -94,9 +94,9 @@ class HomePresenterImpl @Inject constructor(
 
     private fun showExposureInfo(exposureInfo: ExposureInfo) {
         when (exposureInfo.level) {
-            ExposureInfo.Level.LOW -> view.showExpositionLevelLow()
-            ExposureInfo.Level.HIGH -> view.showExpositionLevelHigh()
-            ExposureInfo.Level.INFECTED -> view.showExpositionLevelInfected()
+            ExposureInfo.Level.LOW -> view.showExposureLevelLow()
+            ExposureInfo.Level.HIGH -> view.showExposureLevelHigh()
+            ExposureInfo.Level.INFECTED -> view.showExposureLevelInfected()
         }
 
         //setLastUpdateTime(expositionInfo.lastUpdateTime)

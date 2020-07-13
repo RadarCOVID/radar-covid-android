@@ -16,6 +16,7 @@ import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.datamanager.usecase.ReportMatchUseCase
 import es.gob.radarcovid.features.splash.view.SplashActivity
 import org.dpppt.android.sdk.DP3T
+import org.dpppt.android.sdk.InfectionStatus
 import javax.inject.Inject
 
 class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
@@ -31,14 +32,16 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
         super.onReceive(context, intent)
         when (intent?.action) {
             ExposureNotificationClient.ACTION_EXPOSURE_STATE_UPDATED -> context?.let {
-                showExposureLevelChangeNotification(it)
-                reportMatchUseCase.reportMatch()
+                if (isExposureLevelHigh(it)) {
+                    showHighExposureNotification(it)
+                    reportMatchUseCase.reportMatch()
+                }
             }
             DP3T.ACTION_UPDATE -> BUS.post(EventExposureStatusChange())
         }
     }
 
-    private fun showExposureLevelChangeNotification(context: Context) {
+    private fun showHighExposureNotification(context: Context) {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -58,8 +61,8 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
             PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         val notification =
             NotificationCompat.Builder(context, context.packageName)
-                .setContentTitle(context.getString(R.string.app_name))
-                .setContentText(context.getString(R.string.exposure_change_notification))
+                .setContentTitle(context.getString(R.string.exposure_high_notification_title))
+                .setContentText(context.getString(R.string.exposure_high_notification))
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setSmallIcon(R.drawable.ic_handshakes)
                 .setContentIntent(pendingIntent)
@@ -71,4 +74,6 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
 
     }
 
+    private fun isExposureLevelHigh(context: Context) =
+        DP3T.getStatus(context).infectionStatus == InfectionStatus.EXPOSED
 }
