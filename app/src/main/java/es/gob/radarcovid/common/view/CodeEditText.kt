@@ -111,10 +111,11 @@ class CodeEditText @JvmOverloads constructor(
     }
 
     private fun focusLastEditText() {
-        editTexts.find { it.text.isNullOrEmpty() }?.let {
-            it.requestFocus()
-            showKeyboard(context, it)
-        }
+        editTexts.find { it.text.isNullOrEmpty() || editTexts.indexOf(it) == editTexts.lastIndex }
+            ?.let {
+                it.requestFocus()
+                showKeyboard(context, it)
+            }
     }
 
     private fun showKeyboard(context: Context, editText: EditText) {

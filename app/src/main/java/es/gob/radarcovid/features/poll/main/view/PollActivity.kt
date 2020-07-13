@@ -76,7 +76,10 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
         CMDialog.Builder(this)
             .setTitle(R.string.question_dialog_message)
             .setCloseButton { it.dismiss() }
-            .setPositiveButton(R.string.question_dialog_ok) { presenter.onContinueWithoutAnswer() }
+            .setPositiveButton(R.string.question_dialog_ok) {
+                it.dismiss()
+                presenter.onContinueWithoutAnswer()
+            }
             .setNegativeButton(R.string.question_dialog_cancel) { it.dismiss() }
             .build()
             .show()
