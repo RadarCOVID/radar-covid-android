@@ -22,7 +22,7 @@ abstract class BaseFragment : DaggerFragment() {
     }
 
     fun showLoading() {
-        hideLoading()
+        progressBar?.dismiss()
         progressBar = TransparentProgressDialog(context!!)
         progressBar?.setCanceledOnTouchOutside(false)
         progressBar?.setCancelable(false)
@@ -33,7 +33,7 @@ abstract class BaseFragment : DaggerFragment() {
     }
 
     fun hideLoading() {
-        progressBar?.dismiss()
+        progressBar?.hide()
     }
 
     fun showError(error: Throwable, finishOnDismiss: Boolean = false) {

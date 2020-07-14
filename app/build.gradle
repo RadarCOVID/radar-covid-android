@@ -139,7 +139,6 @@ dependencies {
     //Views
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
-    implementation 'me.relex:circleindicator:2.1.4'
 
     implementation "org.funktionale:funktionale-either:1.2"
 
@@ -167,10 +166,6 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-scalars:$rootProject.retrofitVersion"
-
-    //Image loading
-    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
     //WorkerManager
     implementation 'androidx.work:work-runtime:2.3.4'

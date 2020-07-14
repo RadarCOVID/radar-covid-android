@@ -3,19 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/spinner_background">
+    <View
+        android:id="@+id/viewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#90000000" />
 
-        <ImageView
-            android:id="@+id/spinnerView"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_margin="16dp" />
-
-    </FrameLayout>
+    <es.gob.radarcovid.common.view.AnimatedCircleView
+        android:id="@+id/indicator"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center" />
 
 </FrameLayout>
