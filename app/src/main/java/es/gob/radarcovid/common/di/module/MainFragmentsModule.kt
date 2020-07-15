@@ -30,7 +30,7 @@ abstract class MainFragmentsModule {
     abstract fun bindsMyDataFragment(): MyDataFragment
 
     @PerFragment
-    @ContributesAndroidInjector(modules = [HelplineModule::class])
+    @ContributesAndroidInjector(modules = [HelplineModule::class, HelplineFragmentsModule::class])
     abstract fun bindsHelplineFragment(): HelplineFragment
 
     @PerFragment
