@@ -27,6 +27,8 @@ class CodeEditText @JvmOverloads constructor(
 
     var textChangedListener: ((String) -> Unit)? = null
 
+    var previousText: String = ""
+
     init {
         LayoutInflater.from(context).inflate(R.layout.view_code_edittext, this)
         editTexts = arrayOf(
@@ -74,7 +76,12 @@ class CodeEditText @JvmOverloads constructor(
                         } else if (text.length == 1) {
                             if (index < editTexts.size - 1)
                                 editTexts[index + 1].requestFocus()
-                            textChangedListener?.invoke(getText())
+                        }
+                        if (text.toString() != NON_VALID_CHARACTER) {
+                            if (getText() != previousText) {
+                                previousText = getText()
+                                textChangedListener?.invoke(getText())
+                            }
                         }
                     }
                 }
