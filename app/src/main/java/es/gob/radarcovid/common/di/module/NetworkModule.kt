@@ -5,6 +5,7 @@ import dagger.Provides
 import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.common.di.scope.PerApplication
 import es.gob.radarcovid.datamanager.api.ApiInterface
+import okhttp3.ConnectionSpec
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,6 +27,7 @@ class NetworkModule {
     fun providesHttpClient(interceptor: Interceptor): OkHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(interceptor)
+        .connectionSpecs(listOf(ConnectionSpec.MODERN_TLS))
         .build()
 
     @Provides
