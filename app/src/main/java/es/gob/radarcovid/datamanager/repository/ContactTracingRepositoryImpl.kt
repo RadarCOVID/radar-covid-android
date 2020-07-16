@@ -10,6 +10,7 @@ import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.GaenAvailability
 import org.dpppt.android.sdk.backend.ResponseCallback
 import org.dpppt.android.sdk.internal.ExposureDayStorage
+import org.dpppt.android.sdk.internal.nearby.GoogleExposureClient
 import org.dpppt.android.sdk.models.ExposeeAuthMethodAuthorization
 import java.util.*
 import javax.inject.Inject
@@ -36,6 +37,8 @@ class ContactTracingRepositoryImpl @Inject constructor(
     }
 
     override fun updateTracingSettings(settings: Settings) {
+        GoogleExposureClient.getInstance(activity)
+            .setParams(settings.attenuationThresholdLow, settings.attenuationThresholdMedium)
         DP3T.setMatchingParameters(
             activity,
             settings.attenuationThresholdLow,
@@ -44,19 +47,6 @@ class ContactTracingRepositoryImpl @Inject constructor(
             settings.attenuationFactorMedium,
             settings.minDurationForExposure
         )
-//        AppConfigManager.getInstance(activity).setExposureConfiguration(
-//            ExposureConfiguration.ExposureConfigurationBuilder()
-//                .setTransmissionRiskScores(*settings.exposureConfiguration.transmission.value)
-//                .setTransmissionRiskWeight(settings.exposureConfiguration.transmission.weight.toInt())
-//                .setDurationScores(*settings.exposureConfiguration.duration.value)
-//                .setDurationWeight(settings.exposureConfiguration.duration.weight.toInt())
-//                .setDaysSinceLastExposureScores(*settings.exposureConfiguration.days.value)
-//                .setDaysSinceLastExposureWeight(settings.exposureConfiguration.days.weight.toInt())
-//                .setAttenuationScores(*settings.exposureConfiguration.attenuation.value)
-//                .setAttenuationWeight(settings.exposureConfiguration.attenuation.weight.toInt())
-//                .setMinimumRiskScore(settings.minRiskScore)
-//                .build()
-//        )
     }
 
     override fun startRadar(
