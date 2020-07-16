@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import dagger.android.support.DaggerAppCompatActivity
+import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.TransparentProgressDialog
 
@@ -64,7 +65,8 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
                 0
             )
         } catch (e: Exception) {
-            e.printStackTrace()
+            if (BuildConfig.DEBUG)
+                e.printStackTrace()
         }
     }
 

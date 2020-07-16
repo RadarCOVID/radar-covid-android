@@ -1,5 +1,6 @@
 package es.gob.radarcovid.datamanager.usecase
 
+import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.R
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
@@ -87,7 +88,8 @@ class ReportInfectedUseCase @Inject constructor(
             }
 
         } catch (e: Exception) {
-            e.printStackTrace()
+            if (BuildConfig.DEBUG)
+                e.printStackTrace()
         }
         return result
     }

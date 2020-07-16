@@ -36,7 +36,10 @@ class RadarCovidApplication : DaggerApplication() {
             .build()
 
     private fun initRxJavaSettings() {
-        RxJavaPlugins.setErrorHandler { it.printStackTrace() }
+        RxJavaPlugins.setErrorHandler {
+            if (BuildConfig.DEBUG)
+                it.printStackTrace()
+        }
     }
 
 }

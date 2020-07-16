@@ -2,6 +2,7 @@ package es.gob.radarcovid.models.exception
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.models.response.ResponseError
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -18,7 +19,8 @@ class ServiceException(message: String) : Exception(message) {
         fun <T> from(response: Response<T>): ServiceException = try {
             ServiceException("${response.code()} - ${getMessageFromErrorBody(response.errorBody())}")
         } catch (e: Exception) {
-            e.printStackTrace()
+            if (BuildConfig.DEBUG)
+                e.printStackTrace()
             ServiceException(UNSPECIFIED_ERROR)
         }
 

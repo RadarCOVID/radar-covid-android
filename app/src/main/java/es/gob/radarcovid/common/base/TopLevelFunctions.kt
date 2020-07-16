@@ -1,5 +1,6 @@
 package es.gob.radarcovid.common.base
 
+import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.models.exception.MapperException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +18,8 @@ inline fun <A, reified B> mapperScope(
         else
             Either.right(mapperFunction(requestResult.right().get()))
     } catch (e: Exception) {
-        e.printStackTrace()
+        if (BuildConfig.DEBUG)
+            e.printStackTrace()
         Either.Left(
             MapperException(
                 "Error when mapping to " + B::class.java.simpleName,
