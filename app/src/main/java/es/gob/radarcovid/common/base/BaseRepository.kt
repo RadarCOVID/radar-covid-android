@@ -1,5 +1,6 @@
 package es.gob.radarcovid.common.base
 
+import es.gob.radarcovid.models.exception.GenericRequestException
 import es.gob.radarcovid.models.exception.ServiceException
 import org.funktionale.either.Either
 import retrofit2.Call
@@ -23,7 +24,7 @@ abstract class BaseRepository {
                 else -> Either.left(ServiceException.from(response))
             }
         } catch (exception: Exception) {
-            return Either.left(exception)
+            return Either.left(GenericRequestException())
         }
     }
 

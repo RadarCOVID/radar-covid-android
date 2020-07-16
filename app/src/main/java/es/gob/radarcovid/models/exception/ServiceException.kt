@@ -21,7 +21,7 @@ class ServiceException(message: String) : Exception(message) {
         } catch (e: Exception) {
             if (BuildConfig.DEBUG)
                 e.printStackTrace()
-            ServiceException(UNSPECIFIED_ERROR)
+            ServiceException("")
         }
 
 
