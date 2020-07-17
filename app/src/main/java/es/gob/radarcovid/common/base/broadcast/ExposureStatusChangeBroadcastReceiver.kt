@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.Handler
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.nearby.exposurenotification.ExposureNotificationClient
 import dagger.android.DaggerBroadcastReceiver
@@ -32,10 +33,12 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
         super.onReceive(context, intent)
         when (intent?.action) {
             ExposureNotificationClient.ACTION_EXPOSURE_STATE_UPDATED -> context?.let {
-                if (isExposureLevelHigh(it)) {
-                    showHighExposureNotification(it)
-                    reportMatchUseCase.reportMatch()
-                }
+                Handler().postDelayed({ // DELAY INTRODUCED TO GIVE SOME TIME TO DP3T TO UPDATE THE EXPOSURE STATUS
+                    if (isExposureLevelHigh(it)) {
+                        showHighExposureNotification(it)
+                        reportMatchUseCase.reportMatch()
+                    }
+                }, 1000)
             }
             DP3T.ACTION_UPDATE -> BUS.post(EventExposureStatusChange())
         }

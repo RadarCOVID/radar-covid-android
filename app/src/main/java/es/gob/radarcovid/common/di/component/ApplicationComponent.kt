@@ -10,6 +10,7 @@ import es.gob.radarcovid.common.di.module.ActivitiesModule
 import es.gob.radarcovid.common.di.module.BroadcastReceiverModule
 import es.gob.radarcovid.common.di.module.NetworkModule
 import es.gob.radarcovid.common.di.module.RepositoryModule
+import es.gob.radarcovid.common.di.module.ViewsModule
 import es.gob.radarcovid.common.di.scope.PerApplication
 import javax.inject.Named
 
@@ -18,6 +19,7 @@ import javax.inject.Named
     modules = [NetworkModule::class,
         RepositoryModule::class,
         ActivitiesModule::class,
+        ViewsModule::class,
         BroadcastReceiverModule::class,
         AndroidSupportInjectionModule::class]
 )

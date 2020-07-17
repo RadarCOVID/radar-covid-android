@@ -1,6 +1,9 @@
 package es.gob.radarcovid.datamanager.repository
 
 import android.content.Context
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import es.gob.radarcovid.common.extensions.toJson
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
@@ -14,6 +17,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_UUID = "uuid"
         private const val KEY_POLL_COMPLETED = "poll_completed"
         private const val KEY_INFECTION_REPORT_DATE = "key_infection_report_date"
+        private const val KEY_LABELS = "key_labels"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -61,6 +65,20 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         preferences.edit()
             .putLong(KEY_INFECTION_REPORT_DATE, date.time)
             .apply()
+    }
+
+    override fun setLabels(labels: Map<String, String>) {
+        preferences.edit()
+            .putString(KEY_LABELS, labels.toJson())
+            .apply()
+    }
+
+    override fun getLabels(): Map<String, String> {
+        val itemType = object : TypeToken<HashMap<String, String>>() {}.type
+        return Gson().fromJson(
+            preferences.getString(KEY_LABELS, "{\"test\":\"Hola Label\"}"),
+            itemType
+        )
     }
 
 }

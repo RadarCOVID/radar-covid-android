@@ -56,7 +56,7 @@ class MyDataFragment : BaseFragment(), MyDataView {
             text3.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        dottedTextViewL3.setText(text3, TextView.BufferType.SPANNABLE)
+        dottedTextViewL3.setText(null, text3, TextView.BufferType.SPANNABLE) //TODO SET LABEL IDø
 
         textViewConditions.setOnClickListener { presenter.onConditionsButtonClick() }
         textViewPrivacy.setOnClickListener { presenter.onPrivacyButtonClick() }

@@ -342,6 +342,7 @@
     <string name="contact_email"><u>piloto.appcovid@economia.gob.es</u></string>
     <string name="contact_support_title">Horario lunes a viernes de 08H a 20H</string>
     <string name="contact_support_phone">900 112 061</string>
+    <string name="contact_support_free_call">llamada gratuita</string>
 
     <string name="more_info">Más información</string>
 
