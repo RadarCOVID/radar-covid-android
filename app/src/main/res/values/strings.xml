@@ -3,7 +3,8 @@
     <string name="app_name">&appname;</string>
 
     /********** ERROR MESSAGES ************/
-    <string name="error_generic">Hubo un error, por favor inténtelo más tarde</string>
+    <string name="error_generic_title">Error</string>
+    <string name="error_generic_message">Se ha producido un error. Compruebe la conexión</string>
 
     /********** Play services dialog ************/
 
@@ -147,16 +148,17 @@
     <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán siempre anónimamente.</string>
     <string name="radar_block_disabled_description">Por favor, activa esta opción para que la aplicación funcione.</string>
 
-    <string name="radar_warning_title">¿Estás seguro?</string>
-    <string name="radar_warning_message">Si desactivas el &appname; (el Bluetooth), no podremos avisarte.  Ayúdanos a cuidarte.</string>
-    <string name="radar_warning_button">Desactivar</string>
+    <string name="radar_warning_title">¿Estas seguro de desactivar &appname;</string>
+    <string name="radar_warning_message">Si desactivas &appname;, la aplicación dejará de registrar contactos. Ayúdanos a cuidarte</string>
+    <string name="radar_warning_button_positive">Mantener activo</string>
+    <string name="radar_warning_button_negative">Desactivar</string>
 
     <string name="covid_report_warning">Es necesario tener el Radar COVID activo para poder enviar el diagnóstico</string>
 
 
     /********** Exposition detail common ************/
     <string name="exposure_detail_title">EXPOSICIÓN</string>
-    <string name="exposure_detail_what_to_do">¿Qué debo de hacer?</string>
+    <string name="exposure_detail_what_to_do">¿Qué debo hacer?</string>
     <string name="exposure_detail_more_info">Más información a través de <b>este enlace</b></string>
     <string name="exposure_detail_acknowledgement_message">Gracias por seguir cuidándote y cuidando a los demás.</string>
 
@@ -229,11 +231,12 @@
     <string name="covid_report_title">MI DIAGNÓSTICO</string>
     <string name="covid_report_subtitle">Envía tu diagnóstico COVID positivo</string>
     <string name="covid_report_p1">Enviando tu diagnóstico anónimo COVID-19, estás contribuyendo a detener la propagación del virus.</string>
-    <string name="covid_report_p2">Gracias por ayudarnos a cuidar a los demás.\n\nTu información está segura y será tratada siempre anónimamente</string>
+    <string name="covid_report_p2">Gracias por ayudarnos a cuidar a los demás.</string>
+    <string name="covid_report_p3">Tu información está segura y será tratada siempre anónimamente</string>
     <string name="covid_report_qr_button">Escanear QR</string>
     <string name="covid_report_code_hint_title">Código de diagnóstico</string>
     <string name="covid_report_code_hint_subtitle">Introduce el código que te han enviado</string>
-    <string name="covid_report_code_input_example">ej. 012345679</string>
+    <string name="covid_report_code_input_example">ej. 123456789123</string>
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
     <string name="covid_report_abort_warning_title">¿Seguro que no quieres enviar tu diagnóstico?</string>
     <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demas y evitemos que el Covid-19 se propague.</string>
@@ -280,7 +283,7 @@
     <string name="helpline_title_2">Atención telefónica</string>
     <string name="helpline_message_p2">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
     <string name="helpline_title_3">Un paso más</string>
-    <string name="helpline_message_p3">¿Te interesaría participar en una entrevista telefónica para concocer más sobre tu experiencia con &appname;? Escribe a:</string>
+    <string name="helpline_message_p3">¿Te interesaría participar en una entrevista telefónica para conocer más sobre tu experiencia con &appname;? Escribe a:</string>
     <string name="helpline_message_p4">Nos pondremos en contacto contigo para fijar el día y la hora que se adapte mejor a ti.</string>
     <string name="helpline_button_start">Cuéntanos tu experiencia</string>
 
@@ -289,6 +292,7 @@
     <string name="poll_title">CUÉNTANOS TU EXPERIENCIA</string>
     <string name="poll_button_next">Siguiente</string>
     <string name="poll_button_finish">Finalizar</string>
+    <string name="poll_edit_text_hint">Describir…</string>
 
     <string name="question_dialog_message">No has respondido a una pregunta</string>
     <string name="question_dialog_ok">Continuar sin respuesta</string>
@@ -330,6 +334,7 @@
 
     /********** Common ************/
 
+    <string name="warning_need_update_title">Actualiza &appname;</string>
     <string name="warning_need_update_message">Para poder seguir utilizando &appname; es necesario que actualices la aplicación.</string>
     <string name="warning_need_update_button">ACTUALIZAR</string>
     <string name="exposure_high_notification_title">Riesgo de exposición alto.</string>

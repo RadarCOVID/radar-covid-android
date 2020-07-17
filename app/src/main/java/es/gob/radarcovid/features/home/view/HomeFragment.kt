@@ -81,13 +81,7 @@ class HomeFragment : BaseFragment(), HomeView {
             if (!switchRadar.isChecked) { // The status is already change when onclick is executed
                 switchRadar.isChecked = true
                 switchRadar.jumpDrawablesToCurrentState();
-                CMDialog.createDialog(
-                    context!!, R.string.radar_warning_title,
-                    R.string.radar_warning_message,
-                    R.string.radar_warning_button, null
-                ) {
-                    presenter.onSwitchRadarClick(true)
-                }.show()
+                showDialogDisableRadarWarning()
             } else {
                 switchRadar.isChecked = false
                 switchRadar.jumpDrawablesToCurrentState();
@@ -117,25 +111,54 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun showExposureLevelLow() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
-        textViewExpositionTitle.setText(R.string.exposition_block_low_title)
-        textViewExpositionDescriptionL1.setText(R.string.exposition_block_low_description_l1)
-        textViewExpositionDescriptionL2.setText(R.string.exposition_block_low_description_l2)
+        textViewExpositionTitle.text =
+            labelManager.getText("HOME_EXPOSITION_TITLE_LOW", R.string.exposition_block_low_title)
+        textViewExpositionDescriptionL1.text =
+            labelManager.getText(
+                "HOME_EXPOSITION_MESSAGE_LOW_PARAGRAPH_1",
+                R.string.exposition_block_low_description_l1
+            )
+        textViewExpositionDescriptionL2.text =
+            labelManager.getText(
+                "HOME_EXPOSITION_MESSAGE_LOW_PARAGRAPH_2",
+                R.string.exposition_block_low_description_l2
+            )
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.green))
     }
 
     override fun showExposureLevelHigh() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
-        textViewExpositionTitle.setText(R.string.exposition_block_high_title)
-        textViewExpositionDescriptionL1.setText(R.string.exposition_block_high_description_l1)
-        textViewExpositionDescriptionL2.setText(R.string.exposition_block_high_description_l2)
+        textViewExpositionTitle.text =
+            labelManager.getText("HOME_EXPOSITION_TITLE_HIGH", R.string.exposition_block_high_title)
+        textViewExpositionDescriptionL1.text =
+            labelManager.getText(
+                "HOME_EXPOSITION_MESSAGE_HIGH_PARAGRAPH_1",
+                R.string.exposition_block_high_description_l1
+            )
+        textViewExpositionDescriptionL2.text =
+            labelManager.getText(
+                "HOME_EXPOSITION_MESSAGE_HIGH_PARAGRAPH_2",
+                R.string.exposition_block_high_description_l2
+            )
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
     }
 
     override fun showExposureLevelInfected() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
-        textViewExpositionTitle.setText(R.string.exposition_block_infected_title)
-        textViewExpositionDescriptionL1.setText(R.string.exposition_block_infected_description_l1)
-        textViewExpositionDescriptionL2.setText(R.string.exposition_block_infected_description_l2)
+        textViewExpositionTitle.text = labelManager.getText(
+            "HOME_EXPOSITION_TITLE_POSITIVE",
+            R.string.exposition_block_infected_title
+        )
+        textViewExpositionDescriptionL1.text =
+            labelManager.getText(
+                "HOME_EXPOSITION_MESSAGE_INFECTED_PARAGRAPH_1",
+                R.string.exposition_block_infected_description_l1
+            )
+        textViewExpositionDescriptionL2.text =
+            labelManager.getText(
+                "HOME_EXPOSITION_MESSAGE_INFECTED_PARAGRAPH_2",
+                R.string.exposition_block_infected_description_l2
+            )
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
     }
 
@@ -183,25 +206,79 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     override fun showUnableToReportCovidDialog() {
-        CMDialog.createDialog(
-            context!!, R.string.empty_text,
-            R.string.covid_report_warning,
-            R.string.accept, null
-        ) {}.show()
+        CMDialog.Builder(context!!)
+            .setMessage(R.string.covid_report_warning)
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_ACCEPT_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) { it.dismiss() }
+            .setCloseButton { it.dismiss() }
+            .build()
+            .show()
+    }
+
+    private fun showDialogDisableRadarWarning() {
+        CMDialog.Builder(context!!)
+            .setTitle(
+                labelManager.getText(
+                    "ALERT_HOME_RADAR_TITLE",
+                    R.string.radar_warning_title
+                ).toString()
+            )
+            .setMessage(
+                labelManager.getText(
+                    "ALERT_HOME_RADAR_CONTENT",
+                    R.string.radar_warning_message
+                ).toString()
+            )
+            .setCloseButton { it.dismiss() }
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_HOME_RADAR_OK_BUTTON",
+                    R.string.radar_warning_button_positive
+                ).toString()
+            ) {
+                it.dismiss()
+            }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ALERT_HOME_RADAR_CANCEL_BUTTON",
+                    R.string.radar_warning_button_negative
+                ).toString()
+            ) {
+                it.dismiss()
+                presenter.onSwitchRadarClick(true)
+            }
+            .build()
+            .show()
     }
 
     private fun showRadarBlockEnabled(enabled: Boolean) {
         if (enabled) {
-            textViewRadarTitle.setText(R.string.radar_block_enabled_title)
-            textViewRadarDescription.setText(R.string.radar_block_enabled_description)
+            textViewRadarTitle.text = labelManager.getText(
+                "HOME_RADAR_TITLE_ACTIVE",
+                R.string.radar_block_enabled_title
+            )
+            textViewRadarDescription.text = labelManager.getText(
+                "HOME_RADAR_CONTENT_ACTIVE",
+                R.string.radar_block_enabled_description
+            )
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
             textViewRadarDescription.setTypeface(
                 ResourcesCompat.getFont(context!!, R.font.muli_light),
                 Typeface.NORMAL
             )
         } else {
-            textViewRadarTitle.setText(R.string.radar_block_disabled_title)
-            textViewRadarDescription.setText(R.string.radar_block_disabled_description)
+            textViewRadarTitle.text = labelManager.getText(
+                "HOME_RADAR_TITLE_INACTIVE",
+                R.string.radar_block_disabled_title
+            )
+            textViewRadarDescription.text = labelManager.getText(
+                "HOME_RADAR_CONTENT_INACTIVE",
+                R.string.radar_block_disabled_description
+            )
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.red))
             textViewRadarDescription.setTypeface(
                 ResourcesCompat.getFont(context!!, R.font.muli_bold),

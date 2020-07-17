@@ -32,42 +32,47 @@
             android:paddingRight="22dp"
             android:paddingBottom="22dp">
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleXSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/my_data_title"
-                android:textColor="@color/gray" />
+                android:textColor="@color/gray"
+                app:labelId="MY_DATA_TOP_PLACEHOLDER" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:text="@string/my_data_subtitle" />
+                android:text="@string/my_data_subtitle"
+                app:labelId="MY_DATA_TITLE" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
                 android:id="@+id/dottedTextViewL1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/my_data_l1" />
+                android:text="@string/my_data_l1"
+                app:labelId="MY_DATA_BULLET_1" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
                 android:id="@+id/dottedTextViewL2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/my_data_l2" />
+                android:text="@string/my_data_l2"
+                app:labelId="MY_DATA_BULLET_2" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextNormal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="27dp"
-                android:text="@string/my_data_l3_title" />
+                android:text="@string/my_data_l3_title"
+                app:labelId="MY_DATA_BULLET_THEREFORE" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
                 android:id="@+id/dottedTextViewL3"
@@ -75,18 +80,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/my_data_l3"
-                app:dotVisibility="invisible" />
+                app:dotVisibility="invisible"
+                app:labelId="MY_DATA_BULLET_3" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="11dp"
                 android:fontFamily="@font/muli_regular"
                 android:text="@string/my_data_encription_info"
                 android:textColor="@color/black_26"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:labelId="MY_DATA_PARAGRAPH_1" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 android:id="@+id/textViewPrivacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -95,9 +102,10 @@
                 android:paddingBottom="13dp"
                 android:text="@string/my_data_privacy"
                 android:textColor="@color/black_28"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:labelId="MY_DATA_PRIVACY" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 android:id="@+id/textViewConditions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,7 +115,8 @@
                 android:paddingBottom="13dp"
                 android:text="@string/my_data_conditions"
                 android:textColor="@color/black_28"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:labelId="MY_DATA_TERMS" />
 
         </LinearLayout>
     </ScrollView>

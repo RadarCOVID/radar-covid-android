@@ -6,14 +6,20 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.core.widget.addTextChangedListener
+import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.viewmodel.QuestionViewModel
+import es.gob.radarcovid.datamanager.utils.LabelManager
 import kotlinx.android.synthetic.main.view_question_edit_text.view.*
+import javax.inject.Inject
 
 
 class QuestionEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr), AnswerView {
+
+    @Inject
+    lateinit var labelManager: LabelManager
 
     var question: QuestionViewModel? = null
         set(value) {
@@ -25,6 +31,8 @@ class QuestionEditText @JvmOverloads constructor(
         }
 
     init {
+        (context.applicationContext as HasAndroidInjector).androidInjector().inject(this)
+
         LayoutInflater.from(context).inflate(R.layout.view_question_edit_text, this)
         editTextQuestion.addTextChangedListener { newText ->
             question?.let {
@@ -34,6 +42,8 @@ class QuestionEditText @JvmOverloads constructor(
                 }
             }
         }
+        editTextQuestion.hint =
+            labelManager.getText("POLL_TEXTAREA_PLACEHOLDER", R.string.poll_edit_text_hint)
     }
 
     override fun getSelectedAnswers(): QuestionViewModel = question ?: QuestionViewModel()

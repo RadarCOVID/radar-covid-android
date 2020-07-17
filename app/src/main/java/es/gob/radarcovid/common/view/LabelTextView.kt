@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
-import es.gob.radarcovid.datamanager.usecase.GetLabelUseCase
+import es.gob.radarcovid.datamanager.utils.LabelManager
 import javax.inject.Inject
 
 class LabelTextView @JvmOverloads constructor(
@@ -24,7 +24,7 @@ class LabelTextView @JvmOverloads constructor(
             try {
                 val labelId = getString(R.styleable.LabelTextView_labelId)
                 val defaultText = getText(R.styleable.LabelTextView_android_text)
-                text = getLabelUseCase.getText(labelId, defaultText)
+                text = labelManager.getText(labelId, defaultText)
             } finally {
                 recycle()
             }
@@ -33,14 +33,14 @@ class LabelTextView @JvmOverloads constructor(
     }
 
     @Inject
-    lateinit var getLabelUseCase: GetLabelUseCase
+    lateinit var labelManager: LabelManager
 
     fun setText(labelId: String?, resId: Int) {
         setText(labelId, context.getString(resId))
     }
 
     fun setText(labelId: String?, defaultText: CharSequence) {
-        text = getLabelUseCase.getText(labelId, defaultText)
+        text = labelManager.getText(labelId, defaultText)
     }
 
 }

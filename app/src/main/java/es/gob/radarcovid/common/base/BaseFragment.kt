@@ -6,10 +6,15 @@ import androidx.appcompat.app.AlertDialog
 import dagger.android.support.DaggerFragment
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.TransparentProgressDialog
+import es.gob.radarcovid.datamanager.utils.LabelManager
+import javax.inject.Inject
 
 abstract class BaseFragment : DaggerFragment() {
 
     private var progressBar: TransparentProgressDialog? = null
+
+    @Inject
+    lateinit var labelManager: LabelManager
 
     override fun onDestroy() {
         super.onDestroy()
@@ -33,8 +38,16 @@ abstract class BaseFragment : DaggerFragment() {
 
     fun showError(error: Throwable, finishOnDismiss: Boolean = false) {
         showError(
-            title = null,
-            message = error.message ?: getString(R.string.error_generic),
+            title = if (error.message == null)
+                labelManager.getText("ALERT_GENERIC_ERROR_TITLE", R.string.error_generic_title)
+                    .toString()
+            else
+                null
+            ,
+            message = error.message ?: labelManager.getText(
+                "ALERT_GENERIC_ERROR_CONTENT",
+                R.string.error_generic_message
+            ).toString(),
             finishOnDismiss = finishOnDismiss
         )
     }

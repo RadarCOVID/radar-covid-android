@@ -55,8 +55,14 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     override fun showExposureLevelLow() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
-        textViewExpositionDetailTitleSmall.setText(R.string.exposure_detail_low_title_small)
-        textViewExpositionDetailTitle.setText(R.string.exposure_detail_low_title)
+        textViewExpositionDetailTitleSmall.text = labelManager.getText(
+            "EXPOSITION_LOW_TITLE_1",
+            R.string.exposure_detail_low_title_small
+        )
+        textViewExpositionDetailTitle.text = labelManager.getText(
+            "EXPOSITION_LOW_TITLE_2",
+            R.string.exposure_detail_low_title
+        )
 
         wrapperExposureLow.visibility = View.VISIBLE
         wrapperExposureHigh.visibility = View.GONE
@@ -65,8 +71,13 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     override fun showExposureLevelHigh() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
-        textViewExpositionDetailTitleSmall.setText(R.string.exposure_detail_high_title_small)
-        textViewExpositionDetailTitle.setText(R.string.exposure_detail_high_title)
+        textViewExpositionDetailTitleSmall.text = labelManager.getText(
+            "EXPOSITION_HIGH_TITLE_1",
+            R.string.exposure_detail_high_title_small
+        )
+        textViewExpositionDetailTitle.text = labelManager.getText(
+            "EXPOSITION_HIGH_TITLE_2", R.string.exposure_detail_high_title
+        )
 
         wrapperExposureHigh.visibility = View.VISIBLE
         wrapperExposureLow.visibility = View.GONE
@@ -75,8 +86,15 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     override fun showExposureLevelInfected() {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
-        textViewExpositionDetailTitleSmall.setText(R.string.exposure_detail_infected_title_small)
-        textViewExpositionDetailTitle.setText(R.string.exposure_detail_infected_title)
+        textViewExpositionDetailTitleSmall.text =
+            labelManager.getText(
+                "EXPOSITION_EXPOSED_TITLE_1",
+                R.string.exposure_detail_infected_title_small
+            )
+        textViewExpositionDetailTitle.text = labelManager.getText(
+            "EXPOSITION_EXPOSED_TITLE_2",
+            R.string.exposure_detail_infected_title
+        )
 
         wrapperExposureInfected.visibility = View.VISIBLE
         wrapperExposureLow.visibility = View.GONE
@@ -89,35 +107,8 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         hoursElapsed: Int?,
         minutesElapsed: Int?
     ) {
-
-        var text = ""
-        if (daysElapsed != null && hoursElapsed != null && minutesElapsed != null) {
-            text = when {
-                daysElapsed > 0 -> {
-                    val daysText =
-                        resources.getQuantityString(R.plurals.days, daysElapsed, daysElapsed)
-                    getString(R.string.exposure_detail_high_last_update, daysText, date)
-                }
-                hoursElapsed > 0 -> {
-                    val hoursText =
-                        resources.getQuantityString(R.plurals.hours, hoursElapsed, hoursElapsed)
-                    getString(R.string.exposure_detail_high_last_update, hoursText, date)
-                }
-                else -> {
-                    val minutesText =
-                        resources.getQuantityString(
-                            R.plurals.minutes,
-                            minutesElapsed,
-                            minutesElapsed
-                        )
-                    getString(R.string.exposure_detail_high_last_update, minutesText, date)
-                }
-            }
-        } else {
-            text = getString(R.string.exposure_detail_low_last_update, date)
-        }
-
-        textViewExpositionLastUpdate.text = text
+        textViewExpositionLastUpdate.text =
+            labelManager.getExposureHighDatesText(date, daysElapsed, hoursElapsed, minutesElapsed)
     }
 
     override fun setInfectionDates(
@@ -149,6 +140,15 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
                     getString(R.string.exposure_detail_infected_last_update, minutesText, date)
                 }
             }
+            labelManager.getFormattedText(
+                "EXPOSITION_EXPOSED_DESCRIPTION",
+                daysElapsed.toString(),
+                date
+            ).let {
+                if (it.isNotEmpty())
+                    text = it
+            }
+
         }
         textViewExpositionLastUpdate.text = text
     }
