@@ -74,6 +74,7 @@ android {
         pre {
             dimension = 'environment'
             buildConfigField "String", 'API_URL', '"https://d3d0clxg4q92wk.cloudfront.net/"'
+            buildConfigField "String", 'CONTENTFUL_URL', '"https://cdn.contentful.com/spaces/fkltdlmuiyh6/environments/master/"'
 
             buildConfigField 'String', 'CONFIG_URL', '"https://d3d0clxg4q92wk.cloudfront.net/dp3t/"'
             buildConfigField 'String', 'BUCKET_URL', '"https://d3d0clxg4q92wk.cloudfront.net/dp3t/"'
@@ -83,6 +84,7 @@ android {
         pro {
             dimension = 'environment'
             buildConfigField "String", 'API_URL', '"https://radarcovid.covid19.gob.es/"'
+            buildConfigField "String", 'CONTENTFUL_URL', '"https://cdn.contentful.com/spaces/fkltdlmuiyh6/environments/master/"'
 
             buildConfigField 'String', 'CONFIG_URL', '"https://radarcovid.covid19.gob.es/dp3t/"'
             buildConfigField 'String', 'BUCKET_URL', '"https://radarcovid.covid19.gob.es/dp3t/"'

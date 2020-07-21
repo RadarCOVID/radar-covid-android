@@ -7,7 +7,7 @@ import es.gob.radarcovid.datamanager.usecase.SplashUseCase
 import es.gob.radarcovid.features.splash.protocols.SplashPresenter
 import es.gob.radarcovid.features.splash.protocols.SplashRouter
 import es.gob.radarcovid.features.splash.protocols.SplashView
-import es.gob.radarcovid.models.domain.Settings
+import es.gob.radarcovid.models.domain.InitializationData
 import java.net.UnknownHostException
 import javax.inject.Inject
 
@@ -61,19 +61,24 @@ class SplashPresenterImpl @Inject constructor(
     private fun requestInitialization() {
         splashUseCase.getInitializationObservable()
             .subscribe(
-                { onInitializationSuccess(it.first, it.second) },
+                { onInitializationSuccess(it) },
                 { onInitializationError(it) }
             )
     }
 
-    private fun onInitializationSuccess(settings: Settings, uuid: String) {
+    private fun onInitializationSuccess(initializationData: InitializationData) {
         val versionCode = splashUseCase.getVersionCode()
+        val settings = initializationData.settings
+
+        splashUseCase.persistLabels(initializationData.labels)
+        view.reloadLabels()
+
         if (versionCode < settings.appInfo.minVersionCode) {
             view.showNeedUpdateDialog()
         } else {
             splashUseCase.updateTracingSettings(settings)
-            if (uuid.isNotEmpty())
-                splashUseCase.persistUuid(uuid)
+            if (initializationData.uuid.isNotEmpty())
+                splashUseCase.persistUuid(initializationData.uuid)
             isInitializationCompleted = true
             onResume()
         }

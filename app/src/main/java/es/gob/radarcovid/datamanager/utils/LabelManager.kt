@@ -17,6 +17,10 @@ class LabelManager @Inject constructor(
 
     private var labels: Map<String, String> = repository.getLabels()
 
+    fun reload() {
+        labels = repository.getLabels()
+    }
+
     fun getText(labelId: String?, defaultResId: Int): Spanned =
         getText(labelId, context.getString(defaultResId))
 

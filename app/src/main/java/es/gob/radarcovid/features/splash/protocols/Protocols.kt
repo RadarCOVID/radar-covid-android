@@ -10,6 +10,8 @@ interface SplashView : RequestView {
 
     fun showNeedUpdateDialog()
 
+    fun reloadLabels()
+
     fun finish()
 
 }

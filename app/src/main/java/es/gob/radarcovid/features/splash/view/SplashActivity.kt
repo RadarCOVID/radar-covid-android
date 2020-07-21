@@ -85,4 +85,8 @@ class SplashActivity : BaseActivity(), SplashView {
             .apply { show() }
     }
 
+    override fun reloadLabels() {
+        labelManager.reload()
+    }
+
 }
