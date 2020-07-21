@@ -85,7 +85,12 @@ class SplashUseCase @Inject constructor(
 
     private fun getLabels(onSuccess: (Map<String, String>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
-            mapperScope(contentfulRepository.getLabels("es")) {
+            mapperScope(
+                contentfulRepository.getLabels(
+                    preferencesRepository.getLanguage(),
+                    preferencesRepository.getRegion()
+                )
+            ) {
                 labelsDataMapper.transform(it)
             }
         }
@@ -109,7 +114,7 @@ class SplashUseCase @Inject constructor(
 
     fun persistUuid(uuid: String) = preferencesRepository.setUuid(uuid)
 
-    fun persistLabels(labels:Map<String, String>) = preferencesRepository.setLabels(labels)
+    fun persistLabels(labels: Map<String, String>) = preferencesRepository.setLabels(labels)
 
     fun updateTracingSettings(settings: Settings) =
         contactTracingRepository.updateTracingSettings(settings)

@@ -5,6 +5,6 @@ import org.funktionale.either.Either
 
 interface ContentfulRepository {
 
-    fun getLabels(locale: String): Either<Throwable, ResponseLabels>
+    fun getLabels(language: String, region: String): Either<Throwable, ResponseLabels>
 
 }

@@ -70,8 +70,10 @@ class SplashPresenterImpl @Inject constructor(
         val versionCode = splashUseCase.getVersionCode()
         val settings = initializationData.settings
 
-        splashUseCase.persistLabels(initializationData.labels)
-        view.reloadLabels()
+        if (initializationData.labels.isNotEmpty()) {
+            splashUseCase.persistLabels(initializationData.labels)
+            view.reloadLabels()
+        }
 
         if (versionCode < settings.appInfo.minVersionCode) {
             view.showNeedUpdateDialog()

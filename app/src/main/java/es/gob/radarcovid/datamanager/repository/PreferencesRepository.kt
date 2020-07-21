@@ -20,8 +20,17 @@ interface PreferencesRepository {
 
     fun setInfectionReportDate(date: Date)
 
+    fun setRegion(region: String)
+
+    fun getRegion(): String
+
+    fun setLanguage(language: String)
+
+    fun getLanguage(): String
+
     fun setLabels(labels: Map<String, String>)
 
     fun getLabels(): Map<String, String>
+
 
 }

@@ -236,7 +236,7 @@ class HomeFragment : BaseFragment(), HomeView {
             .setCloseButton { it.dismiss() }
             .setPositiveButton(
                 labelManager.getText(
-                    "ALERT_HOME_RADAR_OK_BUTTON",
+                    "ALERT_HOME_RADAR_CANCEL_BUTTON",
                     R.string.radar_warning_button_positive
                 ).toString()
             ) {
@@ -244,7 +244,7 @@ class HomeFragment : BaseFragment(), HomeView {
             }
             .setNegativeButton(
                 labelManager.getText(
-                    "ALERT_HOME_RADAR_CANCEL_BUTTON",
+                    "ALERT_HOME_RADAR_OK_BUTTON",
                     R.string.radar_warning_button_negative
                 ).toString()
             ) {
