@@ -11,7 +11,7 @@
         android:background="@color/gray_97"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textViewMoreInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +21,7 @@
         android:text="@string/more_info"
         android:textColor="@color/purple_9C"
         android:textSize="18sp"
+        app:labelId="MORE_INFO"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewBorderTop" />
 

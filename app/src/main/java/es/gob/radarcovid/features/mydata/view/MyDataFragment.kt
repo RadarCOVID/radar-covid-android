@@ -42,7 +42,7 @@ class MyDataFragment : BaseFragment(), MyDataView {
     }
 
     private fun initViews() {
-        val text3 = SpannableString(getString(R.string.my_data_l3))
+        val text3 = SpannableString(labelManager.getText("MY_DATA_BULLET_3", R.string.my_data_l3))
         text3.setSpan(
             TextAppearanceSpan(context, R.style.TitleExtraBoldPurpleSmall),
             0,
@@ -56,7 +56,7 @@ class MyDataFragment : BaseFragment(), MyDataView {
             text3.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        dottedTextViewL3.setText(null, text3, TextView.BufferType.SPANNABLE) //TODO SET LABEL IDø
+        dottedTextViewL3.setText(null, text3, TextView.BufferType.SPANNABLE)
 
         textViewConditions.setOnClickListener { presenter.onConditionsButtonClick() }
         textViewPrivacy.setOnClickListener { presenter.onPrivacyButtonClick() }

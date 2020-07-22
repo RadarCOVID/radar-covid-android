@@ -53,39 +53,44 @@
                     android:text="@string/onboarding_title_step_1"
                     android:textColor="@color/black" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TitleTip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:text="@string/onboarding_step1_description"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    app:labelId="ONBOARDING_STEP_1_SUBTITLE" />
 
                 <es.gob.radarcovid.common.view.LabelDotTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="@string/onboarding_step1_message_1" />
+                    android:text="@string/onboarding_step1_message_1"
+                    app:labelId="ONBOARDING_STEP_1_BULLET_1" />
 
                 <es.gob.radarcovid.common.view.LabelDotTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="@string/onboarding_step1_message_2" />
+                    android:text="@string/onboarding_step1_message_2"
+                    app:labelId="ONBOARDING_STEP_1_BULLET_2" />
 
                 <es.gob.radarcovid.common.view.LabelDotTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="@string/onboarding_step1_message_3" />
+                    android:text="@string/onboarding_step1_message_3"
+                    app:labelId="ONBOARDING_STEP_1_BULLET_3" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TitleTip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="50dp"
                     android:text="@string/onboarding_step1_message_end"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    app:labelId="ONBOARDING_STEP_1_THANKS" />
 
 
             </LinearLayout>
@@ -94,13 +99,14 @@
 
     </ScrollView>
 
-    <Button
+    <es.gob.radarcovid.common.view.LabelButton
         android:id="@+id/buttonContinue"
         style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/padding_content"
         android:text="@string/onboarding_button_continue"
+        app:labelId="ONBOARDING_CONTINUE_BUTTON"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wrapperContent" />
 

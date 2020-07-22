@@ -7,7 +7,7 @@
     android:background="@color/background"
     android:orientation="vertical">
 
-    <TextView
+    <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,6 +15,7 @@
         android:text="@string/poll_title"
         android:textColor="@color/gray"
         android:textSize="12sp"
+        app:labelId="POLL_TELL_YOUR_EXPERIENCE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,13 +45,14 @@
             android:layout_height="wrap_content" />
     </ScrollView>
 
-    <Button
+    <es.gob.radarcovid.common.view.LabelButton
         android:id="@+id/buttonNext"
         style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="22dp"
         android:text="@string/poll_button_next"
+        app:labelId="POLL_NEXT_BUTON"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

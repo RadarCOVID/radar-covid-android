@@ -5,6 +5,7 @@ import dagger.Provides
 import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.common.di.scope.PerApplication
 import es.gob.radarcovid.datamanager.api.ApiInterface
+import es.gob.radarcovid.datamanager.api.ContentfulInterface
 import okhttp3.ConnectionSpec
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -32,16 +33,23 @@ class NetworkModule {
 
     @Provides
     @PerApplication
-    fun providesRetrofit(httpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(BuildConfig.API_URL)
+    fun providesRetrofit(httpClient: OkHttpClient): Retrofit.Builder = Retrofit.Builder()
         .client(httpClient)
         .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
-        .build()
 
     @Provides
     @PerApplication
-    fun providesApiInterface(retrofit: Retrofit): ApiInterface =
-        retrofit.create(ApiInterface::class.java)
+    fun providesApiInterface(retrofitBuilder: Retrofit.Builder): ApiInterface =
+        retrofitBuilder.baseUrl(BuildConfig.API_URL)
+            .build()
+            .create(ApiInterface::class.java)
+
+    @Provides
+    @PerApplication
+    fun providesContentfulInterface(retrofitBuilder: Retrofit.Builder): ContentfulInterface =
+        retrofitBuilder.baseUrl(BuildConfig.CONTENTFUL_URL)
+            .build()
+            .create(ContentfulInterface::class.java)
 
 }

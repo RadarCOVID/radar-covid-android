@@ -44,33 +44,37 @@
                 android:layout_marginBottom="25dp"
                 android:src="@drawable/ic_confirmation_check" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/confirmation_title" />
+                android:text="@string/confirmation_title"
+                app:labelId="MY_HEALTH_REPORTED_TITLE" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/confirmation_subtitle"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:labelId="MY_HEALTH_REPORTED_SUBTITLE" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextSmallBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/confirmation_p1" />
+                android:text="@string/confirmation_p1"
+                app:labelId="MY_HEALTH_REPORTED_PARAGRAPH_1" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleTipSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="23dp"
-                android:text="@string/confirmation_tips_title" />
+                android:text="@string/confirmation_tips_title"
+                app:labelId="MY_HEALTH_REPORTED_BULLET_TITLE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -84,12 +88,13 @@
                     android:layout_marginEnd="40dp"
                     android:src="@drawable/ic_stay_home" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TextSmallBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="18dp"
-                    android:text="@string/confirmation_tip_1" />
+                    android:text="@string/confirmation_tip_1"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_1" />
 
             </LinearLayout>
 
@@ -105,12 +110,13 @@
                     android:layout_marginEnd="35dp"
                     android:src="@drawable/ic_distance_people" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TextSmallBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="18dp"
-                    android:text="@string/confirmation_tip_2" />
+                    android:text="@string/confirmation_tip_2"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_2" />
 
             </LinearLayout>
 
@@ -126,12 +132,13 @@
                     android:layout_marginEnd="27dp"
                     android:src="@drawable/ic_use_mask" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TextSmallBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="18dp"
-                    android:text="@string/confirmation_tip_3" />
+                    android:text="@string/confirmation_tip_3"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_3" />
 
             </LinearLayout>
 
@@ -147,12 +154,13 @@
                     android:layout_marginEnd="25dp"
                     android:src="@drawable/ic_wash_your_hands" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TextSmallBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="18dp"
-                    android:text="@string/confirmation_tip_4" />
+                    android:text="@string/confirmation_tip_4"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_4" />
             </LinearLayout>
 
             <LinearLayout
@@ -168,12 +176,13 @@
                     android:layout_marginBottom="8dp"
                     android:src="@drawable/ic_clinic" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TextSmallBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="18dp"
-                    android:text="@string/confirmation_tip_5" />
+                    android:text="@string/confirmation_tip_5"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_5" />
             </LinearLayout>
 
             <LinearLayout
@@ -189,12 +198,13 @@
                     android:layout_marginBottom="8dp"
                     android:src="@drawable/ic_emergency_number" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TextSmallBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="@string/confirmation_tip_6" />
+                    android:text="@string/confirmation_tip_6"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_6" />
 
             </LinearLayout>
 
@@ -204,12 +214,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/confirmation_acknowledge"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:labelId="THANKS" />
 
         </LinearLayout>
 

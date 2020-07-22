@@ -1,9 +1,9 @@
 package es.gob.radarcovid.common.di.module
 
-import es.gob.radarcovid.common.di.scope.PerApplication
-import es.gob.radarcovid.datamanager.repository.*
 import dagger.Module
 import dagger.Provides
+import es.gob.radarcovid.common.di.scope.PerApplication
+import es.gob.radarcovid.datamanager.repository.*
 
 @Module
 class RepositoryModule {
@@ -34,5 +34,10 @@ class RepositoryModule {
     @Provides
     @PerApplication
     fun providesApiRepository(repository: ApiRepositoryImpl): ApiRepository = repository
+
+    @Provides
+    @PerApplication
+    fun providesContentfulRepository(repository: ContentfulRepositoryImpl): ContentfulRepository =
+        repository
 
 }

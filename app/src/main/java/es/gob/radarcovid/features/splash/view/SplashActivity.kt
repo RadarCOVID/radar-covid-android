@@ -51,7 +51,7 @@ class SplashActivity : BaseActivity(), SplashView {
             .setTitle(R.string.play_services_dialog_title)
             .setMessage(R.string.play_services_dialog_message)
             .setPositiveButton(
-                R.string.accept
+                labelManager.getText("ALERT_ACCEPT_BUTTON", R.string.accept)
             ) { _, _ -> presenter.onInstallPlayServicesButtonClick() }
             .setCancelable(false)
             .create()
@@ -61,12 +61,32 @@ class SplashActivity : BaseActivity(), SplashView {
     override fun showNeedUpdateDialog() {
         currentDialog?.dismiss()
         currentDialog = CMDialog.Builder(this)
-            .setMessage(R.string.warning_need_update_message)
-            .setPositiveButton(R.string.warning_need_update_button) {
+            .setTitle(
+                labelManager.getText(
+                    "ALERT_UPDATE_TEXT_TITLE",
+                    R.string.warning_need_update_title
+                ).toString()
+            )
+            .setMessage(
+                labelManager.getText(
+                    "ALERT_UPDATE_TEXT_CONTENT",
+                    R.string.warning_need_update_message
+                ).toString()
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_UPDATE_BUTTON",
+                    R.string.warning_need_update_button
+                ).toString()
+            ) {
                 presenter.onUpdateAppButtonClick()
             }
             .build()
             .apply { show() }
+    }
+
+    override fun reloadLabels() {
+        labelManager.reload()
     }
 
 }

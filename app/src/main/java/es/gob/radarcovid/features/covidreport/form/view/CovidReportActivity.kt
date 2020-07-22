@@ -64,13 +64,31 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun showExitConfirmationDialog() {
-        CMDialog.createDialog(
-            this, R.string.covid_report_abort_warning_title,
-            R.string.covid_report_abort_warning_message,
-            R.string.covid_report_abort_warning_button, null
-        ) {
-            presenter.onExitConfirmed()
-        }.show()
+        CMDialog.Builder(this)
+            .setTitle(
+                labelManager.getText(
+                    "ALERT_MY_HEALTH_SEND_TITLE",
+                    R.string.covid_report_abort_warning_title
+                ).toString()
+            )
+            .setMessage(
+                labelManager.getText(
+                    "ALERT_MY_HEALTH_SEND_CONTENT",
+                    R.string.covid_report_abort_warning_message
+                ).toString()
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_CANCEL_BUTTON",
+                    R.string.covid_report_abort_warning_button
+                ).toString()
+            ) {
+                it.dismiss()
+                presenter.onExitConfirmed()
+            }
+            .setCloseButton { it.dismiss() }
+            .build()
+            .show()
     }
 
     override fun getReportCode(): String = codeEditText.getText()
@@ -92,7 +110,14 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun showReportErrorDialog() {
-        showError(Exception(getString(R.string.covid_report_error)))
+        showError(
+            Exception(
+                labelManager.getText(
+                    "ALERT_MY_HEALTH_CODE_ERROR_CONTENT",
+                    R.string.covid_report_error
+                ).toString()
+            )
+        )
     }
 
 }

@@ -18,6 +18,8 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_POLL_COMPLETED = "poll_completed"
         private const val KEY_INFECTION_REPORT_DATE = "key_infection_report_date"
         private const val KEY_LABELS = "key_labels"
+        private const val KEY_REGION = "key_region"
+        private const val KEY_LANGUAGE = "key_language"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -67,6 +69,22 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
             .apply()
     }
 
+    override fun setRegion(region: String) {
+        preferences.edit()
+            .putString(KEY_REGION, region)
+            .apply()
+    }
+
+    override fun getRegion(): String = preferences.getString(KEY_REGION, "ES-MD") ?: "ES-MD"
+
+    override fun setLanguage(language: String) {
+        preferences.edit()
+            .putString(KEY_LANGUAGE, language)
+            .apply()
+    }
+
+    override fun getLanguage(): String = preferences.getString(KEY_LANGUAGE, "es-ES") ?: "es-ES"
+
     override fun setLabels(labels: Map<String, String>) {
         preferences.edit()
             .putString(KEY_LABELS, labels.toJson())
@@ -76,7 +94,9 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
     override fun getLabels(): Map<String, String> {
         val itemType = object : TypeToken<HashMap<String, String>>() {}.type
         return Gson().fromJson(
-            preferences.getString(KEY_LABELS, "{\"test\":\"Hola Label\"}"),
+            preferences.getString(
+                KEY_LABELS, "{\"test\":\"Hola Label\"}"
+            ),
             itemType
         )
     }

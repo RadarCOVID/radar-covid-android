@@ -1,36 +1,57 @@
 package es.gob.radarcovid.datamanager.usecase
 
+import android.util.Log
 import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.common.base.mapperScope
+import es.gob.radarcovid.datamanager.mapper.LabelsDataMapper
 import es.gob.radarcovid.datamanager.mapper.SettingsDataMapper
-import es.gob.radarcovid.datamanager.repository.ApiRepository
-import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
-import es.gob.radarcovid.datamanager.repository.PreferencesRepository
-import es.gob.radarcovid.datamanager.repository.SystemInfoRepository
+import es.gob.radarcovid.datamanager.repository.*
+import es.gob.radarcovid.models.domain.InitializationData
 import es.gob.radarcovid.models.domain.Settings
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.functions.BiFunction
+import io.reactivex.rxjava3.functions.Function3
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
 class SplashUseCase @Inject constructor(
     private val apiRepository: ApiRepository,
+    private val contentfulRepository: ContentfulRepository,
     private val preferencesRepository: PreferencesRepository,
     private val contactTracingRepository: ContactTracingRepository,
+    private val labelsDataMapper: LabelsDataMapper,
     private val settingsDataMapper: SettingsDataMapper,
     private val systemInfoRepository: SystemInfoRepository
 ) {
 
-    fun getVersionCode():Int = systemInfoRepository.getVersionCode()
+    fun getVersionCode(): Int = systemInfoRepository.getVersionCode()
 
-    fun getInitializationObservable(): Observable<Pair<Settings, String>> =
-        Observable.zip<Settings, String, Pair<Settings, String>>(
-            getSettingsObservable(),
+    fun getInitializationObservable(): Observable<InitializationData> =
+        Observable.zip<String, Settings, Map<String, String>, InitializationData>(
             getUuidObservable(),
-            BiFunction { settings, uuid -> Pair(settings, uuid) })
+            getSettingsObservable(),
+            getLabelsObservable(),
+            Function3 { uuid, settings, labels ->
+                Log.d("asa", "asdasd")
+                InitializationData(uuid, settings, labels)
+            })
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
+
+    private fun getLabelsObservable(): Observable<Map<String, String>> =
+        Observable.create { emitter ->
+            getLabels(
+                onSuccess = {
+                    emitter.onNext(it)
+                    emitter.onComplete()
+                },
+                onError = {
+                    emitter.onError(it)
+                    emitter.onComplete()
+                }
+            )
+        }
+
 
     private fun getSettingsObservable(): Observable<Settings> =
         Observable.create { emitter ->
@@ -62,6 +83,19 @@ class SplashUseCase @Inject constructor(
         }
     }
 
+    private fun getLabels(onSuccess: (Map<String, String>) -> Unit, onError: (Throwable) -> Unit) {
+        asyncRequest(onSuccess, onError) {
+            mapperScope(
+                contentfulRepository.getLabels(
+                    preferencesRepository.getLanguage(),
+                    preferencesRepository.getRegion()
+                )
+            ) {
+                labelsDataMapper.transform(it)
+            }
+        }
+    }
+
     private fun getSettings(onSuccess: (Settings) -> Unit, onError: (Throwable) -> Unit) =
         asyncRequest(onSuccess, onError) {
             mapperScope(apiRepository.getSettings()) {
@@ -79,6 +113,8 @@ class SplashUseCase @Inject constructor(
     fun isUuidInitialized() = preferencesRepository.getUuid().isNotEmpty()
 
     fun persistUuid(uuid: String) = preferencesRepository.setUuid(uuid)
+
+    fun persistLabels(labels: Map<String, String>) = preferencesRepository.setLabels(labels)
 
     fun updateTracingSettings(settings: Settings) =
         contactTracingRepository.updateTracingSettings(settings)

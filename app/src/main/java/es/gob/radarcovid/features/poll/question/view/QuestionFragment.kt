@@ -86,7 +86,7 @@ class QuestionFragment : BaseFragment(), QuestionView {
     }
 
     override fun showButtonFinish() {
-        buttonNext.setText(R.string.poll_button_finish)
+        buttonNext.text = labelManager.getText("POLL_END_BUTON", R.string.poll_button_finish)
     }
 
     override fun notifyButtonNextClick(answers: QuestionViewModel) {

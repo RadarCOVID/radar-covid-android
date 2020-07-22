@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
-import es.gob.radarcovid.datamanager.usecase.GetLabelUseCase
+import es.gob.radarcovid.datamanager.utils.LabelManager
 import kotlinx.android.synthetic.main.view_dotted_textview.view.*
 import javax.inject.Inject
 
@@ -34,21 +34,21 @@ class LabelDotTextView @JvmOverloads constructor(
             1 -> imageViewDot.visibility = View.INVISIBLE
             2 -> imageViewDot.visibility = View.GONE
         }
-        textView.text = getLabelUseCase.getText(labelId, defaultText)
+        textView.text = labelManager.getText(labelId, defaultText)
     }
 
     @Inject
-    lateinit var getLabelUseCase: GetLabelUseCase
+    lateinit var labelManager: LabelManager
 
     fun setText(labelId: String?, resId: Int) {
         setText(labelId, context.getString(resId))
     }
 
     fun setText(labelId: String?, text: CharSequence, type: TextView.BufferType) {
-        textView.setText(getLabelUseCase.getText(labelId, text), type)
+        textView.setText(labelManager.getText(labelId, text), type)
     }
 
     fun setText(labelId: String?, defaultText: CharSequence) {
-        textView.text = getLabelUseCase.getText(labelId, defaultText)
+        textView.text = labelManager.getText(labelId, defaultText)
     }
 }

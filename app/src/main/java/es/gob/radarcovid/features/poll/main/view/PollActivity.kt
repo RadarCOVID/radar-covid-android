@@ -74,13 +74,26 @@ class PollActivity : BaseActivity(), PollView, QuestionFragment.Callback {
 
     override fun showSkipQuestionDialog() {
         CMDialog.Builder(this)
-            .setTitle(R.string.question_dialog_message)
+            .setTitle(
+                labelManager.getText("ALERT_POLL_TITLE", R.string.question_dialog_message)
+                    .toString()
+            )
             .setCloseButton { it.dismiss() }
-            .setPositiveButton(R.string.question_dialog_ok) {
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_POLL_OK_BUTTON",
+                    R.string.question_dialog_ok
+                ).toString()
+            ) {
                 it.dismiss()
                 presenter.onContinueWithoutAnswer()
             }
-            .setNegativeButton(R.string.question_dialog_cancel) { it.dismiss() }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ALERT_POLL_CANCEL_BUTTON",
+                    R.string.question_dialog_cancel
+                ).toString()
+            ) { it.dismiss() }
             .build()
             .show()
     }

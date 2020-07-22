@@ -111,14 +111,15 @@
             app:dropdownText="@string/conditions_p10_content"
             app:title="@string/conditions_p10_title" />
 
-        <Button
+        <es.gob.radarcovid.common.view.LabelButton
             android:id="@+id/buttonAccept"
             style="@style/ButtonNormal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="13dp"
             android:text="@string/accept"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:labelId="ALERT_ACCEPT_BUTTON" />
 
         <Button
             android:id="@+id/buttonCancel"

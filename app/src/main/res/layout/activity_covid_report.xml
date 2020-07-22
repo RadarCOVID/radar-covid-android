@@ -47,28 +47,40 @@
                 android:text="@string/covid_report_title"
                 android:textColor="@color/gray" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:text="@string/covid_report_subtitle" />
+                android:text="@string/covid_report_subtitle"
+                app:labelId="MY_HEALTH_TITLE" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/covid_report_p1"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_PARAGRAPH_1" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSemibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/covid_report_p2"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_PARAGRAPH_2" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextSemibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="36dp"
-                android:text="@string/covid_report_p2"
-                android:textColor="@color/black" />
+                android:text="@string/covid_report_p3"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_PARAGRAPH_3" />
 
             <Button
                 android:id="@+id/buttonQRScan"
@@ -83,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp">
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewHintTitle"
                     style="@style/TitleXSmall"
                     android:layout_width="0dp"
@@ -91,11 +103,12 @@
                     android:layout_marginTop="5dp"
                     android:text="@string/covid_report_code_hint_title"
                     android:textSize="16sp"
+                    app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_TITLE"
                     app:layout_constraintEnd_toStartOf="@id/imageViewCovidReport"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewHintSubtitle"
                     style="@style/TextSmall"
                     android:layout_width="0dp"
@@ -104,6 +117,7 @@
                     android:layout_marginBottom="10dp"
                     android:text="@string/covid_report_code_hint_subtitle"
                     android:textColor="@color/black"
+                    app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_CONTENT"
                     app:layout_constraintEnd_toStartOf="@id/imageViewCovidReport"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textViewHintTitle" />
@@ -125,22 +139,24 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="38dp"
                 android:fontFamily="@font/muli_italic"
                 android:text="@string/covid_report_code_input_example"
                 android:textColor="@color/black"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_EXAMPLE" />
 
-            <Button
+            <es.gob.radarcovid.common.view.LabelButton
                 android:id="@+id/buttonSend"
                 style="@style/ButtonNormal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="@string/covid_report_send_button" />
+                android:text="@string/covid_report_send_button"
+                app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_SEND_BUTTON" />
 
         </LinearLayout>
 
