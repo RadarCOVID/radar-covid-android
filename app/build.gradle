@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -113,6 +114,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    // Recommended: Add the Firebase SDK for Google Analytics.
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
+
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
+
     //Views
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
@@ -169,3 +176,5 @@ dependencies {
     implementation 'androidx.security:security-crypto:1.1.0-alpha01'
 
 }
+
+apply plugin: 'com.google.firebase.crashlytics'
