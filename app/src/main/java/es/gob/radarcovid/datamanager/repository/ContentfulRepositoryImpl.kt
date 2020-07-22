@@ -9,8 +9,9 @@ import javax.inject.Inject
 class ContentfulRepositoryImpl @Inject constructor(private val contentfulInterface: ContentfulInterface) :
     BaseRepository(), ContentfulRepository {
 
-    override fun getLabels(language: String, region: String): Either<Throwable, ResponseLabels> = callService {
-        contentfulInterface.getLabels(language)
-    }
+    override fun getLabels(language: String, region: String): Either<Throwable, ResponseLabels> =
+        callService {
+            contentfulInterface.getLabels(language, region)
+        }
 
 }
