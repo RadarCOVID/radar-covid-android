@@ -51,6 +51,8 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules-debug.pro'
 
+            ext.enableCrashlytics = false
+
             buildConfigField 'Boolean', 'isMock', 'false'
         }
         release {

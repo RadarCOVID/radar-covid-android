@@ -1,5 +1,6 @@
 package es.gob.radarcovid
 
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastReceiver
@@ -20,6 +21,9 @@ class RadarCovidApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
+
+        if (BuildConfig.DEBUG)
+            FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(false)
 
         initRxJavaSettings()
 
