@@ -6,12 +6,17 @@ import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastRece
 import es.gob.radarcovid.common.di.component.DaggerApplicationComponent
 import es.gob.radarcovid.features.kpireport.KpiReportWorker
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
+import okhttp3.CertificatePinner
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.models.ApplicationInfo
 import org.dpppt.android.sdk.util.SignatureUtil
+import javax.inject.Inject
 
 
 class RadarCovidApplication : DaggerApplication() {
+
+    @Inject
+    lateinit var certificatePinner: CertificatePinner
 
     override fun onCreate() {
         super.onCreate()
@@ -24,6 +29,7 @@ class RadarCovidApplication : DaggerApplication() {
             SignatureUtil.getPublicKeyFromBase64OrThrow(BuildConfig.PUBLIC_KEY),
             BuildConfig.DEBUG
         )
+        DP3T.setCertificatePinner(certificatePinner)
 
         registerReceiver(ExposureStatusChangeBroadcastReceiver(), DP3T.getUpdateIntentFilter())
 
