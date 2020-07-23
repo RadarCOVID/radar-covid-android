@@ -80,6 +80,8 @@ android {
             buildConfigField 'String', 'BUCKET_URL', '"https://d3d0clxg4q92wk.cloudfront.net/dp3t/"'
             buildConfigField 'String', 'REPORT_URL', '"https://d3d0clxg4q92wk.cloudfront.net/dp3t/"'
             buildConfigField 'String', 'PUBLIC_KEY', '"LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFdmx1bzYyTFVVcFllcVVGM3haWVhYSG03cjBGWApScENFbVBqTUlxUHVERjcvYmRua1FIbndxbVNoVzIvOU9BcllEd09FUUZmdEE4ZDV6T3NEZmh0T2NRPT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t"'
+
+            buildConfigField 'String', 'CERTIFICATE_PIN', '"sha256/nUhXcCwognBLPrg0j0PH7Wf5j6Z0IUDfgbovIbibnpQ="'
         }
         pro {
             dimension = 'environment'
@@ -90,6 +92,8 @@ android {
             buildConfigField 'String', 'BUCKET_URL', '"https://radarcovid.covid19.gob.es/dp3t/"'
             buildConfigField 'String', 'REPORT_URL', '"https://radarcovid.covid19.gob.es/dp3t/"'
             buildConfigField 'String', 'PUBLIC_KEY', '"LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFdmx1bzYyTFVVcFllcVVGM3haWVhYSG03cjBGWApScENFbVBqTUlxUHVERjcvYmRua1FIbndxbVNoVzIvOU9BcllEd09FUUZmdEE4ZDV6T3NEZmh0T2NRPT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t"'
+
+            buildConfigField 'String', 'CERTIFICATE_PIN', '"sha256/MZbg1PiJKm/KJbtoxi0GTXsKK/lgubOHrml0X74Vhhg="'
         }
     }
 
