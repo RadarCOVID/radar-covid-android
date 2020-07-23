@@ -133,14 +133,9 @@
     <string name="exposition_block_high_title">Exposición alta</string>
     <string name="exposition_block_infected_title">COVID-19 Positivo</string>
 
-    <string name="exposition_block_low_description_l1">Te informaremos en el caso de un posible contacto de riesgo.</string>
-    <string name="exposition_block_low_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
-    <string name="exposition_block_medium_description_l1">Contacto posible con persona con pesona contagiada de Covid-19</string>
-    <string name="exposition_block_medium_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
-    <string name="exposition_block_high_description_l1">Has estado en contacto con una persona contagiada de COVID-19.</string>
-    <string name="exposition_block_high_description_l2">Infórmalo en el 900 112 061 (gratuito). Recuerda que las alertas son simuladas.</string>
-    <string name="exposition_block_infected_description_l1">Tu diagnóstico ha sido enviado. Por favor, aíslate durante 14 días.</string>
-    <string name="exposition_block_infected_description_l2">Recuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_low_description"><b>Te informaremos en el caso de un posible contacto de riesgo.</b>\nRecuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_high_description"><b>Has estado en contacto con una persona contagiada de COVID-19.\nInfórmalo en el 900 112 061 (gratuito)</b>.\nRecuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_infected_description"><b>Tu diagnóstico ha sido enviado.\nPor favor, aíslate durante 14 días</b>.\nRecuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
 
     <string name="radar_block_enabled_title">&appname; activo</string>
     <string name="radar_block_disabled_title">&appname; inactivo</string>
@@ -208,8 +203,7 @@
     <string name="exposure_detail_infected_title">COVID-19 positivo</string>
     <string name="exposure_detail_infected_last_update">Tu diagnóstico fue enviado hace <b>%1$s</b> (actualizado %2$s)</string>
 
-    <string name="exposure_detail_infected_t1">Tu diagnóstico nos ayuda a proteger a los demás.</string>
-    <string name="exposure_detail_infected_p1">Sin revelar tu identidad en ningún momento, hemos comunicado tu diagnóstico a móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
+    <string name="exposure_detail_infected_p1"><b>Tu diagnostico nos ayuda a proteger a los demás.</b>\n\nSin revelar tu identidad en ningún momento, hemos comunicado tu diagnóstico a móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
     <string name="exposure_detail_infected_what_to_do_subtitle">Por favor, aíslate durante 14 días.</string>
 
     <string name="exposure_detail_infected_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
@@ -271,7 +265,7 @@
     <string name="my_data_l1"><b>NO</b> recogemos ningún dato personal (nombre, dirección, edad, teléfono, correo electrónico…)</string>
     <string name="my_data_l2"><b>NO</b> recogemos ningún dato de geolocalización, incluidos los datos del GPS</string>
     <string name="my_data_l3_title">Por tanto:</string>
-    <string name="my_data_l3"><b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
+    <string name="my_data_l3">Por tanto:\n<b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
     <string name="my_data_encription_info">Los datos son guardados en tu teléfono y la conexión con el servidor están encriptados</string>
     <string name="my_data_conditions">Consulta las <b><u>condiciones de uso</u></b></string>
     <string name="my_data_privacy">Consulta la <b><u>política de privacidad</u></b></string>

@@ -66,14 +66,6 @@
                 android:text="@string/my_data_l2"
                 app:labelId="MY_DATA_BULLET_2" />
 
-            <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TextNormal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:text="@string/my_data_l3_title"
-                app:labelId="MY_DATA_BULLET_THEREFORE" />
-
             <es.gob.radarcovid.common.view.LabelDotTextView
                 android:id="@+id/dottedTextViewL3"
                 android:layout_width="match_parent"

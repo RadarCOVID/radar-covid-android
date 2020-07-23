@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface ContentfulInterface {
 
-    @GET("entries?access_token=Dv96LuZTUWSVMI_nxl59g30RPqi7TTeYkEr-UC4L6Qs&select=fields&content_type=androidData")
+    @GET("entries?access_token=Dv96LuZTUWSVMI_nxl59g30RPqi7TTeYkEr-UC4L6Qs&select=fields&content_type=iosData")
     fun getLabels(
         @Query("locale") language: String,
         @Query("fields.ccaa") region: String

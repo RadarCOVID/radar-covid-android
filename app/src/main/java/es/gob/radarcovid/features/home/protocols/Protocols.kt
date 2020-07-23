@@ -11,9 +11,7 @@ interface HomeView : RequestView {
     fun showExposureLevelHigh()
 
     fun showExposureLevelInfected()
-
-    fun setLastUpdateTime(daysElapsed: Int, hoursElapsed: Int, minutesElapsed: Int)
-
+    
     fun setRadarBlockChecked(isChecked: Boolean)
 
     fun areBatteryOptimizationsIgnored(): Boolean
