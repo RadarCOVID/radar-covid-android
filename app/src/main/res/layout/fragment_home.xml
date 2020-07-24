@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     style="@style/ScrollVertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -63,7 +62,7 @@
                 android:paddingStart="26dp"
                 android:paddingTop="16dp"
                 android:paddingEnd="15dp"
-                android:paddingBottom="8dp">
+                android:paddingBottom="30dp">
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExpositionTitle"
@@ -77,29 +76,17 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textViewExpositionDescriptionL1"
-                    style="@style/TextMuliMedium"
+                    android:id="@+id/textViewExpositionDescription"
+                    style="@style/TextSmallBlack"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:text="@string/exposition_block_low_description_l1"
-                    app:layout_constraintBottom_toTopOf="@id/textViewExpositionDescriptionL2"
+                    android:text="@string/exposition_block_low_description"
                     app:layout_constraintEnd_toStartOf="@id/imageButtonArrow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textViewExpositionTitle" />
 
-                <TextView
-                    android:id="@+id/textViewExpositionDescriptionL2"
-                    style="@style/TextSmallBlack"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="25dp"
-                    android:text="@string/exposition_block_low_description_l2"
-                    app:layout_constraintBottom_toTopOf="@id/textViewExpositionLastUpdate"
-                    app:layout_constraintEnd_toStartOf="@id/imageButtonArrow"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewExpositionDescriptionL1" />
 
                 <ImageButton
                     android:id="@+id/imageButtonArrow"
@@ -112,18 +99,6 @@
                     android:src="@drawable/ic_arrow_right"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textViewExpositionLastUpdate"
-                    style="@style/TextNormal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:textColor="@color/black"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="hace 1 min" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

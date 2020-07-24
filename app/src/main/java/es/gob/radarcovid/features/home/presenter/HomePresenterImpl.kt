@@ -11,7 +11,6 @@ import es.gob.radarcovid.features.home.protocols.HomeRouter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.models.domain.ExposureInfo
 import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class HomePresenterImpl @Inject constructor(
@@ -99,17 +98,6 @@ class HomePresenterImpl @Inject constructor(
             ExposureInfo.Level.INFECTED -> view.showExposureLevelInfected()
         }
 
-        //setLastUpdateTime(expositionInfo.lastUpdateTime)
-    }
-
-    private fun setLastUpdateTime(lastUpdateTime: Date) {
-        val millisElapsed = System.currentTimeMillis() - lastUpdateTime.time
-        val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
-        val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
-        val minutesElapsed =
-            TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
-
-        view.setLastUpdateTime(daysElapsed.toInt(), hoursElapsed.toInt(), minutesElapsed.toInt())
     }
 
     private fun getMockExposureInfo(): ExposureInfo {

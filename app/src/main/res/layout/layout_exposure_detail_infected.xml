@@ -8,15 +8,6 @@
     android:paddingEnd="10dp">
 
     <es.gob.radarcovid.common.view.LabelTextView
-        style="@style/TitleSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/exposure_detail_infected_t1"
-        android:textSize="16sp"
-        app:labelId="EXPOSITION_EXPOSED_TITLE" />
-
-    <es.gob.radarcovid.common.view.LabelTextView
         style="@style/TextSmallBlack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.core.text.HtmlCompat
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
@@ -150,7 +151,8 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
             }
 
         }
-        textViewExpositionLastUpdate.text = text
+        textViewExpositionLastUpdate.text =
+            HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
     override fun setLastUpdateNoData() {

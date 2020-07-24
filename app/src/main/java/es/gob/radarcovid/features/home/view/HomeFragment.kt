@@ -113,15 +113,10 @@ class HomeFragment : BaseFragment(), HomeView {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_low)
         textViewExpositionTitle.text =
             labelManager.getText("HOME_EXPOSITION_TITLE_LOW", R.string.exposition_block_low_title)
-        textViewExpositionDescriptionL1.text =
+        textViewExpositionDescription.text =
             labelManager.getText(
-                "HOME_EXPOSITION_MESSAGE_LOW_PARAGRAPH_1",
-                R.string.exposition_block_low_description_l1
-            )
-        textViewExpositionDescriptionL2.text =
-            labelManager.getText(
-                "HOME_EXPOSITION_MESSAGE_LOW_PARAGRAPH_2",
-                R.string.exposition_block_low_description_l2
+                "HOME_EXPOSITION_MESSAGE_LOW",
+                R.string.exposition_block_low_description
             )
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.green))
     }
@@ -130,15 +125,10 @@ class HomeFragment : BaseFragment(), HomeView {
         wrapperExposition.setBackgroundResource(R.drawable.background_shape_exposition_high)
         textViewExpositionTitle.text =
             labelManager.getText("HOME_EXPOSITION_TITLE_HIGH", R.string.exposition_block_high_title)
-        textViewExpositionDescriptionL1.text =
+        textViewExpositionDescription.text =
             labelManager.getText(
-                "HOME_EXPOSITION_MESSAGE_HIGH_PARAGRAPH_1",
-                R.string.exposition_block_high_description_l1
-            )
-        textViewExpositionDescriptionL2.text =
-            labelManager.getText(
-                "HOME_EXPOSITION_MESSAGE_HIGH_PARAGRAPH_2",
-                R.string.exposition_block_high_description_l2
+                "HOME_EXPOSITION_MESSAGE_HIGH",
+                R.string.exposition_block_high_description
             )
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
     }
@@ -149,36 +139,12 @@ class HomeFragment : BaseFragment(), HomeView {
             "HOME_EXPOSITION_TITLE_POSITIVE",
             R.string.exposition_block_infected_title
         )
-        textViewExpositionDescriptionL1.text =
+        textViewExpositionDescription.text =
             labelManager.getText(
-                "HOME_EXPOSITION_MESSAGE_INFECTED_PARAGRAPH_1",
-                R.string.exposition_block_infected_description_l1
-            )
-        textViewExpositionDescriptionL2.text =
-            labelManager.getText(
-                "HOME_EXPOSITION_MESSAGE_INFECTED_PARAGRAPH_2",
-                R.string.exposition_block_infected_description_l2
+                "HOME_EXPOSITION_MESSAGE_INFECTED",
+                R.string.exposition_block_infected_description
             )
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
-    }
-
-    override fun setLastUpdateTime(
-        daysElapsed: Int,
-        hoursElapsed: Int,
-        minutesElapsed: Int
-    ) {
-        textViewExpositionLastUpdate.visibility = View.VISIBLE
-        when {
-            daysElapsed > 0 ->
-                textViewExpositionLastUpdate.text =
-                    resources.getQuantityString(R.plurals.days, daysElapsed, daysElapsed)
-            hoursElapsed > 0 ->
-                textViewExpositionLastUpdate.text =
-                    resources.getQuantityString(R.plurals.hours, hoursElapsed, hoursElapsed)
-            else ->
-                textViewExpositionLastUpdate.text =
-                    resources.getQuantityString(R.plurals.minutes, minutesElapsed, minutesElapsed)
-        }
     }
 
     override fun setRadarBlockChecked(isChecked: Boolean) {
