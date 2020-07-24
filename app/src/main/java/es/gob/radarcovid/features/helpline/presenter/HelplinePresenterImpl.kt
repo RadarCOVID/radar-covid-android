@@ -15,7 +15,6 @@ class HelplinePresenterImpl @Inject constructor(
     }
 
     override fun onStartButtonClick() {
-        //router.navigateToBrowser("http://www.google.com")
         router.navigateToPoll()
     }
 

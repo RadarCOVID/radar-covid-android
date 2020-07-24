@@ -39,7 +39,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/contact_support_phone"
         android:textSize="24sp"
-        app:labelId="FREE_CALL_PHONE"
+        app:labelId="CONTACT_PHONE"
         app:layout_constraintStart_toStartOf="@id/textViewTitle"
         app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
 

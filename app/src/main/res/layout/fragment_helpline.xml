@@ -106,14 +106,15 @@
                 android:text="@string/helpline_message_p3"
                 app:labelId="HELP_LINE_ONE_MORE_STEP_PARAGRAPH_2" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 android:id="@+id/textViewEmail"
                 style="@style/TitleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="26dp"
                 android:text="@string/contact_email"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:labelId="CONTACT_EMAIL" />
 
 
             <es.gob.radarcovid.common.view.LabelTextView
@@ -123,7 +124,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="@string/helpline_message_p4"
                 app:labelId="HELP_LINE_ONE_MORE_STEP_PARAGRAPH_3" />
-            
+
         </LinearLayout>
 
     </ScrollView>

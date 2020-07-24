@@ -47,7 +47,10 @@ class PollCompletedFragment : BaseFragment(), PollCompletedView {
     override fun sendMailToSupport() {
         val emailIntent = Intent(Intent.ACTION_SEND).apply {
             type = "plain/text"
-            putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.contact_email)))
+            putExtra(
+                Intent.EXTRA_EMAIL,
+                arrayOf(labelManager.getText("CONTACT_EMAIL", R.string.contact_email)).toString()
+            )
 //            putExtra(Intent.EXTRA_SUBJECT, "Subject")
 //            putExtra(Intent.EXTRA_TEXT, "Text")
         }
@@ -62,7 +65,12 @@ class PollCompletedFragment : BaseFragment(), PollCompletedView {
 
     override fun showDialerForSupport() {
         startActivity(Intent(Intent.ACTION_DIAL).apply {
-            data = Uri.parse("tel:${getString(R.string.contact_support_phone)}")
+            data = Uri.parse(
+                "tel:${labelManager.getText(
+                    "CONTACT_PHONE",
+                    R.string.contact_support_phone
+                )}"
+            )
         })
     }
 
