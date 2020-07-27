@@ -75,6 +75,12 @@ class SplashPresenterImpl @Inject constructor(
             view.reloadLabels()
         }
 
+        if (initializationData.languages.isNotEmpty())
+            splashUseCase.persistLanguages(initializationData.languages)
+
+        if (initializationData.regions.isNotEmpty())
+            splashUseCase.persistRegions(initializationData.regions)
+
         if (versionCode < settings.appInfo.minVersionCode) {
             view.showNeedUpdateDialog()
         } else {

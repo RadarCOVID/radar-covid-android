@@ -35,9 +35,4 @@ class RepositoryModule {
     @PerApplication
     fun providesApiRepository(repository: ApiRepositoryImpl): ApiRepository = repository
 
-    @Provides
-    @PerApplication
-    fun providesContentfulRepository(repository: ContentfulRepositoryImpl): ContentfulRepository =
-        repository
-
 }
