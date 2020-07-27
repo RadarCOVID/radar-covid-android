@@ -98,4 +98,6 @@ class LabelManager @Inject constructor(
         }
     }
 
+    fun getContactPhone(): String = getText("CONTACT_PHONE", R.string.contact_support_phone).toString()
+
 }

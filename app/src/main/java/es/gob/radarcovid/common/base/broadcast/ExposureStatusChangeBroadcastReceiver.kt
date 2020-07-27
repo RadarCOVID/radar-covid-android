@@ -14,6 +14,7 @@ import dagger.android.DaggerBroadcastReceiver
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
+import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.datamanager.usecase.ReportMatchUseCase
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import es.gob.radarcovid.features.splash.view.SplashActivity
@@ -75,10 +76,10 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
                     )
                 )
                 .setContentText(
-                    labelManager.getText(
+                    labelManager.getFormattedText(
                         "NOTIFICATION_MESSAGE_EXPOSURE_HIGH",
-                        R.string.exposure_high_notification
-                    )
+                        labelManager.getContactPhone()
+                    ).default(context.getString(R.string.exposure_high_notification))
                 )
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setSmallIcon(R.drawable.ic_handshakes)

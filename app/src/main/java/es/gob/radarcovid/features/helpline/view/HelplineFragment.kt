@@ -49,10 +49,7 @@ class HelplineFragment : BaseFragment(), HelplineView {
     override fun showDialerForSupport() {
         startActivity(Intent(Intent.ACTION_DIAL).apply {
             data = Uri.parse(
-                "tel:${labelManager.getText(
-                    "CONTACT_PHONE",
-                    R.string.contact_support_phone
-                )}"
+                "tel:${labelManager.getContactPhone()}"
             )
         })
     }

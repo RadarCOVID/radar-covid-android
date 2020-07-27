@@ -161,7 +161,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     override fun showDialerForSupport() {
         startActivity(Intent(Intent.ACTION_DIAL).apply {
-            data = Uri.parse("tel:${getString(R.string.contact_support_phone)}")
+            data = Uri.parse("tel:${labelManager.getContactPhone()}")
         })
     }
 
