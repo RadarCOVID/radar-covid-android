@@ -24,8 +24,11 @@ class LabelManager @Inject constructor(
     fun getText(labelId: String?, defaultResId: Int): Spanned =
         getText(labelId, context.getString(defaultResId))
 
-    fun getText(labelId: String?, default: CharSequence): Spanned =
-        HtmlCompat.fromHtml(labels[labelId] ?: default.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+    fun getText(labelId: String?, default: CharSequence?): Spanned =
+        HtmlCompat.fromHtml(
+            labels[labelId] ?: default?.toString() ?: "",
+            HtmlCompat.FROM_HTML_MODE_LEGACY
+        )
 
 
     fun getExposureHighDatesText(
