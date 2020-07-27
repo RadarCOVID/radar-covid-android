@@ -42,9 +42,7 @@ class HelplineFragment : BaseFragment(), HelplineView {
 
     private fun initViews() {
 
-        buttonStart.setOnClickListener { presenter.onStartButtonClick() }
         buttonContactSupport.setOnClickListener { presenter.onContactSupportButtonClick() }
-        textViewEmail.setOnClickListener { presenter.onInterViewEmailButtonClick() }
 
     }
 

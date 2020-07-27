@@ -50,23 +50,6 @@
                 android:src="@drawable/ic_img_background_helpline" />
 
             <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TextSmallBlack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/helpline_message_p1"
-                app:labelId="HELP_LINE_PARAGRAPH_1" />
-
-            <es.gob.radarcovid.common.view.LabelButton
-                android:id="@+id/buttonStart"
-                style="@style/ButtonNormal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/helpline_button_start"
-                app:labelId="HELP_LINE_POLL_BUTTON" />
-
-            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,41 +72,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp" />
-
-            <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TitleSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/helpline_title_3"
-                android:textSize="18sp"
-                app:labelId="HELP_LINE_ONE_MORE_STEP_PARAGRAPH_1" />
-
-            <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TextSmallBlack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/helpline_message_p3"
-                app:labelId="HELP_LINE_ONE_MORE_STEP_PARAGRAPH_2" />
-
-            <es.gob.radarcovid.common.view.LabelTextView
-                android:id="@+id/textViewEmail"
-                style="@style/TitleSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="26dp"
-                android:text="@string/contact_email"
-                android:textSize="16sp"
-                app:labelId="CONTACT_EMAIL" />
-
-
-            <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TextSmallBlack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/helpline_message_p4"
-                app:labelId="HELP_LINE_ONE_MORE_STEP_PARAGRAPH_3" />
 
         </LinearLayout>
 
