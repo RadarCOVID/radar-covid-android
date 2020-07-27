@@ -2,14 +2,9 @@ package es.gob.radarcovid.datamanager.api
 
 import es.gob.radarcovid.models.request.RequestKpiReport
 import es.gob.radarcovid.models.request.RequestPostAnswers
-import es.gob.radarcovid.models.response.ResponseQuestions
-import es.gob.radarcovid.models.response.ResponseSettings
-import es.gob.radarcovid.models.response.ResponseUuid
+import es.gob.radarcovid.models.response.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
 
@@ -39,5 +34,17 @@ interface ApiInterface {
 
     @POST("/kpi/kpi")
     fun postKpiReport(@Body body: RequestKpiReport): Call<Unit>
+
+    @GET("/configuration/texts/{ccaa}")
+    fun getLabels(
+        @Path("ccaa") region: String,
+        @Query("locale") language: String
+    ): Call<ResponseLabels>
+
+    @GET("/configuration/masterData/locales")
+    fun getLanguages(@Query("locale") language: String): Call<ResponseLanguages>
+
+    @GET("/configuration/masterData/ccaa")
+    fun getRegions(@Query("locale") language: String): Call<ResponseRegions>
 
 }

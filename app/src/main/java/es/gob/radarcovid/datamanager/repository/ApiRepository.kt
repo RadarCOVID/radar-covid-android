@@ -2,9 +2,7 @@ package es.gob.radarcovid.datamanager.repository
 
 import es.gob.radarcovid.models.request.RequestKpiReport
 import es.gob.radarcovid.models.request.RequestPostAnswers
-import es.gob.radarcovid.models.response.ResponseQuestions
-import es.gob.radarcovid.models.response.ResponseSettings
-import es.gob.radarcovid.models.response.ResponseUuid
+import es.gob.radarcovid.models.response.*
 import org.funktionale.either.Either
 
 interface ApiRepository {
@@ -12,6 +10,12 @@ interface ApiRepository {
     fun getUuid(): Either<Throwable, ResponseUuid>
 
     fun getSettings(): Either<Throwable, ResponseSettings>
+
+    fun getLabels(language: String, region: String): Either<Throwable, ResponseLabels>
+
+    fun getLanguages(language: String): Either<Throwable, ResponseLanguages>
+
+    fun getRegions(language: String): Either<Throwable, ResponseRegions>
 
     fun getQuestions(): Either<Throwable, ResponseQuestions>
 

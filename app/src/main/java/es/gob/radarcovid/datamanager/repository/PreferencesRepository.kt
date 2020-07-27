@@ -1,5 +1,7 @@
 package es.gob.radarcovid.datamanager.repository
 
+import es.gob.radarcovid.models.domain.Language
+import es.gob.radarcovid.models.domain.Region
 import java.util.*
 
 interface PreferencesRepository {
@@ -20,17 +22,25 @@ interface PreferencesRepository {
 
     fun setInfectionReportDate(date: Date)
 
-    fun setRegion(region: String)
+    fun setCurrentRegion(region: String)
 
-    fun getRegion(): String
+    fun getCurrentRegion(): String
 
-    fun setLanguage(language: String)
+    fun setCurrentLanguage(language: String)
 
-    fun getLanguage(): String
+    fun getCurrentLanguage(): String
 
     fun setLabels(labels: Map<String, String>)
 
     fun getLabels(): Map<String, String>
+
+    fun setLanguages(languages: List<Language>)
+
+    fun getLanguages(): List<Language>
+
+    fun setRegions(regions: List<Region>)
+
+    fun getRegions(): List<Region>
 
 
 }
