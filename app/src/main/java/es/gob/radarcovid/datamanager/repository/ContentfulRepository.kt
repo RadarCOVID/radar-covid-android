@@ -9,8 +9,8 @@ interface ContentfulRepository {
 
     fun getLabels(language: String, region: String): Either<Throwable, ResponseLabels>
 
-    fun getLanguages(): Either<Throwable, ResponseLanguages>
+    fun getLanguages(language: String): Either<Throwable, ResponseLanguages>
 
-    fun getRegions(): Either<Throwable, ResponseRegions>
+    fun getRegions(language: String): Either<Throwable, ResponseRegions>
 
 }

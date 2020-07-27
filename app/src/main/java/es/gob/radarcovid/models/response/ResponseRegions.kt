@@ -1,7 +1,5 @@
 package es.gob.radarcovid.models.response
 
-data class ResponseRegions(val items: List<ResponseRegionsItem>?)
+class ResponseRegions : ArrayList<ResponseRegionsItem>()
 
-data class ResponseRegionsItem(val fields: ResponseRegionsField?)
-
-data class ResponseRegionsField(val id: String?, val description: String?)
+data class ResponseRegionsItem(val id: String?, val description: String?)

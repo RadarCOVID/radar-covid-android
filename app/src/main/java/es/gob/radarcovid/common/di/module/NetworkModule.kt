@@ -5,7 +5,6 @@ import dagger.Provides
 import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.common.di.scope.PerApplication
 import es.gob.radarcovid.datamanager.api.ApiInterface
-import es.gob.radarcovid.datamanager.api.ContentfulInterface
 import okhttp3.CertificatePinner
 import okhttp3.ConnectionSpec
 import okhttp3.Interceptor
@@ -57,12 +56,5 @@ class NetworkModule {
         retrofitBuilder.baseUrl(BuildConfig.API_URL)
             .build()
             .create(ApiInterface::class.java)
-
-    @Provides
-    @PerApplication
-    fun providesContentfulInterface(retrofitBuilder: Retrofit.Builder): ContentfulInterface =
-        retrofitBuilder.baseUrl(BuildConfig.CONTENTFUL_URL)
-            .build()
-            .create(ContentfulInterface::class.java)
 
 }

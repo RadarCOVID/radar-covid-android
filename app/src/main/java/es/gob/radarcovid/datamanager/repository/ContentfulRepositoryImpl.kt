@@ -1,27 +1,31 @@
 package es.gob.radarcovid.datamanager.repository
 
 import es.gob.radarcovid.common.base.BaseRepository
-import es.gob.radarcovid.datamanager.api.ContentfulInterface
+import es.gob.radarcovid.datamanager.api.ApiInterface
 import es.gob.radarcovid.models.response.ResponseLabels
 import es.gob.radarcovid.models.response.ResponseLanguages
 import es.gob.radarcovid.models.response.ResponseRegions
 import org.funktionale.either.Either
 import javax.inject.Inject
 
-class ContentfulRepositoryImpl @Inject constructor(private val contentfulInterface: ContentfulInterface) :
+class ContentfulRepositoryImpl @Inject constructor(
+    private val apiInterface: ApiInterface
+) :
     BaseRepository(), ContentfulRepository {
 
     override fun getLabels(language: String, region: String): Either<Throwable, ResponseLabels> =
         callService {
-            contentfulInterface.getLabels(language, region)
+            apiInterface.getLabels(region, language)
         }
 
-    override fun getLanguages(): Either<Throwable, ResponseLanguages> = callService {
-        contentfulInterface.getLanguages()
-    }
+    override fun getLanguages(language: String): Either<Throwable, ResponseLanguages> =
+        callService {
+            apiInterface.getLanguages(language)
+        }
 
-    override fun getRegions(): Either<Throwable, ResponseRegions> = callService {
-        contentfulInterface.getRegions()
-    }
+    override fun getRegions(language: String): Either<Throwable, ResponseRegions> =
+        callService {
+            apiInterface.getRegions(language)
+        }
 
 }

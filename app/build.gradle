@@ -15,7 +15,7 @@ android {
         versionCode 4
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.background_shape_exposition_low.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         resConfigs "es"
     }

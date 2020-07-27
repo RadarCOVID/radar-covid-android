@@ -3,7 +3,6 @@ package es.gob.radarcovid.datamanager.usecase
 import android.util.Log
 import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.common.base.mapperScope
-import es.gob.radarcovid.datamanager.mapper.LabelsDataMapper
 import es.gob.radarcovid.datamanager.mapper.SettingsDataMapper
 import es.gob.radarcovid.datamanager.repository.*
 import es.gob.radarcovid.models.domain.InitializationData
@@ -19,7 +18,6 @@ class SplashUseCase @Inject constructor(
     private val contentfulRepository: ContentfulRepository,
     private val preferencesRepository: PreferencesRepository,
     private val contactTracingRepository: ContactTracingRepository,
-    private val labelsDataMapper: LabelsDataMapper,
     private val settingsDataMapper: SettingsDataMapper,
     private val systemInfoRepository: SystemInfoRepository
 ) {
@@ -85,14 +83,10 @@ class SplashUseCase @Inject constructor(
 
     private fun getLabels(onSuccess: (Map<String, String>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
-            mapperScope(
-                contentfulRepository.getLabels(
-                    preferencesRepository.getLanguage(),
-                    preferencesRepository.getRegion()
-                )
-            ) {
-                labelsDataMapper.transform(it)
-            }
+            contentfulRepository.getLabels(
+                preferencesRepository.getLanguage(),
+                preferencesRepository.getRegion()
+            )
         }
     }
 
