@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/buttonContinue"
+        android:layout_marginBottom="@dimen/padding_content"
         app:layout_constraintTop_toTopOf="parent">
 
         <FrameLayout
@@ -44,14 +45,15 @@
                 android:orientation="vertical"
                 android:padding="@dimen/padding_content">
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TitleMedium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="36dp"
                     android:layout_marginBottom="20dp"
                     android:text="@string/onboarding_title_step_1"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    app:labelId="ONBOARDING_STEP_1_TITLE" />
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     style="@style/TitleTip"
@@ -106,7 +108,6 @@
         android:layout_margin="@dimen/padding_content"
         android:text="@string/onboarding_button_continue"
         app:labelId="ONBOARDING_CONTINUE_BUTTON"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wrapperContent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

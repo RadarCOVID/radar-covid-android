@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
+import es.gob.radarcovid.common.view.HintSpinnerAdapter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionPresenter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionView
+import kotlinx.android.synthetic.main.fragment_locale_selection.*
 import javax.inject.Inject
 
 class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
@@ -29,7 +32,56 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         presenter.viewReady()
+    }
+
+    override fun setRegions(regions: List<String>) {
+        spinnerRegion.adapter =
+            HintSpinnerAdapter(
+                context!!,
+                labelManager.getText(
+                    "LOCALE_SELECTION_REGION_DEFAULT",
+                    R.string.locale_selection_region_default
+                ).toString(),
+                R.layout.row_spinner,
+                regions
+            )
+    }
+
+    override fun getSelectedRegionIndex(): Int =
+        spinnerRegion.selectedItemPosition + 1 // POSITION 0 IS THE "NON SELECTED" OPTION
+
+    override fun reloadLabels() {
+        labelManager.reload()
+    }
+
+    private fun initViews() {
+        spinnerRegion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position > 0)
+                    (activity as? Callback)?.onLocaleSettingsSelected()
+            }
+
+        }
+    }
+
+    interface Callback {
+
+        fun onLocaleSettingsSelected()
+
+        fun onTextsLoaded()
+
     }
 
 }

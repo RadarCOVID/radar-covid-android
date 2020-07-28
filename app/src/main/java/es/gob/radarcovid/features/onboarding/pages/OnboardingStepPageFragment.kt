@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import es.gob.radarcovid.R
 import es.gob.radarcovid.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_1
 import es.gob.radarcovid.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_3
+import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
 import kotlinx.android.synthetic.main.fragment_onboarding_step.*
 import kotlinx.android.synthetic.main.layout_onboarding_step1.*
 import kotlinx.android.synthetic.main.layout_onboarding_step3.*
@@ -51,7 +52,16 @@ class OnboardingStepPageFragment : Fragment() {
                 ONBOARDING_PAGE_INDEX_STEP_3 -> wrapperStep3.visibility = View.VISIBLE
             }
         }
+    }
 
+    override fun setMenuVisibility(menuVisible: Boolean) {
+        super.setMenuVisibility(menuVisible)
+        if (menuVisible)
+            (activity as? OnboardingActivity)?.onLocaleSelectedListener = {
+                buttonContinue.isEnabled = true
+            }
+        else
+            (activity as? OnboardingActivity)?.onLocaleSelectedListener = null
     }
 
     interface Callback {

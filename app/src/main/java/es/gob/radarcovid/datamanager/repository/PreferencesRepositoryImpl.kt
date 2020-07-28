@@ -73,21 +73,21 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
             .apply()
     }
 
-    override fun setCurrentRegion(region: String) {
+    override fun setSelectedRegion(region: String) {
         preferences.edit()
             .putString(KEY_CURRENT_REGION, region)
             .apply()
     }
 
-    override fun getCurrentRegion(): String = preferences.getString(KEY_CURRENT_REGION, "ES-MD") ?: "ES-MD"
+    override fun getSelectedRegion(): String = preferences.getString(KEY_CURRENT_REGION, "ES-MD") ?: "ES-MD"
 
-    override fun setCurrentLanguage(language: String) {
+    override fun setSelectedLanguage(language: String) {
         preferences.edit()
             .putString(KEY_CURRENT_LANGUAGE, language)
             .apply()
     }
 
-    override fun getCurrentLanguage(): String =
+    override fun getSelectedLanguage(): String =
         preferences.getString(KEY_CURRENT_LANGUAGE, "es-ES") ?: "es-ES"
 
     override fun setLabels(labels: Map<String, String>) {

@@ -11,6 +11,12 @@ import javax.inject.Inject
 class LabelButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : AppCompatButton(context, attrs, defStyleAttr) {
+
+    @Inject
+    lateinit var labelManager: LabelManager
+
+    private var labelId: String?
+    
     init {
         (context.applicationContext as HasAndroidInjector)
             .androidInjector()
@@ -22,7 +28,7 @@ class LabelButton @JvmOverloads constructor(
             0, 0
         ).apply {
             try {
-                val labelId = getString(R.styleable.LabelButton_labelId)
+                labelId = getString(R.styleable.LabelButton_labelId)
                 val defaultText = getText(R.styleable.LabelButton_android_text)
                 text = labelManager.getText(labelId, defaultText)
             } finally {
@@ -32,9 +38,6 @@ class LabelButton @JvmOverloads constructor(
 
     }
 
-    @Inject
-    lateinit var labelManager: LabelManager
-
     fun setText(labelId: String?, resId: Int) {
         setText(labelId, context.getString(resId))
     }
@@ -43,5 +46,8 @@ class LabelButton @JvmOverloads constructor(
         text = labelManager.getText(labelId, defaultText)
     }
 
+    fun reloadText() {
+        text = labelManager.getText(labelId, text)
+    }
 
 }

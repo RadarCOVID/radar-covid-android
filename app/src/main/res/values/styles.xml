@@ -141,6 +141,7 @@
     </style>
 
     <style name="ButtonWhite" parent="Button">
+        <item name="android:gravity">center</item>
         <item name="android:minHeight">56dp</item>
         <item name="android:textColor">@color/black_26</item>
         <item name="android:background">@drawable/shape_rounded_corners_white</item>

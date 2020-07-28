@@ -316,6 +316,10 @@
     <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Por favor, activa las notificaciones de exposición. Es imprescindible para que &appname;
         funcione correctamente.</string>
 
+    /********** Locale selection module ************/
+    <string name="locale_selection_region_hint">*Selecciona tu comunidad autónoma</string>
+    <string name="locale_selection_region_default">Seleccionar…</string>
+
     /********** Accesibility ************/
 
     <string name="description_arrow_button_back">Botón atrás</string>

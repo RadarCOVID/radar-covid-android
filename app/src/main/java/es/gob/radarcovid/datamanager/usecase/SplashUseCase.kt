@@ -133,8 +133,8 @@ class SplashUseCase @Inject constructor(
     private fun getLabels(onSuccess: (Map<String, String>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
             apiRepository.getLabels(
-                preferencesRepository.getCurrentLanguage(),
-                preferencesRepository.getCurrentRegion()
+                preferencesRepository.getSelectedLanguage(),
+                preferencesRepository.getSelectedRegion()
             )
         }
     }
@@ -142,7 +142,7 @@ class SplashUseCase @Inject constructor(
 
     fun getLanguages(onSuccess: (List<Language>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
-            mapperScope(apiRepository.getLanguages(preferencesRepository.getCurrentLanguage())) {
+            mapperScope(apiRepository.getLanguages(preferencesRepository.getSelectedLanguage())) {
                 languagesDataMapper.transform(it)
             }
         }
@@ -150,7 +150,7 @@ class SplashUseCase @Inject constructor(
 
     fun getRegions(onSuccess: (List<Region>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
-            mapperScope(apiRepository.getRegions(preferencesRepository.getCurrentLanguage())) {
+            mapperScope(apiRepository.getRegions(preferencesRepository.getSelectedLanguage())) {
                 regionsDataMapper.transform(it)
             }
         }
