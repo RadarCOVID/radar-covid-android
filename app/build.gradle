@@ -34,6 +34,12 @@ android {
             keyAlias "radarcovid"
             keyPassword "radarcovid"
         }
+        upload {
+            storeFile file("../uploadkeystore.jks")
+            storePassword "es.gob"
+            keyAlias "radarcovidupload"
+            keyPassword "radarcovidupload"
+        }
     }
 
     buildTypes {
@@ -60,7 +66,7 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.upload
 
             buildConfigField 'Boolean', 'isMock', 'false'
 

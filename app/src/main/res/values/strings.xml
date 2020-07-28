@@ -81,7 +81,6 @@
 
     /********** Onboarding ************/
     <string name="onboarding_title_step_1">Bienvenido a &appname;</string>
-    <string name="onboarding_step1_description">Fase Piloto sólo operativa en San Sebastián de la Gomera. Recuerda que las alertas son simuladas.</string>
     <string name="onboarding_step1_message_1">Conoce en todo momento si te expones al coronavirus, ayudándote a protegerte y proteger a los demás.</string>
     <string name="onboarding_step1_message_2">Comunica de forma anónima tu diagnóstico Covid positivo.</string>
     <string name="onboarding_step1_message_3">Si estuvieras afectado, comunicaremos la exposición de forma anónima a las personas con las que has estado en contacto.</string>
@@ -133,9 +132,9 @@
     <string name="exposition_block_high_title">Exposición alta</string>
     <string name="exposition_block_infected_title">COVID-19 Positivo</string>
 
-    <string name="exposition_block_low_description"><b>Te informaremos en el caso de un posible contacto de riesgo.</b>\nRecuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
-    <string name="exposition_block_high_description"><b>Has estado en contacto con una persona contagiada de COVID-19.\nInfórmalo en el 900 112 061 (gratuito)</b>.\nRecuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
-    <string name="exposition_block_infected_description"><b>Tu diagnóstico ha sido enviado.\nPor favor, aíslate durante 14 días</b>.\nRecuerda que esta aplicación es un piloto y sus alertas son simuladas.</string>
+    <string name="exposition_block_low_description"><b>Te informaremos en el caso de un posible contacto de riesgo.</b></string>
+    <string name="exposition_block_high_description"><b>Has estado en contacto con una persona contagiada de COVID-19.\nInfórmalo en el 900 112 061 (gratuito)</b>.</string>
+    <string name="exposition_block_infected_description"><b>Tu diagnóstico ha sido enviado.\nPor favor, aíslate durante 14 días</b>.</string>
 
     <string name="radar_block_enabled_title">&appname; activo</string>
     <string name="radar_block_disabled_title">&appname; inactivo</string>
@@ -273,12 +272,8 @@
     /********** Helpline ************/
 
     <string name="helpline_title">Ayúdanos a mejorar</string>
-    <string name="helpline_message_p1">Muchas gracias por participar en el piloto de la APP &appname;. <b>Contándonos tu opinión de forma anónima nos ayuda a mejorar</b> y contribuir a prevenir futuros contagios.</string>
     <string name="helpline_title_2">Atención telefónica</string>
     <string name="helpline_message_p2">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
-    <string name="helpline_title_3">Un paso más</string>
-    <string name="helpline_message_p3">¿Te interesaría participar en una entrevista telefónica para conocer más sobre tu experiencia con &appname;? Escribe a:</string>
-    <string name="helpline_message_p4">Nos pondremos en contacto contigo para fijar el día y la hora que se adapte mejor a ti.</string>
     <string name="helpline_button_start">Cuéntanos tu experiencia</string>
 
     <string name="step_indicator_text">%1$d de %2$d</string>
@@ -332,7 +327,7 @@
     <string name="warning_need_update_message">Para poder seguir utilizando &appname; es necesario que actualices la aplicación.</string>
     <string name="warning_need_update_button">ACTUALIZAR</string>
     <string name="exposure_high_notification_title">Riesgo de exposición alto.</string>
-    <string name="exposure_high_notification">Llama gratis al 900 112 061 para reportarlo y continuar la simulación del piloto.</string>
+    <string name="exposure_high_notification">Llama gratis al 900 112 061 para reportarlo.</string>
 
     <string name="empty_text"> </string>
     <string name="statisfaction_min">muy mala</string>

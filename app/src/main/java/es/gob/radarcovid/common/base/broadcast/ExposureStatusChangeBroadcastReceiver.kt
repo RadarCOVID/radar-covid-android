@@ -14,7 +14,9 @@ import dagger.android.DaggerBroadcastReceiver
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
+import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.datamanager.usecase.ReportMatchUseCase
+import es.gob.radarcovid.datamanager.utils.LabelManager
 import es.gob.radarcovid.features.splash.view.SplashActivity
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.InfectionStatus
@@ -28,6 +30,9 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
 
     @Inject
     lateinit var reportMatchUseCase: ReportMatchUseCase
+
+    @Inject
+    lateinit var labelManager: LabelManager
 
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
@@ -64,8 +69,18 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
             PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         val notification =
             NotificationCompat.Builder(context, context.packageName)
-                .setContentTitle(context.getString(R.string.exposure_high_notification_title))
-                .setContentText(context.getString(R.string.exposure_high_notification))
+                .setContentTitle(
+                    labelManager.getText(
+                        "NOTIFICATION_TITLE_EXPOSURE_HIGH",
+                        R.string.exposure_high_notification_title
+                    )
+                )
+                .setContentText(
+                    labelManager.getFormattedText(
+                        "NOTIFICATION_MESSAGE_EXPOSURE_HIGH",
+                        labelManager.getContactPhone()
+                    ).default(context.getString(R.string.exposure_high_notification))
+                )
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setSmallIcon(R.drawable.ic_handshakes)
                 .setContentIntent(pendingIntent)

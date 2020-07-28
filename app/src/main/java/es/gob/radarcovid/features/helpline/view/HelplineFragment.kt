@@ -42,19 +42,14 @@ class HelplineFragment : BaseFragment(), HelplineView {
 
     private fun initViews() {
 
-        buttonStart.setOnClickListener { presenter.onStartButtonClick() }
         buttonContactSupport.setOnClickListener { presenter.onContactSupportButtonClick() }
-        textViewEmail.setOnClickListener { presenter.onInterViewEmailButtonClick() }
 
     }
 
     override fun showDialerForSupport() {
         startActivity(Intent(Intent.ACTION_DIAL).apply {
             data = Uri.parse(
-                "tel:${labelManager.getText(
-                    "CONTACT_PHONE",
-                    R.string.contact_support_phone
-                )}"
+                "tel:${labelManager.getContactPhone()}"
             )
         })
     }
