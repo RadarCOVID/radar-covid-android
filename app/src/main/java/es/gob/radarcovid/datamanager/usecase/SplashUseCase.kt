@@ -1,6 +1,5 @@
 package es.gob.radarcovid.datamanager.usecase
 
-import android.util.Log
 import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.common.base.mapperScope
 import es.gob.radarcovid.datamanager.mapper.LanguagesDataMapper
@@ -16,7 +15,7 @@ import es.gob.radarcovid.models.domain.Region
 import es.gob.radarcovid.models.domain.Settings
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.functions.Function5
+import io.reactivex.rxjava3.functions.Function4
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -33,20 +32,18 @@ class SplashUseCase @Inject constructor(
     fun getVersionCode(): Int = systemInfoRepository.getVersionCode()
 
     fun getInitializationObservable(): Observable<InitializationData> =
-        Observable.zip<String, Settings, Map<String, String>, List<Language>, List<Region>, InitializationData>(
-            observeUuid(),
+        Observable.zip<Settings, Map<String, String>, List<Language>, List<Region>, InitializationData>(
             observeSettings(),
             observeLabels(),
             observeLanguages(),
             observeRegions(),
-            Function5 { uuid, settings, labels, languages, regions ->
-                Log.d("asa", "asdasd")
-                InitializationData(uuid, settings, labels, languages, regions)
+            Function4 { settings, labels, languages, regions ->
+                InitializationData(settings, labels, languages, regions)
             })
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
 
-    private fun observeUuid(): Observable<String> = Observable.create { emitter ->
+    fun observeUuid(): Observable<String> = Observable.create { emitter ->
         if (isUuidInitialized()) {
             emitter.onNext("")
             emitter.onComplete()
@@ -133,6 +130,7 @@ class SplashUseCase @Inject constructor(
     private fun getLabels(onSuccess: (Map<String, String>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
             apiRepository.getLabels(
+                preferencesRepository.getUuid(),
                 preferencesRepository.getSelectedLanguage(),
                 preferencesRepository.getSelectedRegion()
             )
@@ -142,7 +140,12 @@ class SplashUseCase @Inject constructor(
 
     fun getLanguages(onSuccess: (List<Language>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
-            mapperScope(apiRepository.getLanguages(preferencesRepository.getSelectedLanguage())) {
+            mapperScope(
+                apiRepository.getLanguages(
+                    preferencesRepository.getUuid(),
+                    preferencesRepository.getSelectedLanguage()
+                )
+            ) {
                 languagesDataMapper.transform(it)
             }
         }
@@ -150,7 +153,12 @@ class SplashUseCase @Inject constructor(
 
     fun getRegions(onSuccess: (List<Region>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
-            mapperScope(apiRepository.getRegions(preferencesRepository.getSelectedLanguage())) {
+            mapperScope(
+                apiRepository.getRegions(
+                    preferencesRepository.getUuid(),
+                    preferencesRepository.getSelectedLanguage()
+                )
+            ) {
                 regionsDataMapper.transform(it)
             }
         }

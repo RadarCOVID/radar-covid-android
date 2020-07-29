@@ -59,11 +59,15 @@ class SplashPresenterImpl @Inject constructor(
     }
 
     private fun requestInitialization() {
-        splashUseCase.getInitializationObservable()
-            .subscribe(
-                { onInitializationSuccess(it) },
-                { onInitializationError(it) }
-            )
+        splashUseCase.observeUuid().flatMap {
+            if (it.isNotEmpty())
+                splashUseCase.persistUuid(it)
+            splashUseCase.getInitializationObservable()
+        }.subscribe(
+            { onInitializationSuccess(it) },
+            { onInitializationError(it) }
+        )
+
     }
 
     private fun onInitializationSuccess(initializationData: InitializationData) {
@@ -85,8 +89,6 @@ class SplashPresenterImpl @Inject constructor(
             view.showNeedUpdateDialog()
         } else {
             splashUseCase.updateTracingSettings(settings)
-            if (initializationData.uuid.isNotEmpty())
-                splashUseCase.persistUuid(initializationData.uuid)
             isInitializationCompleted = true
             onResume()
         }

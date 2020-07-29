@@ -19,19 +19,26 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
         apiInterface.getSettings()
     }
 
-    override fun getLabels(language: String, region: String): Either<Throwable, ResponseLabels> =
+    override fun getLabels(
+        uuid: String,
+        language: String,
+        region: String
+    ): Either<Throwable, ResponseLabels> =
         callService {
-            apiInterface.getLabels(region, language)
+            apiInterface.getLabels(uuid, language, region)
         }
 
-    override fun getLanguages(language: String): Either<Throwable, ResponseLanguages> =
+    override fun getLanguages(
+        uuid: String,
+        language: String
+    ): Either<Throwable, ResponseLanguages> =
         callService {
-            apiInterface.getLanguages(language)
+            apiInterface.getLanguages(uuid, language)
         }
 
-    override fun getRegions(language: String): Either<Throwable, ResponseRegions> =
+    override fun getRegions(uuid: String, language: String): Either<Throwable, ResponseRegions> =
         callService {
-            apiInterface.getRegions(language)
+            apiInterface.getRegions(uuid, language, true)
         }
 
     override fun getQuestions(): Either<Throwable, ResponseQuestions> = callService {

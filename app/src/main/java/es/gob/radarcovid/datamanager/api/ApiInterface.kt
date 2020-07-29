@@ -35,16 +35,24 @@ interface ApiInterface {
     @POST("/kpi/kpi")
     fun postKpiReport(@Body body: RequestKpiReport): Call<Unit>
 
-    @GET("/configuration/texts/{ccaa}")
+    @GET("/configuration/texts")
     fun getLabels(
-        @Path("ccaa") region: String,
-        @Query("locale") language: String
+        @Header(SEDIA_USER_TOKEN) uuid: String,
+        @Query("locale") language: String,
+        @Query("ccaa") region: String
     ): Call<ResponseLabels>
 
     @GET("/configuration/masterData/locales")
-    fun getLanguages(@Query("locale") language: String): Call<ResponseLanguages>
+    fun getLanguages(
+        @Header(SEDIA_USER_TOKEN) uuid: String,
+        @Query("locale") language: String
+    ): Call<ResponseLanguages>
 
     @GET("/configuration/masterData/ccaa")
-    fun getRegions(@Query("locale") language: String): Call<ResponseRegions>
+    fun getRegions(
+        @Header(SEDIA_USER_TOKEN) uuid: String,
+        @Query("locale") language: String,
+        @Query("additionalInfo") additionalInfo: Boolean
+    ): Call<ResponseRegions>
 
 }

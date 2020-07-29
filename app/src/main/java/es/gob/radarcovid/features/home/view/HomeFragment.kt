@@ -19,6 +19,7 @@ import androidx.core.content.res.ResourcesCompat
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.default
+import es.gob.radarcovid.common.extensions.parseHtml
 import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeView
@@ -130,7 +131,7 @@ class HomeFragment : BaseFragment(), HomeView {
             labelManager.getFormattedText(
                 "HOME_EXPOSITION_MESSAGE_HIGH",
                 labelManager.getContactPhone()
-            ).default(getString(R.string.exposition_block_high_description))
+            ).default(getString(R.string.exposition_block_high_description)).parseHtml()
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
     }
 
