@@ -40,4 +40,6 @@ interface OnboardingRouter {
 
     fun navigateToMain(activateRadar: Boolean)
 
+    fun navigateToSplash()
+
 }

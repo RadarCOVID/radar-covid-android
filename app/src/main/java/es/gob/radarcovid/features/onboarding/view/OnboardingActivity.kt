@@ -10,16 +10,15 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
-import es.gob.radarcovid.features.locale.view.LocaleSelectionFragment
 import es.gob.radarcovid.features.onboarding.pages.OnboardingStepPageFragment
 import es.gob.radarcovid.features.onboarding.pages.legal.view.LegalInfoFragment
+import es.gob.radarcovid.features.onboarding.pages.welcome.view.WelcomeFragment
 import es.gob.radarcovid.features.onboarding.protocols.OnboardingPresenter
 import es.gob.radarcovid.features.onboarding.protocols.OnboardingView
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import javax.inject.Inject
 
-class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingStepPageFragment.Callback,
-    LocaleSelectionFragment.Callback {
+class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingPageCallback {
 
     companion object {
 
@@ -29,8 +28,6 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingStepPageFra
 
     @Inject
     lateinit var presenter: OnboardingPresenter
-
-    var onLocaleSelectedListener: (() -> Unit)? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -100,18 +97,11 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingStepPageFra
         override fun getItemCount(): Int = totalPages
 
         override fun createFragment(position: Int): Fragment =
-            if (position == 1)
-                LegalInfoFragment.newInstance()
-            else
-                OnboardingStepPageFragment.newInstance(position)
-    }
-
-    override fun onLocaleSettingsSelected() {
-        onLocaleSelectedListener?.invoke()
-    }
-
-    override fun onTextsLoaded() {
-        TODO("Not yet implemented")
+            when (position) {
+                0 -> WelcomeFragment.newInstance()
+                1 -> LegalInfoFragment.newInstance()
+                else -> OnboardingStepPageFragment.newInstance(position)
+            }
     }
 
 }

@@ -2,6 +2,7 @@ package es.gob.radarcovid.datamanager.utils
 
 import android.content.Context
 import android.text.Spanned
+import android.text.SpannedString
 import androidx.core.text.HtmlCompat
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.di.scope.PerApplication
@@ -22,13 +23,14 @@ class LabelManager @Inject constructor(
     }
 
     fun getText(labelId: String?, defaultResId: Int): Spanned =
-        getText(labelId, context.getString(defaultResId))
+        getText(labelId, context.getText(defaultResId))
 
-    fun getText(labelId: String?, default: CharSequence?): Spanned =
+    fun getText(labelId: String?, default: CharSequence?): Spanned = labels[labelId]?.let {
         HtmlCompat.fromHtml(
-            labels[labelId] ?: default?.toString() ?: "",
+            it,
             HtmlCompat.FROM_HTML_MODE_LEGACY
         )
+    } ?: SpannedString(default)
 
 
     fun getExposureHighDatesText(
@@ -98,6 +100,7 @@ class LabelManager @Inject constructor(
         }
     }
 
-    fun getContactPhone(): String = getText("CONTACT_PHONE", R.string.contact_support_phone).toString()
+    fun getContactPhone(): String =
+        getText("CONTACT_PHONE", R.string.contact_support_phone).toString()
 
 }

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import es.gob.radarcovid.R
 import es.gob.radarcovid.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_1
 import es.gob.radarcovid.features.onboarding.protocols.ONBOARDING_PAGE_INDEX_STEP_3
-import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
+import es.gob.radarcovid.features.onboarding.view.OnboardingPageCallback
 import kotlinx.android.synthetic.main.fragment_onboarding_step.*
 import kotlinx.android.synthetic.main.layout_onboarding_step1.*
 import kotlinx.android.synthetic.main.layout_onboarding_step3.*
@@ -38,13 +38,13 @@ class OnboardingStepPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buttonContinue.setOnClickListener {
-            (activity as? Callback)?.onContinueButtonClick()
+            (activity as? OnboardingPageCallback)?.onContinueButtonClick()
         }
         buttonActivate.setOnClickListener {
-            (activity as? Callback)?.onFinishButtonClick(true)
+            (activity as? OnboardingPageCallback)?.onFinishButtonClick(true)
         }
         buttonFinish.setOnClickListener {
-            (activity as? Callback)?.onFinishButtonClick(false)
+            (activity as? OnboardingPageCallback)?.onFinishButtonClick(false)
         }
         (arguments?.getInt(ARG_STEP) ?: 0).let { pageIndex ->
             when (pageIndex) {
@@ -52,24 +52,6 @@ class OnboardingStepPageFragment : Fragment() {
                 ONBOARDING_PAGE_INDEX_STEP_3 -> wrapperStep3.visibility = View.VISIBLE
             }
         }
-    }
-
-    override fun setMenuVisibility(menuVisible: Boolean) {
-        super.setMenuVisibility(menuVisible)
-        if (menuVisible)
-            (activity as? OnboardingActivity)?.onLocaleSelectedListener = {
-                buttonContinue.isEnabled = true
-            }
-        else
-            (activity as? OnboardingActivity)?.onLocaleSelectedListener = null
-    }
-
-    interface Callback {
-
-        fun onContinueButtonClick()
-
-        fun onFinishButtonClick(activateRadar: Boolean)
-
     }
 
 }

@@ -49,8 +49,32 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
             )
     }
 
+    override fun setSelectedRegionIndex(index: Int) {
+        spinnerRegion.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+    }
+
     override fun getSelectedRegionIndex(): Int =
-        spinnerRegion.selectedItemPosition + 1 // POSITION 0 IS THE "NON SELECTED" OPTION
+        spinnerRegion.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
+
+    override fun setLanguages(languages: List<String>) {
+        spinnerLanguage.adapter =
+            HintSpinnerAdapter(
+                context!!,
+                labelManager.getText(
+                    "",
+                    R.string.locale_selection_language_default
+                ).toString(),
+                R.layout.row_spinner,
+                languages
+            )
+    }
+
+    override fun setSelectedLanguageIndex(index: Int) {
+        spinnerLanguage.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+    }
+
+    override fun getSelectedLanguageIndex(): Int =
+        spinnerLanguage.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
 
     override fun reloadLabels() {
         labelManager.reload()
@@ -69,19 +93,34 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                 position: Int,
                 id: Long
             ) {
+
+            }
+
+        }
+
+        spinnerLanguage.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 if (position > 0)
-                    (activity as? Callback)?.onLocaleSettingsSelected()
+                    presenter.onLanguageSelectionChange(position - 1) // POSITION 0 IS THE "NON SELECTED" OPTION
             }
 
         }
     }
 
-    interface Callback {
+    fun isLanguageChanged(): Boolean = presenter.isLanguageChanged()
 
-        fun onLocaleSettingsSelected()
+    fun applyLocaleSettings() = presenter.applyLocaleSettings()
 
-        fun onTextsLoaded()
-
-    }
+    fun restoreLocaleSettings() = presenter.restoreLocaleSettings()
 
 }

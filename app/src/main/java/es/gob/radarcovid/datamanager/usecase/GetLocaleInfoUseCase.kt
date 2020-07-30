@@ -16,6 +16,9 @@ class GetLocaleInfoUseCase @Inject constructor(
         preferencesRepository.getRegions()
     )
 
+    fun getSelectedLanguage(): String =
+        preferencesRepository.getSelectedLanguage()
+
     fun setSelectedLanguage(languageCode: String) =
         preferencesRepository.setSelectedLanguage(languageCode)
 
