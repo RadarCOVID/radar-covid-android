@@ -6,6 +6,7 @@ import es.gob.radarcovid.common.di.scope.PerActivity
 import es.gob.radarcovid.datamanager.mapper.ExposureInfoDataMapper
 import es.gob.radarcovid.models.domain.ExposureInfo
 import es.gob.radarcovid.models.domain.Settings
+import io.reactivex.rxjava3.core.Completable
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.GaenAvailability
 import org.dpppt.android.sdk.backend.ResponseCallback
@@ -92,26 +93,24 @@ class ContactTracingRepositoryImpl @Inject constructor(
 
     override fun notifyInfected(
         authCode: String,
-        onSet: Date,
-        onSuccess: () -> Unit,
-        onError: (Throwable) -> Unit
-    ) {
-        if (BuildConfig.isMock) {
-            onSuccess()
-        } else {
-            DP3T.sendIAmInfected(activity,
-                onSet,
-                ExposeeAuthMethodAuthorization("Bearer $authCode"),
-                object : ResponseCallback<Void> {
-                    override fun onSuccess(response: Void?) {
-                        onSuccess()
-                    }
-
-                    override fun onError(throwable: Throwable?) {
-                        onError(throwable ?: Exception("Error notifying infection"))
-                    }
-
-                })
+        onSet: Date
+    ) : Completable {
+        return Completable.create {
+            if (BuildConfig.isMock) {
+                it.onComplete()
+            } else {
+                DP3T.sendIAmInfected(activity,
+                    onSet,
+                    ExposeeAuthMethodAuthorization("Bearer $authCode"),
+                    object : ResponseCallback<Void> {
+                        override fun onSuccess(response: Void?) {
+                            it.onComplete()
+                        }
+                        override fun onError(throwable: Throwable?) {
+                            it.onError(throwable ?: Exception("Error notifying infection"))
+                        }
+                    })
+            }
         }
     }
 }

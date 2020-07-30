@@ -2,6 +2,7 @@ package es.gob.radarcovid.datamanager.api
 
 import es.gob.radarcovid.models.request.RequestKpiReport
 import es.gob.radarcovid.models.request.RequestPostAnswers
+import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -46,5 +47,9 @@ interface ApiInterface {
 
     @GET("/configuration/masterData/ccaa")
     fun getRegions(@Query("locale") language: String): Call<ResponseRegions>
+
+    @POST("/verification/verify/code")
+    fun verifyCode(@Body body: RequestVerifyCode): Call<ResponseToken>
+
 
 }

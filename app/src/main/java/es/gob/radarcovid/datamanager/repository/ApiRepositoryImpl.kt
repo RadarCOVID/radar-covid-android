@@ -4,6 +4,7 @@ import es.gob.radarcovid.common.base.BaseRepository
 import es.gob.radarcovid.datamanager.api.ApiInterface
 import es.gob.radarcovid.models.request.RequestKpiReport
 import es.gob.radarcovid.models.request.RequestPostAnswers
+import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
 import org.funktionale.either.Either
 import javax.inject.Inject
@@ -49,5 +50,11 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
         callService {
             apiInterface.postKpiReport(requestKpiReport)
         }
+
+    override fun verifyCode(body: RequestVerifyCode): Either<Throwable, ResponseToken> =
+        callService {
+            apiInterface.verifyCode(body)
+        }
+
 
 }

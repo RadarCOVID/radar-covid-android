@@ -1,97 +1,67 @@
 package es.gob.radarcovid.datamanager.usecase
 
-import es.gob.radarcovid.BuildConfig
-import es.gob.radarcovid.R
+import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.repository.RawRepository
+import es.gob.radarcovid.models.request.RequestVerifyCode
+import es.gob.radarcovid.models.response.ResponseToken
+import io.jsonwebtoken.Claims
+import io.jsonwebtoken.Jws
 import io.jsonwebtoken.Jwts
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.bouncycastle.util.io.pem.PemReader
-import java.io.StringReader
-import java.security.KeyFactory
-import java.security.PrivateKey
-import java.security.spec.PKCS8EncodedKeySpec
-import java.text.SimpleDateFormat
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Observable
 import java.util.*
 import javax.inject.Inject
 
 class ReportInfectedUseCase @Inject constructor(
     private val contactTracingRepository: ContactTracingRepository,
     private val preferencesRepository: PreferencesRepository,
-    private val rawRepository: RawRepository
+    private val rawRepository: RawRepository,
+    private val apiRepository: ApiRepository
 ) {
 
-    fun reportInfected(reportCode: String, onSuccess: () -> Unit, onError: (Throwable) -> Unit) {
-        CoroutineScope(Dispatchers.Main).launch {
-            withContext(Dispatchers.IO) {
-                try {
-                    val onset = Calendar.getInstance()
-                    onset.add(Calendar.DATE, -14)
+    private val publicKey = "LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHYk1CQUdCeXFHU000OUFnRUdCU3VCQkFBakE0R0dBQVFCbUlXU0ptdGVGNkh2VnI0M1V5SzliZStlNkpPQgpDRjlVaXpMeis4a3padkVEc25nMGl3VEF3UVB0QzdBMDlzQjVMM3EwSUl1N250Yzd4U1VqSUdTakZvd0JXL0xPCnFtMTBYQ1NkUWNZT3BMTi85dUI1emZKVUZOY3B6Ynk4dDAzSlg3TUZiYi9vQm1pcFNNNHptSm1UajR3Qm9XZ2sKRlF6ZEJHcnAwR2laUU9WVXRtUT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg=="
 
-                    val token = buildToken(reportCode, onset)
 
-                    contactTracingRepository.notifyInfected(token, onset.time, onSuccess, onError)
-                } catch (e: Exception) {
-                    onError(e)
-                }
-            }
+    fun reportInfected(reportCode: String): Completable {
+
+        return getVerifyToken(reportCode).flatMapCompletable {
+            val onset = Calendar.getInstance()
+            onset.add(Calendar.DATE, -14)
+            val jwt = parseToken(it.token)
+            var stringOnset = jwt.body.get("onset")
+            contactTracingRepository.notifyInfected(it.token, onset.time)
+        }.concatWith {
+            setInfectionReportDate(Date())
+            Completable.complete()
         }
 
     }
 
-    fun setInfectionReportDate(date: Date) {
+    private fun setInfectionReportDate(date: Date) {
         preferencesRepository.setInfectionReportDate(date)
     }
 
-    private fun buildToken(reportCode: String, onset: Calendar): String {
+    private fun getVerifyToken(reportCode: String): Observable<ResponseToken> {
+        return Observable.create { emitter ->
+            val result = apiRepository.verifyCode(RequestVerifyCode(null, reportCode))
 
-        //val id = preferencesRepository.getUuid()
-        val id = UUID.randomUUID().toString()
-
-        val issuedDate = Date()
-        val expirationDate = getDatePlus(issuedDate, 30)
-
-        val key = loadPrivateKey(rawRepository.getRawFileString(R.raw.sedia_rsa_private_key))
-
-        val formatOnSet = SimpleDateFormat("yyyy-MM-dd").format(onset.time)
-
-        return Jwts.builder()
-            .setId(id)
-            .setIssuer("http://es.gob.radarcovid.android")
-            .setAudience("http://es.gob.radarcovid.android")
-            .setSubject("androidApp")
-            .setIssuedAt(issuedDate)
-            .setExpiration(expirationDate)
-            .claim("tan", reportCode)
-            .claim("scope", "exposed")
-            .claim("onset", formatOnSet)
-            .signWith(key)
-            .compact()
-
-    }
-
-
-    private fun loadPrivateKey(key: String): PrivateKey? {
-        var readerPem: PemReader? = null
-        var result: PrivateKey? = null
-        try {
-            val reader = StringReader(key)
-            readerPem = PemReader(reader)
-            readerPem.use {
-                val obj = it.readPemObject()
-                val content = obj.getContent()
-                result = KeyFactory.getInstance("RSA").generatePrivate(PKCS8EncodedKeySpec(content))
+            if (result.isLeft()) {
+                emitter.onError(result.left().get())
+            } else {
+                emitter.onNext(result.right().get())
+                emitter.onComplete()
             }
 
-        } catch (e: Exception) {
-            if (BuildConfig.DEBUG)
-                e.printStackTrace()
         }
-        return result
+    }
+
+    private fun parseToken(signedJWT: String): Jws<Claims> {
+        return Jwts.parserBuilder()
+            .setSigningKey(publicKey) // <---- publicKey, not privateKey
+            .build()
+            .parseClaimsJws(signedJWT);
     }
 
     private fun getDatePlus(date: Date, minutes: Int): Date {
