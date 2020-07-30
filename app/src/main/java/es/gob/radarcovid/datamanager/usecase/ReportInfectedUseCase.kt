@@ -11,6 +11,10 @@ import io.jsonwebtoken.Jws
 import io.jsonwebtoken.Jwts
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
+import java.security.Key
+import java.security.KeyFactory
+import java.security.spec.PKCS8EncodedKeySpec
+import java.security.spec.X509EncodedKeySpec
 import java.util.*
 import javax.inject.Inject
 
@@ -59,9 +63,16 @@ class ReportInfectedUseCase @Inject constructor(
 
     private fun parseToken(signedJWT: String): Jws<Claims> {
         return Jwts.parserBuilder()
-            .setSigningKey(publicKey) // <---- publicKey, not privateKey
+            .setSigningKey(getKey(publicKey))
             .build()
             .parseClaimsJws(signedJWT);
+    }
+
+    fun getKey(key: String): Key? {
+
+        val byteKey: ByteArray = android.util.Base64.decode(key, android.util.Base64.DEFAULT)
+        return KeyFactory.getInstance("RSA").generatePrivate(PKCS8EncodedKeySpec(byteKey))
+
     }
 
     private fun getDatePlus(date: Date, minutes: Int): Date {
