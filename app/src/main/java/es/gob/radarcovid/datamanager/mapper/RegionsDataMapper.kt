@@ -13,7 +13,7 @@ class RegionsDataMapper @Inject constructor() {
 
     private fun transform(responseRegionsItem: ResponseRegionsItem?): Region =
         responseRegionsItem?.let {
-            Region(it.id ?: "", it.description ?: "")
+            Region(it.id ?: "", it.description ?: "", it.phone ?: "", it.web ?: "")
         } ?: Region()
 
 }

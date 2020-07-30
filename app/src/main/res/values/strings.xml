@@ -81,6 +81,7 @@
 
     /********** Onboarding ************/
     <string name="onboarding_title_step_1">Bienvenido a &appname;</string>
+    <string name="onboarding_subtitle_step_1">Para darte el mejor servicio, por favor, selecciona tu idioma. Si no es castellano, reinicia <b>Radar COVID</b> después de seleccionar</string>
     <string name="onboarding_step1_message_1">Conoce en todo momento si te expones al coronavirus, ayudándote a protegerte y proteger a los demás.</string>
     <string name="onboarding_step1_message_2">Comunica de forma anónima tu diagnóstico Covid positivo.</string>
     <string name="onboarding_step1_message_3">Si estuvieras afectado, comunicaremos la exposición de forma anónima a las personas con las que has estado en contacto.</string>
@@ -184,7 +185,7 @@
     <string name="exposure_detail_high_title">Tu exposición es alta</string>
     <string name="exposure_detail_high_last_update">Podrías estar infectado desde hace <b>%1$s</b> (actualizado %2$s)</string>
 
-    <string name="exposure_detail_phone_title">Por favor, aíslate durante 14 días y llama al siguiente teléfono</string>
+    <string name="exposure_detail_phone_title">Para darte la mejor orientación, selecciona tu Comunidad Autónoma:</string>
     <string name="exposure_detail_high_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
     <string name="exposure_detail_symptom_cough">Tos persistente</string>
     <string name="exposure_detail_symptom_fever">Fiebre alta continua</string>
@@ -207,17 +208,10 @@
 
     <string name="exposure_detail_infected_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
 
-    <!--    <string name="exposure_detail_tips_title_low">Manten las medidas de seguridad y distanciamiento social.</string>-->
+    /********** Region info ************/
 
-    <!--    <string name="exposure_detail_tip_mask">Usa siempre mascarilla quirúrgica</string>-->
-    <!--    <string name="exposure_detail_tip_wash_hands">Lávate las manos frecuentemente</string>-->
-
-
-    <!--    <string name="exposure_detail_tip_distance">Mantén la distancia de seguridad de 1,5 metros</string>-->
-    <!--    <string name="exposure_detail_tip_rules">Respeta las normas particulares en tu territorio sobre aforos y actividades permitidas</string>-->
-    <!--    <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>-->
-    <!--    <string name="exposure_detail_tip_cough">Al toser o estornudar, tapate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>-->
-
+    <string name="region_info_phone_title">Teléfono COVID</string>
+    <string name="region_info_web_title">Web información COVID</string>
 
     /********** Covid Report ************/
 
@@ -316,6 +310,12 @@
     <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Por favor, activa las notificaciones de exposición. Es imprescindible para que &appname;
         funcione correctamente.</string>
 
+    /********** Locale selection module ************/
+    <string name="locale_selection_region_hint">*Selecciona tu comunidad autónoma</string>
+    <string name="locale_selection_region_default">Selecciona tu Comunidad Autónoma</string>
+    <string name="locale_selection_language_default">Selecciona tu idioma</string>
+    <string name="locale_selection_warning_message">Para aplicar los cambios realizados es necesario reiniciar la aplicación.</string>
+
     /********** Accesibility ************/
 
     <string name="description_arrow_button_back">Botón atrás</string>
@@ -327,7 +327,7 @@
     <string name="warning_need_update_message">Para poder seguir utilizando &appname; es necesario que actualices la aplicación.</string>
     <string name="warning_need_update_button">ACTUALIZAR</string>
     <string name="exposure_high_notification_title">Riesgo de exposición alto.</string>
-    <string name="exposure_high_notification">Llama gratis al 900 112 061 para reportarlo.</string>
+    <string name="exposure_high_notification">Tu exposición ahora es alta</string>
 
     <string name="empty_text"> </string>
     <string name="statisfaction_min">muy mala</string>

@@ -2,22 +2,15 @@ package es.gob.radarcovid.features.onboarding.pages.legal.view
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
-import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import androidx.core.content.ContextCompat
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
-import es.gob.radarcovid.features.onboarding.pages.OnboardingStepPageFragment
 import es.gob.radarcovid.features.onboarding.pages.legal.protocols.LegalInfoPresenter
 import es.gob.radarcovid.features.onboarding.pages.legal.protocols.LegalInfoView
+import es.gob.radarcovid.features.onboarding.view.OnboardingPageCallback
 import kotlinx.android.synthetic.main.fragment_legal_info.*
 import javax.inject.Inject
 
@@ -63,7 +56,7 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
         textViewPrivacyPolicy.setOnClickListener { presenter.onPrivacyPolicyButtonClick() }
         textViewUsageConditions.setOnClickListener { presenter.onConditionsButtonClick() }
 
-        buttonAccept.setOnClickListener { (activity as? OnboardingStepPageFragment.Callback)?.onContinueButtonClick() }
+        buttonAccept.setOnClickListener { (activity as? OnboardingPageCallback)?.onContinueButtonClick() }
 
     }
 

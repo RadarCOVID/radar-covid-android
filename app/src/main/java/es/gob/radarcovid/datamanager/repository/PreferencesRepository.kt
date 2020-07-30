@@ -22,13 +22,13 @@ interface PreferencesRepository {
 
     fun setInfectionReportDate(date: Date)
 
-    fun setCurrentRegion(region: String)
+    fun setSelectedRegion(region: String)
 
-    fun getCurrentRegion(): String
+    fun getSelectedRegion(): String
 
-    fun setCurrentLanguage(language: String)
+    fun setSelectedLanguage(language: String)
 
-    fun getCurrentLanguage(): String
+    fun getSelectedLanguage(): String
 
     fun setLabels(labels: Map<String, String>)
 
