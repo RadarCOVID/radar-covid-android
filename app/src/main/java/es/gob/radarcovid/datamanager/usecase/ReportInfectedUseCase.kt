@@ -27,9 +27,9 @@ class ReportInfectedUseCase @Inject constructor(
 
         return getVerifyToken(reportCode).flatMapCompletable {
             val onset = Calendar.getInstance()
-            onset.add(Calendar.DATE, -14)
             val jwt = parseToken(it.token)
-            var stringOnset = jwt.body.get("onset")
+            var tokenOnset = (jwt.body.get("onset") as Int).toLong()
+            onset.timeInMillis = tokenOnset * 1000
             contactTracingRepository.notifyInfected(it.token, onset.time)
         }.concatWith {
             setInfectionReportDate(Date())
