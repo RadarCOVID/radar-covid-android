@@ -1,5 +1,6 @@
 package es.gob.radarcovid.datamanager.usecase
 
+import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
@@ -11,10 +12,7 @@ import io.jsonwebtoken.Jws
 import io.jsonwebtoken.Jwts
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-import java.security.Key
-import java.security.KeyFactory
-import java.security.spec.PKCS8EncodedKeySpec
-import java.security.spec.X509EncodedKeySpec
+import org.dpppt.android.sdk.util.SignatureUtil
 import java.util.*
 import javax.inject.Inject
 
@@ -24,9 +22,6 @@ class ReportInfectedUseCase @Inject constructor(
     private val rawRepository: RawRepository,
     private val apiRepository: ApiRepository
 ) {
-
-    private val publicKey = "LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHYk1CQUdCeXFHU000OUFnRUdCU3VCQkFBakE0R0dBQVFCbUlXU0ptdGVGNkh2VnI0M1V5SzliZStlNkpPQgpDRjlVaXpMeis4a3padkVEc25nMGl3VEF3UVB0QzdBMDlzQjVMM3EwSUl1N250Yzd4U1VqSUdTakZvd0JXL0xPCnFtMTBYQ1NkUWNZT3BMTi85dUI1emZKVUZOY3B6Ynk4dDAzSlg3TUZiYi9vQm1pcFNNNHptSm1UajR3Qm9XZ2sKRlF6ZEJHcnAwR2laUU9WVXRtUT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg=="
-
 
     fun reportInfected(reportCode: String): Completable {
 
@@ -63,16 +58,9 @@ class ReportInfectedUseCase @Inject constructor(
 
     private fun parseToken(signedJWT: String): Jws<Claims> {
         return Jwts.parserBuilder()
-            .setSigningKey(getKey(publicKey))
+            .setSigningKey(SignatureUtil.getPublicKeyFromBase64(BuildConfig.PUBLIC_KEY_VERIFICATION))
             .build()
             .parseClaimsJws(signedJWT);
-    }
-
-    fun getKey(key: String): Key? {
-
-        val byteKey: ByteArray = android.util.Base64.decode(key, android.util.Base64.DEFAULT)
-        return KeyFactory.getInstance("RSA").generatePrivate(PKCS8EncodedKeySpec(byteKey))
-
     }
 
     private fun getDatePlus(date: Date, minutes: Int): Date {
