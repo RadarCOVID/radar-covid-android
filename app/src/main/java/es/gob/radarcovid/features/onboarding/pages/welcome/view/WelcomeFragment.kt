@@ -64,7 +64,12 @@ class WelcomeFragment : BaseFragment(), WelcomeView {
 
     override fun showLanguageChangeDialog() {
         CMDialog.Builder(context!!)
-            .setMessage(R.string.locale_selection_warning_message)
+            .setMessage(
+                labelManager.getText(
+                    "LOCALE_CHANGE_WARING",
+                    R.string.locale_selection_warning_message
+                ).toString()
+            )
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_ACCEPT_BUTTON",
@@ -74,15 +79,15 @@ class WelcomeFragment : BaseFragment(), WelcomeView {
                 it.dismiss()
                 presenter.onLocaleChangeConfirm()
             }
-            .setNegativeButton(
-                labelManager.getText(
-                    "ALERT_CANCEL_BUTTON",
-                    R.string.question_dialog_cancel
-                ).toString()
-            ) {
-                it.dismiss()
-                presenter.onLocaleChangeCancel()
-            }
+//            .setNegativeButton(
+//                labelManager.getText(
+//                    "ALERT_CANCEL_BUTTON",
+//                    R.string.question_dialog_cancel
+//                ).toString()
+//            ) {
+//                it.dismiss()
+//                presenter.onLocaleChangeCancel()
+//            }
             .setCloseButton { it.dismiss() }
             .build()
             .show()
