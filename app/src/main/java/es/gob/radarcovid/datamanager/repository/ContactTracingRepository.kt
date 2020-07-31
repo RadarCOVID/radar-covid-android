@@ -3,6 +3,7 @@ package es.gob.radarcovid.datamanager.repository
 import es.gob.radarcovid.common.di.scope.PerActivity
 import es.gob.radarcovid.models.domain.ExposureInfo
 import es.gob.radarcovid.models.domain.Settings
+import io.reactivex.rxjava3.core.Completable
 import java.util.*
 
 @PerActivity
@@ -26,9 +27,7 @@ interface ContactTracingRepository {
 
     fun notifyInfected(
         authCode: String,
-        onSet: Date,
-        onSuccess: () -> Unit,
-        onError: (Throwable) -> Unit
-    )
+        onSet: Date
+    ) : Completable
 
 }

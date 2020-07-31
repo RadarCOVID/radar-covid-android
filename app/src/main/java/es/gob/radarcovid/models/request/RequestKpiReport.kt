@@ -14,6 +14,7 @@ data class RequestKpi(val kpi: String, val timestamp: String, val value: Int) {
         const val SUMMATION_RISK_SCORE = "SUMMATION_RISK_SCORE"
 
         const val MATCH_CONFIRMED = "MATCH_CONFIRMED"
+        const val BLUETOOTH_ACTIVATED = "BLUETOOTH_ACTIVATED"
     }
 
 }

@@ -4,6 +4,7 @@ import es.gob.radarcovid.common.base.BaseRepository
 import es.gob.radarcovid.datamanager.api.ApiInterface
 import es.gob.radarcovid.models.request.RequestKpiReport
 import es.gob.radarcovid.models.request.RequestPostAnswers
+import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
 import org.funktionale.either.Either
 import javax.inject.Inject
@@ -19,19 +20,26 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
         apiInterface.getSettings()
     }
 
-    override fun getLabels(language: String, region: String): Either<Throwable, ResponseLabels> =
+    override fun getLabels(
+        uuid: String,
+        language: String,
+        region: String
+    ): Either<Throwable, ResponseLabels> =
         callService {
-            apiInterface.getLabels(region, language)
+            apiInterface.getLabels(uuid, language, region)
         }
 
-    override fun getLanguages(language: String): Either<Throwable, ResponseLanguages> =
+    override fun getLanguages(
+        uuid: String,
+        language: String
+    ): Either<Throwable, ResponseLanguages> =
         callService {
-            apiInterface.getLanguages(language)
+            apiInterface.getLanguages(uuid, language)
         }
 
-    override fun getRegions(language: String): Either<Throwable, ResponseRegions> =
+    override fun getRegions(uuid: String, language: String): Either<Throwable, ResponseRegions> =
         callService {
-            apiInterface.getRegions(language)
+            apiInterface.getRegions(uuid, language, true)
         }
 
     override fun getQuestions(): Either<Throwable, ResponseQuestions> = callService {
@@ -49,5 +57,11 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
         callService {
             apiInterface.postKpiReport(requestKpiReport)
         }
+
+    override fun verifyCode(body: RequestVerifyCode): Either<Throwable, ResponseToken> =
+        callService {
+            apiInterface.verifyCode(body)
+        }
+
 
 }

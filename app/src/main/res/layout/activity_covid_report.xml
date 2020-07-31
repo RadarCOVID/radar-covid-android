@@ -38,14 +38,15 @@
             android:paddingRight="22dp"
             android:paddingBottom="22dp">
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleXSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/covid_report_title"
-                android:textColor="@color/gray" />
+                android:textColor="@color/gray"
+                app:labelId="MY_HEALTH_TITLE_PAGE" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleMedium"

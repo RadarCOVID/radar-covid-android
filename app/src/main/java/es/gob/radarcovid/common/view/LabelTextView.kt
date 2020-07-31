@@ -11,6 +11,12 @@ import javax.inject.Inject
 class LabelTextView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : AppCompatTextView(context, attrs, defStyleAttr) {
+
+    @Inject
+    lateinit var labelManager: LabelManager
+
+    private var labelId: String?
+
     init {
         (context.applicationContext as HasAndroidInjector)
             .androidInjector()
@@ -22,7 +28,7 @@ class LabelTextView @JvmOverloads constructor(
             0, 0
         ).apply {
             try {
-                val labelId = getString(R.styleable.LabelTextView_labelId)
+                labelId = getString(R.styleable.LabelTextView_labelId)
                 val defaultText = getText(R.styleable.LabelTextView_android_text)
                 text = labelManager.getText(labelId, defaultText)
             } finally {
@@ -32,15 +38,16 @@ class LabelTextView @JvmOverloads constructor(
 
     }
 
-    @Inject
-    lateinit var labelManager: LabelManager
-
     fun setText(labelId: String?, resId: Int) {
         setText(labelId, context.getString(resId))
     }
 
     fun setText(labelId: String?, defaultText: CharSequence) {
         text = labelManager.getText(labelId, defaultText)
+    }
+
+    fun reloadText() {
+        text = labelManager.getText(labelId, text)
     }
 
 }

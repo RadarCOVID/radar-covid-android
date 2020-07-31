@@ -11,8 +11,6 @@ import es.gob.radarcovid.features.main.di.MainModule
 import es.gob.radarcovid.features.main.view.MainActivity
 import es.gob.radarcovid.features.onboarding.di.OnboardingModule
 import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
-import es.gob.radarcovid.features.poll.completed.di.PollCompletedModule
-import es.gob.radarcovid.features.poll.completed.view.PollCompletedFragment
 import es.gob.radarcovid.features.poll.main.di.PollModule
 import es.gob.radarcovid.features.poll.main.view.PollActivity
 import es.gob.radarcovid.features.splash.di.SplashModule
@@ -34,7 +32,7 @@ abstract class ActivitiesModule {
     abstract fun bindsMainActivity(): MainActivity
 
     @PerActivity
-    @ContributesAndroidInjector(modules = [ExposureModule::class])
+    @ContributesAndroidInjector(modules = [ExposureModule::class, ExposureFragmentsModule::class])
     abstract fun bindsExposureActivity(): ExposureActivity
 
     @PerActivity

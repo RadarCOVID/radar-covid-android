@@ -1,10 +1,13 @@
 package es.gob.radarcovid.features.covidreport.form.presenter
 
+import android.util.Log
 import es.gob.radarcovid.datamanager.usecase.GetInternetInfoUseCase
 import es.gob.radarcovid.datamanager.usecase.ReportInfectedUseCase
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportRouter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
 import javax.inject.Inject
 
@@ -45,19 +48,18 @@ class CovidReportPresenterImpl @Inject constructor(
 
     private fun reportInfected(reportCode: String) {
         view.showLoading()
-        reportInfectedUseCase.reportInfected(reportCode,
-            onSuccess = {
-                view.hideLoading()
-                view.finish()
-                reportInfectedUseCase.setInfectionReportDate(Date())
-                router.navigateToConfirmation()
-            },
-            onError = {
-                view.hideLoading()
-                //view.showError(it)
-                view.showReportErrorDialog()
-            }
-        )
+        reportInfectedUseCase.reportInfected(reportCode)
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                    view.hideLoading()
+                    view.finish()
+                    router.navigateToConfirmation()
+                }, {
+                    Log.e( "CovidReportPresenter", "Error reporting infected", it)
+                    view.hideLoading()
+                    view.showReportErrorDialog()
+            })
     }
 
 }
