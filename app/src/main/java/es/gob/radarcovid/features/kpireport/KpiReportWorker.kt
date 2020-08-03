@@ -87,7 +87,10 @@ class KpiReportWorker(context: Context, workerParams: WorkerParameters) :
                 suspendCoroutine<RequestKpiReport?> { continuation ->
                     GoogleExposureClient.getInstance(context)
                         .getExposureSummary(token).addOnCompleteListener { task ->
-                            continuation.resume(transform(task.result, timeStamp))
+                            if (task.isSuccessful)
+                                continuation.resume(transform(task.result, timeStamp))
+                            else
+                                continuation.resume(null)
                         }
                 }
             }
