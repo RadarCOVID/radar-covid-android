@@ -164,6 +164,8 @@
     <string name="exposure_detail_more_info_tips">Tienes más información sobre consejos, sintomas y medidas <b>aquí</b></string>
     <string name="exposure_detail_covid_report_message"><b>Ayúdanos a cuidar a los demás.</b> Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
 
+    <string name="exposure_detail_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
+
     /********** Exposure detail low ************/
     <string name="exposure_detail_low_title_small">RIESGO BAJO</string>
     <string name="exposure_detail_low_title">Tu exposición es baja</string>
@@ -249,6 +251,7 @@
     <string name="confirmation_tip_5">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
     <string name="confirmation_tip_6">Si los síntomas empeoran llama al 112</string>
     <string name="confirmation_acknowledge">Gracias por seguir cuidándote y cuidando a los demás.</string>
+    <string name="confirmation_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
 
 
     /********** My data ************/

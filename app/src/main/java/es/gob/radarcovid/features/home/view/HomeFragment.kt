@@ -149,6 +149,14 @@ class HomeFragment : BaseFragment(), HomeView {
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
     }
 
+    override fun showReportButton() {
+        buttonCovidReport.visibility = View.VISIBLE
+    }
+
+    override fun hideReportButton() {
+        buttonCovidReport.visibility = View.GONE
+    }
+
     override fun setRadarBlockChecked(isChecked: Boolean) {
         switchRadar.isChecked = isChecked
         showRadarBlockEnabled(isChecked)

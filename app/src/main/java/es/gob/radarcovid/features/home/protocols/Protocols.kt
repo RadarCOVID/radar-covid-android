@@ -11,7 +11,11 @@ interface HomeView : RequestView {
     fun showExposureLevelHigh()
 
     fun showExposureLevelInfected()
-    
+
+    fun showReportButton()
+
+    fun hideReportButton()
+
     fun setRadarBlockChecked(isChecked: Boolean)
 
     fun areBatteryOptimizationsIgnored(): Boolean

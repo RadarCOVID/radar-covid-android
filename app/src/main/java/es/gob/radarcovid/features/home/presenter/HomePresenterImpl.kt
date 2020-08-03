@@ -36,7 +36,7 @@ class HomePresenterImpl @Inject constructor(
 
     override fun onResume() {
         BUS.register(this)
-        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
+        updateExposureStatus()
     }
 
     override fun onPause() {
@@ -88,7 +88,17 @@ class HomePresenterImpl @Inject constructor(
 
     @Subscribe
     fun onExposureStatusChange(event: EventExposureStatusChange) {
-        showExposureInfo(getExposureInfoUseCase.getExposureInfo())
+        updateExposureStatus()
+    }
+
+    private fun updateExposureStatus() {
+        val exposureInfo = getExposureInfoUseCase.getExposureInfo()
+        if (exposureInfo.level == ExposureInfo.Level.INFECTED)
+            view.hideReportButton()
+        else
+            view.showReportButton()
+
+        showExposureInfo(exposureInfo)
     }
 
     private fun showExposureInfo(exposureInfo: ExposureInfo) {

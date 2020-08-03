@@ -12,9 +12,16 @@ class ExposureRouterImpl @Inject constructor(private val context: Context) : Exp
     override fun navigateToCovidReport() = CovidReportActivity.open(context)
 
     override fun navigateToBrowser(url: String) {
-        context.startActivity(Intent(Intent.ACTION_VIEW).apply {
-            data = Uri.parse(url)
-        })
+        val uri: Uri = if (url.contains("http://") || url.contains("https://"))
+            Uri.parse(url)
+        else
+            Uri.parse("http://$url")
+        context.startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                uri
+            )
+        )
     }
 
 }

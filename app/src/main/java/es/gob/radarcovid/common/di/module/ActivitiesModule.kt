@@ -3,6 +3,7 @@ package es.gob.radarcovid.common.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import es.gob.radarcovid.common.di.scope.PerActivity
+import es.gob.radarcovid.features.covidreport.confirmation.ConfirmationActivity
 import es.gob.radarcovid.features.covidreport.form.di.CovidReportModule
 import es.gob.radarcovid.features.covidreport.form.view.CovidReportActivity
 import es.gob.radarcovid.features.exposure.di.ExposureModule
@@ -38,6 +39,10 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [CovidReportModule::class])
     abstract fun bindsReportActivity(): CovidReportActivity
+
+    @PerActivity
+    @ContributesAndroidInjector
+    abstract fun bindsConfirmationActivity(): ConfirmationActivity
 
     @PerActivity
     @ContributesAndroidInjector(modules = [PollModule::class, PollFragmentsModule::class])

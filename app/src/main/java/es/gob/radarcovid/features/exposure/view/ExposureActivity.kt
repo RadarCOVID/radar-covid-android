@@ -49,9 +49,30 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     private fun initViews() {
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
-        buttonMoreInfoLow.setOnClickListener { presenter.onMoreInfoButtonClick() }
-        buttonMoreInfoHigh.setOnClickListener { presenter.onMoreInfoButtonClick() }
-        buttonMoreInfoInfected.setOnClickListener { presenter.onMoreInfoButtonClick() }
+        buttonMoreInfoLow.setOnClickListener {
+            presenter.onMoreInfoButtonClick(
+                labelManager.getText(
+                    "EXPOSURE_DETAIL_LOW_INFO_URL",
+                    R.string.exposure_detail_info_url
+                ).toString()
+            )
+        }
+        buttonMoreInfoHigh.setOnClickListener {
+            presenter.onMoreInfoButtonClick(
+                labelManager.getText(
+                    "EXPOSURE_HIGH_INFO_URL",
+                    R.string.exposure_detail_info_url
+                ).toString()
+            )
+        }
+        buttonMoreInfoInfected.setOnClickListener {
+            presenter.onMoreInfoButtonClick(
+                labelManager.getText(
+                    "EXPOSURE_INFECTED_INFO_URL",
+                    R.string.exposure_detail_info_url
+                ).toString()
+            )
+        }
     }
 
     override fun showExposureLevelLow() {

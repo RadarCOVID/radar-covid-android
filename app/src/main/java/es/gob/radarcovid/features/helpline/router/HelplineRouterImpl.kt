@@ -10,7 +10,7 @@ import javax.inject.Inject
 class HelplineRouterImpl @Inject constructor(private val activity: Activity) : HelplineRouter {
 
     override fun navigateToBrowser(url: String) {
-        val uri: Uri = if (url.contains("http://"))
+        val uri: Uri = if (url.contains("http://") || url.contains("https://"))
             Uri.parse(url)
         else
             Uri.parse("http://$url")
