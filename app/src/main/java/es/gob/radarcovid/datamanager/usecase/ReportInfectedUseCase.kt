@@ -4,7 +4,6 @@ import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
-import es.gob.radarcovid.datamanager.repository.RawRepository
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.ResponseToken
 import io.jsonwebtoken.Claims
@@ -13,27 +12,27 @@ import io.jsonwebtoken.Jwts
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import org.dpppt.android.sdk.util.SignatureUtil
+import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
 class ReportInfectedUseCase @Inject constructor(
     private val contactTracingRepository: ContactTracingRepository,
     private val preferencesRepository: PreferencesRepository,
-    private val rawRepository: RawRepository,
     private val apiRepository: ApiRepository
 ) {
 
     fun reportInfected(reportCode: String): Completable {
 
         return getVerifyToken(reportCode).flatMapCompletable {
-            val onset = Calendar.getInstance()
+
             val jwt = parseToken(it.token)
-            var tokenOnset = (jwt.body.get("onset") as Int).toLong()
-            onset.timeInMillis = tokenOnset * 1000
-            contactTracingRepository.notifyInfected(it.token, onset.time)
+            val formatter = SimpleDateFormat("yyyy-MM-dd");
+            var onset = formatter.parse(jwt.body.get("onset") as? String)
+            contactTracingRepository.notifyInfected(it.token, onset)
         }.concatWith {
             setInfectionReportDate(Date())
-            Completable.complete()
+            it.onComplete()
         }
 
     }
