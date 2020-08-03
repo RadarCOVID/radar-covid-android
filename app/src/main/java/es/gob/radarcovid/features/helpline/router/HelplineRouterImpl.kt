@@ -10,7 +10,16 @@ import javax.inject.Inject
 class HelplineRouterImpl @Inject constructor(private val activity: Activity) : HelplineRouter {
 
     override fun navigateToBrowser(url: String) {
-        activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+        val uri: Uri = if (url.contains("http://"))
+            Uri.parse(url)
+        else
+            Uri.parse("http://$url")
+        activity.startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                uri
+            )
+        )
     }
 
     override fun navigateToPoll() {

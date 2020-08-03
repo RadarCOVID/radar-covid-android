@@ -86,13 +86,13 @@
                 android:id="@+id/imageViewWebIcon"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:src="@drawable/ic_web"
-                app:layout_constraintBottom_toBottomOf="@id/textViewWebTitle"
+                android:src="@drawable/ic_info_link"
+                app:layout_constraintBottom_toBottomOf="@id/textViewInfoWebTitle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/textViewWebTitle" />
+                app:layout_constraintTop_toTopOf="@id/textViewInfoWebTitle" />
 
             <es.gob.radarcovid.common.view.LabelTextView
-                android:id="@+id/textViewWebTitle"
+                android:id="@+id/textViewInfoWebTitle"
                 style="@style/TextSemiboldSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -112,8 +112,8 @@
                 android:textColor="@color/purple_9C"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/textViewWebTitle"
-                app:layout_constraintTop_toBottomOf="@id/textViewWebTitle"
+                app:layout_constraintStart_toStartOf="@id/textViewInfoWebTitle"
+                app:layout_constraintTop_toBottomOf="@id/textViewInfoWebTitle"
                 tools:text="www.google.es" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

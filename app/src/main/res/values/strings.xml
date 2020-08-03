@@ -130,7 +130,7 @@
     /********** Home ************/
     <string name="exposition_block_low_title">Exposición baja</string>
     <string name="exposition_block_medium_title">Exposición media</string>
-    <string name="exposition_block_high_title">Exposición alta</string>
+    <string name="exposition_block_high_title">Contacto estrecho</string>
     <string name="exposition_block_infected_title">COVID-19 Positivo</string>
 
     <string name="exposition_block_low_description"><b>Te informaremos en el caso de un posible contacto de riesgo.</b></string>
@@ -265,22 +265,26 @@
 
     /********** Helpline ************/
 
-    <string name="helpline_title">Ayúdanos a mejorar</string>
-    <string name="helpline_title_2">Atención telefónica</string>
-    <string name="helpline_message_p2">Contacta con nosotros <b>si tu riesgo de exposición en la aplicación es alto</b> o si tienes cualquier <b>incidencia</b> sobre la aplicación.</string>
-    <string name="helpline_button_start">Cuéntanos tu experiencia</string>
+    <string name="helpline_title">Para más información…</string>
+    <string name="helpline_message_p2">¿Tienes alguna pregunta sobre cómo funciona <b>Radar COVID</b>? ¿Qué hacer si recibes una notificación?\nConsulta aquí todas tus dudas:</string>
+
+    <string name="helpline_faqs_web_title">FAQs Radar COVID</string>
+    <string name="helpline_faqs_web_url">http://www.google.es</string>
+    <string name="helpline_info_web_title">Web información COVID</string>
+    <string name="helpline_info_web_url">http://www.google.es</string>
+    <string name="helpline_other_web_title">Otros enlaces:</string>
+    <string name="helpline_other_web_url">http://www.google.es</string>
+
+    /********** Poll ************/
 
     <string name="step_indicator_text">%1$d de %2$d</string>
-
     <string name="poll_title">CUÉNTANOS TU EXPERIENCIA</string>
     <string name="poll_button_next">Siguiente</string>
     <string name="poll_button_finish">Finalizar</string>
     <string name="poll_edit_text_hint">Describir…</string>
-
     <string name="question_dialog_message">No has respondido a una pregunta</string>
     <string name="question_dialog_ok">Continuar sin respuesta</string>
     <string name="question_dialog_cancel">Responder</string>
-
     <string name="poll_completed_t1">Gracias por ayudarnos a mejorar.</string>
     <string name="poll_completed_p1">Muchas gracias por participar en el piloto de la APP &appname;, tu opinión será clave para mejorarla y contribuir a prevenir futuros contagios.</string>
     <string name="poll_completed_t2">Un paso más</string>

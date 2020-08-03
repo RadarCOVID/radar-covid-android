@@ -18,6 +18,8 @@ interface HelplinePresenter {
 
     fun onInterViewEmailButtonClick()
 
+    fun onUrlButtonClick(url: String)
+
 }
 
 interface HelplineRouter {

@@ -41,9 +41,9 @@ class HelplineFragment : BaseFragment(), HelplineView {
     }
 
     private fun initViews() {
-
-        buttonContactSupport.setOnClickListener { presenter.onContactSupportButtonClick() }
-
+        textViewFaqsWebUrl.setOnClickListener { presenter.onUrlButtonClick(textViewFaqsWebUrl.text.toString()) }
+        textViewInfoWebUrl.setOnClickListener { presenter.onUrlButtonClick(textViewInfoWebUrl.text.toString()) }
+        textViewOtherWebUrl.setOnClickListener { presenter.onUrlButtonClick(textViewOtherWebUrl.text.toString()) }
     }
 
     override fun showDialerForSupport() {
