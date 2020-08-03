@@ -4,7 +4,6 @@ import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
-import es.gob.radarcovid.datamanager.repository.RawRepository
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.ResponseToken
 import io.jsonwebtoken.Claims
@@ -14,15 +13,12 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import org.dpppt.android.sdk.util.SignatureUtil
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 import javax.inject.Inject
 
 class ReportInfectedUseCase @Inject constructor(
     private val contactTracingRepository: ContactTracingRepository,
     private val preferencesRepository: PreferencesRepository,
-    private val rawRepository: RawRepository,
     private val apiRepository: ApiRepository
 ) {
 
@@ -36,7 +32,7 @@ class ReportInfectedUseCase @Inject constructor(
             contactTracingRepository.notifyInfected(it.token, onset)
         }.concatWith {
             setInfectionReportDate(Date())
-            Completable.complete()
+            it.onComplete()
         }
 
     }
