@@ -26,4 +26,8 @@ class HelplinePresenterImpl @Inject constructor(
         view.sendMailToInterview()
     }
 
+    override fun onUrlButtonClick(url: String) {
+        router.navigateToBrowser(url)
+    }
+
 }

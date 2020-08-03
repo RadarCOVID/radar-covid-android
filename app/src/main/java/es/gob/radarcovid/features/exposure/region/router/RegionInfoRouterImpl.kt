@@ -15,7 +15,7 @@ class RegionInfoRouterImpl @Inject constructor(private val context: Context) : R
     }
 
     override fun navigateToBrowser(url: String) {
-        val uri: Uri = if (url.contains("http://"))
+        val uri: Uri = if (url.contains("http://") || url.contains("https://"))
             Uri.parse(url)
         else
             Uri.parse("http://$url")

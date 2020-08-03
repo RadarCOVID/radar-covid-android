@@ -5,11 +5,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import es.gob.radarcovid.R
+import es.gob.radarcovid.common.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_confirmation.*
 
-class ConfirmationActivity : AppCompatActivity() {
+class ConfirmationActivity : BaseActivity() {
 
     companion object {
 
@@ -31,10 +31,16 @@ class ConfirmationActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
+        val infoUrl =
+            labelManager.getText("MY_HEALTH_REPORTED_INFO_URL", R.string.exposure_detail_info_url)
+                .toString()
+        val infoUri: Uri = if (infoUrl.contains("http://") || infoUrl.contains("https://"))
+            Uri.parse(infoUrl)
+        else
+            Uri.parse("http://$infoUrl")
         buttonMoreInfo.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data =
-                    Uri.parse("https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm")
+                data = infoUri
             })
         }
     }

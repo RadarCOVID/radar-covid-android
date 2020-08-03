@@ -40,7 +40,7 @@ interface ExposurePresenter {
 
     fun onReportButtonClick()
 
-    fun onMoreInfoButtonClick()
+    fun onMoreInfoButtonClick(url: String)
 
 }
 

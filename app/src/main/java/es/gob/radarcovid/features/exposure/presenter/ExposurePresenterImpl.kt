@@ -40,8 +40,8 @@ class ExposurePresenterImpl @Inject constructor(
         router.navigateToCovidReport()
     }
 
-    override fun onMoreInfoButtonClick() {
-        router.navigateToBrowser("https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm")
+    override fun onMoreInfoButtonClick(url: String) {
+        router.navigateToBrowser(url)
     }
 
     @Subscribe

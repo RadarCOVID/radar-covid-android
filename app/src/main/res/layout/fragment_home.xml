@@ -105,6 +105,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/shape_rounded_corners_white"
                 android:elevation="10dp"
                 android:paddingStart="23dp"
@@ -162,7 +163,6 @@
                 style="@style/ButtonNormal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/button_covid_report"
                 app:labelId="HOME_BUTTON_SEND_POSITIVE" />
