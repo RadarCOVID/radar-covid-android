@@ -63,8 +63,6 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-
-
         presenter.viewReady(arguments?.getBoolean(ARG_ACTIVATE_RADAR) ?: false)
     }
 
