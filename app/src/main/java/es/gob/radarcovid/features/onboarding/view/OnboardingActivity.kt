@@ -10,7 +10,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
-import es.gob.radarcovid.features.onboarding.pages.OnboardingStepPageFragment
+import es.gob.radarcovid.features.onboarding.pages.ActivationPageFragment
 import es.gob.radarcovid.features.onboarding.pages.legal.view.LegalInfoFragment
 import es.gob.radarcovid.features.onboarding.pages.welcome.view.WelcomeFragment
 import es.gob.radarcovid.features.onboarding.protocols.OnboardingPresenter
@@ -100,7 +100,7 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingPageCallbac
             when (position) {
                 0 -> WelcomeFragment.newInstance()
                 1 -> LegalInfoFragment.newInstance()
-                else -> OnboardingStepPageFragment.newInstance(position)
+                else -> ActivationPageFragment.newInstance()
             }
     }
 
