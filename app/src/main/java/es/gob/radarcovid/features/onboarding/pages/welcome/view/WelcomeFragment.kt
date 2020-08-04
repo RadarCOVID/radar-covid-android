@@ -66,7 +66,7 @@ class WelcomeFragment : BaseFragment(), WelcomeView {
         CMDialog.Builder(context!!)
             .setMessage(
                 labelManager.getText(
-                    "LOCALE_CHANGE_WARING",
+                    "LOCALE_CHANGE_WARNING",
                     R.string.locale_selection_warning_message
                 ).toString()
             )

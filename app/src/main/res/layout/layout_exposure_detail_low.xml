@@ -152,12 +152,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp" />
 
-    <TextView
+    <es.gob.radarcovid.common.view.LabelTextView
         style="@style/TitleSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/exposure_detail_acknowledgement_message"
         android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:labelId="THANKS" />
 
 </LinearLayout>
