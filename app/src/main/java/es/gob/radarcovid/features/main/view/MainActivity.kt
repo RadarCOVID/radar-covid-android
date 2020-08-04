@@ -73,12 +73,26 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun showExitConfirmationDialog() {
-        CMDialog.createDialog(
-            this, "",
-            getString(R.string.warning_exit_application_message),
-            getString(R.string.warning_exit_application_button), null
-        ) {
-            presenter.onExitConfirmed()
-        }.show()
+        CMDialog.Builder(this)
+            .setMessage(
+                labelManager.getText(
+                    "ALERT_EXIT_MESSAGE",
+                    R.string.warning_exit_application_message
+                ).toString()
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_CONFIRM_BUTTON",
+                    R.string.warning_exit_application_button
+                ).toString()
+            ) {
+                it.dismiss()
+                presenter.onExitConfirmed()
+            }
+            .setCloseButton {
+                it.dismiss()
+            }
+            .build()
+            .show()
     }
 }
