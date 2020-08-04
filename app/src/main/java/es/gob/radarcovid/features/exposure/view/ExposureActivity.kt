@@ -156,7 +156,10 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
     }
 
     override fun setLastUpdateNoData() {
-        textViewExpositionLastUpdate.setText(R.string.exposure_detail_low_last_update_no_data)
+        textViewExpositionLastUpdate.text = labelManager.getText(
+            "EXPOSITION_LOW_DESCRIPTION",
+            R.string.exposure_detail_low_last_update_no_data
+        ).toString().substringBefore(".")
     }
 
     override fun showDialerForSupport() {

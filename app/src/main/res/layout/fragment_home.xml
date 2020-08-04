@@ -111,7 +111,7 @@
                 android:paddingEnd="16dp"
                 android:paddingBottom="16dp">
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewRadarTitle"
                     style="@style/TitleExtraBoldSmall"
                     android:layout_width="0dp"
@@ -119,6 +119,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="10dp"
                     android:text="@string/radar_block_disabled_title"
+                    app:labelId="HOME_RADAR_TITLE_INACTIVE"
                     app:layout_constraintEnd_toStartOf="@id/switchRadar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -139,7 +140,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:track="@drawable/img_switch_track_with_padding" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewRadarDescription"
                     style="@style/TextNormal"
                     android:layout_width="wrap_content"
@@ -151,6 +152,7 @@
                     android:textColor="@color/red"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    app:labelId="HOME_RADAR_CONTENT_INACTIVE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textViewRadarTitle" />
