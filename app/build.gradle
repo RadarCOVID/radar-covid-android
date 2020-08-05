@@ -21,20 +21,13 @@ android {
     }
 
     signingConfigs {
-        releaseOld {
-            //THIS KEY WAS THE KEY USED WITH THE OLD PACKAGE NAME (es.gob.covidradar)
-            storeFile file("../app.keystore")
-            storePassword "es.gob"
-            keyAlias "covid19"
-            keyPassword "covid19"
-        }
-        release {
+        test {
             storeFile file("../app.keystore")
             storePassword "es.gob"
             keyAlias "radarcovid"
             keyPassword "radarcovid"
         }
-        upload {
+        release {
             storeFile file("../uploadkeystore.jks")
             storePassword "es.gob"
             keyAlias "radarcovidupload"
@@ -61,12 +54,25 @@ android {
 
             buildConfigField 'Boolean', 'isMock', 'false'
         }
+        internal {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.test
+
+            buildConfigField 'Boolean', 'isMock', 'false'
+
+            packagingOptions {
+                exclude 'DebugProbesKt.bin'
+            }
+        }
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            signingConfig signingConfigs.upload
+            signingConfig signingConfigs.release
 
             buildConfigField 'Boolean', 'isMock', 'false'
 
