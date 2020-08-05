@@ -12,6 +12,8 @@ interface HomeView : RequestView {
 
     fun showExposureLevelInfected()
 
+    fun showBackgroundEnabled(enabled: Boolean)
+
     fun showReportButton()
 
     fun hideReportButton()
@@ -34,7 +36,7 @@ interface HomePresenter {
 
     fun onPause()
 
-    fun onExpositionBlockClick()
+    fun onExposureBlockClick()
 
     fun onReportButtonClick()
 

@@ -3,7 +3,7 @@ package es.gob.radarcovid.features.home.presenter
 import com.squareup.otto.Subscribe
 import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
-import es.gob.radarcovid.datamanager.usecase.EnableExposureRadarUseCase
+import es.gob.radarcovid.datamanager.usecase.ExposureRadarUseCase
 import es.gob.radarcovid.datamanager.usecase.GetExposureInfoUseCase
 import es.gob.radarcovid.datamanager.usecase.OnboardingCompletedUseCase
 import es.gob.radarcovid.features.home.protocols.HomePresenter
@@ -17,14 +17,14 @@ class HomePresenterImpl @Inject constructor(
     private val view: HomeView,
     private val router: HomeRouter,
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase,
-    private val enableExposureRadarUseCase: EnableExposureRadarUseCase,
+    private val exposureRadarUseCase: ExposureRadarUseCase,
     private val getExposureInfoUseCase: GetExposureInfoUseCase
 ) : HomePresenter {
 
 
     override fun viewReady(activateRadar: Boolean) {
         if (onboardingCompletedUseCase.isOnBoardingCompleted()) {
-            view.setRadarBlockChecked(enableExposureRadarUseCase.isRadarEnabled())
+            view.setRadarBlockChecked(exposureRadarUseCase.isRadarEnabled())
         } else {
             onboardingCompletedUseCase.setOnboardingCompleted(true)
             if (activateRadar) {
@@ -43,12 +43,12 @@ class HomePresenterImpl @Inject constructor(
         BUS.unregister(this)
     }
 
-    override fun onExpositionBlockClick() {
+    override fun onExposureBlockClick() {
         router.navigateToExpositionDetail()
     }
 
     override fun onReportButtonClick() {
-        if (!enableExposureRadarUseCase.isRadarEnabled())
+        if (!exposureRadarUseCase.isRadarEnabled())
             view.showUnableToReportCovidDialog()
         else if (getExposureInfoUseCase.getExposureInfo().level == ExposureInfo.Level.INFECTED)
             router.navigateToCovidReportConfirmation()
@@ -59,7 +59,7 @@ class HomePresenterImpl @Inject constructor(
     override fun onSwitchRadarClick(currentlyEnabled: Boolean) {
         if (currentlyEnabled) {
             view.setRadarBlockChecked(false)
-            enableExposureRadarUseCase.setRadarDisabled()
+            exposureRadarUseCase.setRadarDisabled()
         } else {
             if (view.areBatteryOptimizationsIgnored())
                 onBatteryOptimizationsIgnored()
@@ -70,7 +70,7 @@ class HomePresenterImpl @Inject constructor(
 
     override fun onBatteryOptimizationsIgnored() {
         view.showLoading()
-        enableExposureRadarUseCase.setRadarEnabled(
+        exposureRadarUseCase.setRadarEnabled(
             onSuccess = {
                 view.hideLoading()
                 view.setRadarBlockChecked(true)
@@ -93,21 +93,22 @@ class HomePresenterImpl @Inject constructor(
 
     private fun updateExposureStatus() {
         val exposureInfo = getExposureInfoUseCase.getExposureInfo()
+
+        view.showBackgroundEnabled(
+            exposureInfo.exposureNotificationsEnabled
+                    && exposureRadarUseCase.isRadarEnabled()
+        )
+
         if (exposureInfo.level == ExposureInfo.Level.INFECTED)
             view.hideReportButton()
         else
             view.showReportButton()
 
-        showExposureInfo(exposureInfo)
-    }
-
-    private fun showExposureInfo(exposureInfo: ExposureInfo) {
         when (exposureInfo.level) {
             ExposureInfo.Level.LOW -> view.showExposureLevelLow()
             ExposureInfo.Level.HIGH -> view.showExposureLevelHigh()
             ExposureInfo.Level.INFECTED -> view.showExposureLevelInfected()
         }
-
     }
 
     private fun getMockExposureInfo(): ExposureInfo {

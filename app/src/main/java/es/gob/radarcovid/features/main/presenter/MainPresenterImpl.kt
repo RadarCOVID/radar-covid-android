@@ -13,13 +13,11 @@ class MainPresenterImpl @Inject constructor(
 ) : MainPresenter {
 
     override fun viewReady(activateRadar: Boolean) {
-
         router.navigateToHome(activateRadar)
-
     }
 
     override fun onResume() {
-
+        mainUseCase.syncExposureInfo()
     }
 
     override fun onHomeButtonClick() {
