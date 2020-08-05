@@ -24,7 +24,8 @@
             android:text="X"
             android:textColor="@color/black_26"
             android:textSize="14sp"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:visibility="visible" />
     </LinearLayout>
 
     <TextView
@@ -35,7 +36,8 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:visibility="gone"
-        tools:text="title" />
+        tools:text="title"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/textViewDialogDescription"
@@ -45,7 +47,8 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:visibility="gone"
-        tools:text="description" />
+        tools:text="description"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/buttonOk"
@@ -55,16 +58,21 @@
         android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:visibility="gone"
-        tools:text="Button" />
+        tools:text="Button"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/buttonCancel"
-        style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@color/white"
+        android:background="@drawable/shape_rounded_border_accent"
+        android:fontFamily="@font/muli_regular"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         android:visibility="gone"
-        tools:text="Button" />
+        tools:text="Button"
+        tools:visibility="visible" />
 
 </LinearLayout>
