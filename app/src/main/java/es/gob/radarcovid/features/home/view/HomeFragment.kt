@@ -5,6 +5,8 @@ import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context.POWER_SERVICE
 import android.content.Intent
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
@@ -92,16 +94,17 @@ class HomeFragment : BaseFragment(), HomeView {
             event.actionMasked == MotionEvent.ACTION_MOVE
         }
 
-        wrapperExposition.setOnClickListener { presenter.onExpositionBlockClick() }
+        wrapperExposition.setOnClickListener { presenter.onExposureBlockClick() }
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
+        wrapperExposureNotificationsDisabledWarning.setOnClickListener { presenter.onExposureNotificationsDisabledWarningClick() }
     }
 
     override fun showInitializationCheckAnimation() {
-        imageViewBackgroundLogo.alpha = 0f
+        imageViewLogo.alpha = 0f
         imageViewInitializationCheck.alpha = 1f
         AnimatorSet().apply {
             playTogether(
-                ObjectAnimator.ofFloat(imageViewBackgroundLogo, View.ALPHA, 0f, 1f),
+                ObjectAnimator.ofFloat(imageViewLogo, View.ALPHA, 0f, 1f),
                 ObjectAnimator.ofFloat(imageViewInitializationCheck, View.ALPHA, 1f, 0f)
             )
             duration = 2000 //set duration for animations
@@ -145,6 +148,30 @@ class HomeFragment : BaseFragment(), HomeView {
                 R.string.exposition_block_infected_description
             )
         textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
+    }
+
+    override fun showBackgroundEnabled(enabled: Boolean) {
+        if (enabled) {
+            imageViewLogoBackground.clearColorFilter()
+            imageViewLogo.clearColorFilter()
+        } else {
+            ColorMatrixColorFilter(ColorMatrix().apply {
+                setSaturation(0f)
+            }).let {
+                imageViewLogoBackground.colorFilter = it
+                imageViewLogo.colorFilter = it
+            }
+        }
+    }
+
+    override fun showWarningExposureNotificationsDisabled() {
+        wrapperExposureNotificationsDisabledWarning.visibility = View.VISIBLE
+        textViewRadarDescription.visibility = View.GONE
+    }
+
+    override fun hideWarningExposureNotificationsDisabled() {
+        wrapperExposureNotificationsDisabledWarning.visibility = View.GONE
+        textViewRadarDescription.visibility = View.VISIBLE
     }
 
     override fun showReportButton() {

@@ -3,7 +3,7 @@ package es.gob.radarcovid.datamanager.usecase
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import javax.inject.Inject
 
-class EnableExposureRadarUseCase @Inject constructor(private val repository: ContactTracingRepository) {
+class ExposureRadarUseCase @Inject constructor(private val repository: ContactTracingRepository) {
 
     fun setRadarEnabled(
         onSuccess: () -> Unit,

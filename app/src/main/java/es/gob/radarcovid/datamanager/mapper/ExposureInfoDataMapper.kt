@@ -17,7 +17,8 @@ class ExposureInfoDataMapper @Inject constructor() {
         ExposureInfo(
             level = transform(tracingStatus.infectionStatus),
             lastUpdateTime = Date(tracingStatus.lastSyncDate),
-            lastExposureDate = infectionReportDate ?: transform(exposureDays)
+            lastExposureDate = infectionReportDate ?: transform(exposureDays),
+            exposureNotificationsEnabled = tracingStatus.errors?.contains(TracingStatus.ErrorState.GAEN_UNEXPECTEDLY_DISABLED) == false
         )
 
     private fun transform(infectionStatus: InfectionStatus): ExposureInfo.Level {
