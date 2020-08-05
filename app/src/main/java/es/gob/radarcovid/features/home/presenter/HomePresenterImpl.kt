@@ -36,7 +36,7 @@ class HomePresenterImpl @Inject constructor(
 
     override fun onResume() {
         BUS.register(this)
-        updateExposureStatus()
+        updateViews()
     }
 
     override fun onPause() {
@@ -45,6 +45,10 @@ class HomePresenterImpl @Inject constructor(
 
     override fun onExposureBlockClick() {
         router.navigateToExpositionDetail()
+    }
+
+    override fun onExposureNotificationsDisabledWarningClick() {
+        router.navigateToExposureNotificationSettings()
     }
 
     override fun onReportButtonClick() {
@@ -88,16 +92,21 @@ class HomePresenterImpl @Inject constructor(
 
     @Subscribe
     fun onExposureStatusChange(event: EventExposureStatusChange) {
-        updateExposureStatus()
+        updateViews()
     }
 
-    private fun updateExposureStatus() {
+    private fun updateViews() {
         val exposureInfo = getExposureInfoUseCase.getExposureInfo()
 
         view.showBackgroundEnabled(
             exposureInfo.exposureNotificationsEnabled
                     && exposureRadarUseCase.isRadarEnabled()
         )
+
+        if (exposureInfo.exposureNotificationsEnabled)
+            view.hideWarningExposureNotificationsDisabled()
+        else
+            view.showWarningExposureNotificationsDisabled()
 
         if (exposureInfo.level == ExposureInfo.Level.INFECTED)
             view.hideReportButton()

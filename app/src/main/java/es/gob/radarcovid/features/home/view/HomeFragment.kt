@@ -96,6 +96,7 @@ class HomeFragment : BaseFragment(), HomeView {
 
         wrapperExposition.setOnClickListener { presenter.onExposureBlockClick() }
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
+        wrapperExposureNotificationsDisabledWarning.setOnClickListener { presenter.onExposureNotificationsDisabledWarningClick() }
     }
 
     override fun showInitializationCheckAnimation() {
@@ -161,6 +162,16 @@ class HomeFragment : BaseFragment(), HomeView {
                 imageViewLogo.colorFilter = it
             }
         }
+    }
+
+    override fun showWarningExposureNotificationsDisabled() {
+        wrapperExposureNotificationsDisabledWarning.visibility = View.VISIBLE
+        textViewRadarDescription.visibility = View.GONE
+    }
+
+    override fun hideWarningExposureNotificationsDisabled() {
+        wrapperExposureNotificationsDisabledWarning.visibility = View.GONE
+        textViewRadarDescription.visibility = View.VISIBLE
     }
 
     override fun showReportButton() {

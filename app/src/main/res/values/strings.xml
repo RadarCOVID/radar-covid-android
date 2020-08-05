@@ -143,6 +143,8 @@
     <string name="radar_block_enabled_description">Las interacciones con móviles cercanos se registrarán siempre anónimamente.</string>
     <string name="radar_block_disabled_description">Por favor, activa esta opción para que la aplicación funcione.</string>
 
+    <string name="radar_warning_exposure_notifications_disabled">Notificaciones de exposición a la COVID-19 DESACTIVADAS</string>
+
     <string name="radar_warning_title">¿Estas seguro de desactivar &appname;</string>
     <string name="radar_warning_message">Si desactivas &appname;, la aplicación dejará de registrar contactos. Ayúdanos a cuidarte</string>
     <string name="radar_warning_button_positive">Mantener activo</string>

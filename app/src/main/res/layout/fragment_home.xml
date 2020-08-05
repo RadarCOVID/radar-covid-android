@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/ScrollVertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -144,7 +145,7 @@
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewRadarDescription"
-                    style="@style/TextNormal"
+                    style="@style/Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -157,7 +158,67 @@
                     app:labelId="HOME_RADAR_CONTENT_INACTIVE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewRadarTitle" />
+                    app:layout_constraintTop_toBottomOf="@id/textViewRadarTitle"
+                    tools:visibility="gone" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/wrapperExposureNotificationsDisabledWarning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewRadarTitle"
+                    tools:visibility="visible">
+
+                    <ImageButton
+                        android:id="@+id/imageButtonRedArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:clickable="false"
+                        android:contentDescription="@string/description_arrow_button_enter"
+                        android:focusableInTouchMode="false"
+                        android:src="@drawable/ic_arrow_right"
+                        android:tint="@color/red"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        android:id="@+id/textViewExposureNotificationsDisabledTitle"
+                        style="@style/Title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/muli_bold"
+                        android:text="@string/radar_warning_exposure_notifications_disabled"
+                        android:textColor="@color/red"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:labelId="HOME_NOTIFICATION_INACTIVE_MESSAGE"
+                        app:layout_constraintEnd_toStartOf="@id/imageButtonRedArrow"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        style="@style/Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/muli_bold"
+                        android:text="@string/radar_block_disabled_description"
+                        android:textColor="@color/red"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:labelId="HOME_RADAR_CONTENT_INACTIVE"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewExposureNotificationsDisabledTitle" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

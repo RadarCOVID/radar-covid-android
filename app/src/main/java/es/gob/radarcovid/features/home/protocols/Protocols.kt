@@ -14,6 +14,10 @@ interface HomeView : RequestView {
 
     fun showBackgroundEnabled(enabled: Boolean)
 
+    fun showWarningExposureNotificationsDisabled()
+
+    fun hideWarningExposureNotificationsDisabled()
+
     fun showReportButton()
 
     fun hideReportButton()
@@ -38,6 +42,8 @@ interface HomePresenter {
 
     fun onExposureBlockClick()
 
+    fun onExposureNotificationsDisabledWarningClick()
+
     fun onReportButtonClick()
 
     fun onSwitchRadarClick(currentlyEnabled: Boolean)
@@ -53,5 +59,7 @@ interface HomeRouter {
     fun navigateToCovidReport()
 
     fun navigateToCovidReportConfirmation()
+
+    fun navigateToExposureNotificationSettings()
 
 }
