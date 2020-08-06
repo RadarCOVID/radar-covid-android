@@ -199,7 +199,6 @@ class HomeFragment : BaseFragment(), HomeView {
 
                 startActivityForResult(Intent().apply {
                     action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-                    //action = Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS
                     data = Uri.parse("package:${activity!!.packageName}")
                 }, REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS)
             }
@@ -208,7 +207,12 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun showUnableToReportCovidDialog() {
         CMDialog.Builder(context!!)
-            .setMessage(R.string.covid_report_warning)
+            .setMessage(
+                labelManager.getText(
+                    "ALERT_RADAR_REQUIRED_TO_REPORT",
+                    R.string.covid_report_warning
+                ).toString()
+            )
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_ACCEPT_BUTTON",

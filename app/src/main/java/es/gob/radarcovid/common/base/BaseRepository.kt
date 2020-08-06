@@ -1,9 +1,11 @@
 package es.gob.radarcovid.common.base
 
 import es.gob.radarcovid.models.exception.GenericRequestException
+import es.gob.radarcovid.models.exception.NetworkUnavailableException
 import es.gob.radarcovid.models.exception.ServiceException
 import org.funktionale.either.Either
 import retrofit2.Call
+import java.net.UnknownHostException
 
 abstract class BaseRepository {
 
@@ -24,7 +26,10 @@ abstract class BaseRepository {
                 else -> Either.left(ServiceException.from(response))
             }
         } catch (exception: Exception) {
-            return Either.left(GenericRequestException())
+            return if (exception is UnknownHostException)
+                Either.left(NetworkUnavailableException())
+            else
+                Either.left(GenericRequestException())
         }
     }
 

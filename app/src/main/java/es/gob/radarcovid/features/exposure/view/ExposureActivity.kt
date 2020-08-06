@@ -52,7 +52,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         buttonMoreInfoLow.setOnClickListener {
             presenter.onMoreInfoButtonClick(
                 labelManager.getText(
-                    "EXPOSURE_DETAIL_LOW_INFO_URL",
+                    "EXPOSURE_LOW_INFO_URL",
                     R.string.exposure_detail_info_url
                 ).toString()
             )

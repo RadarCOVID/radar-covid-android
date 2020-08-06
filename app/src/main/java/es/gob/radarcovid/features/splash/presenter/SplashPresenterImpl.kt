@@ -8,7 +8,7 @@ import es.gob.radarcovid.features.splash.protocols.SplashPresenter
 import es.gob.radarcovid.features.splash.protocols.SplashRouter
 import es.gob.radarcovid.features.splash.protocols.SplashView
 import es.gob.radarcovid.models.domain.InitializationData
-import java.net.UnknownHostException
+import es.gob.radarcovid.models.exception.NetworkUnavailableException
 import javax.inject.Inject
 
 class SplashPresenterImpl @Inject constructor(
@@ -95,11 +95,11 @@ class SplashPresenterImpl @Inject constructor(
     }
 
     private fun onInitializationError(error: Throwable) {
-        if (error !is UnknownHostException) { // IT'S NOT A "NO INTERNET" ERROR
-            view.showError(error, true)
-        } else {
+        if (error is NetworkUnavailableException) {
             isInitializationCompleted = true
             onResume()
+        } else {
+            view.showError(error, true)
         }
     }
 

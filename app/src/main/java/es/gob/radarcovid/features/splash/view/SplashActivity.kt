@@ -31,18 +31,36 @@ class SplashActivity : BaseActivity(), SplashView {
 
     override fun showNoInternetWarning() {
         currentDialog?.dismiss()
-        currentDialog = CMDialog.createDialog(
-            this,
-            R.string.warning_connection_title,
-            R.string.warning_connection_description, R.string.warning_connection_button,
-            onCloseButtonClick = {
+        currentDialog = CMDialog.Builder(this)
+            .setTitle(
+                labelManager.getText(
+                    "ALERT_NETWORK_ERROR_TITLE",
+                    R.string.warning_connection_title
+                ).toString()
+            )
+            .setMessage(
+                labelManager.getText(
+                    "ALERT_NETWORK_ERROR_MESSAGE",
+                    R.string.warning_connection_description
+                ).toString()
+            )
+            .setCloseButton {
+                it.dismiss()
                 presenter.onNetworkDialogCloseButtonClick()
-            },
-            onButtonClick = {
+            }
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_RETRY_BUTTON",
+                    R.string.warning_connection_button
+                ).toString()
+            ) {
+                it.dismiss()
                 presenter.onNetworkRetryButtonClick()
             }
-        )
-        currentDialog?.show()
+            .build()
+            .apply {
+                show()
+            }
     }
 
     override fun showPlayServicesRequiredDialog() {
