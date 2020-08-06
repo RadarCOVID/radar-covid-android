@@ -5,13 +5,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import dagger.android.support.DaggerFragment
 import es.gob.radarcovid.R
-import es.gob.radarcovid.common.view.TransparentProgressDialog
+import es.gob.radarcovid.common.view.LoadingDialog
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import javax.inject.Inject
 
 abstract class BaseFragment : DaggerFragment() {
 
-    private var progressBar: TransparentProgressDialog? = null
+    private var progressBar: LoadingDialog? = null
 
     @Inject
     lateinit var labelManager: LabelManager
@@ -23,7 +23,7 @@ abstract class BaseFragment : DaggerFragment() {
 
     fun showLoading() {
         progressBar?.dismiss()
-        progressBar = TransparentProgressDialog(context!!)
+        progressBar = LoadingDialog(context!!)
         progressBar?.setCanceledOnTouchOutside(false)
         progressBar?.setCancelable(false)
         progressBar?.let {
