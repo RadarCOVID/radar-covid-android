@@ -98,15 +98,33 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun showNetworkWarningDialog() {
-        CMDialog.createDialog(
-            this,
-            title = R.string.network_warning_dialog_title,
-            description = R.string.network_warning_dialog_message,
-            buttonText = R.string.network_warning_dialog_button,
-            onCloseButtonClick = null
-        ) {
-            presenter.onRetryButtonClick()
-        }.show()
+        CMDialog.Builder(this)
+            .setTitle(
+                labelManager.getText(
+                    "ALERT_NETWORK_ERROR_TITLE",
+                    R.string.network_warning_dialog_title
+                ).toString()
+            )
+            .setMessage(
+                labelManager.getText(
+                    "ALERT_POSITIVE_REPORT_NETWORK_ERROR_MESSAGE",
+                    R.string.network_warning_dialog_message
+                ).toString()
+            )
+            .setCloseButton {
+                it.dismiss()
+            }
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_RETRY_BUTTON",
+                    R.string.network_warning_dialog_button
+                ).toString()
+            ) {
+                it.dismiss()
+                presenter.onRetryButtonClick()
+            }
+            .build()
+            .show()
     }
 
     override fun showReportErrorDialog() {

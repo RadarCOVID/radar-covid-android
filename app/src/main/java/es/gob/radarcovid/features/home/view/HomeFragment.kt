@@ -199,7 +199,6 @@ class HomeFragment : BaseFragment(), HomeView {
 
                 startActivityForResult(Intent().apply {
                     action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-                    //action = Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS
                     data = Uri.parse("package:${activity!!.packageName}")
                 }, REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS)
             }
