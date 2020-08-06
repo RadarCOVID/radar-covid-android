@@ -13,63 +13,10 @@ import es.gob.radarcovid.R
 
 object CMDialog {
 
-    fun createDialog(
-        context: Context,
-        title: Int,
-        description: Int,
-        buttonText: Int,
-        onCloseButtonClick: (() -> Unit)?,
-        onButtonClick: () -> Unit
-    ): AlertDialog = createDialog(
-        context,
-        context.getString(title),
-        context.getString(description),
-        context.getString(buttonText),
-        onCloseButtonClick,
-        onButtonClick
-    )
-
-    fun createDialog(
-        context: Context,
-        title: String,
-        description: String,
-        buttonText: String,
-        onCloseButtonClick: (() -> Unit)?,
-        onButtonClick: () -> Unit
-    ): AlertDialog {
-        val view: View =
-            LayoutInflater.from(context).inflate(R.layout.dialog, null)
-        val textViewTitle = view.findViewById<TextView>(R.id.textViewDialogTitle)
-        val textViewDescription = view.findViewById<TextView>(R.id.textViewDialogDescription)
-        val button = view.findViewById<Button>(R.id.button)
-        val buttonClose = view.findViewById<Button>(R.id.buttonClose)
-
-        textViewTitle.text = title
-        textViewDescription.text = description
-
-        val dialog = AlertDialog.Builder(context)
-            .setView(view)
-            .setCancelable(false)
-            .create()
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        buttonClose.setOnClickListener {
-            onCloseButtonClick?.invoke()
-            dialog.dismiss()
-        }
-        button.text = buttonText
-        button.setOnClickListener {
-            onButtonClick.invoke()
-            dialog.dismiss()
-        }
-        return dialog
-
-    }
-
     class Builder(private val context: Context) {
 
         private val view: View =
-            LayoutInflater.from(context).inflate(R.layout.dialog_cancelable, null)
+            LayoutInflater.from(context).inflate(R.layout.dialog, null)
         private val textViewTitle = view.findViewById<TextView>(R.id.textViewDialogTitle)
         private val textViewDescription =
             view.findViewById<TextView>(R.id.textViewDialogDescription)
