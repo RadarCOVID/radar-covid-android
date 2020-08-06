@@ -81,8 +81,7 @@ class HomePresenterImpl @Inject constructor(
             },
             onError = {
                 view.setRadarBlockChecked(false)
-                view.hideLoading()
-                view.showError(it)
+                view.hideLoadingWithError(it)
             },
             onCancelled = {
                 view.setRadarBlockChecked(false)

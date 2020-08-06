@@ -6,13 +6,13 @@ import dagger.android.support.DaggerAppCompatActivity
 import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.CMDialog
-import es.gob.radarcovid.common.view.TransparentProgressDialog
+import es.gob.radarcovid.common.view.LoadingDialog
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import javax.inject.Inject
 
 abstract class BaseActivity : DaggerAppCompatActivity() {
 
-    private var progressBar: TransparentProgressDialog? = null
+    private var progressBar: LoadingDialog? = null
 
     @Inject
     lateinit var labelManager: LabelManager
@@ -24,7 +24,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
 
     fun showLoading() {
         progressBar?.dismiss()
-        progressBar = TransparentProgressDialog(this)
+        progressBar = LoadingDialog(this)
         progressBar?.setCanceledOnTouchOutside(false)
         progressBar?.setCancelable(false)
         progressBar?.let {
@@ -35,6 +35,24 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
 
     fun hideLoading() {
         progressBar?.hide()
+    }
+
+    fun hideLoadingWithError(error: Throwable) {
+        val title = if (error.message == null)
+            labelManager.getText("ALERT_GENERIC_ERROR_TITLE", R.string.error_generic_title)
+                .toString()
+        else
+            null
+        val message = error.message ?: labelManager.getText(
+            "ALERT_GENERIC_ERROR_CONTENT",
+            R.string.error_generic_message
+        ).toString()
+        val button = labelManager.getText(
+            "ALERT_ACCEPT_BUTTON",
+            R.string.accept
+        ).toString()
+
+        progressBar?.showError(title, message, button)
     }
 
     fun showError(error: Throwable, finishOnDismiss: Boolean = false) {
