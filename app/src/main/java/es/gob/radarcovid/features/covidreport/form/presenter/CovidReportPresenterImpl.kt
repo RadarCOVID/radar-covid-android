@@ -8,7 +8,6 @@ import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportRouter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.*
 import javax.inject.Inject
 
 class CovidReportPresenterImpl @Inject constructor(
@@ -52,13 +51,12 @@ class CovidReportPresenterImpl @Inject constructor(
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                    view.hideLoading()
-                    view.finish()
-                    router.navigateToConfirmation()
-                }, {
-                    Log.e( "CovidReportPresenter", "Error reporting infected", it)
-                    view.hideLoading()
-                    view.showReportErrorDialog()
+                view.hideLoading()
+                view.finish()
+                router.navigateToConfirmation()
+            }, {
+                Log.e("CovidReportPresenter", "Error reporting infected", it)
+                view.hideLoadingWithErrorOnReport()
             })
     }
 

@@ -37,6 +37,24 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         progressBar?.hide()
     }
 
+    fun hideLoadingWithError(error: Throwable) {
+        val title = if (error.message == null)
+            labelManager.getText("ALERT_GENERIC_ERROR_TITLE", R.string.error_generic_title)
+                .toString()
+        else
+            null
+        val message = error.message ?: labelManager.getText(
+            "ALERT_GENERIC_ERROR_CONTENT",
+            R.string.error_generic_message
+        ).toString()
+        val button = labelManager.getText(
+            "ALERT_ACCEPT_BUTTON",
+            R.string.accept
+        ).toString()
+
+        progressBar?.showError(title, message, button)
+    }
+
     fun showError(error: Throwable, finishOnDismiss: Boolean = false) {
         showError(
             title = if (error.message == null)

@@ -127,8 +127,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
             .show()
     }
 
-    override fun showReportErrorDialog() {
-        showError(
+    override fun hideLoadingWithErrorOnReport() {
+        hideLoadingWithError(
             Exception(
                 labelManager.getText(
                     "ALERT_MY_HEALTH_CODE_ERROR_CONTENT",
