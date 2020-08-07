@@ -39,7 +39,7 @@ class NetworkModule {
     ): OkHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(interceptor)
-//        .certificatePinner(certificatePinner)
+        .certificatePinner(certificatePinner)
         .connectionSpecs(listOf(ConnectionSpec.MODERN_TLS))
         .build()
 
