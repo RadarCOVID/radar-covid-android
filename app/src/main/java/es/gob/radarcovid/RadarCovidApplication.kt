@@ -33,7 +33,7 @@ class RadarCovidApplication : DaggerApplication() {
             SignatureUtil.getPublicKeyFromBase64OrThrow(BuildConfig.PUBLIC_KEY),
             BuildConfig.DEBUG
         )
-        DP3T.setCertificatePinner(certificatePinner)
+//        DP3T.setCertificatePinner(certificatePinner)
 
         registerReceiver(ExposureStatusChangeBroadcastReceiver(), DP3T.getUpdateIntentFilter())
 
