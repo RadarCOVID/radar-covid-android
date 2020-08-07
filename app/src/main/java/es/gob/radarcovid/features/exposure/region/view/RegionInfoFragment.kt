@@ -72,9 +72,23 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
     }
 
     override fun showRegionInfo(phone: String, webName: String) {
+        
         wrapperRegionInfo.visibility = View.VISIBLE
-        textViewPhone.text = phone
-        textViewWeb.text = webName
+
+        if (phone.isNotEmpty()) {
+            wrapperPhone.visibility = View.VISIBLE
+            textViewPhone.text = phone
+        } else {
+            wrapperPhone.visibility = View.GONE
+        }
+
+        if (webName.isNotEmpty()) {
+            wrapperWeb.visibility = View.VISIBLE
+            textViewWeb.text = webName
+        } else {
+            wrapperWeb.visibility = View.VISIBLE
+        }
+
     }
 
     override fun getSelectedRegionIndex(): Int =
