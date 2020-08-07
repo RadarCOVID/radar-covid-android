@@ -1,11 +1,12 @@
 package es.gob.radarcovid.datamanager.mapper
 
+import es.gob.radarcovid.datamanager.utils.LabelManager
 import es.gob.radarcovid.models.domain.Region
 import es.gob.radarcovid.models.response.ResponseRegions
 import es.gob.radarcovid.models.response.ResponseRegionsItem
 import javax.inject.Inject
 
-class RegionsDataMapper @Inject constructor() {
+class RegionsDataMapper @Inject constructor(private val labelManager: LabelManager) {
 
     fun transform(responseRegions: ResponseRegions?): List<Region> = responseRegions?.let {
         it.map { responseRegionsItem -> transform(responseRegionsItem) }
@@ -16,9 +17,9 @@ class RegionsDataMapper @Inject constructor() {
             Region(
                 it.id ?: "",
                 it.description ?: "",
-                it.phone ?: "",
+                it.phone ?: labelManager.getContactPhone(),
                 it.web ?: "",
-                it.webName ?: ""
+                it.webName ?: it.web ?: ""
             )
         } ?: Region()
 
