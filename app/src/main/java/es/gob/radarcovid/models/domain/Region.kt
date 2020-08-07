@@ -4,5 +4,6 @@ data class Region(
     val code: String = "",
     val name: String = "",
     val phone: String = "",
-    val web: String = ""
+    val url: String = "",
+    val webName: String = ""
 )

@@ -152,14 +152,18 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun showBackgroundEnabled(enabled: Boolean) {
         if (enabled) {
-            imageViewLogoBackground.clearColorFilter()
-            imageViewLogo.clearColorFilter()
+            if (imageViewLogo.colorFilter != null) {
+                imageViewLogoBackground.clearColorFilter()
+                imageViewLogo.clearColorFilter()
+            }
         } else {
             ColorMatrixColorFilter(ColorMatrix().apply {
                 setSaturation(0f)
             }).let {
-                imageViewLogoBackground.colorFilter = it
-                imageViewLogo.colorFilter = it
+                if (imageViewLogo.colorFilter == null) {
+                    imageViewLogoBackground.colorFilter = it
+                    imageViewLogo.colorFilter = it
+                }
             }
         }
     }
