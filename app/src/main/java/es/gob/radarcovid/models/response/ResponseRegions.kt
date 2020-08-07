@@ -7,5 +7,6 @@ data class ResponseRegionsItem(
     val description: String?,
     val phone: String?,
     val email: String?,
-    val web: String?
+    val web: String?,
+    val webName: String?
 )

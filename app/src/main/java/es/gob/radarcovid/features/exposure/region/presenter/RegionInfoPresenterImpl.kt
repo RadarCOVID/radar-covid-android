@@ -24,12 +24,12 @@ class RegionInfoPresenterImpl @Inject constructor(
     }
 
     override fun onWebButtonClick() {
-        router.navigateToBrowser(localeInfo.regions[view.getSelectedRegionIndex()].web)
+        router.navigateToBrowser(localeInfo.regions[view.getSelectedRegionIndex()].url)
     }
 
     override fun onRegionSelected() {
         with(localeInfo.regions[view.getSelectedRegionIndex()]) {
-            view.showRegionInfo(phone, web)
+            view.showRegionInfo(phone, webName)
         }
     }
 

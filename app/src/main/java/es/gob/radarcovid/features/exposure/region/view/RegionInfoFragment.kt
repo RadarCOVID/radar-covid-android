@@ -71,13 +71,13 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
             )
     }
 
-    override fun showRegionInfo(phone: String, web: String) {
+    override fun showRegionInfo(phone: String, webName: String) {
         wrapperRegionInfo.visibility = View.VISIBLE
         textViewPhone.text = phone
-        textViewWeb.text = web
+        textViewWeb.text = webName
     }
 
     override fun getSelectedRegionIndex(): Int =
-        spinnerRegion.selectedItemPosition + 1 // POSITION 0 IS THE "NON SELECTED" OPTION
+        spinnerRegion.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
 
 }

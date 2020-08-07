@@ -4,7 +4,7 @@ interface RegionInfoView {
 
     fun setRegions(regions: List<String>)
 
-    fun showRegionInfo(phone: String, web: String)
+    fun showRegionInfo(phone: String, webName: String)
 
     fun getSelectedRegionIndex():Int
 
