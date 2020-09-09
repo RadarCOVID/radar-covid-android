@@ -271,7 +271,7 @@
     <string name="covid_report_footer">Al enviar tu diagnóstico los identificadores aleatorios generados en los últimos días servirán para avisar a las personas que hayan estado cerca de ti. Tu identidad no se comparte con nadie.</string>
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
     <string name="covid_report_abort_warning_title">¿Seguro que no quieres enviar tu diagnóstico?</string>
-    <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demás y evitemos que el COVID-19 se propague.</string>
+    <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demás y evitemos que la COVID-19 se propague.</string>
     <string name="covid_report_abort_warning_button">Cancelar</string>
     <string name="covid_report_error">Se ha producido un error al enviar diagnóstico</string>
     <string name="covid_report_edit_text_hint">Código de diagnóstico</string>
