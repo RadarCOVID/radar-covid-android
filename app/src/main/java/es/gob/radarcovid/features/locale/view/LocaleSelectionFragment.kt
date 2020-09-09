@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
+import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.common.view.HintSpinnerAdapter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionPresenter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionView
@@ -88,6 +89,28 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
 
     override fun reloadLabels() {
         labelManager.reload()
+    }
+
+    override fun showLanguageChangeDialog() {
+        CMDialog.Builder(context!!)
+            .setMessage(
+                labelManager.getText(
+                    "LOCALE_CHANGE_WARNING",
+                    R.string.locale_selection_warning_message
+                ).toString()
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_ACCEPT_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                it.dismiss()
+                presenter.onLocaleChangeConfirm()
+            }
+            .setCloseButton { it.dismiss() }
+            .build()
+            .show()
     }
 
     private fun initViews() {
