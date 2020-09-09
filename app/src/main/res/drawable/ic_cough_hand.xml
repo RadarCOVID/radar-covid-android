@@ -1,0 +1,60 @@
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="49dp"
+    android:height="51dp"
+    android:viewportWidth="49"
+    android:viewportHeight="51">
+  <path
+      android:pathData="M12,24.4556V14.6824C12,7.1258 18.1258,1 25.6824,1V1C33.239,1 39.3649,7.1258 39.3649,14.6824V24.4556"
+      android:strokeLineJoin="round"
+      android:strokeWidth="1.2"
+      android:fillColor="#00000000"
+      android:strokeColor="#836FAC"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M16.7278,17.5917L19.334,19.5463L16.7278,21.5009"
+      android:strokeLineJoin="round"
+      android:strokeWidth="1.2"
+      android:fillColor="#00000000"
+      android:strokeColor="#836FAC"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M30.668,21.501L28.0618,19.5463L30.668,17.5917"
+      android:strokeLineJoin="round"
+      android:strokeWidth="1.2"
+      android:fillColor="#00000000"
+      android:strokeColor="#836FAC"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M45,49.2732V36.4681C45,33.3037 42.7718,30.5769 39.6708,29.9465L16.4509,25.2262C10.0593,23.9269 3.6265,27.2587 1,33.2288V33.2288M1,33.2288L33.2722,39.5M1,33.2288L5.5744,23.5672C6.7502,21.0836 9.2521,19.5 12,19.5V19.5"
+      android:strokeLineJoin="round"
+      android:strokeWidth="1.2"
+      android:fillColor="#00000000"
+      android:strokeColor="#836FAC"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M11,36V49.5"
+      android:strokeLineJoin="round"
+      android:strokeWidth="1.2"
+      android:fillColor="#00000000"
+      android:strokeColor="#836FAC"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M42.3495,22.0985C42.5903,22.3386 42.9525,22.403 43.2387,22.2844C43.329,22.2469 43.4282,22.1879 43.4995,22.1046L46.5961,19.0141C46.9244,18.699 46.9153,18.1662 46.5914,17.8533C46.2762,17.519 45.7484,17.5232 45.4414,17.8473L42.3449,20.9378C42.0165,21.2529 42.0193,21.7704 42.3495,22.0985Z"
+      android:fillColor="#836FAC"/>
+  <path
+      android:pathData="M47.7829,21.7056L44.6638,22.2298C44.2191,22.3069 43.92,22.735 44.0005,23.1846C44.0809,23.6342 44.5079,23.9401 44.9526,23.863L48.0717,23.3387C48.1383,23.329 48.1985,23.304 48.2437,23.2853C48.5902,23.1416 48.7902,22.7725 48.735,22.384C48.6545,21.9344 48.2276,21.6285 47.7829,21.7056Z"
+      android:fillColor="#836FAC"/>
+  <path
+      android:pathData="M43.4403,24.1327C43.0124,23.9524 42.5454,24.146 42.3707,24.5762C42.1961,25.0063 42.3922,25.4795 42.8201,25.6598L46.9916,27.418C47.2055,27.5081 47.433,27.5033 47.6137,27.4283C47.8096,27.3471 47.9737,27.1896 48.046,26.9807C48.2207,26.5506 48.0245,26.0774 47.5967,25.8971L43.4403,24.1327Z"
+      android:fillColor="#836FAC"/>
+</vector>

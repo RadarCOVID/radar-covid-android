@@ -1,0 +1,54 @@
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M9,22V13H15V22"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeLineCap="round">
+    <aapt:attr name="android:strokeColor">
+      <gradient 
+          android:startY="13"
+          android:startX="15"
+          android:endY="13"
+          android:endX="9"
+          android:type="linear">
+        <item android:offset="1" android:color="#FF807993"/>
+        <item android:offset="1" android:color="#FF807993"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+  <path
+      android:pathData="M12,2L2,10.5714H3.9048V20.5714C3.9048,21.36 4.5448,22 5.3333,22H18.6667C19.4552,22 20.0952,21.36 20.0952,20.5714V10.5714H22L12,2Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:fillType="evenOdd"
+      android:strokeLineCap="round">
+    <aapt:attr name="android:strokeColor">
+      <gradient 
+          android:startY="2"
+          android:startX="22"
+          android:endY="2"
+          android:endX="2"
+          android:type="linear">
+        <item android:offset="1" android:color="#FE7C73B8"/>
+        <item android:offset="1" android:color="#FE7C73B8"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>

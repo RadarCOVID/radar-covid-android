@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<resources>
+
+    <attr name="labelId" format="string" />
+    <attr name="contentDescriptionLabelId" format="string" />
+    <attr name="hintLabelId" format="string" />
+
+    <declare-styleable name="CMCheckBox">
+        <attr name="android:text" />
+    </declare-styleable>
+
+    <declare-styleable name="DropdownView">
+        <attr name="title" format="string" localization="suggested" />
+        <attr name="dropdownText" format="string" localization="suggested" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelTextView">
+        <attr name="labelId" />
+        <attr name="android:text" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelButton">
+        <attr name="labelId" />
+        <attr name="android:text" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelDotTextView">
+        <attr name="android:text" />
+        <attr name="android:textSize" />
+        <attr name="labelId" />
+        <attr name="dotVisibility">
+            <!-- Visible on screen; the default value. -->
+            <enum name="visible" value="0" />
+            <!-- Not displayed, but taken into account during layout (space is left for it). -->
+            <enum name="invisible" value="1" />
+            <!-- Completely hidden, as if the view had not been added. -->
+            <enum name="gone" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="LabelImageButton">
+        <attr name="android:contentDescription" />
+        <attr name="contentDescriptionLabelId" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelEditText">
+        <attr name="android:hint" />
+        <attr name="hintLabelId" />
+    </declare-styleable>
+
+</resources>

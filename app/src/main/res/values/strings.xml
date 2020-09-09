@@ -1,0 +1,411 @@
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<!DOCTYPE resources [<!ENTITY appname "Radar COVID">]>
+<resources>
+    <string name="app_name">&appname;</string>
+
+    /********** ERROR MESSAGES ************/
+    <string name="error_generic_title">Error</string>
+    <string name="error_generic_message">Se ha producido un error. Compruebe la conexión</string>
+
+    /********** Play services dialog ************/
+
+    <string name="play_services_dialog_title">Google Play Services</string>
+    <string name="play_services_dialog_message">Es necesario disponer de una versión actualizada de Google Play Services</string>
+
+    /********** Dialog Internet ************/
+    <string name="warning_connection_title">Sin conexión a internet.</string>
+    <string name="warning_connection_description">Por favor, comprueba tu conexión.</string>
+    <string name="warning_connection_button">Reintentar</string>
+
+    /********** Splash ************/
+    <string name="splash_subtitle">Seguimiento de tu exposición al Covid-19</string>
+
+    /********** Legal Info ************/
+    <string name="legal_info_title_small">LEGAL</string>
+    <string name="legal_info_title">Información legal</string>
+    <string name="legal_info_terms_and_conditions">Términos y condiciones</string>
+    <string name="legal_info_privacy_policy">Acepto la <b><u>política de privacidad</u></b></string>
+    <string name="legal_info_usage_conditions">He leído las <b><u>condiciones de uso</u></b></string>
+    <string name="legal_info_check_warning">Recuerda que tienes que aceptar la política de privacidad para continuar</string>
+    <string name="legal_info_button">Continuar</string>
+
+    /********** Legal Detail ************/
+    <string name="legal_info_detail_title">CONDICIONES DE USO DE &appname;</string>
+    <string name="legal_info_intro">AL DESCARGAR Y USAR LA APLICACIÓN MÓVIL “Radar COVID” MANIFIESTAS QUE HAS LEÍDO Y ACEPTAS ESTAS CONDICIONES DE USO Y LA POLÍTICA DE PRIVACIDAD. AQUÍ SE RECOGE TODA LA INFORMACIÓN RELATIVA A TUS DERECHOS Y OBLIGACIONES COMO USUARIO DE ESTA APLICACIÓN.\n\n<b>AVISO IMPORTANTE:</b>\n\n&#8226; El USUARIO de esta aplicación queda avisado de que al descargar la aplicación en su dispositivo móvil y utilizarla, se está limitando a participar voluntariamente en una <b>EXPERIENCIA PILOTO CON DATOS FICTICIOS de alerta de contagios de la COVID-19 en LA ISLA DE LA GOMERA.</b>\n\n&#8226; <b>Se informa asimismo de que esta aplicación dejará de funcionar una vez que</b> termine la experiencia piloto.\n\n&#8226; Por tanto, en el uso de la aplicación, <b>todas las notificaciones de exposiciones a posible contagio de la enfermedad que el usuario pueda recibir corresponden a supuestos simulados y, por el mismo motivo, al tratarse de una experiencia piloto con datos ficticios, las sugerencias de adopción de medidas preventivas y asistenciales que tras esa notificación le facilite la aplicación no tienen otro valor que comprobar que la aplicación es capaz de facilitar sugerencias de ese tipo a un usuario que recibiera una notificación de exposición a posible contagio.</b>\n\n&#8226; <b>Tanto en el marco de esta experiencia piloto con datos ficticios como en el caso de que la aplicación se hubiera utilizado en situaciones reales con datos reales</b>, el USUARIO queda avisado de que la utilización de la Aplicación <b>NO CONSTITUYE EN NINGÚN CASO UN SERVICIO DE DIAGNÓSTICO MÉDICO, DE ATENCIÓN DE URGENCIAS O DE PRESCRIPCIÓN DE TRATAMIENTOS FARMACOLÓGICOS</b>, pues la utilización de la Aplicación <b>no podría en ningún caso sustituir la consulta presencial personal frente a un profesional médico debidamente cualificado.</b></string>
+    <string name="conditions_p1_title"><b>1. Qué es &appname;</b></string>
+    <string name="conditions_p1_content">&appname; es una aplicación que promueve la salud pública mediante un sistema de alerta de contagios por la COVID-19, poniendo a disposición de los USUARIOS (en adelante, individualmente, el “USUARIO”, y conjuntamente los “USUARIOS”), la posibilidad de navegar por la Aplicación, accediendo a los contenidos y servicios de Radar COVID, de acuerdo con las presentes CONDICIONES DE USO.\n\nRadar COVID detecta la intensidad de señales Bluetooth intercambiadas entre dispositivos que tienen esta aplicación activa, mediante el empleo de identificadores aleatorios efímeros, que no guardan relación con la identidad del teléfono móvil empleado o el USUARIO. El dispositivo de cada USUARIO descarga periódicamente las claves Bluetooth de todos los USUARIOS de la aplicación que hayan informado a través de la misma que se les ha diagnosticado COVID-19 (previa acreditación de las autoridades sanitarias), procediendo a determinar si el USUARIO ha establecido contacto de riesgo con alguno de ellos, verificado por las señales Bluetooth intercambiadas. Si es el caso, la aplicación le notifica este hecho, a fin de que pueda para tomar medidas, y contribuir de este modo a evitar que el virus se propague.</string>
+    <string name="conditions_p2_title"><b>2. Uso de &appname;</b></string>
+    <string name="conditions_p2_content">Para la utilización de los servicios de Radar COVID, es requisito necesario que el USUARIO autorice la activación del sistema de comunicaciones Bluetooth de baja energía por parte de la Aplicación, tras la descarga de la misma.\n\nEl USUARIO acepta sin reserva el contenido de las presentes CONDICIONES DE USO. En consecuencia, el USUARIO deberá leer detenidamente las mismas antes del acceso y de la utilización de cualquier servicio de Radar COVID bajo su entera responsabilidad.\n\n<b>AVISO IMPORTANTE:</b> La utilización de la Aplicación es gratuita, libre y voluntaria para todos los ciudadanos. <b>Para utilizar Radar COVID no es necesario estar registrado, ni aportar ningún dato personal, identificativo o no identificativo. </b> Al activar la aplicación, el USUARIO acepta:\n\na) el envío de señales Bluetooth emitidas de forma anónima por su dispositivo;\n\nb) la recepción y almacenamiento de señales Bluetooth de aplicaciones compatibles con Radar COVID, que se mantienen de forma anónima y descentralizada en los dispositivos de los USUARIOS durante un periodo no superior a 14 días;\n\ny c) la información ofrecida al USUARIO sobre el posible riesgo de contagio, sin que en ningún momento se refieran datos personales de ningún tipo.\n\nEl USUARIO puede informar voluntariamente a la aplicación de un resultado positivo en sus pruebas de COVID-19 mediante el código de confirmación de un solo uso facilitado por las autoridades sanitarias. La validez de este código será cotejada por las autoridades sanitarias para asegurar el correcto funcionamiento de Radar COVID. El USUARIO informará de los resultados de sus pruebas y se le solicitará el consentimiento expreso e inequívoco para compartir las claves generadas diariamente en su dispositivo, y correspondientes a los últimos 14 días. Estas claves son comunicadas a un servidor que las pondrá a disposición del conjunto de aplicaciones Radar COVID para su descarga. Las claves comunicadas no guardan relación alguna con la identificación del dispositivo o el USUARIO.\n\nNo se producirá ninguna discriminación a los potenciales pacientes que requieran servicios sanitarios y no hayan utilizado la aplicación.</string>
+    <string name="conditions_p3_title"><b>3. Seguridad y privacidad</b></string>
+    <string name="conditions_p3_content">Las medidas de seguridad implantadas se corresponden con las previstas en el anexo II (Medidas de seguridad) del Real Decreto 3/2010, de 8 de enero, por el que se regula el Esquema Nacional de Seguridad en el ámbito de la Administración Electrónica.\n\nTe informamos que tus datos serán tratados conforme a lo establecido en la <b>Política de Privacidad de la Aplicación</b>, cuyo contenido íntegro se puede consultar en el siguiente enlace: <u>Política de Privacidad</u>.\n\nToda la información se tratará con fines estrictamente de interés público en el ámbito de la salud pública, y ante la situación de emergencia sanitaria decretada, a fin de proteger y salvaguardar un interés esencial para la vida de las personas, en los términos descritos en la política de privacidad. \n\nLa información de la actividad de los USUARIOS es anónima y en ningún momento se exigirá a los USUARIOS ningún dato personal. En todo momento, el USUARIO puede desactivar el sistema de traza de contactos Bluetooth en la aplicación, así como desinstalar la misma.</string>
+    <string name="conditions_p4_title"><b>4. Cambio del servicio y terminación</b></string>
+    <string name="conditions_p4_content">Radar COVID siempre está tratando de mejorar el servicio y busca ofrecer funcionalidades adicionales útiles para el USUARIO teniendo siempre presente la preservación de la salud pública. Esto significa que podemos añadir nuevas funciones o mejoras que en ningún caso implicarán el tratamiento de datos personales, así como eliminar algunas de las funciones. Si estas acciones afectan materialmente a los derechos y obligaciones del USUARIO, será informado a través de la Aplicación.\n\nEl USUARIO puede dejar de utilizar la aplicación en cualquier momento y por cualquier motivo, desinstalándola de su dispositivo.</string>
+    <string name="conditions_p5_title"><b>5. Propiedad intelectual e industrial</b></string>
+    <string name="conditions_p5_content">La Secretaría General de Administración Digital (SGAD), dependiente de la Secretaría de Estado de Digitalización e Inteligencia Artificial del Ministerio de Asuntos Económicos y Transformación Digital, es la propietaria y TITULAR de todos los derechos de propiedad industrial e intelectual relativos a la Aplicación Radar COVID para dispositivos móviles en todo el territorio nacional.\n\nLos textos, diseños, imágenes, bases de datos, logos, estructura, marcas y demás elementos de Radar COVID están protegidos por las leyes y los tratados internacionales sobre propiedad intelectual e industrial. Cualquier reproducción, transmisión, adaptación, traducción, modificación, comunicación al público, o cualquier otra explotación de todo o parte del contenido de este sitio, efectuada de cualquier forma o por cualquier medio, electrónico, mecánico u otro, están estrictamente prohibidos salvo autorización previa por escrito de su correspondiente TITULAR. Cualquier infracción de estos derechos puede dar lugar a procedimientos extrajudiciales o judiciales civiles o penales que correspondan.\n\nEn este sentido, se otorga al USUARIO únicamente una licencia limitada, temporal, no exclusiva y revocable para que pueda utilizar, descargar y/o instalar Radar COVID en sus dispositivos, conforme a lo previsto en estas condiciones y para los usos previstos. En todo caso, el TITULAR se reserva los derechos no expresamente otorgados al USUARIO en virtud de las presentes condiciones.\n\nLa legitimidad de los derechos de propiedad intelectual o industrial correspondientes a los contenidos aportados por terceros es de la exclusiva responsabilidad de los mismos.\n\nA los efectos de preservar los posibles derechos de propiedad intelectual, en el caso de que cualquier USUARIO o un tercero considere que se ha producido una violación de sus legítimos derechos por la introducción de un determinado contenido en el Radar COVID, deberá notificar dicha circunstancia, por escrito, al TITULAR.</string>
+    <string name="conditions_p6_title"><b>6. Responsabilidad y obligaciones</b></string>
+    <string name="conditions_p6_content">Radar COVID se ofrece dedicando los mejores esfuerzos, dado que su calidad y disponibilidad pueden verse afectadas por múltiples factores ajenos al TITULAR como son, entre otros, el volumen de USUARIOS en la ubicación geográfica del USUARIO, limitaciones o restricciones de las redes de terceros operadores o la compatibilidad del dispositivo y sistema operativo utilizado por el USUARIO. Igualmente, los USUARIOS aceptan que el servicio pueda verse interrumpido cuando sea necesario por labores de mantenimiento.\n\nPor todo ello, el TITULAR no será responsable de los problemas de acceso o disponibilidad de Radar COVID y/o sus servicios, ni de los perjuicios que se pudieran causar por ello, cuando éstos procedan de factores ajenos a su ámbito de control. Igualmente, el TITULAR no se hace responsable de los siguientes hechos, ni de fallos, incompatibilidades y/o daños de tus terminales o dispositivos que, en su caso, se pudiesen derivar de la descarga y/o uso de la Aplicación:\n\n1.Actualización, exactitud, exhaustividad, pertinencia, actualidad y fiabilidad de sus contenidos, cualquiera que sea la causa y las dificultades o problemas técnicos o de otra naturaleza en los que tengan su origen dichos hechos.\n\n2.La calidad, titularidad, legitimidad, adecuación o pertinencia de los materiales, y demás contenidos.\n\nComo USUARIO de la Aplicación te obligas a:\n\n1.Impedir el acceso de terceras personas no autorizadas a la aplicación desde tu dispositivo.\n\n2.Notificar al TITULAR con carácter inmediato cualquier indicio de la existencia de una violación en la seguridad en la Aplicación, de usos inapropiados o prohibidos de los servicios prestados desde la misma, o de fallos de seguridad de cualquier índole.\n\n 3.Hacer buen uso de los contenidos, información y servicios prestados desde o a través de la Aplicación, conforme a la ley, la buena fe y a las buenas costumbres generalmente aceptadas, comprometiéndose expresamente a:\n\n3.1.Abstenerse de realizar prácticas o usos de los servicios con fines ilícitos, fraudulentos, lesivos de derechos o intereses del TITULAR o de terceros, infractores de las normas contenidas en el presente documento.\n\n3.2.Abstenerse de realizar cualquier tipo de acción que pudiera inutilizar, sobrecargar o dañar sistemas, equipos o servicios de la Aplicación o accesibles directa o indirectamente a través de esta.\n\n3.3.Respetar los derechos de propiedad intelectual e industrial del TITULAR y de terceros sobre los contenidos, información y servicios prestados desde o a través de la Aplicación, absteniéndose con carácter general de copiar, distribuir, reproducir o comunicar en forma alguna los mismos a terceros, de no mediar autorización expresa y por escrito del TITULAR o de los titulares de dichos derechos.\n\n3.4.No proporcionar información falsa en la Aplicación, siendo el único responsable de la comunicación real y veraz.\n\n3.5.No suplantar la personalidad de un tercero.\n\nEl USUARIO de la Aplicación es el único responsable del uso que decida realizar de los servicios de Radar COVID. El incumplimiento de las obligaciones como USUARIO podrá implicar la baja inmediata de la Aplicación y/o sus servicios; todo ello sin derecho a recibir compensación de ningún tipo, y sin perjuicio de las correspondientes acciones legales a que por parte del TITULAR hubiere lugar.\n\nEl TITULAR no será responsable en ningún caso de la utilización indebida de Radar COVID y de sus contenidos, siendo el USUARIO el único responsable por los daños y perjuicios que pudieran derivarse de un mal uso de estos o de la infracción de lo dispuesto en las presentes condiciones en que pueda incurrir. El USUARIO se compromete a mantener indemne al TITULAR frente a las reclamaciones o sanciones que pudiera recibir de terceros, ya sean particulares o entidades públicas o privadas, por razón de dichas infracciones, así como frente a los daños y perjuicios de todo tipo que pueda sufrir como consecuencia de las mismas.\n\nEn cualquier caso, el TITULAR se reserva, en cualquier momento y sin necesidad de previo aviso, el derecho de modificar o eliminar el contenido, estructura, diseño, servicios y condiciones de acceso y/o uso de esta Aplicación, siempre que lo estime oportuno, siempre que dicho cambio no afecte a los principios y derechos de protección de datos, así como el derecho interpretar las presentes condiciones, en cuantas cuestiones pudiera plantear su aplicación.\n\nAsimismo, queda prohibida la reproducción, distribución, transmisión, adaptación o modificación, por cualquier medio y en cualquier forma, de los contenidos de Radar COVID o sus cursos (textos, diseños, gráficos, informaciones, bases de datos, archivos de sonido y/o imagen, logos y demás elementos de estos sitios), salvo autorización previa de sus legítimos titulares.\n\nLa enumeración anterior tiene mero carácter enunciativo y no es, en ningún caso, exclusivo ni excluyente en ninguno de sus puntos. En todos los supuestos, El TITULAR EXCLUYE CUALQUIER RESPONSABILIDAD POR LOS DAÑOS Y PERJUICIOS DE CUALQUIER NATURALEZA DERIVADOS DIRECTA O INDIRECTAMENTE DE LOS MISMOS Y DE CUALESQUIERA OTROS NO ESPECIFICADOS DE ANÁLOGAS CARACTERISTICAS.\n\nEl TITUTAR NO OFRECE NINGUNA GARANTÍA, EXPRESA, IMPLÍCITA, LEGAL O VOLUNTARIA.\n\nEL TITULAR EXCLUYE EXPRESAMENTE TODAS LAS GARANTÍAS IMPLÍCITAS, INCLUYENDO, A TÍTULO ENUNCIATIVO, PERO NO LIMITATIVO, CUALQUIER GARANTÍA IMPLÍCITA O SANEAMIENTO DE VICIOS OCULTOS, COMERCIABILIDAD, CALIDAD SATISFACTORIA, TÍTULO, IDONEIDAD DEL PRODUCTO PARA UN PROPÓSITO EN PARTICULAR Y CUALQUIER GARANTÍA O CONDICIÓN DE NO INFRACCIÓN. ESTA EXCLUSIÓN DE RESPONSABILIDAD SÓLO SE APLICARÁ EN LA MEDIDA PERMITIDA POR LA LEY IMPERATIVA APLICABLE.</string>
+    <string name="conditions_p7_title"><b>7. Enlaces</b></string>
+    <string name="conditions_p7_content">Radar COVID puede incluir dentro de sus contenidos enlaces con sitios pertenecientes y/o gestionados por terceros con el objeto de facilitar el acceso a información y servicios disponibles a través de Internet.\n\nEl TITULAR no asume ninguna responsabilidad derivada de la existencia de enlaces entre los contenidos de Radar COVID y contenidos situados fuera de los mismos o de cualquier otra mención de contenidos externos a este sitio, exceptuando aquellas responsabilidades establecidas en la normativa de protección de datos. Tales enlaces o menciones tienen una finalidad exclusivamente informativa y, en ningún caso, implican el apoyo, aprobación, comercialización o relación alguna entre el TITULAR y las personas o entidades autoras y/o gestoras de tales contenidos o titulares de los sitios donde se encuentren, ni garantía alguna del TITULAR por el correcto funcionamiento de los sitios o contenidos enlazados.\n\nEn este sentido el USUARIO se obliga a poner la máxima diligencia y prudencia en el caso de acceder o usar contenidos o servicios de los sitios a los que acceda en virtud de los mencionados enlaces.</string>
+    <string name="conditions_p8_title"><b>8. Hiperenlaces</b></string>
+    <string name="conditions_p8_content">No se admite la reproducción de páginas de Radar COVID mediante hiperenlace desde otra Aplicación móvil o página web, permitiéndose exclusivamente el acceso desde la Aplicación.\n\nEn ningún caso se podrá dar a entender que el TITULAR autoriza el hiperenlace o que ha supervisado o asumido de cualquier forma los servicios o contenidos ofrecidos por la web desde la que se produce el hiperenlace.\n\nNo se podrán realizar manifestaciones o referencias falsas, incorrectas o inexactas sobre las páginas y servicios del TITULAR.\n\nSe prohíbe explícitamente la creación de cualquier tipo de navegador, programa, “browser” o “border environment” sobre las páginas de Radar COVID.\n\nNo se podrán incluir contenidos contrarios a los derechos de terceros, ni contrarios a la moral y las buenas costumbres aceptadas, ni contenidos o informaciones ilícitas, en la página web desde la que se establezca el hiperenlace.\n\nLa existencia de un hiperenlace entre una página web y el Radar COVID no implica la existencia de relaciones entre el TITULAR y el propietario de esa página, ni la aceptación y aprobación de sus contenidos y servicios.</string>
+    <string name="conditions_p9_title"><b>9. Ley aplicable y fuero</b></string>
+    <string name="conditions_p9_content">Las presentes condiciones de uso se regirán e interpretarán en todos y cada uno de sus extremos por la Ley Española. En aquellos casos en los que la normativa vigente no prevea la obligación de someterse a un fuero o legislación determinado, el TITULAR y los USUARIOS, con renuncia a cualquier otro fuero que pudiera corresponderles, se someten a los juzgados y tribunales de Madrid capital (España).</string>
+    <string name="conditions_p10_title"><b>10. Información corporativa y contacto</b></string>
+    <string name="conditions_p10_content">Dirección: Calle de Manuel Cortina, 2, 28010 Madrid\n\nEl soporte al USUARIO en caso de incidencias y/o reclamaciones será principalmente online y atendido a la mayor brevedad: contacto@covid19.gob.es</string>
+
+    <string name="privacy_detail_title">POLÍTICA DE PRIVACIDAD DE LA APLICACIÓN &appname;</string>
+    <string name="privacy_intro">Por favor, lee detenidamente esta política de privacidad para usuarios de la aplicación móvil “Radar COVID” (o la “Aplicación”), donde podrás encontrar toda la información sobre los datos que utilizamos, cómo lo usamos y qué control tienes sobre los mismos.\n\n\n<b>AVISO IMPORTANTE:</b>\n\n&#8226; El USUARIO de esta aplicación queda avisado de que al descargar la aplicación en su dispositivo móvil y utilizarla, se está limitando a participar voluntariamente en una <b>EXPERIENCIA PILOTO CON DATOS FICTICIOS de alerta de contagios de la COVID-19 en LA ISLA DE LA GOMERA.</b>\n\n&#8226; <b>Se informa asimismo de que esta aplicación dejará de funcionar una vez que</b>  termine la experiencia piloto.\n\n&#8226; Por tanto, en el uso de la aplicación, <b>todas las notificaciones de exposiciones a posible contagio de la enfermedad que el usuario pueda recibir corresponden a supuestos simulados y, por el mismo motivo, al tratarse de una experiencia piloto con datos ficticios, las sugerencias de adopción de medidas preventivas y asistenciales que tras esa notificación le facilite la aplicación no tienen otro valor que comprobar que la aplicación es capaz de facilitar sugerencias de ese tipo a un usuario que recibiera una notificación de exposición a posible contagio.</b>\n\n&#8226; Tanto en el marco de esta experiencia piloto con datos ficticios como en el caso de que la aplicación se hubiera utilizado en situaciones reales con datos reales, el USUARIO queda avisado de que la utilización de la Aplicación NO CONSTITUYE EN NINGÚN CASO UN SERVICIO DE DIAGNÓSTICO MÉDICO, DE ATENCIÓN DE URGENCIAS O DE PRESCRIPCIÓN DE TRATAMIENTOS FARMACOLÓGICOS, pues la utilización de la Aplicación no podría en ningún caso sustituir la consulta presencial personal frente a un profesional médico debidamente cualificado.</string>
+    <string name="privacy_p1_title"><b>1. ¿Qué es Radar COVID?</b></string>
+    <string name="privacy_p1_content">Radar COVID es una aplicación para dispositivos móviles de alerta de contagios del virus SARS-CoV-2, cuyo TITULAR es la Secretaría General de Administración Digital, dependiente de la Secretaría de Estado de Digitalización e Inteligencia Artificial del Ministerio de Asuntos Económicos y Transformación Digital.\n\nGracias a Radar COVID, aquellos usuarios que se hayan descargado la aplicación y acepten su uso recibirán una notificación en caso de que en los catorce días anteriores a esa notificación hayan estado expuestos a un contacto epidemiológico (a menos de dos metros y más de 15 minutos) con otro usuario (totalmente anónimo) que haya declarado en la aplicación haber dado un resultado positivo en la prueba de COVID 19 (previa acreditación de las autoridades sanitarias). La aplicación le informará exclusivamente sobre el día (dentro de esos catorce anteriores) en que se haya producido la exposición al contacto pero no sobre la identidad del usuario al que haya quedado expuesto (información imposible al ser una aplicación que no solicita, utiliza ni almacena datos de carácter personal de los usuarios) ni la identificación del dispositivo de este, ni sobre el momento o lugar en que la exposición se haya producido.\n\nRecibida una notificación, la aplicación facilitará al usuario expuesto información para la adopción de medidas preventivas y asistenciales, para contribuir con ello a contener la propagación del virus.\n\nEl éxito de la aplicación como herramienta que contribuya a la contención de la propagación está directamente vinculado a que los usuarios sean conscientes, y actúen en consecuencia, de que, a pesar de que comunicar a la aplicación que se ha obtenido un resultado positivo en la prueba de COVID 19 (previa acreditación de las autoridades sanitarias) es voluntario, el no comunicarlo y ser un mero receptor de información de terceros usuarios hace que la aplicación pierda su utilidad preventiva no solo para los demás usuarios sino para el resto de la población en general. El carácter completamente anónimo debería animar, sin duda, al ejercicio de esta actuación responsable.</string>
+    <string name="privacy_p2_title"><b>2. ¿Cómo funciona la aplicación?</b></string>
+    <string name="privacy_p2_content">Una vez que te hayas descargado la aplicación, aceptes las condiciones de uso y la política de privacidad y comiences a utilizarla, tu dispositivo móvil generará cada día un identificador pseudo-aleatorio llamado “clave de exposición temporal” con un tamaño de 16 caracteres (16 bytes o 128 bits) que servirá para derivar los “identificadores efímeros Bluetooth” que son intercambiados con otros teléfonos móviles próximos que también tengan descargada la aplicación RadarCOVID.\n\nLos “identificadores efímeros Bluetooth” son códigos pseudo-aleatorios con un tamaño de 16 caracteres (16 bytes, o 128 bits), que se generan por tu teléfono móvil cada 10-20 minutos, a partir de la “clave de exposición temporal” diaria. Estos códigos no contienen información personal, que permita identificar al teléfono móvil o al usuario del mismo. Estos “identificadores efímeros Bluetooth” son transmitidos por tu teléfono móvil varias veces por segundo a dispositivos cercanos, accesibles a través de Bluetooth Low Energy, produciendo un intercambio de códigos aleatorios entre dispositivos para que puedan ser almacenados por teléfonos próximos que hayan descargado la aplicación. De igual manera, cada cinco minutos, tu teléfono móvil escuchará los identificadores efímeros Bluetooth que son transmitidos por otros teléfonos móviles que tengan la aplicación y los almacenará para calcular si has estado con otro usuario contagiado por COVID-19 a lo largo de los últimos 14 días.\n\nTu teléfono almacena las claves de exposición temporal que has generado en los últimos 14 días. Recuerda que estas claves se generan aleatoriamente y no sirven para identificar a tu teléfono móvil ni al USUARIO del mismo.\n\nSi has recibido un diagnóstico positivo por COVID-19, puedes introducir voluntariamente en la aplicación el “código de confirmación de un solo uso” que te facilitará tu Servicio Público de Salud y que será validado en nuestro servidor. En ese momento, la aplicación te solicitará tu consentimiento para remitir a nuestro servidor las 14 últimas claves de exposición temporal almacenadas en tu teléfono, por tanto, solo si lo prestas, éstas se enviarán al servidor de la aplicación que, después de verificar la exactitud del código, servirán para componer un listado diario de claves de exposición temporal de personas contagiadas por COVID-19 que son descargados diariamente desde el servidor por todas las aplicaciones Radar COVID que estén en funcionamiento.\n\nLa información de estos listados sirve para que en tu propio teléfono se pueda comprobar si has tenido contacto estrecho (menos de dos metros y más de 15 minutos) con personas que han reportado un contagio por COVID-19, sin identificar ni a la persona, ni el lugar de la exposición, ni el dispositivo móvil, ni ningún dato personal tuyo o de la otra persona. Es decir, la aplicación descarga periódicamente las claves de exposición temporal compartidas voluntariamente por los usuarios diagnosticados por COVID-19 del servidor, para compararlas con los códigos aleatorios registrados en los días anteriores como resultado de contactos con otros usuarios. Si se encuentra una coincidencia, la aplicación ejecuta un algoritmo en el dispositivo que, en función de la duración y la distancia estimada del contacto, y de acuerdo con los criterios establecidos por las autoridades sanitarias, decide si se muestra una notificación en el dispositivo del usuario expuesto al riesgo de contagio, advirtiéndole del contacto, comunicándole la fecha del mismo e invitándolo a auto-confinarse, y contactar con las autoridades sanitarias.\n\nEstas claves remitidas al servidor no permiten la identificación directa de los usuarios y son necesarias para garantizar el correcto funcionamiento del sistema de alerta de contagios.</string>
+    <string name="privacy_p3_title"><b>3. ¿Qué datos tratamos sobre ti?</b></string>
+    <string name="privacy_p3_content">Los datos manejados por la aplicación no permiten la identificación directa del usuario o de su dispositivo, y son solo los necesarios para el único fin de informarte de que has estado expuesto a una situación de riesgo de contagio por la COVID-19, así como para facilitar la posible adopción de medidas preventivas y asistenciales.\n\nEn ningún caso se rastrearán los movimientos de los USUARIOS, excluyendo así cualquier forma de geolocalización.\n\nComo parte del sistema de alerta de contagios de la COVID-19, se procesarán los siguientes datos para los usuarios que hayan dado positivo por COVID-19 para los fines especificados a continuación:\n\n1. Las claves de exposición temporal con las que el dispositivo del usuario ha generado los códigos aleatorios enviados (identificadores efímeros Bluetooth), a los dispositivos con los que el usuario ha entrado en contacto, hasta un máximo de 14 días anteriores. Estas claves no guardan relación alguna con la identidad del USUARIO, y se suben al servidor para que puedan ser descargadas por aplicaciones similares en poder de otros usuarios. Con estas claves, mediante un procesamiento que tiene lugar en el teléfono móvil de forma descentralizada, se puede advertir al USUARIO sobre el riesgo de contagio por haber estado en contacto reciente con una persona que ha sido diagnosticada por COVID-19, sin que la aplicación pueda derivar su identidad o el lugar donde tuvo lugar el contacto.\n\n2. Un código de confirmación de un solo uso de 12 dígitos facilitado por las autoridades sanitarias en caso de prueba positiva por COVID-19. Este código debe ser informado por el usuario para permitir la carga voluntaria de las claves de exposición al servidor.\n\n3. Cuestionario voluntario para la recogida de información sobre la experiencia de uso de la aplicación, comprensión de la misma o percepción sobre la privacidad entre otros.\n\n<b>Toda la información se recogerá con fines estrictamente de interés público en el ámbito de la salud pública, y ante la situación de emergencia sanitaria decretada, a fin de proteger y salvaguardar un interés esencial para la vida de las personas, en los términos descritos en esta política de privacidad.</b>\n\nLa legislación aplicable se enumera a continuación:\n\n1. Reglamento (UE) 2016/679, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento General de Protección de Datos).\n\n2. Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.\n\n3. Ley 14/1986, de 25 de abril, General de Sanidad\n\n4. Ley Orgánica 3/1986, de 14 de abril, de Medidas Especiales en Materia de Salud Pública.\n\n5. Ley 33/2011, de 4 de octubre, General de Salud Pública.\n\n6. Real Decreto 463/2020 de 14 de marzo, por el que se declara el estado de alarma para la gestión de la situación de crisis sanitaria ocasionada por el COVID-19 que atribuye al Ministro de Sanidad la necesaria competencia en todo el territorio nacional.\n\n7. Orden Ministerial SND/297/2020 de 27 de marzo, por la que se encomienda a la Secretaría de Estado de Digitalización e Inteligencia Artificial, del Ministerio de Asuntos Económicos y Transformación Digital, el desarrollo de nuevas actuaciones para la gestión de la crisis sanitaria ocasionada por el COVID-19.</string>
+    <string name="privacy_p4_title"><b>4. Cómo obtenemos y de dónde proceden tus datos? </b></string>
+    <string name="privacy_p4_content">El código de confirmación de positivo por COVID-19 facilitado por el Servicio Público de Salud. Esto permitirá la subida al servidor del sistema de alerta de contagios las claves de exposición temporal con las que el dispositivo del usuario ha generado los códigos aleatorios enviados (identificadores efímeros Bluetooth), a los dispositivos con los que el usuario ha entrado en contacto, hasta un máximo de 14 días anteriores. Estas claves únicamente se suben al servidor con el consentimiento explícito e inequívoco del USUARIO, al haber introducido un código de confirmación de positivo por COVID-19.</string>
+    <string name="privacy_p5_title"><b>5. ¿Para qué y por qué utilizamos tus datos?</b></string>
+    <string name="privacy_p5_content">La recogida, almacenamiento, modificación, estructuración y en su caso, eliminación, de los datos generados, constituirán operaciones de tratamiento llevadas a cabo por el Titular, con la finalidad de garantizar el correcto funcionamiento de la App, mantener la relación de prestación del servicio con el Usuario, y para la gestión, administración, información, prestación y mejora del servicio.\n\nLa información y datos recogidos a través de la Aplicación serán tratados con fines estrictamente de interés público en el ámbito de la salud pública, ante la actual situación de emergencia sanitaria como consecuencia de la pandemia del COVID-19 y la necesidad de su control y propagación, así como para garantizar intereses vitales tuyos o de terceros, de conformidad con la normativa de protección de datos vigente.\n\nA tal efecto, utilizamos tus datos para prestarte el servicio de “Radar COVID” y para que puedas hacer uso de sus funcionalidades de acuerdo con sus condiciones de uso. De conformidad con el Reglamento General de Protección de Datos (RGPD) así como cualquier legislación nacional que resulte aplicable, la Secretaría General de Administración Digital tratará todos los datos generados durante el uso de la App para las siguientes finalidades:\n\n1.Ofrecerte información sobre contactos considerados de riesgo de exposición a la COVID-19.\n\n2.Proporcionarte consejos prácticos y recomendaciones de acciones a seguir según se produzcan situaciones de riesgo de cara a la cuarentena o auto-cuarentena.\n\nEste tratamiento se llevará a cabo a través de la funcionalidad de alerta de contagios que permite identificar situaciones de riesgo por haber estado en contacto estrecho con personas usuarias de la aplicación que se encuentran infectadas por la COVID-19. De esta manera se te informará de las medidas que conviene adoptar después.</string>
+    <string name="privacy_p6_title"><b>6. ¿Durante cuánto tiempo conservamos tus datos?</b></string>
+    <string name="privacy_p6_content">Las claves de exposición temporal y los identificadores efímeros de Bluetooth son almacenados en el dispositivo por un periodo de 14 días, después de los cuales son eliminados.\n\nAsimismo, las claves de exposición temporal que hayan sido comunicadas al servidor por los USUARIOS diagnosticados como positivos por COVID-19 también serán eliminadas del servidor al cabo de 14 días.\n\nEn todo caso, ni las claves de exposición temporal ni los identificadores efímeros de Bluetooth contienen datos de carácter personal ni permiten identificador los teléfonos móviles de los usuarios.</string>
+    <string name="privacy_p7_title"><b>7. ¿Quién tiene acceso a tus datos?</b></string>
+    <string name="privacy_p7_content">Ni la aplicación “Radar COVID” ni el servidor de alerta de contagios almacenan datos personales de ningún tipo.\n\nLos datos gestionados por la aplicación móvil (claves diarias de exposición temporal e identificadores efímeros Bluetooth) se almacenan únicamente en el dispositivo del usuario a los efectos de poder hacer cálculos y derivar informes al USUARIO sobre su riesgo de exposición a la COVID-19.\n\nSolo en el caso de reportar un diagnóstico positivo por COVID-19, las claves de exposición temporal de los últimos 14 días generadas en el dispositivo, y bajo el consentimiento explícito e inequívoco del USUARIO, son subidas al servidor para su difusión al conjunto de USUARIOS de este sistema.\n\nEstas claves no guardan relación alguna con la identidad de los dispositivos móviles ni con datos personales de los USUARIOS de la Aplicación.</string>
+    <string name="privacy_p8_title"><b>8. ¿Cuáles son tus derechos y cómo puedes controlar tus datos?</b></string>
+    <string name="privacy_p8_content">Dado que la aplicación Radar COVID no almacena datos personales, no son de aplicación los derechos de acceso, rectificación, supresión, limitación, oposición y portabilidad, así como a no ser objeto de decisiones basadas únicamente en el tratamiento automatizado de sus datos.\n\nEn todo caso, tenemos obligación de indicarte que te asiste en todo momento el derecho para presentar una reclamación ante Agencia Española de Protección de Datos (www.aepd.es).</string>
+    <string name="privacy_p9_title"><b>9. ¿Cómo protegemos tus datos?</b></string>
+    <string name="privacy_p9_content">El sistema Radar COVID no almacena datos personales.\n\nEn todo caso, las medidas de seguridad implantadas se corresponden con las previstas en el anexo II (Medidas de seguridad) del Real Decreto 3/2010, de 8 de enero, por el que se regula el Esquema Nacional de Seguridad en el ámbito de la Administración Electrónica.\n\nFinalmente, te informamos que tanto el almacenamiento como el resto de las actividades del tratamiento de datos no personales utilizados estarán siempre ubicados dentro de la Unión Europea.</string>
+    <string name="privacy_p10_title"><b>10. ¿Cuál es la legitimación para el tratamiento de tus datos?</b></string>
+    <string name="privacy_p10_content">Los datos generados se tratarán legítimamente con las siguientes bases legales:\n\n1.El consentimiento del usuario libre, específico, informado e inequívoco del USUARIO, poniendo a su disposición la presente política de privacidad, que deberá aceptar mediante el marcado de la casilla dispuesta al efecto.\n\n2.Razones de interés público en el ámbito de la salud pública, como la protección frente a amenazas transfronterizas graves para la salud (artículo 9.2 i) del RGPD), para el tratamiento de los datos de salud (por ejemplo, el estado de una persona contagiada o información sobre síntomas, etc.).\n\n3.Cumplimiento de una misión realizada en interés público o en el ejercicio de poderes públicos conferidos al responsable del tratamiento (artículo 6.1 e) RGPD).\n\n4.Fines de archivo de interés público, fines de investigación científica o histórica o fines estadísticos (artículo 9.2 j) RGPD).\n\nEl Titular de la Aplicación podrá dar acceso o transmitir los datos a terceros proveedores de servicios, con los que haya suscrito acuerdos de encargo de tratamiento de datos, y que únicamente accedan a dicha información para prestar un servicio en favor y por cuenta del Responsable.</string>
+    <string name="privacy_p11_title"><b>11. ¿Qué tienes que tener especialmente en cuenta al utilizar "Radar COVID"?</b></string>
+    <string name="privacy_p11_content">Has de tener en cuenta determinados aspectos relativos a la edad mínima de utilización de Aplicación, la calidad de los datos que nos proporcionas, así como la desinstalación de la Aplicación en tu dispositivo móvil.\n\n1.Edad mínima de utilización: para poder utilizar “Radar COVID” tienes que ser mayor de 18 años o contar con la autorización de tus padres y/o tutores legales. Por tanto, al darte de alta en la Aplicación, garantizas al Titular que eres mayor de dicha edad o, en caso contrario, que cuentas con la mencionada autorización.\n\n2.Calidad de los datos que nos proporcionas: la información que nos facilites en el uso de los servicios de la Aplicación deberá de ser siempre real, veraz y estar actualizada.\n\n3.Desinstalación de la Aplicación: en general, puede haber dos situaciones en las que se proceda a la desactivación técnica de la Aplicación en tu dispositivo: 1) que lo realices voluntariamente, y 2) que desde el Titular se proceda a la desactivación técnica de la Aplicación en tu dispositivo (p.ej. en casos en los que detectemos que has incumplido las condiciones de uso de la Aplicación).</string>
+    <string name="privacy_p12_title"><b>12. Política de cookies</b></string>
+    <string name="privacy_p12_content">Utilizamos solamente cookies técnicas que permiten al usuario la navegación y la utilización de las diferentes opciones o servicios que se ofrecen en la Aplicación como, por ejemplo, acceder a partes de acceso restringido o utilizar elementos de seguridad durante la navegación.\n\n\nHe leído el documento POLÍTICA DE PRIVACIDAD DE LA APLICACIÓN “Radar COVID”.</string>
+
+    /********** Onboarding ************/
+    <string name="onboarding_title_step_1">Bienvenido a &appname;</string>
+    <string name="onboarding_subtitle_step_1">Para darte el mejor servicio, por favor, selecciona tu idioma. Si no es castellano, reinicia <b>Radar COVID</b> después de seleccionar</string>
+    <string name="onboarding_step1_message_1">Conoce en todo momento si te expones al coronavirus, ayudándote a protegerte y proteger a los demás.</string>
+    <string name="onboarding_step1_message_2">Comunica de forma anónima tu diagnóstico Covid positivo.</string>
+    <string name="onboarding_step1_message_3">Si estuvieras afectado, comunicaremos la exposición de forma anónima a las personas con las que has estado en contacto.</string>
+    <string name="onboarding_step1_message_end">Gracias por cuidarte y ayudarnos a proteger a los demás.</string>
+
+    <string name="onboarding_title_step_2">Tu privacidad es nuestra prioridad</string>
+    <string name="onboarding_descrption_step2">Nuestros compromisos</string>
+
+    <string name="onboarding_step_2_commitments_title_1">Anonimato</string>
+    <string name="onboarding_step_2_commitments_detail_1">La aplicación funciona sin revelar tu identidad ni la de tu smartphone. <b>NO</b> se recoge tu nombre, email, geolocalización, ni tu teléfono.</string>
+    <string name="onboarding_step_2_commitments_title_2">Discreción</string>
+    <string name="onboarding_step_2_commitments_detail_2">Las alertas de exposición se envían sin indicar cuándo y dónde se produjo la exposición.</string>
+    <string name="onboarding_step_2_commitments_title_3">Tú decides</string>
+    <string name="onboarding_step_2_commitments_detail_3">Elige en todo momento si quieres desactivar el servicio o dejar de utilizar la App.</string>
+
+    <string name="onboarding_title_step_3">Cómo funciona</string>
+    <string name="onboarding_step_3_instructions_title_1">01</string>
+    <string name="onboarding_step_3_instructions_detail_1">Activa tu Bluetooth. Eso es todo lo que te pedimos.</string>
+    <string name="onboarding_step_3_instructions_title_2">02</string>
+    <string name="onboarding_step_3_instructions_detail_2">Visita la App con frecuencia para visualizar tu grado de exposición al coronavirus.</string>
+    <string name="onboarding_step_3_instructions_title_3">03</string>
+    <string name="onboarding_step_3_instructions_detail_3">En caso de haber estado expuesto o reportar un diagnóstico positivo sigue las indicaciones que te enviaremos.</string>
+    <string name="onboarding_descrption_step3">Gracias a la tecnología contact tracing Bluetooth, guardamos las interacciones entre los teléfonos que están próximos entre sí: así, si un usuario confirma que tiene Covid-19, el histórico de teléfonos cercanos nos permite alertar a aquellos que estuvieron cerca para que tomen precauciones . Pero ¡siempre con privacidad asegurada! Los teléfonos cercanos se almacenan con ids cambiantes, de modo que el usuario o el dispositivo no son identificables . ¿Quieres ser alertado en caso de haber estado expuesto al Covid-19? Autoriza tu contact tracing Bluetooth en la app y mantén encendido el Bluetooth de tu móvil.</string>
+
+    <string name="onboarding_title_step_4">RECOMENDACIONES</string>
+    <string name="onboarding_descrption_step4_p1">Protégete a sí mismo y a quienes te rodean informándote y tomando las precauciones adecuadas. Sigue los consejos de tu organismo de salud pública local.  Para evitar la propagación de la COVID-19:</string>
+    <string name="onboarding_descrption_step4_p2">Evitar las visitas innecesarias a los centros de atención médica permite que los sistemas sanitarios funcionen con mayor eficacia, lo que redunda en su protección y en la de los demás</string>
+    <string name="onboarding_descrption_step4_t1">Lávate las manos con frecuencia. Usa agua y jabón o un desinfectante de manos a base de alcohol.</string>
+    <string name="onboarding_descrption_step4_t2">Manténte a una distancia segura de cualquier persona que tosa o estornude. </string>
+    <string name="onboarding_descrption_step4_t3">No te toque los ojos, la nariz o la boca.</string>
+    <string name="onboarding_descrption_step4_t4">Cuando tosas o estornudes, cúbrete la nariz y la boca con el codo flexionado o con un pañuelo desechable. </string>
+    <string name="onboarding_descrption_step4_t5">Quédate en casa si te sientes mal.</string>
+    <string name="onboarding_descrption_step4_t6">Si tienen fiebre, tos y dificultad para respirar, solicita atención médica. Llama con antelación.</string>
+    <string name="onboarding_descrption_step4_t7">Sigue las instrucciones de tu organismo sanitario local.</string>
+
+    <string name="onboarding_button_continue">Continuar</string>
+    <string name="onboarding_button_activate">Activar Bluetooth</string>
+    <string name="onboarding_button_finish">Continuar sin activar</string>
+
+    /********** Menu ************/
+    <string name="title_home">Home</string>
+    <string name="title_profile">Mis datos</string>
+    <string name="title_helpline">Helpline</string>
+
+    /********** Healing Info Dialog ************/
+
+    <string name="low_risk_info_dialog_title">Han pasado 14 días desde tu último contacto detectado con alguien diagnosticado de COVID-19. Por este motivo tu estado en a aplicación vuelve a estar “Sin contactos de riesgo identificados”.</string>
+    <string name="low_risk_info_dialog_p1">Si no presentas síntomas ni has sido diagnosticado de COVID-19 en los últimos días, puedes volver a tu rutina, manteniendo las <u>precauciones habituales</u>.</string>
+    <string name="low_risk_info_dialog_p1_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/COVID19_como_protegerse.jpg</string>
+    <string name="low_risk_info_dialog_p2">Si durante los últimos días has presentado <u>síntomas</u> (tos, fiebre o dificultad respiratoria) ponte en contacto con los servicios sanitarios lo antes posible.</string>
+    <string name="low_risk_info_dialog_p2_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/COVID19_sintomas.jpg</string>
+    <string name="low_risk_info_dialog_more_info"><u>Más información de cómo actuar ></u></string>
+    <string name="low_risk_info_dialog_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
+    <string name="low_risk_info_dialog_p3">Si has sido diagnosticado de COVID-19, para que otras personas puedan ser avisadas de tu exposición es necesario que comuniques tu positivo COVID-19 en la app.</string>
+
+    /********** Home ************/
+    <string name="exposition_block_low_title">Exposición baja</string>
+    <string name="exposition_block_medium_title">Exposición media</string>
+    <string name="exposition_block_high_title">Contacto estrecho</string>
+    <string name="exposition_block_infected_title">COVID-19 Positivo</string>
+
+    <string name="exposition_block_low_description"><b>Te informaremos en el caso de un posible contacto de riesgo.</b></string>
+    <string name="exposition_block_high_description"><b>Has estado en contacto con una persona contagiada de COVID-19.\nInfórmalo en el 900 112 061 (gratuito)</b>.</string>
+    <string name="exposition_block_infected_description"><b>Tu diagnóstico ha sido enviado.\nPor favor, aíslate durante 14 días</b>.</string>
+    <string name="exposition_block_infected_more_info">Más información ></string>
+    <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+
+    <string name="radar_block_checked_title">&appname; activo</string>
+    <string name="radar_block_not_checked_title">&appname; inactivo</string>
+
+    <string name="radar_block_checked_description">Las interacciones con móviles cercanos se registrarán siempre anónimamente.</string>
+    <string name="radar_block_not_checked_description">Por favor, activa esta opción para que la aplicación funcione.</string>
+    <string name="radar_block_disabled_description">Desde este momento, Radar COVID dejará de registrar contactos cercanos</string>
+
+    <string name="radar_warning_exposure_notifications_disabled">Notificaciones de exposición a la COVID-19 DESACTIVADAS</string>
+
+    <string name="radar_warning_title">¿Estas seguro de desactivar &appname;</string>
+    <string name="radar_warning_message">Si desactivas &appname;, la aplicación dejará de registrar contactos. Ayúdanos a cuidarte</string>
+    <string name="radar_warning_button_positive">Mantener activo</string>
+    <string name="radar_warning_button_negative">Desactivar</string>
+
+    <string name="covid_report_warning">Es necesario tener el Radar COVID activo para poder enviar el diagnóstico</string>
+
+
+    /********** Exposure detail common ************/
+    <string name="exposure_detail_title">EXPOSICIÓN</string>
+    <string name="exposure_detail_what_to_do">¿Qué debo hacer?</string>
+    <string name="exposure_detail_more_info">Más información a través de <b>este enlace</b></string>
+    <string name="exposure_detail_acknowledgement_message">Gracias por seguir cuidándote y cuidando a los demás.</string>
+
+    <string name="exposure_detail_medium">Tu exposición es media</string>
+    <string name="exposure_detail_message_medium">Podrías estar infectado</string>
+    <string name="exposure_detail_tips_subtitle_medium">Por favor, presta atención a posibles síntomas:</string>
+    <string name="exposure_detail_clinic_indications">Sigue los consejos de tu centro de salud. Más información <b>aquí</b></string>
+    <string name="exposure_detail_more_info_tips">Tienes más información sobre consejos, sintomas y medidas <b>aquí</b></string>
+    <string name="exposure_detail_covid_report_message"><b>Ayúdanos a cuidar a los demás.</b> Si te han confirmado que eres un caso positivo Covid-19, ayúdanos a parar su propagación reportándolo anónimamente</string>
+
+    <string name="exposure_detail_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
+
+    /********** Exposure detail low ************/
+    <string name="exposure_detail_low_title_small">RIESGO BAJO</string>
+    <string name="exposure_detail_low_title">Tu exposición es baja</string>
+    <string name="exposure_detail_low_last_update">Sin contactos de riesgo aparentes. (actualizado %1$s)</string>
+    <string name="exposure_detail_low_last_update_no_data">Sin contactos de riesgo aparentes.</string>
+
+    <string name="exposure_detail_tips_title_low">Mantén las medidas de seguridad y distanciamiento social.</string>
+
+    <string name="exposure_detail_tip_mask">Usa siempre mascarilla quirúrgica</string>
+    <string name="exposure_detail_tip_wash_hands">Lávate las manos frecuentemente</string>
+
+
+    <string name="exposure_detail_tip_distance">Mantén la distancia de seguridad de 1,5 metros</string>
+    <string name="exposure_detail_tip_clean">Limpia con regularidad las superficies que más se tocan</string>
+    <string name="exposure_detail_tip_avoid_touch">Evita tocarte los ojos, la nariz y la boca</string>
+    <string name="exposure_detail_tip_rules">Respeta las normas particulares en tu territorio sobre aforos y actividades permitidas</string>
+    <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
+    <string name="exposure_detail_tip_cough">Al toser o estornudar, tápate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>
+
+    <string name="exposure_detail_low_symptoms_what_to_do"><u>Cómo actuar si tengo síntomas ></u></string>
+    <string name="exposure_detail_low_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
+
+    /********** Exposure detail high ************/
+    <string name="exposure_detail_high_title_small">RIESGO ALTO</string>
+    <string name="exposure_detail_high_title">Tu exposición es alta</string>
+    <string name="exposure_detail_high_last_update">Podrías estar infectado desde hace <b>%1$s</b> (actualizado %2$s)</string>
+    <string name="exposure_detail_high_exposure_dates_title">Historial de exposiciones:</string>
+
+    <string name="exposure_detail_phone_title">Para darte la mejor orientación, selecciona tu Comunidad Autónoma:</string>
+    <string name="exposure_detail_high_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud:</string>
+    <string name="exposure_detail_symptom_cough">Tos persistente</string>
+    <string name="exposure_detail_symptom_fever">Fiebre alta continua</string>
+    <string name="exposure_detail_symptom_breathing">Sensación de falta de aire</string>
+    <string name="exposure_detail_symptom_taste_and_smell">Perdida del gusto o el olfato</string>
+
+
+    <string name="exposure_detail_symptoms_title">Presta atención a la aparición de cualquiera de los siguientes síntomas:</string>
+    <string name="exposure_detail_high_tip_1">Mantén la distancia de seguridad de al menos 1,5 metros</string>
+    <string name="exposure_detail_high_tip_2">Evita acudir a eventos o lugares con muchas personas</string>
+    <string name="exposure_detail_high_tip_3">Evita el contacto con personas vulnerables como personas mayores o enfermas</string>
+    <string name="exposure_detail_high_tip_4">Usa siempre mascarilla quirúrgica</string>
+    <string name="exposure_detail_high_tip_5">Lávate las manos frecuentemente</string>
+
+    <string name="exposure_detail_high_other_symptoms"><u>Otros síntomas ></u></string>
+    <string name="exposure_detail_high_other_symptoms_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/COVID19_sintomas.jpg</string>
+    <string name="exposure_detail_high_symptoms_what_to_do"><u>Cómo actuar si tengo síntomas ></u></string>
+    <string name="exposure_detail_high_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
+
+    /********** Exposure detail infected ************/
+
+    <string name="exposure_detail_infected_title_small">DIAGNÓSTICO COMUNICADO</string>
+    <string name="exposure_detail_infected_title">COVID-19 positivo</string>
+    <string name="exposure_detail_infected_last_update">Tu diagnóstico fue enviado hace <b>%1$s</b> (actualizado %2$s)</string>
+    <string name="exposure_detail_infected_more_info">Más información ></string>
+    <string name="exposure_detail_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+
+    <string name="exposure_detail_infected_p1"><b>Tu diagnostico nos ayuda a proteger a los demás.</b>\n\nSin revelar tu identidad en ningún momento, hemos comunicado tu diagnóstico a móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
+    <string name="exposure_detail_infected_what_to_do_subtitle">Sigue las siguientes recomendaciones y los consejos de tu centro de salud</string>
+
+    <string name="exposure_detail_infected_tips_title">Sigue las siguientes recomendaciones y los consejos de tu centro de salud</string>
+
+    /********** Region info ************/
+
+    <string name="region_info_phone_title">Teléfono COVID</string>
+    <string name="region_info_web_title">Web información COVID</string>
+
+    /********** Covid Report ************/
+
+    <string name="covid_report_title">MI DIAGNÓSTICO</string>
+    <string name="covid_report_subtitle">Envía tu diagnóstico COVID positivo</string>
+    <string name="covid_report_p1">Enviando tu diagnóstico anónimo COVID-19, estás contribuyendo a detener la propagación del virus.</string>
+    <string name="covid_report_p2">Gracias por ayudarnos a cuidar a los demás.</string>
+    <string name="covid_report_p3">Tu información está segura y será tratada siempre anónimamente</string>
+    <string name="covid_report_qr_button">Escanear QR</string>
+    <string name="covid_report_code_hint_title">Código de diagnóstico</string>
+    <string name="covid_report_code_hint_subtitle">Introduce el código que te han enviado</string>
+    <string name="covid_report_code_input_example">ej. 123456789123</string>
+    <string name="covid_report_footer">Al enviar tu diagnóstico los identificadores aleatorios generados en los últimos días servirán para avisar a las personas que hayan estado cerca de ti. Tu identidad no se comparte con nadie.</string>
+    <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
+    <string name="covid_report_abort_warning_title">¿Seguro que no quieres enviar tu diagnóstico?</string>
+    <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demas y evitemos que el Covid-19 se propague.</string>
+    <string name="covid_report_abort_warning_button">Cancelar</string>
+    <string name="covid_report_error">Se ha producido un error al enviar diagnóstico</string>
+    <string name="covid_report_edit_text_hint">Código de diagnóstico</string>
+
+    <string name="covid_report_backbutton_acc">Volver a inicio.</string>
+
+    /********** Network Warning Dialog ************/
+
+    <string name="network_warning_dialog_title">Sin conexión.</string>
+    <string name="network_warning_dialog_message">Por favor, comprueba tu conexión y vuelve a enviar tu código.</string>
+    <string name="network_warning_dialog_button">Reintentar</string>
+
+    /********** Report Confirmation ************/
+
+    <string name="confirmation_title">Gracias por contribuir a parar el virus</string>
+    <string name="confirmation_subtitle">Tu diagnóstico nos ayudará a proteger a los demás.</string>
+    <string name="confirmation_p1">Sin revelar tu identidad en ningún momento, vamos a rastrear qué móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.\n\nPor favor, permanece en aislamiento siguiendo las recomendaciones que te han dado los servicios sanitarios.</string>
+    <string name="confirmation_more_info"><u>Más información ></u></string>
+    <string name="confirmation_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+    <string name="confirmation_what_to_do">¿Qué debo hacer?</string>
+    <string name="confirmation_tips_title">Sigue las recomendaciones de tus servicios sanitarios</string>
+    <string name="confirmation_tip_1">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
+    <string name="confirmation_tip_2">Evita el contacto con otras personas</string>
+    <string name="confirmation_tip_3">Usa siempre mascarilla quirúrgica</string>
+    <string name="confirmation_tip_4">Lávate las manos frecuentemente</string>
+    <string name="confirmation_tip_5">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
+    <string name="confirmation_tip_6">Si los síntomas empeoran llama al 112</string>
+    <string name="confirmation_acknowledge">Gracias por seguir cuidándote y cuidando a los demás.</string>
+    <string name="confirmation_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
+
+    <string name="confirmation_backbutton_acc">Volver a inicio.</string>
+
+    /********** My data ************/
+
+    <string name="my_data_title">MIS DATOS</string>
+    <string name="my_data_subtitle">Tu privacidad es lo más importante</string>
+    <string name="my_data_l1"><b>NO</b> recogemos ningún dato personal (nombre, dirección, edad, teléfono, correo electrónico…)</string>
+    <string name="my_data_l2"><b>NO</b> recogemos ningún dato de geolocalización, incluidos los datos del GPS</string>
+    <string name="my_data_l3_title">Por tanto:</string>
+    <string name="my_data_l3">Por tanto:\n<b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
+    <string name="my_data_encription_info">Los datos son guardados en tu teléfono y la conexión con el servidor están encriptados</string>
+    <string name="my_data_conditions">Consulta las <b><u>condiciones de uso</u></b></string>
+    <string name="my_data_privacy">Consulta la <b><u>política de privacidad</u></b></string>
+
+    /********** Helpline ************/
+
+    <string name="helpline_title">Para más información…</string>
+    <string name="helpline_message_p2">¿Tienes alguna pregunta sobre cómo funciona <b>Radar COVID</b>? ¿Qué hacer si recibes una notificación?\nConsulta aquí todas tus dudas:</string>
+
+    <string name="helpline_faqs_web_title">FAQs Radar COVID</string>
+    <string name="helpline_faqs_web_url">http://www.google.es</string>
+    <string name="helpline_info_web_title">Web información COVID</string>
+    <string name="helpline_info_web_url">http://www.google.es</string>
+    <string name="helpline_other_web_title">Otros enlaces</string>
+    <string name="helpline_other_web_url">http://www.google.es</string>
+
+    /********** DP3T ************/
+
+    <string name="dp3t_sdk_service_notification_title">&appname;</string>
+    <string name="dp3t_sdk_service_notification_errors">No funciona correctamente.</string>
+    <string name="dp3t_sdk_service_notification_error_location_service">Localización desactivada.</string>
+    <string name="dp3t_sdk_service_notification_error_bluetooth_disabled">Por favor, activa el Bluetooth. Es imprescindible para que &appname;
+        funcione correctamente.</string>
+    <string name="dp3t_sdk_service_notification_error_battery_optimization"><b>Ahorro de energía activado</b>\nDebes desactivarlo para que Radar COVID funcione correctamente.</string>
+    <string name="dp3t_sdk_service_notification_error_bluetooth_not_supported">El Bluetooth de baja energía no es compatible con este dispositivo.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_server">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_network">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_no_space">Error al cargar nuevos datos de infección. No hay espacio disponible en este dispositivo.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_ssltls">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_timing">Es necesario que configures en Ajustes la actualización automática de fecha y hora.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_signature">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_api">Error al cargar nuevos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_gaen_not_available">Las notificaciones de exposición COVID-19 no están disponibles en este dispositivo.</string>
+    <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Por favor, activa las notificaciones de exposición. Es imprescindible para que &appname;
+        funcione correctamente.</string>
+
+    /********** Locale selection module ************/
+    <string name="locale_selection_region_hint">*Selecciona tu comunidad autónoma</string>
+    <string name="locale_selection_region_default">Selecciona tu Comunidad Autónoma</string>
+    <string name="locale_selection_language_default">Selecciona tu idioma</string>
+    <string name="locale_selection_warning_message">Para aplicar los cambios realizados es necesario reiniciar la aplicación.</string>
+
+    /********** Accesibility ************/
+
+    <string name="description_arrow_button_back">Botón atrás</string>
+    <string name="description_arrow_button_enter">Botón entrar</string>
+
+    /********** Common ************/
+
+    <string name="dialog_close_button_description">Cerrar</string>
+
+    <string name="warning_need_update_title">Actualiza &appname;</string>
+    <string name="warning_need_update_message">Para poder seguir utilizando &appname; es necesario que actualices la aplicación.</string>
+    <string name="warning_need_update_button">ACTUALIZAR</string>
+
+    <string name="exposure_high_notification_title">Riesgo de exposición alto.</string>
+    <string name="exposure_high_notification">Tu exposición ahora es alta</string>
+    <string name="exposure_low_notification_title">Riesgo de exposición bajo.</string>
+    <string name="exposure_low_notification">Tu exposición ahora es baja</string>
+    <string name="exposure_low_notification_activate_radar">Tu exposición ahora es baja. Por favor, vuelve a activar el radar.</string>
+
+
+    <string name="empty_text"> </string>
+    <string name="statisfaction_min">muy mala</string>
+    <string name="statisfaction_max">excelente</string>
+
+    <string name="contact_email"><u>piloto.appcovid@economia.gob.es</u></string>
+    <string name="contact_support_title">Horario lunes a viernes de 08H a 20H</string>
+    <string name="contact_support_phone">900 112 061</string>
+    <string name="contact_support_free_call">llamada gratuita</string>
+
+    <string name="more_info">Más información</string>
+
+    <string name="accept">Aceptar</string>
+    <string name="back">Volver</string>
+
+    <string name="button_covid_report">Comunica tu positivo Covid</string>
+
+    <string name="warning_exit_application_message">¿Está seguro de que desea salir de la aplicación?</string>
+    <string name="warning_exit_application_button">Confirmar</string>
+    <string name="warning_need_browser_message">Necesitas tener instalado un navegador.</string>
+
+    <plurals name="days">
+        <item quantity="one">%d día</item>
+        <item quantity="other">%d días</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d hora</item>
+        <item quantity="other">%d horas</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">%d min</item>
+        <item quantity="other">%d mins</item>
+    </plurals>
+
+
+</resources>

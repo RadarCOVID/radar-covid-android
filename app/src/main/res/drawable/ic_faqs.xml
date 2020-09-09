@@ -1,0 +1,44 @@
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="19dp"
+    android:height="17dp"
+    android:viewportWidth="19"
+    android:viewportHeight="17">
+  <path
+      android:pathData="M10.6475,5.7703C10.9278,4.9733 11.4812,4.3012 12.2096,3.8731C12.938,3.445 13.7944,3.2885 14.6271,3.4314C15.4599,3.5742 16.2152,4.0072 16.7593,4.6535C17.3034,5.2999 17.6012,6.1179 17.5999,6.9628C17.5999,9.3479 14.0223,10.5404 14.0223,10.5404"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#8A7CB7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M14.1177,15.3105H14.1296"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#8A7CB7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M7.9524,10.5403C7.672,11.3373 7.1186,12.0093 6.3902,12.4374C5.6618,12.8655 4.8054,13.022 3.9727,12.8792C3.14,12.7363 2.3847,12.3034 1.8406,11.657C1.2965,11.0107 0.9987,10.1926 1,9.3477C1,6.9627 4.5775,5.7702 4.5775,5.7702"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#8A7CB7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M4.4824,1L4.4705,1"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#8A7CB7"
+      android:strokeLineCap="round"/>
+</vector>

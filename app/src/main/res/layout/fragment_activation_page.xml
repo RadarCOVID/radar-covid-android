@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/wrapperContent"
+        style="@style/ScrollVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonContinue"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_background_corner_purple" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/img_step3" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_content">
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="36dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="@string/onboarding_title_step_3"
+                    android:textColor="@color/black"
+                    app:labelId="ONBOARDING_STEP_3_TITLE" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleEnumPurple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/onboarding_step_3_instructions_title_1"
+                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_1_TITLE" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/onboarding_step_3_instructions_detail_1"
+                    android:textColor="@color/black"
+                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_1_DESCRIPTION" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleEnumPurple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/onboarding_step_3_instructions_title_2"
+                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_2_TITLE" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/onboarding_step_3_instructions_detail_2"
+                    android:textColor="@color/black"
+                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_2_DESCRIPTION" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleEnumPurple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/onboarding_step_3_instructions_title_3"
+                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_3_TITLE" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="60dp"
+                    android:text="@string/onboarding_step_3_instructions_detail_3"
+                    android:textColor="@color/black"
+                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_3_DESCRIPTION" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </ScrollView>
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonContinue"
+        style="@style/ButtonNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_content"
+        android:layout_marginBottom="@dimen/padding_content"
+        android:text="@string/onboarding_button_continue"
+        app:labelId="ONBOARDING_CONTINUE_BUTTON"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wrapperContent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

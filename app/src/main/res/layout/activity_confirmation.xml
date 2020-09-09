@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".features.covidreport.form.view.CovidReportActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_covid_report"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/layoutBackButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <es.gob.radarcovid.common.view.LabelImageButton
+            android:id="@+id/imageButtonBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription="@string/confirmation_backbutton_acc"
+            android:onClick="onBackArrowClick"
+            android:paddingLeft="22dp"
+            android:paddingTop="22dp"
+            android:paddingRight="22dp"
+            app:contentDescriptionLabelId="ACC_MY_HEALTH_REPORTED_BACKBUTTON"
+            android:paddingBottom="32dp"
+            android:src="@drawable/ic_arrow_left" />
+
+    </FrameLayout>
+
+    <ScrollView
+        style="@style/ScrollVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutBackButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:paddingBottom="22dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:src="@drawable/ic_confirmation_check" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TitleMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/confirmation_title"
+                app:labelId="MY_HEALTH_REPORTED_TITLE" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TitleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/confirmation_subtitle"
+                android:textSize="18sp"
+                app:labelId="MY_HEALTH_REPORTED_SUBTITLE" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSmallBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/confirmation_p1"
+                app:labelId="MY_HEALTH_REPORTED_PARAGRAPH_1" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewConfirmationMoreInfo"
+                style="@style/TitleTipSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/confirmation_more_info"
+                android:textSize="16sp"
+                app:labelId="MY_HEALTH_REPORTED_MORE_INFO" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TitleExtraBoldSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="@string/confirmation_what_to_do"
+                android:textSize="22sp"
+                app:labelId="MY_HEALTH_REPORTED_WHAT_TO_DO_TITLE" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                android:text="@string/confirmation_tips_title"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                app:labelId="MY_HEALTH_REPORTED_BULLET_TITLE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="40dp"
+                    android:src="@drawable/ic_stay_home" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextSmallBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:text="@string/confirmation_tip_1"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="35dp"
+                    android:src="@drawable/ic_avoid_contact" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextSmallBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:text="@string/confirmation_tip_2"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="34dp"
+                    android:src="@drawable/ic_use_mask" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextSmallBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:text="@string/confirmation_tip_3"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:src="@drawable/ic_wash_your_hands" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextSmallBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:text="@string/confirmation_tip_4"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_emergency_number" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextSmallBlack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/confirmation_tip_6"
+                    app:labelId="MY_HEALTH_REPORTED_BULLET_6" />
+
+            </LinearLayout>
+
+            <es.gob.radarcovid.common.view.MoreInfoButton
+                android:id="@+id/buttonMoreInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TitleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/confirmation_acknowledge"
+                android:textSize="18sp"
+                app:labelId="THANKS" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
