@@ -108,7 +108,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                 it.dismiss()
                 presenter.onLocaleChangeConfirm()
             }
-            .setCloseButton { it.dismiss() }
             .build()
             .show()
     }
@@ -149,10 +148,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
 
         }
     }
-
-    fun isLanguageChanged(): Boolean = presenter.isLanguageChanged()
-
-    fun applyLocaleSettings() = presenter.applyLocaleSettings()
 
     fun restoreLocaleSettings() = presenter.restoreLocaleSettings()
 
