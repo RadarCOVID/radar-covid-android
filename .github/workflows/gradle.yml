@@ -5,7 +5,6 @@ name: Integration to master
 
 on:
   push:
-    branches: master
   pull_request:
     branches: master
 
