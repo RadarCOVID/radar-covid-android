@@ -47,8 +47,9 @@ class AnimatedCircleView @JvmOverloads constructor(
 
         for (it in circlesNumber downTo 1) {
             var circleWidth = widthFirstCircleGroup - (circleSpacing.toInt() * it)
-            if (circleWidth < 0 || circleWidth > width)
+            if (circleWidth < 0 || circleWidth > width) {
                 circleWidth = 0
+            }
             paint.alpha = 255 - ((circleWidth.toFloat() / width.toFloat()) * 255f).roundToInt()
             canvas.drawCircle(
                 width / 2f,
@@ -60,8 +61,9 @@ class AnimatedCircleView @JvmOverloads constructor(
 
         for (it in circlesNumber downTo 1) {
             var circleWidth = widthSecondCircleGroup - (circleSpacing.toInt() * it)
-            if (circleWidth < 0 || circleWidth > width)
+            if (circleWidth < 0 || circleWidth > width) {
                 circleWidth = 0
+            }
             paint.alpha = 255 - ((circleWidth.toFloat() / width.toFloat()) * 255f).roundToInt()
             canvas.drawCircle(
                 width / 2f,

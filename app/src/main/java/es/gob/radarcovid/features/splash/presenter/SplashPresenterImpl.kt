@@ -42,10 +42,11 @@ class SplashPresenterImpl @Inject constructor(
         if (isInitializationCompleted) {
             if (splashUseCase.isUuidInitialized()) {
                 splashUseCase.checkGaenAvailability { available ->
-                    if (available)
+                    if (available) {
                         navigateToHomeWithDelay()
-                    else
+                    } else {
                         view.showPlayServicesRequiredDialog()
+                    }
                 }
             }
         }
@@ -105,10 +106,11 @@ class SplashPresenterImpl @Inject constructor(
         if (!isWaitingToStart) {
             isWaitingToStart = true
             Handler().postDelayed({
-                if (onboardingCompletedUseCase.isOnBoardingCompleted())
+                if (onboardingCompletedUseCase.isOnBoardingCompleted()) {
                     router.navigateToMain(activateRadar)
-                else
+                } else {
                     router.navigateToOnboarding()
+                }
                 view.finish()
             }, 2000)
         }

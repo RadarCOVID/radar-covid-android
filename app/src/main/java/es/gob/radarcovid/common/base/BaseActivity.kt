@@ -38,8 +38,9 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         progressBar?.setCanceledOnTouchOutside(false)
         progressBar?.setCancelable(false)
         progressBar?.let {
-            if (!it.isShowing)
+            if (!it.isShowing) {
                 it.show()
+            }
         }
     }
 
@@ -48,11 +49,12 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     }
 
     fun hideLoadingWithError(error: Throwable) {
-        val title = if (error.message == null)
+        val title = if (error.message == null) {
             labelManager.getText("ALERT_GENERIC_ERROR_TITLE", R.string.error_generic_title)
                 .toString()
-        else
+        } else {
             null
+        }
         val message = error.message ?: labelManager.getText(
             "ALERT_GENERIC_ERROR_CONTENT",
             R.string.error_generic_message
@@ -75,19 +77,21 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     }
 
     fun showError(error: Throwable, finishOnDismiss: Boolean = false) {
-        val title = if (error.message == null)
+        val title = if (error.message == null) {
             labelManager.getText("ALERT_GENERIC_ERROR_TITLE", R.string.error_generic_title)
                 .toString()
-        else
+        } else {
             null
+        }
         val message = error.message ?: labelManager.getText(
             "ALERT_GENERIC_ERROR_CONTENT",
             R.string.error_generic_message
         ).toString()
         CMDialog.Builder(this)
             .apply {
-                if (title != null)
+                if (title != null) {
                     setTitle(title)
+                }
             }
             .setMessage(message)
             .setPositiveButton(
@@ -97,8 +101,9 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
                 ).toString()
             ) {
                 it.dismiss()
-                if (finishOnDismiss)
+                if (finishOnDismiss) {
                     finish()
+                }
             }
             .build()
             .show()
@@ -111,8 +116,9 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
                 0
             )
         } catch (e: Exception) {
-            if (BuildConfig.DEBUG)
+            if (BuildConfig.DEBUG) {
                 e.printStackTrace()
+            }
         }
     }
 

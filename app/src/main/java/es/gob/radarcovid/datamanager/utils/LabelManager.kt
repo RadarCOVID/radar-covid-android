@@ -53,7 +53,7 @@ class LabelManager @Inject constructor(
         var text: String
         if (daysElapsed != null && hoursElapsed != null && minutesElapsed != null) {
             text = getFormattedText("EXPOSITION_HIGH_DESCRIPTION", daysElapsed.toString(), date)
-            if (text.isEmpty())
+            if (text.isEmpty()) {
                 text = when {
                     daysElapsed > 0 -> {
                         val daysText =
@@ -91,6 +91,7 @@ class LabelManager @Inject constructor(
                         )
                     }
                 }
+            }
         } else {
             text = getFormattedText("EXPOSITION_LOW_DESCRIPTION", date)
                 .default(context.getString(R.string.exposure_detail_low_last_update, date))

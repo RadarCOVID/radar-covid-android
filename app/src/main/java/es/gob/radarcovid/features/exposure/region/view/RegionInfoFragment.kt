@@ -61,8 +61,9 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
                 position: Int,
                 id: Long
             ) {
-                if (position > 0)
+                if (position > 0) {
                     presenter.onRegionSelected()
+                }
             }
 
         }

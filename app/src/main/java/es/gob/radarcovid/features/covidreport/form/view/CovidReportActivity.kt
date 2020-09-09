@@ -132,10 +132,11 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun getReportCode(): String =
-        if (isAccessibilityEnabled())
+        if (isAccessibilityEnabled()) {
             editTextCodeAccessibility.text.toString()
-        else
+        } else {
             codeEditText.getText()
+        }
 
     override fun setButtonSendEnabled(enabled: Boolean) {
         buttonSend.isEnabled = enabled

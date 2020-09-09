@@ -13,7 +13,8 @@ package es.gob.radarcovid.common.extensions
 import com.google.gson.Gson
 
 fun Any?.toJson(): String =
-    if (this == null)
+    if (this == null) {
         ""
-    else
+    } else {
         Gson().toJson(this)
+    }

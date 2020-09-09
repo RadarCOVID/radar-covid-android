@@ -63,8 +63,9 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS && resultCode == Activity.RESULT_OK)
+        if (requestCode == REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS && resultCode == Activity.RESULT_OK) {
             presenter.onBatteryOptimizationsIgnored()
+        }
     }
 
     override fun onCreateView(

@@ -120,8 +120,9 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                 position: Int,
                 id: Long
             ) {
-                if (position > 0)
+                if (position > 0) {
                     presenter.onLanguageSelectionChange(position - 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+                }
             }
 
         }

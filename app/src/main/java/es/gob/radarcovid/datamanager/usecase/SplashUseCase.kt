@@ -53,14 +53,17 @@ class SplashUseCase @Inject constructor(
 
                     preferencesRepository.setHealingTime(initializationData.settings.healingTime)
 
-                    if (initializationData.labels.isNotEmpty())
+                    if (initializationData.labels.isNotEmpty()) {
                         preferencesRepository.setLabels(initializationData.labels)
+                    }
 
-                    if (initializationData.languages.isNotEmpty())
+                    if (initializationData.languages.isNotEmpty()) {
                         preferencesRepository.setLanguages(initializationData.languages)
+                    }
 
-                    if (initializationData.regions.isNotEmpty())
+                    if (initializationData.regions.isNotEmpty()) {
                         preferencesRepository.setRegions(initializationData.regions)
+                    }
 
                     contactTracingRepository.updateTracingSettings(initializationData.settings)
 
@@ -76,8 +79,9 @@ class SplashUseCase @Inject constructor(
         } else {
             getUuid(
                 onSuccess = {
-                    if (it.isNotEmpty())
+                    if (it.isNotEmpty()) {
                         preferencesRepository.setUuid(it)
+                    }
                     emitter.onNext(it)
                     emitter.onComplete()
                 },

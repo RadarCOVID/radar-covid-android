@@ -63,10 +63,11 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
 
     override fun getInfectionReportDate(): Date? {
         val infectionReportDateMillis = preferences.getLong(KEY_INFECTION_REPORT_DATE, 0)
-        return if (infectionReportDateMillis == 0L)
+        return if (infectionReportDateMillis == 0L) {
             null
-        else
+        } else {
             Date(infectionReportDateMillis)
+        }
     }
 
     override fun setInfectionReportDate(date: Date) {

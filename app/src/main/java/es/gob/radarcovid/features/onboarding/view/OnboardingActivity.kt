@@ -41,8 +41,9 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingPageCallbac
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_BLUETOOTH && resultCode == Activity.RESULT_OK)
+        if (requestCode == REQUEST_CODE_BLUETOOTH && resultCode == Activity.RESULT_OK) {
             presenter.onBluetoothEnabled()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,8 +65,9 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingPageCallbac
     }
 
     override fun onContinueButtonClick(pageIndex: Int) {
-        if (viewPager.currentItem == pageIndex)
+        if (viewPager.currentItem == pageIndex) {
             presenter.onContinueButtonClick()
+        }
     }
 
     override fun onFinishButtonClick(activateRadar: Boolean) {

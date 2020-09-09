@@ -29,10 +29,11 @@ class OnboardingPresenterImpl @Inject constructor(
     }
 
     override fun onBackButtonPressed(isFirstItem: Boolean) {
-        if (isFirstItem)
+        if (isFirstItem) {
             view.showExitConfirmationDialog()
-        else
+        } else {
             view.showPreviousPage()
+        }
     }
 
     override fun onContinueButtonClick() {

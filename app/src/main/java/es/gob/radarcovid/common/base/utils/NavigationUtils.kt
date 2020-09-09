@@ -26,10 +26,11 @@ class NavigationUtils @Inject constructor(
 ) {
 
     fun navigateToBrowser(context: Context, url: String) {
-        val uri: Uri = if (url.contains("http://") || url.contains("https://"))
+        val uri: Uri = if (url.contains("http://") || url.contains("https://")) {
             Uri.parse(url)
-        else
+        } else {
             Uri.parse("http://$url")
+        }
         try {
             context.startActivity(
                 Intent(

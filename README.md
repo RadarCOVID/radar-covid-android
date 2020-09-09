@@ -8,7 +8,7 @@
 
 ## Introduction
 
-Native Android implementation of RadarCOVID tracing client using [DP3T Android SDK](https://github.com/DP-3T/dp3t-sdk-android)
+Native Android implementation of RadarCOVID tracing client using [DP3T Android SDK](https://github.com/DP-3T/dp3t-sdk-android).
 
 ## Prerequisites
 
@@ -21,7 +21,9 @@ These are the tools used to develop the solution:
 
 Clone this repository and import into **Android Studio**.
 
+``` 
 git clone https://github.com/RadarCOVID/radar-covid-android.git
+``` 
 
 ## Building
 ### Create APK

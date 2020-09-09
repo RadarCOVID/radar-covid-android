@@ -37,14 +37,15 @@ class ExposureStatusRepositoryImpl @Inject constructor(
         with(ExposureDayStorage.getInstance(context)) {
             val firstExposureDay =
                 exposureDays.minBy { it.exposedDate.getStartOfDay(Calendar.getInstance().timeZone) }
-            val newExposureDay = if (firstExposureDay != null)
+            val newExposureDay = if (firstExposureDay != null) {
                 ExposureDay(
                     -1,
                     firstExposureDay.exposedDate.subtractDays(1),
                     System.currentTimeMillis()
                 )
-            else
+            } else {
                 ExposureDay(-1, DayDate().subtractDays(1), System.currentTimeMillis())
+            }
 
             addExposureDay(context, newExposureDay)
         }

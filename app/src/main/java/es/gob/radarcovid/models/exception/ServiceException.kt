@@ -27,8 +27,9 @@ class ServiceException(message: String) : Exception(message) {
         fun <T> from(response: Response<T>): ServiceException = try {
             ServiceException("${response.code()} - ${getMessageFromErrorBody(response.errorBody())}")
         } catch (e: Exception) {
-            if (BuildConfig.DEBUG)
+            if (BuildConfig.DEBUG) {
                 e.printStackTrace()
+            }
             ServiceException("")
         }
 

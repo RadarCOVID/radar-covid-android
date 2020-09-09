@@ -40,8 +40,9 @@ class HomePresenterImpl @Inject constructor(
             view.showInitializationCheckAnimation()
         }
 
-        if (activateRadar && !exposureRadarUseCase.isRadarEnabled())
+        if (activateRadar && !exposureRadarUseCase.isRadarEnabled()) {
             onSwitchRadarClick(false)
+        }
 
     }
 
@@ -63,15 +64,17 @@ class HomePresenterImpl @Inject constructor(
     }
 
     override fun onReportButtonClick() {
-        if (!exposureRadarUseCase.isRadarEnabled())
+        if (!exposureRadarUseCase.isRadarEnabled()) {
             view.showUnableToReportCovidDialog()
-        else
+        } else {
             router.navigateToCovidReport()
+        }
     }
 
     override fun onBackgroundImageLongClick() {
-        if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
+        if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE) {
             fakeExposureInfoUseCase.addFakeExposureDay()
+        }
     }
 
     override fun onSwitchRadarClick(currentlyEnabled: Boolean) {
@@ -79,10 +82,11 @@ class HomePresenterImpl @Inject constructor(
             view.setRadarBlockChecked(false)
             exposureRadarUseCase.setRadarDisabled()
         } else {
-            if (view.areBatteryOptimizationsIgnored())
+            if (view.areBatteryOptimizationsIgnored()) {
                 onBatteryOptimizationsIgnored()
-            else
+            } else {
                 view.requestIgnoreBatteryOptimizations()
+            }
         }
     }
 
@@ -116,8 +120,9 @@ class HomePresenterImpl @Inject constructor(
     }
 
     private fun updateViews(exposureInfo: ExposureInfo) {
-        if (!exposureInfo.exposureNotificationsEnabled && exposureRadarUseCase.isRadarEnabled())
+        if (!exposureInfo.exposureNotificationsEnabled && exposureRadarUseCase.isRadarEnabled()) {
             exposureRadarUseCase.setRadarDisabled()
+        }
 
         if (exposureInfo.level == ExposureInfo.Level.INFECTED) {
             view.showBackgroundEnabled(true)

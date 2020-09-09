@@ -60,9 +60,9 @@ class ContactTracingRepositoryImpl @Inject constructor(
         onError: (Exception) -> Unit,
         onCancelled: () -> Unit
     ) {
-        if (BuildConfig.isMock)
+        if (BuildConfig.isMock){
             onSuccess()
-        else
+        } else {
             DP3T.start(activity,
                 {
                     onSuccess()
@@ -73,6 +73,7 @@ class ContactTracingRepositoryImpl @Inject constructor(
                 {
                     onCancelled.invoke()
                 })
+        }
     }
 
     override fun stopRadar() {

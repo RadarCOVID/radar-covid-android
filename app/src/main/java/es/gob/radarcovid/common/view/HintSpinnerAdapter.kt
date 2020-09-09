@@ -51,8 +51,9 @@ class HintSpinnerAdapter(
             layoutInflater.inflate(dropdownLayout, parent, false).apply {
                 (this as TextView).text = hintText
             }
-        } else
+        } else {
             adapter.getView(position - extra, null, parent)
+        }
 
     override fun getDropDownView(
         position: Int,
@@ -71,14 +72,19 @@ class HintSpinnerAdapter(
 
     override fun getCount(): Int {
         val count = adapter.count
-        return if (count == 0) 0 else count + extra
+        return if (count == 0) {
+            0
+        } else {
+            count + extra
+        }
     }
 
     override fun getItem(position: Int): Any? =
-        if (position == 0)
+        if (position == 0) {
             null
-        else
+        } else {
             adapter.getItem(position - extra)
+        }
 
 
     override fun getItemViewType(position: Int): Int = 0
@@ -86,10 +92,11 @@ class HintSpinnerAdapter(
     override fun getViewTypeCount(): Int = 1
 
     override fun getItemId(position: Int): Long =
-        if (position >= extra)
+        if (position >= extra) {
             adapter.getItemId(position - extra)
-        else
+        } else {
             (position - extra).toLong()
+        }
 
 
     override fun hasStableIds(): Boolean = adapter.hasStableIds()

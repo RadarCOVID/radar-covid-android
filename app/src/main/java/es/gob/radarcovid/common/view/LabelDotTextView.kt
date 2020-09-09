@@ -45,8 +45,9 @@ class LabelDotTextView @JvmOverloads constructor(
             try {
                 getDimension(R.styleable.LabelDotTextView_android_textSize, 0f)
                     .let { textSizeInPixels ->
-                        if (textSizeInPixels > 0)
+                        if (textSizeInPixels > 0) {
                             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSizeInPixels)
+                        }
                     }
 
                 labelId = getString(R.styleable.LabelDotTextView_labelId)

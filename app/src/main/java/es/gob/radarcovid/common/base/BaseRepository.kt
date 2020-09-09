@@ -27,19 +27,22 @@ abstract class BaseRepository {
                     if (response.body() != null) {
                         Either.right(response.body()!!)
                     } else {
-                        if (response.body() is Unit?)
+                        if (response.body() is Unit?) {
                             Either.right(Unit as T)
-                        else
+                        }
+                        else {
                             Either.left(ServiceException.from(response))
+                        }
                     }
                 }
                 else -> Either.left(ServiceException.from(response))
             }
         } catch (exception: Exception) {
-            return if (exception is UnknownHostException)
+            return if (exception is UnknownHostException) {
                 Either.left(NetworkUnavailableException())
-            else
+            } else {
                 Either.left(GenericRequestException())
+            }
         }
     }
 

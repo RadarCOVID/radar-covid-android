@@ -71,10 +71,11 @@ class CodeEditText @JvmOverloads constructor(
                     dstart: Int,
                     dend: Int
                 ): CharSequence {
-                    return if (source?.isDigitsOnly() == true)
+                    return if (source?.isDigitsOnly() == true) {
                         source
-                    else
+                    } else {
                         NON_VALID_CHARACTER
+                    }
                 }
             }, InputFilter.LengthFilter(1))
 
@@ -84,8 +85,9 @@ class CodeEditText @JvmOverloads constructor(
                         if (text.toString() == NON_VALID_CHARACTER) {
                             editText.setText("")
                         } else if (text.length == 1) {
-                            if (index < editTexts.size - 1)
+                            if (index < editTexts.size - 1) {
                                 editTexts[index + 1].requestFocus()
+                            }
                         }
                         if (text.toString() != NON_VALID_CHARACTER) {
                             if (getText() != previousText) {

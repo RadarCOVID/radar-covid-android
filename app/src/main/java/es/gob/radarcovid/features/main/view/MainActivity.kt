@@ -71,10 +71,11 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun onBackPressed() {
-        if (bottomNavigation.selectedItemId == R.id.menuItemHome)
+        if (bottomNavigation.selectedItemId == R.id.menuItemHome) {
             presenter.onBackPressed()
-        else
+        } else {
             bottomNavigation.selectedItemId = R.id.menuItemHome
+        }
     }
 
     override fun showExitConfirmationDialog() {

@@ -23,13 +23,15 @@ inline fun <A, reified B> mapperScope(
     mapperFunction: (A) -> B
 ): Either<Throwable, B> {
     return try {
-        if (requestResult.isLeft())
+        if (requestResult.isLeft()) {
             Either.left(requestResult.left().get())
-        else
+        } else {
             Either.right(mapperFunction(requestResult.right().get()))
+        }
     } catch (e: Exception) {
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             e.printStackTrace()
+        }
         Either.Left(
             MapperException(
                 "Error when mapping to " + B::class.java.simpleName,
@@ -48,9 +50,10 @@ fun <T> asyncRequest(
         val result = withContext(Dispatchers.IO) {
             body()
         }
-        if (result.isRight())
+        if (result.isRight()) {
             onSuccess(result.right().get())
-        else
+        } else {
             onError(result.left().get())
+        }
     }
 }

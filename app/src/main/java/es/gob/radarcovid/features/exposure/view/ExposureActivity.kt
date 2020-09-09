@@ -223,8 +223,9 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
                 daysElapsed.toString(),
                 date
             ).let {
-                if (it.isNotEmpty())
+                if (it.isNotEmpty()) {
                     text = it
+                }
             }
 
         }
