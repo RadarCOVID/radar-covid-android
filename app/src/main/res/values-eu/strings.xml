@@ -1,0 +1,413 @@
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<!DOCTYPE resources [<!ENTITY appname "Radar COVID">]>
+<resources>
+    <string name="app_name">&appname;</string>
+
+    /********** ERROR MESSAGES ************/
+    <string name="error_generic_title">Errorea</string>
+    <string name="error_generic_message">Errore bat gertatu da. Konexioa ondo dabilen begiratu ezazu mesedez.</string>
+
+    /********** Play services dialog ************/
+
+    <string name="play_services_dialog_title">Google Play Services</string>
+    <string name="play_services_dialog_message">Google Play Services aplikazioa eguneratuta edukitzea beharrezkoa da.</string>
+
+    /********** Dialog Internet ************/
+    <string name="warning_connection_title">Ez duzu internet konexiorik.</string>
+    <string name="warning_connection_description">Mesedez, konexioa ondo dabilen begiratu ezazu.</string>
+    <string name="warning_connection_button">Berriz saiatu</string>
+
+    /********** Splash ************/
+    <string name="splash_subtitle">Covid-19aren eraginpean jartzearen jarraipena</string>
+
+    /********** Legal Info ************/
+    <string name="legal_info_title_small">Lege Oharra</string>
+    <string name="legal_info_title">Lege informazioa</string>
+    <string name="legal_info_terms_and_conditions">Erabilpen baldintzak</string>
+    <string name="legal_info_privacy_policy"><b><u>Pribatutasun politika</u></b> onartzen dut</string>
+    <string name="legal_info_usage_conditions"><b><u>Erabilpen baldintzak</u></b> irakurri ditut.</string>
+    <string name="legal_info_check_warning">Jarraitzeko pribatutasun politika onartu egin behar duzu.</string>
+    <string name="legal_info_button">Jarraitu</string>
+
+    /********** Legal Detail ************/
+    <string name="legal_info_detail_title">&appname; aplikazioaren ERABILPEN BALDINTZAK</string>
+    <string name="legal_info_intro">
+    "RADAR COVID" APLIKAZIO MUGIKORRA DESKARGATU ETA ERABILTZEAN, ARGI ETA GARBI IRAKURRI DITUZU ETA ERABILERA-BALDINTZA HORIEK ETA PRIBATUTASUN-POLITIKA ONARTZEN DITUZU. HEMEN JASOTZEN DA APLIKAZIO HONEN ERABILTZAILE GISA DITUZUN ESKUBIDE ETA BETEBEHARREI BURUZKO INFORMAZIO GUZTIA.\n\n<b>OHAR GARRANTZITSUA:</b>\n\n&#8226; Aplikazio honen erabiltzailea jakinaren gainean geratzen da, aplikazioa gailu mugikorrean deskargatu eta erabiltzean, Gomera uharteko <b>ESPERIENTZIA pilotu batean borondatez parte hartzera mugatzen dela, COVID-19ren kutsadura-alertaren gezurrezko datuekin.</b>\n\n&#8226; <b>Era berean, jakinarazten da aplikazio honek funtzionatzeari utziko diola</b> behin esperientzia pilotua amaitzen denean.\n\n &#8226; Beraz, aplikazioa erabiltzean, <b>erabiltzaileak gaixotasuna kutsa dezakeen esposizio-jakinarazpen guztiak simulatutako kasuei dagozkie, eta, arrazoi beragatik, fikziozko datuak dituen esperientzia pilotu bat denez, prebentzio- eta laguntza-neurriak hartzeko iradokizunak Egiaztatu behar da aplikazioak gai dela horrelako iradokizunak egiteko erabiltzaile bati, baldin eta erabiltzaile horrek esposizio-jakinarazpen bat jasotzen badu.</b>\n\n&#8226;<b>Fikziozko datuak dituen esperientzia pilotu honen esparruan, hala nola aplikazioa benetako datuak dituzten egoera errealetan erabili izan balitz, ERABILTZAILEA ohartarazten da <b>EZ DELA INOLAZ ERE DIAGNOSTIKO MEDIKOKO, LARRIALDIETAKO ARRETAKO EDO TRATAMENDU FARMAKOLOGIKOAK AGINTZEKO ZERBITZU BAT</b> aplikazioa erabiltzeak ezingo lukeela inola ere <b> mediku profesional baten aurreko kontsulta presentziala ordezkatu.</b></string>
+    <string name="conditions_p1_title"><b>1. Zer da &appname;</b></string>
+    <string name="conditions_p1_content">&appname; Osasun publikoa sustatzen duen aplikazio bat da, COVID-19k kutsatzeko alerta-sistema baten bidez, aplikazioan nabigatzeko aukera erabiltzaileen eskura jarriz (aurrerantzean, "ERABILTZAILEA" eta "ERABILTZAILEAK" batera), Radar COVID eduki eta zerbitzuetara sartuz, erabilera-baldintza hauen arabera..\n\nRadar-COVID apliakzioak, aplikazio aktiboa duten gailuen artean trukatutako Bluetooth seinaleen intentsitatea detektatzen du, ausazko identifikatzaile iragankorrak erabiliz, erabilitako telefono mugikorraren edo erabiltzailearen identitatearekin loturarik ez dutenak. Erabiltzaile bakoitzaren gailuak aldian-aldian deskargatzen ditu COVID-19 diagnostikatu zaiela jakinarazi dieten erabiltzaile guztien Bluetooth gakoak (osasun-agintariek egiaztatu ondoren), eta erabiltzaileak horietako batekin kontaktu arriskutsurik ezarri duen zehazten du, trukatutako Bluetooth seinaleen bidez egiaztatuta. Hala badagokio, aplikazioak horren berri emango dizu, neurriak hartzeko aukera izan dezazun, eta, horrela, birusa zabal ez dadin.</string>
+    <string name="conditions_p2_title"><b>2. &appname; aplikazioaren erabilpena</b></string>
+    <string name="conditions_p2_content">Radar COVID zerbitzuak erabiltzeko, ezinbestekoa da ERABILTZAILEAK energia gutxiko Bluetooth komunikazio-sistema aktibatzeko baimena ematea aplikazioari, hura deskargatu ondoren.\n\nRABILTZAILEAK erreserbarik gabe onartzen du ERABILERA-BALDINTZA hauen edukia. Ondorioz, ERABILTZAILEAK arretaz irakurri beharko ditu Radar COVID edozein zerbitzutara sartu eta hura erabili aurretik, bere erantzukizunpean.\n\n<b>OHAR GARRANTZITSUA:</b> Aplikazioaren erabilera doakoa, librea eta borondatezkoa da herritar guztientzat. <b>Radar COVID erabiltzeko ez da beharrezkoa erregistratuta egotea, ezta inolako datu pertsonal, identifikatzaile edo identifikaziorik gabeko daturik ematea ere.</b> Aplikazioa aktibatzean, erabiltzaileak honako hau onartzen du:\n\nA) gailuaren bidez modu anonimoan igorritako Bluetooth seinaleak bidaltzea;\n\nB) Radar COVIDekin bateragarriak diren aplikazioen Bluetooth seinaleak jaso eta biltegiratzea, ERABILTZAILEEN gailuetan modu anonimo eta deszentralizatuan mantentzen direnak 14 egunez gehienez ere;\n\nEta c) kutsatzeko arriskuari buruz ERABILTZAILEARI emandako informazioa, inolako datu pertsonalik aipatu gabe.\n\nERABILTZAILEAK bere borondatez eman diezaioke aplikazioari emaitza positibo baten berri COVID-19 probetan, osasun-agintariek emandako erabilera bakarraren berrespen-kodearen bidez. Kode horren baliozkotasuna osasun-agintariek erkatuko dute Radar COVID delakoaren funtzionamendu egokia ziurtatzeko. ERABILTZAILEAK bere proben emaitzen berri emango du, eta bere gailuan egunero sortutako eta azken 14 egunetako gakoak partekatzeko berariazko eta zalantzarik gabeko baimena eskatuko zaio. Gako horiek zerbitzari bati jakinarazten zaizkio, eta Radar COVID aplikazio multzoaren eskura jarriko ditu, deskarga ditzan. Komunikatutako gakoek ez dute inolako loturarik gailuaren edo ERABILTZAILEAREN identifikazioarekin.\n\nOsasun-zerbitzuak behar dituzten eta aplikazioa erabili ez duten paziente potentzialak ez dira diskriminatuko.</string>
+    <string name="conditions_p3_title"><b>3. Segurtasuna eta pribatutasuna</b></string>
+    <string name="conditions_p3_content">Ezarritako segurtasun-neurriak bat datoz urtarrilaren 8ko 3/2010 Errege Dekretuaren II. eranskinean (Segurtasun Neurriak) aurreikusitakoekin (3/2010 Errege Dekretua, urtarrilaren 8koa, Administrazio Elektronikoaren eremuan Segurtasun Eskema Nazionala arautzen duena).\n\nJakinarazten dizugu zure datuak <b>Aplikazioaren Pribatutasun Politikan</b> ezarritakoaren arabera tratatuko direla. Horren eduki osoa esteka honetan kontsulta daiteke: <u>Pribatutasun Politika</u>.\n\nInformazio guztia interes publikoko helburuekin baino ez da erabiliko osasun publikoaren esparruan, eta agindutako osasun-larrialdiko egoeraren aurrean, pertsonen bizitzarako funtsezko interes bat babesteko eta zaintzeko, pribatutasun-politikan deskribatutako moduan.\n\nErabiltzaileen jarduerari buruzko informazioa anonimoa da, eta inoiz ez zaie erabiltzaileei datu pertsonalik eskatuko. Une oro, erabiltzaileak Bluetooth kontaktuen traza-sistema desaktibatu dezake aplikazioan, baita desinstalatu ere.</string>
+    <string name="conditions_p4_title"><b>4. Zerbitzua aldatzea eta bertan behera uztea</b></string>
+    <string name="conditions_p4_content">Radar COVID siempre está tratando de mejorar el servicio y busca ofrecer funcionalidades adicionales útiles para el USUARIO teniendo siempre presente la preservación de la salud pública. Esto significa que podemos añadir nuevas funciones o mejoras que en ningún caso implicarán el tratamiento de datos personales, así como eliminar algunas de las funciones. Si estas acciones afectan materialmente a los derechos y obligaciones del USUARIO, será informado a través de la Aplicación.\n\nEl USUARIO puede dejar de utilizar la aplicación en cualquier momento y por cualquier motivo, desinstalándola de su dispositivo.</string>
+    <string name="conditions_p5_title"><b>5. Jabetza intelektuala eta industriala</b></string>
+    <string name="conditions_p5_content">Administrazio Digitalaren Idazkaritza Nagusia (SGAD), Ekonomia Gaietarako eta Eraldaketa Digitalerako Ministerioaren Digitalizazio eta Adimen Artifizialeko Estatu Idazkaritzaren mendekoa, lurralde nazional osoan gailu mugikorretarako Radar COVID aplikazioari dagozkion jabetza industrial eta intelektualeko eskubide guztien jabea eta titularra da.\n\nRadar COVIDen testuak, diseinuak, irudiak, datu-baseak, logoak, egitura, markak eta gainerako elementuak jabetza intelektualari eta industrialari buruzko legeek eta nazioarteko tratatuek babesten dituzte. Gune honen eduki osoa edo zati bat erreproduzitu, transmititu, egokitu, itzuli, aldatu, jendeari jakinarazi edo beste edozein modutan edo edozein bide erabiliz (elektronikoa, mekanikoa edo beste edozein) egiten bada, erabat debekatuta dago, dagokion titularrak aldez aurretik idatzizko baimena eman ezean. Eskubide horiek urratuz gero, prozedura estrajudizial edo judizial zibil edo penalak sor daitezke. Alde horretatik, erabiltzaileari lizentzia mugatua, aldi baterakoa, ez-esklusiboa eta ezeztagarria baino ez zaio ematen, Radar COVID erabili, deskargatu eta/edo instalatu ahal izan dezan bere gailuetan, baldintza hauetan eta aurreikusitako erabileretarako aurreikusitakoaren arabera. Nolanahi ere, titularrak beretzat gordetzen ditu baldintza hauen arabera erabiltzaileari berariaz eman ez zaizkion eskubideak.\n\nHirugarrenek emandako edukiei dagozkien jabetza intelektualeko edo industrialeko eskubideen legitimitatea eskubide horien erantzukizun esklusibokoa da.\n\nJabetza intelektualeko eskubide posibleak babestearen ondorioak direla-eta, edozein erabiltzailek edo hirugarrenek uste badu bere eskubide legitimoak urratu direla COVID Radarrean eduki jakin bat sartzeagatik, horren berri eman beharko dio, idatziz, titularrari.</string>
+    <string name="conditions_p6_title"><b>6. Ardura eta obligazioak</b></string>
+    <string name="conditions_p6_content">COVID radarra ahalik eta ahalegin onenak eginez eskaintzen da, TITULARRAREKIN zerikusirik ez duten hainbat faktorek eragin baitiezaiokete haren kalitateari eta erabilgarritasunari; besteak beste, ERABILTZAILE-bolumenak ERABILTZAILEAREN kokapen geografikoan, hirugarren operadoreen sareen mugek edo murrizketek edo ERABILTZAILEAK erabilitako gailuaren eta sistema eragilearen bateragarritasunak. Era berean, ERABILTZAILEEK onartzen dute zerbitzua eten ahal izatea mantentze-lanengatik beharrezkoa denean.\n\nHorregatik guztiagatik, TITULARRAK ez du erantzukizunik izango Radar COVID eta/edo haren zerbitzuen eskuragarritasun- edo eskuragarritasun-arazoen gainean, ez eta horren ondorioz sor daitezkeen kalteen gainean ere, horiek bere kontrol-esparrutik kanpoko faktoreen ondorio direnean. Era berean, titularrak ez du bere gain hartuko honako gertakari hauen erantzukizunik, ezta aplikazioa deskargatzearen eta/edo erabiltzearen ondorioz zure terminalek edo gailuek izan ditzaketen akatsen, bateraezintasunen eta/edo kalteen erantzukizunik ere:\n\n1. Edukien eguneratzea, zehaztasuna, zehaztasuna, egokitasuna, gaurkotasuna eta fidagarritasuna, arrazoia eta zailtasun edo arazo teknikoak edo bestelako arazoak edozein direla ere.\n\n2.Materialen kalitatea, titulartasuna, legitimitatea, egokitasuna edo egokitasuna, eta gainerako edukiak.\n\nAplikazioaren ERABILTZAILE zaren aldetik, honako hauek egin behar dituzu:\n\n1.Aplikaziorako baimenik ez duten hirugarren pertsonak zure gailura sar daitezen eragoztea.\n\n2.TITULARRARI berehala jakinaraztea aplikazioan segurtasuna urratu dela erakusten duen edozein zantzu, aplikaziotik emandako zerbitzuen erabilera desegoki edo debekatua, edo edozein motatako segurtasun-akatsak.\n\n3.Emandako edukiak, informazioa eta zerbitzuak behar bezala erabiltzea, legearen, fede onaren eta oro har onartzen diren ohitura onen arabera, eta berariaz honako konpromiso hauek hartzea:\n\n3.1. Zerbitzuak ez praktikatzea edo ez erabiltzea TITULARRAREN edo hirugarrenen eskubideak edo interesak kaltetzen dituzten helburu ez-zilegiak, iruzurrezkoak eta dokumentu honetan jasotako arauak hausten dituztenak.\n\n3.2.Aplikazioko sistemak, ekipoak edo zerbitzuak edo aplikazioaren bidez zuzenean edo zeharka eskura daitezkeenak erabili, gainkargatu edo kaltetu ditzakeen edozein ekintza ez egitea.\n\n3.3.TITULARRAREN eta hirugarrenen jabetza intelektual eta industrialeko eskubideak errespetatzea, aplikaziotik edo aplikazioaren bidez emandako eduki, informazio eta zerbitzuen gainean, eta, oro har, eskubide horiek ez kopiatzea, banatzea, erreproduzitzea edo hirugarrenei komunikatzea, eskubide horien TITULARRAREN edo titularren berariazko eta idatzizko baimenik izan ezean.\n\n3.4.Aplikazioan informazio faltsua ez ematea, bera baita benetako eta egiazko komunikazioaren arduradun bakarra.\n\n3.5.Hirugarren baten nortasuna ez ordeztea.\n\nAplikazioaren ERABILTZAILEA da Radar COVID zerbitzuak erabiltzea erabakitzen duen bakarra. ERABILTZAILE gisa dituen betebeharrak betetzen ez baditu, berehala baja eman ahal izango zaio aplikazioari eta/edo haren zerbitzuei; hori guztia, inolako konpentsaziorik jasotzeko eskubiderik gabe, eta TITULARRAK egin ditzakeen legezko ekintzei kalterik egin gabe.\n\nTITULARRA ez da inola ere izango Radar COVID eta haren edukiak behar ez bezala erabiltzearen erantzule, eta ERABILTZAILEA izango da kalte eta galeren erantzule bakarra, baldin eta kalte eta galera horiek gaizki erabiltzeagatik edo baldintza hauetan xedatutakoa urratzeagatik sortzen badira. ERABILTZAILEAK konpromisoa hartzen du TITULARRARI kalterik egin gabe eusteko arau-hauste horiek direla-eta hirugarrenengandik jaso ditzakeen erreklamazio edo zehapenen aurrean, bai partikularrengandik, bai erakunde publiko edo pribatuengandik jaso ditzakeenean, bai horien ondorioz jasan ditzakeen mota guztietako kalte-galeren aurrean.\n\nNolanahi ere, TITULARRAK beretzat gordetzen du, edozein unetan eta aldez aurretik abisatu beharrik gabe, aplikazio honen edukia, egitura, diseinua, zerbitzuak eta irispidea izateko eta/edo erabiltzeko baldintzak aldatzeko edo ezabatzeko eskubidea, betiere egokitzat jotzen badu, betiere aldaketa horrek datuak babesteko printzipioei eta eskubideei eragiten ez badie, bai eta baldintza hauek interpretatzeko eskubidea ere, aplikazio horrek sor ditzakeen gai guztietan.\n\nEra berean, debekatuta dago Radar COVID edukiak edo haien ikastaroak (testuak, diseinuak, grafikoak, informazioak, datu-baseak, soinu- eta/edo irudi-fitxategiak, logoak eta gune horietako gainerako elementuak) edozein bidez eta edozein modutan erreproduzitu, banatu, transmititu, egokitu edo aldatzea, salbu eta titular legitimoek aldez aurretik baimena ematen badute.\n\nAurreko zerrenda adierazpenezkoa baino ez da, eta ez da, inola ere, esklusiboa edo baztertzailea bere puntuetan. Kasu guztietan, TITULARRAK EZ DU INOLAKO ERANTZUKIZUNIK IZANGO KALTE-GALERENGATIK, BALDIN ETA KALTE-GALEROK ZUZENEAN EDO ZEHARKA ERATORRITAKOAK BADIRA, EZ ETA ANTZEKO EZAUGARRIAK DITUZTEN BESTELAKO KALTE-GALERENGATIK ERE.\n\nTITULARREK EZ DUTE ESKAINTZEN INOLAKO BERMERIK, ESPRESUA, INPLIZITUA, LEGEZKOA EDO BORONDATEZKOA.\n\nTITULARRAK BERARIAZ BAZTERTZEN DITU BERME INPLIZITU GUZTIAK, ETA, ADIERAZPEN GISA, BAINA EZ MUGATZAILE GISA, HONAKO HAUEK SARTZEN DITU: EZKUTUKO AKATSEN EDOZEIN BERME INPLIZITU EDO SANEAMENDU, MERKATURAGARRITASUNA, KALITATE EGOKIA, TITULUA, PRODUKTUAREN EGOKITASUNA HELBURU JAKIN BATERAKO, ETA ARAU-HAUSTERIK EZAREN EDOZEIN BERME EDO BALDINTZA. ERANTZUKIZUN-BAZTERKETA HORI APLIKATU BEHARREKO AGINDUZKO LEGEAK BAIMENDUTAKO NEURRIAN BAKARRIK APLIKATUKO DA.
+</string>
+    <string name="conditions_p7_title"><b>7. Estekak</b></string>
+    <string name="conditions_p7_content">COVID radarraren edukietan estekak sar daitezke hirugarrenek kudeatutako guneekin, Internet bidez eskuragarri dauden informaziorako eta zerbitzuetarako sarbidea errazteko.\n\nTITULARRAK ez du bere gain hartzen Radar COVID edukien eta horietatik kanpo dauden edukien artean estekak egotearen ondoriozko inolako erantzukizunik, ezta gune horretatik kanpoko edukien bestelako aipamenik ere, datuak babesteko araudian ezarritako erantzukizunak izan ezik. Esteka edo aipamen horiek informatzeko baino ez dira, eta ez dute inola ere esan nahi TITULARRAREN eta pertsona edo erakunde egileen edo eduki horiek dauden guneen TITULARREN artean inolako laguntzarik, onespenik, merkaturatzerik edo harremanik dagoenik, ez eta TITULARRAREN bermerik ere, lotutako guneen edo edukien funtzionamendu egokia dela-eta.\n\nAlde horretatik, ERABILTZAILEAK ahalik eta arreta eta zuhurtasun handiena jarri beharko du esteka horien bidez sartzen den guneetako edukiak edo zerbitzuak eskuratu edo erabiltzen baditu.</string>
+    <string name="conditions_p8_title"><b>8. Hiperestekak</b></string>
+    <string name="conditions_p8_content">Ez da onartzen Radar COVID orrialdeak hiperesteka bidez erreproduzitzea beste aplikazio mugikor batetik edo web-orri batetik, eta aplikaziotik soilik sar daiteke.\n\nEzingo da inola ere aditzera eman TITULARRAK hiperesteka baimentzen duenik edo hiperesteka sortzen duen webguneak eskaintzen dituen zerbitzuak edo edukiak gainbegiratu edo edozein modutan bereganatu dituenik.\n\nEzin izango da adierazpen edo erreferentzia faltsurik, okerrik edo zehaztugaberik egin TITULARRAREN orrialde eta zerbitzuei buruz.\n\nBerariaz debekatzen da Radar COVIDen orrialdeetan nabigatzaile, programa, "Browser" edo "border environment" sortzea.\n\nHiperesteka ezartzen duen web orrian ezin izango da hirugarrenen eskubideen aurkako edukirik sartu, ezta onartutako moralaren eta ohitura onen kontrakorik ere, ezta legez kanpoko edukirik edo informaziorik ere.\n\nWeb orri baten eta Radar COVID delakoaren artean hiperesteka bat egoteak ez du esan nahi orri horren TITULARRAREN eta jabearen artean harremanik dagoenik, ezta haren edukiak eta zerbitzuak onartu eta onartu direnik ere.</string>
+    <string name="conditions_p9_title"><b>9. Aplikatu daitekeen legea eta forua</b></string>
+    <string name="conditions_p9_content">Erabilpen baldintza hauek Espainiako Legearen pean jarraitu eta interpretatuko dira. Ezarritako araudiak foru edo legedi jakin baten pean jarduteko agindurik ematen ez duenean, TITULARRAK eta ERABILTZAILEAK, legozkien beste foru edo legediri uko ekinez, Madril hiriburuko (Espainia) epaitegietan jardungo dute.</string>
+    <string name="conditions_p10_title"><b>10. Informazio korporatiboa eta kontaktua</b></string>
+    <string name="conditions_p10_content">Helbidea: Calle de Manuel Cortina, 2, 28010 Madrid\n\nERABILTZAILEAri emandako laguntza edo/eta erreklamazioak online bideratuko dira: contacto@covid19.gob.es</string>
+
+    <string name="privacy_detail_title">&appname; APLIKAZIOAREN PRIBATUTASUN POLITIKA</string>
+    <string name="privacy_intro">Mesedez, irakurri arretaz "Radar COVID" (edo "aplikazioa") aplikazio mugikorraren erabiltzaileentzako pribatutasun-politika hau. Bertan aurkituko duzu erabiltzen ditugun datuei buruzko informazio guztia, nola erabiltzen dugun eta horien gainean zer kontrol duzun.\n\n<b>OHAR GARRANTZITSUA: </b>\n\n&#8226; Aplikazio honen erabiltzaileak ohartarazi du aplikazioa gailu mugikorrean deskargatu eta erabiltzen duenean, Gomera uharteko  <b>ESPERIENTZIA PILOTU BATEAN PARTE HARTZEN ARI DELA, GOMERA UHARTEKO COVID-19REN KUTSADURA-ALERTAREN GEZURREZKO DATUEKIN.</b>\n\n&#8226; <b>Era berean, jakinarazten da aplikazio horrek funtzionatzeari utziko diola</b> esperientzia pilotua amaitzen denean.\n\n&#8226; Beraz, aplikazioa erabiltzean, <b>erabiltzaileak gaixotasuna kutsa dezakeen esposizioaren jakinarazpen guztiak simulatutako kasuei dagozkie, eta, arrazoi beragatik, gezurrezko datuak dituen esperientzia pilotu bat denez, jakinarazpen horren ondoren aplikazioak ematen dizkion prebentzio- eta laguntza-neurriak hartzeko iradokizunek ez dute beste baliorik, aplikazioak erabiltzaile bati mota horretako iradokizunak egiteko gai dela egiaztatzea baino. Balizko esposizioaren jakinarazpena jasotzea</b>\n\n&#8226; Bai fikziozko datuak dituen esperientzia pilotu honen esparruan, bai aplikazioa datu errealak dituzten egoera errealetan erabili izan balitz, ERABILTZAILEA OHARTARAZTEN DA APLIKAZIOA ERABILTZEA EZ DELA INOLA ERE DIAGNOSTIKO MEDIKOKO, LARRIALDIETAKO EDO TRATAMENDU FARMAKOLOGIKOAK AGINTZEKO ZERBITZU BAT; izan ere, aplikazioaren erabilerak ezingo luke inola ere ordezkatu aurrez aurreko kontsulta pertsonala profesional baten aurrean.</string>
+    <string name="privacy_p1_title"><b>1. Zer da Radar COVID?</b></string>
+    <string name="privacy_p1_content">Radar COVID SARS-CoV-2 birusa kutsatzeko alerta-gailu mugikorretarako aplikazio bat da, eta haren TITULARRA Administrazio Digitalaren Idazkaritza Nagusia da, Ekonomia Gaietarako eta Eraldaketa Digitalerako Ministerioaren Digitalizazio eta Adimen Artifizialeko Estatu Idazkaritzaren mendekoa.\n\nRadar COVID aplikazioari esker, aplikazioa deskargatu eta erabilera onartzen duten erabiltzaileek jakinarazpen bat jasoko dute, baldin eta jakinarazpen horren aurreko hamalau egunetan beste erabiltzaile batekin kontaktu epidemiologiko bat izan badute (bi metro baino gutxiagora eta 15 minutu baino gehiago), aplikazioan COVID 19 proban emaitza positibo bat eman duela adierazi duena (osasun-agintariek egiaztatu ondoren). Aplikazioak informazioa emango dizu, soil-soilik, kontaktuaren eraginpean egon zaren egunari buruz (aurreko hamalau horien barruan), baina ez kontaktuan egon zaren erabiltzailearen nortasunari buruz (ezinezkoa den informazioa, erabiltzaileen datu pertsonalak eskatzen, erabiltzen edo biltegiratzen ez dituen aplikazioa delako), ez eta haren gailuaren identifikazioari buruz ere, ez eta erakusketa egin den uneari edo lekuari buruz.\n\nJakinarazpen bat jasotakoan, aplikazioak informazioa emango dio azaldutako erabiltzaileari prebentzio- eta laguntza-neurriak hartzeko, horrela birusaren hedapena geldiarazteko.\n\nAplikazioaren arrakasta, hedapenari eusten laguntzen duen tresna den aldetik, zuzenean lotuta dago erabiltzaileak kontziente izatearekin, eta horren arabera jardutearekin, aplikazioari COVID 19 proban emaitza positiboa lortu dela jakinaraztea borondatezkoa den arren (osasun-agintariek aldez aurretik egiaztatuta), ez jakinarazteak eta hirugarren erabiltzaileen informazio-hartzaile hutsa izateak aplikazioak bere prebentzio-erabilgarritasuna galtzea eragiten du. Gainerako erabiltzaileentzat ez ezik, Erabat anonimoa izateak, zalantzarik gabe, jardun arduratsu hori egitera bultzatu beharko luke.
+</string>
+    <string name="privacy_p2_title"><b>2. Nola dabil aplikazioa?</b></string>
+    <string name="privacy_p2_content">Aplikazioa deskargatzen duzunean, erabilera-baldintzak eta pribatutasun-politika onartzen dituzunean eta erabiltzen hasten zarenean, zure gailu mugikorrak sasi-ausazko identifikatzaile bat sortuko du egunero, "Aldi baterako esposizioaren gakoa" izenekoa. 16 karaktereko tamaina izango du (16 byte edo 128 bit), eta beste telefono mugikor batzuekin trukatzen diren "Bluetooth identifikatzaile iragankorrak" bideratzeko balioko du.\n\n"Bluetooth identifikatzaile iragankorrak" sasi-ausazko kodeak dira, 16 karaktereko tamainakoak (16 byte edo 128 bit), eta zure telefono mugikorraren bidez sortzen dira 10-20 minuturo, eguneroko "aldi baterako esposizioaren gakoa" oinarri hartuta. Kode horiek ez dute informazio pertsonalik, telefono mugikorra edo haren erabiltzailea identifikatzeko. "Bluetooth identifikatzaile iragankor" horiek segundoko hainbat aldiz transmititzen dira zure telefono mugikorraren bidez gertuko gailuetara, Bluetooth Low Energy bidez eskura daitezkeenetara, eta ausazko kodeak trukatzen dira gailuen artean, aplikazioa deskargatu duten gertuko telefonoek gorde ahal izan ditzaten. Era berean, bost minuturo, zure telefono mugikorrak aplikazioa duten beste telefono mugikor batzuek transmititzen dituzten Bluetooth identifikatzaile iragankorrak entzungo ditu, eta azken 14 egunetan COVID-19k kutsatutako beste erabiltzaile batekin egon zaren kalkulatzeko gordeko ditu.\n\nZure telefonoak azken 14 egunetan sortu dituzun aldi baterako erakusketa-gakoak gordetzen ditu. Gogoratu gako horiek ausaz sortzen direla eta ez dutela balio zure telefono mugikorra eta haren erabiltzailea identifikatzeko.\n\nCOVID-19ren diagnostiko positiboa jaso baduzu, aplikazioan borondatez sar dezakezu "erabilera bakarra berresteko kodea", zure Osasun Zerbitzu Publikoak emango dizuna eta gure zerbitzarian baliozkotuko dena.\n\nUne horretan, aplikazioak zure baimena eskatuko dizu zure telefonoan gordetako aldi baterako esposizioko azken 14 gakoak gure zerbitzarira bidaltzeko. Beraz, ematen baduzu soilik, aplikazioko zerbitzarira bidaliko dira, eta, kodearen zehaztasuna egiaztatu ondoren, COVID-19k kutsatutako pertsonen aldi baterako esposizioko gakoen eguneroko zerrenda bat osatzeko balioko dute, zerbitzaritik egunero deskargatzen baitituzte aplikazio guztiek.\n\nZerrenda horietako informazioak balio du zure telefonoan bertan egiaztatu ahal izateko kontaktu estua izan duzun (bi metro baino gutxiago eta 15 minutu baino gehiago) COVID-19 bidez kutsatu diren pertsonekin, ez pertsona, ez esposizioaren lekua, ez gailu mugikorra, ez zure edo beste pertsonaren datu pertsonalik identifikatu gabe. Hau da, aplikazioak aldian-aldian deskargatzen ditu COVID-19k diagnostikatutako erabiltzaileek zerbitzaritik beren borondatez partekatzen dituzten aldi baterako esposizio-gakoak, aurreko egunetan beste erabiltzaile batzuekin izandako kontaktuen ondorioz erregistratutako ausazko kodeekin alderatzeko. Kointzidentzia bat aurkituz gero, aplikazioak gailuan algoritmo bat exekutatzen du. Algoritmo horrek, kontaktuaren iraupenaren eta estimatutako distantziaren arabera, eta osasun-agintariek ezarritako irizpideen arabera, erabiltzailearen gailuan kutsatzeko arriskuaren eraginpean dagoen jakinarazpen bat erakusten den erabakitzen du, kontaktuaz ohartarazten dio, kontaktuaren data jakinarazten dio eta bere burua konfinatzeko eta osasun-agintaritzekin harremanetan jartzeko gonbita egiten dio.\n\nZerbitzarira igorritako gako horiek ez dute ahalbidetzen erabiltzaileak zuzenean identifikatzea, eta beharrezkoak dira kutsatzeen alerta-sistemak behar bezala funtzionatzen duela bermatzeko.</string>
+    <string name="privacy_p3_title"><b>3. Zure zein datu tratatzen ditugu?</b></string>
+    <string name="privacy_p3_content">Aplikazioa deskargatzen duzunean, erabilera-baldintzak eta pribatutasun-politika onartzen dituzunean eta erabiltzen hasten zarenean, zure gailu mugikorrak sasi-ausazko identifikatzaile bat sortuko du egunero, "Aldi baterako esposizioaren gakoa" izenekoa. 16 karaktereko tamaina izango du (16 byte edo 128 bit), eta beste telefono mugikor batzuekin trukatzen diren "Bluetooth identifikatzaile iragankorrak" bideratzeko balioko du. 16 karaktere (16 byte edo 128 bit), zure telefono mugikorraren bidez sortzen direnak 10-20 minuturo, "Aldi baterako esposizioaren gakoa" oinarri hartuta. Kode horiek ez dute informazio pertsonalik, telefono mugikorra edo haren erabiltzailea identifikatzeko. "Bluetooth identifikatzaile iragankor" horiek segundoko hainbat aldiz transmititzen dira zure telefono mugikorraren bidez gertuko gailuetara, Bluetooth Low Energy bidez eskura daitezkeenetara, eta ausazko kodeak trukatzen dira gailuen artean, aplikazioa deskargatu duten gertuko telefonoek gorde ahal izan ditzaten. Era berean, bost minuturo, zure telefono mugikorrak aplikazioa duten beste telefono mugikor batzuek transmititzen dituzten Bluetooth identifikatzaile iragankorrak entzungo ditu, eta azken 14 egunetan COVID-19k kutsatutako beste erabiltzaile batekin egon zaren kalkulatzeko gordeko ditu. Gogoratu gako horiek ausaz sortzen direla eta ez dutela balio zure telefono mugikorra eta haren erabiltzailea identifikatzeko.\n\nCoVID-19ren diagnostiko positiboa jaso baduzu, zure borondatez sar dezakezu aplikazioan "erabilera bakarra berresteko kodea", zure Osasun Zerbitzu Publikoak emango dizuna eta gure zerbitzarian baliozkotuko dena.\n\nUne horretan, aplikazioak zure baimena eskatuko dizu zure telefonoan gordetako aldi baterako esposizioko azken 14 gakoak gure zerbitzarira bidaltzeko. Beraz, ematen baduzu soilik, aplikazioko zerbitzarira bidaliko dira, eta, kodearen zehaztasuna egiaztatu ondoren, COVID-19k kutsatutako pertsonen aldi baterako esposizioko gakoen eguneroko zerrenda bat osatzeko balioko dute, zerbitzaritik egunero deskargatzen baitituzte aplikazio guztiek. Funtzionamendua.\n\n. Zerrenda horiei buruzko informazioak balio du zure telefonoan egiaztatu ahal izateko ea kontaktu estua izan duzun (bi metro baino gutxiago eta 15 minutu baino gehiago) COVID-19 bidez kutsatu diren pertsonekin, ez pertsona, ez esposizioaren lekua, ez gailu mugikorra, ez zure datu pertsonalik edo bestekorik identifikatu gabe. Hau da, aplikazioak aldian-aldian deskargatzen ditu COVID-19k diagnostikatutako erabiltzaileek zerbitzaritik beren borondatez partekatzen dituzten aldi baterako esposizio-gakoak, aurreko egunetan beste erabiltzaile batzuekin izandako kontaktuen ondorioz erregistratutako ausazko kodeekin alderatzeko. Kointzidentzia bat aurkituz gero, aplikazioak gailuan algoritmo bat exekutatzen du, eta algoritmo horrek, kontaktuaren iraupenaren eta estimatutako distantziaren arabera, eta osasun-agintariek ezarritako irizpideen arabera, erabiltzailearen gailuan kutsatzeko arriskuaren eraginpean dagoen jakinarazpen bat erakusten den erabakitzen du, kontaktuaz ohartarazten dio, haren data jakinarazten dio eta bere burua konfinatzera gonbidatzen du, eta osasun-agintaritzekin harremanetan jartzen da. Erabiltzaileena, eta beharrezkoak dira
+</string>
+    <string name="privacy_p4_title"><b>4. Nola lortzen ditugu eta nondik datoz zure datuak? </b></string>
+    <string name="privacy_p4_content">COVID-19k positibo eman duela baieztatzeko Osasun Zerbitzu Publikoak emandako kodea. Horri esker, erabiltzailearen gailuak bidalitako ausazko kodeak (Bluetooth identifikatzaile iragankorrak) aldi baterako esposizio-gakoak (erabiltzailearekin kontaktuan egon diren gailuetara) zerbitzarira igo ahal izango dira, gehienez ere aurreko 14 egunetan. Gako horiek erabiltzailearen baimen esplizitu eta zalantzarik gabearekin soilik igotzen dira zerbitzarira, COVID-19k positibo emateko berrespen-kode bat sartu baitu.</string>
+    <string name="privacy_p5_title"><b>5. Zertarako eta zergatik erabiltzen ditugu zure datuak?</b></string>
+    <string name="privacy_p5_content">Sortutako datuak biltzea, biltegiratzea, aldatzea, egituratzea eta, hala badagokio, ezabatzea titularraren tratamendu-eragiketak izango dira, APP behar bezala dabilela bermatzeko, zerbitzua emateko harremana erabiltzailearekin mantentzeko, eta zerbitzua kudeatzeko, administratzeko, informatzeko, emateko eta hobetzeko.\n\nAplikazioaren bidez jasotako informazioa eta datuak interes publikoko helburuekin soilik tratatuko dira osasun publikoaren esparruan, COVID-19ren pandemiaren eta hura kontrolatu eta hedatzeko beharraren ondorioz gaur egun dagoen osasun-larrialdiko egoeraren aurrean, bai eta zure edo hirugarrenen bizi-interesak bermatzeko ere, datuak babesteko indarreko araudiaren arabera.\n\nHorretarako, zure datuak erabiltzen ditugu "Radar COVID" zerbitzua emateko eta bere funtzionalitateak erabiltzeko bere erabilera-baldintzen arabera. Datuak Babesteko Erregelamendu Orokorraren (DBEO) eta aplikagarri den edozein legeria nazionalen arabera, Administrazio Digitalaren Idazkaritza Nagusiak APP erabiltzean sortutako datu guztiak tratatuko ditu helburu hauetarako:\n\n1. COVID-19rekiko esposizio-arriskuko kontaktuei buruzko informazioa ematea.\n\n2. Berrogeialdiari edo autoberrogeialdiari begira arrisku-egoerak gertatu ahala jarraitu beharreko aholku praktikoak eta ekintzen gomendioak ematea.\n\nTratamendu hori kutsadura-alertaren funtzionaltasunaren bidez gauzatuko da; horri esker, COVID-19k infektatutako aplikazioaren erabiltzaileekin kontaktu estuan egon direlako arrisku-egoerak identifikatu ahal izango dira. Horrela, ondoren hartzea komeni diren neurrien berri emango zaizu.</string>
+    <string name="privacy_p6_title"><b>6. Zenbat denboran zehar gordetzen ditugu zure datuak?</b></string>
+    <string name="privacy_p6_content">Aldi baterako esposizioaren gakoak eta Bluetooth-en identifikatzaile iragankorrak 14 egunez biltegiratzen dira gailuan, eta, ondoren, ezabatu egiten dira.\n\nEra berean, COVID-19k positibo gisa diagnostikatu dituen erabiltzaileek zerbitzariari jakinarazi dizkioten aldi baterako esposizioko gakoak ere ezabatu egingo dira zerbitzaritik 14 egunen buruan.\n\nNolanahi ere, aldi baterako esposizioaren gakoek eta Bluetooth-en identifikatzaile iragankorrek ez dute datu pertsonalik, eta ez dute erabiltzaileen telefono mugikorrak identifikatzeko aukerarik ematen.</string>
+    <string name="privacy_p7_title"><b>7. Nork du zure datuetarako sarbidea?</b></string>
+    <string name="privacy_p7_content">Ez "Radar COVID" aplikazioak ez kutsatzeen alerta-zerbitzariak ez dute inolako datu pertsonalik gordetzen.\n\nAplikazio mugikorrak kudeatutako datuak (aldi baterako esposizioko eguneroko gakoak eta Bluetooth identifikatzaile iragankorrak) erabiltzailearen gailuan soilik biltegiratzen dira, COVID-19ren eraginpean egoteko arriskuari buruzko kalkuluak egin eta txostenak erabiltzaileari bideratu ahal izateko.\n\nCOVID-19 bidezko diagnostiko positibo baten kasuan soilik, gailuan sortutako azken 14 egunetako aldi baterako esposizio-gakoak, erabiltzailearen baimen esplizitu eta zalantzarik gabekoaren pean, zerbitzarira igotzen dira, sistema horren erabiltzaile guztiei zabaltzeko.\n\nGako horiek ez dute inolako loturarik gailu mugikorren identitatearekin, ezta aplikazioaren erabiltzaileen datu pertsonalekin ere.</string>
+    <string name="privacy_p8_title"><b>8. Zeintzuk dira zure eskubideak eta nola kontrolatu ditzakezu zure datuak?</b></string>
+    <string name="privacy_p8_content">Radar COVID aplikazioak ez duenez datu pertsonalik biltegiratzen, ez dira aplikatzekoak datuetara iristeko, datuak zuzentzeko, ezabatzeko, mugatzeko, aurka egiteko eta eramangarritasunerako eskubideak, ez eta datuen tratamendu automatizatuan soilik oinarritutako erabakien xede ez izateko eskubideak ere.\n\nNolanahi ere, Datuak Babesteko Espainiako Agentzian (www.aepd.es) erreklamazio bat aurkezteko eskubidea duzu uneoro.</string>
+    <string name="privacy_p9_title"><b>9. Nola babesten ditugu zure datuak?</b></string>
+    <string name="privacy_p9_content">Radar COVID sistemak ez ditu datu pertsonalak gordetzen.\n\nNolanahi ere, ezarritako segurtasun-neurriak bat datoz urtarrilaren 8ko 3/2010 Errege Dekretuaren II. eranskinean (segurtasun-neurriak) aurreikusitakoekin (3/2010 Errege Dekretua, urtarrilaren 8koa, Administrazio Elektronikoaren esparruan Segurtasun Eskema Nazionala arautzen duena).\n\nAzkenik, jakinarazten dizugu erabilitako datu ez-pertsonalen biltegiratzea eta tratamenduko gainerako jarduerak Europar Batasunaren barruan egongo direla beti.</string>
+    <string name="privacy_p10_title"><b>10. Zein da datuen tratamendurako legitimazioa?</b></string>
+    <string name="privacy_p10_content">Sortutako datuak legez tratatuko dira, honako lege-oinarri hauekin:\n\n1.Erabiltzailearen baimen askea, espezifikoa, informatua eta zalantzarik gabea, pribatutasun-politika hau haren esku jarriz, eta horretarako ezarritako laukitxoa markatuz onartu beharko duena.\n\n2. Osasun publikoaren esparruko interes publikoko arrazoiak, hala nola osasunerako mugaz gaindiko mehatxu larrien aurkako babesa (DBEOren 9.2 i) artikulua), osasun-datuen tratamendua (adibidez, kutsatutako pertsona baten egoera edo sintomei buruzko informazioa, etab.).\n\n3. Interes publikoaren izenean edo tratamenduaren arduradunari emandako botere publikoen izenean egindako misio bat betetzea (DBEOren 6.1 e) artikulua).\n\n4. Interes publikoko artxibo-xedeak, ikerketa zientifiko edo historikoaren xedeak edo estatistika-xedeak (DBEOren 9.2 j) artikulua).\n\nAplikazioaren titularrak datuak hirugarren zerbitzu-hornitzaileei eman edo transmititu ahal izango dizkie, baldin eta haiekin datuak tratatzeko enkargu-akordioak sinatu baditu, eta arduradunari zerbitzu bat emateko soilik eskuratzen badute informazio hori.</string>
+    <string name="privacy_p11_title"><b>11. Zer izan behar duzu kontuan "Radar COVID" erabiltzerakoan?</b></string>
+    <string name="privacy_p11_content">Aplikazioa erabiltzeko gutxieneko adinari, ematen dizkiguzun datuen kalitateari eta aplikazioa zure gailu mugikorrean desinstalatzeari buruzko zenbait alderdi hartu behar dituzu kontuan.\n\n1.Erabiltzeko gutxieneko adina: "Radar COVID" erabili ahal izateko, 18 urtetik gorakoa izan behar duzu edo zure gurasoen eta/edo legezko tutoreen baimena izan behar duzu. Beraz, aplikazioan alta ematean, titularrari bermatzen diozu adin horretatik gorakoa zarela edo, bestela, baimen hori duzula.\n\n2. Ematen dizkiguzun datuen kalitatea: aplikazioaren zerbitzuak erabiltzean ematen diguzun informazioak benetakoa, egiazkoa eta eguneratua izan beharko du beti.\n\n3.Aplikazioa desinstalatzea: oro har, bi egoera egon daitezke aplikazioa zure gailuan teknikoki desaktibatzeko: 1) borondatez desaktibatzeko, eta 2) titularrak zure gailuan aplikazioa teknikoki desaktibatzeko (adibidez, aplikazioa erabiltzeko baldintzak bete ez dituzula detektatzen badugu).</string>
+    <string name="privacy_p12_title"><b>12. Cookie politika</b></string>
+    <string name="privacy_p12_content">Cookie teknikoak baino ez ditugu erabiltzen, erabiltzaileari nabigatzeko eta aplikazioan eskaintzen diren aukera edo zerbitzuak erabiltzeko aukera ematen diotenak, hala nola, sarbide mugatuko zatietara sartzea edo nabigazioan segurtasun-elementuak erabiltzea.\n\n\n"RADAR COVID" APLIKAZIOAREN PRIBATUTASUN-DOKUMENTU POLITIKOA IRAKURRI DUT.</string>
+
+    /********** Onboarding ************/
+    <string name="onboarding_title_step_1">Ongi etorri &appname; aplikaziora</string>
+    <string name="onboarding_subtitle_step_1">Zerbitzu hobea eman ahal izateko, aukeratu zure hizkuntza. Gaztelania ez bada itxi eta ireki ezazu berriz <b>Radar COVID</b> hizkuntza aukeratu ostean</string>
+    <string name="onboarding_step1_message_1">Uneoro koronabirusaren eraginpean egon zaren ala ez jakin ezazu, zu babestu eta ingurukoak babestea lagunduz..</string>
+    <string name="onboarding_step1_message_2">Era anonimoan zure Covid positiboaren diagnostikoa jakinarazi.</string>
+    <string name="onboarding_step1_message_3">Positiboa bazara, era anonimoan informazio hori zurekin kontaktuan egon diren pertsonei jakinaraziko diegu.</string>
+    <string name="onboarding_step1_message_end">Eskerrik asko zure burua zaindu eta zure ingurukoak babesten laguntzeagatik.</string>
+
+    <string name="onboarding_title_step_2">Zure pribatutasuna gure lehentasuna da</string>
+    <string name="onboarding_descrption_step2">Gure konpromisoak</string>
+
+    <string name="onboarding_step_2_commitments_title_1">Anonimotasuna</string>
+    <string name="onboarding_step_2_commitments_detail_1">Aplikazioak zure eta zure telefonoaren nortasuna erakutsi gabe funtzionatzen. <b>EZ</b> du zure izena, eposta helbidea, kokapena edo zure telefono zenbakia jasotzen.</string>
+    <string name="onboarding_step_2_commitments_title_2">Diskrezioa</string>
+    <string name="onboarding_step_2_commitments_detail_2">Alertak koronabirusaren eraginpean noiz eta non egon zinen esan gabe bidaltzen dira.</string>
+    <string name="onboarding_step_2_commitments_title_3">Zeuk erabaki</string>
+    <string name="onboarding_step_2_commitments_detail_3">Zuek aukeratu dezakezu zerbitzua noiz desaktibatu edo aplikazioa zure telefonotik noiz kendu.</string>
+
+    <string name="onboarding_title_step_3">Nola dabil</string>
+    <string name="onboarding_step_3_instructions_title_1">01</string>
+    <string name="onboarding_step_3_instructions_detail_1">Actibatu Bluetootha zure telefonoan. Horixe da eskatzen dizugun gauza bakarra.</string>
+    <string name="onboarding_step_3_instructions_title_2">02</string>
+    <string name="onboarding_step_3_instructions_detail_2">Sartu sarri aplikaziora koronabirusarekiko zure egoera ezagutzeko.</string>
+    <string name="onboarding_step_3_instructions_title_3">03</string>
+    <string name="onboarding_step_3_instructions_detail_3">Koronabirusaren eraginpean egon bezara edo diagnostiko positiboa izan baduzu, jarraitu emango dizkizugun jarraibideak.</string>
+    <string name="onboarding_descrption_step3">Bluetooth bidezko kontaktuen jarraipenaren teknika erabiliz, elkarren artean hurbil dauden telefonoen arteko interakzioak gordetzen ditugu: horrela erabiltzaile batek Covid-19a duela konfirmatzen badu, berarengandik hurbil izan diren telefonoen historikoak eurekin harremanetan jartzeko aukera eskaintzen digu. Baina beti pribatutasuna bermatuz! Inguruko telefonoek uneoro aldatzen diren id edo zenbaki eta hizki segida batzuk gordetzen dituzte, horrela erabiltzailea eta gailua identifikatzea ezinezko eginez. Covid-19aren eraginpean egongo bazina jakinarazpen bat jasotzea nahiko zenuke? Aktibatu Bluetooth bidezko kontaktuen jarraipena aplikazioan eta utzi Bluetootha piztuta zure telefonoan.</string>
+
+    <string name="onboarding_title_step_4">GOMENDIOAK</string>
+    <string name="onboarding_descrption_step4_p1">Zaindu zure burua eta zure ingurukoena babes neurriak hartuz. Jarraitu zure osasun agintarien jarraibideak. COVID-19aren hedapena ekiditeko:</string>
+    <string name="onboarding_descrption_step4_p2">Ez joan osasun zentruetara alferrikako bisitak egitera, horrela osasun sistemek eraginkorrago funtzionatuko dute eta, euren eta besteon babesa handituz</string>
+    <string name="onboarding_descrption_step4_t1">Garbitu eskuak sarri. Erabili ura eta xaboia edo alkohola oinarri duen desinfektatze soluzio bat.</string>
+    <string name="onboarding_descrption_step4_t2">Eztula edo doministiku egiten duen edozein pertsonarenganako segurtasun tartea mantendu ezazu.</string>
+    <string name="onboarding_descrption_step4_t3">Ez itzazu begiak, sudura edo ahoa ikutu.</string>
+    <string name="onboarding_descrption_step4_t4">Eztul edo doministiku egitean, estali sudurra eta ahoa ukondoarekin edo botatzeko musuzapi batekin.</string>
+    <string name="onboarding_descrption_step4_t5">Gaizki bazaude gelditu zaitez etxean.</string>
+    <string name="onboarding_descrption_step4_t6">Sukarra, eztula eta arnasteko zailtasuna baduzu, eskatu mediku-laguntza. Deitu ezazu bertara joan aurretik.</string>
+    <string name="onboarding_descrption_step4_t7">Jarraitu zure osasun agintarien jarraibideak.</string>
+
+    <string name="onboarding_button_continue">Jarraitu</string>
+    <string name="onboarding_button_activate">Bluetootha aktibatu</string>
+    <string name="onboarding_button_finish">Aktibatu gabe jarraitu</string>
+
+    /********** Menu ************/
+    <string name="title_home">Hasiera</string>
+    <string name="title_profile">Nire datuak</string>
+    <string name="title_helpline">Laguntza</string>
+
+    /********** Healing Info Dialog ************/
+
+    <string name="low_risk_info_dialog_title">14 egun pasatu dira COVID-19a izan duen batekin azken kontaktua izan zenuenetik. Horregatik zure aplikazioaren egoera "Arriskuko kontaktu gabe" da.</string>
+    <string name="low_risk_info_dialog_p1">Sintomarik ez baduzu eta ez badizute COVID-19a azken egunotan diagnostikatu, zure errutina hartu dezakezu berriro, <u>ohiko babes neurriak hartuz</u>.</string>
+    <string name="low_risk_info_dialog_p1_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/COVID19_como_protegerse.jpg</string>
+    <string name="low_risk_info_dialog_p2">Azken egunotan <u>sintomak</u> (eztula, sukarra edo arnasteko zailtasuna) izan badituzu, jarri zaitez harremanetan lehen bailehen zure osasun zerbitzuarekin.</string>
+    <string name="low_risk_info_dialog_p2_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/COVID19_sintomas.jpg</string>
+    <string name="low_risk_info_dialog_more_info"><u>Informazio gehiago ></u></string>
+    <string name="low_risk_info_dialog_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
+    <string name="low_risk_info_dialog_p3">COVID-19a diagnostikatu badizute eta beste pertsona batzuei horren berri emateko, aplikazioan positibo hori jakinarazi behar duzu.</string>
+
+    /********** Home ************/
+    <string name="exposition_block_low_title">Eragin baxua</string>
+    <string name="exposition_block_medium_title">Eragin ertaina</string>
+    <string name="exposition_block_high_title">Zuzeneko kontaktua</string>
+    <string name="exposition_block_infected_title">COVID-19 Positiboa</string>
+
+    <string name="exposition_block_low_description"><b>Kontaktu arriskutsu baten berri emango dizugu.</b></string>
+    <string name="exposition_block_high_description"><b>COVID-19arekin kutsatutako pertsona batekin harremanetan egon zara.\nJakinarazi ezazu 900 112 061 doako telefonoan</b>.</string>
+    <string name="exposition_block_infected_description"><b>Zure diagnostikoa ondo bidali da.\nBakartu zaitez 14 egunez.</b>.</string>
+    <string name="exposition_block_infected_more_info">Informazio gehiago ></string>
+    <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+
+    <string name="radar_block_checked_title">&appname; aktibo</string>
+    <string name="radar_block_not_checked_title">&appname; desgaituta</string>
+
+    <string name="radar_block_checked_description">Inguruko telefonoekin izandako interakzioak era anonimoan gordeko dira.</string>
+    <string name="radar_block_not_checked_description">Mesedez, aktibatu aukera hau aplikazioak funtziona dezan.</string>
+    <string name="radar_block_disabled_description">Momentu honetatik aurrera Radar COVID aplikazioak inguruko kontaktuak gordetzeari utzi egingo dio</string>
+
+    <string name="radar_warning_exposure_notifications_disabled">COVID-19aren jakinarazpenak DESAKTIBATUTA daude</string>
+
+    <string name="radar_warning_title">&appname; desaktibatu nahi duzu?</string>
+    <string name="radar_warning_message">&appname; deskatibatzen baduzu, aplikazioak kontaktuak gordetzeari utzi egingo dio. Lagun gaitzazu zu zaintzen</string>
+    <string name="radar_warning_button_positive">Aktibo mantendu</string>
+    <string name="radar_warning_button_negative">Desaktibatu</string>
+
+    <string name="covid_report_warning">Diagnostikoa bidaltzeko Radar COVID aktibo izan behar duzu</string>
+
+
+    /********** Exposure detail common ************/
+    <string name="exposure_detail_title">ESPOSIZIOA</string>
+    <string name="exposure_detail_what_to_do">Zer egin behar dut?</string>
+    <string name="exposure_detail_more_info">Irakurri informazio gehiago <b>esteka honetan</b></string>
+    <string name="exposure_detail_acknowledgement_message">Eskerrik asko zure burua eta besteona zaintzeagatik.</string>
+
+    <string name="exposure_detail_medium">Zure esposizioa ertaina da</string>
+    <string name="exposure_detail_message_medium">Infektatuta egon zaitezke</string>
+    <string name="exposure_detail_tips_subtitle_medium">Mesedez, ziurtatu ea sintomarik duzun:</string>
+    <string name="exposure_detail_clinic_indications">Jarraitu zure osasun-zentruaren gomendioak. Informazio gehiago <b>hemen</b></string>
+    <string name="exposure_detail_more_info_tips">Aholku, sintoma eta babes-neurrien inguruko informazio gehiago <b>hemen</b> duzu</string>
+    <string name="exposure_detail_covid_report_message"><b>Lagundo besteak zaintzen.</b> Covid-19an positibo zarela baieztatu badizte, lagundu bere hedapena gelditzen, anonimoki horren berri emanez</string>
+
+    <string name="exposure_detail_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
+
+    /********** Exposure detail low ************/
+    <string name="exposure_detail_low_title_small">ARRISKU BAXUA</string>
+    <string name="exposure_detail_low_title">Zure esposizioa baxua da</string>
+    <string name="exposure_detail_low_last_update">Arriskuzko kontakturik gabe (eguneraketa %1$s)</string>
+    <string name="exposure_detail_low_last_update_no_data">Arriskuzko kontakturik gabe.</string>
+
+    <string name="exposure_detail_tips_title_low">Mantendu segurtasun neurri eta distantziak.</string>
+
+    <string name="exposure_detail_tip_mask">Beti maskara erabili</string>
+    <string name="exposure_detail_tip_wash_hands">Eskuak sarri garbitu</string>
+
+
+    <string name="exposure_detail_tip_distance">Mantendu metro t'erdiko distantzia</string>
+    <string name="exposure_detail_tip_clean">Gehien ikutzen diren gainazalak sarri garbitu</string>
+    <string name="exposure_detail_tip_avoid_touch">Ez ikutu begiak, sudurra eta ahota</string>
+    <string name="exposure_detail_tip_rules">Errespetatu zure lurraldean ezarritako edukiera-mugak eta baimendutako jarduerak</string>
+    <string name="exposure_detail_tip_clinic">Sintomaren bat baduzu (sukarra, eztula, arnasteko zailtasuna) deitu zure osasun zentrura</string>
+    <string name="exposure_detail_tip_cough">Eztul edo doministuku egitean, estali ahoa edo sudurra eta erabili botatzeko musuzapiak edo ukalondoaren barneko aldea</string>
+
+    <string name="exposure_detail_low_symptoms_what_to_do"><u>Zer egin sintomak baditut ></u></string>
+    <string name="exposure_detail_low_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
+
+    /********** Exposure detail high ************/
+    <string name="exposure_detail_high_title_small">ARRISKU ALTUA</string>
+    <string name="exposure_detail_high_title">Zure esposizioa altua da</string>
+    <string name="exposure_detail_high_last_update"><b>%1$s</b> infektatuta egon zaitezke (eguneraketa %2$s)</string>
+    <string name="exposure_detail_high_exposure_dates_title">Esposizioen historikoa:</string>
+
+    <string name="exposure_detail_phone_title">Gidalerro hobeak emateko aukeratu zure erkidego autonomoa:</string>
+    <string name="exposure_detail_high_tips_title">Jarraitu gomendio hauek eta zure osasun zentroak emandakoak:</string>
+    <string name="exposure_detail_symptom_cough">Eztul iraunkorra</string>
+    <string name="exposure_detail_symptom_fever">Sukar altu iraunkorra</string>
+    <string name="exposure_detail_symptom_breathing">Airea falta izateko sentsazia</string>
+    <string name="exposure_detail_symptom_taste_and_smell">Dastamena edo usainmena galtzea</string>
+
+
+    <string name="exposure_detail_symptoms_title">Sintoma hauetakoren bat agertzea zaindu:</string>
+    <string name="exposure_detail_high_tip_1">Mantendu gutxienez metro t'erdiko distantzia</string>
+    <string name="exposure_detail_high_tip_2">Ez joan jende asko biltzen den ekitaldi edo tokietara</string>
+    <string name="exposure_detail_high_tip_3">Ekidin pertsona nagusi edo zaurgarriekin kontaktuan egotea</string>
+    <string name="exposure_detail_high_tip_4">Maskara beti erabili</string>
+    <string name="exposure_detail_high_tip_5">Eskuak sarri garbitu</string>
+
+    <string name="exposure_detail_high_other_symptoms"><u>Beste sintoma batzuk ></u></string>
+    <string name="exposure_detail_high_other_symptoms_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/COVID19_sintomas.jpg</string>
+    <string name="exposure_detail_high_symptoms_what_to_do"><u>Zer egin sintomak baditut ></u></string>
+    <string name="exposure_detail_high_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
+
+    /********** Exposure detail infected ************/
+
+    <string name="exposure_detail_infected_title_small">DIAGNOSTIKOA JAKINARAZI DA</string>
+    <string name="exposure_detail_infected_title">COVID-19 positiboa</string>
+    <string name="exposure_detail_infected_last_update">Zure jakinarazpena orain dela <b>%1$s</b> (eguneraketa %2$s) jakinarazi da</string>
+    <string name="exposure_detail_infected_more_info">Informazio gehiago ></string>
+    <string name="exposure_detail_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+
+    <string name="exposure_detail_infected_p1"><b>Zure diagnostikoak gainontzekoak babesten laguntzen digu.</b>\n\nZure nortasuna ezagutzera eman gabe, zure diagnostikoa zure inguruan izan diren telefonoei jakinarazi diegu.</string>
+    <string name="exposure_detail_infected_what_to_do_subtitle">Jarraitu gomendio hauek eta zure osasun zentroak emandakoak</string>
+
+    <string name="exposure_detail_infected_tips_title">Jarraitu gomendio hauek eta zure osasun zentroak emandakoak</string>
+
+    /********** Region info ************/
+
+    <string name="region_info_phone_title">COVID telefonoa</string>
+    <string name="region_info_web_title">COVID informaziorako webgunea</string>
+
+    /********** Covid Report ************/
+
+    <string name="covid_report_title">NIRE DIAGNOSTIKOA</string>
+    <string name="covid_report_subtitle">Bidali zure COVID positiboaren diagnostikoa</string>
+    <string name="covid_report_p1">Zure COVID-19 diagnostikoa era anonimoan bidaliz, birusaren hedapena gelditzen lagunduko diguzu.</string>
+    <string name="covid_report_p2">Eskerrik asko guztiok zaintzen laguntzeagatik.</string>
+    <string name="covid_report_p3">Zure informazioa seguru dago eta era anonimoan erabiliko da</string>
+    <string name="covid_report_qr_button">QR kodea eskaneatu</string>
+    <string name="covid_report_code_hint_title">Diagnostikoaren kodea</string>
+    <string name="covid_report_code_hint_subtitle">Idatzi bidali dizuten kodea</string>
+    <string name="covid_report_code_input_example">adibidez. 123456789123</string>
+    <string name="covid_report_footer">Zure diagnostikoa bidaltzean, azken egunetan sortu diren ausazko kodeak zure inguruan izan diren pertsonei abisatzeko erabiliko dira. Zure nortasuna ez zaio inori bidaliko.</string>
+    <string name="covid_report_send_button">Diagnostiko anonimoa bidali</string>
+    <string name="covid_report_abort_warning_title">Ez duzu zure diagnostikoa bidali nahi?</string>
+    <string name="covid_report_abort_warning_message">Mesedez, lagundu guztiok zaintzen eta Covid-19aren hedapena gelditzen.</string>
+    <string name="covid_report_abort_warning_button">Utzi</string>
+    <string name="covid_report_error">Errore bat gertatu da diagnostikoa bidaltzean</string>
+    <string name="covid_report_edit_text_hint">Diagnostikoaren kodea</string>
+
+    <string name="covid_report_backbutton_acc">Hasierara itzuli.</string>
+
+    /********** Network Warning Dialog ************/
+
+    <string name="network_warning_dialog_title">Ez dago konexiorik.</string>
+    <string name="network_warning_dialog_message">Mesedez, begiratu zure konexioa ondo dabilen eta bidali zure kodea berriz.</string>
+    <string name="network_warning_dialog_button">Berriz saiatu</string>
+
+    /********** Report Confirmation ************/
+
+    <string name="confirmation_title">Eskerrik asko birusa gelditzen laguntzeagatik</string>
+    <string name="confirmation_subtitle">Zure diagnostikoak besteok babesten lagunduko digu.</string>
+    <string name="confirmation_p1">Zure nortasuna jakinarazi gabe, azken egunetan zure inguruan ze telefono egon den begiratuko dugu eta jakinarazpen bat bidaliko diegu.\n\nMesedez, egon zaitez bakartuta osasun zerbitzuak emandako gomendioak jarraituz.</string>
+    <string name="confirmation_more_info"><u>Informazio gehiago ></u></string>
+    <string name="confirmation_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+    <string name="confirmation_what_to_do">Zer egin behar dut?</string>
+    <string name="confirmation_tips_title">Jarraitu osasun zerbitzuaren gomendioak</string>
+    <string name="confirmation_tip_1">Egon etxean, zure logelan eta ez erabili beste inork erabiltzen duen komunik</string>
+    <string name="confirmation_tip_2">Ekidin beste pertsonekin kontaktuan egotea</string>
+    <string name="confirmation_tip_3">Beti maskara erabili</string>
+    <string name="confirmation_tip_4">Eskuak sarri garbitu</string>
+    <string name="confirmation_tip_5">Sintomaren bat agertzen bazaizu (eztula, sukarra, arnasteko zailtasuna) deitu zure osasun zentrora</string>
+    <string name="confirmation_tip_6">Sintomak txarrera badoaz deitu 112 telefonora</string>
+    <string name="confirmation_acknowledge">Eskerrik asko zure burua eta besteona zaintzeagatik.</string>
+    <string name="confirmation_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
+
+    <string name="confirmation_backbutton_acc">Hasierara itzuli.</string>
+
+    /********** My data ************/
+
+    <string name="my_data_title">NIRE DATUAK</string>
+    <string name="my_data_subtitle">Zure pribatutasuna da garrantzitsuena</string>
+    <string name="my_data_l1"><b>EZ</b> dugu datu pertsonalik jasotzen (izena, helbidea, adina, telefonoa, eposta helbidea, ...)</string>
+    <string name="my_data_l2"><b>EZ</b> dugu zure kokapenaren daturik jasotzen, GPSkoak ere ez</string>
+    <string name="my_data_l3_title">Beraz:</string>
+    <string name="my_data_l3">Beraz:\n<b>EZIN DUGU</b> jakin nor zaren eta norekin egon zaren</string>
+    <string name="my_data_encription_info">Datuak zure telefonoan gordetzen dira eta zerbitzarirako konexia zifratuta dago</string>
+    <string name="my_data_conditions">Irakurri <b><u>erabilpen baldintzak</u></b></string>
+    <string name="my_data_privacy">Irakurri <b><u>pribatutasun politika</u></b></string>
+
+    /********** Helpline ************/
+
+    <string name="helpline_title">Informazio gehiagorako...</string>
+    <string name="helpline_message_p2"><b>Radar COVID</b> aplikazioaren funtzionamenduaren inguruko galdera gehiago duzu? Zer egin jakinarazpen bat jasotzen baduzu?\nKontsultatu hemen zure zalantzak:</string>
+
+    <string name="helpline_faqs_web_title">Radar COVID SEG / FAQ</string>
+    <string name="helpline_faqs_web_url">http://www.google.es</string>
+    <string name="helpline_info_web_title">COVID informazioaren webgunea</string>
+    <string name="helpline_info_web_url">http://www.google.es</string>
+    <string name="helpline_other_web_title">Beste esteka batzuk</string>
+    <string name="helpline_other_web_url">http://www.google.es</string>
+
+    /********** DP3T ************/
+
+    <string name="dp3t_sdk_service_notification_title">&appname;</string>
+    <string name="dp3t_sdk_service_notification_errors">Ez dabil ondo.</string>
+    <string name="dp3t_sdk_service_notification_error_location_service">Kokapena desaktibatuta.</string>
+    <string name="dp3t_sdk_service_notification_error_bluetooth_disabled">Mesedez, aktibatu Bluetootha. Ezinbestekoa da &appname; aplikazioak ondo funtzionatzeko.</string>
+    <string name="dp3t_sdk_service_notification_error_battery_optimization"><b>Energia aurrezpena aktibatuta</b>\nDesaktibatu egin behar duzu Radar COVID aplikazioak ondo funtzionatzeko.</string>
+    <string name="dp3t_sdk_service_notification_error_bluetooth_not_supported">Energia baxuko Bluetootha ez da gailu honekin bateragarria.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_server">Errorea gertatu da infekzioen datuak kargatzean.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_network">Errorea gertatu da infekzioen datuak kargatzean.</string>
+    <string name="dp3t_sdk_service_notification_error_no_space">Errorea gertatu da infekzioen datuak kargatzean. Gailu honetan ez dago behar beste espazio.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_ssltls">Errorea gertatu da infekzioen datuak kargatzean.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_timing">Data eta ordua automatikoki eguneratzeko konfiguratu behar duzu zure telefonoa.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_signature">Errorea gertatu da infekzioen datuak kargatzean.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_api">Errorea gertatu da infekzioen datuak kargatzean.</string>
+    <string name="dp3t_sdk_service_notification_error_gaen_not_available">COVID-19aren esposizioaren jakinarazpenak ez dabiltza gailu honetan.</string>
+    <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Mesedez, aktibatu esposizioaren jakinarazpenak. Derrigorrezkoa da &appname; aplikazioak ondo funtziona dezan.</string>
+
+    /********** Locale selection module ************/
+    <string name="locale_selection_region_hint">*Aukeratu zure erkidego autonomoa</string>
+    <string name="locale_selection_region_default">Aukeratu zure erkidego autonomoa</string>
+    <string name="locale_selection_language_default">Aukeratu zure hizkuntza</string>
+    <string name="locale_selection_warning_message">Egindako aldaketak ezartzeko aplikazioa itxi eta berriz ireki behar duzu.</string>
+
+    /********** Accesibility ************/
+
+    <string name="description_arrow_button_back">Atzera botoia</string>
+    <string name="description_arrow_button_enter">Sartzeko botoia</string>
+
+    /********** Common ************/
+
+    <string name="dialog_close_button_description">Itxi</string>
+
+    <string name="warning_need_update_title">Eguneratu &appname;</string>
+    <string name="warning_need_update_message">&appname; erabiltzen jarraitzeko aplikazioa eguneratu egin behar duzu.</string>
+    <string name="warning_need_update_button">EGUNERATU</string>
+
+    <string name="exposure_high_notification_title">Eraginpean egon izanaren arrisku altua.</string>
+    <string name="exposure_high_notification">Zure esposizioa altua da</string>
+    <string name="exposure_low_notification_title">Eraginpean egon izanaren arrisku baxua.</string>
+    <string name="exposure_low_notification">Zure esposizioa baxua da</string>
+    <string name="exposure_low_notification_activate_radar">Zure esposizioa baxua da. Aktibatu ezazu radarra berriz, mesedez.</string>
+
+
+    <string name="empty_text"> </string>
+    <string name="statisfaction_min">oso txarra</string>
+    <string name="statisfaction_max">bikaina</string>
+
+    <string name="contact_email"><u>piloto.appcovid@economia.gob.es</u></string>
+    <string name="contact_support_title">Ordutegia: astelehenetik ostiralera 8retatik 20retara</string>
+    <string name="contact_support_phone">900 112 061</string>
+    <string name="contact_support_free_call">doako deia</string>
+
+    <string name="more_info">Informazio gehiago</string>
+
+    <string name="accept">Onartu</string>
+    <string name="back">Itzulu</string>
+
+    <string name="button_covid_report">Covid positiboa jakinarazi</string>
+
+    <string name="warning_exit_application_message">Aplikaziotik irten nahi duzu?</string>
+    <string name="warning_exit_application_button">Baieztatu</string>
+    <string name="warning_need_browser_message">Nabigatzaile bat instalatuta izan behar duzu.</string>
+
+    <plurals name="days">
+        <item quantity="one">egun %d </item>
+        <item quantity="other">%d egun</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">ordu %d</item>
+        <item quantity="other">%d ordu</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="one">minutu %d</item>
+        <item quantity="other">%d minutu</item>
+    </plurals>
+
+
+</resources>
