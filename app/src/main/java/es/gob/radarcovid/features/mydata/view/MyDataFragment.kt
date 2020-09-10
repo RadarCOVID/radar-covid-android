@@ -29,14 +29,15 @@ class MyDataFragment : BaseFragment(), MyDataView {
     @Inject
     lateinit var presenter: MyDataPresenter
 
-    private lateinit var binding: FragmentMyDataBinding
+    private var _binding: FragmentMyDataBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMyDataBinding.inflate(layoutInflater)
+        _binding = FragmentMyDataBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -44,6 +45,11 @@ class MyDataFragment : BaseFragment(), MyDataView {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         presenter.viewReady()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun initViews() {

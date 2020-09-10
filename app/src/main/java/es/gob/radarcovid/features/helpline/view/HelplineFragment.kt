@@ -34,14 +34,15 @@ class HelplineFragment : BaseFragment(), HelplineView {
     @Inject
     lateinit var presenter: HelplinePresenter
 
-    private lateinit var binding: FragmentHelplineBinding
+    private var _binding: FragmentHelplineBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHelplineBinding.inflate(layoutInflater)
+        _binding = FragmentHelplineBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -50,6 +51,11 @@ class HelplineFragment : BaseFragment(), HelplineView {
 
         initViews()
         presenter.viewReady()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun initViews() {

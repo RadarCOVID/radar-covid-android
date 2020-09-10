@@ -14,12 +14,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
+import es.gob.radarcovid.databinding.FragmentLegalInfoBinding
 import es.gob.radarcovid.features.onboarding.pages.legal.protocols.LegalInfoPresenter
 import es.gob.radarcovid.features.onboarding.pages.legal.protocols.LegalInfoView
 import es.gob.radarcovid.features.onboarding.view.OnboardingPageCallback
-import kotlinx.android.synthetic.main.fragment_legal_info.*
 import javax.inject.Inject
 
 
@@ -34,12 +33,16 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
     @Inject
     lateinit var presenter: LegalInfoPresenter
 
+    private var _binding: FragmentLegalInfoBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_legal_info, container, false)
+        _binding = FragmentLegalInfoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,17 +51,22 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
         presenter.viewReady()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun initViews() {
-        checkBoxTermsAndConditions.setOnCheckedChangeListener { _, isChecked ->
+        binding.checkBoxTermsAndConditions.setOnCheckedChangeListener { _, isChecked ->
             presenter.onLegalTermsCheckedChange(
                 isChecked
             )
         }
 
-        textViewPrivacyPolicy.setOnClickListener { presenter.onPrivacyPolicyButtonClick() }
-        textViewUsageConditions.setOnClickListener { presenter.onConditionsButtonClick() }
+        binding.textViewPrivacyPolicy.setOnClickListener { presenter.onPrivacyPolicyButtonClick() }
+        binding.textViewUsageConditions.setOnClickListener { presenter.onConditionsButtonClick() }
 
-        buttonAccept.setOnClickListener {
+        binding.buttonAccept.setOnClickListener {
             (activity as? OnboardingPageCallback)?.onContinueButtonClick(
                 1
             )
@@ -67,11 +75,11 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
     }
 
     override fun setLegalTermsChecked() {
-        checkBoxTermsAndConditions.isChecked = true
+        binding.checkBoxTermsAndConditions.isChecked = true
     }
 
     override fun setContinueButtonEnabled(enabled: Boolean) {
-        buttonAccept.isEnabled = enabled
+        binding.buttonAccept.isEnabled = enabled
     }
 
 }

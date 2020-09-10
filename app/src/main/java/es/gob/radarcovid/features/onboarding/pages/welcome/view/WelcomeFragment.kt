@@ -17,11 +17,11 @@ import android.view.ViewGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.databinding.FragmentWelcomeBinding
 import es.gob.radarcovid.features.locale.view.LocaleSelectionFragment
 import es.gob.radarcovid.features.onboarding.pages.welcome.protocols.WelcomePresenter
 import es.gob.radarcovid.features.onboarding.pages.welcome.protocols.WelcomeView
 import es.gob.radarcovid.features.onboarding.view.OnboardingPageCallback
-import kotlinx.android.synthetic.main.fragment_welcome.*
 import javax.inject.Inject
 
 class WelcomeFragment : BaseFragment(), WelcomeView {
@@ -35,11 +35,17 @@ class WelcomeFragment : BaseFragment(), WelcomeView {
     @Inject
     lateinit var presenter: WelcomePresenter
 
+    private var _binding: FragmentWelcomeBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_welcome, container, false)
+    ): View? {
+        _binding = FragmentWelcomeBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,8 +53,13 @@ class WelcomeFragment : BaseFragment(), WelcomeView {
         presenter.viewReady()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun initViews() {
-        buttonContinue.setOnClickListener { presenter.onContinueButtonClick() }
+        binding.buttonContinue.setOnClickListener { presenter.onContinueButtonClick() }
     }
 
     override fun isLocaleChanged(): Boolean =

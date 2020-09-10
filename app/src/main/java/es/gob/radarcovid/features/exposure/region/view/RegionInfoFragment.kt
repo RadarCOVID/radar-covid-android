@@ -18,9 +18,9 @@ import android.widget.AdapterView
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.view.HintSpinnerAdapter
+import es.gob.radarcovid.databinding.FragmentRegionInfoBinding
 import es.gob.radarcovid.features.exposure.region.protocols.RegionInfoPresenter
 import es.gob.radarcovid.features.exposure.region.protocols.RegionInfoView
-import kotlinx.android.synthetic.main.fragment_region_info.*
 import javax.inject.Inject
 
 class RegionInfoFragment : BaseFragment(), RegionInfoView {
@@ -34,11 +34,17 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
     @Inject
     lateinit var presenter: RegionInfoPresenter
 
+    private var _binding: FragmentRegionInfoBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_region_info, container, false)
+    ): View? {
+        _binding = FragmentRegionInfoBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,10 +52,15 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
         presenter.viewReady()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun initViews() {
-        wrapperPhone.setOnClickListener { presenter.onPhoneButtonClick() }
-        wrapperWeb.setOnClickListener { presenter.onWebButtonClick() }
-        spinnerRegion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.wrapperPhone.setOnClickListener { presenter.onPhoneButtonClick() }
+        binding.wrapperWeb.setOnClickListener { presenter.onWebButtonClick() }
+        binding.spinnerRegion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -69,7 +80,7 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
     }
 
     override fun setRegions(regions: List<String>) {
-        spinnerRegion.adapter =
+        binding.spinnerRegion.adapter =
             HintSpinnerAdapter(
                 context!!,
                 labelManager.getText(
@@ -82,26 +93,26 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
     }
 
     override fun showRegionInfo(phone: String, webName: String) {
-        
-        wrapperRegionInfo.visibility = View.VISIBLE
+        binding.wrapperRegionInfo.visibility = View.VISIBLE
 
         if (phone.isNotEmpty()) {
-            wrapperPhone.visibility = View.VISIBLE
-            textViewPhone.text = phone
+            binding.wrapperPhone.visibility = View.VISIBLE
+            binding.textViewPhone.text = phone
         } else {
-            wrapperPhone.visibility = View.GONE
+            binding.wrapperPhone.visibility = View.GONE
         }
 
         if (webName.isNotEmpty()) {
-            wrapperWeb.visibility = View.VISIBLE
-            textViewWeb.text = webName
+            binding.wrapperWeb.visibility = View.VISIBLE
+            binding.textViewWeb.text = webName
         } else {
-            wrapperWeb.visibility = View.VISIBLE
+            binding.wrapperWeb.visibility = View.VISIBLE
         }
 
     }
 
     override fun getSelectedRegionIndex(): Int =
-        spinnerRegion.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
+        binding.spinnerRegion.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
 
 }
+

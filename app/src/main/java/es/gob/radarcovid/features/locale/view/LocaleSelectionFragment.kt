@@ -32,14 +32,15 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     @Inject
     lateinit var presenter: LocaleSelectionPresenter
 
-    private lateinit var binding: FragmentLocaleSelectionBinding
+    private var _binding: FragmentLocaleSelectionBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentLocaleSelectionBinding.inflate(layoutInflater)
+        _binding = FragmentLocaleSelectionBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -47,6 +48,11 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         presenter.viewReady()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun setRegions(regions: List<String>) {
