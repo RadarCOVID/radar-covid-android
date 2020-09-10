@@ -20,6 +20,7 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+-dontobfuscate
 -keep class es.gob.radarcovid.models.** { *; }
 
 #Otto
