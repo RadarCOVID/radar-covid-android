@@ -17,7 +17,7 @@ import android.view.View
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.base.utils.NavigationUtils
-import kotlinx.android.synthetic.main.activity_confirmation.*
+import es.gob.radarcovid.databinding.ActivityConfirmationBinding
 import javax.inject.Inject
 
 class ConfirmationActivity : BaseActivity() {
@@ -33,9 +33,12 @@ class ConfirmationActivity : BaseActivity() {
     @Inject
     lateinit var navigationUtils: NavigationUtils
 
+    private lateinit var binding: ActivityConfirmationBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_confirmation)
+        binding = ActivityConfirmationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initViews()
     }
@@ -45,7 +48,7 @@ class ConfirmationActivity : BaseActivity() {
     }
 
     private fun initViews() {
-        textViewConfirmationMoreInfo.setOnClickListener {
+        binding.textViewConfirmationMoreInfo.setOnClickListener {
             navigationUtils.navigateToBrowser(
                 this,
                 labelManager.getText(
@@ -54,7 +57,7 @@ class ConfirmationActivity : BaseActivity() {
                 ).toString()
             )
         }
-        buttonMoreInfo.setOnClickListener {
+        binding.buttonMoreInfo.setOnClickListener {
             navigationUtils.navigateToBrowser(
                 this,
                 labelManager.getText(
@@ -65,5 +68,4 @@ class ConfirmationActivity : BaseActivity() {
             )
         }
     }
-
 }

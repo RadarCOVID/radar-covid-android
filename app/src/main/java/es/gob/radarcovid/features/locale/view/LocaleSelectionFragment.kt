@@ -18,9 +18,9 @@ import android.widget.AdapterView
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.view.HintSpinnerAdapter
+import es.gob.radarcovid.databinding.FragmentLocaleSelectionBinding
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionPresenter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionView
-import kotlinx.android.synthetic.main.fragment_locale_selection.*
 import javax.inject.Inject
 
 class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
@@ -32,12 +32,15 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     @Inject
     lateinit var presenter: LocaleSelectionPresenter
 
+    private lateinit var binding: FragmentLocaleSelectionBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_locale_selection, container, false)
+        binding = FragmentLocaleSelectionBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +50,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     }
 
     override fun setRegions(regions: List<String>) {
-        spinnerRegion.adapter =
+        binding.spinnerRegion.adapter =
             HintSpinnerAdapter(
                 context!!,
                 labelManager.getText(
@@ -60,14 +63,14 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     }
 
     override fun setSelectedRegionIndex(index: Int) {
-        spinnerRegion.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+        binding.spinnerRegion.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
     }
 
     override fun getSelectedRegionIndex(): Int =
-        spinnerRegion.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
+        binding.spinnerRegion.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
 
     override fun setLanguages(languages: List<String>) {
-        spinnerLanguage.adapter =
+        binding.spinnerLanguage.adapter =
             HintSpinnerAdapter(
                 context!!,
                 labelManager.getText(
@@ -80,18 +83,18 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     }
 
     override fun setSelectedLanguageIndex(index: Int) {
-        spinnerLanguage.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+        binding.spinnerLanguage.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
     }
 
     override fun getSelectedLanguageIndex(): Int =
-        spinnerLanguage.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
+        binding.spinnerLanguage.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
 
     override fun reloadLabels() {
         labelManager.reload()
     }
 
     private fun initViews() {
-        spinnerRegion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.spinnerRegion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -108,23 +111,24 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
 
         }
 
-        spinnerLanguage.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.spinnerLanguage.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    if (position > 0)
+                        presenter.onLanguageSelectionChange(position - 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+                }
 
             }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                if (position > 0)
-                    presenter.onLanguageSelectionChange(position - 1) // POSITION 0 IS THE "NON SELECTED" OPTION
-            }
-
-        }
     }
 
     fun isLanguageChanged(): Boolean = presenter.isLanguageChanged()

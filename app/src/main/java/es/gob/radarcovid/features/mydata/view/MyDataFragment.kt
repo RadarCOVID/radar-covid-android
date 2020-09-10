@@ -14,13 +14,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
+import es.gob.radarcovid.databinding.FragmentMyDataBinding
 import es.gob.radarcovid.features.mydata.protocols.MyDataPresenter
 import es.gob.radarcovid.features.mydata.protocols.MyDataView
-import kotlinx.android.synthetic.main.fragment_my_data.*
 import javax.inject.Inject
-
 
 class MyDataFragment : BaseFragment(), MyDataView {
 
@@ -31,12 +29,15 @@ class MyDataFragment : BaseFragment(), MyDataView {
     @Inject
     lateinit var presenter: MyDataPresenter
 
+    private lateinit var binding: FragmentMyDataBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_my_data, container, false)
+        binding = FragmentMyDataBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,8 +47,8 @@ class MyDataFragment : BaseFragment(), MyDataView {
     }
 
     private fun initViews() {
-        textViewConditions.setOnClickListener { presenter.onConditionsButtonClick() }
-        textViewPrivacy.setOnClickListener { presenter.onPrivacyButtonClick() }
+        binding.textViewConditions.setOnClickListener { presenter.onConditionsButtonClick() }
+        binding.textViewPrivacy.setOnClickListener { presenter.onPrivacyButtonClick() }
     }
 
 }

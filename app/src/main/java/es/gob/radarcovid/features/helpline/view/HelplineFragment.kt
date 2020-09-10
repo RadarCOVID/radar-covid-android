@@ -18,11 +18,10 @@ import android.view.View
 import android.view.ViewGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
+import es.gob.radarcovid.databinding.FragmentHelplineBinding
 import es.gob.radarcovid.features.helpline.protocols.HelplinePresenter
 import es.gob.radarcovid.features.helpline.protocols.HelplineView
-import kotlinx.android.synthetic.main.fragment_helpline.*
 import javax.inject.Inject
-
 
 class HelplineFragment : BaseFragment(), HelplineView {
 
@@ -35,12 +34,15 @@ class HelplineFragment : BaseFragment(), HelplineView {
     @Inject
     lateinit var presenter: HelplinePresenter
 
+    private lateinit var binding: FragmentHelplineBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_helpline, container, false)
+        binding = FragmentHelplineBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,7 +53,7 @@ class HelplineFragment : BaseFragment(), HelplineView {
     }
 
     private fun initViews() {
-        textViewFaqsTitle.setOnClickListener {
+        binding.textViewFaqsTitle.setOnClickListener {
             presenter.onUrlButtonClick(
                 labelManager.getText(
                     "HELPLINE_FAQS_WEB_URL",
@@ -59,7 +61,7 @@ class HelplineFragment : BaseFragment(), HelplineView {
                 ).toString()
             )
         }
-        textViewInfoWebTitle.setOnClickListener {
+        binding.textViewInfoWebTitle.setOnClickListener {
             presenter.onUrlButtonClick(
                 labelManager.getText(
                     "HELPLINE_INFO_WEB_URL",
@@ -67,7 +69,7 @@ class HelplineFragment : BaseFragment(), HelplineView {
                 ).toString()
             )
         }
-        textViewOtherWebTitle.setOnClickListener {
+        binding.textViewOtherWebTitle.setOnClickListener {
             presenter.onUrlButtonClick(
                 labelManager.getText(
                     "HELPLINE_OTHER_WEB_URL",

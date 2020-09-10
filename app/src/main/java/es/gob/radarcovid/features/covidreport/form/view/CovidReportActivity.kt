@@ -20,12 +20,11 @@ import android.view.accessibility.AccessibilityManager
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.databinding.ActivityCovidReportBinding
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
-import kotlinx.android.synthetic.main.activity_covid_report.*
 import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
-
 
 class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
@@ -40,6 +39,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     @Inject
     lateinit var presenter: CovidReportPresenter
 
+    private lateinit var binding: ActivityCovidReportBinding
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         DP3T.onActivityResult(this, requestCode, resultCode, data)
@@ -47,7 +48,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_covid_report)
+        binding = ActivityCovidReportBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initViews()
         presenter.viewReady()
@@ -56,13 +58,13 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     override fun onResume() {
         super.onResume()
         if (isAccessibilityEnabled()) {
-            codeEditText.visibility = View.INVISIBLE
-            editTextCodeAccessibility.visibility = View.VISIBLE
-            presenter.onCodeChanged(editTextCodeAccessibility.text.toString())
+            binding.codeEditText.visibility = View.INVISIBLE
+            binding.editTextCodeAccessibility.visibility = View.VISIBLE
+            presenter.onCodeChanged(binding.editTextCodeAccessibility.text.toString())
         } else {
-            codeEditText.visibility = View.VISIBLE
-            editTextCodeAccessibility.visibility = View.GONE
-            presenter.onCodeChanged(codeEditText.getText())
+            binding.codeEditText.visibility = View.VISIBLE
+            binding.editTextCodeAccessibility.visibility = View.GONE
+            presenter.onCodeChanged(binding.codeEditText.getText())
         }
     }
 
@@ -72,14 +74,14 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     private fun initViews() {
-        buttonSend.setOnClickListener {
+        binding.buttonSend.setOnClickListener {
             hideKeyBoard()
             presenter.onSendButtonClick()
         }
-        codeEditText.textChangedListener = {
+        binding.codeEditText.textChangedListener = {
             presenter.onCodeChanged(it)
         }
-        editTextCodeAccessibility.addTextChangedListener(object : TextWatcher {
+        binding.editTextCodeAccessibility.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 presenter.onCodeChanged(s.toString())
             }
@@ -133,12 +135,12 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
     override fun getReportCode(): String =
         if (isAccessibilityEnabled())
-            editTextCodeAccessibility.text.toString()
+            binding.editTextCodeAccessibility.text.toString()
         else
-            codeEditText.getText()
+            binding.codeEditText.getText()
 
     override fun setButtonSendEnabled(enabled: Boolean) {
-        buttonSend.isEnabled = enabled
+        binding.buttonSend.isEnabled = enabled
     }
 
     override fun hideLoadingWithNetworkError() {

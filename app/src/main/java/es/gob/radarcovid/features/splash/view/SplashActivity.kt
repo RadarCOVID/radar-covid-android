@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.databinding.ActivitySplashBinding
 import es.gob.radarcovid.features.splash.protocols.SplashPresenter
 import es.gob.radarcovid.features.splash.protocols.SplashView
 import javax.inject.Inject
@@ -44,7 +45,9 @@ class SplashActivity : BaseActivity(), SplashView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+
+        val binding: ActivitySplashBinding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         presenter.viewReady(intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false))
     }

@@ -35,12 +35,11 @@ import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.common.extensions.parseHtml
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.databinding.FragmentHomeBinding
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
-import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
-
 
 class HomeFragment : BaseFragment(), HomeView {
 
@@ -61,6 +60,8 @@ class HomeFragment : BaseFragment(), HomeView {
     @Inject
     lateinit var presenter: HomePresenter
 
+    private lateinit var binding: FragmentHomeBinding
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS && resultCode == Activity.RESULT_OK)
@@ -72,7 +73,8 @@ class HomeFragment : BaseFragment(), HomeView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,31 +94,31 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     private fun initViews() {
-        switchRadar.setOnClickListener {
-            if (!switchRadar.isChecked) { // The status is already change when onclick is executed
-                switchRadar.isChecked = true
-                switchRadar.jumpDrawablesToCurrentState()
+        binding.switchRadar.setOnClickListener {
+            if (!binding.switchRadar.isChecked) { // The status is already change when onclick is executed
+                binding.switchRadar.isChecked = true
+                binding.switchRadar.jumpDrawablesToCurrentState()
                 showDialogDisableRadarWarning()
             } else {
-                switchRadar.isChecked = false
-                switchRadar.jumpDrawablesToCurrentState()
+                binding.switchRadar.isChecked = false
+                binding.switchRadar.jumpDrawablesToCurrentState()
                 presenter.onSwitchRadarClick(false)
             }
         }
-        switchRadar.setOnTouchListener { _, event ->
+        binding.switchRadar.setOnTouchListener { _, event ->
             event.actionMasked == MotionEvent.ACTION_MOVE
         }
 
-        imageViewLogo.setOnLongClickListener {
+        binding.imageViewLogo.setOnLongClickListener {
             presenter.onBackgroundImageLongClick()
             true
         }
-        imageViewInitializationCheck.setOnLongClickListener {
+        binding.imageViewInitializationCheck.setOnLongClickListener {
             presenter.onBackgroundImageLongClick()
             true
         }
-        wrapperExposure.setOnClickListener { presenter.onExposureBlockClick() }
-        textViewMoreInfo.setOnClickListener {
+        binding.wrapperExposure.setOnClickListener { presenter.onExposureBlockClick() }
+        binding.textViewMoreInfo.setOnClickListener {
             presenter.onMoreInfoButtonClick(
                 labelManager.getText(
                     "HOME_EXPOSITION_POSITIVE_MORE_INFO_URL",
@@ -124,16 +126,16 @@ class HomeFragment : BaseFragment(), HomeView {
                 ).toString()
             )
         }
-        buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
+        binding.buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
     }
 
     override fun showInitializationCheckAnimation() {
-        imageViewLogo.alpha = 0f
-        imageViewInitializationCheck.alpha = 1f
+        binding.imageViewLogo.alpha = 0f
+        binding.imageViewInitializationCheck.alpha = 1f
         AnimatorSet().apply {
             playTogether(
-                ObjectAnimator.ofFloat(imageViewLogo, View.ALPHA, 0f, 1f),
-                ObjectAnimator.ofFloat(imageViewInitializationCheck, View.ALPHA, 1f, 0f)
+                ObjectAnimator.ofFloat(binding.imageViewLogo, View.ALPHA, 0f, 1f),
+                ObjectAnimator.ofFloat(binding.imageViewInitializationCheck, View.ALPHA, 1f, 0f)
             )
             duration = 2000 //set duration for animations
             startDelay = 2000
@@ -141,94 +143,104 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     override fun showExposureBlockLow() {
-        wrapperExposure.setBackgroundResource(R.drawable.background_shape_expure_low)
-        textViewExpositionTitle.text =
+        binding.wrapperExposure.setBackgroundResource(R.drawable.background_shape_expure_low)
+        binding.textViewExpositionTitle.text =
             labelManager.getText("HOME_EXPOSITION_TITLE_LOW", R.string.exposition_block_low_title)
-        textViewExpositionDescription.text =
+        binding.textViewExpositionDescription.text =
             labelManager.getText(
                 "HOME_EXPOSITION_MESSAGE_LOW",
                 R.string.exposition_block_low_description
             )
-        textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.green))
-        textViewMoreInfo.visibility = View.GONE
+        binding.textViewExpositionTitle.setTextColor(
+            ContextCompat.getColor(
+                context!!,
+                R.color.green
+            )
+        )
+        binding.textViewMoreInfo.visibility = View.GONE
     }
 
     override fun showExposureBlockHigh() {
-        wrapperExposure.setBackgroundResource(R.drawable.background_shape_exposure_high)
-        textViewExpositionTitle.text =
+        binding.wrapperExposure.setBackgroundResource(R.drawable.background_shape_exposure_high)
+        binding.textViewExpositionTitle.text =
             labelManager.getText("HOME_EXPOSITION_TITLE_HIGH", R.string.exposition_block_high_title)
-        textViewExpositionDescription.text =
+        binding.textViewExpositionDescription.text =
             labelManager.getFormattedText(
                 "HOME_EXPOSITION_MESSAGE_HIGH",
                 labelManager.getContactPhone()
             ).default(getString(R.string.exposition_block_high_description)).parseHtml()
-        textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
-        textViewMoreInfo.visibility = View.GONE
+        binding.textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
+        binding.textViewMoreInfo.visibility = View.GONE
     }
 
     override fun showExposureBlockInfected() {
-        wrapperExposure.setBackgroundResource(R.drawable.background_shape_exposure_infected)
-        textViewExpositionTitle.text = labelManager.getText(
+        binding.wrapperExposure.setBackgroundResource(R.drawable.background_shape_exposure_infected)
+        binding.textViewExpositionTitle.text = labelManager.getText(
             "HOME_EXPOSITION_TITLE_POSITIVE",
             R.string.exposition_block_infected_title
         )
-        textViewExpositionDescription.text =
+        binding.textViewExpositionDescription.text =
             labelManager.getText(
                 "HOME_EXPOSITION_MESSAGE_INFECTED",
                 R.string.exposition_block_infected_description
             )
-        textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
-        textViewMoreInfo.visibility = View.VISIBLE
+        binding.textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
+        binding.textViewMoreInfo.visibility = View.VISIBLE
     }
 
     override fun showBackgroundEnabled(enabled: Boolean) {
         if (enabled) {
-            if (imageViewLogo.colorFilter != null) {
-                imageViewLogoBackground.clearColorFilter()
-                imageViewLogo.clearColorFilter()
+            if (binding.imageViewLogo.colorFilter != null) {
+                binding.imageViewLogoBackground.clearColorFilter()
+                binding.imageViewLogo.clearColorFilter()
             }
         } else {
             ColorMatrixColorFilter(ColorMatrix().apply {
                 setSaturation(0f)
             }).let {
-                if (imageViewLogo.colorFilter == null) {
-                    imageViewLogoBackground.colorFilter = it
-                    imageViewLogo.colorFilter = it
+                if (binding.imageViewLogo.colorFilter == null) {
+                    binding.imageViewLogoBackground.colorFilter = it
+                    binding.imageViewLogo.colorFilter = it
                 }
             }
         }
     }
 
     override fun showReportButton() {
-        buttonCovidReport.visibility = View.VISIBLE
+        binding.buttonCovidReport.visibility = View.VISIBLE
     }
 
     override fun hideReportButton() {
-        buttonCovidReport.visibility = View.GONE
+        binding.buttonCovidReport.visibility = View.GONE
     }
 
     override fun setRadarBlockChecked(checked: Boolean) {
-        if (switchRadar.isChecked != checked) {
-            switchRadar.isChecked = checked
+        if (binding.switchRadar.isChecked != checked) {
+            binding.switchRadar.isChecked = checked
             showRadarBlockChecked(checked)
         }
     }
 
     override fun setRadarBlockEnabled(enabled: Boolean) {
         if (enabled) {
-            switchRadar.visibility = View.VISIBLE
+            binding.switchRadar.visibility = View.VISIBLE
         } else {
-            switchRadar.visibility = View.GONE
-            textViewRadarTitle.text = labelManager.getText(
+            binding.switchRadar.visibility = View.GONE
+            binding.textViewRadarTitle.text = labelManager.getText(
                 "HOME_RADAR_TITLE_INACTIVE",
                 R.string.radar_block_not_checked_title
             )
-            textViewRadarDescription.text = labelManager.getText(
+            binding.textViewRadarDescription.text = labelManager.getText(
                 "HOME_RADAR_MESSAGE_DISABLED",
                 R.string.radar_block_disabled_description
             )
-            textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
-            textViewRadarDescription.setTypeface(
+            binding.textViewRadarDescription.setTextColor(
+                ContextCompat.getColor(
+                    context!!,
+                    R.color.black
+                )
+            )
+            binding.textViewRadarDescription.setTypeface(
                 ResourcesCompat.getFont(context!!, R.font.muli_light),
                 Typeface.NORMAL
             )
@@ -319,30 +331,40 @@ class HomeFragment : BaseFragment(), HomeView {
 
     private fun showRadarBlockChecked(isChecked: Boolean) {
         if (isChecked) {
-            textViewRadarTitle.text = labelManager.getText(
+            binding.textViewRadarTitle.text = labelManager.getText(
                 "HOME_RADAR_TITLE_ACTIVE",
                 R.string.radar_block_checked_title
             )
-            textViewRadarDescription.text = labelManager.getText(
+            binding.textViewRadarDescription.text = labelManager.getText(
                 "HOME_RADAR_CONTENT_ACTIVE",
                 R.string.radar_block_checked_description
             )
-            textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
-            textViewRadarDescription.setTypeface(
+            binding.textViewRadarDescription.setTextColor(
+                ContextCompat.getColor(
+                    context!!,
+                    R.color.black
+                )
+            )
+            binding.textViewRadarDescription.setTypeface(
                 ResourcesCompat.getFont(context!!, R.font.muli_light),
                 Typeface.NORMAL
             )
         } else {
-            textViewRadarTitle.text = labelManager.getText(
+            binding.textViewRadarTitle.text = labelManager.getText(
                 "HOME_RADAR_TITLE_INACTIVE",
                 R.string.radar_block_not_checked_title
             )
-            textViewRadarDescription.text = labelManager.getText(
+            binding.textViewRadarDescription.text = labelManager.getText(
                 "HOME_RADAR_CONTENT_INACTIVE",
                 R.string.radar_block_not_checked_description
             )
-            textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.red))
-            textViewRadarDescription.setTypeface(
+            binding.textViewRadarDescription.setTextColor(
+                ContextCompat.getColor(
+                    context!!,
+                    R.color.red
+                )
+            )
+            binding.textViewRadarDescription.setTypeface(
                 ResourcesCompat.getFont(context!!, R.font.muli_bold),
                 Typeface.NORMAL
             )

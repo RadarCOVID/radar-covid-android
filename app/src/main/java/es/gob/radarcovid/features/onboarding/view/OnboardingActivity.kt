@@ -20,12 +20,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.databinding.ActivityOnboardingBinding
 import es.gob.radarcovid.features.onboarding.pages.ActivationPageFragment
 import es.gob.radarcovid.features.onboarding.pages.legal.view.LegalInfoFragment
 import es.gob.radarcovid.features.onboarding.pages.welcome.view.WelcomeFragment
 import es.gob.radarcovid.features.onboarding.protocols.OnboardingPresenter
 import es.gob.radarcovid.features.onboarding.protocols.OnboardingView
-import kotlinx.android.synthetic.main.activity_onboarding.*
 import javax.inject.Inject
 
 class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingPageCallback {
@@ -39,6 +39,8 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingPageCallbac
     @Inject
     lateinit var presenter: OnboardingPresenter
 
+    private lateinit var binding: ActivityOnboardingBinding
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_BLUETOOTH && resultCode == Activity.RESULT_OK)
@@ -47,24 +49,25 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingPageCallbac
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_onboarding)
+        binding = ActivityOnboardingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initViews()
         presenter.viewReady()
     }
 
     private fun initViews() {
-        viewPager.adapter = OnboardingAdapter(this)
-        viewPager.isUserInputEnabled = false
-        viewPager.offscreenPageLimit = 4
+        binding.viewPager.adapter = OnboardingAdapter(this)
+        binding.viewPager.isUserInputEnabled = false
+        binding.viewPager.offscreenPageLimit = 4
     }
 
     override fun onBackPressed() {
-        presenter.onBackButtonPressed(viewPager.currentItem == 0)
+        presenter.onBackButtonPressed(binding.viewPager.currentItem == 0)
     }
 
     override fun onContinueButtonClick(pageIndex: Int) {
-        if (viewPager.currentItem == pageIndex)
+        if (binding.viewPager.currentItem == pageIndex)
             presenter.onContinueButtonClick()
     }
 
@@ -73,11 +76,11 @@ class OnboardingActivity : BaseActivity(), OnboardingView, OnboardingPageCallbac
     }
 
     override fun showPreviousPage() {
-        viewPager.setCurrentItem(viewPager.currentItem - 1, true)
+        binding.viewPager.setCurrentItem(binding.viewPager.currentItem - 1, true)
     }
 
     override fun showNextPage() {
-        viewPager.setCurrentItem(viewPager.currentItem + 1, true)
+        binding.viewPager.setCurrentItem(binding.viewPager.currentItem + 1, true)
     }
 
     override fun isBluetoothEnabled(): Boolean =

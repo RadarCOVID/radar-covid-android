@@ -16,9 +16,9 @@ import android.os.Bundle
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.databinding.ActivityMainBinding
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainView
-import kotlinx.android.synthetic.main.activity_main.*
 import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
 
@@ -39,6 +39,8 @@ class MainActivity : BaseActivity(), MainView {
     @Inject
     lateinit var presenter: MainPresenter
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         DP3T.onActivityResult(this, requestCode, resultCode, data)
@@ -46,7 +48,8 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initViews()
 
@@ -59,7 +62,7 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     private fun initViews() {
-        bottomNavigation.setOnNavigationItemSelectedListener {
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menuItemHome -> presenter.onHomeButtonClick()
                 R.id.menuItemProfile -> presenter.onProfileButtonClick()
@@ -71,10 +74,10 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun onBackPressed() {
-        if (bottomNavigation.selectedItemId == R.id.menuItemHome)
+        if (binding.bottomNavigation.selectedItemId == R.id.menuItemHome)
             presenter.onBackPressed()
         else
-            bottomNavigation.selectedItemId = R.id.menuItemHome
+            binding.bottomNavigation.selectedItemId = R.id.menuItemHome
     }
 
     override fun showExitConfirmationDialog() {
