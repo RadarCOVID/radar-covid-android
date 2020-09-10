@@ -122,6 +122,7 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:clickable="false"
+                    android:importantForAccessibility="no"
                     android:contentDescription="@string/description_arrow_button_enter"
                     android:focusableInTouchMode="false"
                     android:src="@drawable/ic_arrow_right"
