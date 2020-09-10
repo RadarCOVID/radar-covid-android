@@ -126,6 +126,10 @@ android {
 
             buildConfigField 'String', 'CERTIFICATE_PIN', '"sha256/V5NaZx/jvh7NR/Ne6tXTw/g2Pcu9ztv08prWsUh7czI="'
         }
+
+        viewBinding {
+            enabled true
+        }
     }
 
     compileOptions {
