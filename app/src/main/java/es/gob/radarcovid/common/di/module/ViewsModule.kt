@@ -36,4 +36,6 @@ abstract class ViewsModule {
     @ContributesAndroidInjector
     abstract fun bindsLowRiskInfoDialog(): ExposureHealedDialog
 
+    @ContributesAndroidInjector
+    abstract fun bindsLabelCheckBox(): LabelCheckBox
 }

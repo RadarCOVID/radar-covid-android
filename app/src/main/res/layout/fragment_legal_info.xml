@@ -141,11 +141,13 @@
                 android:paddingEnd="@dimen/padding_content"
                 android:paddingBottom="@dimen/padding_content">
 
-                <androidx.appcompat.widget.AppCompatCheckBox
+                <es.gob.radarcovid.common.view.LabelCheckBox
                     android:id="@+id/checkBoxTermsAndConditions"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="5dp"
+                    android:contentDescription="@string/legal_info_usage_policy_conditions"
+                    app:contentDescriptionLabelId="ACC_CHECKBOX_PRIVACY"
                     android:button="@drawable/selector_checkbox"
                     android:gravity="center_horizontal" />
 

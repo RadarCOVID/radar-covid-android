@@ -57,4 +57,9 @@
         <attr name="hintLabelId" />
     </declare-styleable>
 
+    <declare-styleable name="LabelCheckBox">
+        <attr name="android:contentDescription" />
+        <attr name="contentDescriptionLabelId" />
+    </declare-styleable>
+
 </resources>
