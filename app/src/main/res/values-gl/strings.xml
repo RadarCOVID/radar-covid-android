@@ -341,10 +341,10 @@
     <string name="dp3t_sdk_service_notification_error_sync_network">Erro ao cargar novos datos de infección.</string>
     <string name="dp3t_sdk_service_notification_error_no_space">Erro ao cargar novos datos de infección. Non hai espazo dispoñíbel neste dispositivo.</string>
     <string name="dp3t_sdk_service_notification_error_sync_ssltls">Erro ao cargar novos datos de infección.</string>
-    <string name="dp3t_sdk_service_notification_error_sync_timing">É preciso configurares en Axustes aa actualización automática de data e hora.</string>
-    <string name="dp3t_sdk_service_notification_error_sync_signature">Error ao cargar novos datos de infección.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_timing">É preciso configurares en Axustes a actualización automática de data e hora.</string>
+    <string name="dp3t_sdk_service_notification_error_sync_signature">Erro ao cargar novos datos de infección.</string>
     <string name="dp3t_sdk_service_notification_error_sync_api">Erro ao cargar nuevos datos de infección.</string>
-    <string name="dp3t_sdk_service_notification_error_gaen_not_available">As notificaciones de exposición COVID-19 non están dispoñíbeis neste dispositivo.</string>
+    <string name="dp3t_sdk_service_notification_error_gaen_not_available">As notificacións de exposición COVID-19 non están dispoñíbeis neste dispositivo.</string>
     <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Fai o favor de activar as notificacións de exposición. É imprescindíbel para &appname;
         funcionar correctamente.</string>
 
