@@ -91,7 +91,7 @@
 
     /********** Onboarding ************/
     <string name="onboarding_title_step_1">Benvido a &appname;</string>
-    <string name="onboarding_subtitle_step_1">Para te dar o mellor servizo, fai o favor de seleccionar o teu idioma. Se non é o castelán, reinicia <b>Radar COVID</b> despois de o seleccionar</string>
+    <string name="onboarding_subtitle_step_1">Para dármosche o mellor servizo, por favor, selecciona o teu idioma. Se non é o castelán, reinicia <b>Radar COVID</b> despois de o seleccionar</string>
     <string name="onboarding_step1_message_1">Coñece en todo momento se te expós ao coronavirus, axudándote a protexerte a ti e protexer aos demais.</string>
     <string name="onboarding_step1_message_2">Comunica de forma anónima o teu diagnóstico Covid positivo.</string>
     <string name="onboarding_step1_message_3">Se estiveres afectado, comunicaremos a exposición de forma anónima ás persoas coas que estiveches en contacto.</string>
@@ -109,11 +109,11 @@
 
     <string name="onboarding_title_step_3">Como funciona</string>
     <string name="onboarding_step_3_instructions_title_1">01</string>
-    <string name="onboarding_step_3_instructions_detail_1">Activa o teu Bluetooth. Iso é todo o que te pedimos.</string>
+    <string name="onboarding_step_3_instructions_detail_1">Activa o teu Bluetooth. Iso é todo o que che pedimos.</string>
     <string name="onboarding_step_3_instructions_title_2">02</string>
     <string name="onboarding_step_3_instructions_detail_2">Visita a App con frecuencia para visualizares o teu grado de exposición ao coronavirus.</string>
     <string name="onboarding_step_3_instructions_title_3">03</string>
-    <string name="onboarding_step_3_instructions_detail_3">En caso de teres estado exposto ou reportares un diagnóstico positivo segue as indicacións que te enviaremos.</string>
+    <string name="onboarding_step_3_instructions_detail_3">En caso de teres estado exposto ou reportares un diagnóstico positivo segue as indicacións que che enviaremos.</string>
     <string name="onboarding_descrption_step3">Grazas á tecnoloxía contact tracing Bluetooth, gardamos as interaccións entre os teléfonos que están próximos entre si: así, se un usuario confirma que ten Covid-19, o histórico de teléfonos próximos permítenos alertar a aqueles que estiveron perto para tomaren precaucións. Pero sempre coa privacidade asegurada! Os teléfonos próximos almacénanse con ids cambiantes, de modo que o usuario ou o dispositivo non son identificábeis. Queres ser alertado en caso de teres estado expuosto á Covid-19? Autoriza o teu contact tracing Bluetooth na app e mantén aceso o Bluetooth do teu móvil.</string>
 
     <string name="onboarding_title_step_4">RECOMENDACIÓNS</string>
@@ -155,14 +155,14 @@
 
     <string name="exposition_block_low_description"><b>Informarémoste no caso dun posíbel contacto de risco.</b></string>
     <string name="exposition_block_high_description"><b>Estiveches en contacto cunha persoa contaxiada de COVID-19.\nInforma no 900 112 061 (de balde)</b>.</string>
-    <string name="exposition_block_infected_description"><b>O teu diagnóstico foi enviado.\nFai o favor de aillarte durante 14 días</b>.</string>
+    <string name="exposition_block_infected_description"><b>O teu diagnóstico foi enviado.\nPor favor, aíllate durante 14 días</b>.</string>
     <string name="exposition_block_infected_more_info">Máis información ></string>
     <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
 
     <string name="radar_block_checked_title">&appname; activo</string>
     <string name="radar_block_not_checked_title">&appname; inactivo</string>
 
-    <string name="radar_block_checked_description">As interaccións con móbiles próximos hanse rexistrar sempre anónimamente.</string>
+    <string name="radar_block_checked_description">As interaccións con móbiles próximos hanse rexistrar sempre anonimamente.</string>
     <string name="radar_block_not_checked_description">Fai o favor de activar esta opción para a aplicación funcionar.</string>
     <string name="radar_block_disabled_description">Desde este momento, Radar COVID deixará de rexistrar contactos próximos.</string>
 
@@ -187,7 +187,7 @@
     <string name="exposure_detail_tips_subtitle_medium">Fai o favor de prestar atención a posíbeis síntomas:</string>
     <string name="exposure_detail_clinic_indications">Segue os consellos do teu centro de saúde. Máis información <b>aquí</b></string>
     <string name="exposure_detail_more_info_tips">Tes máis información sobre consellos, sintomas e medidas <b>aquí</b></string>
-    <string name="exposure_detail_covid_report_message"><b>Axúdanos a coidar aos demais.</b> Se te confirmaron que es un caso positivo Covid-19, axúdanos a parar a súa propagación reportándoo anónimamente</string>
+    <string name="exposure_detail_covid_report_message"><b>Axúdanos a coidar aos demais.</b> Se che confirmaron que es un caso positivo Covid-19, axúdanos a parar a súa propagación reportándoo anonimamente</string>
 
     <string name="exposure_detail_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
 
@@ -219,7 +219,7 @@
     <string name="exposure_detail_high_last_update">Poderías estar infectado desde hai <b>%1$s</b> (actualizado %2$s)</string>
     <string name="exposure_detail_high_exposure_dates_title">Historial de exposicións:</string>
 
-    <string name="exposure_detail_phone_title">Para te darmos a mellor orientación, selecciona a túa Comunidade Autónoma:</string>
+    <string name="exposure_detail_phone_title">Para dármosche a mellor orientación, selecciona a túa Comunidade Autónoma:</string>
     <string name="exposure_detail_high_tips_title">Segue as seguintes recomendacións e os consellos do teu centro de saúde:</string>
     <string name="exposure_detail_symptom_cough">Tos persistente</string>
     <string name="exposure_detail_symptom_fever">Febre alta continua</string>
@@ -263,7 +263,7 @@
     <string name="covid_report_subtitle">Envía o teu diagnóstico COVID positivo</string>
     <string name="covid_report_p1">Enviando o teu diagnóstico anónimo COVID-19, estás a contribuír a deter a propagación do virus.</string>
     <string name="covid_report_p2">Obrigados por axudarnos a coidar dos demais.</string>
-    <string name="covid_report_p3">A túa información está segura e será tratada sempre anónimamente</string>
+    <string name="covid_report_p3">A túa información está segura e será tratada sempre anonimamente</string>
     <string name="covid_report_qr_button">Escanear QR</string>
     <string name="covid_report_code_hint_title">Código de diagnóstico</string>
     <string name="covid_report_code_hint_subtitle">Introduce o código que che enviaron</string>
@@ -288,7 +288,7 @@
 
     <string name="confirmation_title">Obrigados por contribuíres a parar o virus</string>
     <string name="confirmation_subtitle"> O teu diagnóstico vainos axudar a protexer aos demais.</string>
-    <string name="confirmation_p1">Sen revelar a túa identidade en ningún momento, imos rastrexar que móbiles estiveran perto de ti nos últimos días e enviarémoslles unha alerta para a súa seguridade.\n\nFai o favor de permanecer en aillamento seguindo as recomendacións que te deron os servizos sanitarios.</string>
+    <string name="confirmation_p1">Sen revelar a túa identidade en ningún momento, imos rastrexar que móbiles estiveran perto de ti nos últimos días e enviarémoslles unha alerta para a súa seguridade.\n\nPor favor, permanece en aillamento seguindo as recomendacións que che deron os servizos sanitarios.</string>
     <string name="confirmation_more_info"><u>Máis información ></u></string>
     <string name="confirmation_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
     <string name="confirmation_what_to_do">Que debo facer?</string>
