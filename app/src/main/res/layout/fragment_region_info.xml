@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2020 Gobierno de España
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -16,19 +15,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerRegion"
+        style="@style/Spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_rounded_corners_white"
-        android:elevation="10dp">
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerRegion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dialog" />
-
-    </FrameLayout>
+        android:spinnerMode="dialog" />
 
     <LinearLayout
         android:id="@+id/wrapperRegionInfo"
