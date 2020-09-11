@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.view.CMDialog
@@ -69,23 +70,19 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
 
     override fun setLanguages(languages: List<String>) {
         spinnerLanguage.adapter =
-            HintSpinnerAdapter(
+            ArrayAdapter(
                 context!!,
-                labelManager.getText(
-                    "",
-                    R.string.locale_selection_language_default
-                ).toString(),
                 R.layout.row_spinner,
                 languages
             )
     }
 
     override fun setSelectedLanguageIndex(index: Int) {
-        spinnerLanguage.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+        spinnerLanguage.setSelection(index)
     }
 
     override fun getSelectedLanguageIndex(): Int =
-        spinnerLanguage.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
+        spinnerLanguage.selectedItemPosition
 
     override fun reloadLabels() {
         labelManager.reload()
@@ -142,8 +139,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                 position: Int,
                 id: Long
             ) {
-                if (position > 0)
-                    presenter.onLanguageSelectionChange(position - 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+                presenter.onLanguageSelectionChange(position)
             }
 
         }
