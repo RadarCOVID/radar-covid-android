@@ -23,7 +23,7 @@
 
     /********** Dialog Internet ************/
     <string name="warning_connection_title">Non hai conexión a internet</string>
-    <string name="warning_connection_description">Fai o favor de revisar a túa conexión.</string>
+    <string name="warning_connection_description">Por favor, comproba a túa conexión.</string>
     <string name="warning_connection_button">Tentar de novo</string>
 
     /********** Splash ************/
@@ -163,7 +163,7 @@
     <string name="radar_block_not_checked_title">&appname; inactivo</string>
 
     <string name="radar_block_checked_description">As interaccións con móbiles próximos hanse rexistrar sempre anonimamente.</string>
-    <string name="radar_block_not_checked_description">Fai o favor de activar esta opción para a aplicación funcionar.</string>
+    <string name="radar_block_not_checked_description">Por favor, activa esta opción para a aplicación funcionar.</string>
     <string name="radar_block_disabled_description">Desde este momento, Radar COVID deixará de rexistrar contactos próximos.</string>
 
     <string name="radar_warning_exposure_notifications_disabled">Notificacións de exposición á COVID-19 DESACTIVADAS</string>
@@ -184,7 +184,7 @@
 
     <string name="exposure_detail_medium">A túa exposición é media</string>
     <string name="exposure_detail_message_medium">Poderías estar infectado</string>
-    <string name="exposure_detail_tips_subtitle_medium">Fai o favor de prestar atención a posíbeis síntomas:</string>
+    <string name="exposure_detail_tips_subtitle_medium">Por favor, presta atención a posíbeis síntomas:</string>
     <string name="exposure_detail_clinic_indications">Segue os consellos do teu centro de saúde. Máis información <b>aquí</b></string>
     <string name="exposure_detail_more_info_tips">Tes máis información sobre consellos, sintomas e medidas <b>aquí</b></string>
     <string name="exposure_detail_covid_report_message"><b>Axúdanos a coidar aos demais.</b> Se che confirmaron que es un caso positivo Covid-19, axúdanos a parar a súa propagación reportándoo anonimamente</string>
@@ -271,7 +271,7 @@
     <string name="covid_report_footer">Ao enviares o teu diagnóstico, os identificadores aleatorios xerados nos últimos días servirán para avisar as persoas que estiveran perto de ti. A túa identidade non se comparte con ninguén.</string>
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
     <string name="covid_report_abort_warning_title">Estás certo de que non queres enviar o teu diagnóstico?</string>
-    <string name="covid_report_abort_warning_message">Fai o favor de axudarnos a coidar dos demais e evitemos que o Covid-19 se propague.</string>
+    <string name="covid_report_abort_warning_message">Por favor, axúdanos a coidar dos demais e evitemos que o Covid-19 se propague.</string>
     <string name="covid_report_abort_warning_button">Cancelar</string>
     <string name="covid_report_error">Produciuse un erro ao enviar o diagnóstico</string>
     <string name="covid_report_edit_text_hint">Código de diagnóstico</string>
@@ -281,7 +281,7 @@
     /********** Network Warning Dialog ************/
 
     <string name="network_warning_dialog_title">Sen conexión.</string>
-    <string name="network_warning_dialog_message">Fai o favor de comprobar a túa conexión e volve enviar o teu código.</string>
+    <string name="network_warning_dialog_message">Por favor, comproba a túa conexión e volve enviar o teu código.</string>
     <string name="network_warning_dialog_button">Tentar de novo</string>
 
     /********** Report Confirmation ************/
@@ -333,7 +333,7 @@
     <string name="dp3t_sdk_service_notification_title">&appname;</string>
     <string name="dp3t_sdk_service_notification_errors">Non funciona correctamente.</string>
     <string name="dp3t_sdk_service_notification_error_location_service">Localización desactivada.</string>
-    <string name="dp3t_sdk_service_notification_error_bluetooth_disabled">Fai o favor de activar o Bluetooth. É imprescindíbel para &appname;
+    <string name="dp3t_sdk_service_notification_error_bluetooth_disabled">Por favor, activa o Bluetooth. É imprescindíbel para &appname;
         funcionar correctamente.</string>
     <string name="dp3t_sdk_service_notification_error_battery_optimization"><b>Aforro de enerxía activado</b>\nDebes desactivalo para o Radar COVID funcionar correctamente.</string>
     <string name="dp3t_sdk_service_notification_error_bluetooth_not_supported">O Bluetooth de baixa enerxía non é compatíbel con este dispositivo.</string>
@@ -345,7 +345,7 @@
     <string name="dp3t_sdk_service_notification_error_sync_signature">Erro ao cargar novos datos de infección.</string>
     <string name="dp3t_sdk_service_notification_error_sync_api">Erro ao cargar nuevos datos de infección.</string>
     <string name="dp3t_sdk_service_notification_error_gaen_not_available">As notificacións de exposición COVID-19 non están dispoñíbeis neste dispositivo.</string>
-    <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Fai o favor de activar as notificacións de exposición. É imprescindíbel para &appname;
+    <string name="dp3t_sdk_service_notification_error_gaen_unexpectedly_disabled">Por favor, activa as notificacións de exposición. É imprescindíbel para &appname;
         funcionar correctamente.</string>
 
     /********** Locale selection module ************/
@@ -371,7 +371,7 @@
     <string name="exposure_high_notification">A túa exposición agora é alta</string>
     <string name="exposure_low_notification_title">Risco de exposición baixo.</string>
     <string name="exposure_low_notification">A túa exposición agora é baixa</string>
-    <string name="exposure_low_notification_activate_radar">A túa exposición agora é baixa. Fai o favor de volver activar o radar.</string>
+    <string name="exposure_low_notification_activate_radar">A túa exposición agora é baixa. Por favor, volve activar o radar.</string>
 
 
     <string name="empty_text"> </string>
