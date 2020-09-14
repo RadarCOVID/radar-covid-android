@@ -69,6 +69,7 @@
                         android:layout_marginBottom="20dp"
                         android:text="@string/onboarding_title_step_2"
                         android:textColor="@color/black"
+                        app:isHeading="true"
                         app:labelId="ONBOARDING_STEP_2_TITLE" />
 
                     <es.gob.radarcovid.common.view.LabelTextView
@@ -79,6 +80,7 @@
                         android:text="@string/onboarding_descrption_step2"
                         android:textColor="@color/purple_9C"
                         android:textSize="22sp"
+                        app:isHeading="true"
                         app:labelId="ONBOARDING_STEP_2_SUBTITLE" />
 
                     <es.gob.radarcovid.common.view.LabelTextView
@@ -87,6 +89,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/onboarding_step_2_commitments_title_1"
+                        app:isHeading="true"
                         app:labelId="ONBOARDING_STEP_2_PARAGRAPH_1_TITLE" />
 
                     <es.gob.radarcovid.common.view.LabelTextView
@@ -103,6 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/onboarding_step_2_commitments_title_2"
+                        app:isHeading="true"
                         app:labelId="ONBOARDING_STEP_2_PARAGRAPH_2_TITLE" />
 
                     <es.gob.radarcovid.common.view.LabelTextView
@@ -119,6 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="@string/onboarding_step_2_commitments_title_3"
+                        app:isHeading="true"
                         app:labelId="ONBOARDING_STEP_2_PARAGRAPH_3_TITLE" />
 
                     <es.gob.radarcovid.common.view.LabelTextView
