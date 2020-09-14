@@ -23,27 +23,12 @@
         android:src="@drawable/background_covid_report"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
+    <include
         android:id="@+id/layoutBackButton"
+        layout="@layout/layout_back_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <es.gob.radarcovid.common.view.LabelImageButton
-            android:id="@+id/imageButtonBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:contentDescription="@string/confirmation_backbutton_acc"
-            android:onClick="onBackArrowClick"
-            android:paddingLeft="22dp"
-            android:paddingTop="22dp"
-            android:paddingRight="22dp"
-            app:contentDescriptionLabelId="ACC_MY_HEALTH_REPORTED_BACKBUTTON"
-            android:paddingBottom="32dp"
-            android:src="@drawable/ic_arrow_left" />
-
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         style="@style/ScrollVertical"

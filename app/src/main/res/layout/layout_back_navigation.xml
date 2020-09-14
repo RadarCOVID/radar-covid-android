@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2020 Gobierno de España
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -10,10 +9,11 @@
   -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageButton
+    <es.gob.radarcovid.common.view.LabelImageButton
         android:id="@+id/imageButtonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,6 +24,7 @@
         android:paddingTop="22dp"
         android:paddingRight="22dp"
         android:paddingBottom="32dp"
-        android:src="@drawable/ic_arrow_left" />
+        android:src="@drawable/ic_arrow_left"
+        app:contentDescriptionLabelId="ACC_MY_HEALTH_REPORTED_BACKBUTTON" />
 
 </FrameLayout>
