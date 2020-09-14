@@ -13,6 +13,7 @@ package es.gob.radarcovid.common.view
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.view.ViewCompat
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
 import es.gob.radarcovid.datamanager.utils.LabelManager
@@ -26,6 +27,8 @@ class LabelTextView @JvmOverloads constructor(
     lateinit var labelManager: LabelManager
 
     private var labelId: String?
+
+    private var isHeading: Boolean = false
 
     init {
         (context.applicationContext as HasAndroidInjector)
@@ -41,6 +44,8 @@ class LabelTextView @JvmOverloads constructor(
                 labelId = getString(R.styleable.LabelTextView_labelId)
                 val defaultText = getText(R.styleable.LabelTextView_android_text)
                 text = labelManager.getText(labelId, defaultText)
+                isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
+                setIsHeading(isHeading)
             } finally {
                 recycle()
             }
@@ -58,6 +63,10 @@ class LabelTextView @JvmOverloads constructor(
 
     fun reloadText() {
         text = labelManager.getText(labelId, text)
+    }
+
+    private fun setIsHeading(isHeading: Boolean) {
+        ViewCompat.setAccessibilityHeading(this, isHeading)
     }
 
 }

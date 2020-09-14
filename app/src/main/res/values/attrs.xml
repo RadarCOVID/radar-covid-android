@@ -26,6 +26,7 @@
     <declare-styleable name="LabelTextView">
         <attr name="labelId" />
         <attr name="android:text" />
+        <attr name="isHeading" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="LabelButton">
