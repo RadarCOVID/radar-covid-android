@@ -134,7 +134,7 @@
 
     /********** Menu ************/
     <string name="title_home">Home</string>
-    <string name="title_profile">Mis datos</string>
+    <string name="title_mydata">Mis datos</string>
     <string name="title_helpline">Helpline</string>
 
     /********** Healing Info Dialog ************/
