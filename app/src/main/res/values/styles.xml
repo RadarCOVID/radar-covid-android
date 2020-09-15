@@ -214,4 +214,9 @@
         <item name="android:fadingEdgeLength">100dp</item>
     </style>
 
+    <style name="Spinner">
+        <item name="android:background">@drawable/background_spinner</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
 </resources>

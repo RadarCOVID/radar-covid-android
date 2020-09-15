@@ -15,8 +15,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
+import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.common.view.HintSpinnerAdapter
 import es.gob.radarcovid.databinding.FragmentLocaleSelectionBinding
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionPresenter
@@ -77,26 +79,43 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
 
     override fun setLanguages(languages: List<String>) {
         binding.spinnerLanguage.adapter =
-            HintSpinnerAdapter(
+            ArrayAdapter(
                 context!!,
-                labelManager.getText(
-                    "",
-                    R.string.locale_selection_language_default
-                ).toString(),
                 R.layout.row_spinner,
                 languages
             )
     }
 
     override fun setSelectedLanguageIndex(index: Int) {
-        binding.spinnerLanguage.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+        binding.spinnerLanguage.setSelection(index)
     }
 
     override fun getSelectedLanguageIndex(): Int =
-        binding.spinnerLanguage.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
+        binding.spinnerLanguage.selectedItemPosition
 
     override fun reloadLabels() {
         labelManager.reload()
+    }
+
+    override fun showLanguageChangeDialog() {
+        CMDialog.Builder(context!!)
+            .setMessage(
+                labelManager.getText(
+                    "LOCALE_CHANGE_WARNING",
+                    R.string.locale_selection_warning_message
+                ).toString()
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_ACCEPT_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                it.dismiss()
+                presenter.onLocaleChangeConfirm()
+            }
+            .build()
+            .show()
     }
 
     private fun initViews() {
@@ -130,16 +149,11 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     position: Int,
                     id: Long
                 ) {
-                    if (position > 0)
-                        presenter.onLanguageSelectionChange(position - 1) // POSITION 0 IS THE "NON SELECTED" OPTION
+                    presenter.onLanguageSelectionChange(position)
                 }
 
             }
     }
-
-    fun isLanguageChanged(): Boolean = presenter.isLanguageChanged()
-
-    fun applyLocaleSettings() = presenter.applyLocaleSettings()
 
     fun restoreLocaleSettings() = presenter.restoreLocaleSettings()
 

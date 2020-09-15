@@ -16,7 +16,6 @@ import android.view.View
 import android.view.ViewGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
-import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.databinding.FragmentWelcomeBinding
 import es.gob.radarcovid.features.locale.view.LocaleSelectionFragment
 import es.gob.radarcovid.features.onboarding.pages.welcome.protocols.WelcomePresenter
@@ -62,17 +61,6 @@ class WelcomeFragment : BaseFragment(), WelcomeView {
         binding.buttonContinue.setOnClickListener { presenter.onContinueButtonClick() }
     }
 
-    override fun isLocaleChanged(): Boolean =
-        (childFragmentManager
-            .findFragmentById(R.id.fragmentLocaleSelection) as LocaleSelectionFragment)
-            .isLanguageChanged()
-
-    override fun applyLocaleSettings() {
-        (childFragmentManager
-            .findFragmentById(R.id.fragmentLocaleSelection) as LocaleSelectionFragment)
-            .applyLocaleSettings()
-    }
-
     override fun restorePreviousLanguage() {
         (childFragmentManager
             .findFragmentById(R.id.fragmentLocaleSelection) as LocaleSelectionFragment)
@@ -81,37 +69,6 @@ class WelcomeFragment : BaseFragment(), WelcomeView {
 
     override fun performContinueButtonClick() {
         (activity as? OnboardingPageCallback)?.onContinueButtonClick(0)
-    }
-
-    override fun showLanguageChangeDialog() {
-        CMDialog.Builder(context!!)
-            .setMessage(
-                labelManager.getText(
-                    "LOCALE_CHANGE_WARNING",
-                    R.string.locale_selection_warning_message
-                ).toString()
-            )
-            .setPositiveButton(
-                labelManager.getText(
-                    "ALERT_ACCEPT_BUTTON",
-                    R.string.accept
-                ).toString()
-            ) {
-                it.dismiss()
-                presenter.onLocaleChangeConfirm()
-            }
-//            .setNegativeButton(
-//                labelManager.getText(
-//                    "ALERT_CANCEL_BUTTON",
-//                    R.string.question_dialog_cancel
-//                ).toString()
-//            ) {
-//                it.dismiss()
-//                presenter.onLocaleChangeCancel()
-//            }
-            .setCloseButton { it.dismiss() }
-            .build()
-            .show()
     }
 
     override fun finish() {

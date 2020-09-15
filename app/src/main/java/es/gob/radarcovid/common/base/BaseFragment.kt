@@ -41,7 +41,7 @@ abstract class BaseFragment : DaggerFragment() {
     }
 
     fun hideLoading() {
-        progressBar?.hide()
+        progressBar?.dismissWithAnimation()
     }
 
     fun hideLoadingWithError(error: Throwable) {

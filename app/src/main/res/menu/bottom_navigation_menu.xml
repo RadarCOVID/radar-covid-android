@@ -19,7 +19,7 @@
         android:id="@+id/menuItemProfile"
         android:enabled="true"
         android:icon="@drawable/ic_profile"
-        android:title="@string/title_profile" />
+        android:title="@string/title_mydata" />
     <item
         android:id="@+id/menuItemHelpline"
         android:enabled="true"

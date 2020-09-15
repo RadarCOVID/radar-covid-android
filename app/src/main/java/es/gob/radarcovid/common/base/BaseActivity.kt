@@ -44,7 +44,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     }
 
     fun hideLoading() {
-        progressBar?.hide()
+        progressBar?.dismissWithAnimation()
     }
 
     fun hideLoadingWithError(error: Throwable) {

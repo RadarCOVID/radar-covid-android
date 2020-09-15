@@ -13,14 +13,13 @@ package es.gob.radarcovid.features.covidreport.confirmation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import es.gob.radarcovid.R
-import es.gob.radarcovid.common.base.BaseActivity
+import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.base.utils.NavigationUtils
 import es.gob.radarcovid.databinding.ActivityConfirmationBinding
 import javax.inject.Inject
 
-class ConfirmationActivity : BaseActivity() {
+class ConfirmationActivity : BaseBackNavigationActivity() {
 
     companion object {
 
@@ -41,10 +40,6 @@ class ConfirmationActivity : BaseActivity() {
         setContentView(binding.root)
 
         initViews()
-    }
-
-    fun onBackArrowClick(view: View) {
-        onBackPressed()
     }
 
     private fun initViews() {
