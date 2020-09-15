@@ -21,7 +21,9 @@ These are the tools used to develop the solution:
 
 Clone this repository and import into **Android Studio**.
 
+```bash
 git clone https://github.com/RadarCOVID/radar-covid-android.git
+```
 
 ## Building
 ### Create APK
