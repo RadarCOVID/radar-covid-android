@@ -14,28 +14,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_rounded_corners_white"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:orientation="horizontal">
-
-        <es.gob.radarcovid.common.view.LabelImageButton
-            android:id="@+id/buttonClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/dialog_close_button_description"
-            android:minWidth="0dp"
-            android:padding="20dp"
-            android:src="@drawable/ic_close"
-            android:visibility="invisible"
-            app:contentDescriptionLabelId="ACC_BUTTON_CLOSE"
-            tools:visibility="visible" />
-
-    </LinearLayout>
+    android:orientation="vertical"
+    android:paddingTop="20dp">
 
     <TextView
         android:id="@+id/textViewDialogTitle"
@@ -55,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
+        android:accessibilityTraversalBefore="@id/buttonOk"
         android:visibility="gone"
         tools:text="description"
         tools:visibility="visible" />
@@ -82,6 +63,18 @@
         android:textSize="16sp"
         android:visibility="gone"
         tools:text="Button"
+        tools:visibility="visible" />
+
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonClose"
+        style="@style/ButtonTransparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/dialog_close_button_description"
+        android:visibility="gone"
+        app:labelId="ACC_BUTTON_CLOSE"
         tools:visibility="visible" />
 
 </LinearLayout>

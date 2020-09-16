@@ -33,7 +33,7 @@ object CMDialog {
             view.findViewById<TextView>(R.id.textViewDialogDescription)
         private val buttonOk = view.findViewById<Button>(R.id.buttonOk)
         private val buttonCancel = view.findViewById<Button>(R.id.buttonCancel)
-        private val buttonClose = view.findViewById<ImageButton>(R.id.buttonClose)
+        private val buttonClose = view.findViewById<LabelButton>(R.id.buttonClose)
         private val dialog: AlertDialog = AlertDialog.Builder(context)
             .setView(view)
             .setCancelable(false)
