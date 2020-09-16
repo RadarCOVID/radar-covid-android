@@ -63,6 +63,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="@string/onboarding_title_step_3"
                     android:textColor="@color/black"
+                    app:isHeading="true"
                     app:labelId="ONBOARDING_STEP_3_TITLE" />
 
                 <es.gob.radarcovid.common.view.LabelTextView
