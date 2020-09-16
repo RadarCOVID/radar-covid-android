@@ -199,7 +199,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx:17.5.0'
 
     //Views
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
 
     implementation "org.funktionale:funktionale-either:1.2"
@@ -241,7 +241,7 @@ dependencies {
     implementation 'org.bouncycastle:bcprov-jdk15on:1.65'
 
     //DP3T
-    implementation 'org.dpppt:dp3t-sdk-android:1.0.3'
+    implementation 'org.dpppt:dp3t-sdk-android:1.0.4'
     implementation 'com.google.android.gms:play-services-tasks:17.2.0'
 
     //DP3T aar dependencies
