@@ -133,7 +133,7 @@
     <string name="onboarding_button_finish">Continuar sin activar</string>
 
     /********** Menu ************/
-    <string name="title_home">Home</string>
+    <string name="title_home">Radar</string>
     <string name="title_mydata">Mis datos</string>
     <string name="title_helpline">Helpline</string>
 
@@ -277,8 +277,6 @@
     <string name="covid_report_error">Se ha producido un error al enviar diagnóstico</string>
     <string name="covid_report_edit_text_hint">Código de diagnóstico</string>
 
-    <string name="covid_report_backbutton_acc">Volver a inicio.</string>
-
     /********** Network Warning Dialog ************/
 
     <string name="network_warning_dialog_title">Sin conexión.</string>
@@ -302,8 +300,6 @@
     <string name="confirmation_tip_6">Si los síntomas empeoran llama al 112</string>
     <string name="confirmation_acknowledge">Gracias por seguir cuidándote y cuidando a los demás.</string>
     <string name="confirmation_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
-
-    <string name="confirmation_backbutton_acc">Volver a inicio.</string>
 
     /********** My data ************/
 
@@ -361,6 +357,8 @@
     <string name="description_arrow_button_enter">Botón entrar</string>
 
     /********** Common ************/
+
+    <string name="navigation_back_to">Volver a</string>
 
     <string name="dialog_close_button_description">Cerrar</string>
 

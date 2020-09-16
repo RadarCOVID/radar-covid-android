@@ -17,6 +17,7 @@ import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.base.utils.NavigationUtils
 import kotlinx.android.synthetic.main.activity_confirmation.*
+import kotlinx.android.synthetic.main.layout_back_navigation.*
 import javax.inject.Inject
 
 class ConfirmationActivity : BaseBackNavigationActivity() {
@@ -40,6 +41,12 @@ class ConfirmationActivity : BaseBackNavigationActivity() {
     }
 
     private fun initViews() {
+        imageButtonBack.contentDescription =
+            "${labelManager.getText(
+                "ACC_BUTTON_BACK_TO",
+                R.string.navigation_back_to
+            )} ${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)}"
+
         textViewConfirmationMoreInfo.setOnClickListener {
             navigationUtils.navigateToBrowser(
                 this,

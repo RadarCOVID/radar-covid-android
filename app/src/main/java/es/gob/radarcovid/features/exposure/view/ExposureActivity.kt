@@ -22,6 +22,7 @@ import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
 import es.gob.radarcovid.features.exposure.protocols.ExposureView
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
 import kotlinx.android.synthetic.main.activity_exposure.*
+import kotlinx.android.synthetic.main.layout_back_navigation.*
 import kotlinx.android.synthetic.main.layout_exposure_detail_high.*
 import kotlinx.android.synthetic.main.layout_exposure_detail_infected.*
 import kotlinx.android.synthetic.main.layout_exposure_detail_low.*
@@ -59,6 +60,12 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
     }
 
     private fun initViews() {
+        imageButtonBack.contentDescription =
+            "${labelManager.getText(
+                "ACC_BUTTON_BACK_TO",
+                R.string.navigation_back_to
+            )} ${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)}"
+
         textViewOtherSymptomsHigh.setOnClickListener {
             presenter.onUrlButtonClick(
                 labelManager.getText(
