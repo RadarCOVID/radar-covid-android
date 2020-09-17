@@ -95,7 +95,7 @@
     <string name="onboarding_step1_message_1">Coñece en todo momento se te expós ao coronavirus, axudándote a protexerte a ti e protexer aos demais.</string>
     <string name="onboarding_step1_message_2">Comunica de forma anónima o teu diagnóstico Covid positivo.</string>
     <string name="onboarding_step1_message_3">Se estiveres afectado, comunicaremos a exposición de forma anónima ás persoas coas que estiveches en contacto.</string>
-    <string name="onboarding_step1_message_end">Obrigados por te cuidares e nos axudares a protexermos aos demais.</string>
+    <string name="onboarding_step1_message_end">Grazas por te cuidares e nos axudares a protexermos aos demais.</string>
 
     <string name="onboarding_title_step_2">A túa privacidade é a nosa prioridade</string>
     <string name="onboarding_descrption_step2">Os nosos compromisos</string>
@@ -180,7 +180,7 @@
     <string name="exposure_detail_title">EXPOSICIÓN</string>
     <string name="exposure_detail_what_to_do">Que debo facer?</string>
     <string name="exposure_detail_more_info">Máis información a través <b>desta ligazón</b></string>
-    <string name="exposure_detail_acknowledgement_message">Obrigados por seguires coidándote e coidando dos demais.</string>
+    <string name="exposure_detail_acknowledgement_message">Grazas por seguires coidándote e coidando dos demais.</string>
 
     <string name="exposure_detail_medium">A túa exposición é media</string>
     <string name="exposure_detail_message_medium">Poderías estar infectado</string>
@@ -262,7 +262,7 @@
     <string name="covid_report_title">O MEU DIAGNÓSTICO</string>
     <string name="covid_report_subtitle">Envía o teu diagnóstico COVID positivo</string>
     <string name="covid_report_p1">Enviando o teu diagnóstico anónimo COVID-19, estás a contribuír a deter a propagación do virus.</string>
-    <string name="covid_report_p2">Obrigados por axudarnos a coidar dos demais.</string>
+    <string name="covid_report_p2">Grazas por axudarnos a coidar dos demais.</string>
     <string name="covid_report_p3">A túa información está segura e será tratada sempre anonimamente</string>
     <string name="covid_report_qr_button">Escanear QR</string>
     <string name="covid_report_code_hint_title">Código de diagnóstico</string>
@@ -286,7 +286,7 @@
 
     /********** Report Confirmation ************/
 
-    <string name="confirmation_title">Obrigados por contribuíres a parar o virus</string>
+    <string name="confirmation_title">Grazas por contribuíres a parar o virus</string>
     <string name="confirmation_subtitle"> O teu diagnóstico vainos axudar a protexer aos demais.</string>
     <string name="confirmation_p1">Sen revelar a túa identidade en ningún momento, imos rastrexar que móbiles estiveran perto de ti nos últimos días e enviarémoslles unha alerta para a súa seguridade.\n\nPor favor, permanece en aillamento seguindo as recomendacións que che deron os servizos sanitarios.</string>
     <string name="confirmation_more_info"><u>Máis información ></u></string>
@@ -299,7 +299,7 @@
     <string name="confirmation_tip_4">Lava as mans frecuentemente</string>
     <string name="confirmation_tip_5">Ante a aparición dalgún síntoma (febre, tos, dificultade respiratoria) chama o teu centro de saúde</string>
     <string name="confirmation_tip_6">Se os síntomas empeoran chama o 112</string>
-    <string name="confirmation_acknowledge">Obrigados por seguires coidándote e coidando dos demais.</string>
+    <string name="confirmation_acknowledge">Grazas por seguires coidándote e coidando dos demais.</string>
     <string name="confirmation_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
 
     <string name="confirmation_backbutton_acc">Volver ao inicio.</string>
