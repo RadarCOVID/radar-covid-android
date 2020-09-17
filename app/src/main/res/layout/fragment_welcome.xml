@@ -106,11 +106,19 @@
                     style="@style/TitleTip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="50dp"
+                    android:layout_marginBottom="20dp"
                     android:text="@string/onboarding_step1_message_end"
                     android:textColor="@color/black"
                     app:labelId="ONBOARDING_STEP_1_THANKS" />
 
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleTip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:text="@string/onboarding_step1_important"
+                    android:textColor="@color/black"
+                    app:labelId="ONBOARDING_STEP_1_IMPORTANT" />
 
             </LinearLayout>
 
