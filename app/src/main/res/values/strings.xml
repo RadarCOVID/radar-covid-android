@@ -159,6 +159,7 @@
     <string name="exposition_block_infected_description"><b>Tu diagnóstico ha sido enviado.\nPor favor, aíslate durante 14 días</b>.</string>
     <string name="exposition_block_infected_more_info">Más información ></string>
     <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+    <string name="exposition_block_action_more_detail">Acceder a más detalles</string>
 
     <string name="radar_block_checked_title">&appname; activo</string>
     <string name="radar_block_not_checked_title">&appname; inactivo</string>
