@@ -64,18 +64,19 @@
             android:paddingEnd="16dp"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <es.gob.radarcovid.common.view.LabelConstraintLayout
                 android:id="@+id/wrapperExposure"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/background_exposition_low"
                 android:elevation="10dp"
-                android:importantForAccessibility="no"
                 android:paddingStart="26dp"
                 android:paddingTop="16dp"
                 android:paddingEnd="15dp"
-                android:paddingBottom="30dp">
+                android:paddingBottom="30dp"
+                app:actionDescription="@string/exposition_block_action_more_detail"
+                app:actionDescriptionLabelId="ACC_ACTION_MORE_DETAILS">
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExpositionTitle"
@@ -116,7 +117,6 @@
                     app:layout_constraintTop_toBottomOf="@id/textViewExpositionDescription"
                     tools:visibility="visible" />
 
-
                 <ImageButton
                     android:id="@+id/imageButtonArrow"
                     android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </es.gob.radarcovid.common.view.LabelConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

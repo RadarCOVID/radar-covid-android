@@ -38,4 +38,7 @@ abstract class ViewsModule {
 
     @ContributesAndroidInjector
     abstract fun bindsLabelCheckBox(): LabelCheckBox
+
+    @ContributesAndroidInjector
+    abstract fun bindsLabelConstraintLayout(): LabelConstraintLayout
 }

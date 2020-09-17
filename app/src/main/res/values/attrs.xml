@@ -13,6 +13,8 @@
     <attr name="labelId" format="string" />
     <attr name="contentDescriptionLabelId" format="string" />
     <attr name="hintLabelId" format="string" />
+    <attr name="actionDescription" format="string" />
+    <attr name="actionDescriptionLabelId" format="string" />
 
     <declare-styleable name="CMCheckBox">
         <attr name="android:text" />
@@ -61,6 +63,11 @@
     <declare-styleable name="LabelCheckBox">
         <attr name="android:contentDescription" />
         <attr name="contentDescriptionLabelId" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelConstraintLayout">
+        <attr name="actionDescription" />
+        <attr name="actionDescriptionLabelId" />
     </declare-styleable>
 
 </resources>
