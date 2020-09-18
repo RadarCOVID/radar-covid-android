@@ -85,23 +85,4 @@ class HelplineFragment : BaseFragment(), HelplineView {
         })
     }
 
-    override fun sendMailToInterview() {
-        val emailIntent = Intent(Intent.ACTION_SEND).apply {
-            type = "plain/text"
-            putExtra(
-                Intent.EXTRA_EMAIL,
-                arrayOf(labelManager.getText("CONTACT_EMAIL", R.string.contact_email).toString())
-            )
-//            putExtra(Intent.EXTRA_SUBJECT, "Subject")
-//            putExtra(Intent.EXTRA_TEXT, "Text")
-        }
-
-        startActivity(
-            Intent.createChooser(
-                emailIntent,
-                "Send mail..."
-            )
-        )
-    }
-
 }
