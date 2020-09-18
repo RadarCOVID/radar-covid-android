@@ -97,7 +97,7 @@
     <string name="onboarding_step1_message_2">Comunica de forma anónima tu diagnóstico Covid positivo.</string>
     <string name="onboarding_step1_message_3">Si estuvieras afectado, comunicaremos la exposición de forma anónima a las personas con las que has estado en contacto.</string>
     <string name="onboarding_step1_message_end">Gracias por cuidarte y ayudarnos a proteger a los demás.</string>
-
+    <string name="onboarding_step1_important"><b>IMPORTANTE: La App Radar COVID se ha puesto ya a disposición de todas las Comunidades Autónomas y comenzará a estar activa en cada una de ellas según éstas se vayan incorporando.</b></string>
     <string name="onboarding_title_step_2">Tu privacidad es nuestra prioridad</string>
     <string name="onboarding_descrption_step2">Nuestros compromisos</string>
 
