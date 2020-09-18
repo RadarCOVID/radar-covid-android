@@ -101,7 +101,6 @@
                     app:labelId="ALERT_HIGH_EXPOSURE_HEALED_MORE_INFO" />
 
                 <es.gob.radarcovid.common.view.LabelDotTextView
-                    android:id="@+id/dotTextViewP3"
                     style="@style/TextDialogDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

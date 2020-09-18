@@ -17,7 +17,6 @@
     android:background="#90000000">
 
     <es.gob.radarcovid.common.view.AnimatedCircleView
-        android:id="@+id/indicator"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center" />

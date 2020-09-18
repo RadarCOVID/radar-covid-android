@@ -28,10 +28,6 @@ class HelplinePresenterImpl @Inject constructor(
         view.showDialerForSupport()
     }
 
-    override fun onInterViewEmailButtonClick() {
-        view.sendMailToInterview()
-    }
-
     override fun onUrlButtonClick(url: String) {
         router.navigateToBrowser(url)
     }
