@@ -186,7 +186,7 @@
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
     <string name="covid_report_abort_warning_title">¿Seguro que no quieres enviar tu diagnóstico?</string>
     <string name="covid_report_abort_warning_message">Por favor, ayúdanos a cuidar a los demas y evitemos que el Covid-19 se propague.</string>
-    <string name="covid_report_abort_warning_button">Cancelar</string>
+    <string name="covid_report_abort_warning_button">Cancelar envío</string>
     <string name="covid_report_error">Se ha producido un error al enviar diagnóstico</string>
     <string name="covid_report_edit_text_hint">Código de diagnóstico</string>
 
@@ -257,6 +257,8 @@
 
     /********** Locale selection module ************/
     <string name="locale_selection_region_default">Selecciona tu Comunidad Autónoma</string>
+    <string name="locale_selection_language_default">Selecciona tu idioma</string>
+    <string name="locale_selection_change_language">Idioma</string>
     <string name="locale_selection_warning_message">Para aplicar los cambios realizados es necesario reiniciar la aplicación.</string>
 
     /********** Accesibility ************/

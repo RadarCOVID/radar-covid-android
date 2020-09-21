@@ -32,32 +32,15 @@
         android:visibility="invisible"
         tools:visibility="visible">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:orientation="horizontal">
-
-            <es.gob.radarcovid.common.view.LabelImageButton
-                android:id="@+id/buttonClose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/dialog_close_button_description"
-                android:minWidth="0dp"
-                android:padding="20dp"
-                android:src="@drawable/ic_close"
-                app:contentDescriptionLabelId="ACC_BUTTON_CLOSE" />
-
-        </LinearLayout>
-
         <TextView
             android:id="@+id/textViewDialogTitle"
             style="@style/TextDialogTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="15dp"
+            android:layout_marginBottom="6dp"
             android:visibility="gone"
             tools:text="title"
             tools:visibility="visible" />
@@ -77,8 +60,11 @@
             android:id="@+id/buttonOk"
             style="@style/ButtonNormal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="35dp"
             android:textColor="@color/white"
             tools:text="Button" />
 
