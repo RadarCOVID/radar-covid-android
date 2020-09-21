@@ -64,12 +64,6 @@
         <item name="android:textSize">28sp</item>
     </style>
 
-    <style name="TitleBig" parent="Title">
-        <item name="android:lineSpacingMultiplier">0.9</item>
-        <item name="android:textColor">@color/black_26</item>
-        <item name="android:textSize">44sp</item>
-    </style>
-
     <style name="TitleExtraBold">
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/muli_extrabold</item>
@@ -84,17 +78,6 @@
         <item name="android:fontFamily">@font/muli_light</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/purple_9C</item>
-    </style>
-
-    <style name="TitleExtraBoldPurpleSmall" parent="TitleExtraBold">
-        <item name="android:textColor">@color/purple_9C</item>
-        <item name="android:textSize">20sp</item>
-    </style>
-
-    <style name="TextMuliMedium">
-        <item name="android:fontFamily">@font/muli_medium</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextRegular">
@@ -154,13 +137,6 @@
         <item name="fontFamily">@font/muli_semibold</item>
         <item name="textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="ButtonWhite" parent="Button">
-        <item name="android:gravity">center</item>
-        <item name="android:minHeight">56dp</item>
-        <item name="android:textColor">@color/black_26</item>
-        <item name="android:background">@drawable/shape_rounded_corners_white</item>
     </style>
 
     <style name="ButtonNormal" parent="Button">

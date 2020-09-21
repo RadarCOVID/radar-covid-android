@@ -23,6 +23,7 @@ import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
 import kotlinx.android.synthetic.main.activity_covid_report.*
+import kotlinx.android.synthetic.main.layout_back_navigation.*
 import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
 
@@ -72,6 +73,12 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     private fun initViews() {
+        imageButtonBack.contentDescription =
+            "${labelManager.getText(
+                "ACC_BUTTON_BACK_TO",
+                R.string.navigation_back_to
+            )} ${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)}"
+
         buttonSend.setOnClickListener {
             hideKeyBoard()
             presenter.onSendButtonClick()

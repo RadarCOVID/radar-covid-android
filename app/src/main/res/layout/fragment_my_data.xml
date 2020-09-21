@@ -34,8 +34,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:orientation="vertical"
             android:paddingLeft="22dp"
             android:paddingTop="60dp"
@@ -61,7 +59,6 @@
                 app:labelId="MY_DATA_TITLE" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
-                android:id="@+id/dottedTextViewL1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -69,7 +66,6 @@
                 app:labelId="MY_DATA_BULLET_1" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
-                android:id="@+id/dottedTextViewL2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -77,7 +73,6 @@
                 app:labelId="MY_DATA_BULLET_2" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
-                android:id="@+id/dottedTextViewL3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
