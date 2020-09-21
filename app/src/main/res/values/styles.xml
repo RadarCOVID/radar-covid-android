@@ -122,29 +122,40 @@
     </style>
 
     <style name="TextDialogTitle" parent="Title">
-        <item name="android:textColor">@color/black_26</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextDialogTitleSmall" parent="Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextDialogDescription">
         <item name="fontFamily">@font/muli_light</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="Button">
-        <item name="fontFamily">@font/muli_semibold</item>
+        <item name="fontFamily">@font/muli_bold</item>
         <item name="textAllCaps">false</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="ButtonNormal" parent="Button">
-        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/white</item>
         <item name="backgroundTint">@color/color_tint_button_normal</item>
         <item name="backgroundTintMode">src_over</item>
         <item name="android:background">@drawable/background_button</item>
+    </style>
+
+    <style name="ButtonSecondary" parent="Button">
+        <item name="android:textColor">@color/purple_8D</item>
+        <item name="android:background">@drawable/shape_rounded_border_purple_8d</item>
     </style>
 
     <style name="ButtonTransparent" parent="Button">
@@ -153,13 +164,6 @@
         <item name="android:textColor">@color/black</item>
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="backgroundTintMode">src_over</item>
-        <item name="android:background">@drawable/shape_rounded_corners_white </item>
-    </style>
-
-    <style name="EditTextNormal" parent="TextSmall">
-        <item name="android:minHeight">60dp</item>
-        <item name="android:lines">1</item>
-        <item name="android:singleLine">true</item>
         <item name="android:background">@drawable/shape_rounded_corners_white</item>
     </style>
 

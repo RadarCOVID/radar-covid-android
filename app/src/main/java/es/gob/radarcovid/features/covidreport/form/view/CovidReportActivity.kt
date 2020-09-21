@@ -133,7 +133,14 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
                 it.dismiss()
                 presenter.onExitConfirmed()
             }
-            .setCloseButton { it.dismiss() }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ACC_BUTTON_CLOSE",
+                    R.string.dialog_close_button_description
+                ).toString()
+            ) {
+                it.dismiss()
+            }
             .build()
             .show()
     }

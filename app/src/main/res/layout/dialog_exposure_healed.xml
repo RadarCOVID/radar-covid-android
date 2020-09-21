@@ -19,28 +19,8 @@
         android:layout_height="match_parent"
         android:layout_margin="15dp"
         android:background="@drawable/shape_rounded_corners_white"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/wrapperHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <es.gob.radarcovid.common.view.LabelImageButton
-                android:id="@+id/buttonClose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/dialog_close_button_description"
-                android:minWidth="0dp"
-                android:padding="20dp"
-                android:src="@drawable/ic_close"
-                app:contentDescriptionLabelId="ACC_BUTTON_CLOSE" />
-
-        </LinearLayout>
+        android:orientation="vertical"
+        android:paddingTop="35dp">
 
         <ScrollView
             android:id="@+id/scrollViewContent"
@@ -49,8 +29,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@id/buttonOk"
-            app:layout_constraintTop_toBottomOf="@id/wrapperHeader">
+            app:layout_constraintBottom_toTopOf="@id/buttonOk">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,7 +39,7 @@
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewDialogTitle"
-                    style="@style/TextDialogTitle"
+                    style="@style/TextDialogTitleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -76,7 +55,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:text="@string/low_risk_info_dialog_p1"
-                    android:textSize="16sp"
                     app:labelId="ALERT_HIGH_EXPOSURE_HEALED_BULLET_1" />
 
                 <es.gob.radarcovid.common.view.LabelDotTextView
@@ -85,7 +63,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/low_risk_info_dialog_p2"
-                    android:textSize="16sp"
                     app:labelId="ALERT_HIGH_EXPOSURE_HEALED_BULLET_2" />
 
                 <es.gob.radarcovid.common.view.LabelDotTextView
@@ -96,7 +73,6 @@
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
                     android:text="@string/low_risk_info_dialog_more_info"
-                    android:textSize="16sp"
                     app:dotVisibility="invisible"
                     app:labelId="ALERT_HIGH_EXPOSURE_HEALED_MORE_INFO" />
 
@@ -106,7 +82,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:text="@string/low_risk_info_dialog_p3"
-                    android:textSize="16sp"
                     app:labelId="ALERT_HIGH_EXPOSURE_HEALED_BULLET_3" />
 
             </LinearLayout>
@@ -116,11 +91,25 @@
             android:id="@+id/buttonOk"
             style="@style/ButtonNormal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="2dp"
             android:text="@string/accept"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <es.gob.radarcovid.common.view.LabelButton
+            android:id="@+id/buttonClose"
+            style="@style/ButtonSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/dialog_close_button_description"
+            app:labelId="ACC_BUTTON_CLOSE" />
 
     </LinearLayout>
 
