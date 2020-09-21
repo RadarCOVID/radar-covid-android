@@ -23,7 +23,9 @@ class JwtTokenUtils @Inject constructor() {
 
     fun getOnset(token: String): Date {
         val jwt = parseToken(token)
-        val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).apply {
+            timeZone = TimeZone.getTimeZone("UTC")
+        }
         return formatter.parse(jwt.body["onset"] as? String ?: "") ?: Date()
     }
 
