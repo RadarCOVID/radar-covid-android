@@ -90,12 +90,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
 
     override fun showLanguageChangeDialog() {
         CMDialog.Builder(context!!)
-            .setTitle(
-                labelManager.getText(
-                    "LOCALE_CHANGE_LANGUAGE",
-                    R.string.locale_selection_change_language
-                ).toString()
-            )
             .setMessage(
                 labelManager.getText(
                     "LOCALE_CHANGE_WARNING",

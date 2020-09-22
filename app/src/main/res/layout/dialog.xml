@@ -14,18 +14,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_rounded_corners_white"
-    android:orientation="vertical"
-    android:paddingTop="29dp"
-    android:paddingBottom="20dp">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <es.gob.radarcovid.common.view.LabelImageButton
+            android:id="@+id/buttonClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/dialog_close_button_description"
+            android:minWidth="0dp"
+            android:padding="20dp"
+            android:src="@drawable/ic_close"
+            android:visibility="invisible"
+            app:contentDescriptionLabelId="ACC_BUTTON_CLOSE"
+            tools:visibility="visible" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textViewDialogTitle"
         style="@style/TextDialogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:visibility="gone"
         tools:text="title"
         tools:visibility="visible" />
@@ -37,7 +55,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:accessibilityTraversalBefore="@id/buttonOk"
         android:visibility="gone"
         tools:text="description"
         tools:visibility="visible" />
@@ -46,11 +63,8 @@
         android:id="@+id/buttonOk"
         style="@style/ButtonNormal"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:visibility="gone"
         tools:text="Button"
@@ -58,11 +72,14 @@
 
     <Button
         android:id="@+id/buttonCancel"
-        style="@style/ButtonSecondary"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_rounded_border_accent"
+        android:fontFamily="@font/muli_regular"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         android:visibility="gone"
         tools:text="Button"
         tools:visibility="visible" />

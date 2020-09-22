@@ -69,12 +69,7 @@ class SplashActivity : BaseActivity(), SplashView {
                     R.string.warning_connection_description
                 ).toString()
             )
-            .setNegativeButton(
-                labelManager.getText(
-                    "ACC_BUTTON_CLOSE",
-                    R.string.dialog_close_button_description
-                ).toString()
-            ) {
+            .setCloseButton {
                 it.dismiss()
                 presenter.onNetworkDialogCloseButtonClick()
             }

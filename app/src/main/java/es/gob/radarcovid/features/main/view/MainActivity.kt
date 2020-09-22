@@ -105,12 +105,7 @@ class MainActivity : BaseActivity(), MainView {
                 it.dismiss()
                 presenter.onExitConfirmed()
             }
-            .setNegativeButton(
-                labelManager.getText(
-                    "ACC_BUTTON_CLOSE",
-                    R.string.dialog_close_button_description
-                ).toString()
-            ) {
+            .setCloseButton {
                 it.dismiss()
             }
             .build()
