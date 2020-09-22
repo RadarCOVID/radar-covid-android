@@ -125,21 +125,14 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
             )
             .setPositiveButton(
                 labelManager.getText(
-                    "ALERT_CANCEL_SEND_BUTTON",
+                    "ALERT_CANCEL_BUTTON",
                     R.string.covid_report_abort_warning_button
                 ).toString()
             ) {
                 it.dismiss()
                 presenter.onExitConfirmed()
             }
-            .setNegativeButton(
-                labelManager.getText(
-                    "ACC_BUTTON_CLOSE",
-                    R.string.dialog_close_button_description
-                ).toString()
-            ) {
-                it.dismiss()
-            }
+            .setCloseButton { it.dismiss() }
             .build()
             .show()
     }
