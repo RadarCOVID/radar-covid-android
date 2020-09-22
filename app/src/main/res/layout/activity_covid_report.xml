@@ -54,6 +54,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/covid_report_title"
                 android:textColor="@color/gray"
+                app:isHeading="true"
                 app:labelId="MY_HEALTH_TITLE_PAGE" />
 
             <es.gob.radarcovid.common.view.LabelTextView
@@ -111,6 +112,7 @@
                     android:layout_marginTop="5dp"
                     android:text="@string/covid_report_code_hint_title"
                     android:textSize="16sp"
+                    app:isHeading="true"
                     app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_TITLE"
                     app:layout_constraintEnd_toStartOf="@id/imageViewCovidReport"
                     app:layout_constraintStart_toStartOf="parent"

@@ -58,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:isHeading="true"
                 android:text="@string/confirmation_title"
                 app:labelId="MY_HEALTH_REPORTED_TITLE" />
 
@@ -94,6 +95,7 @@
                 android:layout_marginBottom="15dp"
                 android:text="@string/confirmation_what_to_do"
                 android:textSize="22sp"
+                app:isHeading="true"
                 app:labelId="MY_HEALTH_REPORTED_WHAT_TO_DO_TITLE" />
 
             <es.gob.radarcovid.common.view.LabelTextView
