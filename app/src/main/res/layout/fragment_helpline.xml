@@ -48,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:text="@string/helpline_title"
+                app:isHeading="true"
                 app:labelId="HELP_LINE_TITLE" />
 
             <ImageView

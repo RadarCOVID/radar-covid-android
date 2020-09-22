@@ -26,6 +26,7 @@
         android:layout_marginBottom="21dp"
         android:text="@string/exposure_detail_what_to_do"
         android:textSize="22sp"
+        app:isHeading="true"
         app:labelId="EXPOSITION_HIGH_WHAT_TO_DO_TITLE" />
 
     <es.gob.radarcovid.common.view.LabelTextView
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
+        app:isHeading="true"
         android:text="@string/exposure_detail_phone_title"
         android:textColor="@color/red"
         android:textSize="20sp"

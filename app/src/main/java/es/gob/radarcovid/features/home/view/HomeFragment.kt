@@ -83,6 +83,7 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun onResume() {
         super.onResume()
+        updateViewsForAccessibility()
         presenter.onResume()
     }
 
@@ -115,6 +116,8 @@ class HomeFragment : BaseFragment(), HomeView {
             presenter.onBackgroundImageLongClick()
             true
         }
+
+        wrapperExposure.setOnClickListener { presenter.onExposureBlockClick() }
         textViewExpositionTitle.setOnClickListener { presenter.onExposureBlockClick() }
         textViewMoreInfo.setOnClickListener {
             presenter.onMoreInfoButtonClick(
@@ -124,6 +127,7 @@ class HomeFragment : BaseFragment(), HomeView {
                 ).toString()
             )
         }
+
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
     }
 
@@ -272,6 +276,7 @@ class HomeFragment : BaseFragment(), HomeView {
                     R.string.accept
                 ).toString()
             ) { it.dismiss() }
+            .setCloseButton { it.dismiss() }
             .build()
             .show()
     }
@@ -294,6 +299,7 @@ class HomeFragment : BaseFragment(), HomeView {
                     R.string.radar_warning_message
                 ).toString()
             )
+            .setCloseButton { it.dismiss() }
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_HOME_RADAR_CANCEL_BUTTON",
@@ -346,4 +352,15 @@ class HomeFragment : BaseFragment(), HomeView {
             )
         }
     }
+
+    private fun updateViewsForAccessibility() {
+        if (isAccessibilityEnabled()) {
+            wrapperExposure.isClickable = false
+            textViewExpositionTitle.isClickable = true
+        } else {
+            wrapperExposure.isClickable = true
+            textViewExpositionTitle.isClickable = false
+        }
+    }
+
 }

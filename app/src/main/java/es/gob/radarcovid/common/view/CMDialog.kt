@@ -16,6 +16,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
 import es.gob.radarcovid.R
 
@@ -30,6 +31,7 @@ object CMDialog {
             view.findViewById<LabelTextView>(R.id.textViewDialogDescription)
         private val buttonOk = view.findViewById<Button>(R.id.buttonOk)
         private val buttonCancel = view.findViewById<Button>(R.id.buttonCancel)
+        private val buttonClose = view.findViewById<ImageButton>(R.id.buttonClose)
         private val dialog: AlertDialog = AlertDialog.Builder(context)
             .setView(view)
             .setCancelable(false)
@@ -50,6 +52,14 @@ object CMDialog {
         fun setMessage(text: String): Builder {
             textViewDescription.visibility = View.VISIBLE
             textViewDescription.text = text
+            return this
+        }
+
+        fun setCloseButton(onCloseButtonClick: ((AlertDialog) -> Unit)): Builder {
+            buttonClose.visibility = View.VISIBLE
+            buttonClose.setOnClickListener {
+                onCloseButtonClick(dialog)
+            }
             return this
         }
 

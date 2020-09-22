@@ -16,7 +16,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.view.accessibility.AccessibilityManager
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.view.CMDialog
@@ -126,21 +125,14 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
             )
             .setPositiveButton(
                 labelManager.getText(
-                    "ALERT_CANCEL_SEND_BUTTON",
+                    "ALERT_CANCEL_BUTTON",
                     R.string.covid_report_abort_warning_button
                 ).toString()
             ) {
                 it.dismiss()
                 presenter.onExitConfirmed()
             }
-            .setNegativeButton(
-                labelManager.getText(
-                    "ACC_BUTTON_CLOSE",
-                    R.string.dialog_close_button_description
-                ).toString()
-            ) {
-                it.dismiss()
-            }
+            .setCloseButton { it.dismiss() }
             .build()
             .show()
     }
@@ -184,8 +176,5 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
             )
         )
     }
-
-    private fun isAccessibilityEnabled() =
-        (getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
 
 }
