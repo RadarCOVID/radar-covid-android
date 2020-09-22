@@ -74,9 +74,7 @@
                 android:paddingStart="26dp"
                 android:paddingTop="16dp"
                 android:paddingEnd="15dp"
-                android:paddingBottom="30dp"
-                app:actionDescription="@string/exposition_block_action_more_detail"
-                app:actionDescriptionLabelId="ACC_ACTION_MORE_DETAILS">
+                android:paddingBottom="30dp">
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExpositionTitle"
@@ -86,6 +84,8 @@
                     android:text="@string/exposition_block_low_title"
                     android:textColor="@color/green"
                     android:textSize="24sp"
+                    app:actionDescription="@string/exposition_block_action_more_detail"
+                    app:actionDescriptionLabelId="ACC_ACTION_MORE_DETAILS"
                     app:layout_constraintEnd_toStartOf="@id/imageButtonArrow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -124,8 +124,8 @@
                     android:background="@null"
                     android:clickable="false"
                     android:contentDescription="@string/description_arrow_button_enter"
-                    android:importantForAccessibility="no"
                     android:focusableInTouchMode="false"
+                    android:importantForAccessibility="no"
                     android:src="@drawable/ic_arrow_right"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

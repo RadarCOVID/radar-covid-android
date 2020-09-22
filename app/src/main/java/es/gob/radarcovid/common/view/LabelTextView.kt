@@ -12,8 +12,11 @@ package es.gob.radarcovid.common.view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
 import es.gob.radarcovid.datamanager.utils.LabelManager
@@ -27,6 +30,8 @@ class LabelTextView @JvmOverloads constructor(
     lateinit var labelManager: LabelManager
 
     private var labelId: String?
+    private var actionDescriptionLabelId: String? = null
+    private var actionDescription: String? = null
 
     private var isHeading: Boolean = false
 
@@ -44,6 +49,15 @@ class LabelTextView @JvmOverloads constructor(
                 labelId = getString(R.styleable.LabelTextView_labelId)
                 val defaultText = getText(R.styleable.LabelTextView_android_text)
                 text = labelManager.getText(labelId, defaultText)
+
+                actionDescriptionLabelId =
+                    getString(R.styleable.LabelTextView_actionDescriptionLabelId)
+                val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription)
+                defaultTextAction?.let {
+                    actionDescription =
+                        labelManager.getText(actionDescriptionLabelId, it).toString()
+                    actionDescription?.let { desc -> setAccessibilityAction(desc) }
+                }
                 isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
                 setIsHeading(isHeading)
             } finally {
@@ -67,6 +81,23 @@ class LabelTextView @JvmOverloads constructor(
 
     private fun setIsHeading(isHeading: Boolean) {
         ViewCompat.setAccessibilityHeading(this, isHeading)
+    }
+
+    private fun setAccessibilityAction(action: String) {
+        ViewCompat.setAccessibilityDelegate(this, object : AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(
+                host: View,
+                info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                // A custom action description. For example, you could use "pause"
+                // to have TalkBack speak "double-tap to pause."
+                val customClick = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                    AccessibilityNodeInfoCompat.ACTION_CLICK, action
+                )
+                info.addAction(customClick)
+            }
+        })
     }
 
 }

@@ -115,7 +115,7 @@ class HomeFragment : BaseFragment(), HomeView {
             presenter.onBackgroundImageLongClick()
             true
         }
-        wrapperExposure.setOnClickListener { presenter.onExposureBlockClick() }
+        textViewExpositionTitle.setOnClickListener { presenter.onExposureBlockClick() }
         textViewMoreInfo.setOnClickListener {
             presenter.onMoreInfoButtonClick(
                 labelManager.getText(
