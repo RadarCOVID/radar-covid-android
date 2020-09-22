@@ -14,6 +14,7 @@ import es.gob.radarcovid.common.base.utils.JwtTokenUtils
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
+import es.gob.radarcovid.models.exception.GenericRequestException
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.ResponseToken
 import io.reactivex.rxjava3.core.Completable
@@ -28,16 +29,17 @@ class ReportInfectedUseCase @Inject constructor(
     private val jwtTokenUtils: JwtTokenUtils
 ) {
 
-    fun reportInfected(reportCode: String): Completable {
-
-        return getVerifyToken(reportCode).flatMapCompletable {
-            contactTracingRepository.notifyInfected(it.token, jwtTokenUtils.getOnset(it.token))
-        }.concatWith {
-            preferencesRepository.setInfectionReportDate(Date())
-            it.onComplete()
+    fun reportInfected(reportCode: String): Completable =
+        if (reportCode == ReportFakeInfectionUseCase.FAKE_REPORT_CODE) {
+            Completable.create { it.onError(GenericRequestException()) }
+        } else {
+            getVerifyToken(reportCode).flatMapCompletable {
+                contactTracingRepository.notifyInfected(it.token, jwtTokenUtils.getOnset(it.token))
+            }.concatWith {
+                preferencesRepository.setInfectionReportDate(Date())
+                it.onComplete()
+            }
         }
-
-    }
 
     private fun getVerifyToken(reportCode: String): Observable<ResponseToken> {
         return Observable.create { emitter ->
