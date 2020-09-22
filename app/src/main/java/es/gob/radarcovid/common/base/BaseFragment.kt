@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.common.base
 
+import android.content.Context
+import android.view.accessibility.AccessibilityManager
 import dagger.android.support.DaggerFragment
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.CMDialog
@@ -100,5 +102,10 @@ abstract class BaseFragment : DaggerFragment() {
             .build()
             .show()
     }
+
+    fun isAccessibilityEnabled(): Boolean =
+        activity?.let {
+            (it.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
+        } ?: false
 
 }

@@ -16,7 +16,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.view.accessibility.AccessibilityManager
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.view.CMDialog
@@ -184,8 +183,5 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
             )
         )
     }
-
-    private fun isAccessibilityEnabled() =
-        (getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
 
 }

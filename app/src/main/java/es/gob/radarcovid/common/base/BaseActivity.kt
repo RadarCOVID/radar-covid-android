@@ -11,6 +11,7 @@
 package es.gob.radarcovid.common.base
 
 import android.content.Context
+import android.view.accessibility.AccessibilityManager
 import android.view.inputmethod.InputMethodManager
 import dagger.android.support.DaggerAppCompatActivity
 import es.gob.radarcovid.BuildConfig
@@ -115,5 +116,8 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
                 e.printStackTrace()
         }
     }
+
+    fun isAccessibilityEnabled() =
+        (getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
 
 }
