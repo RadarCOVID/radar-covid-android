@@ -32,7 +32,7 @@
         android:visibility="invisible"
         tools:visibility="visible">
 
-        <TextView
+        <es.gob.radarcovid.common.view.LabelTextView
             android:id="@+id/textViewDialogTitle"
             style="@style/TextDialogTitle"
             android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
             tools:text="title"
             tools:visibility="visible" />
 
-        <TextView
+        <es.gob.radarcovid.common.view.LabelTextView
             android:id="@+id/textViewDialogDescription"
             style="@style/TextDialogDescription"
             android:layout_width="wrap_content"
