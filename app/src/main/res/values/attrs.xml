@@ -31,8 +31,6 @@
         <attr name="isHeading" format="boolean" />
         <attr name="actionDescription" />
         <attr name="actionDescriptionLabelId" />
-        <attr name="contentDescription" />
-        <attr name="contentDescriptionLabelId" />
     </declare-styleable>
 
     <declare-styleable name="LabelButton">
