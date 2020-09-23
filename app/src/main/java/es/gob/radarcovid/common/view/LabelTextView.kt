@@ -48,19 +48,16 @@ class LabelTextView @JvmOverloads constructor(
         ).apply {
             try {
                 labelId = getString(R.styleable.LabelTextView_labelId)
-                val defaultText = getText(R.styleable.LabelTextView_android_text)
-                defaultText?.let {
-                    text = labelManager.getText(labelId, defaultText)
-                }
+                val defaultText = getText(R.styleable.LabelTextView_android_text) ?: ""
+                text = labelManager.getText(labelId, defaultText)
 
                 actionDescriptionLabelId =
                     getString(R.styleable.LabelTextView_actionDescriptionLabelId)
-                val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription)
-                defaultTextAction?.let {
-                    actionDescription =
-                        labelManager.getText(actionDescriptionLabelId, it).toString()
-                    actionDescription?.let { desc -> setAccessibilityAction(desc) }
-                }
+                val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription) ?: ""
+                actionDescription =
+                    labelManager.getText(actionDescriptionLabelId, defaultTextAction).toString()
+                actionDescription?.let { desc -> setAccessibilityAction(desc) }
+
                 isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
                 setIsHeading(isHeading)
             } finally {
