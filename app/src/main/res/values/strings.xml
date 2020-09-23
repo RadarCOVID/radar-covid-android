@@ -25,7 +25,7 @@
     <string name="warning_connection_title">Sin conexión a internet.</string>
     <string name="warning_connection_description">Por favor, comprueba tu conexión.</string>
     <string name="warning_connection_button">Reintentar</string>
-    
+
     /********** Legal Info ************/
     <string name="legal_info_privacy_policy">Acepto la <b><u>política de privacidad</u></b></string>
     <string name="legal_info_usage_conditions">He leído las <b><u>condiciones de uso</u></b></string>
@@ -77,6 +77,9 @@
     <string name="low_risk_info_dialog_p3">Si has sido diagnosticado de COVID-19, para que otras personas puedan ser avisadas de tu exposición es necesario que comuniques tu positivo COVID-19 en la app.</string>
 
     /********** Home ************/
+
+    <string name="home_exposure_simulation_description">Simular contacto de riesgo.</string>
+
     <string name="exposition_block_low_title">Exposición baja</string>
     <string name="exposition_block_high_title">Contacto estrecho</string>
     <string name="exposition_block_infected_title">COVID-19 Positivo</string>

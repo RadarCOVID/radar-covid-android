@@ -35,6 +35,9 @@ class HomePresenterImpl @Inject constructor(
 
     override fun viewReady(activateRadar: Boolean) {
 
+        if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
+            view.setFakeExposureButton()
+
         if (!onboardingCompletedUseCase.isOnBoardingCompleted()) {
             onboardingCompletedUseCase.setOnboardingCompleted(true)
             view.showInitializationCheckAnimation()
@@ -69,7 +72,7 @@ class HomePresenterImpl @Inject constructor(
             router.navigateToCovidReport()
     }
 
-    override fun onBackgroundImageLongClick() {
+    override fun onFakeExposureButtonClick() {
         if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
             fakeExposureInfoUseCase.addFakeExposureDay()
     }
