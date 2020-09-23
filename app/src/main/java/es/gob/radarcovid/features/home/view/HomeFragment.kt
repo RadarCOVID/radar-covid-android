@@ -276,7 +276,6 @@ class HomeFragment : BaseFragment(), HomeView {
                     R.string.accept
                 ).toString()
             ) { it.dismiss() }
-            .setCloseButton { it.dismiss() }
             .build()
             .show()
     }
@@ -299,7 +298,6 @@ class HomeFragment : BaseFragment(), HomeView {
                     R.string.radar_warning_message
                 ).toString()
             )
-            .setCloseButton { it.dismiss() }
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_HOME_RADAR_CANCEL_BUTTON",
