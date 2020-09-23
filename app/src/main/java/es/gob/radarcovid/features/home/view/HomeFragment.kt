@@ -108,15 +108,6 @@ class HomeFragment : BaseFragment(), HomeView {
             event.actionMasked == MotionEvent.ACTION_MOVE
         }
 
-        imageViewLogo.setOnLongClickListener {
-            presenter.onBackgroundImageLongClick()
-            true
-        }
-        imageViewInitializationCheck.setOnLongClickListener {
-            presenter.onBackgroundImageLongClick()
-            true
-        }
-
         wrapperExposure.setOnClickListener { presenter.onExposureBlockClick() }
         textViewExpositionTitle.setOnClickListener { presenter.onExposureBlockClick() }
         textViewMoreInfo.setOnClickListener {
@@ -209,6 +200,18 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun hideReportButton() {
         buttonCovidReport.visibility = View.GONE
+    }
+
+    override fun setFakeExposureButton() {
+        imageViewInitializationCheck.setOnLongClickListener {
+            presenter.onFakeExposureButtonClick()
+            true
+        }
+        imageViewLogo.setOnLongClickListener {
+            presenter.onFakeExposureButtonClick()
+            true
+        }
+        imageViewLogo.contentDescription = getString(R.string.home_exposure_simulation_description)
     }
 
     override fun setRadarBlockChecked(checked: Boolean) {

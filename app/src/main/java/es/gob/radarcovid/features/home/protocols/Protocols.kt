@@ -28,6 +28,8 @@ interface HomeView : RequestView {
 
     fun hideReportButton()
 
+    fun setFakeExposureButton()
+
     fun setRadarBlockChecked(checked: Boolean)
 
     fun setRadarBlockEnabled(enabled: Boolean)
@@ -56,7 +58,7 @@ interface HomePresenter {
 
     fun onReportButtonClick()
 
-    fun onBackgroundImageLongClick()
+    fun onFakeExposureButtonClick()
 
     fun onSwitchRadarClick(currentlyEnabled: Boolean)
 
