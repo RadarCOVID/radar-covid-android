@@ -56,7 +56,9 @@ class LabelTextView @JvmOverloads constructor(
                 val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription) ?: ""
                 actionDescription =
                     labelManager.getText(actionDescriptionLabelId, defaultTextAction).toString()
-                actionDescription?.let { desc -> setAccessibilityAction(desc) }
+                if (!actionDescription.isNullOrEmpty()) {
+                    setAccessibilityAction(actionDescription!!)
+                }
 
                 isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
                 setIsHeading(isHeading)
