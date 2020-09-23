@@ -90,7 +90,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExpositionDescription"
                     style="@style/TextSmallBlack"
                     android:layout_width="0dp"

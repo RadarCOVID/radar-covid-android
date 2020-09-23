@@ -20,6 +20,7 @@ import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
 import es.gob.radarcovid.datamanager.utils.LabelManager
+import java.util.*
 import javax.inject.Inject
 
 class LabelTextView @JvmOverloads constructor(
@@ -47,17 +48,16 @@ class LabelTextView @JvmOverloads constructor(
         ).apply {
             try {
                 labelId = getString(R.styleable.LabelTextView_labelId)
-                val defaultText = getText(R.styleable.LabelTextView_android_text)
+                val defaultText = getText(R.styleable.LabelTextView_android_text) ?: ""
                 text = labelManager.getText(labelId, defaultText)
 
                 actionDescriptionLabelId =
                     getString(R.styleable.LabelTextView_actionDescriptionLabelId)
-                val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription)
-                defaultTextAction?.let {
-                    actionDescription =
-                        labelManager.getText(actionDescriptionLabelId, it).toString()
-                    actionDescription?.let { desc -> setAccessibilityAction(desc) }
-                }
+                val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription) ?: ""
+                actionDescription =
+                    labelManager.getText(actionDescriptionLabelId, defaultTextAction).toString()
+                actionDescription?.let { desc -> setAccessibilityAction(desc) }
+
                 isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
                 setIsHeading(isHeading)
             } finally {
@@ -65,6 +65,13 @@ class LabelTextView @JvmOverloads constructor(
             }
         }
 
+    }
+
+    override fun setText(text: CharSequence?, type: BufferType?) {
+        super.setText(text, type)
+        text?.let {
+            contentDescription = it.toString().toLowerCase(Locale.ROOT)
+        }
     }
 
     fun setText(labelId: String?, resId: Int) {

@@ -17,10 +17,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import es.gob.radarcovid.R
-
 
 object CMDialog {
 
@@ -28,9 +26,9 @@ object CMDialog {
 
         private val view: View =
             LayoutInflater.from(context).inflate(R.layout.dialog, null)
-        private val textViewTitle = view.findViewById<TextView>(R.id.textViewDialogTitle)
+        private val textViewTitle = view.findViewById<LabelTextView>(R.id.textViewDialogTitle)
         private val textViewDescription =
-            view.findViewById<TextView>(R.id.textViewDialogDescription)
+            view.findViewById<LabelTextView>(R.id.textViewDialogDescription)
         private val buttonOk = view.findViewById<Button>(R.id.buttonOk)
         private val buttonCancel = view.findViewById<Button>(R.id.buttonCancel)
         private val buttonClose = view.findViewById<ImageButton>(R.id.buttonClose)

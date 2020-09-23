@@ -19,7 +19,7 @@
         android:layout_margin="9dp"
         android:src="@drawable/ic_ellipse_selected" />
 
-    <TextView
+    <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textView"
         style="@style/TextNormal"
         android:layout_width="wrap_content"
