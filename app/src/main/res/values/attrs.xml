@@ -36,6 +36,8 @@
     <declare-styleable name="LabelButton">
         <attr name="labelId" />
         <attr name="android:text" />
+        <attr name="actionDescription" />
+        <attr name="actionDescriptionLabelId" />
     </declare-styleable>
 
     <declare-styleable name="LabelDotTextView">
