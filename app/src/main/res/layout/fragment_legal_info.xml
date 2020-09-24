@@ -164,21 +164,25 @@
                     <es.gob.radarcovid.common.view.LabelTextView
                         android:id="@+id/textViewPrivacyPolicy"
                         style="@style/TextSmall"
+                        android:textColorLink="@color/black_28"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="26dp"
                         android:text="@string/legal_info_privacy_policy"
                         android:textColor="@color/black_28"
+                        app:isLink="true"
                         app:labelId="ONBOARDING_STEP_2_PRIVACY_POLICY" />
 
                     <es.gob.radarcovid.common.view.LabelTextView
                         android:id="@+id/textViewUsageConditions"
                         style="@style/TextSmall"
+                        android:textColorLink="@color/black_28"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="26dp"
                         android:text="@string/legal_info_usage_conditions"
                         android:textColor="@color/black_28"
+                        app:isLink="true"
                         app:labelId="ONBOARDING_STEP_2_USAGE_CONDITIONS" />
                 </LinearLayout>
 

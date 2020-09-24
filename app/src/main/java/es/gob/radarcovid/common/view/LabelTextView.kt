@@ -11,6 +11,7 @@
 package es.gob.radarcovid.common.view
 
 import android.content.Context
+import android.text.method.LinkMovementMethod
 import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
@@ -19,6 +20,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
+import es.gob.radarcovid.common.extensions.removeUnderline
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import java.util.*
 import javax.inject.Inject
@@ -35,6 +37,8 @@ class LabelTextView @JvmOverloads constructor(
     private var actionDescription: String? = null
 
     private var isHeading: Boolean = false
+    private var isLink: Boolean = false
+    private var removeUnderlineLink: Boolean = false
 
     init {
         (context.applicationContext as HasAndroidInjector)
@@ -62,6 +66,15 @@ class LabelTextView @JvmOverloads constructor(
 
                 isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
                 setIsHeading(isHeading)
+
+                isLink = getBoolean(R.styleable.LabelTextView_isLink, false)
+                removeUnderlineLink =
+                    getBoolean(R.styleable.LabelTextView_removeUnderlineLink, false)
+                if (isLink) {
+                    movementMethod = LinkMovementMethod.getInstance()
+                    if (removeUnderlineLink) text = text.removeUnderline()
+                }
+
             } finally {
                 recycle()
             }

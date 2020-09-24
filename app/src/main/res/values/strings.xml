@@ -27,8 +27,8 @@
     <string name="warning_connection_button">Reintentar</string>
 
     /********** Legal Info ************/
-    <string name="legal_info_privacy_policy">Acepto la <b><u>política de privacidad</u></b></string>
-    <string name="legal_info_usage_conditions">He leído las <b><u>condiciones de uso</u></b></string>
+    <string name="legal_info_privacy_policy">Acepto la <a href="https://radarcovid.gob.es/politica-de-privacidad"><b><u>Política de privacidad</u></b></a></string>
+    <string name="legal_info_usage_conditions">He leído las <a href="https://radarcovid.gob.es/condiciones-de-uso"><b><u>condiciones de uso</u></b></a></string>
     <string name="legal_info_usage_policy_conditions">Aceptar política de privacidad y condiciones de uso</string>
     <string name="legal_info_button">Continuar</string>
 
