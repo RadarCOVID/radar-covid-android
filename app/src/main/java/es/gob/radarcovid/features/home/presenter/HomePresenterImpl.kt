@@ -61,10 +61,6 @@ class HomePresenterImpl @Inject constructor(
         router.navigateToExpositionDetail()
     }
 
-    override fun onMoreInfoButtonClick(url: String) {
-        router.navigateToBrowser(url)
-    }
-
     override fun onReportButtonClick() {
         if (!exposureRadarUseCase.isRadarEnabled())
             view.showUnableToReportCovidDialog()

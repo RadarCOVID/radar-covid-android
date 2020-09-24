@@ -88,7 +88,8 @@
     <string name="exposition_block_high_description"><b>Has estado en contacto con una persona contagiada de COVID-19.\nInfórmalo en el 900 112 061 (gratuito)</b>.</string>
     <string name="exposition_block_infected_description"><b>Tu diagnóstico ha sido enviado.\nPor favor, aíslate durante 14 días</b>.</string>
     <string name="exposition_block_infected_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg"><u>Más información ></u></a></string>
-    <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+    <string name="home_exposition_block_infected_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg">Más información ></a></string>
+    <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
     <string name="exposition_block_action_more_detail">Acceder a más detalles</string>
 
     <string name="radar_block_checked_title">&appname; activo</string>

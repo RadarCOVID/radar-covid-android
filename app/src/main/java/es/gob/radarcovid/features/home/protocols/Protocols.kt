@@ -54,8 +54,6 @@ interface HomePresenter {
 
     fun onExposureBlockClick()
 
-    fun onMoreInfoButtonClick(url: String)
-
     fun onReportButtonClick()
 
     fun onFakeExposureButtonClick()
@@ -71,7 +69,5 @@ interface HomeRouter {
     fun navigateToExpositionDetail()
 
     fun navigateToCovidReport()
-
-    fun navigateToBrowser(url: String)
 
 }

@@ -110,14 +110,6 @@ class HomeFragment : BaseFragment(), HomeView {
 
         wrapperExposure.setOnClickListener { presenter.onExposureBlockClick() }
         textViewExpositionTitle.setOnClickListener { presenter.onExposureBlockClick() }
-        textViewMoreInfo.setOnClickListener {
-            presenter.onMoreInfoButtonClick(
-                labelManager.getText(
-                    "HOME_EXPOSITION_POSITIVE_MORE_INFO_URL",
-                    R.string.exposition_block_infected_more_info_url
-                ).toString()
-            )
-        }
 
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
     }
