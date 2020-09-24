@@ -30,8 +30,6 @@ class LabelButton @JvmOverloads constructor(
     lateinit var labelManager: LabelManager
 
     private var labelId: String?
-    private var actionDescriptionLabelId: String? = null
-    private var actionDescription: String? = null
     
     init {
         (context.applicationContext as HasAndroidInjector)
@@ -48,13 +46,13 @@ class LabelButton @JvmOverloads constructor(
                 val defaultText = getText(R.styleable.LabelButton_android_text)
                 text = labelManager.getText(labelId, defaultText)
 
-                actionDescriptionLabelId =
+                val actionDescriptionLabelId =
                     getString(R.styleable.LabelTextView_actionDescriptionLabelId)
                 val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription) ?: ""
-                actionDescription =
+                val actionDescription =
                     labelManager.getText(actionDescriptionLabelId, defaultTextAction).toString()
-                if (!actionDescription.isNullOrEmpty()) {
-                    setAccessibilityAction(actionDescription!!)
+                if (actionDescription.isNotEmpty()) {
+                    setAccessibilityAction(actionDescription)
                 }
             } finally {
                 recycle()
