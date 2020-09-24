@@ -90,14 +90,6 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
                 ).toString()
             )
         }
-        textViewMoreInfo.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSITION_HIGH_MORE_INFO_URL",
-                    R.string.exposure_detail_infected_more_info_url
-                ).toString()
-            )
-        }
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
         buttonMoreInfoLow.setOnClickListener {
             presenter.onUrlButtonClick(

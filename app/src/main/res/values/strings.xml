@@ -87,7 +87,7 @@
     <string name="exposition_block_low_description"><b>Te informaremos en el caso de un posible contacto de riesgo.</b></string>
     <string name="exposition_block_high_description"><b>Has estado en contacto con una persona contagiada de COVID-19.\nInfórmalo en el 900 112 061 (gratuito)</b>.</string>
     <string name="exposition_block_infected_description"><b>Tu diagnóstico ha sido enviado.\nPor favor, aíslate durante 14 días</b>.</string>
-    <string name="exposition_block_infected_more_info">Más información ></string>
+    <string name="exposition_block_infected_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg"><u>Más información ></u></a></string>
     <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
     <string name="exposition_block_action_more_detail">Acceder a más detalles</string>
 
@@ -164,7 +164,7 @@
     <string name="exposure_detail_infected_title_small">DIAGNÓSTICO COMUNICADO</string>
     <string name="exposure_detail_infected_title">COVID-19 positivo</string>
     <string name="exposure_detail_infected_last_update">Tu diagnóstico fue enviado hace <b>%1$s</b> (actualizado %2$s)</string>
-    <string name="exposure_detail_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+    <string name="exposure_detail_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
 
     <string name="exposure_detail_infected_p1"><b>Tu diagnostico nos ayuda a proteger a los demás.</b>\n\nSin revelar tu identidad en ningún momento, hemos comunicado tu diagnóstico a móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
     <string name="exposure_detail_infected_what_to_do_subtitle">Sigue las siguientes recomendaciones y los consejos de tu centro de salud</string>
