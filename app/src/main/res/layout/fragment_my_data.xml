@@ -100,7 +100,9 @@
                 android:paddingBottom="13dp"
                 android:text="@string/my_data_privacy"
                 android:textColor="@color/black_28"
+                android:textColorLink="@color/black_28"
                 android:textSize="16sp"
+                app:isLink="true"
                 app:labelId="MY_DATA_PRIVACY" />
 
             <es.gob.radarcovid.common.view.LabelTextView
@@ -113,7 +115,9 @@
                 android:paddingBottom="13dp"
                 android:text="@string/my_data_conditions"
                 android:textColor="@color/black_28"
+                android:textColorLink="@color/black_28"
                 android:textSize="16sp"
+                app:isLink="true"
                 app:labelId="MY_DATA_TERMS" />
 
         </LinearLayout>
