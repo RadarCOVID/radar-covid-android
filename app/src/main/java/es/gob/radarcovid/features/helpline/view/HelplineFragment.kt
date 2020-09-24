@@ -46,35 +46,7 @@ class HelplineFragment : BaseFragment(), HelplineView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews()
         presenter.viewReady()
-    }
-
-    private fun initViews() {
-        textViewFaqsTitle.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "HELPLINE_FAQS_WEB_URL",
-                    R.string.helpline_faqs_web_url
-                ).toString()
-            )
-        }
-        textViewInfoWebTitle.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "HELPLINE_INFO_WEB_URL",
-                    R.string.helpline_info_web_url
-                ).toString()
-            )
-        }
-        textViewOtherWebTitle.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "HELPLINE_OTHER_WEB_URL",
-                    R.string.helpline_other_web_url
-                ).toString()
-            )
-        }
     }
 
     override fun showDialerForSupport() {

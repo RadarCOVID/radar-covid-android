@@ -33,12 +33,6 @@ class LabelTextView @JvmOverloads constructor(
     lateinit var labelManager: LabelManager
 
     private var labelId: String?
-    private var actionDescriptionLabelId: String? = null
-    private var actionDescription: String? = null
-
-    private var isHeading: Boolean = false
-    private var isLink: Boolean = false
-    private var removeUnderlineLink: Boolean = false
 
     init {
         (context.applicationContext as HasAndroidInjector)
@@ -55,20 +49,20 @@ class LabelTextView @JvmOverloads constructor(
                 val defaultText = getText(R.styleable.LabelTextView_android_text) ?: ""
                 text = labelManager.getText(labelId, defaultText)
 
-                actionDescriptionLabelId =
+                val actionDescriptionLabelId =
                     getString(R.styleable.LabelTextView_actionDescriptionLabelId)
                 val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription) ?: ""
-                actionDescription =
+                val actionDescription =
                     labelManager.getText(actionDescriptionLabelId, defaultTextAction).toString()
                 if (!actionDescription.isNullOrEmpty()) {
                     setAccessibilityAction(actionDescription!!)
                 }
 
-                isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
+                val isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
                 setIsHeading(isHeading)
 
-                isLink = getBoolean(R.styleable.LabelTextView_isLink, false)
-                removeUnderlineLink =
+                val isLink = getBoolean(R.styleable.LabelTextView_isLink, false)
+                val removeUnderlineLink =
                     getBoolean(R.styleable.LabelTextView_removeUnderlineLink, false)
                 if (isLink) {
                     movementMethod = LinkMovementMethod.getInstance()
