@@ -75,12 +75,16 @@
                 android:paddingEnd="15dp"
                 android:paddingBottom="30dp">
 
-                <es.gob.radarcovid.common.view.LabelTextView
+                <es.gob.radarcovid.common.view.LabelButton
                     android:id="@+id/textViewExpositionTitle"
                     style="@style/TitleExtraBold"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:backgroundTint="@null"
+                    android:gravity="start"
                     android:text="@string/exposition_block_low_title"
+                    android:textAllCaps="false"
                     android:textColor="@color/green"
                     android:textSize="24sp"
                     app:actionDescription="@string/exposition_block_action_more_detail"
