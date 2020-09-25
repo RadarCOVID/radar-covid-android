@@ -11,6 +11,7 @@
 package es.gob.radarcovid.features.helpline.di
 
 import android.app.Activity
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import es.gob.radarcovid.features.helpline.presenter.HelplinePresenterImpl
@@ -22,6 +23,9 @@ import es.gob.radarcovid.features.helpline.view.HelplineFragment
 
 @Module
 class HelplineModule {
+
+    @Provides
+    fun providesContext(fragment: HelplineFragment): Context = fragment.context!!
 
     @Provides
     fun providesActivity(fragment: HelplineFragment): Activity = fragment.activity!!
