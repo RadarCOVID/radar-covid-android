@@ -91,6 +91,10 @@ class LabelTextView @JvmOverloads constructor(
         text = labelManager.getText(labelId, defaultText)
     }
 
+    fun setIsLink() {
+        movementMethod = LinkMovementMethod.getInstance()
+    }
+
     fun reloadText() {
         text = labelManager.getText(labelId, text)
     }

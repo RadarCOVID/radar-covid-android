@@ -51,34 +51,6 @@ class ExposureHealedDialog(context: Context) : LayoutContainer {
 
         buttonClose.setOnClickListener { dialog.dismiss() }
 
-        dotTextViewP1.setOnClickListener {
-            navigationUtils.navigateToBrowser(
-                context,
-                labelManager.getText(
-                    "ALERT_HIGH_EXPOSURE_HEALED_BULLET_1_URL",
-                    R.string.low_risk_info_dialog_p1_url
-                ).toString()
-            )
-        }
-        dotTextViewP2.setOnClickListener {
-            navigationUtils.navigateToBrowser(
-                context,
-                labelManager.getText(
-                    "ALERT_HIGH_EXPOSURE_HEALED_BULLET_2_URL",
-                    R.string.low_risk_info_dialog_p2_url
-                ).toString()
-            )
-        }
-        textViewMoreInfo.setOnClickListener {
-            navigationUtils.navigateToBrowser(
-                context,
-                labelManager.getText(
-                    "ALERT_HIGH_EXPOSURE_HEALED_MORE_URL",
-                    R.string.low_risk_info_dialog_more_info_url
-                ).toString()
-            )
-        }
-
         buttonOk.setOnClickListener { dialog.dismiss() }
 
     }

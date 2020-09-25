@@ -44,6 +44,7 @@
         <attr name="android:text" />
         <attr name="android:textSize" />
         <attr name="labelId" />
+        <attr name="isLink" />
         <attr name="dotVisibility">
             <!-- Visible on screen; the default value. -->
             <enum name="visible" value="0" />

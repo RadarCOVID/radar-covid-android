@@ -263,6 +263,8 @@
         android:layout_marginBottom="20dp"
         android:text="@string/exposure_detail_high_other_symptoms"
         android:textSize="16sp"
+        android:textColorLink="@color/black_26"
+        app:isLink="true"
         app:labelId="EXPOSITION_HIGH_OTHER_SYMPTOMS" />
 
     <es.gob.radarcovid.common.view.LabelTextView
@@ -273,6 +275,8 @@
         android:layout_marginBottom="40dp"
         android:text="@string/exposure_detail_high_symptoms_what_to_do"
         android:textSize="16sp"
+        android:textColorLink="@color/black_26"
+        app:isLink="true"
         app:labelId="EXPOSITION_HIGH_SYMPTOMS_WHAT_TO_DO" />
 
     <es.gob.radarcovid.common.view.MoreInfoButton

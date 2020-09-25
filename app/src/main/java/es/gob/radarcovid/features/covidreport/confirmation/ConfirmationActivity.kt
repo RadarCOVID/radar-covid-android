@@ -47,15 +47,6 @@ class ConfirmationActivity : BaseBackNavigationActivity() {
                 R.string.navigation_back_to
             )} ${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)}"
 
-        textViewConfirmationMoreInfo.setOnClickListener {
-            navigationUtils.navigateToBrowser(
-                this,
-                labelManager.getText(
-                    "MY_HEALTH_REPORTED_MORE_INFO_URL",
-                    R.string.confirmation_more_info_url
-                ).toString()
-            )
-        }
         buttonMoreInfo.setOnClickListener {
             navigationUtils.navigateToBrowser(
                 this,

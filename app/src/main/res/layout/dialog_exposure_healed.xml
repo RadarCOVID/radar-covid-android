@@ -55,6 +55,7 @@
                     android:layout_marginBottom="15dp"
                     android:text="@string/low_risk_info_dialog_p1"
                     android:textSize="16sp"
+                    app:isLink="true"
                     app:labelId="ALERT_HIGH_EXPOSURE_HEALED_BULLET_1" />
 
                 <es.gob.radarcovid.common.view.LabelDotTextView
@@ -64,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/low_risk_info_dialog_p2"
                     android:textSize="16sp"
+                    app:isLink="true"
                     app:labelId="ALERT_HIGH_EXPOSURE_HEALED_BULLET_2" />
 
                 <es.gob.radarcovid.common.view.LabelDotTextView
@@ -75,6 +77,7 @@
                     android:paddingBottom="15dp"
                     android:text="@string/low_risk_info_dialog_more_info"
                     android:textSize="16sp"
+                    app:isLink="true"
                     app:dotVisibility="invisible"
                     app:labelId="ALERT_HIGH_EXPOSURE_HEALED_MORE_INFO" />
 

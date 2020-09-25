@@ -57,6 +57,10 @@ class LabelDotTextView @JvmOverloads constructor(
                     2 -> imageViewDot.visibility = View.GONE
                 }
                 textView.text = labelManager.getText(labelId, defaultText)
+
+                val isLink = getBoolean(R.styleable.LabelDotTextView_isLink, false)
+                if (isLink) textView.setIsLink()
+
             } finally {
                 recycle()
             }
