@@ -14,10 +14,15 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastReceiver
 import es.gob.radarcovid.common.di.scope.PerService
+import es.gob.radarcovid.features.worker.FakeInfectionReportWorker
 import es.gob.radarcovid.features.worker.HealerWorker
 
 @Module
 abstract class ServicesModule {
+
+    @PerService
+    @ContributesAndroidInjector
+    abstract fun bindsFakeInfectedReportWorker(): FakeInfectionReportWorker
 
     @PerService
     @ContributesAndroidInjector

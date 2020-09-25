@@ -10,10 +10,10 @@
 
 package es.gob.radarcovid.datamanager.repository
 
-import org.funktionale.either.Either
+import io.reactivex.rxjava3.core.Completable
 
-interface ExampleRepository {
+interface FakeInfectionReportRepository {
 
-    fun exampleRequest(): Either<Throwable, String>
+    fun notifyFakeInfected(authCode: String): Completable
 
 }

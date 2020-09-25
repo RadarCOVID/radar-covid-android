@@ -14,6 +14,7 @@ import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastReceiver
 import es.gob.radarcovid.common.di.component.DaggerApplicationComponent
+import es.gob.radarcovid.features.worker.FakeInfectionReportWorker
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import okhttp3.CertificatePinner
 import org.dpppt.android.sdk.DP3T
@@ -45,6 +46,8 @@ class RadarCovidApplication : DaggerApplication() {
         )
         DP3T.setCertificatePinner(certificatePinner)
         DP3T.setUserAgent(userAgent)
+
+        FakeInfectionReportWorker.start(this)
 
         registerReceiver(ExposureStatusChangeBroadcastReceiver(), DP3T.getUpdateIntentFilter())
 
