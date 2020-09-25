@@ -47,16 +47,6 @@ class ConfirmationActivity : BaseBackNavigationActivity() {
                 R.string.navigation_back_to
             )} ${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)}"
 
-        buttonMoreInfo.setOnClickListener {
-            navigationUtils.navigateToBrowser(
-                this,
-                labelManager.getText(
-                    "MY_HEALTH_REPORTED_INFO_URL",
-                    R.string.exposure_detail_info_url
-                )
-                    .toString()
-            )
-        }
     }
 
 }

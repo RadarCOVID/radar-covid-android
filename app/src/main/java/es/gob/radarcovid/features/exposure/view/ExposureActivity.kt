@@ -66,32 +66,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
                 R.string.navigation_back_to
             )} ${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)}"
 
-
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
-        buttonMoreInfoLow.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSURE_LOW_INFO_URL",
-                    R.string.exposure_detail_info_url
-                ).toString()
-            )
-        }
-        buttonMoreInfoHigh.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSURE_HIGH_INFO_URL",
-                    R.string.exposure_detail_info_url
-                ).toString()
-            )
-        }
-        buttonMoreInfoInfected.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSURE_INFECTED_INFO_URL",
-                    R.string.exposure_detail_info_url
-                ).toString()
-            )
-        }
     }
 
     override fun showExposureLevelLow() {

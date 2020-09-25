@@ -222,7 +222,9 @@
                 android:id="@+id/buttonMoreInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:text="@string/more_info_health_reported"
+                app:labelId="MORE_INFO_HEALTH_REPORTED"/>
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleSmall"

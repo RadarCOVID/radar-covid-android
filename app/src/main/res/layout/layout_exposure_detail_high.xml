@@ -283,7 +283,9 @@
         android:id="@+id/buttonMoreInfoHigh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:text="@string/more_info_exposure_high"
+        app:labelId="MORE_INFO_EXPOSURE_HIGH"/>
 
     <es.gob.radarcovid.common.view.LabelTextView
         style="@style/TitleSmall"

@@ -55,6 +55,11 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="MoreInfoButton">
+        <attr name="labelId" />
+        <attr name="android:text" />
+    </declare-styleable>
+
     <declare-styleable name="LabelImageButton">
         <attr name="android:contentDescription" />
         <attr name="contentDescriptionLabelId" />

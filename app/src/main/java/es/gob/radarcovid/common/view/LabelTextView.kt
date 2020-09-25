@@ -65,8 +65,8 @@ class LabelTextView @JvmOverloads constructor(
                 val removeUnderlineLink =
                     getBoolean(R.styleable.LabelTextView_removeUnderlineLink, false)
                 if (isLink) {
-                    movementMethod = LinkMovementMethod.getInstance()
-                    if (removeUnderlineLink) text = text.removeUnderline()
+                    setIsLink()
+                    if (removeUnderlineLink) removeUnderlineLink()
                 }
 
             } finally {
@@ -93,6 +93,10 @@ class LabelTextView @JvmOverloads constructor(
 
     fun setIsLink() {
         movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    fun removeUnderlineLink() {
+        text = text.removeUnderline()
     }
 
     fun reloadText() {

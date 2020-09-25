@@ -160,7 +160,9 @@
         android:id="@+id/buttonMoreInfoInfected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:text="@string/more_info_infected"
+        app:labelId="MORE_INFO_INFECTED"/>
 
     <es.gob.radarcovid.common.view.LabelTextView
         style="@style/TitleSmall"
