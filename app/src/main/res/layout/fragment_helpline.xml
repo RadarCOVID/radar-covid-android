@@ -104,6 +104,8 @@
                         app:labelId="HELPLINE_FAQS_WEB_TITLE"
                         app:isLink="true"
                         app:removeUnderlineLink="true"
+                        android:contentDescription="@string/helpline_faqs_web_title_acc"
+                        app:contentDescriptionLabelId="ACC_HELPLINE_FAQS_WEB_TITLE"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/imageViewFaqsIcon"
                         app:layout_constraintTop_toTopOf="parent" />
