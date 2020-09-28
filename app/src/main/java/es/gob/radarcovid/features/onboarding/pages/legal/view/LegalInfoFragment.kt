@@ -55,9 +55,6 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
             )
         }
 
-        textViewPrivacyPolicy.setOnClickListener { presenter.onPrivacyPolicyButtonClick() }
-        textViewUsageConditions.setOnClickListener { presenter.onConditionsButtonClick() }
-
         buttonAccept.setOnClickListener {
             (activity as? OnboardingPageCallback)?.onContinueButtonClick(
                 1

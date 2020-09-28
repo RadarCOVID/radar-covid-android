@@ -22,12 +22,4 @@ interface HelplinePresenter {
 
     fun onContactSupportButtonClick()
 
-    fun onUrlButtonClick(url: String)
-
-}
-
-interface HelplineRouter {
-
-    fun navigateToBrowser(url: String)
-
 }

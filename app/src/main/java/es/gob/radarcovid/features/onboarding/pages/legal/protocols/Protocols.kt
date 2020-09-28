@@ -22,18 +22,6 @@ interface LegalInfoPresenter {
 
     fun viewReady()
 
-    fun onConditionsButtonClick()
-
-    fun onPrivacyPolicyButtonClick()
-
     fun onLegalTermsCheckedChange(checked: Boolean)
-
-}
-
-interface LegalInfoRouter {
-
-    fun navigateToConditions()
-
-    fun navigateToPrivacyPolicy()
 
 }

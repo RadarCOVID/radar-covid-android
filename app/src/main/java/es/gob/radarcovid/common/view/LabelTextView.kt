@@ -11,6 +11,7 @@
 package es.gob.radarcovid.common.view
 
 import android.content.Context
+import android.text.method.LinkMovementMethod
 import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
@@ -19,6 +20,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
+import es.gob.radarcovid.common.extensions.removeUnderline
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import java.util.*
 import javax.inject.Inject
@@ -31,10 +33,8 @@ class LabelTextView @JvmOverloads constructor(
     lateinit var labelManager: LabelManager
 
     private var labelId: String?
-    private var actionDescriptionLabelId: String? = null
-    private var actionDescription: String? = null
 
-    private var isHeading: Boolean = false
+    private var customContentDescription: String?
 
     init {
         (context.applicationContext as HasAndroidInjector)
@@ -51,17 +51,37 @@ class LabelTextView @JvmOverloads constructor(
                 val defaultText = getText(R.styleable.LabelTextView_android_text) ?: ""
                 text = labelManager.getText(labelId, defaultText)
 
-                actionDescriptionLabelId =
+                val actionDescriptionLabelId =
                     getString(R.styleable.LabelTextView_actionDescriptionLabelId)
                 val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription) ?: ""
-                actionDescription =
+                val actionDescription =
                     labelManager.getText(actionDescriptionLabelId, defaultTextAction).toString()
                 if (!actionDescription.isNullOrEmpty()) {
                     setAccessibilityAction(actionDescription!!)
                 }
 
-                isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
+                val contentDescriptionLabelId =
+                    getString(R.styleable.LabelTextView_contentDescriptionLabelId)
+                val defaultTextContent =
+                    getText(R.styleable.LabelTextView_android_contentDescription) ?: ""
+                customContentDescription =
+                    labelManager.getText(contentDescriptionLabelId, defaultTextContent).toString()
+                if (!customContentDescription.isNullOrEmpty()) {
+                    setContentDescription(customContentDescription!!)
+                }
+
+
+                val isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
                 setIsHeading(isHeading)
+
+                val isLink = getBoolean(R.styleable.LabelTextView_isLink, false)
+                val removeUnderlineLink =
+                    getBoolean(R.styleable.LabelTextView_removeUnderlineLink, false)
+                if (isLink) {
+                    setIsLink()
+                    if (removeUnderlineLink) removeUnderlineLink()
+                }
+
             } finally {
                 recycle()
             }
@@ -72,7 +92,8 @@ class LabelTextView @JvmOverloads constructor(
     override fun setText(text: CharSequence?, type: BufferType?) {
         super.setText(text, type)
         text?.let {
-            contentDescription = it.toString().toLowerCase(Locale.ROOT)
+            if (customContentDescription.isNullOrEmpty())
+                contentDescription = it.toString().toLowerCase(Locale.ROOT)
         }
     }
 
@@ -82,6 +103,14 @@ class LabelTextView @JvmOverloads constructor(
 
     fun setText(labelId: String?, defaultText: CharSequence) {
         text = labelManager.getText(labelId, defaultText)
+    }
+
+    fun setIsLink() {
+        movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    fun removeUnderlineLink() {
+        text = text.removeUnderline()
     }
 
     fun reloadText() {
@@ -109,4 +138,7 @@ class LabelTextView @JvmOverloads constructor(
         })
     }
 
+    private fun setContentDescription(desc: String) {
+        contentDescription = desc
+    }
 }

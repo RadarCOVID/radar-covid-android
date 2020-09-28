@@ -66,63 +66,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
                 R.string.navigation_back_to
             )} ${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)}"
 
-        textViewOtherSymptomsHigh.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSITION_HIGH_OTHER_SYMPTOMS_URL",
-                    R.string.exposure_detail_high_other_symptoms_url
-                ).toString()
-            )
-        }
-        textViewSymptomsHighWhatToDo.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSITION_HIGH_SYMPTOMS_WHAT_TO_DO_URL",
-                    R.string.exposure_detail_high_symptoms_what_to_do_url
-                ).toString()
-            )
-        }
-        textViewSymptomsLowWhatToDo.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSITION_LOW_SYMPTOMS_WHAT_TO_DO_URL",
-                    R.string.exposure_detail_low_symptoms_what_to_do_url
-                ).toString()
-            )
-        }
-        textViewMoreInfo.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSITION_HIGH_MORE_INFO_URL",
-                    R.string.exposure_detail_infected_more_info_url
-                ).toString()
-            )
-        }
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
-        buttonMoreInfoLow.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSURE_LOW_INFO_URL",
-                    R.string.exposure_detail_info_url
-                ).toString()
-            )
-        }
-        buttonMoreInfoHigh.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSURE_HIGH_INFO_URL",
-                    R.string.exposure_detail_info_url
-                ).toString()
-            )
-        }
-        buttonMoreInfoInfected.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSURE_INFECTED_INFO_URL",
-                    R.string.exposure_detail_info_url
-                ).toString()
-            )
-        }
     }
 
     override fun showExposureLevelLow() {

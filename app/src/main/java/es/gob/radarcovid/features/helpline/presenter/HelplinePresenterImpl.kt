@@ -11,13 +11,11 @@
 package es.gob.radarcovid.features.helpline.presenter
 
 import es.gob.radarcovid.features.helpline.protocols.HelplinePresenter
-import es.gob.radarcovid.features.helpline.protocols.HelplineRouter
 import es.gob.radarcovid.features.helpline.protocols.HelplineView
 import javax.inject.Inject
 
 class HelplinePresenterImpl @Inject constructor(
-    private val view: HelplineView,
-    private val router: HelplineRouter
+    private val view: HelplineView
 ) : HelplinePresenter {
 
     override fun viewReady() {
@@ -26,10 +24,6 @@ class HelplinePresenterImpl @Inject constructor(
 
     override fun onContactSupportButtonClick() {
         view.showDialerForSupport()
-    }
-
-    override fun onUrlButtonClick(url: String) {
-        router.navigateToBrowser(url)
     }
 
 }

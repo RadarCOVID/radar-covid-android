@@ -27,8 +27,8 @@
     <string name="warning_connection_button">Reintentar</string>
 
     /********** Legal Info ************/
-    <string name="legal_info_privacy_policy">Acepto la <b><u>política de privacidad</u></b></string>
-    <string name="legal_info_usage_conditions">He leído las <b><u>condiciones de uso</u></b></string>
+    <string name="legal_info_privacy_policy">Acepto la <a href="https://radarcovid.gob.es/politica-de-privacidad"><b><u>Política de privacidad</u></b></a></string>
+    <string name="legal_info_usage_conditions">He leído las <a href="https://radarcovid.gob.es/condiciones-de-uso"><b><u>condiciones de uso</u></b></a></string>
     <string name="legal_info_usage_policy_conditions">Aceptar política de privacidad y condiciones de uso</string>
     <string name="legal_info_button">Continuar</string>
 
@@ -68,12 +68,12 @@
     /********** Healing Info Dialog ************/
 
     <string name="low_risk_info_dialog_title">Han pasado 14 días desde tu último contacto detectado con alguien diagnosticado de COVID-19. Por este motivo tu estado en a aplicación vuelve a estar “Sin contactos de riesgo identificados”.</string>
-    <string name="low_risk_info_dialog_p1">Si no presentas síntomas ni has sido diagnosticado de COVID-19 en los últimos días, puedes volver a tu rutina, manteniendo las <u>precauciones habituales</u>.</string>
-    <string name="low_risk_info_dialog_p1_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/COVID19_como_protegerse.jpg</string>
-    <string name="low_risk_info_dialog_p2">Si durante los últimos días has presentado <u>síntomas</u> (tos, fiebre o dificultad respiratoria) ponte en contacto con los servicios sanitarios lo antes posible.</string>
-    <string name="low_risk_info_dialog_p2_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/COVID19_sintomas.jpg</string>
-    <string name="low_risk_info_dialog_more_info"><u>Más información de cómo actuar ></u></string>
-    <string name="low_risk_info_dialog_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
+    <string name="low_risk_info_dialog_p1">Si no presentas síntomas ni has sido diagnosticado de COVID-19 en los últimos días, puedes volver a tu rutina, manteniendo las <a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_como_protegerse.jpg"><u>precauciones habituales</u></a>.</string>
+    <string name="low_risk_info_dialog_p1_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_como_protegerse.jpg</string>
+    <string name="low_risk_info_dialog_p2">Si durante los últimos días has presentado <a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_sintomas.jpg"><u>síntomas</u></a> (tos, fiebre o dificultad respiratoria) ponte en contacto con los servicios sanitarios lo antes posible.</string>
+    <string name="low_risk_info_dialog_p2_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_sintomas.jpg</string>
+    <string name="low_risk_info_dialog_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf"><u>Más información de cómo actuar ></u></a></string>
+    <string name="low_risk_info_dialog_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
     <string name="low_risk_info_dialog_p3">Si has sido diagnosticado de COVID-19, para que otras personas puedan ser avisadas de tu exposición es necesario que comuniques tu positivo COVID-19 en la app.</string>
 
     /********** Home ************/
@@ -87,8 +87,9 @@
     <string name="exposition_block_low_description"><b>Te informaremos en el caso de un posible contacto de riesgo.</b></string>
     <string name="exposition_block_high_description"><b>Has estado en contacto con una persona contagiada de COVID-19.\nInfórmalo en el 900 112 061 (gratuito)</b>.</string>
     <string name="exposition_block_infected_description"><b>Tu diagnóstico ha sido enviado.\nPor favor, aíslate durante 14 días</b>.</string>
-    <string name="exposition_block_infected_more_info">Más información ></string>
-    <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+    <string name="exposition_block_infected_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg"><u>Más información ></u></a></string>
+    <string name="home_exposition_block_infected_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg">Más información ></a></string>
+    <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
     <string name="exposition_block_action_more_detail">Acceder a más detalles</string>
 
     <string name="radar_block_checked_title">&appname; activo</string>
@@ -131,8 +132,9 @@
     <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
     <string name="exposure_detail_tip_cough">Al toser o estornudar, tápate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>
 
-    <string name="exposure_detail_low_symptoms_what_to_do"><u>Cómo actuar si tengo síntomas ></u></string>
-    <string name="exposure_detail_low_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
+    <string name="symptoms_what_to_do">Cómo actuar si tengo síntomas</string>
+    <string name="exposure_detail_low_symptoms_what_to_do"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf"><u>Cómo actuar si tengo síntomas ></u></a></string>
+    <string name="exposure_detail_low_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
 
     /********** Exposure detail high ************/
     <string name="exposure_detail_high_title_small">RIESGO ALTO</string>
@@ -154,17 +156,18 @@
     <string name="exposure_detail_high_tip_4">Usa siempre mascarilla quirúrgica</string>
     <string name="exposure_detail_high_tip_5">Lávate las manos frecuentemente</string>
 
-    <string name="exposure_detail_high_other_symptoms"><u>Otros síntomas ></u></string>
-    <string name="exposure_detail_high_other_symptoms_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/COVID19_sintomas.jpg</string>
-    <string name="exposure_detail_high_symptoms_what_to_do"><u>Cómo actuar si tengo síntomas ></u></string>
-    <string name="exposure_detail_high_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
+    <string name="other_symptoms">Otros síntomas</string>
+    <string name="exposure_detail_high_other_symptoms"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_sintomas.jpg"><u>Otros síntomas ></u></a></string>
+    <string name="exposure_detail_high_other_symptoms_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_sintomas.jpg</string>
+    <string name="exposure_detail_high_symptoms_what_to_do"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf"><u>Cómo actuar si tengo síntomas ></u></a></string>
+    <string name="exposure_detail_high_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
 
     /********** Exposure detail infected ************/
 
     <string name="exposure_detail_infected_title_small">DIAGNÓSTICO COMUNICADO</string>
     <string name="exposure_detail_infected_title">COVID-19 positivo</string>
     <string name="exposure_detail_infected_last_update">Tu diagnóstico fue enviado hace <b>%1$s</b> (actualizado %2$s)</string>
-    <string name="exposure_detail_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+    <string name="exposure_detail_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
 
     <string name="exposure_detail_infected_p1"><b>Tu diagnostico nos ayuda a proteger a los demás.</b>\n\nSin revelar tu identidad en ningún momento, hemos comunicado tu diagnóstico a móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.</string>
     <string name="exposure_detail_infected_what_to_do_subtitle">Sigue las siguientes recomendaciones y los consejos de tu centro de salud</string>
@@ -205,8 +208,8 @@
     <string name="confirmation_title">Gracias por contribuir a parar el virus</string>
     <string name="confirmation_subtitle">Tu diagnóstico nos ayudará a proteger a los demás.</string>
     <string name="confirmation_p1">Sin revelar tu identidad en ningún momento, vamos a rastrear qué móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.\n\nPor favor, permanece en aislamiento siguiendo las recomendaciones que te han dado los servicios sanitarios.</string>
-    <string name="confirmation_more_info"><u>Más información ></u></string>
-    <string name="confirmation_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
+    <string name="confirmation_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg"><u>Más información ></u></a></string>
+    <string name="confirmation_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
     <string name="confirmation_what_to_do">¿Qué debo hacer?</string>
     <string name="confirmation_tips_title">Sigue las recomendaciones de tus servicios sanitarios</string>
     <string name="confirmation_tip_1">Permanece en casa, preferentemente en tu habitación y no compartas el baño</string>
@@ -224,20 +227,20 @@
     <string name="my_data_l2"><b>NO</b> recogemos ningún dato de geolocalización, incluidos los datos del GPS</string>
     <string name="my_data_l3">Por tanto:\n<b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
     <string name="my_data_encription_info">Los datos son guardados en tu teléfono y la conexión con el servidor están encriptados</string>
-    <string name="my_data_conditions">Consulta las <b><u>condiciones de uso</u></b></string>
-    <string name="my_data_privacy">Consulta la <b><u>política de privacidad</u></b></string>
+    <string name="my_data_conditions">Consulta las <a href="https://radarcovid.gob.es/condiciones-de-uso"><b><u>condiciones de uso</u></b></a></string>
+    <string name="my_data_privacy">Consulta la <a href="https://radarcovid.gob.es/politica-de-privacidad"><b><u>política de privacidad</u></b></a></string>
 
     /********** Helpline ************/
 
     <string name="helpline_title">Para más información…</string>
     <string name="helpline_message_p2">¿Tienes alguna pregunta sobre cómo funciona <b>Radar COVID</b>? ¿Qué hacer si recibes una notificación?\nConsulta aquí todas tus dudas:</string>
 
-    <string name="helpline_faqs_web_title">FAQs Radar COVID</string>
-    <string name="helpline_faqs_web_url">http://www.google.es</string>
-    <string name="helpline_info_web_title">Web información COVID</string>
-    <string name="helpline_info_web_url">http://www.google.es</string>
-    <string name="helpline_other_web_title">Otros enlaces</string>
-    <string name="helpline_other_web_url">http://www.google.es</string>
+    <string name="helpline_faqs_web_title"><a href="https://radarcovid.gob.es/preguntas-frecuentes">FAQs Radar COVID</a></string>
+    <string name="helpline_faqs_web_url">https://radarcovid.gob.es/preguntas-frecuentes</string>
+    <string name="helpline_info_web_title"><a href="https://www.radarcovid.gob.es/">Web información COVID</a></string>
+    <string name="helpline_info_web_url">https://www.radarcovid.gob.es/</string>
+    <string name="helpline_other_web_title"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/home.htm">Otros enlaces</a></string>
+    <string name="helpline_other_web_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/home.htm</string>
 
     /********** DP3T ************/
 
@@ -290,6 +293,10 @@
     <string name="contact_support_free_call">llamada gratuita</string>
 
     <string name="more_info">Más información</string>
+    <string name="more_info_exposure_low"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/ciudadania.htm"><b>Más información</b></a></string>
+    <string name="more_info_exposure_high"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/ciudadania.htm"><b>Más información</b></a></string>
+    <string name="more_info_infected"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/ciudadania.htm"><b>Más información</b></a></string>
+    <string name="more_info_health_reported"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/ciudadania.htm"><b>Más información</b></a></string>
 
     <string name="accept">Aceptar</string>
 

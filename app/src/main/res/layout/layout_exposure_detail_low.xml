@@ -206,13 +206,19 @@
         android:layout_marginBottom="40dp"
         android:text="@string/exposure_detail_low_symptoms_what_to_do"
         android:textSize="16sp"
+        android:textColorLink="@color/black_26"
+        android:contentDescription="@string/symptoms_what_to_do"
+        app:contentDescriptionLabelId="ACC_SYMPTOMS_WHAT_TO_DO"
+        app:isLink="true"
         app:labelId="EXPOSITION_LOW_SYMPTOMS_WHAT_TO_DO" />
 
     <es.gob.radarcovid.common.view.MoreInfoButton
         android:id="@+id/buttonMoreInfoLow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:text="@string/more_info_exposure_low"
+        app:labelId="MORE_INFO_EXPOSURE_LOW"/>
 
     <es.gob.radarcovid.common.view.LabelTextView
         style="@style/TitleSmall"

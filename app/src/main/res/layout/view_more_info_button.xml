@@ -23,14 +23,17 @@
 
     <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textViewMoreInfo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/muli_bold"
         android:text="@string/more_info"
         android:textColor="@color/purple_9C"
+        android:textColorLink="@color/purple_9C"
         android:textSize="18sp"
+        app:isLink="true"
+        app:removeUnderlineLink="true"
         app:labelId="MORE_INFO"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewBorderTop" />

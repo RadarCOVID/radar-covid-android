@@ -52,10 +52,6 @@ class ExposurePresenterImpl @Inject constructor(
         router.navigateToCovidReport()
     }
 
-    override fun onUrlButtonClick(url: String) {
-        router.navigateToBrowser(url)
-    }
-
     @Subscribe
     fun onExposureStatusChange(event: EventExposureStatusChange) {
         val exposureInfo = exposureInfoUseCase.getExposureInfo()

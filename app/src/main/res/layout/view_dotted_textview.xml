@@ -22,6 +22,7 @@
     <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textView"
         style="@style/TextNormal"
+        android:textColorLink="@color/black_26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Lávate las manos con frecuencia. Usa agua y jabón o un desinfectante de manos a base de alcohol." />

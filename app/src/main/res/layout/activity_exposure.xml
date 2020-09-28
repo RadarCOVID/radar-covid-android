@@ -90,8 +90,12 @@
                     android:text="@string/exposition_block_infected_more_info"
                     android:textSize="16sp"
                     android:visibility="gone"
+                    android:textColorLink="@color/black_26"
+                    app:isLink="true"
                     app:isHeading="true"
                     app:labelId="EXPOSITION_HIGH_MORE_INFO"
+                    android:contentDescription="@string/more_info"
+                    app:contentDescriptionLabelId="ACC_MORE_INFO"
                     tools:visibility="visible" />
 
                 <LinearLayout

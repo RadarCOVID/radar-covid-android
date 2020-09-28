@@ -41,4 +41,7 @@ abstract class ViewsModule {
 
     @ContributesAndroidInjector
     abstract fun bindsLabelConstraintLayout(): LabelConstraintLayout
+
+    @ContributesAndroidInjector
+    abstract fun bindsMoreInfoButton(): MoreInfoButton
 }
