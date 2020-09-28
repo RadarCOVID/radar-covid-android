@@ -225,6 +225,7 @@
     <string name="my_data_subtitle">Tu privacidad es lo más importante</string>
     <string name="my_data_l1"><b>NO</b> recogemos ningún dato personal (nombre, dirección, edad, teléfono, correo electrónico…)</string>
     <string name="my_data_l2"><b>NO</b> recogemos ningún dato de geolocalización, incluidos los datos del GPS</string>
+    <string name="my_data_l2_acc">no recogemos ningún dato de geolocalización, incluidos los datos del G P S</string>
     <string name="my_data_l3">Por tanto:\n<b>NO</b> podemos determinar tu identidad ni saber las personas con las que has estado</string>
     <string name="my_data_encription_info">Los datos son guardados en tu teléfono y la conexión con el servidor están encriptados</string>
     <string name="my_data_conditions">Consulta las <a href="https://radarcovid.gob.es/condiciones-de-uso"><b><u>condiciones de uso</u></b></a></string>
