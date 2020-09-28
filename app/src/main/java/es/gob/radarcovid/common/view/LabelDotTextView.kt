@@ -58,6 +58,16 @@ class LabelDotTextView @JvmOverloads constructor(
                 }
                 textView.text = labelManager.getText(labelId, defaultText)
 
+                val contentDescriptionLabelId =
+                    getString(R.styleable.LabelDotTextView_contentDescriptionLabelId)
+                val defaultTextContent =
+                    getText(R.styleable.LabelDotTextView_contentDescription) ?: ""
+                val customContentDescription =
+                    labelManager.getText(contentDescriptionLabelId, defaultTextContent).toString()
+                if (!customContentDescription.isNullOrEmpty()) {
+                    textView.setCustomContentDescription(customContentDescription)
+                }
+
                 val isLink = getBoolean(R.styleable.LabelDotTextView_isLink, false)
                 if (isLink) textView.setIsLink()
 

@@ -79,7 +79,9 @@
                     android:textSize="16sp"
                     app:isLink="true"
                     app:dotVisibility="invisible"
-                    app:labelId="ALERT_HIGH_EXPOSURE_HEALED_MORE_INFO" />
+                    app:labelId="ALERT_HIGH_EXPOSURE_HEALED_MORE_INFO"
+                    app:contentDescriptionLabelId="ACC_ALERT_HIGH_EXPOSURE_HEALED_MORE_INFO"
+                    app:contentDescription="@string/low_risk_info_dialog_more_info_acc"/>
 
                 <es.gob.radarcovid.common.view.LabelDotTextView
                     style="@style/TextDialogDescription"

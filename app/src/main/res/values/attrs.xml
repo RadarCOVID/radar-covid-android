@@ -57,6 +57,8 @@
             <!-- Completely hidden, as if the view had not been added. -->
             <enum name="gone" value="2" />
         </attr>
+        <attr name="contentDescriptionLabelId" />
+        <attr name="contentDescription" />
     </declare-styleable>
 
     <declare-styleable name="MoreInfoButton">
