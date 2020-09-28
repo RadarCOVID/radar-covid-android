@@ -264,6 +264,8 @@
         android:text="@string/exposure_detail_high_other_symptoms"
         android:textSize="16sp"
         android:textColorLink="@color/black_26"
+        android:contentDescription="@string/other_symptoms"
+        app:contentDescriptionLabelId="ACC_OTHER_SYMPTOMS"
         app:isLink="true"
         app:labelId="EXPOSITION_HIGH_OTHER_SYMPTOMS" />
 
@@ -276,6 +278,8 @@
         android:text="@string/exposure_detail_high_symptoms_what_to_do"
         android:textSize="16sp"
         android:textColorLink="@color/black_26"
+        android:contentDescription="@string/symptoms_what_to_do"
+        app:contentDescriptionLabelId="ACC_SYMPTOMS_WHAT_TO_DO"
         app:isLink="true"
         app:labelId="EXPOSITION_HIGH_SYMPTOMS_WHAT_TO_DO" />
 

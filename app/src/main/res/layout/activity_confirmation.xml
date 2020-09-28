@@ -83,8 +83,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/confirmation_more_info"
-                android:textSize="16sp"
                 android:textColorLink="@color/black_26"
+                android:textSize="16sp"
+                android:contentDescription="@string/more_info"
+                app:contentDescriptionLabelId="ACC_MORE_INFO"
                 app:isLink="true"
                 app:labelId="MY_HEALTH_REPORTED_MORE_INFO" />
 

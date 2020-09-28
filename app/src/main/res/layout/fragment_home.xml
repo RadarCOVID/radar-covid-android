@@ -114,6 +114,8 @@
                     app:isLink="true"
                     app:removeUnderlineLink="true"
                     app:labelId="HOME_EXPOSITION_POSITIVE_MORE_INFO"
+                    android:contentDescription="@string/more_info"
+                    app:contentDescriptionLabelId="ACC_MORE_INFO"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textViewExpositionDescription"

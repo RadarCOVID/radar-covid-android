@@ -34,6 +34,8 @@ class LabelTextView @JvmOverloads constructor(
 
     private var labelId: String?
 
+    private var customContentDescription: String?
+
     init {
         (context.applicationContext as HasAndroidInjector)
             .androidInjector()
@@ -58,6 +60,17 @@ class LabelTextView @JvmOverloads constructor(
                     setAccessibilityAction(actionDescription!!)
                 }
 
+                val contentDescriptionLabelId =
+                    getString(R.styleable.LabelTextView_contentDescriptionLabelId)
+                val defaultTextContent =
+                    getText(R.styleable.LabelTextView_android_contentDescription) ?: ""
+                customContentDescription =
+                    labelManager.getText(contentDescriptionLabelId, defaultTextContent).toString()
+                if (!customContentDescription.isNullOrEmpty()) {
+                    setContentDescription(customContentDescription!!)
+                }
+
+
                 val isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
                 setIsHeading(isHeading)
 
@@ -79,7 +92,8 @@ class LabelTextView @JvmOverloads constructor(
     override fun setText(text: CharSequence?, type: BufferType?) {
         super.setText(text, type)
         text?.let {
-            contentDescription = it.toString().toLowerCase(Locale.ROOT)
+            if (customContentDescription.isNullOrEmpty())
+                contentDescription = it.toString().toLowerCase(Locale.ROOT)
         }
     }
 
@@ -124,4 +138,7 @@ class LabelTextView @JvmOverloads constructor(
         })
     }
 
+    private fun setContentDescription(desc: String) {
+        contentDescription = desc
+    }
 }

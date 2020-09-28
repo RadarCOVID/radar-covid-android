@@ -207,6 +207,8 @@
         android:text="@string/exposure_detail_low_symptoms_what_to_do"
         android:textSize="16sp"
         android:textColorLink="@color/black_26"
+        android:contentDescription="@string/symptoms_what_to_do"
+        app:contentDescriptionLabelId="ACC_SYMPTOMS_WHAT_TO_DO"
         app:isLink="true"
         app:labelId="EXPOSITION_LOW_SYMPTOMS_WHAT_TO_DO" />
 

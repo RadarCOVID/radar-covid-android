@@ -94,6 +94,8 @@
                     app:isLink="true"
                     app:isHeading="true"
                     app:labelId="EXPOSITION_HIGH_MORE_INFO"
+                    android:contentDescription="@string/more_info"
+                    app:contentDescriptionLabelId="ACC_MORE_INFO"
                     tools:visibility="visible" />
 
                 <LinearLayout

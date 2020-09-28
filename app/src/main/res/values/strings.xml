@@ -132,6 +132,7 @@
     <string name="exposure_detail_tip_clinic">Ante la aparición de algún síntoma (fiebre, tos, dificultad respiratoria) llama a tu centro de salud</string>
     <string name="exposure_detail_tip_cough">Al toser o estornudar, tápate la boca o la nariz y usa pañuelos desechables o la parte interior del codo</string>
 
+    <string name="symptoms_what_to_do">Cómo actuar si tengo síntomas</string>
     <string name="exposure_detail_low_symptoms_what_to_do"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf"><u>Cómo actuar si tengo síntomas ></u></a></string>
     <string name="exposure_detail_low_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
 
@@ -155,6 +156,7 @@
     <string name="exposure_detail_high_tip_4">Usa siempre mascarilla quirúrgica</string>
     <string name="exposure_detail_high_tip_5">Lávate las manos frecuentemente</string>
 
+    <string name="other_symptoms">Otros síntomas</string>
     <string name="exposure_detail_high_other_symptoms"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_sintomas.jpg"><u>Otros síntomas ></u></a></string>
     <string name="exposure_detail_high_other_symptoms_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_sintomas.jpg</string>
     <string name="exposure_detail_high_symptoms_what_to_do"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf"><u>Cómo actuar si tengo síntomas ></u></a></string>
