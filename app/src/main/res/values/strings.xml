@@ -235,6 +235,7 @@
     <string name="helpline_title">Para más información…</string>
     <string name="helpline_message_p2">¿Tienes alguna pregunta sobre cómo funciona <b>Radar COVID</b>? ¿Qué hacer si recibes una notificación?\nConsulta aquí todas tus dudas:</string>
 
+    <string name="helpline_faqs_web_title_acc">Preguntas frecuentes Radar COVID</string>
     <string name="helpline_faqs_web_title"><a href="https://radarcovid.gob.es/preguntas-frecuentes">FAQs Radar COVID</a></string>
     <string name="helpline_faqs_web_url">https://radarcovid.gob.es/preguntas-frecuentes</string>
     <string name="helpline_info_web_title"><a href="https://www.radarcovid.gob.es/">Web información COVID</a></string>
