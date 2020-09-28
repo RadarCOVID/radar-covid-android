@@ -30,6 +30,7 @@
         android:background="@drawable/shape_rounded_corners_white"
         android:orientation="vertical"
         android:visibility="invisible"
+        android:paddingTop="25dp"
         tools:visibility="visible">
 
         <es.gob.radarcovid.common.view.LabelTextView
@@ -38,7 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="6dp"
             android:visibility="gone"

@@ -148,6 +148,7 @@
     </style>
 
     <style name="ButtonSecondary" parent="Button">
+        <item name="android:gravity">center</item>
         <item name="fontFamily">@font/muli_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@drawable/shape_rounded_border_accent</item>

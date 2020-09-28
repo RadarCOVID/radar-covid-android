@@ -15,8 +15,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/shape_rounded_corners_white"
     android:orientation="vertical"
-    android:paddingTop="29dp"
-    android:paddingBottom="20dp">
+    android:paddingTop="29dp">
 
     <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textViewDialogTitle"
@@ -49,7 +48,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="2dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:textColor="@color/white"
         android:visibility="gone"
         tools:text="Button"
@@ -59,6 +58,7 @@
         android:id="@+id/buttonCancel"
         style="@style/ButtonSecondary"
         android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
         android:layout_height="56dp"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
