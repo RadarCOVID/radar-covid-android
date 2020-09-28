@@ -71,6 +71,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/my_data_l2"
+                android:contentDescription="@string/my_data_l2_acc"
+                app:contentDescriptionLabelId="ACC_MY_DATA_BULLET_2"
                 app:labelId="MY_DATA_BULLET_2" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
