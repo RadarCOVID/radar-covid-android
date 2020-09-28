@@ -16,16 +16,4 @@ interface MyDataPresenter {
 
     fun viewReady()
 
-    fun onConditionsButtonClick()
-
-    fun onPrivacyButtonClick()
-
-}
-
-interface MyDataRouter {
-
-    fun navigateToConditions()
-
-    fun navigateToPrivacyPolicy()
-
 }

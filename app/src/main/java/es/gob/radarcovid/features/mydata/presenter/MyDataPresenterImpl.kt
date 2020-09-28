@@ -11,23 +11,13 @@
 package es.gob.radarcovid.features.mydata.presenter
 
 import es.gob.radarcovid.features.mydata.protocols.MyDataPresenter
-import es.gob.radarcovid.features.mydata.protocols.MyDataRouter
 import javax.inject.Inject
 
 class MyDataPresenterImpl @Inject constructor(
-    private val router: MyDataRouter
 ) : MyDataPresenter {
 
     override fun viewReady() {
 
-    }
-    
-    override fun onConditionsButtonClick() {
-        router.navigateToConditions()
-    }
-
-    override fun onPrivacyButtonClick() {
-        router.navigateToPrivacyPolicy()
     }
 
 }
