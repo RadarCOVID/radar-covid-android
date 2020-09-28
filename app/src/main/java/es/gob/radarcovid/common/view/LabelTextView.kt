@@ -109,6 +109,11 @@ class LabelTextView @JvmOverloads constructor(
         movementMethod = LinkMovementMethod.getInstance()
     }
 
+    fun setCustomContentDescription(customContentDescription: String) {
+        this.customContentDescription = customContentDescription
+        contentDescription = customContentDescription
+    }
+
     fun removeUnderlineLink() {
         text = text.removeUnderline()
     }

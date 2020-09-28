@@ -73,6 +73,7 @@
     <string name="low_risk_info_dialog_p2">Si durante los últimos días has presentado <a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_sintomas.jpg"><u>síntomas</u></a> (tos, fiebre o dificultad respiratoria) ponte en contacto con los servicios sanitarios lo antes posible.</string>
     <string name="low_risk_info_dialog_p2_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_sintomas.jpg</string>
     <string name="low_risk_info_dialog_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf"><u>Más información de cómo actuar ></u></a></string>
+    <string name="low_risk_info_dialog_more_info_acc">Más información de cómo actuar</string>
     <string name="low_risk_info_dialog_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
     <string name="low_risk_info_dialog_p3">Si has sido diagnosticado de COVID-19, para que otras personas puedan ser avisadas de tu exposición es necesario que comuniques tu positivo COVID-19 en la app.</string>
 
