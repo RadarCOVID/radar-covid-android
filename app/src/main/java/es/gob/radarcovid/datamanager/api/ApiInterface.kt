@@ -36,20 +36,26 @@ interface ApiInterface {
     fun getLabels(
         @Header(SEDIA_USER_TOKEN) uuid: String,
         @Query("locale") language: String,
-        @Query("ccaa") region: String
+        @Query("ccaa") region: String,
+        @Query("platform") platform: String,
+        @Query("version") version: String
     ): Call<ResponseLabels>
 
     @GET("/configuration/masterData/locales")
     fun getLanguages(
         @Header(SEDIA_USER_TOKEN) uuid: String,
-        @Query("locale") language: String
+        @Query("locale") language: String,
+        @Query("platform") platform: String,
+        @Query("version") version: String
     ): Call<ResponseLanguages>
 
     @GET("/configuration/masterData/ccaa")
     fun getRegions(
         @Header(SEDIA_USER_TOKEN) uuid: String,
         @Query("locale") language: String,
-        @Query("additionalInfo") additionalInfo: Boolean
+        @Query("additionalInfo") additionalInfo: Boolean,
+        @Query("platform") platform: String,
+        @Query("version") version: String
     ): Call<ResponseRegions>
 
     @POST("/verification/verify/code")

@@ -20,11 +20,11 @@ interface ApiRepository {
 
     fun getSettings(): Either<Throwable, ResponseSettings>
 
-    fun getLabels(uuid: String, language: String, region: String): Either<Throwable, ResponseLabels>
+    fun getLabels(uuid: String, language: String, region: String, platform: String, version: String): Either<Throwable, ResponseLabels>
 
-    fun getLanguages(uuid: String, language: String): Either<Throwable, ResponseLanguages>
+    fun getLanguages(uuid: String, language: String, platform: String, version: String): Either<Throwable, ResponseLanguages>
 
-    fun getRegions(uuid: String, language: String): Either<Throwable, ResponseRegions>
+    fun getRegions(uuid: String, language: String, platform: String, version: String): Either<Throwable, ResponseRegions>
 
     fun verifyCode(body: RequestVerifyCode): Either<Throwable, ResponseToken>
 

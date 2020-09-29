@@ -17,4 +17,6 @@ object Constants {
     const val URL_USAGE_CONDITIONS =
         "https://radarcovid.gob.es/condiciones-de-uso"
 
+    const val SO_NAME = "Android"
+
 }
