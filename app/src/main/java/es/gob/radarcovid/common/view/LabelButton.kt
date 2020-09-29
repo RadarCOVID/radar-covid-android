@@ -47,8 +47,8 @@ class LabelButton @JvmOverloads constructor(
                 text = labelManager.getText(labelId, defaultText)
 
                 val actionDescriptionLabelId =
-                    getString(R.styleable.LabelTextView_actionDescriptionLabelId)
-                val defaultTextAction = getText(R.styleable.LabelTextView_actionDescription) ?: ""
+                    getString(R.styleable.LabelButton_actionDescriptionLabelId)
+                val defaultTextAction = getText(R.styleable.LabelButton_actionDescription) ?: ""
                 val actionDescription =
                     labelManager.getText(actionDescriptionLabelId, defaultTextAction).toString()
                 if (actionDescription.isNotEmpty()) {
