@@ -44,6 +44,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
+                    app:isHeading="true"
                     android:text="@string/low_risk_info_dialog_title"
                     app:labelId="ALERT_HIGH_EXPOSURE_HEALED_TITLE" />
 
