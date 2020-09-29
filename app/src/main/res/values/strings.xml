@@ -276,7 +276,7 @@
 
     /********** Common ************/
 
-    <string name="navigation_back_to">Volver a</string>
+    <string name="navigation_back_to">Atrás</string>
 
     <string name="dialog_close_button_description">Cerrar</string>
 
