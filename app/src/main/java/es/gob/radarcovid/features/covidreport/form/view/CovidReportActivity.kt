@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.features.covidreport.form.view
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -23,7 +24,10 @@ import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresente
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
 import kotlinx.android.synthetic.main.activity_covid_report.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
+import kotlinx.android.synthetic.main.layout_select_date_symptom.view.*
 import org.dpppt.android.sdk.DP3T
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 
@@ -100,6 +104,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
             }
         })
+
+        select_date.setOnClickListener { presenter.onSelectDateClick() }
     }
 
     override fun onBackPressed() {
@@ -184,6 +190,46 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
                 ).toString()
             )
         )
+    }
+
+    override fun showDatePickerDialog() {
+
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+
+                select_date.layout_day.button_day.text =
+                    if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
+                select_date.layout_month.button_month.text =
+                    if (monthOfYear < 10) "0$monthOfYear" else "$monthOfYear"
+                select_date.layout_year.button_year.text = year.toString()
+
+            }
+
+        val dpd = DatePickerDialog(this, dateSetListener, year, month, day)
+
+        val newCalendar = Calendar.getInstance()
+        dpd.datePicker.maxDate = newCalendar.timeInMillis
+        newCalendar.add(Calendar.DATE, - 14)
+        dpd.datePicker.minDate = newCalendar.timeInMillis
+
+        dpd.show()
+    }
+
+    override fun getDateSelected(): Date? {
+        val day = select_date.layout_day.button_day.text
+        val month = select_date.layout_day.button_month.text
+        val year = select_date.layout_day.button_year.text
+
+        return if (day.isNullOrEmpty() && month.isNullOrEmpty() && year.isNullOrEmpty()) {
+            null
+        } else {
+            return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse("$day-$month-$year")
+        }
     }
 
 }
