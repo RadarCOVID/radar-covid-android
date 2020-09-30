@@ -92,6 +92,13 @@
                 android:textColor="@color/black"
                 app:labelId="MY_HEALTH_PARAGRAPH_3" />
 
+            <include
+                android:id="@+id/select_date"
+                layout="@layout/layout_select_date_symptom"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="40dp"
+                android:layout_height="wrap_content"/>
+
             <Button
                 style="@style/ButtonNormal"
                 android:layout_width="match_parent"

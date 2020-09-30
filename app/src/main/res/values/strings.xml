@@ -114,6 +114,11 @@
     <string name="exposure_detail_acknowledgement_message">Gracias por seguir cuidándote y cuidando a los demás.</string>
 
     <string name="exposure_detail_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov-China/ciudadania.htm</string>
+    <string name="exposure_date_day">Día</string>
+    <string name="exposure_date_month">Mes</string>
+    <string name="exposure_date_year">Año</string>
+    <string name="exposure_hint_day_month">- -</string>
+    <string name="exposure_hint_year">- - - -</string>
 
     /********** Exposure detail low ************/
     <string name="exposure_detail_low_title_small">RIESGO BAJO</string>
