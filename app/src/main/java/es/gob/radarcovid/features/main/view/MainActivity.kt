@@ -68,6 +68,8 @@ class MainActivity : BaseActivity(), MainView {
                     labelManager.getText("ACC_MYDATA_TITLE", R.string.title_mydata)
                 R.id.menuItemHelpline -> it.title =
                     labelManager.getText("ACC_HELPLINE_TITLE", R.string.title_helpline)
+                R.id.menuItemSettings -> it.title =
+                        labelManager.getText("ACC_SETTINGS_TITLE", R.string.title_settings)
             }
         }
         bottomNavigation.setOnNavigationItemSelectedListener {
@@ -75,6 +77,7 @@ class MainActivity : BaseActivity(), MainView {
                 R.id.menuItemHome -> presenter.onHomeButtonClick()
                 R.id.menuItemProfile -> presenter.onProfileButtonClick()
                 R.id.menuItemHelpline -> presenter.onHelplineButtonClick()
+                R.id.menuItemSettings -> presenter.onSettingsButtonClick()
             }
             true
         }
