@@ -105,7 +105,7 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
             }
         })
 
-        select_date.setOnClickListener { presenter.onSelectDateClick() }
+        layoutSelectDate.setOnClickListener { presenter.onSelectDateClick() }
     }
 
     override fun onBackPressed() {
@@ -193,7 +193,6 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun showDatePickerDialog() {
-
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
@@ -201,34 +200,37 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-
-                select_date.layout_day.button_day.text =
+                val realMonth = monthOfYear + 1
+                layoutSelectDate.layoutDay.labelDay.text =
                     if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
-                select_date.layout_month.button_month.text =
-                    if (monthOfYear < 10) "0$monthOfYear" else "$monthOfYear"
-                select_date.layout_year.button_year.text = year.toString()
-
+                layoutSelectDate.layoutMonth.labelMonth.text =
+                    if (realMonth < 10) "0$realMonth" else "$realMonth"
+                layoutSelectDate.layoutYear.labelYear.text = year.toString()
             }
 
-        val dpd = DatePickerDialog(this, dateSetListener, year, month, day)
+        val datePicker = DatePickerDialog(this, dateSetListener, year, month, day)
 
-        val newCalendar = Calendar.getInstance()
-        dpd.datePicker.maxDate = newCalendar.timeInMillis
-        newCalendar.add(Calendar.DATE, - 14)
-        dpd.datePicker.minDate = newCalendar.timeInMillis
+        val calendarDisableDates = Calendar.getInstance()
+        datePicker.datePicker.maxDate = calendarDisableDates.timeInMillis
+        calendarDisableDates.add(Calendar.DATE, -14)
+        datePicker.datePicker.minDate = calendarDisableDates.timeInMillis
 
-        dpd.show()
+        datePicker.show()
     }
 
     override fun getDateSelected(): Date? {
-        val day = select_date.layout_day.button_day.text
-        val month = select_date.layout_day.button_month.text
-        val year = select_date.layout_day.button_year.text
+        val labelDay = layoutSelectDate.layoutDay.labelDay.text
+        val labelMonth = layoutSelectDate.layoutMonth.labelMonth.text
+        val labelYear = layoutSelectDate.layoutYear.labelYear.text
 
-        return if (day.isNullOrEmpty() && month.isNullOrEmpty() && year.isNullOrEmpty()) {
-            null
+        return if (!labelDay.isNullOrEmpty() && !labelMonth.isNullOrEmpty() && !labelYear.isNullOrEmpty()) {
+            val date = SimpleDateFormat(
+                "dd/MM/yyyy",
+                Locale.getDefault()
+            ).parse("$labelDay/$labelMonth/$labelYear")
+            date
         } else {
-            return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse("$day-$month-$year")
+            null
         }
     }
 
