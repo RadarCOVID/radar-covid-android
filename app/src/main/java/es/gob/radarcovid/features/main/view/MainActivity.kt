@@ -13,6 +13,7 @@ package es.gob.radarcovid.features.main.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.view.forEach
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
@@ -59,6 +60,16 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     private fun initViews() {
+        bottomNavigation.menu.forEach {
+            when (it.itemId) {
+                R.id.menuItemHome -> it.title =
+                    labelManager.getText("ACC_HOME_TITLE", R.string.title_home)
+                R.id.menuItemProfile -> it.title =
+                    labelManager.getText("ACC_MYDATA_TITLE", R.string.title_mydata)
+                R.id.menuItemHelpline -> it.title =
+                    labelManager.getText("ACC_HELPLINE_TITLE", R.string.title_helpline)
+            }
+        }
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menuItemHome -> presenter.onHomeButtonClick()

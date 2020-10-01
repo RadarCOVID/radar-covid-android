@@ -26,6 +26,7 @@
     <declare-styleable name="LabelTextView">
         <attr name="labelId" />
         <attr name="android:text" />
+        <attr name="isHeading" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="LabelButton">
@@ -55,6 +56,11 @@
     <declare-styleable name="LabelEditText">
         <attr name="android:hint" />
         <attr name="hintLabelId" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelCheckBox">
+        <attr name="android:contentDescription" />
+        <attr name="contentDescriptionLabelId" />
     </declare-styleable>
 
 </resources>

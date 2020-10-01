@@ -35,6 +35,7 @@
     <string name="legal_info_terms_and_conditions">Términos y condiciones</string>
     <string name="legal_info_privacy_policy">Acepto la <b><u>política de privacidad</u></b></string>
     <string name="legal_info_usage_conditions">He leído las <b><u>condiciones de uso</u></b></string>
+    <string name="legal_info_usage_policy_conditions">Aceptar política de privacidad y condiciones de uso</string>
     <string name="legal_info_check_warning">Recuerda que tienes que aceptar la política de privacidad para continuar</string>
     <string name="legal_info_button">Continuar</string>
 
@@ -133,7 +134,7 @@
 
     /********** Menu ************/
     <string name="title_home">Home</string>
-    <string name="title_profile">Mis datos</string>
+    <string name="title_mydata">Mis datos</string>
     <string name="title_helpline">Helpline</string>
 
     /********** Healing Info Dialog ************/

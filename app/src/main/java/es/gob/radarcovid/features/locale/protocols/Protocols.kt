@@ -28,6 +28,8 @@ interface LocaleSelectionView : RequestView {
 
     fun reloadLabels()
 
+    fun showLanguageChangeDialog()
+
 }
 
 interface LocaleSelectionPresenter {
@@ -43,6 +45,8 @@ interface LocaleSelectionPresenter {
     fun applyLocaleSettings()
 
     fun restoreLocaleSettings()
+
+    fun onLocaleChangeConfirm()
 
 }
 

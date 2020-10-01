@@ -40,7 +40,12 @@ class LocaleSelectionPresenterImpl @Inject constructor(
     }
 
     override fun onLanguageSelectionChange(index: Int) {
+        if (isLanguageChanged())
+            view.showLanguageChangeDialog()
+    }
 
+    override fun onLocaleChangeConfirm() {
+        applyLocaleSettings()
     }
 
     override fun isLanguageChanged(): Boolean =
