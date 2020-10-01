@@ -10,14 +10,14 @@
   -->
 
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_select_date"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layout_day"
+        android:id="@+id/layoutDay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="25"
@@ -30,10 +30,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/exposure_date_day"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_DAY" />
 
         <es.gob.radarcovid.common.view.LabelTextView
-            android:id="@+id/button_day"
+            android:id="@+id/labelDay"
             style="@style/TitleXSmall"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -48,7 +49,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layout_month"
+        android:id="@+id/layoutMonth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -63,10 +64,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/exposure_date_month"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_MONTH" />
 
         <es.gob.radarcovid.common.view.LabelTextView
-            android:id="@+id/button_month"
+            android:id="@+id/labelMonth"
             style="@style/TitleXSmall"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -82,7 +84,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layout_year"
+        android:id="@+id/layoutYear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="50"
@@ -95,10 +97,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/exposure_date_year"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_YEAR" />
 
         <es.gob.radarcovid.common.view.LabelTextView
-            android:id="@+id/button_year"
+            android:id="@+id/labelYear"
             style="@style/TitleXSmall"
             android:layout_width="match_parent"
             android:layout_height="60dp"
