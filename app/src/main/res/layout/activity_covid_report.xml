@@ -87,10 +87,26 @@
                 style="@style/TextSemibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="36dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/covid_report_p3"
                 android:textColor="@color/black"
                 app:labelId="MY_HEALTH_PARAGRAPH_3" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSemibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:text="@string/covid_report_p4"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_PARAGRAPH_4" />
+
+            <include
+                android:id="@+id/layoutSelectDate"
+                layout="@layout/layout_select_date_symptom"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="40dp"
+                android:layout_height="wrap_content"/>
 
             <Button
                 style="@style/ButtonNormal"

@@ -11,6 +11,7 @@
 package es.gob.radarcovid.features.covidreport.form.protocols
 
 import es.gob.radarcovid.common.view.RequestView
+import java.util.*
 
 interface CovidReportView : RequestView {
 
@@ -25,6 +26,10 @@ interface CovidReportView : RequestView {
     fun hideLoadingWithErrorOnReport()
     
     fun finish()
+
+    fun showDatePickerDialog()
+    
+    fun getDateSelected(): Date?
 
 }
 
@@ -41,6 +46,8 @@ interface CovidReportPresenter {
     fun onRetryButtonClick()
 
     fun onSendButtonClick()
+
+    fun onSelectDateClick()
 
 }
 

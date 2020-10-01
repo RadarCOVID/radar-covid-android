@@ -18,6 +18,7 @@ import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
 import es.gob.radarcovid.models.exception.NetworkUnavailableException
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.*
 import javax.inject.Inject
 
 class CovidReportPresenterImpl @Inject constructor(
@@ -47,12 +48,16 @@ class CovidReportPresenterImpl @Inject constructor(
     }
 
     override fun onSendButtonClick() {
-        reportInfected(view.getReportCode())
+        reportInfected(view.getReportCode(), view.getDateSelected())
     }
 
-    private fun reportInfected(reportCode: String) {
+    override fun onSelectDateClick() {
+        view.showDatePickerDialog()
+    }
+
+    private fun reportInfected(reportCode: String, date: Date?) {
         view.showLoading()
-        reportInfectedUseCase.reportInfected(reportCode)
+        reportInfectedUseCase.reportInfected(reportCode, date)
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.features.covidreport.form.view
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -23,7 +24,10 @@ import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresente
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
 import kotlinx.android.synthetic.main.activity_covid_report.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
+import kotlinx.android.synthetic.main.layout_select_date_symptom.view.*
 import org.dpppt.android.sdk.DP3T
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 
@@ -100,6 +104,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
             }
         })
+
+        layoutSelectDate.setOnClickListener { presenter.onSelectDateClick() }
     }
 
     override fun onBackPressed() {
@@ -184,6 +190,48 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
                 ).toString()
             )
         )
+    }
+
+    override fun showDatePickerDialog() {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+                val realMonth = monthOfYear + 1
+                layoutSelectDate.layoutDay.labelDay.text =
+                    if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
+                layoutSelectDate.layoutMonth.labelMonth.text =
+                    if (realMonth < 10) "0$realMonth" else "$realMonth"
+                layoutSelectDate.layoutYear.labelYear.text = year.toString()
+            }
+
+        val datePicker = DatePickerDialog(this, dateSetListener, year, month, day)
+
+        val calendarDisableDates = Calendar.getInstance()
+        datePicker.datePicker.maxDate = calendarDisableDates.timeInMillis
+        calendarDisableDates.add(Calendar.DATE, -14)
+        datePicker.datePicker.minDate = calendarDisableDates.timeInMillis
+
+        datePicker.show()
+    }
+
+    override fun getDateSelected(): Date? {
+        val labelDay = layoutSelectDate.layoutDay.labelDay.text
+        val labelMonth = layoutSelectDate.layoutMonth.labelMonth.text
+        val labelYear = layoutSelectDate.layoutYear.labelYear.text
+
+        return if (!labelDay.isNullOrEmpty() && !labelMonth.isNullOrEmpty() && !labelYear.isNullOrEmpty()) {
+            val date = SimpleDateFormat(
+                "dd/MM/yyyy",
+                Locale.getDefault()
+            ).parse("$labelDay/$labelMonth/$labelYear")
+            date
+        } else {
+            null
+        }
     }
 
 }
