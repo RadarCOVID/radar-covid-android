@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/exposure_date_day"
+            android:text="@string/covid_report_date_day"
             android:textSize="16sp"
             app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_DAY" />
 
@@ -41,7 +41,7 @@
             android:layout_marginTop="11dp"
             android:background="@drawable/shape_rounded_border_accent"
             android:gravity="center"
-            android:hint="@string/exposure_hint_day_month"
+            android:hint="@string/covid_report_hint_day_month"
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/black"
             android:textSize="16sp" />
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/exposure_date_month"
+            android:text="@string/covid_report_date_month"
             android:textSize="16sp"
             app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_MONTH" />
 
@@ -75,7 +75,7 @@
             android:layout_marginTop="11dp"
             android:background="@drawable/shape_rounded_border_accent"
             android:gravity="center"
-            android:hint="@string/exposure_hint_day_month"
+            android:hint="@string/covid_report_hint_day_month"
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/black"
             android:textSize="16sp" />
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/exposure_date_year"
+            android:text="@string/covid_report_date_year"
             android:textSize="16sp"
             app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_YEAR" />
 
@@ -108,7 +108,7 @@
             android:layout_marginTop="11dp"
             android:background="@drawable/shape_rounded_border_accent"
             android:gravity="center"
-            android:hint="@string/exposure_hint_year"
+            android:hint="@string/covid_report_hint_year"
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/black"
             android:textSize="16sp" />
