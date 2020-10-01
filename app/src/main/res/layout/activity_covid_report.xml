@@ -93,7 +93,7 @@
                 app:labelId="MY_HEALTH_PARAGRAPH_3" />
 
             <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TextSemibold"
+                style="@style/TextSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="36dp"
