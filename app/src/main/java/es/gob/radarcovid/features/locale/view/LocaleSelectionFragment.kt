@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.features.locale.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,7 @@ import es.gob.radarcovid.common.view.HintSpinnerAdapter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionPresenter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionView
 import kotlinx.android.synthetic.main.fragment_locale_selection.*
+import kotlinx.android.synthetic.main.view_selection_button.view.*
 import javax.inject.Inject
 
 class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
@@ -110,6 +112,11 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     }
 
     private fun initViews() {
+
+        layoutSelectLanguage.setOnClickListener {
+            presenter.onSelectLanguageClick()
+        }
+
         spinnerRegion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -146,5 +153,40 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     }
 
     fun restoreLocaleSettings() = presenter.restoreLocaleSettings()
+
+    override fun setLanguage(language: String) {
+        layoutSelectLanguage.textViewText.text = language
+    }
+
+    override fun showLanguageSelectionDialog(languages: List<String>) {
+        CMDialog.Builder(context!!)
+            .setMessage(
+//                labelManager.getText(
+//                    "LOCALE_CHANGE_WARNING",
+//                    R.string.locale_selection_warning_message
+//                ).toString()
+                "Selecciona un idioma"
+            )
+            .setListView(languages)
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_ACCEPT_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                it.dismiss()
+                presenter.onLocaleChangeConfirm()
+            }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ALERT_CANCEL_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                it.dismiss()
+            }
+            .build()
+            .show()
+    }
 
 }

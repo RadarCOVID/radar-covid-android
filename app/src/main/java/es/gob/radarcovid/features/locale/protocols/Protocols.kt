@@ -30,6 +30,9 @@ interface LocaleSelectionView : RequestView {
 
     fun showLanguageChangeDialog()
 
+    fun showLanguageSelectionDialog(languages: List<String>)
+
+    fun setLanguage(language: String)
 }
 
 interface LocaleSelectionPresenter {
@@ -47,6 +50,8 @@ interface LocaleSelectionPresenter {
     fun restoreLocaleSettings()
 
     fun onLocaleChangeConfirm()
+
+    fun onSelectLanguageClick()
 
 }
 

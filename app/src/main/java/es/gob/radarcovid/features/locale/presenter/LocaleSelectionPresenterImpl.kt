@@ -30,8 +30,10 @@ class LocaleSelectionPresenterImpl @Inject constructor(
     override fun viewReady() {
         view.setRegions(localeInfo.regions.map { it.name })
         view.setLanguages(localeInfo.languages.map { it.name })
-        if(defaultSelectedIndex > -1)
+        if(defaultSelectedIndex > -1) {
             view.setSelectedLanguageIndex(defaultSelectedIndex)
+            view.setLanguage(localeInfo.languages[defaultSelectedIndex].name)
+        }
     }
 
     override fun onApplyButtonClick() {
@@ -59,6 +61,10 @@ class LocaleSelectionPresenterImpl @Inject constructor(
 
     override fun restoreLocaleSettings() {
         view.setSelectedLanguageIndex(defaultSelectedIndex)
+    }
+
+    override fun onSelectLanguageClick() {
+        view.showLanguageSelectionDialog(localeInfo.languages.map { it.name })
     }
 
     private fun requestLabels() {

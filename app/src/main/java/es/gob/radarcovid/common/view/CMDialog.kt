@@ -15,8 +15,9 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ImageButton
+import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import es.gob.radarcovid.R
 
@@ -37,6 +38,7 @@ object CMDialog {
             .create().apply {
                 window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             }
+        private val listViewList = view.findViewById<ListView>(R.id.listViewList)
 
         fun setTitle(resId: Int): Builder = setTitle(context.getString(resId))
 
@@ -85,6 +87,14 @@ object CMDialog {
             buttonCancel.setOnClickListener {
                 onNegativeButtonClick(dialog)
             }
+            return this
+        }
+
+        fun setListView(list: List<String>): Builder  {
+            val adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, list)
+            listViewList.visibility = View.VISIBLE
+            listViewList.adapter = adapter
+            adapter.notifyDataSetChanged()
             return this
         }
 

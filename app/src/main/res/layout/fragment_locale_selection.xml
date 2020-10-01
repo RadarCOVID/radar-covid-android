@@ -9,13 +9,15 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinnerRegion"
@@ -32,6 +34,28 @@
             android:layout_height="wrap_content"
             android:spinnerMode="dialog" />
 
-    </FrameLayout>
+        <es.gob.radarcovid.common.view.LabelTextView
+            style="@style/TitleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/settings_language_title"
+            app:labelId="LOCALE_CHANGE_LANGUAGE" />
+
+        <include
+            android:id="@+id/layoutSelectLanguage"
+            layout="@layout/view_selection_button"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_height="60dp" />
+
+        <es.gob.radarcovid.common.view.LabelTextView
+            style="@style/TextSmallBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_paragraph_1"
+            app:labelId="SETTINGS_PARAGRAPH_1" />
+
+    </LinearLayout>
 
 </LinearLayout>
