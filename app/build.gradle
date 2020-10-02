@@ -21,7 +21,7 @@ android {
         applicationId "es.gob.radarcovid"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 6
+        versionCode 7
         versionName "1.0.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
