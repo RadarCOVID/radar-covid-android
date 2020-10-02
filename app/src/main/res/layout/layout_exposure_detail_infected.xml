@@ -43,7 +43,6 @@
         android:text="@string/exposure_detail_infected_what_to_do_subtitle"
         android:textColor="@color/red"
         android:textSize="20sp"
-        app:isHeading="true"
         app:labelId="EXPOSITION_EXPOSED_WHAT_TO_DO_DESCRIPTION" />
 
     <LinearLayout
@@ -162,7 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:text="@string/more_info_infected"
-        app:labelId="MORE_INFO_INFECTED"/>
+        app:labelId="MORE_INFO_INFECTED" />
 
     <es.gob.radarcovid.common.view.LabelTextView
         style="@style/TitleSmall"
