@@ -19,4 +19,6 @@ object Constants {
 
     const val SO_NAME = "Android"
 
+    const val DATE_FORMAT = "dd/MM/yyyy"
+
 }
