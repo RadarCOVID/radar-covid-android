@@ -19,6 +19,7 @@ import android.text.TextWatcher
 import android.view.View
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
+import es.gob.radarcovid.common.base.Constants.DATE_FORMAT
 import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
@@ -78,10 +79,10 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     private fun initViews() {
         imageButtonBack.contentDescription =
             "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
-                labelManager.getText(
-                    "ACC_BUTTON_BACK_TO",
-                    R.string.navigation_back_to
-                )
+            labelManager.getText(
+                "ACC_BUTTON_BACK_TO",
+                R.string.navigation_back_to
+            )
             }"
 
         buttonSend.setOnClickListener {
@@ -225,7 +226,7 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
         return if (!labelDay.isNullOrEmpty() && !labelMonth.isNullOrEmpty() && !labelYear.isNullOrEmpty()) {
             val date = SimpleDateFormat(
-                "dd/MM/yyyy",
+                DATE_FORMAT,
                 Locale.getDefault()
             ).parse("$labelDay/$labelMonth/$labelYear")
             date

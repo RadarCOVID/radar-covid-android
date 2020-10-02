@@ -10,9 +10,11 @@
 
 package es.gob.radarcovid.common.di.module
 
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import es.gob.radarcovid.BuildConfig
+import es.gob.radarcovid.common.base.Constants.DATE_FORMAT
 import es.gob.radarcovid.common.di.scope.PerApplication
 import es.gob.radarcovid.datamanager.api.ApiInterface
 import es.gob.radarcovid.datamanager.api.UserAgentInterceptor
@@ -27,6 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.net.URI
 import javax.inject.Named
+
 
 @Module
 class NetworkModule {
@@ -76,7 +79,13 @@ class NetworkModule {
     fun providesRetrofit(httpClient: OkHttpClient): Retrofit.Builder = Retrofit.Builder()
         .client(httpClient)
         .addConverterFactory(ScalarsConverterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder()
+                    .setDateFormat(DATE_FORMAT)
+                    .create()
+            )
+        )
 
     @Provides
     @PerApplication
