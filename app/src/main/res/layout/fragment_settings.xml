@@ -59,8 +59,9 @@
                 style="@style/TitleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/settings_language_title"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/settings_change_language"
                 app:labelId="LOCALE_CHANGE_LANGUAGE" />
 
             <fragment

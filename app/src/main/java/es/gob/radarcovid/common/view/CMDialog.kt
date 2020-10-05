@@ -38,7 +38,7 @@ object CMDialog {
             .create().apply {
                 window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             }
-        private val listViewList = view.findViewById<ListView>(R.id.listViewList)
+        private val listViewList = view.findViewById<ListView>(R.id.listView)
 
         fun setTitle(resId: Int): Builder = setTitle(context.getString(resId))
 
@@ -94,6 +94,9 @@ object CMDialog {
             val adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, list)
             listViewList.visibility = View.VISIBLE
             listViewList.adapter = adapter
+            listViewList.setOnClickListener() {
+
+            }
             adapter.notifyDataSetChanged()
             return this
         }

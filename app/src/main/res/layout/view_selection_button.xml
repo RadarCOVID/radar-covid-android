@@ -37,9 +37,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="25dp"
-        android:src="@drawable/ic_arrow_right_purple"
+        android:src="@drawable/ic_dropdown_arrow"
         app:layout_constraintBottom_toBottomOf="@id/textViewText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textViewText" />
+        app:layout_constraintTop_toTopOf="@id/textViewText"
+        app:tint="@color/purple_8D" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

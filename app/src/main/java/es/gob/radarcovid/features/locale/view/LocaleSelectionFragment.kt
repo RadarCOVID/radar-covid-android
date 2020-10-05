@@ -10,17 +10,14 @@
 
 package es.gob.radarcovid.features.locale.view
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.view.CMDialog
-import es.gob.radarcovid.common.view.HintSpinnerAdapter
+import es.gob.radarcovid.common.view.ListDialog
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionPresenter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionView
 import kotlinx.android.synthetic.main.fragment_locale_selection.*
@@ -49,42 +46,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
         initViews()
         presenter.viewReady()
     }
-
-    override fun setRegions(regions: List<String>) {
-        spinnerRegion.adapter =
-            HintSpinnerAdapter(
-                context!!,
-                labelManager.getText(
-                    "LOCALE_SELECTION_REGION_DEFAULT",
-                    R.string.locale_selection_region_default
-                ).toString(),
-                R.layout.row_spinner,
-                regions
-            )
-    }
-
-    override fun setSelectedRegionIndex(index: Int) {
-        spinnerRegion.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
-    }
-
-    override fun getSelectedRegionIndex(): Int =
-        spinnerRegion.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
-
-    override fun setLanguages(languages: List<String>) {
-        spinnerLanguage.adapter =
-            ArrayAdapter(
-                context!!,
-                R.layout.row_spinner,
-                languages
-            )
-    }
-
-    override fun setSelectedLanguageIndex(index: Int) {
-        spinnerLanguage.setSelection(index)
-    }
-
-    override fun getSelectedLanguageIndex(): Int =
-        spinnerLanguage.selectedItemPosition
 
     override fun reloadLabels() {
         labelManager.reload()
@@ -117,39 +78,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
             presenter.onSelectLanguageClick()
         }
 
-        spinnerRegion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-
-            }
-
-        }
-
-        spinnerLanguage.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                presenter.onLanguageSelectionChange(position)
-            }
-
-        }
     }
 
     fun restoreLocaleSettings() = presenter.restoreLocaleSettings()
@@ -158,16 +86,16 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
         layoutSelectLanguage.textViewText.text = language
     }
 
-    override fun showLanguageSelectionDialog(languages: List<String>) {
-        CMDialog.Builder(context!!)
-            .setMessage(
-//                labelManager.getText(
-//                    "LOCALE_CHANGE_WARNING",
-//                    R.string.locale_selection_warning_message
-//                ).toString()
-                "Selecciona un idioma"
+    override fun showLanguageSelectionDialog(languages: List<String>, index: Int) {
+        ListDialog.Builder(context!!)
+            .setTitle(
+                labelManager.getText(
+                    "SETTINGS_LANGUAGE_TITLE",
+                    R.string.settings_language_title
+                ).toString()
             )
-            .setListView(languages)
+            .setList(languages)
+            .setSelected(index)
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_ACCEPT_BUTTON",
@@ -175,7 +103,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                 ).toString()
             ) {
                 it.dismiss()
-                presenter.onLocaleChangeConfirm()
+                showLanguageChangeDialog()
             }
             .setNegativeButton(
                 labelManager.getText(
@@ -185,7 +113,16 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
             ) {
                 it.dismiss()
             }
-            .build()
+            .setOnItemClick(object : ListDialog.OnItemClickListener {
+                override fun onClickResult(
+                    dialog: ListDialog,
+                    obj: Any?,
+                    text: String,
+                    position: Int
+                ) {
+                    presenter.onLanguageSelectionChange(position)
+                }
+            })
             .show()
     }
 

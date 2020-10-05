@@ -248,7 +248,8 @@
 
     /********** Settings ************/
     <string name="settings_title">Ajustes</string>
-    <string name="settings_language_title">Idioma</string>
+    <string name="settings_change_language">Idioma</string>
+    <string name="settings_language_title">Selecciona un idioma</string>
     <string name="settings_paragraph_1">Permite seleccionar el idioma de consulta de RadarCOVID</string>
 
     /********** DP3T ************/
