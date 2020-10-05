@@ -11,13 +11,10 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    <item android:color ="@color/black" android:state_selected="true"/>-->
-<!--    <item android:color ="@color/black" android:state_pressed="true"/>-->
-<!--    <item android:color ="@color/purple_9C"/>-->
-    <item android:state_activated="true"  android:color="@color/black" />
+    <item android:state_activated="true"  android:color="@color/black"/>
     <item android:state_active="true" android:color="@color/black" />
     <item android:state_pressed="true" android:color="@color/black" />
-    <item android:state_selected="true" android:color="@color/black" />
+    <item android:state_selected="true" android:color="@color/black"/>
     <item android:state_focused="true" android:color="@color/black" />
     <item android:color="@color/purple_9C" />
 

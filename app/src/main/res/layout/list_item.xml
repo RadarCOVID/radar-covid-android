@@ -11,12 +11,12 @@
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@android:id/text1"
+    android:id="@+id/textViewListItem"
     android:gravity="center_vertical"
-    style="@style/TextRegular"
+    style="@style/TextNormal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textSize="20dp"
+    android:textSize="22dp"
     android:textColor="@color/list_selector"
     android:paddingBottom="10dp"
     tools:text="Castellano" />

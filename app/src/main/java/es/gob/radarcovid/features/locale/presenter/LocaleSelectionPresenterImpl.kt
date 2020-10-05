@@ -34,11 +34,6 @@ class LocaleSelectionPresenterImpl @Inject constructor(
         }
     }
 
-//    override fun onApplyButtonClick() {
-//        getLocaleInfoUseCase.setSelectedRegion(localeInfo.regions[view.getSelectedRegionIndex()].code)
-//        requestLabels()
-//    }
-
     override fun onLanguageSelectionChange(index: Int) {
         if (isLanguageChanged(index))
             selectedIndex = index

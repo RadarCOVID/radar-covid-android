@@ -20,13 +20,11 @@
 
     <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textViewText"
+        style="@style/TitleSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/muli_bold"
-        android:textColor="@color/black"
-        android:textSize="22sp"
         tools:text="Castellano"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

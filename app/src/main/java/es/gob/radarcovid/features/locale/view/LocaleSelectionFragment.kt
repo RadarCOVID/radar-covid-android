@@ -115,9 +115,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
             }
             .setOnItemClick(object : ListDialog.OnItemClickListener {
                 override fun onClickResult(
-                    dialog: ListDialog,
-                    obj: Any?,
-                    text: String,
                     position: Int
                 ) {
                     presenter.onLanguageSelectionChange(position)

@@ -62,6 +62,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="10dp"
                 android:text="@string/settings_change_language"
+                app:isHeading="true"
                 app:labelId="LOCALE_CHANGE_LANGUAGE" />
 
             <fragment
@@ -72,7 +73,7 @@
                 android:layout_marginBottom="20dp" />
 
             <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TextSmallBlack"
+                style="@style/TextNormal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
