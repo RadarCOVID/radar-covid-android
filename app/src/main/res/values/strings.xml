@@ -251,6 +251,8 @@
     <string name="settings_change_language">Idioma</string>
     <string name="settings_language_title">Selecciona un idioma</string>
     <string name="settings_paragraph_1">Permite seleccionar el idioma de consulta de RadarCOVID</string>
+    <string name="settings_list_action">cambiar</string>
+    <string name="settings_list_description">Lista desplegable</string>
 
     /********** DP3T ************/
 
