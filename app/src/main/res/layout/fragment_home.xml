@@ -186,7 +186,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/muli_bold"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="@string/radar_block_not_checked_description"
                     android:textColor="@color/red"
                     android:textSize="16sp"
