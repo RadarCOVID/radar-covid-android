@@ -95,7 +95,15 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     "LOCALE_CHANGE_WARNING",
                     R.string.locale_selection_warning_message
                 ).toString()
-            )
+            ).setNegativeButton(
+                labelManager.getText(
+                    "ALERT_CANCEL_BUTTON",
+                    R.string.cancel
+                ).toString()
+            ) {
+                spinnerLanguage.setSelection(0)
+                it.dismiss()
+            }
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_ACCEPT_BUTTON",
