@@ -60,15 +60,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
     override fun onResume() {
         super.onResume()
-        if (isAccessibilityEnabled()) {
-            codeEditText.visibility = View.INVISIBLE
-            editTextCodeAccessibility.visibility = View.VISIBLE
-            presenter.onCodeChanged(editTextCodeAccessibility.text.toString())
-        } else {
-            codeEditText.visibility = View.VISIBLE
-            editTextCodeAccessibility.visibility = View.GONE
-            presenter.onCodeChanged(codeEditText.getText())
-        }
+        presenter.onCodeChanged(editTextCodeAccessibility.text.toString())
+
     }
 
     override fun onPause() {
@@ -79,19 +72,17 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     private fun initViews() {
         imageButtonBack.contentDescription =
             "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
-            labelManager.getText(
-                "ACC_BUTTON_BACK_TO",
-                R.string.navigation_back_to
-            )
+                labelManager.getText(
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
             }"
 
         buttonSend.setOnClickListener {
             hideKeyBoard()
             presenter.onSendButtonClick()
         }
-        codeEditText.textChangedListener = {
-            presenter.onCodeChanged(it)
-        }
+
         editTextCodeAccessibility.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 presenter.onCodeChanged(s.toString())
@@ -154,10 +145,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun getReportCode(): String =
-        if (isAccessibilityEnabled())
-            editTextCodeAccessibility.text.toString()
-        else
-            codeEditText.getText()
+        editTextCodeAccessibility.text.toString()
+
 
     override fun setButtonSendEnabled(enabled: Boolean) {
         buttonSend.isEnabled = enabled
