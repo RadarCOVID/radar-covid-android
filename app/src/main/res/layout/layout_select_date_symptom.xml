@@ -14,65 +14,62 @@
     android:id="@+id/layout_select_date"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layoutDay"
-        android:layout_width="0dp"
+        android:id="@+id/layoutLabels"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="25"
-        android:importantForAccessibility="yes"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <es.gob.radarcovid.common.view.LabelTextView
             style="@style/TitleXSmall"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="25"
             android:gravity="center"
             android:text="@string/covid_report_date_day"
             android:textSize="16sp"
             app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_DAY" />
 
         <es.gob.radarcovid.common.view.LabelTextView
-            android:id="@+id/labelDay"
             style="@style/TitleXSmall"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/shape_rounded_border_accent"
-            android:gravity="center"
-            android:hint="@string/covid_report_hint_day_month"
-            android:textColor="@android:color/black"
-            android:textColorHint="@android:color/black"
-            android:textSize="16sp" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layoutMonth"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_weight="25"
-        android:importantForAccessibility="yes"
-        android:orientation="vertical">
-
-        <es.gob.radarcovid.common.view.LabelTextView
-            style="@style/TitleXSmall"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="25"
             android:gravity="center"
             android:text="@string/covid_report_date_month"
             android:textSize="16sp"
             app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_MONTH" />
 
         <es.gob.radarcovid.common.view.LabelTextView
-            android:id="@+id/labelMonth"
             style="@style/TitleXSmall"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/covid_report_date_year"
+            android:textSize="16sp"
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_YEAR" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutInputDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <es.gob.radarcovid.common.view.LabelTextView
+            android:id="@+id/labelDay"
+            style="@style/TitleXSmall"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="11dp"
+            android:layout_weight="25"
             android:background="@drawable/shape_rounded_border_accent"
             android:gravity="center"
             android:hint="@string/covid_report_hint_day_month"
@@ -80,39 +77,35 @@
             android:textColorHint="@android:color/black"
             android:textSize="16sp" />
 
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layoutYear"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="50"
-        android:importantForAccessibility="yes"
-        android:orientation="vertical">
-
         <es.gob.radarcovid.common.view.LabelTextView
+            android:id="@+id/labelMonth"
             style="@style/TitleXSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="25"
+            android:background="@drawable/shape_rounded_border_accent"
             android:gravity="center"
-            android:text="@string/covid_report_date_year"
-            android:textSize="16sp"
-            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_YEAR" />
+            android:hint="@string/covid_report_hint_day_month"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="16sp" />
 
         <es.gob.radarcovid.common.view.LabelTextView
             android:id="@+id/labelYear"
             style="@style/TitleXSmall"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="11dp"
+            android:layout_weight="50"
             android:background="@drawable/shape_rounded_border_accent"
             android:gravity="center"
             android:hint="@string/covid_report_hint_year"
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/black"
             android:textSize="16sp" />
-
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
