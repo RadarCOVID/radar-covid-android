@@ -228,7 +228,7 @@ class HomeFragment : BaseFragment(), HomeView {
             )
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.muli_light),
+                ResourcesCompat.getFont(context!!, R.font.roboto_light),
                 Typeface.NORMAL
             )
         }
@@ -326,7 +326,7 @@ class HomeFragment : BaseFragment(), HomeView {
             )
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.muli_light),
+                ResourcesCompat.getFont(context!!, R.font.roboto_light),
                 Typeface.NORMAL
             )
         } else {
@@ -340,7 +340,7 @@ class HomeFragment : BaseFragment(), HomeView {
             )
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.red))
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.muli_bold),
+                ResourcesCompat.getFont(context!!, R.font.roboto_light),
                 Typeface.NORMAL
             )
         }
