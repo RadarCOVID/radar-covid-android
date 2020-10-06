@@ -340,7 +340,7 @@ class HomeFragment : BaseFragment(), HomeView {
             )
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.red))
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.roboto_light),
+                ResourcesCompat.getFont(context!!, R.font.roboto_bold),
                 Typeface.NORMAL
             )
         }
