@@ -202,11 +202,11 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                 val realMonth = monthOfYear + 1
-                layoutSelectDate.layoutDay.labelDay.text =
+                layoutSelectDate.layoutInputDate.labelDay.text =
                     if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
-                layoutSelectDate.layoutMonth.labelMonth.text =
+                layoutSelectDate.layoutInputDate.labelMonth.text =
                     if (realMonth < 10) "0$realMonth" else "$realMonth"
-                layoutSelectDate.layoutYear.labelYear.text = year.toString()
+                layoutSelectDate.layoutInputDate.labelYear.text = year.toString()
             }
 
         val datePicker = DatePickerDialog(this, dateSetListener, year, month, day)
@@ -220,9 +220,9 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun getDateSelected(): Date? {
-        val labelDay = layoutSelectDate.layoutDay.labelDay.text
-        val labelMonth = layoutSelectDate.layoutMonth.labelMonth.text
-        val labelYear = layoutSelectDate.layoutYear.labelYear.text
+        val labelDay = layoutSelectDate.layoutInputDate.labelDay.text
+        val labelMonth = layoutSelectDate.layoutInputDate.labelMonth.text
+        val labelYear = layoutSelectDate.layoutInputDate.labelYear.text
 
         return if (!labelDay.isNullOrEmpty() && !labelMonth.isNullOrEmpty() && !labelYear.isNullOrEmpty()) {
             val date = SimpleDateFormat(
