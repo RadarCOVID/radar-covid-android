@@ -308,6 +308,7 @@
     <string name="more_info_health_reported"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/ciudadania.htm"><b>Más información</b></a></string>
 
     <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
 
     <string name="button_covid_report">Comunica tu positivo Covid</string>
 
