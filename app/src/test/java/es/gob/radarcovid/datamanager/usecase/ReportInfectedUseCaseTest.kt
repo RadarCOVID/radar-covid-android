@@ -51,14 +51,14 @@ class ReportInfectedUseCaseTest {
 
     @Test
     fun assertReportUpstreamCompletedNormally() {
-        reportInfectedUseCase.reportInfected("").test()
+        reportInfectedUseCase.reportInfected("", null).test()
             .assertResult()
     }
 
     @Test
     fun onReportInfectedThenVerifyCode() {
 
-        reportInfectedUseCase.reportInfected("").subscribe()
+        reportInfectedUseCase.reportInfected("", null).subscribe()
 
         verify(apiRepository).verifyCode(any())
 
@@ -67,7 +67,7 @@ class ReportInfectedUseCaseTest {
     @Test
     fun onCodeVerifiedThenGenerateOnsetDate() {
 
-        reportInfectedUseCase.reportInfected("").subscribe()
+        reportInfectedUseCase.reportInfected("", null).subscribe()
 
         inOrder(apiRepository, jwtTokenUtils).apply {
             verify(apiRepository).verifyCode(any())
@@ -79,7 +79,7 @@ class ReportInfectedUseCaseTest {
     @Test
     fun onReportInfectedThenNotifyInfected() {
 
-        reportInfectedUseCase.reportInfected("").subscribe()
+        reportInfectedUseCase.reportInfected("", null).subscribe()
 
         verify(contactTracingRepository).notifyInfected(any(), any())
 
@@ -88,7 +88,7 @@ class ReportInfectedUseCaseTest {
     @Test
     fun onNotifyInfectedThenSaveTheInfectionReportDate() {
 
-        reportInfectedUseCase.reportInfected("").subscribe()
+        reportInfectedUseCase.reportInfected("", null).subscribe()
 
         inOrder(contactTracingRepository, preferencesRepository).apply {
             verify(contactTracingRepository).notifyInfected(any(), any())
