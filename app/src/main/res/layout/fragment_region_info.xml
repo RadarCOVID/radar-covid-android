@@ -18,6 +18,7 @@
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinnerRegion"
         style="@style/Spinner"
+        android:paddingEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dialog" />
