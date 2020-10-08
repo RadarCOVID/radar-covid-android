@@ -20,7 +20,7 @@ import org.dpppt.android.sdk.DP3T
 import java.security.SecureRandom
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-
+import kotlin.math.ln
 
 private const val FACTOR_HOUR_MILLIS = 60 * 60 * 1000L
 private const val FACTOR_DAY_MILLIS: Long = 24 * FACTOR_HOUR_MILLIS
@@ -78,8 +78,6 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
                 .enqueueUniqueWork(TAG, existingWorkPolicy, work)
         }
 
-        //private fun getRandomDelay(): Long = Random.nextLong(180, 360)
-
     }
 
     @Inject
@@ -114,7 +112,7 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
         override fun syncInterval(): Long {
             val newDelayDays: Double =
                 ExponentialDistribution.sampleFromStandard() / SAMPLING_RATE
-            return (newDelayDays * FACTOR_DAY_MILLIS) as Long
+            return (newDelayDays * FACTOR_DAY_MILLIS).toLong()
         }
 
         override fun currentTimeMillis(): Long {
@@ -125,7 +123,7 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
     object ExponentialDistribution {
         fun sampleFromStandard(): Double {
             val random = SecureRandom()
-            return -Math.log(1.0 - random.nextDouble())
+            return -ln(1.0 - random.nextDouble())
         }
     }
 
