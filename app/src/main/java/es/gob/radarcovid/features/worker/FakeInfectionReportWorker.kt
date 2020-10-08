@@ -70,7 +70,7 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
             val work =
                 OneTimeWorkRequest
                     .Builder(FakeInfectionReportWorker::class.java)
-                    .setInitialDelay(executionDelayDays, TimeUnit.MINUTES)
+                    .setInitialDelay(executionDelayDays, TimeUnit.MILLISECONDS)
                     .setConstraints(constraints)
                     .setInputData(Data.Builder().putLong(KEY_T_DUMMY, tDummy).build())
                     .build()
