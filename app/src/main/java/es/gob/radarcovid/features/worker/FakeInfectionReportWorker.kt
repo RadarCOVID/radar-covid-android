@@ -13,12 +13,21 @@ package es.gob.radarcovid.features.worker
 import android.content.Context
 import androidx.work.*
 import dagger.android.HasAndroidInjector
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.ReportFakeInfectionUseCase
 import org.dpppt.android.sdk.BuildConfig
 import org.dpppt.android.sdk.DP3T
+import java.security.SecureRandom
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import kotlin.random.Random
+
+
+private const val FACTOR_HOUR_MILLIS = 60 * 60 * 1000L
+private const val FACTOR_DAY_MILLIS: Long = 24 * FACTOR_HOUR_MILLIS
+private const val MAX_DELAY_HOURS: Long = 48
+private val SAMPLING_RATE =
+    if (BuildConfig.DEBUG) 1.0f else 0.2f
+private const val KEY_T_DUMMY = "KEY_T_DUMMY"
 
 class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
@@ -31,43 +40,93 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
 
     companion object {
 
+        private var clock: Clock = ClockImpl()
+
         private const val TAG = "FakeInfectionReportWorker"
 
-        fun start(context: Context) {
-            start(context, getRandomDelay(), ExistingWorkPolicy.KEEP)
+        fun start(context: Context, preferencesRepository: PreferencesRepository) {
+            var tDummy: Long = preferencesRepository.getTDummy()
+            if (tDummy == -1L) {
+                tDummy = clock.currentTimeMillis() + clock.syncInterval()
+                preferencesRepository.setTDummy(tDummy)
+            }
+            start(context, tDummy, ExistingWorkPolicy.KEEP)
         }
 
         private fun start(
             context: Context,
-            delayInMinutes: Long,
+            tDummy: Long,
             existingWorkPolicy: ExistingWorkPolicy
         ) {
+
+            val now = clock.currentTimeMillis()
+            val executionDelay = 0L.coerceAtLeast(tDummy - now)
+            val executionDelayDays =
+                executionDelay / FACTOR_DAY_MILLIS
+
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .build()
             val work =
                 OneTimeWorkRequest
                     .Builder(FakeInfectionReportWorker::class.java)
-                    .setInitialDelay(delayInMinutes, TimeUnit.MINUTES)
+                    .setInitialDelay(executionDelayDays, TimeUnit.MINUTES)
                     .setConstraints(constraints)
+                    .setInputData(Data.Builder().putLong(KEY_T_DUMMY, tDummy).build())
                     .build()
             WorkManager.getInstance(context)
                 .enqueueUniqueWork(TAG, existingWorkPolicy, work)
         }
 
-        private fun getRandomDelay(): Long = Random.nextLong(180, 360)
+        //private fun getRandomDelay(): Long = Random.nextLong(180, 360)
 
     }
 
     @Inject
     lateinit var reportFakeInfectionUseCase: ReportFakeInfectionUseCase
 
+    @Inject
+    lateinit var preferencesRepository: PreferencesRepository
+
     override fun doWork(): Result {
-        if (BuildConfig.DEBUG)
-            DP3T.addWorkerStartedToHistory(applicationContext, TAG)
-        reportFakeInfectionUseCase.reportFakeInfection().subscribe()
-        start(applicationContext, getRandomDelay(), ExistingWorkPolicy.APPEND)
+        val now = clock.currentTimeMillis()
+        var tDummy = inputData.getLong(KEY_T_DUMMY, now)
+        while (tDummy < now) {
+            if (tDummy >= now - FACTOR_HOUR_MILLIS * MAX_DELAY_HOURS) {
+                if (BuildConfig.DEBUG)
+                    DP3T.addWorkerStartedToHistory(applicationContext, TAG)
+                reportFakeInfectionUseCase.reportFakeInfection().subscribe()
+            }
+            tDummy += clock.syncInterval();
+            preferencesRepository.setTDummy(tDummy)
+        }
+
+        start(applicationContext, tDummy, ExistingWorkPolicy.APPEND)
         return Result.success()
     }
-    
+
+    interface Clock {
+        fun syncInterval(): Long
+        fun currentTimeMillis(): Long
+    }
+
+    class ClockImpl : Clock {
+        override fun syncInterval(): Long {
+            val newDelayDays: Double =
+                ExponentialDistribution.sampleFromStandard() / SAMPLING_RATE
+            return (newDelayDays * FACTOR_DAY_MILLIS) as Long
+        }
+
+        override fun currentTimeMillis(): Long {
+            return System.currentTimeMillis()
+        }
+    }
+
+    object ExponentialDistribution {
+        fun sampleFromStandard(): Double {
+            val random = SecureRandom()
+            return -Math.log(1.0 - random.nextDouble())
+        }
+    }
+
 }
