@@ -71,3 +71,6 @@ app/release/output.json
 .DS_Store
 
 environment.properties
+
+node_modules
+package-lock.json
