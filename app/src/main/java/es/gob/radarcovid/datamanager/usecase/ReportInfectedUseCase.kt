@@ -29,11 +29,11 @@ class ReportInfectedUseCase @Inject constructor(
     private val jwtTokenUtils: JwtTokenUtils
 ) {
 
-    fun reportInfected(reportCode: String): Completable =
+    fun reportInfected(reportCode: String, date: Date?): Completable =
         if (reportCode == ReportFakeInfectionUseCase.FAKE_REPORT_CODE) {
             Completable.create { it.onError(GenericRequestException()) }
         } else {
-            getVerifyToken(reportCode).flatMapCompletable {
+            getVerifyToken(reportCode, date).flatMapCompletable {
                 contactTracingRepository.notifyInfected(it.token, jwtTokenUtils.getOnset(it.token))
             }.concatWith {
                 preferencesRepository.setInfectionReportDate(Date())
@@ -41,9 +41,9 @@ class ReportInfectedUseCase @Inject constructor(
             }
         }
 
-    private fun getVerifyToken(reportCode: String): Observable<ResponseToken> {
+    private fun getVerifyToken(reportCode: String, date: Date?): Observable<ResponseToken> {
         return Observable.create { emitter ->
-            val result = apiRepository.verifyCode(RequestVerifyCode(null, reportCode))
+            val result = apiRepository.verifyCode(RequestVerifyCode(date, reportCode))
 
             if (result.isLeft()) {
                 emitter.onError(result.left().get())

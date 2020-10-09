@@ -184,8 +184,9 @@
     <string name="covid_report_title">MI DIAGNÓSTICO</string>
     <string name="covid_report_subtitle">Envía tu diagnóstico COVID positivo</string>
     <string name="covid_report_p1">Enviando tu diagnóstico anónimo COVID-19, estás contribuyendo a detener la propagación del virus.</string>
-    <string name="covid_report_p2">Gracias por ayudarnos a cuidar a los demás.</string>
-    <string name="covid_report_p3">Tu información está segura y será tratada siempre anónimamente</string>
+    <string name="covid_report_p2">Gracias por ayudarnos a cuidar a los demás. Tu información está segura y será tratada siempre anónimamente.</string>
+    <string name="covid_report_p3">Fecha de inicio de síntomas o de prueba PCR positiva</string>
+    <string name="covid_report_p4">Para poder avisar a las personas que han estado en contacto contigo mientras podías transmitir el coronavirus, por favor, introduce la fecha en la que comenzaste a tener síntomas o, si no los has tenido, la fecha en la que te realizaron la prueba PCR. Si no conoces ninguna de estas dos fechas, déjalo en blanco.</string>
     <string name="covid_report_qr_button">Escanear QR</string>
     <string name="covid_report_code_hint_title">Código de diagnóstico</string>
     <string name="covid_report_code_hint_subtitle">Introduce el código que te han enviado</string>
@@ -198,6 +199,11 @@
     <string name="covid_report_abort_send_warning_button">Cancelar envío</string>
     <string name="covid_report_error">Se ha producido un error al enviar diagnóstico</string>
     <string name="covid_report_edit_text_hint">Código de diagnóstico</string>
+    <string name="covid_report_date_day">Día</string>
+    <string name="covid_report_date_month">Mes</string>
+    <string name="covid_report_date_year">Año</string>
+    <string name="covid_report_hint_day_month">- -</string>
+    <string name="covid_report_hint_year">- - - -</string>
 
     /********** Network Warning Dialog ************/
 
@@ -311,6 +317,7 @@
     <string name="more_info_health_reported"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/ciudadania.htm"><b>Más información</b></a></string>
 
     <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
 
     <string name="button_covid_report">Comunica tu positivo Covid</string>
 

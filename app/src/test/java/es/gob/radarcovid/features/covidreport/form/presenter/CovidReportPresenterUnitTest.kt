@@ -46,7 +46,7 @@ class CovidReportPresenterUnitTest {
 
     @Test
     fun onReportSuccessTest() {
-        whenever(reportInfectedUseCase.reportInfected("")).thenReturn(Completable.complete())
+        whenever(reportInfectedUseCase.reportInfected("", null)).thenReturn(Completable.complete())
         presenter.onSendButtonClick()
 
         verify(view).getReportCode()
@@ -58,7 +58,7 @@ class CovidReportPresenterUnitTest {
 
     @Test
     fun onReportDefaultErrorTest() {
-        whenever(reportInfectedUseCase.reportInfected(""))
+        whenever(reportInfectedUseCase.reportInfected("", null))
             .thenReturn(Completable.error(Exception()))
         presenter.onSendButtonClick()
 
@@ -67,7 +67,7 @@ class CovidReportPresenterUnitTest {
 
     @Test
     fun onReportNetworkErrorTest() {
-        whenever(reportInfectedUseCase.reportInfected(""))
+        whenever(reportInfectedUseCase.reportInfected("", null))
             .thenReturn(Completable.error(NetworkUnavailableException()))
         presenter.onSendButtonClick()
 
