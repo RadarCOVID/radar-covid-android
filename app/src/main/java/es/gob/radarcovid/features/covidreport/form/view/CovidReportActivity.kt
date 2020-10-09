@@ -60,15 +60,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
     override fun onResume() {
         super.onResume()
-        if (isAccessibilityEnabled()) {
-            codeEditText.visibility = View.INVISIBLE
-            editTextCodeAccessibility.visibility = View.VISIBLE
-            presenter.onCodeChanged(editTextCodeAccessibility.text.toString())
-        } else {
-            codeEditText.visibility = View.VISIBLE
-            editTextCodeAccessibility.visibility = View.GONE
-            presenter.onCodeChanged(codeEditText.getText())
-        }
+        presenter.onCodeChanged(editTextCodeAccessibility.text.toString())
+
     }
 
     override fun onPause() {
@@ -79,19 +72,17 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     private fun initViews() {
         imageButtonBack.contentDescription =
             "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
-            labelManager.getText(
-                "ACC_BUTTON_BACK_TO",
-                R.string.navigation_back_to
-            )
+                labelManager.getText(
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
             }"
 
         buttonSend.setOnClickListener {
             hideKeyBoard()
             presenter.onSendButtonClick()
         }
-        codeEditText.textChangedListener = {
-            presenter.onCodeChanged(it)
-        }
+
         editTextCodeAccessibility.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 presenter.onCodeChanged(s.toString())
@@ -154,10 +145,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun getReportCode(): String =
-        if (isAccessibilityEnabled())
-            editTextCodeAccessibility.text.toString()
-        else
-            codeEditText.getText()
+        editTextCodeAccessibility.text.toString()
+
 
     override fun setButtonSendEnabled(enabled: Boolean) {
         buttonSend.isEnabled = enabled
@@ -202,11 +191,11 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                 val realMonth = monthOfYear + 1
-                layoutSelectDate.layoutDay.labelDay.text =
+                layoutSelectDate.layoutInputDate.labelDay.text =
                     if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
-                layoutSelectDate.layoutMonth.labelMonth.text =
+                layoutSelectDate.layoutInputDate.labelMonth.text =
                     if (realMonth < 10) "0$realMonth" else "$realMonth"
-                layoutSelectDate.layoutYear.labelYear.text = year.toString()
+                layoutSelectDate.layoutInputDate.labelYear.text = year.toString()
             }
 
         val datePicker = DatePickerDialog(this, dateSetListener, year, month, day)
@@ -220,9 +209,9 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     }
 
     override fun getDateSelected(): Date? {
-        val labelDay = layoutSelectDate.layoutDay.labelDay.text
-        val labelMonth = layoutSelectDate.layoutMonth.labelMonth.text
-        val labelYear = layoutSelectDate.layoutYear.labelYear.text
+        val labelDay = layoutSelectDate.layoutInputDate.labelDay.text
+        val labelMonth = layoutSelectDate.layoutInputDate.labelMonth.text
+        val labelYear = layoutSelectDate.layoutInputDate.labelYear.text
 
         return if (!labelDay.isNullOrEmpty() && !labelMonth.isNullOrEmpty() && !labelYear.isNullOrEmpty()) {
             val date = SimpleDateFormat(

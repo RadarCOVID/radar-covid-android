@@ -36,7 +36,7 @@
     </style>
 
     <style name="Title">
-        <item name="fontFamily">@font/muli_bold</item>
+        <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -66,7 +66,7 @@
 
     <style name="TitleExtraBold">
         <item name="android:textStyle">bold</item>
-        <item name="fontFamily">@font/muli_extrabold</item>
+        <item name="fontFamily">@font/roboto_bold</item>
     </style>
 
     <style name="TitleExtraBoldSmall" parent="TitleExtraBold">
@@ -75,38 +75,37 @@
     </style>
 
     <style name="TitleEnumPurple">
-        <item name="android:fontFamily">@font/muli_light</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/purple_9C</item>
     </style>
 
     <style name="TextRegular">
         <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">@font/muli_regular</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black_26</item>
     </style>
 
     <style name="TextSmall">
-        <item name="android:fontFamily">@font/muli_light</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextSmallBlack">
-        <item name="android:fontFamily">@font/muli_light</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextNormal">
-        <item name="fontFamily">@font/muli_light</item>
+        <item name="fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
 
     <style name="TextSemibold">
-        <item name="fontFamily">@font/muli_semibold</item>
+        <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
@@ -128,13 +127,13 @@
     </style>
 
     <style name="TextDialogDescription">
-        <item name="fontFamily">@font/muli_light</item>
+        <item name="fontFamily">@font/roboto_light</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black_26</item>
     </style>
 
     <style name="Button">
-        <item name="fontFamily">@font/muli_semibold</item>
+        <item name="fontFamily">@font/roboto_medium</item>
         <item name="textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -149,7 +148,7 @@
 
     <style name="ButtonSecondary" parent="Button">
         <item name="android:gravity">center</item>
-        <item name="fontFamily">@font/muli_regular</item>
+        <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@drawable/shape_rounded_border_accent</item>
     </style>
@@ -174,15 +173,15 @@
     <style name="EditTextCodeAccesibility" parent="TextSemibold">
         <item name="android:clickable">true</item>
         <item name="android:lines">1</item>
+        <item name="android:paddingStart">16sp</item>
         <item name="android:maxLength">12</item>
         <item name="android:minHeight">60dp</item>
-        <item name="android:gravity">center</item>
+        <item name="android:gravity">start|center</item>
         <item name="android:textSize">20sp</item>
         <item name="android:inputType">number</item>
         <item name="android:digits">0123456789</item>
         <item name="android:singleLine">true</item>
-        <item name="android:backgroundTint">@color/gray_f0</item>
-        <item name="android:background">@drawable/shape_rounded_corners_gray</item>
+        <item name="android:background">@drawable/shape_rounded_border_accent</item>
     </style>
 
     <style name="ScrollVertical">
