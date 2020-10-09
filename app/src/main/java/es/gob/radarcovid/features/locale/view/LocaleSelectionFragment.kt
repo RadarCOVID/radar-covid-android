@@ -64,7 +64,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     R.string.cancel
                 ).toString()
             ) {
-                spinnerLanguage.setSelection(0)
+                presenter.restoreLocaleSettings()
                 it.dismiss()
             }
             .setPositiveButton(
