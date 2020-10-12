@@ -284,7 +284,7 @@
 
     <string name="navigation_back_to">Atrás</string>
 
-    <string name="dialog_close_button_description">Cerrar</string>
+    <string name="dialog_close_button_description">Cancelar</string>
 
     <string name="warning_need_update_title">Actualiza &appname;</string>
     <string name="warning_need_update_message">Para poder seguir utilizando &appname; es necesario que actualices la aplicación.</string>
@@ -312,7 +312,7 @@
     <string name="button_covid_report">Comunica tu positivo Covid</string>
 
     <string name="warning_exit_application_message">¿Está seguro de que desea salir de la aplicación?</string>
-    <string name="warning_exit_application_button">Confirmar</string>
+    <string name="warning_exit_application_button">Salir</string>
     <string name="warning_need_browser_message">Necesitas tener instalado un navegador.</string>
 
     <plurals name="days">
