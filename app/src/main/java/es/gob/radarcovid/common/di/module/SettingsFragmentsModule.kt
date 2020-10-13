@@ -16,12 +16,10 @@ import es.gob.radarcovid.common.di.scope.PerSubFragment
 import es.gob.radarcovid.features.locale.di.LocaleSelectionModule
 import es.gob.radarcovid.features.locale.view.LocaleSelectionFragment
 
-
 @Module
-abstract class HelplineFragmentsModule {
+abstract class SettingsFragmentsModule {
 
     @PerSubFragment
     @ContributesAndroidInjector(modules = [LocaleSelectionModule::class])
     abstract fun bindsLocaleSelectionFragment(): LocaleSelectionFragment
-
 }

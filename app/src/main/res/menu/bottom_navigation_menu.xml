@@ -25,4 +25,9 @@
         android:enabled="true"
         android:icon="@drawable/ic_helpline"
         android:title="@string/title_helpline" />
+    <item
+        android:id="@+id/menuItemSettings"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/title_settings" />
 </menu>

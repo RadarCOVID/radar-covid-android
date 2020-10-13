@@ -16,6 +16,7 @@ import es.gob.radarcovid.features.helpline.view.HelplineFragment
 import es.gob.radarcovid.features.home.view.HomeFragment
 import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.mydata.view.MyDataFragment
+import es.gob.radarcovid.features.settings.view.SettingsFragment
 import javax.inject.Inject
 
 class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity) : MainRouter {
@@ -41,6 +42,14 @@ class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity
             .supportFragmentManager
             .beginTransaction()
             .replace(R.id.wrapperContent, HelplineFragment.newInstance())
+            .commit()
+    }
+
+    override fun navigateToSettings() {
+        activity
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.wrapperContent, SettingsFragment.newInstance())
             .commit()
     }
 

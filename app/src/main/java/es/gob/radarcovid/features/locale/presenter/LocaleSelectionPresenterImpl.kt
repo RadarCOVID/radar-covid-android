@@ -26,39 +26,38 @@ class LocaleSelectionPresenterImpl @Inject constructor(
     private val localeInfo: LocaleInfo = getLocaleInfoUseCase.getLocaleInfo()
     private val defaultSelectedIndex: Int =
         localeInfo.languages.indexOfFirst { it.code == getLocaleInfoUseCase.getSelectedLanguage() }
+    private var selectedIndex: Int = defaultSelectedIndex
 
     override fun viewReady() {
-        view.setRegions(localeInfo.regions.map { it.name })
-        view.setLanguages(localeInfo.languages.map { it.name })
-        if(defaultSelectedIndex > -1)
-            view.setSelectedLanguageIndex(defaultSelectedIndex)
-    }
-
-    override fun onApplyButtonClick() {
-        getLocaleInfoUseCase.setSelectedRegion(localeInfo.regions[view.getSelectedRegionIndex()].code)
-        requestLabels()
+        if(defaultSelectedIndex > -1) {
+            view.setLanguage(localeInfo.languages[defaultSelectedIndex].name)
+        }
     }
 
     override fun onLanguageSelectionChange(index: Int) {
-        if (isLanguageChanged())
-            view.showLanguageChangeDialog()
+        if (isLanguageChanged(index))
+            selectedIndex = index
     }
+
+    override fun isLanguageChanged(index: Int): Boolean =
+        defaultSelectedIndex != index
 
     override fun onLocaleChangeConfirm() {
         applyLocaleSettings()
     }
 
-    override fun isLanguageChanged(): Boolean =
-        defaultSelectedIndex != view.getSelectedLanguageIndex()
-
     override fun applyLocaleSettings() {
-        val selectedLanguage = localeInfo.languages[view.getSelectedLanguageIndex()].code
+        val selectedLanguage = localeInfo.languages[selectedIndex].code
         getLocaleInfoUseCase.setSelectedLanguage(selectedLanguage)
         router.restartApplication()
     }
 
     override fun restoreLocaleSettings() {
-        view.setSelectedLanguageIndex(defaultSelectedIndex)
+        view.setLanguage(localeInfo.languages[defaultSelectedIndex].name)
+    }
+
+    override fun onSelectLanguageClick() {
+        view.showLanguageSelectionDialog(localeInfo.languages.map { it.name }, defaultSelectedIndex)
     }
 
     private fun requestLabels() {

@@ -26,8 +26,8 @@ class LabelConstraintLayout : ConstraintLayout {
 
     @Inject
     lateinit var labelManager: LabelManager
-    private var actionDescriptionLabelId: String? = null
-    private var actionDescription: String? = null
+
+    private var customContentDescription: String? = null
 
     constructor(context: Context) : super(context)
 
@@ -54,14 +54,16 @@ class LabelConstraintLayout : ConstraintLayout {
                 0, 0
             ).apply {
                 try {
-                    actionDescriptionLabelId =
+                    val actionDescriptionLabelId =
                         getString(R.styleable.LabelConstraintLayout_actionDescriptionLabelId)
-                    val defaultText = getText(R.styleable.LabelConstraintLayout_actionDescription)
-                    defaultText?.let {
-                        actionDescription =
-                            labelManager.getText(actionDescriptionLabelId, it).toString()
-                        actionDescription?.let { desc -> setAccessibilityAction(desc) }
-                    }
+                    val defaultActionDescription =
+                        getText(R.styleable.LabelConstraintLayout_actionDescription) ?: ""
+                    val actionDescription =
+                        labelManager.getText(actionDescriptionLabelId, defaultActionDescription)
+                            .toString()
+                    if (actionDescription.isNotEmpty())
+                        setAccessibilityAction(actionDescription)
+
                 } finally {
                     recycle()
                 }

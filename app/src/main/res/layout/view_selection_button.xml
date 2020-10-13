@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<es.gob.radarcovid.common.view.LabelConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/shape_rounded_border_accent"
+    android:gravity="center_vertical"
+    app:actionDescription="@string/settings_list_action"
+    app:actionDescriptionLabelId="ACC_LIST_ACTION">
+
+    <es.gob.radarcovid.common.view.LabelTextView
+        android:id="@+id/textViewText"
+        style="@style/TitleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        tools:text="Castellano"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/ic_dropdown_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/textViewText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textViewText"
+        app:tint="@color/purple_8D" />
+
+</es.gob.radarcovid.common.view.LabelConstraintLayout>

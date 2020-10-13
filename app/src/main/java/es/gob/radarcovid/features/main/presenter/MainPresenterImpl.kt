@@ -42,6 +42,10 @@ class MainPresenterImpl @Inject constructor(
         router.navigateToHelpline()
     }
 
+    override fun onSettingsButtonClick() {
+        router.navigateToSettings()
+    }
+
     override fun onBackPressed() {
         view.showExitConfirmationDialog()
     }

@@ -9,29 +9,15 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerRegion"
-            style="@style/Spinner"
+        <include
+            android:id="@+id/layoutSelectLanguage"
+            layout="@layout/view_selection_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dialog"
-            android:visibility="gone" />
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerLanguage"
-            style="@style/Spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dialog" />
-
-    </FrameLayout>
+            android:layout_height="60dp" />
 
 </LinearLayout>

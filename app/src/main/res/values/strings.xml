@@ -64,6 +64,7 @@
     <string name="title_home">Radar</string>
     <string name="title_mydata">Mis datos</string>
     <string name="title_helpline">Helpline</string>
+    <string name="title_settings">Ajustes</string>
 
     /********** Healing Info Dialog ************/
 
@@ -250,6 +251,14 @@
     <string name="helpline_info_web_url">https://www.radarcovid.gob.es/</string>
     <string name="helpline_other_web_title"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/home.htm">Otros enlaces</a></string>
     <string name="helpline_other_web_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/home.htm</string>
+
+    /********** Settings ************/
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_change_language">Idioma</string>
+    <string name="settings_language_title">Selecciona un idioma</string>
+    <string name="settings_paragraph_1">Permite seleccionar el idioma de consulta de RadarCOVID</string>
+    <string name="settings_list_action">cambiar</string>
+    <string name="settings_list_description">Lista desplegable</string>
 
     /********** DP3T ************/
 
