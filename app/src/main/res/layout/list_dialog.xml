@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:layout_marginEnd="13dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="30dp"
         android:visibility="gone"
         tools:text="title"
         tools:visibility="visible" />
@@ -38,7 +38,7 @@
         android:divider="@null"
         android:choiceMode="singleChoice"
         android:listSelector="@android:color/transparent"
-        android:visibility="gone" />
+        tools:layout_height="400dp"/>
 
     <Button
         android:id="@+id/buttonOk"
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="10dp"
         android:textColor="@color/white"
