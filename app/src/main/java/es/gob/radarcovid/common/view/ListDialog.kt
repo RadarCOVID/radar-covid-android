@@ -42,10 +42,14 @@ class ListDialog(context: Context) : Dialog(context) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                 val view = super.getView(position, convertView, parent)
                 val textView = view.findViewById(R.id.textViewListItem) as TextView
-                if (position == selectedIndex)
+                if (position == selectedIndex) {
                     textView.setTypeface(textView.typeface, Typeface.BOLD)
-                else
+                    textView.setBackgroundResource(R.color.purple)
+                }
+                else {
                     textView.typeface = Typeface.create(textView.typeface, Typeface.NORMAL)
+                    textView.setBackgroundResource(android.R.color.transparent)
+                }
                 return view
             }
         }

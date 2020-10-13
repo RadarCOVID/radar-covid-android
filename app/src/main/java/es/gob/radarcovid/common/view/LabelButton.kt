@@ -54,6 +54,17 @@ class LabelButton @JvmOverloads constructor(
                 if (actionDescription.isNotEmpty()) {
                     setAccessibilityAction(actionDescription)
                 }
+
+                val contentDescriptionLabelId =
+                    getString(R.styleable.LabelButton_contentDescriptionLabelId)
+                val defaultTextContent =
+                    getText(R.styleable.LabelButton_android_contentDescription) ?: ""
+                val customContentDescription =
+                    labelManager.getText(contentDescriptionLabelId, defaultTextContent).toString()
+                if (customContentDescription.isNotEmpty()) {
+                    contentDescription = customContentDescription
+                }
+
             } finally {
                 recycle()
             }
