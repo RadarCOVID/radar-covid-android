@@ -86,4 +86,11 @@
         <attr name="actionDescriptionLabelId" />
     </declare-styleable>
 
+    <declare-styleable name="LabelRadioButton">
+        <attr name="android:text" />
+        <attr name="labelId" />
+        <attr name="android:contentDescription" />
+        <attr name="contentDescriptionLabelId" />
+    </declare-styleable>
+
 </resources>
