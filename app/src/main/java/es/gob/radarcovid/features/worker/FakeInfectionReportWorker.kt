@@ -61,8 +61,6 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
 
             val now = clock.currentTimeMillis()
             val executionDelay = 0L.coerceAtLeast(tDummy - now)
-            val executionDelayDays =
-                executionDelay / FACTOR_DAY_MILLIS
 
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -70,7 +68,7 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
             val work =
                 OneTimeWorkRequest
                     .Builder(FakeInfectionReportWorker::class.java)
-                    .setInitialDelay(executionDelayDays, TimeUnit.MILLISECONDS)
+                    .setInitialDelay(executionDelay, TimeUnit.MILLISECONDS)
                     .setConstraints(constraints)
                     .setInputData(Data.Builder().putLong(KEY_T_DUMMY, tDummy).build())
                     .build()
@@ -90,6 +88,7 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
         val now = clock.currentTimeMillis()
         var tDummy = inputData.getLong(KEY_T_DUMMY, now)
         while (tDummy < now) {
+            // only do request if it was planned to do in the last 48h
             if (tDummy >= now - FACTOR_HOUR_MILLIS * MAX_DELAY_HOURS) {
                 if (BuildConfig.DEBUG)
                     DP3T.addWorkerStartedToHistory(applicationContext, TAG)
