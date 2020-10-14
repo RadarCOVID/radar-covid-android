@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~  This Source Code Form is subject to the terms of the Mozilla Public
+  ~  License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~  SPDX-License-Identifier: MPL-2.0
+  -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:bottom="3dp"
+    android:left="3dp"
+    android:right="23dp"
+    android:top="1dp">
+
+    <selector>
+        <item android:drawable="@drawable/my_health_radio_selected" android:state_checked="true" />
+        <item android:drawable="@android:color/transparent" android:state_checked="false"  />
+    </selector>
+</item>
+</layer-list>
