@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~  This Source Code Form is subject to the terms of the Mozilla Public
+  ~  License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~  SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".features.covidreport.form.pages.step1.Step1MyHealthFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_covid_report"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/layoutBackButton"
+        layout="@layout/layout_back_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollViewContent"
+        style="@style/ScrollVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonContinue"
+        app:layout_constraintTop_toBottomOf="@id/layoutBackButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:paddingBottom="22dp">
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TitleXSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/covid_report_title"
+                app:labelId="MY_HEALTH_TITLE_PAGE" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSemiboldNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/covid_report_code_hint_subtitle"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_CONTENT" />
+
+            <es.gob.radarcovid.common.view.LabelEditText
+                android:id="@+id/editTextCodeAccessibility"
+                style="@style/EditTextCodeAccesibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/covid_report_edit_text_hint"
+                app:hintLabelId="ACC_MY_HEALTH_CODE_EDIT_TEXT" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="38dp"
+                android:fontFamily="@font/roboto_italic"
+                android:text="@string/covid_report_code_input_example"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_EXAMPLE" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSemibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/covid_report_step1_p1"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_PARAGRAPH_3" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/covid_report_step1_p2"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_EXPLANATION" />
+
+            <include
+                android:id="@+id/layoutSelectDate"
+                layout="@layout/layout_select_date_symptom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/covid_report_step1_p3"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_EXPLANATION" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonContinue"
+        style="@style/ButtonNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="22dp"
+        android:enabled="false"
+        android:text="@string/covid_report_continue"
+        app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_SEND_BUTTON"
+        app:layout_constraintBottom_toBottomOf="@id/buttonCancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollViewContent" />
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonCancel"
+        style="@style/ButtonSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="22dp"
+        android:text="@string/covid_report_cancel"
+        app:labelId="ALERT_CANCEL_BUTTON"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonContinue" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
