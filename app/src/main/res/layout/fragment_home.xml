@@ -50,6 +50,17 @@
                 android:layout_marginTop="100dp"
                 android:alpha="0"
                 android:src="@drawable/img_initialization_check" />
+
+            <TextView
+                android:id="@+id/textViewVersion"
+                style="@style/TitleMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:visibility="gone"
+                tools:text="PRE - V_1.0.8_125"
+                tools:visibility="visible"/>
         </FrameLayout>
 
         <LinearLayout
