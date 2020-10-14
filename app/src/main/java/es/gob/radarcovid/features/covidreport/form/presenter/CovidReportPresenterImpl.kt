@@ -68,6 +68,8 @@ class CovidReportPresenterImpl @Inject constructor(
                 Log.e("CovidReportPresenter", "Error reporting infected", it)
                 if (it is NetworkUnavailableException) {
                     view.hideLoadingWithNetworkError()
+                } else if (it is java.util.concurrent.CancellationException) {
+                    view.hideLoading()
                 } else {
                     view.hideLoadingWithErrorOnReport()
                 }
