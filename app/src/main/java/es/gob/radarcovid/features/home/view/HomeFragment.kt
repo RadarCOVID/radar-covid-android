@@ -30,6 +30,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.default
@@ -204,6 +205,13 @@ class HomeFragment : BaseFragment(), HomeView {
             true
         }
         imageViewLogo.contentDescription = getString(R.string.home_exposure_simulation_description)
+
+        textViewVersion.text = context?.getString(
+            R.string.home_exposure_version,
+            BuildConfig.VERSION_NAME,
+            BuildConfig.VERSION_CODE.toString()
+        )
+        textViewVersion.visibility = View.VISIBLE
     }
 
     override fun setRadarBlockChecked(checked: Boolean) {
