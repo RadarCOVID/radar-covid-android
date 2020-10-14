@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright (c) 2020 Gobierno de España
   ~
   ~  This Source Code Form is subject to the terms of the Mozilla Public
@@ -93,16 +94,16 @@
                 android:layout_marginBottom="20dp"
                 android:text="@string/covid_report_step1_p1"
                 android:textColor="@color/black"
-                app:labelId="MY_HEALTH_PARAGRAPH_3" />
+                app:labelId="MY_HEALTH_STEP1_PARAGRAPH_1" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/covid_report_step1_p2"
                 android:layout_marginBottom="10dp"
+                android:text="@string/covid_report_step1_p2"
                 android:textColor="@color/black"
-                app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_EXPLANATION" />
+                app:labelId="MY_HEALTH_STEP1_PARAGRAPH_2" />
 
             <include
                 android:id="@+id/layoutSelectDate"
@@ -117,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/covid_report_step1_p3"
                 android:textColor="@color/black"
-                app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_EXPLANATION" />
+                app:labelId="MY_HEALTH_STEP1_PARAGRAPH_3" />
 
         </LinearLayout>
 
@@ -134,7 +135,7 @@
         android:layout_marginBottom="22dp"
         android:enabled="false"
         android:text="@string/covid_report_continue"
-        app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_SEND_BUTTON"
+        app:labelId="ACC_BUTTON_CONTINUE"
         app:layout_constraintBottom_toBottomOf="@id/buttonCancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

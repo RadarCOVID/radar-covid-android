@@ -71,7 +71,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/covid_report_p1"
                 android:textColor="@color/black"
                 app:labelId="MY_HEALTH_PARAGRAPH_1" />
 
@@ -80,7 +79,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/covid_report_p2"
                 android:textColor="@color/black"
                 app:labelId="MY_HEALTH_PARAGRAPH_2" />
 
@@ -89,7 +87,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:text="@string/covid_report_p3"
                 android:textColor="@color/black"
                 app:labelId="MY_HEALTH_PARAGRAPH_3" />
 
@@ -98,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="36dp"
-                android:text="@string/covid_report_p4"
+
                 android:textColor="@color/black"
                 app:labelId="MY_HEALTH_PARAGRAPH_4" />
 
@@ -113,7 +110,6 @@
                 style="@style/ButtonNormal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/covid_report_qr_button"
                 android:visibility="gone" />
 
             <androidx.constraintlayout.widget.ConstraintLayout

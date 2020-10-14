@@ -15,7 +15,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".features.covidreport.form.view.CovidReportActivity">
+    tools:context=".features.covidreport.form.pages.step2.Step2MyHealthFragment">
 
     <ImageView
         android:layout_width="match_parent"
@@ -64,7 +64,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="@string/covid_report_step2_p1"
                 android:textColor="@color/black"
-                app:labelId="MY_HEALTH_PARAGRAPH_1" />
+                app:labelId="MY_HEALTH_STEP2_PARAGRAPH_1" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextSmall"
@@ -73,7 +73,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="@string/covid_report_step2_p2"
                 android:textColor="@color/black"
-                app:labelId="MY_HEALTH_PARAGRAPH_2" />
+                app:labelId="MY_HEALTH_STEP2_PARAGRAPH_2" />
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -81,20 +81,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <es.gob.radarcovid.common.view.LabelRadioButton
                     style="@style/RadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:checked="true"
-                    android:text="@string/covid_report_step2_radio1" />
+                    android:text="@string/covid_report_step2_radio1"
+                    app:labelId="MY_HEALTH_STEP2_RADIO1" />
 
-                <androidx.appcompat.widget.AppCompatRadioButton
+                <es.gob.radarcovid.common.view.LabelRadioButton
                     style="@style/RadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="@string/covid_report_step2_radio2" />
+                    android:text="@string/covid_report_step2_radio2"
+                    app:labelId="MY_HEALTH_STEP2_RADIO2" />
             </RadioGroup>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -111,7 +113,7 @@
                 android:layout_marginBottom="36dp"
                 android:text="@string/covid_report_step2_p3"
                 android:textColor="@color/black"
-                app:labelId="MY_HEALTH_PARAGRAPH_4" />
+                app:labelId="MY_HEALTH_STEP2_PARAGRAPH_3" />
 
         </LinearLayout>
 
