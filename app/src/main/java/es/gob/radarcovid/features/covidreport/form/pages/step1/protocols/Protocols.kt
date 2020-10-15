@@ -23,7 +23,7 @@ interface Step1MyHealthView : RequestView {
 
     fun getDateSelected(): Date?
 
-    fun performContinueButtonClick()
+    fun performContinueButtonClick(reportCode: String, date: Date?)
 
     fun performBackButtonClick()
 

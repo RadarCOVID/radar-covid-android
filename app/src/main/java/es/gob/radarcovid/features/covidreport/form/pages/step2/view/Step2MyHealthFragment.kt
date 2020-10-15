@@ -67,7 +67,11 @@ class Step2MyHealthFragment : BaseFragment(), Step2MyHealthView {
             presenter.onSendButtonClick()
         }
 
-        imageButtonBack.setOnClickListener { (activity as? CovidReportCallback)?.onContinueButtonClick(1) }
+        imageButtonBack.setOnClickListener {
+            (activity as? CovidReportCallback)?.onContinueButtonClick(
+                1
+            )
+        }
     }
 
     override fun showExitConfirmationDialog() {
@@ -104,13 +108,10 @@ class Step2MyHealthFragment : BaseFragment(), Step2MyHealthView {
         )
     }
 
-    override fun getReportCode(): String {
-        TODO("Not yet implemented")
-    }
+    override fun getReportCode(): String? =
+        (activity as? CovidReportCallback)?.getReportCodeFromStep1()
 
-    override fun getDateSelected(): Date? {
-        TODO("Not yet implemented")
-    }
+    override fun getDateSelected(): Date? = (activity as? CovidReportCallback)?.getDateFromStep1()
 
     override fun getSharedDiagnostic(): Int {
         val radioButton = radioGroup.checkedRadioButtonId

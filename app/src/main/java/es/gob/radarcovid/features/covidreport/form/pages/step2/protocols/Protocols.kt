@@ -21,7 +21,7 @@ interface Step2MyHealthView : RequestView {
 
     fun hideLoadingWithErrorOnReport()
 
-    fun getReportCode(): String
+    fun getReportCode(): String?
 
     fun getDateSelected(): Date?
 

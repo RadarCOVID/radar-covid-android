@@ -19,7 +19,7 @@ class Step1MyHealthPresenterImp @Inject constructor(
 ) : Step1MyHealthPresenter {
 
     override fun onContinueButtonClick() {
-        view.performContinueButtonClick()
+        view.performContinueButtonClick(view.getReportCode(), view.getDateSelected())
     }
 
     override fun onBackButtonClick() {

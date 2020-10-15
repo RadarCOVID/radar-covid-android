@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.features.covidreport.form.view
 
+import java.util.*
+
 interface CovidReportCallback {
 
     fun onContinueButtonClick(pageIndex: Int)
@@ -17,4 +19,10 @@ interface CovidReportCallback {
     fun onFinishButtonClick()
 
     fun hideKeyboard()
+
+    fun setValuesFromStep1(reportCode: String, date: Date?)
+
+    fun getDateFromStep1(): Date?
+
+    fun getReportCodeFromStep1(): String
 }

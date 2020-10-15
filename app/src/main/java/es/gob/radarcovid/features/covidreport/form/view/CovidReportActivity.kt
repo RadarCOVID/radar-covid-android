@@ -26,6 +26,7 @@ import es.gob.radarcovid.features.covidreport.form.pages.step2.view.Step2MyHealt
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
 import kotlinx.android.synthetic.main.activity_covid_report.viewPager
+import java.util.*
 import javax.inject.Inject
 
 class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, CovidReportCallback {
@@ -40,6 +41,9 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
 
     @Inject
     lateinit var presenter: CovidReportPresenter
+
+    private lateinit var _reportCode: String
+    private var _date: Date? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -144,5 +148,14 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
     override fun hideKeyboard() {
         hideKeyBoard()
     }
+
+    override fun setValuesFromStep1(reportCode: String, date: Date?) {
+        _reportCode = reportCode
+        _date = date
+    }
+
+    override fun getDateFromStep1(): Date? = _date
+
+    override fun getReportCodeFromStep1(): String = _reportCode
 
 }

@@ -142,8 +142,9 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
         }
     }
 
-    override fun performContinueButtonClick() {
+    override fun performContinueButtonClick(reportCode: String, date: Date?) {
         (activity as? CovidReportCallback)?.onContinueButtonClick(1)
+        (activity as? CovidReportCallback)?.setValuesFromStep1(reportCode, date)
     }
 
     override fun performBackButtonClick() {

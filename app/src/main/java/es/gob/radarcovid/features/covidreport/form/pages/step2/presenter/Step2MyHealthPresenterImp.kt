@@ -44,7 +44,7 @@ class Step2MyHealthPresenterImp @Inject constructor(
     }
 
     override fun onSendButtonClick() {
-        reportInfected(view.getReportCode(), view.getDateSelected(), view.getSharedDiagnostic())
+        reportInfected(view.getReportCode()!!, view.getDateSelected(), view.getSharedDiagnostic())
     }
 
     override fun onBackButtonClick() {
