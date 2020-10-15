@@ -44,4 +44,7 @@ abstract class ViewsModule {
 
     @ContributesAndroidInjector
     abstract fun bindsMoreInfoButton(): MoreInfoButton
+
+    @ContributesAndroidInjector
+    abstract fun bindsLabelRadioButton(): LabelRadioButton
 }
