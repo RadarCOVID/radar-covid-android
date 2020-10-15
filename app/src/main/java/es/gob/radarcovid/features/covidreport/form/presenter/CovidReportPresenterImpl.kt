@@ -28,11 +28,18 @@ class CovidReportPresenterImpl @Inject constructor(
     }
 
     override fun onBackButtonPressed(isFirstItem: Boolean) {
-        view.showExitConfirmationDialog()
+        if(isFirstItem)
+            view.showExitConfirmationDialog()
+        else
+            view.showPreviousPage()
     }
 
     override fun onContinueButtonClick() {
         view.showNextPage()
+    }
+
+    override fun onBackButtonClick() {
+        view.showPreviousPage()
     }
 
     override fun onFinishButtonClick() {

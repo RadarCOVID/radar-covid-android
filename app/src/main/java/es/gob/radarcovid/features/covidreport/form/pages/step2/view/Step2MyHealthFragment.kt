@@ -67,11 +67,11 @@ class Step2MyHealthFragment : BaseFragment(), Step2MyHealthView {
             presenter.onSendButtonClick()
         }
 
-        imageButtonBack.setOnClickListener { (activity as? CovidReportCallback)?.onFinishButtonClick() }
+        imageButtonBack.setOnClickListener { (activity as? CovidReportCallback)?.onContinueButtonClick(1) }
     }
 
     override fun showExitConfirmationDialog() {
-        TODO("Not yet implemented")
+        (activity as? CovidReportCallback)?.onFinishButtonClick()
     }
 
     override fun hideLoadingWithNetworkError() {
@@ -120,6 +120,10 @@ class Step2MyHealthFragment : BaseFragment(), Step2MyHealthView {
 
     override fun finish() {
         activity?.finish()
+    }
+
+    override fun performBackButtonClick() {
+        (activity as? CovidReportCallback)?.onContinueButtonClick(1)
     }
 
 }

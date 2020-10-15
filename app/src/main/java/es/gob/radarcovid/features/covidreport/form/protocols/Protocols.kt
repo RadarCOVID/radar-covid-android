@@ -32,14 +32,8 @@ interface CovidReportPresenter {
 
     fun onContinueButtonClick()
 
+    fun onBackButtonClick()
+
     fun onFinishButtonClick()
-
-}
-
-interface CovidReportRouter {
-
-    fun navigateToMain(activateRadar: Boolean)
-
-    fun navigateToSplash()
 
 }

@@ -25,11 +25,15 @@ interface Step1MyHealthView : RequestView {
 
     fun performContinueButtonClick()
 
+    fun performBackButtonClick()
+
 }
 
 interface Step1MyHealthPresenter {
 
     fun onContinueButtonClick()
+
+    fun onBackButtonClick()
 
     fun onSelectDateClick()
 

@@ -22,6 +22,10 @@ class Step1MyHealthPresenterImp @Inject constructor(
         view.performContinueButtonClick()
     }
 
+    override fun onBackButtonClick() {
+        view.performBackButtonClick()
+    }
+
     override fun onSelectDateClick() {
         view.showDatePickerDialog()
     }

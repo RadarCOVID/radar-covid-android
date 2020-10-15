@@ -133,6 +133,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
     override fun onContinueButtonClick(pageIndex: Int) {
         if (viewPager.currentItem == pageIndex)
             presenter.onContinueButtonClick()
+        else
+            presenter.onBackButtonClick()
     }
 
     override fun onFinishButtonClick() {

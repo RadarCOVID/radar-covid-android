@@ -28,6 +28,8 @@ interface Step2MyHealthView : RequestView {
     fun getSharedDiagnostic(): Int
 
     fun finish()
+
+    fun performBackButtonClick()
 }
 
 interface Step2MyHealthPresenter {
@@ -41,6 +43,8 @@ interface Step2MyHealthPresenter {
     fun onRetryButtonClick()
 
     fun onSendButtonClick()
+
+    fun onBackButtonClick()
 
 }
 

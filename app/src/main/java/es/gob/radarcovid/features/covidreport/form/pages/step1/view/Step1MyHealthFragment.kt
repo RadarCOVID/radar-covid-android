@@ -68,14 +68,6 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
 
     private fun initViews() {
 
-        imageButtonBack.contentDescription =
-            "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
-                labelManager.getText(
-                    "ACC_BUTTON_BACK_TO",
-                    R.string.navigation_back_to
-                )
-            }"
-
         buttonContinue.setOnClickListener {
             (activity as? CovidReportCallback)?.hideKeyboard()
             presenter.onContinueButtonClick()
@@ -97,7 +89,7 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
 
         layoutSelectDate.setOnClickListener { presenter.onSelectDateClick() }
 
-        imageButtonBack.setOnClickListener { (activity as? CovidReportCallback)?.onFinishButtonClick() }
+        imageButtonBack.setOnClickListener { presenter.onBackButtonClick() }
     }
 
 
@@ -152,5 +144,9 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
 
     override fun performContinueButtonClick() {
         (activity as? CovidReportCallback)?.onContinueButtonClick(1)
+    }
+
+    override fun performBackButtonClick() {
+        (activity as? CovidReportCallback)?.onContinueButtonClick(0)
     }
 }
