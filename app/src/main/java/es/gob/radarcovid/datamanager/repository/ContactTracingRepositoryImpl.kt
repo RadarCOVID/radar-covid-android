@@ -100,6 +100,7 @@ class ContactTracingRepositoryImpl @Inject constructor(
                 DP3T.sendIAmInfected(activity,
                     onSet,
                     ExposeeAuthMethodAuthorization("Bearer $authCode"),
+                    "0",
                     object : ResponseCallback<Void> {
                         override fun onSuccess(response: Void?) {
                             it.onComplete()
