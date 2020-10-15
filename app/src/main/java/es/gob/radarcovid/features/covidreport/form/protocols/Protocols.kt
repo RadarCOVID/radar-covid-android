@@ -10,26 +10,15 @@
 
 package es.gob.radarcovid.features.covidreport.form.protocols
 
-import es.gob.radarcovid.common.view.RequestView
-import java.util.*
+interface CovidReportView {
 
-interface CovidReportView : RequestView {
+    fun showPreviousPage()
+
+    fun showNextPage()
 
     fun showExitConfirmationDialog()
 
-    fun getReportCode(): String
-
-    fun setButtonSendEnabled(enabled: Boolean)
-
-    fun hideLoadingWithNetworkError()
-
-    fun hideLoadingWithErrorOnReport()
-    
     fun finish()
-
-    fun showDatePickerDialog()
-    
-    fun getDateSelected(): Date?
 
 }
 
@@ -37,22 +26,20 @@ interface CovidReportPresenter {
 
     fun viewReady()
 
-    fun onBackPressed()
-
     fun onExitConfirmed()
 
-    fun onCodeChanged(code: String)
+    fun onBackButtonPressed(isFirstItem: Boolean)
 
-    fun onRetryButtonClick()
+    fun onContinueButtonClick()
 
-    fun onSendButtonClick()
-
-    fun onSelectDateClick()
+    fun onFinishButtonClick()
 
 }
 
 interface CovidReportRouter {
 
-    fun navigateToConfirmation()
+    fun navigateToMain(activateRadar: Boolean)
+
+    fun navigateToSplash()
 
 }
