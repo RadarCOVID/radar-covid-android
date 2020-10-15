@@ -98,7 +98,7 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
             preferencesRepository.setTDummy(tDummy)
         }
 
-        start(applicationContext, tDummy, ExistingWorkPolicy.APPEND)
+        start(applicationContext, tDummy, ExistingWorkPolicy.REPLACE)
         return Result.success()
     }
 
