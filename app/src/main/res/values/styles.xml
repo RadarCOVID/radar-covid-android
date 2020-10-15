@@ -194,7 +194,7 @@
         <item name="android:padding">8dp</item>
     </style>
 
-    <style name="RadioButton">
+    <style name="RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">16sp</item>

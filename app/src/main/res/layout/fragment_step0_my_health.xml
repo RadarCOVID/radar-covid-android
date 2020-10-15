@@ -14,7 +14,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.covidreport.form.pages.Step0MyHealthFragment">
+    tools:context=".features.covidreport.form.pages.step0.view.Step0MyHealthFragment">
 
     <ImageView
         android:layout_width="match_parent"
@@ -95,12 +95,11 @@
     </ScrollView>
 
     <es.gob.radarcovid.common.view.LabelButton
-        android:id="@+id/buttonSend"
+        android:id="@+id/buttonContinue"
         style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="22dp"
-        android:enabled="false"
         android:text="@string/covid_report_start"
         app:labelId="MY_HEALTH_STEP0_START"
         app:layout_constraintBottom_toBottomOf="parent"

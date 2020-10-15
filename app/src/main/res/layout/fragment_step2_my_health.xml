@@ -15,7 +15,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".features.covidreport.form.pages.step2.Step2MyHealthFragment">
+    tools:context=".features.covidreport.form.pages.step2.view.Step2MyHealthFragment">
 
     <ImageView
         android:layout_width="match_parent"
@@ -82,21 +82,22 @@
                 android:orientation="vertical">
 
                 <es.gob.radarcovid.common.view.LabelRadioButton
+                    android:id="@+id/radioLocale"
                     style="@style/RadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:checked="true"
-                    android:text="@string/covid_report_step2_radio1"
-                    app:labelId="MY_HEALTH_STEP2_RADIO1" />
+                    android:text="@string/covid_report_step2_radio1" />
 
                 <es.gob.radarcovid.common.view.LabelRadioButton
+                    android:id="@+id/radioEurope"
                     style="@style/RadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="@string/covid_report_step2_radio2"
-                    app:labelId="MY_HEALTH_STEP2_RADIO2" />
+                    android:text="@string/covid_report_step2_radio2" />
+
             </RadioGroup>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -125,7 +126,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="22dp"
-        android:enabled="false"
         android:text="@string/covid_report_send_button"
         app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_SEND_BUTTON"
         app:layout_constraintBottom_toBottomOf="@id/buttonCancel"

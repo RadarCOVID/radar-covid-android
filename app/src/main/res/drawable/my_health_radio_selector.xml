@@ -17,7 +17,7 @@
 
     <selector>
         <item android:drawable="@drawable/my_health_radio_selected" android:state_checked="true" />
-        <item android:drawable="@android:color/transparent" android:state_checked="false"  />
+        <item android:drawable="@drawable/my_health_radio_unselected" android:state_checked="false"  />
     </selector>
 </item>
 </layer-list>
