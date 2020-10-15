@@ -90,6 +90,8 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
         layoutSelectDate.setOnClickListener { presenter.onSelectDateClick() }
 
         imageButtonBack.setOnClickListener { presenter.onBackButtonClick() }
+
+        buttonCancel.setOnClickListener { presenter.onCancel() }
     }
 
 
@@ -149,5 +151,9 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
 
     override fun performBackButtonClick() {
         (activity as? CovidReportCallback)?.onContinueButtonClick(0)
+    }
+
+    override fun finish() {
+        (activity as? CovidReportCallback)?.onFinishButtonClick()
     }
 }

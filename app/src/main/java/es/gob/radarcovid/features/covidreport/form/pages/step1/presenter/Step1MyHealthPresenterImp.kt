@@ -34,4 +34,8 @@ class Step1MyHealthPresenterImp @Inject constructor(
         view.setButtonContinueEnabled(code.length == 12)
     }
 
+    override fun onCancel() {
+        view.finish()
+    }
+
 }

@@ -72,6 +72,8 @@ class Step2MyHealthFragment : BaseFragment(), Step2MyHealthView {
                 1
             )
         }
+
+        buttonCancel.setOnClickListener { presenter.onCancel() }
     }
 
     override fun showExitConfirmationDialog() {
@@ -125,6 +127,10 @@ class Step2MyHealthFragment : BaseFragment(), Step2MyHealthView {
 
     override fun performBackButtonClick() {
         (activity as? CovidReportCallback)?.onContinueButtonClick(1)
+    }
+
+    override fun onCancelClick() {
+        (activity as? CovidReportCallback)?.onFinishButtonClick()
     }
 
 }

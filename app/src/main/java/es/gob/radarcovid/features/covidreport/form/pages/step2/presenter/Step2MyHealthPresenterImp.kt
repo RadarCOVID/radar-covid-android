@@ -51,6 +51,10 @@ class Step2MyHealthPresenterImp @Inject constructor(
         view.performBackButtonClick()
     }
 
+    override fun onCancel() {
+        view.onCancelClick()
+    }
+
     private fun reportInfected(reportCode: String, date: Date?, codeShared: Int) {
         view.showLoading()
         reportInfectedUseCase.reportInfected(reportCode, date)

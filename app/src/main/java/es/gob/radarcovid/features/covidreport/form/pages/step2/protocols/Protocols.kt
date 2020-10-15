@@ -30,6 +30,8 @@ interface Step2MyHealthView : RequestView {
     fun finish()
 
     fun performBackButtonClick()
+
+    fun onCancelClick()
 }
 
 interface Step2MyHealthPresenter {
@@ -45,6 +47,8 @@ interface Step2MyHealthPresenter {
     fun onSendButtonClick()
 
     fun onBackButtonClick()
+
+    fun onCancel()
 
 }
 

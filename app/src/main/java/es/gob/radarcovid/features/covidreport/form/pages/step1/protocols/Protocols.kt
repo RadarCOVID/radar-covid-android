@@ -27,6 +27,8 @@ interface Step1MyHealthView : RequestView {
 
     fun performBackButtonClick()
 
+    fun finish()
+
 }
 
 interface Step1MyHealthPresenter {
@@ -38,5 +40,7 @@ interface Step1MyHealthPresenter {
     fun onSelectDateClick()
 
     fun onCodeChanged(code: String)
+
+    fun onCancel()
 
 }
