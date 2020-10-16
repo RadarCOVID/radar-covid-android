@@ -13,7 +13,6 @@ package es.gob.radarcovid.features.covidreport.form.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -25,7 +24,8 @@ import es.gob.radarcovid.features.covidreport.form.pages.step1.view.Step1MyHealt
 import es.gob.radarcovid.features.covidreport.form.pages.step2.view.Step2MyHealthFragment
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
-import kotlinx.android.synthetic.main.activity_covid_report.viewPager
+import kotlinx.android.synthetic.main.activity_covid_report.*
+import org.dpppt.android.sdk.DP3T
 import java.util.*
 import javax.inject.Inject
 
@@ -45,6 +45,10 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
     private lateinit var _reportCode: String
     private var _date: Date? = null
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        DP3T.onActivityResult(this, requestCode, resultCode, data)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

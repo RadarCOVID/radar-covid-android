@@ -34,7 +34,7 @@ class ReportInfectedUseCase @Inject constructor(
             Completable.create { it.onError(GenericRequestException()) }
         } else {
             getVerifyToken(reportCode, date).flatMapCompletable {
-                contactTracingRepository.notifyInfected(it.token, jwtTokenUtils.getOnset(it.token))
+                contactTracingRepository.notifyInfected(it.token, jwtTokenUtils.getOnset(it.token), codeShared)
             }.concatWith {
                 preferencesRepository.setInfectionReportDate(Date())
                 it.onComplete()
