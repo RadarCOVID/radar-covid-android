@@ -57,7 +57,7 @@ class Step0MyHealthFragment : BaseFragment(), Step0MyHealthView {
 
         buttonContinue.setOnClickListener { presenter.onContinueButtonClick() }
 
-        imageButtonBack.setOnClickListener { (activity as? CovidReportCallback)?.onFinishButtonClick() }
+        imageButtonBack.setOnClickListener { presenter.onBackButtonClick() }
     }
 
     override fun performContinueButtonClick() {

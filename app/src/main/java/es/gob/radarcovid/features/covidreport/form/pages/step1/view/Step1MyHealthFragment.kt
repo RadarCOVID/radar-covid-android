@@ -27,6 +27,8 @@ import es.gob.radarcovid.features.covidreport.form.pages.step1.protocols.Step1My
 import es.gob.radarcovid.features.covidreport.form.view.CovidReportCallback
 import kotlinx.android.synthetic.main.fragment_step1_my_health.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
+import kotlinx.android.synthetic.main.layout_back_navigation.view.*
+import kotlinx.android.synthetic.main.layout_progress_steps.view.*
 import kotlinx.android.synthetic.main.layout_select_date_symptom.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -68,6 +70,14 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
 
     private fun initViews() {
 
+        imageButtonBack.contentDescription =
+            "${labelManager.getText("MY_HEALTH_TITLE_PAGE", R.string.covid_report_title)} ${
+                labelManager.getText(
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
+            }"
+
         buttonContinue.setOnClickListener {
             (activity as? CovidReportCallback)?.hideKeyboard()
             presenter.onContinueButtonClick()
@@ -92,6 +102,12 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
         imageButtonBack.setOnClickListener { presenter.onBackButtonClick() }
 
         buttonCancel.setOnClickListener { presenter.onCancel() }
+
+        stepsProgress.apply {
+            visibility = View.VISIBLE
+            setSteps(1, 2)
+        }
+
     }
 
 

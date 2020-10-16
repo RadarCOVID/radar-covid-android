@@ -24,4 +24,6 @@ interface Step0MyHealthPresenter {
 
     fun onContinueButtonClick()
 
+    fun onBackButtonClick()
+
 }

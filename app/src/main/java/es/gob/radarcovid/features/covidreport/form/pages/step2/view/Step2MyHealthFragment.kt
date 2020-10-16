@@ -56,7 +56,7 @@ class Step2MyHealthFragment : BaseFragment(), Step2MyHealthView {
 
     private fun initViews() {
         imageButtonBack.contentDescription =
-            "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
+            "${labelManager.getText("MY_HEALTH_TITLE_STEP1", R.string.covid_report_title_code)} ${
                 labelManager.getText(
                     "ACC_BUTTON_BACK_TO",
                     R.string.navigation_back_to
@@ -74,6 +74,11 @@ class Step2MyHealthFragment : BaseFragment(), Step2MyHealthView {
         }
 
         buttonCancel.setOnClickListener { presenter.onCancel() }
+
+        stepsProgress.apply {
+            visibility = View.VISIBLE
+            setSteps(2, 2)
+        }
     }
 
     override fun showExitConfirmationDialog() {

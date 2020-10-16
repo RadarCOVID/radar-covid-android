@@ -26,4 +26,8 @@ class Step0MyHealthPresenterImp @Inject constructor(
         view.performContinueButtonClick()
     }
 
+    override fun onBackButtonClick() {
+        view.finish()
+    }
+
 }

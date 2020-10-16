@@ -69,10 +69,6 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
         presenter.onBackButtonPressed(viewPager.currentItem == 0)
     }
 
-    override fun onBackArrowClick(view: View) {
-        hideKeyBoard()
-    }
-
     override fun showPreviousPage() {
         viewPager.setCurrentItem(viewPager.currentItem - 1, true)
     }

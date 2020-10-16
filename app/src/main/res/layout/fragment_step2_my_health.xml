@@ -53,9 +53,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
                 android:layout_marginBottom="10dp"
-                android:text="@string/covid_report_title"
+                android:text="@string/covid_report_title_step2"
                 app:isHeading="true"
-                app:labelId="MY_HEALTH_TITLE_PAGE" />
+                app:labelId="MY_HEALTH_TITLE_STEP2" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextSemibold"

@@ -182,6 +182,8 @@
     /********** Covid Report ************/
 
     <string name="covid_report_title">MI DIAGNÓSTICO</string>
+    <string name="covid_report_title_step1">CÓDIGO DIAGNÓSTICO</string>
+    <string name="covid_report_title_step2">COMPARTIR DIAGNÓSTICO</string>
     <string name="covid_report_subtitle">Envía tu diagnóstico COVID positivo</string>
     <string name="covid_report_step0_p1">Indica la fecha de inicio de síntomas. Si no has tenido síntomas, introduce la de prueba PCR positiva.</string>
     <string name="covid_report_step0_p2">Gracias por ayudarnos a cuidar a los demás. Tu información está segura y será tratada siempre anónimamente.</string>
@@ -212,6 +214,9 @@
     <string name="covid_report_start">Comenzar</string>
     <string name="covid_report_continue">Continuar</string>
     <string name="covid_report_cancel">Cancelar</string>
+    <string name="covid_report_title_code">Código diagnóstico</string>
+    <string name="covid_report_title_share">Compartir diagnóstico</string>
+    <string name="covid_report_steps">1 de 2</string>
 
     /********** Network Warning Dialog ************/
 
