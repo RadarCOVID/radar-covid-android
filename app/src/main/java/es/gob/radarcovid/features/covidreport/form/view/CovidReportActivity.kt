@@ -10,29 +10,26 @@
 
 package es.gob.radarcovid.features.covidreport.form.view
 
-import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
-import es.gob.radarcovid.common.base.Constants.DATE_FORMAT
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.features.covidreport.form.pages.step0.view.Step0MyHealthFragment
+import es.gob.radarcovid.features.covidreport.form.pages.step1.view.Step1MyHealthFragment
+import es.gob.radarcovid.features.covidreport.form.pages.step2.view.Step2MyHealthFragment
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
-import kotlinx.android.synthetic.main.activity_covid_report.*
-import kotlinx.android.synthetic.main.layout_back_navigation.*
-import kotlinx.android.synthetic.main.layout_select_date_symptom.view.*
-import org.dpppt.android.sdk.DP3T
-import java.text.SimpleDateFormat
+import kotlinx.android.synthetic.main.activity_covid_report.viewPager
 import java.util.*
 import javax.inject.Inject
 
-
-class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
+class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, CovidReportCallback {
 
     companion object {
 
@@ -45,10 +42,9 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
     @Inject
     lateinit var presenter: CovidReportPresenter
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        DP3T.onActivityResult(this, requestCode, resultCode, data)
-    }
+    private lateinit var _reportCode: String
+    private var _date: Date? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,56 +54,29 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
         presenter.viewReady()
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.onCodeChanged(editTextCodeAccessibility.text.toString())
-
-    }
-
     override fun onPause() {
         super.onPause()
         hideKeyBoard()
     }
 
     private fun initViews() {
-        imageButtonBack.contentDescription =
-            "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
-                labelManager.getText(
-                    "ACC_BUTTON_BACK_TO",
-                    R.string.navigation_back_to
-                )
-            }"
-
-        buttonSend.setOnClickListener {
-            hideKeyBoard()
-            presenter.onSendButtonClick()
-        }
-
-        editTextCodeAccessibility.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                presenter.onCodeChanged(s.toString())
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-        })
-
-        layoutSelectDate.setOnClickListener { presenter.onSelectDateClick() }
+        viewPager.adapter = CovidReportAdapter(this)
+        viewPager.isUserInputEnabled = false
+        viewPager.offscreenPageLimit = 4
     }
 
     override fun onBackPressed() {
-        presenter.onBackPressed()
+        presenter.onBackButtonPressed(viewPager.currentItem == 0)
     }
 
-    override fun onBackArrowClick(view: View) {
-        hideKeyBoard()
-        presenter.onBackPressed()
+    override fun showPreviousPage() {
+        viewPager.setCurrentItem(viewPager.currentItem - 1, true)
     }
+
+    override fun showNextPage() {
+        viewPager.setCurrentItem(viewPager.currentItem + 1, true)
+    }
+
 
     override fun showExitConfirmationDialog() {
         CMDialog.Builder(this)
@@ -144,84 +113,45 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
             .show()
     }
 
-    override fun getReportCode(): String =
-        editTextCodeAccessibility.text.toString()
 
+    private class CovidReportAdapter(fragmentActivity: FragmentActivity) :
+        FragmentStateAdapter(fragmentActivity) {
 
-    override fun setButtonSendEnabled(enabled: Boolean) {
-        buttonSend.isEnabled = enabled
-    }
+        private val totalPages = 3
 
-    override fun hideLoadingWithNetworkError() {
-        hideLoadingWithError(
-            labelManager.getText(
-                "ALERT_NETWORK_ERROR_TITLE",
-                R.string.network_warning_dialog_title
-            ).toString(),
-            labelManager.getText(
-                "ALERT_POSITIVE_REPORT_NETWORK_ERROR_MESSAGE",
-                R.string.network_warning_dialog_message
-            ).toString(),
-            labelManager.getText(
-                "ALERT_RETRY_BUTTON",
-                R.string.network_warning_dialog_button
-            ).toString()
-        ) {
-            presenter.onRetryButtonClick()
-        }
-    }
+        override fun getItemCount(): Int = totalPages
 
-    override fun hideLoadingWithErrorOnReport() {
-        hideLoadingWithError(
-            Exception(
-                labelManager.getText(
-                    "ALERT_MY_HEALTH_CODE_ERROR_CONTENT",
-                    R.string.covid_report_error
-                ).toString()
-            )
-        )
-    }
-
-    override fun showDatePickerDialog() {
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-
-        val dateSetListener =
-            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-                val realMonth = monthOfYear + 1
-                layoutSelectDate.layoutInputDate.labelDay.text =
-                    if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
-                layoutSelectDate.layoutInputDate.labelMonth.text =
-                    if (realMonth < 10) "0$realMonth" else "$realMonth"
-                layoutSelectDate.layoutInputDate.labelYear.text = year.toString()
+        override fun createFragment(position: Int): Fragment =
+            when (position) {
+                0 -> Step0MyHealthFragment.newInstance()
+                1 -> Step1MyHealthFragment.newInstance()
+                2 -> Step2MyHealthFragment.newInstance()
+                else -> Step0MyHealthFragment.newInstance()
             }
-
-        val datePicker = DatePickerDialog(this, dateSetListener, year, month, day)
-
-        val calendarDisableDates = Calendar.getInstance()
-        datePicker.datePicker.maxDate = calendarDisableDates.timeInMillis
-        calendarDisableDates.add(Calendar.DATE, -14)
-        datePicker.datePicker.minDate = calendarDisableDates.timeInMillis
-
-        datePicker.show()
     }
 
-    override fun getDateSelected(): Date? {
-        val labelDay = layoutSelectDate.layoutInputDate.labelDay.text
-        val labelMonth = layoutSelectDate.layoutInputDate.labelMonth.text
-        val labelYear = layoutSelectDate.layoutInputDate.labelYear.text
-
-        return if (!labelDay.isNullOrEmpty() && !labelMonth.isNullOrEmpty() && !labelYear.isNullOrEmpty()) {
-            val date = SimpleDateFormat(
-                DATE_FORMAT,
-                Locale.getDefault()
-            ).parse("$labelDay/$labelMonth/$labelYear")
-            date
-        } else {
-            null
-        }
+    override fun onContinueButtonClick(pageIndex: Int) {
+        if (viewPager.currentItem == pageIndex)
+            presenter.onContinueButtonClick()
+        else
+            presenter.onBackButtonClick()
     }
+
+    override fun onFinishButtonClick() {
+        presenter.onFinishButtonClick()
+    }
+
+    override fun hideKeyboard() {
+        hideKeyBoard()
+    }
+
+    override fun setValuesFromStep1(reportCode: String, date: Date?) {
+        _reportCode = reportCode
+        _date = date
+    }
+
+    override fun getDateFromStep1(): Date? = _date
+
+    override fun getReportCodeFromStep1(): String = _reportCode
 
 }

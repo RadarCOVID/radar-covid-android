@@ -15,6 +15,8 @@
     <attr name="hintLabelId" format="string" />
     <attr name="actionDescription" format="string" />
     <attr name="actionDescriptionLabelId" format="string" />
+    <attr name="numberSteps" format="integer" />
+    <attr name="actualStep" format="integer" />
 
     <declare-styleable name="CMCheckBox">
         <attr name="android:text" />
@@ -42,6 +44,8 @@
         <attr name="android:text" />
         <attr name="actionDescription" />
         <attr name="actionDescriptionLabelId" />
+        <attr name="contentDescriptionLabelId" />
+        <attr name="android:contentDescription" />
     </declare-styleable>
 
     <declare-styleable name="LabelDotTextView">
@@ -84,6 +88,22 @@
     <declare-styleable name="LabelConstraintLayout">
         <attr name="actionDescription" />
         <attr name="actionDescriptionLabelId" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelRadioButton">
+        <attr name="android:text" />
+        <attr name="labelId" />
+        <attr name="android:contentDescription" />
+        <attr name="contentDescriptionLabelId" />
+    </declare-styleable>
+
+    <declare-styleable name="StepsProgress">
+        <attr name="numberSteps" />
+        <attr name="actualStep" />
+        <attr name="labelId" />
+        <attr name="android:text" />
+        <attr name="android:contentDescription" />
+        <attr name="contentDescriptionLabelId" />
     </declare-styleable>
 
 </resources>

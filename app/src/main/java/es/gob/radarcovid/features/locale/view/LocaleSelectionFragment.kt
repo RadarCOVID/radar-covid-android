@@ -21,7 +21,6 @@ import es.gob.radarcovid.common.view.ListDialog
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionPresenter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionView
 import kotlinx.android.synthetic.main.fragment_locale_selection.*
-import kotlinx.android.synthetic.main.view_selection_button.view.*
 import javax.inject.Inject
 
 class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
@@ -82,7 +81,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
 
     private fun initViews() {
 
-        layoutSelectLanguage.setOnClickListener {
+        buttonLanguage.setOnClickListener {
             presenter.onSelectLanguageClick()
         }
 
@@ -91,7 +90,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     fun restoreLocaleSettings() = presenter.restoreLocaleSettings()
 
     override fun setLanguage(language: String) {
-        layoutSelectLanguage.textViewText.text = language
+        buttonLanguage.text = language
     }
 
     override fun showLanguageSelectionDialog(languages: List<String>, index: Int) {
@@ -128,6 +127,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     presenter.onLanguageSelectionChange(position)
                 }
             })
+            .isAccessibilityEnabled(isAccessibilityEnabled())
             .show()
     }
 

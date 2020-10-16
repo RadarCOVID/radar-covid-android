@@ -32,6 +32,7 @@ class ListDialog(context: Context) : Dialog(context) {
         view: View,
         map: List<String>?,
         index: Int,
+        isAccessibilityEnabled: Boolean,
         listener: OnItemClickListener
     ) {
         setContentView(view)
@@ -42,10 +43,14 @@ class ListDialog(context: Context) : Dialog(context) {
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                 val view = super.getView(position, convertView, parent)
                 val textView = view.findViewById(R.id.textViewListItem) as TextView
-                if (position == selectedIndex)
+                if (position == selectedIndex) {
                     textView.setTypeface(textView.typeface, Typeface.BOLD)
-                else
+                    if (isAccessibilityEnabled) textView.setBackgroundResource(R.color.purple_FF)
+                }
+                else {
                     textView.typeface = Typeface.create(textView.typeface, Typeface.NORMAL)
+                    if (isAccessibilityEnabled) textView.setBackgroundResource(android.R.color.transparent)
+                }
                 return view
             }
         }
@@ -75,6 +80,7 @@ class ListDialog(context: Context) : Dialog(context) {
         private var listener: OnItemClickListener? = null
         private var list: List<String>? = null
         private val listDialog: ListDialog = ListDialog(context)
+        private var isAccessibilityEnabled: Boolean = false
 
         fun setPositiveButton(
             text: String,
@@ -121,10 +127,16 @@ class ListDialog(context: Context) : Dialog(context) {
             return this
         }
 
+        fun isAccessibilityEnabled(isAccessibilityEnabled: Boolean): Builder {
+            this.isAccessibilityEnabled = isAccessibilityEnabled
+            return this
+        }
+
         fun show() = run {
-            listDialog.init(view, list, index, listener!!)
+            listDialog.init(view, list, index, isAccessibilityEnabled, listener!!)
             listDialog.show()
         }
+
     }
 
 }

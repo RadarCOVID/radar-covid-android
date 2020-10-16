@@ -45,7 +45,7 @@ abstract class ActivitiesModule {
     abstract fun bindsExposureActivity(): ExposureActivity
 
     @PerActivity
-    @ContributesAndroidInjector(modules = [CovidReportModule::class])
+    @ContributesAndroidInjector(modules = [CovidReportModule::class, CovidReportFragmentModule::class])
     abstract fun bindsReportActivity(): CovidReportActivity
 
     @PerActivity
