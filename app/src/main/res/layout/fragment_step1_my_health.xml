@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
+        android:visibility="invisible"
         android:src="@drawable/background_covid_report"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +37,9 @@
         style="@style/ScrollVertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/buttonContinue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutBackButton">
 
         <LinearLayout
@@ -121,41 +124,28 @@
                 android:textColor="@color/black"
                 app:labelId="MY_HEALTH_STEP1_PARAGRAPH_3" />
 
+            <es.gob.radarcovid.common.view.LabelButton
+                android:id="@+id/buttonContinue"
+                style="@style/ButtonNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:enabled="false"
+                android:text="@string/covid_report_continue"
+                app:labelId="ACC_BUTTON_CONTINUE" />
+
+            <es.gob.radarcovid.common.view.LabelButton
+                android:id="@+id/buttonCancel"
+                style="@style/ButtonSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/covid_report_cancel"
+                app:labelId="ALERT_CANCEL_BUTTON" />
+
         </LinearLayout>
 
     </ScrollView>
-
-    <es.gob.radarcovid.common.view.LabelButton
-        android:id="@+id/buttonContinue"
-        style="@style/ButtonNormal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="22dp"
-        android:enabled="false"
-        android:text="@string/covid_report_continue"
-        app:labelId="ACC_BUTTON_CONTINUE"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCancel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scrollViewContent" />
-
-    <es.gob.radarcovid.common.view.LabelButton
-        android:id="@+id/buttonCancel"
-        style="@style/ButtonSecondary"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="22dp"
-        android:text="@string/covid_report_cancel"
-        app:labelId="ALERT_CANCEL_BUTTON"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonContinue" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
