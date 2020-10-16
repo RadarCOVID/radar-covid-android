@@ -57,4 +57,8 @@ interface PreferencesRepository {
 
     fun getHealingTime(): HealingTime
 
+    fun getTDummy(): Long
+
+    fun setTDummy(time: Long)
+
 }
