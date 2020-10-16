@@ -127,6 +127,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     presenter.onLanguageSelectionChange(position)
                 }
             })
+            .isAccessibilityEnabled(isAccessibilityEnabled())
             .show()
     }
 
