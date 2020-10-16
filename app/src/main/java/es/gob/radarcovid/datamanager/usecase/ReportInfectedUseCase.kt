@@ -29,7 +29,7 @@ class ReportInfectedUseCase @Inject constructor(
     private val jwtTokenUtils: JwtTokenUtils
 ) {
 
-    fun reportInfected(reportCode: String, date: Date?): Completable =
+    fun reportInfected(reportCode: String, date: Date?, codeShared: Int): Completable =
         if (reportCode == ReportFakeInfectionUseCase.FAKE_REPORT_CODE) {
             Completable.create { it.onError(GenericRequestException()) }
         } else {
