@@ -183,14 +183,21 @@
     /********** Covid Report ************/
 
     <string name="covid_report_title">MI DIAGNÓSTICO</string>
+    <string name="covid_report_title_step1">CÓDIGO DIAGNÓSTICO</string>
+    <string name="covid_report_title_step2">COMPARTIR DIAGNÓSTICO</string>
     <string name="covid_report_subtitle">Envía tu diagnóstico COVID positivo</string>
-    <string name="covid_report_p1">Enviando tu diagnóstico anónimo COVID-19, estás contribuyendo a detener la propagación del virus.</string>
-    <string name="covid_report_p2">Gracias por ayudarnos a cuidar a los demás. Tu información está segura y será tratada siempre anónimamente.</string>
-    <string name="covid_report_p3">Fecha de inicio de síntomas o de prueba PCR positiva</string>
-    <string name="covid_report_p4">Para poder avisar a las personas que han estado en contacto contigo mientras podías transmitir el coronavirus, por favor, introduce la fecha en la que comenzaste a tener síntomas o, si no los has tenido, la fecha en la que te realizaron la prueba PCR. Si no conoces ninguna de estas dos fechas, déjalo en blanco.</string>
-    <string name="covid_report_qr_button">Escanear QR</string>
+    <string name="covid_report_step0_p1">Indica la fecha de inicio de síntomas. Si no has tenido síntomas, introduce la de prueba PCR positiva.</string>
+    <string name="covid_report_step0_p2">Gracias por ayudarnos a cuidar a los demás. Tu información está segura y será tratada siempre anónimamente.</string>
+    <string name="covid_report_step1_p1">Indica la fecha de inicio de síntomas. Si no has tenido síntomas, introduce la de prueba PCR positiva.</string>
+    <string name="covid_report_step1_p2">Si no conoces ninguna de estas dos fechas, déjalo en blanco.</string>
+    <string name="covid_report_step1_p3">Esta información permite poder avisar a las personas que han estado en contacto contigo mientras podías transmitir el coronavirus.</string>
+    <string name="covid_report_step2_p1">Comparte tu diagnóstico anónimo con otras aplicaciones europeas</string>
+    <string name="covid_report_step2_p2">Es necesario para avisar a las personas con las que hayas podido tener contacto mientras podías transmitir el coronavirus.</string>
+    <string name="covid_report_step2_p3">Radar COVID forma parte de una red de países en la Unión Europea cuyas aplicaciones interoperan entre sí, funcionando más allá de sus fronteras.</string>
+    <string name="covid_report_step2_radio1">Compartir con personas usuarias Radar COVID</string>
+    <string name="covid_report_step2_radio2">Compartir con personas usuarias Radar COVID y aplicaciones europeas</string>
     <string name="covid_report_code_hint_title">Código de diagnóstico</string>
-    <string name="covid_report_code_hint_subtitle">Introduce el código que te han enviado</string>
+    <string name="covid_report_code_hint_subtitle">Introduce el código que te han proporcionado</string>
     <string name="covid_report_code_input_example">ejemplo 123456789123</string>
     <string name="covid_report_footer">Al enviar tu diagnóstico los identificadores aleatorios generados en los últimos días servirán para avisar a las personas que hayan estado cerca de ti. Tu identidad no se comparte con nadie.</string>
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
@@ -205,6 +212,12 @@
     <string name="covid_report_date_year">Año</string>
     <string name="covid_report_hint_day_month">- -</string>
     <string name="covid_report_hint_year">- - - -</string>
+    <string name="covid_report_start">Comenzar</string>
+    <string name="covid_report_continue">Continuar</string>
+    <string name="covid_report_cancel">Cancelar</string>
+    <string name="covid_report_title_code">Código diagnóstico</string>
+    <string name="covid_report_title_share">Compartir diagnóstico</string>
+    <string name="covid_report_steps">1 de 2</string>
 
     /********** Network Warning Dialog ************/
 
@@ -339,5 +352,7 @@
         <item quantity="one">%d min</item>
         <item quantity="other">%d mins</item>
     </plurals>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -10,70 +10,41 @@
 
 package es.gob.radarcovid.features.covidreport.form.presenter
 
-import android.util.Log
-import es.gob.radarcovid.datamanager.usecase.ReportInfectedUseCase
+
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
-import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportRouter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
-import es.gob.radarcovid.models.exception.NetworkUnavailableException
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.*
 import javax.inject.Inject
 
 class CovidReportPresenterImpl @Inject constructor(
-    private val view: CovidReportView,
-    private val router: CovidReportRouter,
-    private val reportInfectedUseCase: ReportInfectedUseCase
+    private val view: CovidReportView
 ) : CovidReportPresenter {
 
     override fun viewReady() {
 
     }
 
-    override fun onBackPressed() {
-        view.showExitConfirmationDialog()
-    }
-
     override fun onExitConfirmed() {
         view.finish()
     }
 
-    override fun onCodeChanged(code: String) {
-        view.setButtonSendEnabled(code.length == 12)
+    override fun onBackButtonPressed(isFirstItem: Boolean) {
+        if(isFirstItem)
+            view.showExitConfirmationDialog()
+        else
+            view.showPreviousPage()
     }
 
-    override fun onRetryButtonClick() {
-        onSendButtonClick()
+    override fun onContinueButtonClick() {
+        view.showNextPage()
     }
 
-    override fun onSendButtonClick() {
-        reportInfected(view.getReportCode(), view.getDateSelected())
+    override fun onBackButtonClick() {
+        view.showPreviousPage()
     }
 
-    override fun onSelectDateClick() {
-        view.showDatePickerDialog()
+    override fun onFinishButtonClick() {
+        view.showExitConfirmationDialog()
     }
 
-    private fun reportInfected(reportCode: String, date: Date?) {
-        view.showLoading()
-        reportInfectedUseCase.reportInfected(reportCode, date)
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                view.hideLoading()
-                view.finish()
-                router.navigateToConfirmation()
-            }, {
-                Log.e("CovidReportPresenter", "Error reporting infected", it)
-                if (it is NetworkUnavailableException) {
-                    view.hideLoadingWithNetworkError()
-                } else if (it is java.util.concurrent.CancellationException) {
-                    view.hideLoading()
-                } else {
-                    view.hideLoadingWithErrorOnReport()
-                }
-            })
-    }
 
 }
