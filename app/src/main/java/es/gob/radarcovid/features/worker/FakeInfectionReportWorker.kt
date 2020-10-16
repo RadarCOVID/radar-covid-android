@@ -13,9 +13,9 @@ package es.gob.radarcovid.features.worker
 import android.content.Context
 import androidx.work.*
 import dagger.android.HasAndroidInjector
+import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.ReportFakeInfectionUseCase
-import org.dpppt.android.sdk.BuildConfig
 import org.dpppt.android.sdk.DP3T
 import java.security.SecureRandom
 import java.util.concurrent.TimeUnit
