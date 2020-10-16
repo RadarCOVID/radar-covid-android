@@ -47,13 +47,6 @@ class Step2MyHealthFragment : BaseFragment(), Step2MyHealthView {
         initViews()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        activity?.let {
-            DP3T.onActivityResult(it, requestCode, resultCode, data)
-        }
-    }
-
     private fun initViews() {
         imageButtonBack.contentDescription =
             "${labelManager.getText("MY_HEALTH_TITLE_STEP1", R.string.covid_report_title_code)} ${
