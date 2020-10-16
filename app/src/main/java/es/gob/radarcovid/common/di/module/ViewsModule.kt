@@ -47,4 +47,7 @@ abstract class ViewsModule {
 
     @ContributesAndroidInjector
     abstract fun bindsLabelRadioButton(): LabelRadioButton
+
+    @ContributesAndroidInjector
+    abstract fun bindsStepsProgress(): StepsProgress
 }
