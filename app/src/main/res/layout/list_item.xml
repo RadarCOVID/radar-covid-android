@@ -18,6 +18,7 @@
     android:layout_height="wrap_content"
     android:textSize="22dp"
     android:textColor="@color/list_selector"
-    android:paddingBottom="18dp"
+    android:padding="10dp"
+    android:layout_marginBottom="15dp"
     tools:text="Castellano" />
 

@@ -81,6 +81,7 @@
     /********** Home ************/
 
     <string name="home_exposure_simulation_description">Simular contacto de riesgo.</string>
+    <string name="home_exposure_version">PRE - V_%1$s_%2$s</string>
 
     <string name="exposition_block_low_title">Exposición baja</string>
     <string name="exposition_block_high_title">Contacto estrecho</string>
@@ -272,6 +273,7 @@
     <string name="settings_paragraph_1">Permite seleccionar el idioma de consulta de RadarCOVID</string>
     <string name="settings_list_action">cambiar</string>
     <string name="settings_list_description">Lista desplegable</string>
+    <string name="settings_change_language_desc">Cambiar idioma</string>
 
     /********** DP3T ************/
 

@@ -44,6 +44,8 @@
         <attr name="android:text" />
         <attr name="actionDescription" />
         <attr name="actionDescriptionLabelId" />
+        <attr name="contentDescriptionLabelId" />
+        <attr name="android:contentDescription" />
     </declare-styleable>
 
     <declare-styleable name="LabelDotTextView">
