@@ -55,6 +55,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/covid_report_title_step2"
                 app:isHeading="true"
+                android:textAllCaps="true"
                 app:labelId="MY_HEALTH_TITLE_STEP2" />
 
             <es.gob.radarcovid.common.view.LabelTextView
