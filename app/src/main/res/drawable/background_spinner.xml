@@ -16,7 +16,7 @@
 
             <item android:drawable="@drawable/shape_rounded_border_purple_8d" />
 
-            <item android:drawable="@drawable/ic_dropdown_arrow" android:gravity="center|right" android:right="15dp" />
+            <item android:drawable="@drawable/ic_dropdown_arrow" android:gravity="center|right" android:right="16dp" />
 
         </layer-list>
 
