@@ -72,5 +72,8 @@ app/release/output.json
 
 environment.properties
 
+#commitlint
 node_modules
 package-lock.json
+commitlint.config.js
+package.json
