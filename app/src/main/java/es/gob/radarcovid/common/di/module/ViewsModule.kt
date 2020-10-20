@@ -50,4 +50,7 @@ abstract class ViewsModule {
 
     @ContributesAndroidInjector
     abstract fun bindsStepsProgress(): StepsProgress
+
+    @ContributesAndroidInjector
+    abstract fun bindsLegalTermsDialog(): LegalTermsDialog
 }

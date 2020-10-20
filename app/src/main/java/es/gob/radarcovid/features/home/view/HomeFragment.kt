@@ -36,6 +36,7 @@ import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.common.extensions.parseHtml
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.common.view.LegalTermsDialog
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
@@ -50,6 +51,8 @@ class HomeFragment : BaseFragment(), HomeView {
         private const val REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS = 1
 
         private const val ARG_ACTIVATE_RADAR = "arg_activate_radar"
+
+        private var activateRadar: Boolean = false
 
         fun newInstance(activateRadar: Boolean) = HomeFragment().apply {
             arguments = Bundle().apply {
@@ -79,7 +82,11 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        presenter.viewReady(arguments?.getBoolean(ARG_ACTIVATE_RADAR) ?: false)
+        activateRadar = arguments?.getBoolean(ARG_ACTIVATE_RADAR) ?: false
+        if (presenter.needChangeLegalTerms())
+            showUpdateLegalTermsDialog()
+        else
+            presenter.viewReady(activateRadar)
     }
 
     override fun onResume() {
@@ -113,6 +120,13 @@ class HomeFragment : BaseFragment(), HomeView {
         textViewExpositionTitle.setOnClickListener { presenter.onExposureBlockClick() }
 
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
+    }
+
+    override fun showUpdateLegalTermsDialog() {
+        LegalTermsDialog(context!!).show {
+            presenter.legalTermsAccepted()
+            presenter.viewReady(activateRadar)
+        }
     }
 
     override fun showInitializationCheckAnimation() {

@@ -37,6 +37,8 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_LANGUAGES = "key_languages"
         private const val KEY_HEALING_TIME = "key_healing_time"
         private const val KEY_T_DUMMY = "KEY_T_DUMMY"
+        private const val KEY_SAVED_LEGAL_TERMS_VERSION = "key_saved_legal_terms_version"
+        private const val KEY_SETTINGS_LEGAL_TERMS_VERSION = "key_settings_legal_terms_version"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -174,6 +176,22 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
 
     override fun setTDummy(time: Long) {
         preferences.edit().putLong(KEY_T_DUMMY, time).apply()
+    }
+
+    override fun setSavedLegalTermsVersion(version: String) {
+        preferences.edit().putString(KEY_SAVED_LEGAL_TERMS_VERSION, version).apply()
+    }
+
+    override fun getSavedLegalTermsVersion(): String {
+        return preferences.getString(KEY_SAVED_LEGAL_TERMS_VERSION, "") ?: ""
+    }
+
+    override fun setSettingsLegalTermsVersion(version: String) {
+        preferences.edit().putString(KEY_SETTINGS_LEGAL_TERMS_VERSION, version).apply()
+    }
+
+    override fun getSettingsLegalTermsVersion(): String {
+        return preferences.getString(KEY_SETTINGS_LEGAL_TERMS_VERSION, "") ?: ""
     }
 
 }

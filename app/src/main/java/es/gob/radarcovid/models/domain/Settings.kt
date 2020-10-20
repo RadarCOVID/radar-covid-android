@@ -31,7 +31,8 @@ data class Settings(
             4096
         )
     ),
-    val appInfo: SettingsAppInfo = SettingsAppInfo()
+    val appInfo: SettingsAppInfo = SettingsAppInfo(),
+    val legalTermsVersion: String = ""
 )
 
 data class ExposureConfiguration(
