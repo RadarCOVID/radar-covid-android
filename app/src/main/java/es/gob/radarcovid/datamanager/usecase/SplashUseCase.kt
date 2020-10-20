@@ -55,6 +55,8 @@ class SplashUseCase @Inject constructor(
 
                     preferencesRepository.setHealingTime(initializationData.settings.healingTime)
 
+                    preferencesRepository.setSettingsLegalTermsVersion(initializationData.settings.legalTermsVersion)
+
                     if (initializationData.labels.isNotEmpty())
                         preferencesRepository.setLabels(initializationData.labels)
 

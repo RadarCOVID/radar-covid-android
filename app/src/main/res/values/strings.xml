@@ -29,7 +29,8 @@
     /********** Legal Info ************/
     <string name="legal_info_privacy_policy">Acepto la <a href="https://radarcovid.gob.es/politica-de-privacidad"><b><u>Política de privacidad</u></b></a></string>
     <string name="legal_info_usage_conditions">He leído las <a href="https://radarcovid.gob.es/condiciones-de-uso"><b><u>condiciones de uso</u></b></a></string>
-    <string name="legal_info_usage_policy_conditions">Aceptar política de privacidad y condiciones de uso</string>
+    <string name="legal_info_policy_acc">Acepto política de privacidad</string>
+    <string name="legal_info_usage_conditions_acc">He leído las condiciones de uso</string>
     <string name="legal_info_button">Continuar</string>
 
     /********** Onboarding ************/
@@ -77,6 +78,11 @@
     <string name="low_risk_info_dialog_more_info_acc">Más información de cómo actuar</string>
     <string name="low_risk_info_dialog_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
     <string name="low_risk_info_dialog_p3">Si has sido diagnosticado de COVID-19, para que otras personas puedan ser avisadas de tu exposición es necesario que comuniques tu positivo COVID-19 en la app.</string>
+
+    /********** Healing Info Dialog ************/
+    <string name="legal_terms_dialog_title">Las condiciones de uso y la política de privacidad han sido actualizadas.</string>
+    <string name="legal_terms_dialog_subtitle">Para continuar utilizando Radar COVID debes leerlas y aceptarlas</string>
+    <string name="legal_terms_dialog_paragraph1">Recuerda que seguimos manteniendo nuestros compromisos de anonimato y discreción en el uso de Radar COVID.</string>
 
     /********** Home ************/
 

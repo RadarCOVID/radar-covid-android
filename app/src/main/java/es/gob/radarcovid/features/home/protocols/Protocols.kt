@@ -42,6 +42,8 @@ interface HomeView : RequestView {
 
     fun showExposureHealedDialog()
 
+    fun showUpdateLegalTermsDialog()
+
 }
 
 interface HomePresenter {
@@ -61,6 +63,10 @@ interface HomePresenter {
     fun onSwitchRadarClick(currentlyEnabled: Boolean)
 
     fun onBatteryOptimizationsIgnored()
+
+    fun needChangeLegalTerms(): Boolean
+
+    fun legalTermsAccepted()
 
 }
 

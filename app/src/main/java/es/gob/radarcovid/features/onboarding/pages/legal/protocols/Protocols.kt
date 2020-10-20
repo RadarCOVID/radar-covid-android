@@ -24,4 +24,6 @@ interface LegalInfoPresenter {
 
     fun onLegalTermsCheckedChange(checked: Boolean)
 
+    fun legalTermsAccepted()
+
 }

@@ -51,11 +51,18 @@ class LegalInfoFragment : BaseFragment(), LegalInfoView {
     private fun initViews() {
         checkBoxTermsAndConditions.setOnCheckedChangeListener { _, isChecked ->
             presenter.onLegalTermsCheckedChange(
-                isChecked
+                isChecked && checkBoxUsageConditions.isChecked
+            )
+        }
+
+        checkBoxUsageConditions.setOnCheckedChangeListener { _, isChecked ->
+            presenter.onLegalTermsCheckedChange(
+                isChecked && checkBoxTermsAndConditions.isChecked
             )
         }
 
         buttonAccept.setOnClickListener {
+            presenter.legalTermsAccepted()
             (activity as? OnboardingPageCallback)?.onContinueButtonClick(
                 1
             )

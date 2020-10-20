@@ -13,10 +13,7 @@ package es.gob.radarcovid.features.home.presenter
 import com.squareup.otto.Subscribe
 import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
-import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
-import es.gob.radarcovid.datamanager.usecase.ExposureRadarUseCase
-import es.gob.radarcovid.datamanager.usecase.FakeExposureInfoUseCase
-import es.gob.radarcovid.datamanager.usecase.OnboardingCompletedUseCase
+import es.gob.radarcovid.datamanager.usecase.*
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeRouter
 import es.gob.radarcovid.features.home.protocols.HomeView
@@ -30,22 +27,21 @@ class HomePresenterImpl @Inject constructor(
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase,
     private val exposureRadarUseCase: ExposureRadarUseCase,
     private val exposureInfoUseCase: ExposureInfoUseCase,
-    private val fakeExposureInfoUseCase: FakeExposureInfoUseCase
+    private val fakeExposureInfoUseCase: FakeExposureInfoUseCase,
+    private val legalTermsUseCase: LegalTermsUseCase
 ) : HomePresenter {
+
+    private var activateRadar: Boolean = false
 
     override fun viewReady(activateRadar: Boolean) {
 
-        if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
-            view.setFakeExposureButton()
+        this.activateRadar = activateRadar
 
-        if (!onboardingCompletedUseCase.isOnBoardingCompleted()) {
-            onboardingCompletedUseCase.setOnboardingCompleted(true)
-            view.showInitializationCheckAnimation()
+        if (needChangeLegalTerms()) {
+            view.showUpdateLegalTermsDialog()
+        } else {
+            whenViewReady(activateRadar)
         }
-
-        if (activateRadar && !exposureRadarUseCase.isRadarEnabled())
-            onSwitchRadarClick(false)
-
     }
 
     override fun onResume() {
@@ -100,6 +96,31 @@ class HomePresenterImpl @Inject constructor(
                 view.setRadarBlockChecked(false)
                 view.hideLoading()
             })
+    }
+
+    override fun needChangeLegalTerms(): Boolean {
+        val settingLegalTermsVersionCode = legalTermsUseCase.getSettingsLegalTermsVersionCode()
+        val savedLegalTermsVersionCode = legalTermsUseCase.getSavedLegalTermsVersionCode()
+        return settingLegalTermsVersionCode != savedLegalTermsVersionCode;
+    }
+
+    override fun legalTermsAccepted() {
+        legalTermsUseCase.updateLegalTermsVersionCode()
+        whenViewReady(activateRadar)
+    }
+
+    private fun whenViewReady(activateRadar: Boolean) {
+
+        if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
+            view.setFakeExposureButton()
+
+        if (!onboardingCompletedUseCase.isOnBoardingCompleted()) {
+            onboardingCompletedUseCase.setOnboardingCompleted(true)
+            view.showInitializationCheckAnimation()
+        }
+
+        if (activateRadar && !exposureRadarUseCase.isRadarEnabled())
+            onSwitchRadarClick(false)
     }
 
     @Subscribe

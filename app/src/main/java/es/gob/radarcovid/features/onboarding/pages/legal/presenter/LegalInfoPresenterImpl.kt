@@ -10,12 +10,14 @@
 
 package es.gob.radarcovid.features.onboarding.pages.legal.presenter
 
+import es.gob.radarcovid.datamanager.usecase.LegalTermsUseCase
 import es.gob.radarcovid.features.onboarding.pages.legal.protocols.LegalInfoPresenter
 import es.gob.radarcovid.features.onboarding.pages.legal.protocols.LegalInfoView
 import javax.inject.Inject
 
 class LegalInfoPresenterImpl @Inject constructor(
-    private val view: LegalInfoView
+    private val view: LegalInfoView,
+    private val legalTermsUseCase: LegalTermsUseCase
 ) : LegalInfoPresenter {
 
     override fun viewReady() {
@@ -26,6 +28,10 @@ class LegalInfoPresenterImpl @Inject constructor(
 
         view.setContinueButtonEnabled(checked)
 
+    }
+
+    override fun legalTermsAccepted() {
+        legalTermsUseCase.updateLegalTermsVersionCode()
     }
 
 }

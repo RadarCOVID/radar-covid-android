@@ -61,4 +61,11 @@ interface PreferencesRepository {
 
     fun setTDummy(time: Long)
 
+    fun setSettingsLegalTermsVersion(version: String)
+
+    fun getSettingsLegalTermsVersion(): String
+
+    fun setSavedLegalTermsVersion(version: String)
+
+    fun getSavedLegalTermsVersion(): String
 }

@@ -28,7 +28,8 @@ class SettingsDataMapper @Inject constructor() {
                 attenuationFactorMedium = attenuationFactor?.medium ?: 0.5f,
                 minDurationForExposure = minDurationForExposure ?: 15,
                 riskScoreClassification = transform(riskScoreClassification),
-                appInfo = transform(applicationVersion)
+                appInfo = transform(applicationVersion),
+                legalTermsVersion = legalTermsVersion
             )
         }
     } ?: Settings()

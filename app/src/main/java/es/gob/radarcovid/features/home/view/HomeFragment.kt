@@ -36,6 +36,7 @@ import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.common.extensions.parseHtml
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.common.view.LegalTermsDialog
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
@@ -113,6 +114,12 @@ class HomeFragment : BaseFragment(), HomeView {
         textViewExpositionTitle.setOnClickListener { presenter.onExposureBlockClick() }
 
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
+    }
+
+    override fun showUpdateLegalTermsDialog() {
+        LegalTermsDialog(context!!).show {
+            presenter.legalTermsAccepted()
+        }
     }
 
     override fun showInitializationCheckAnimation() {
