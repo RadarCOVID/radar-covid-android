@@ -309,6 +309,7 @@
 
     <string name="description_arrow_button_back">Botón atrás</string>
     <string name="description_arrow_button_enter">Botón entrar</string>
+    <string name="single_choice_selected">Seleccionado</string>
 
     /********** Common ************/
 

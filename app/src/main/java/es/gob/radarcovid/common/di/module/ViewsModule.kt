@@ -13,6 +13,7 @@ package es.gob.radarcovid.common.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import es.gob.radarcovid.common.view.*
+import es.gob.radarcovid.common.view.adapter.SingleChoiceAdapter
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
 
 @Module
@@ -52,5 +53,9 @@ abstract class ViewsModule {
     abstract fun bindsStepsProgress(): StepsProgress
 
     @ContributesAndroidInjector
+    abstract fun bindsSingleChoiceAdapter(): SingleChoiceAdapter
+
+    @ContributesAndroidInjector
     abstract fun bindsLegalTermsDialog(): LegalTermsDialog
+
 }

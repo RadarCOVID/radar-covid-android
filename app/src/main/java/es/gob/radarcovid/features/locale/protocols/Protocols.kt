@@ -18,7 +18,7 @@ interface LocaleSelectionView : RequestView {
 
     fun showLanguageChangeDialog()
 
-    fun showLanguageSelectionDialog(languages: List<String>, index: Int)
+    fun showLanguageSelectionDialog(languages: List<String>, selectedIndex: Int)
 
     fun setLanguage(language: String)
 }
