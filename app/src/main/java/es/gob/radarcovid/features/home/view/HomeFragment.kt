@@ -52,8 +52,6 @@ class HomeFragment : BaseFragment(), HomeView {
 
         private const val ARG_ACTIVATE_RADAR = "arg_activate_radar"
 
-        private var activateRadar: Boolean = false
-
         fun newInstance(activateRadar: Boolean) = HomeFragment().apply {
             arguments = Bundle().apply {
                 putBoolean(ARG_ACTIVATE_RADAR, activateRadar)
@@ -82,11 +80,7 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        activateRadar = arguments?.getBoolean(ARG_ACTIVATE_RADAR) ?: false
-        if (presenter.needChangeLegalTerms())
-            showUpdateLegalTermsDialog()
-        else
-            presenter.viewReady(activateRadar)
+        presenter.viewReady(arguments?.getBoolean(ARG_ACTIVATE_RADAR) ?: false)
     }
 
     override fun onResume() {
@@ -125,7 +119,6 @@ class HomeFragment : BaseFragment(), HomeView {
     override fun showUpdateLegalTermsDialog() {
         LegalTermsDialog(context!!).show {
             presenter.legalTermsAccepted()
-            presenter.viewReady(activateRadar)
         }
     }
 

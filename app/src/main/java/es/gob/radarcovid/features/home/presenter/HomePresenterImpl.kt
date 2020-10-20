@@ -31,18 +31,17 @@ class HomePresenterImpl @Inject constructor(
     private val legalTermsUseCase: LegalTermsUseCase
 ) : HomePresenter {
 
+    private var activateRadar: Boolean = false
+
     override fun viewReady(activateRadar: Boolean) {
 
-        if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
-            view.setFakeExposureButton()
+        this.activateRadar = activateRadar
 
-        if (!onboardingCompletedUseCase.isOnBoardingCompleted()) {
-            onboardingCompletedUseCase.setOnboardingCompleted(true)
-            view.showInitializationCheckAnimation()
+        if (needChangeLegalTerms()) {
+            view.showUpdateLegalTermsDialog()
+        } else {
+            whenViewReady(activateRadar)
         }
-
-        if (activateRadar && !exposureRadarUseCase.isRadarEnabled())
-            onSwitchRadarClick(false)
     }
 
     override fun onResume() {
@@ -107,6 +106,21 @@ class HomePresenterImpl @Inject constructor(
 
     override fun legalTermsAccepted() {
         legalTermsUseCase.updateLegalTermsVersionCode()
+        whenViewReady(activateRadar)
+    }
+
+    private fun whenViewReady(activateRadar: Boolean) {
+
+        if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
+            view.setFakeExposureButton()
+
+        if (!onboardingCompletedUseCase.isOnBoardingCompleted()) {
+            onboardingCompletedUseCase.setOnboardingCompleted(true)
+            view.showInitializationCheckAnimation()
+        }
+
+        if (activateRadar && !exposureRadarUseCase.isRadarEnabled())
+            onSwitchRadarClick(false)
     }
 
     @Subscribe
