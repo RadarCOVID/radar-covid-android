@@ -115,7 +115,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:textColor="@color/purple_9C"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
