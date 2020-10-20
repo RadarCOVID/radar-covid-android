@@ -33,7 +33,7 @@ class MainPresenterImpl @Inject constructor(
     override fun onResume() {
         Observable.fromCallable { mainUseCase.syncExposureInfo() }
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).subscribe { }
+            .subscribe()
     }
 
     override fun onHomeButtonClick() {
