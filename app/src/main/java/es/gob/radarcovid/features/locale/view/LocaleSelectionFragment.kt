@@ -93,7 +93,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
         buttonLanguage.text = language
     }
 
-    override fun showLanguageSelectionDialog(languages: List<String>, index: Int) {
+    override fun showLanguageSelectionDialog(languages: List<String>, selectedIndex: Int) {
         ListDialog.Builder(context!!)
             .setTitle(
                 labelManager.getText(
@@ -101,8 +101,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     R.string.settings_language_title
                 ).toString()
             )
-            .setList(languages)
-            .setSelected(index)
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_ACCEPT_BUTTON",
@@ -119,15 +117,10 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                 ).toString()
             ) {
                 it.dismiss()
+            }.setItems(languages, selectedIndex) { position ->
+                presenter.onLanguageSelectionChange(position)
             }
-            .setOnItemClick(object : ListDialog.OnItemClickListener {
-                override fun onClickResult(
-                    position: Int
-                ) {
-                    presenter.onLanguageSelectionChange(position)
-                }
-            })
-            .isAccessibilityEnabled(isAccessibilityEnabled())
+            .build()
             .show()
     }
 

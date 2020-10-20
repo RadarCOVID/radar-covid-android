@@ -34,7 +34,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@null"
-        android:choiceMode="singleChoice"
         android:listSelector="@android:color/transparent"
         tools:layout_height="400dp"/>
 

@@ -13,60 +13,29 @@ package es.gob.radarcovid.common.view
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
-import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.TextView
 import es.gob.radarcovid.R
+import es.gob.radarcovid.common.view.adapter.SingleChoiceAdapter
 import kotlinx.android.synthetic.main.list_dialog.*
 
-class ListDialog(context: Context) : Dialog(context) {
-
-    private var selectedIndex: Int = 0
-
-    fun init(
-        view: View,
-        map: List<String>?,
-        index: Int,
-        isAccessibilityEnabled: Boolean,
-        listener: OnItemClickListener
-    ) {
+class ListDialog(context: Context, view: View) : Dialog(context) {
+    init {
         setContentView(view)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        selectedIndex = index
-
-        val adapter = object : ArrayAdapter<String>(context, R.layout.list_item, map!!) {
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = super.getView(position, convertView, parent)
-                val textView = view.findViewById(R.id.textViewListItem) as TextView
-                if (position == selectedIndex) {
-                    textView.setTypeface(textView.typeface, Typeface.BOLD)
-                    if (isAccessibilityEnabled) textView.setBackgroundResource(R.color.purple_FF)
-                }
-                else {
-                    textView.typeface = Typeface.create(textView.typeface, Typeface.NORMAL)
-                    if (isAccessibilityEnabled) textView.setBackgroundResource(android.R.color.transparent)
-                }
-                return view
-            }
-        }
-
-        listView.adapter = adapter
-        listView.visibility = View.VISIBLE
-        listView.setItemChecked(index, true)
-        listView.setOnItemClickListener { _, _, i, _ ->
-            listener.onClickResult(i)
-            selectedIndex = i
-            adapter.notifyDataSetChanged()
-        }
     }
 
-    interface OnItemClickListener {
-        fun onClickResult(position: Int)
+    fun initList(
+        items: List<String>,
+        selectedItemIndex: Int,
+        onItemClickListener: (Int) -> Unit
+    ) {
+        listView.adapter =
+            SingleChoiceAdapter(context, items, selectedItemIndex) { position ->
+                onItemClickListener(position)
+            }
     }
 
     class Builder(context: Context) {
@@ -76,11 +45,7 @@ class ListDialog(context: Context) : Dialog(context) {
         private val textViewTitle = view.findViewById<LabelTextView>(R.id.textViewDialogTitle)
         private val buttonOk = view.findViewById<Button>(R.id.buttonOk)
         private val buttonCancel = view.findViewById<Button>(R.id.buttonCancel)
-        private var index: Int = 0
-        private var listener: OnItemClickListener? = null
-        private var list: List<String>? = null
-        private val listDialog: ListDialog = ListDialog(context)
-        private var isAccessibilityEnabled: Boolean = false
+        private val listDialog: ListDialog = ListDialog(context, view)
 
         fun setPositiveButton(
             text: String,
@@ -112,30 +77,16 @@ class ListDialog(context: Context) : Dialog(context) {
             return this
         }
 
-        fun setList(map: List<String>): Builder {
-            this.list = map
+        fun setItems(
+            items: List<String>,
+            selectedItemIndex: Int,
+            onItemClickListener: (Int) -> Unit
+        ): Builder {
+            listDialog.initList(items, selectedItemIndex, onItemClickListener)
             return this
         }
 
-        fun setSelected(index: Int): Builder {
-            this.index = index
-            return this
-        }
-
-        fun setOnItemClick(listener: OnItemClickListener): Builder {
-            this.listener = listener
-            return this
-        }
-
-        fun isAccessibilityEnabled(isAccessibilityEnabled: Boolean): Builder {
-            this.isAccessibilityEnabled = isAccessibilityEnabled
-            return this
-        }
-
-        fun show() = run {
-            listDialog.init(view, list, index, isAccessibilityEnabled, listener!!)
-            listDialog.show()
-        }
+        fun build(): ListDialog = listDialog
 
     }
 
