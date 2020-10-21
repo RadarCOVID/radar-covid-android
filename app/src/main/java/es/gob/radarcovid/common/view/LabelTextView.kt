@@ -12,14 +12,17 @@ package es.gob.radarcovid.common.view
 
 import android.content.Context
 import android.text.method.LinkMovementMethod
+import android.text.style.URLSpan
 import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.text.toSpanned
 import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
+import es.gob.radarcovid.common.base.utils.NavigationUtils
 import es.gob.radarcovid.common.extensions.removeUnderline
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import java.util.*
@@ -31,6 +34,9 @@ class LabelTextView @JvmOverloads constructor(
 
     @Inject
     lateinit var labelManager: LabelManager
+
+    @Inject
+    lateinit var navigationUtils: NavigationUtils
 
     private var labelId: String?
 
@@ -79,7 +85,8 @@ class LabelTextView @JvmOverloads constructor(
                     getBoolean(R.styleable.LabelTextView_removeUnderlineLink, false)
                 if (isLink) {
                     setIsLink()
-                    if (removeUnderlineLink) removeUnderlineLink()
+                    if (removeUnderlineLink)
+                        removeUnderlineLink()
                 }
 
             } finally {
@@ -105,8 +112,22 @@ class LabelTextView @JvmOverloads constructor(
         text = labelManager.getText(labelId, defaultText)
     }
 
+    private fun getTextUrl(): String? {
+        val spanned = text.toSpanned()
+        val spans = spanned.getSpans(0, spanned.length, URLSpan::class.java)
+        return if (!spans.isNullOrEmpty())
+            (spans[0] as URLSpan).url
+        else
+            null
+    }
+
     fun setIsLink() {
         movementMethod = LinkMovementMethod.getInstance()
+        getTextUrl()?.let { url ->
+            setOnClickListener {
+                navigationUtils.navigateToBrowser(context, url)
+            }
+        }
     }
 
     fun setCustomContentDescription(customContentDescription: String) {
