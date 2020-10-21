@@ -59,9 +59,9 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
             apiInterface.getRegions(uuid, language, true, platform, version)
         }
 
-    override fun verifyCode(body: RequestVerifyCode): Either<Throwable, ResponseToken> =
+    override fun verifyCode(body: RequestVerifyCode, sharingCode: String): Either<Throwable, ResponseToken> =
         callService {
-            apiInterface.verifyCode(body)
+            apiInterface.verifyCode(body, sharingCode)
         }
 
 

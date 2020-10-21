@@ -20,6 +20,7 @@ interface ApiInterface {
     companion object {
 
         const val SEDIA_USER_TOKEN = "SEDIA-UserToken"
+        const val EFGS_SHARING = "X-EFGS-Sharing"
 
     }
 
@@ -59,7 +60,10 @@ interface ApiInterface {
     ): Call<ResponseRegions>
 
     @POST("/verification/verify/code")
-    fun verifyCode(@Body body: RequestVerifyCode): Call<ResponseToken>
+    fun verifyCode(
+        @Body body: RequestVerifyCode,
+        @Header(EFGS_SHARING) sharingEFGSHeader: String
+    ): Call<ResponseToken>
 
 
 }

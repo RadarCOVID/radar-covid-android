@@ -34,8 +34,7 @@ interface ContactTracingRepository {
 
     fun notifyInfected(
         authCode: String,
-        onSet: Date,
-        codeShared: Int
+        onSet: Date
     ): Completable
     
 }
