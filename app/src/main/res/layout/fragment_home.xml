@@ -91,6 +91,7 @@
                     style="@style/TitleExtraBold"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
                     android:background="@null"
                     android:backgroundTint="@null"
                     android:gravity="start"
