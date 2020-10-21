@@ -107,7 +107,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     R.string.accept
                 ).toString()
             ) {
-                it.dismiss()
                 showLanguageChangeDialog()
             }
             .setNegativeButton(
