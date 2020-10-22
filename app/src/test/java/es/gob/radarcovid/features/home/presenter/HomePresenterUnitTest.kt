@@ -14,10 +14,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
-import es.gob.radarcovid.datamanager.usecase.ExposureRadarUseCase
-import es.gob.radarcovid.datamanager.usecase.FakeExposureInfoUseCase
-import es.gob.radarcovid.datamanager.usecase.OnboardingCompletedUseCase
+import es.gob.radarcovid.datamanager.usecase.*
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeRouter
 import es.gob.radarcovid.features.home.protocols.HomeView
@@ -33,6 +30,7 @@ class HomePresenterUnitTest {
     private val exposureRadarUseCase: ExposureRadarUseCase = mock()
     private val exposureInfoUseCase: ExposureInfoUseCase = mock()
     private val fakeExposureInfoUseCase: FakeExposureInfoUseCase = mock()
+    private val legalTermsUseCase: LegalTermsUseCase = mock()
 
     private val presenter: HomePresenter = HomePresenterImpl(
         view,
@@ -40,7 +38,8 @@ class HomePresenterUnitTest {
         onboardingCompletedUseCase,
         exposureRadarUseCase,
         exposureInfoUseCase,
-        fakeExposureInfoUseCase
+        fakeExposureInfoUseCase,
+        legalTermsUseCase
     )
 
     @Test
