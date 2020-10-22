@@ -224,6 +224,7 @@
     <string name="covid_report_title_code">Código diagnóstico</string>
     <string name="covid_report_title_share">Compartir diagnóstico</string>
     <string name="covid_report_steps">1 de 2</string>
+    <string name="covid_report_steps_description">Pantalla $1 de $2</string>
 
     /********** Network Warning Dialog ************/
 

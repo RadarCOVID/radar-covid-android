@@ -28,6 +28,8 @@ class StepsProgress @JvmOverloads constructor(
 
     private var labelId: String?
     private var defaultText: CharSequence
+    private var contentDescriptionLabelId: String?
+    private var defaultTextContent: CharSequence
 
     init {
         inflate(context, R.layout.layout_progress_steps, this)
@@ -46,6 +48,10 @@ class StepsProgress @JvmOverloads constructor(
 
                 labelId = getString(R.styleable.StepsProgress_labelId)
                 defaultText = getText(R.styleable.StepsProgress_android_text) ?: ""
+                contentDescriptionLabelId =
+                    getString(R.styleable.StepsProgress_contentDescriptionLabelId)
+                defaultTextContent =
+                    getText(R.styleable.StepsProgress_android_contentDescription) ?: ""
 
                 val actualStep = getInteger(R.styleable.StepsProgress_actualStep, 0)
                 val numberSteps = getInteger(R.styleable.StepsProgress_numberSteps, 2)
@@ -63,6 +69,7 @@ class StepsProgress @JvmOverloads constructor(
         progressBar.progress = actual
         progressBar.max = total
         setText()
+        setContentDescription()
     }
 
     private fun getActualStep(): String =
@@ -75,9 +82,18 @@ class StepsProgress @JvmOverloads constructor(
 
     private fun setText() {
         val steps = labelManager.getText(labelId, defaultText).toString()
-        val formatSteps = steps.replace("$1", getActualStep())
-            .replace("$2", getNumberSteps())
-
-        textSteps.text = formatSteps
+        textSteps.text = formatTextSteps(steps)
     }
+
+    private fun setContentDescription() {
+        val description =
+            labelManager.getText(contentDescriptionLabelId, defaultTextContent).toString()
+        contentDescription = formatTextSteps(description)
+    }
+
+    private fun formatTextSteps(description: String): String {
+        return description.replace("$1", getActualStep())
+            .replace("$2", getNumberSteps())
+    }
+
 }
