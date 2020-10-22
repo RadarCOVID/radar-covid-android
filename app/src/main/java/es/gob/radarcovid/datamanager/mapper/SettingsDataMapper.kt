@@ -29,7 +29,7 @@ class SettingsDataMapper @Inject constructor() {
                 minDurationForExposure = minDurationForExposure ?: 15,
                 riskScoreClassification = transform(riskScoreClassification),
                 appInfo = transform(applicationVersion),
-                legalTermsVersion = legalTermsVersion
+                legalTermsVersion = legalTermsVersion ?: ""
             )
         }
     } ?: Settings()

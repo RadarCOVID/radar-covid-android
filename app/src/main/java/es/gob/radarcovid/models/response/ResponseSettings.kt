@@ -19,7 +19,7 @@ data class ResponseSettings(
     val attenuationDurationThresholds: ResponseSettingsAttenuationThresholds? = ResponseSettingsAttenuationThresholds(),
     val attenuationFactor: ResponseSettingsAttenuationFactor? = ResponseSettingsAttenuationFactor(),
     val applicationVersion: ResponseSettingsAppVersion? = ResponseSettingsAppVersion(),
-    val legalTermsVersion: String = ""
+    val legalTermsVersion: String? = ""
 )
 
 data class ResponseSettingsExposureConfiguration(

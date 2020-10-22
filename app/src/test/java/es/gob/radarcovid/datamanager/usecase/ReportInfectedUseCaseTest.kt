@@ -27,11 +27,11 @@ class ReportInfectedUseCaseTest {
 
     private val contactTracingRepository: ContactTracingRepository =
         mock {
-            on { notifyInfected(any(), any(), any()) } doReturn Completable.complete()
+            on { notifyInfected(any(), any()) } doReturn Completable.complete()
         }
     private val preferencesRepository: PreferencesRepository = mock()
     private val apiRepository: ApiRepository = mock {
-        on { verifyCode(any()) } doReturn Either.right(ResponseToken(""))
+        on { verifyCode(any(), any()) } doReturn Either.right(ResponseToken(""))
     }
     private val jwtTokenUtils: JwtTokenUtils = mock {
         on { getOnset(any()) } doReturn Date()
@@ -60,7 +60,7 @@ class ReportInfectedUseCaseTest {
 
         reportInfectedUseCase.reportInfected("", null, 0).subscribe()
 
-        verify(apiRepository).verifyCode(any())
+        verify(apiRepository).verifyCode(any(), any())
 
     }
 
@@ -70,7 +70,7 @@ class ReportInfectedUseCaseTest {
         reportInfectedUseCase.reportInfected("", null, 0).subscribe()
 
         inOrder(apiRepository, jwtTokenUtils).apply {
-            verify(apiRepository).verifyCode(any())
+            verify(apiRepository).verifyCode(any(), any())
             verify(jwtTokenUtils).getOnset(any())
         }
 
@@ -81,7 +81,7 @@ class ReportInfectedUseCaseTest {
 
         reportInfectedUseCase.reportInfected("", null, 0).subscribe()
 
-        verify(contactTracingRepository).notifyInfected(any(), any(), any())
+        verify(contactTracingRepository).notifyInfected(any(), any())
 
     }
 
@@ -91,7 +91,7 @@ class ReportInfectedUseCaseTest {
         reportInfectedUseCase.reportInfected("", null, 0).subscribe()
 
         inOrder(contactTracingRepository, preferencesRepository).apply {
-            verify(contactTracingRepository).notifyInfected(any(), any(), any())
+            verify(contactTracingRepository).notifyInfected(any(), any())
             verify(preferencesRepository).setInfectionReportDate(any())
         }
 
