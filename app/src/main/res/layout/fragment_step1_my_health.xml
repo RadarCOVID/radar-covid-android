@@ -57,6 +57,7 @@
                 android:layout_marginTop="37dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/covid_report_title_step1"
+                app:isHeading="true"
                 android:textAllCaps="true"
                 app:labelId="MY_HEALTH_TITLE_STEP1" />
 
