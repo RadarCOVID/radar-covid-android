@@ -36,6 +36,8 @@
         android:visibility="gone"
         app:actualStep="1"
         app:labelId="MY_HEALTH_RANGER"
+        android:contentDescription="@string/covid_report_steps_description"
+        app:contentDescriptionLabelId="MY_HEALTH_SCREEN_POSITION"
         app:layout_constraintBottom_toBottomOf="@+id/imageButtonBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButtonBack"
