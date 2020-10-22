@@ -30,7 +30,6 @@ class FakeInfectionReportRepositoryImpl @Inject constructor(
             } else {
                 DP3T.sendFakeInfectedRequest(context,
                     ExposeeAuthMethodAuthorization("Bearer $authCode"),
-                    Random.nextInt(0, 2).toString(),
                     { it.onComplete() },
                     { it.onError(Exception("Error notifying fake infection")) }
                 )

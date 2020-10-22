@@ -91,8 +91,7 @@ class ContactTracingRepositoryImpl @Inject constructor(
 
     override fun notifyInfected(
         authCode: String,
-        onSet: Date,
-        codeShared: Int
+        onSet: Date
     ): Completable {
         return Completable.create {
             if (BuildConfig.isMock) {
@@ -101,7 +100,6 @@ class ContactTracingRepositoryImpl @Inject constructor(
                 DP3T.sendIAmInfected(activity,
                     onSet,
                     ExposeeAuthMethodAuthorization("Bearer $authCode"),
-                    codeShared.toString(),
                     object : ResponseCallback<Void> {
                         override fun onSuccess(response: Void?) {
                             it.onComplete()

@@ -17,6 +17,7 @@ import es.gob.radarcovid.models.response.ResponseToken
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
+import kotlin.random.Random
 
 class ReportFakeInfectionUseCase @Inject constructor(
     private val fakeInfectionReportRepository: FakeInfectionReportRepository,
@@ -39,7 +40,10 @@ class ReportFakeInfectionUseCase @Inject constructor(
 
     private fun getFakeVerifyToken(): Observable<ResponseToken> {
         return Observable.create { emitter ->
-            val result = apiRepository.verifyCode(RequestVerifyCode(null, FAKE_REPORT_CODE))
+            val result = apiRepository.verifyCode(
+                RequestVerifyCode(null, FAKE_REPORT_CODE),
+                Random.nextInt(0, 2).toString()
+            )
 
             if (result.isLeft()) {
                 emitter.onError(result.left().get())
