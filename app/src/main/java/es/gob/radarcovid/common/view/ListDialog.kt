@@ -16,6 +16,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.adapter.SingleChoiceAdapter
@@ -25,17 +26,19 @@ class ListDialog(context: Context, view: View) : Dialog(context) {
     init {
         setContentView(view)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
     }
 
     fun initList(
         items: List<String>,
         selectedItemIndex: Int,
-        onItemClickListener: (Int) -> Unit
+        onItemClickListener: (Dialog, Int) -> Unit
     ) {
         listView.adapter =
             SingleChoiceAdapter(context, items, selectedItemIndex) { position ->
-                onItemClickListener(position)
+                onItemClickListener(this, position)
             }
+        listView.setSelection(selectedItemIndex)
     }
 
     class Builder(context: Context) {
@@ -80,7 +83,7 @@ class ListDialog(context: Context, view: View) : Dialog(context) {
         fun setItems(
             items: List<String>,
             selectedItemIndex: Int,
-            onItemClickListener: (Int) -> Unit
+            onItemClickListener: (Dialog, Int) -> Unit
         ): Builder {
             listDialog.initList(items, selectedItemIndex, onItemClickListener)
             return this

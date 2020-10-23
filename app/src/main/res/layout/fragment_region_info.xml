@@ -15,13 +15,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/spinnerRegion"
-        style="@style/Spinner"
-        android:paddingEnd="20dp"
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonSelectRegion"
+        style="@style/SpinnerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:spinnerMode="dialog" />
+        android:text="@string/locale_selection_region_default"
+        android:textSize="16sp"
+        app:labelId="LOCALE_SELECTION_REGION_DEFAULT" />
 
     <LinearLayout
         android:id="@+id/wrapperRegionInfo"
