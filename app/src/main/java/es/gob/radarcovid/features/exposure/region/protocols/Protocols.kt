@@ -12,11 +12,12 @@ package es.gob.radarcovid.features.exposure.region.protocols
 
 interface RegionInfoView {
 
-    fun setRegions(regions: List<String>)
+    fun showRegionSelector(
+        regions: List<String>,
+        selectedRegionIndex: Int
+    )
 
-    fun showRegionInfo(phone: String, webName: String)
-
-    fun getSelectedRegionIndex():Int
+    fun showRegionInfo(name: String, phone: String, webName: String)
 
 }
 
@@ -28,7 +29,9 @@ interface RegionInfoPresenter {
 
     fun onWebButtonClick()
 
-    fun onRegionSelected()
+    fun onRegionButtonClick()
+
+    fun onRegionSelected(position: Int)
 
 }
 
