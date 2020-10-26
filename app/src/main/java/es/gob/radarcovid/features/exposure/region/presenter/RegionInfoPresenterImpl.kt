@@ -45,9 +45,12 @@ class RegionInfoPresenterImpl @Inject constructor(
 
     override fun onRegionSelected(position: Int) {
         selectedRegionIndex = position
+
+    }
+
+    override fun onRegionSelectorAcceptButtonClick() {
         with(localeInfo.regions[selectedRegionIndex]) {
             view.showRegionInfo(name, phone, webName)
         }
     }
-
 }
