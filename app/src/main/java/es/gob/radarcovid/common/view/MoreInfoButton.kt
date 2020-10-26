@@ -41,6 +41,7 @@ class MoreInfoButton @JvmOverloads constructor(
                 labelId = getString(R.styleable.MoreInfoButton_labelId)
                 val defaultText = getText(R.styleable.MoreInfoButton_android_text) ?: ""
                 textViewMoreInfo.setText(labelId, defaultText)
+                textViewMoreInfo.setIsLink()
                 textViewMoreInfo.removeUnderlineLink()
             } finally {
                 recycle()
