@@ -17,18 +17,14 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.base.Constants
-import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.covidreport.form.pages.step1.protocols.Step1MyHealthPresenter
 import es.gob.radarcovid.features.covidreport.form.pages.step1.protocols.Step1MyHealthView
 import es.gob.radarcovid.features.covidreport.form.view.CovidReportCallback
 import kotlinx.android.synthetic.main.fragment_step1_my_health.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
-import kotlinx.android.synthetic.main.layout_back_navigation.view.*
-import kotlinx.android.synthetic.main.layout_progress_steps.view.*
 import kotlinx.android.synthetic.main.layout_select_date_symptom.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -72,10 +68,10 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
 
         imageButtonBack.contentDescription =
             "${labelManager.getText("MY_HEALTH_TITLE_PAGE", R.string.covid_report_title)} ${
-                labelManager.getText(
-                    "ACC_BUTTON_BACK_TO",
-                    R.string.navigation_back_to
-                )
+            labelManager.getText(
+                "ACC_BUTTON_BACK_TO",
+                R.string.navigation_back_to
+            )
             }"
 
         buttonContinue.setOnClickListener {
@@ -98,6 +94,10 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
         })
 
         layoutSelectDate.setOnClickListener { presenter.onSelectDateClick() }
+        layoutSelectDate.contentDescription = labelManager.getText(
+            "ACC_MY_HEALTH_DATE_PICKER_NO_SELECTED",
+            R.string.covid_report_acc_date_not_selected
+        )
 
         imageButtonBack.setOnClickListener { presenter.onBackButtonClick() }
 
@@ -132,6 +132,8 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
                 layoutSelectDate.layoutInputDate.labelMonth.text =
                     if (realMonth < 10) "0$realMonth" else "$realMonth"
                 layoutSelectDate.layoutInputDate.labelYear.text = year.toString()
+                layoutSelectDate.contentDescription =
+                    getSelectedDateContentDescription(dayOfMonth, realMonth, year)
             }
 
         val datePicker = DatePickerDialog(context!!, dateSetListener, year, month, day)
@@ -172,4 +174,25 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
     override fun finish() {
         (activity as? CovidReportCallback)?.onFinishButtonClick()
     }
+
+    private fun getSelectedDateContentDescription(day: Int, month: Int, year: Int): String {
+        val dayDescription = "${labelManager.getText(
+            "MY_HEALTH_DIAGNOSTIC_DATE_DAY",
+            R.string.covid_report_date_day
+        )} $day"
+        val monthDescription = "${labelManager.getText(
+            "MY_HEALTH_DIAGNOSTIC_DATE_MONTH",
+            R.string.covid_report_date_month
+        )} $month"
+        val yearDescription = "${labelManager.getText(
+            "MY_HEALTH_DIAGNOSTIC_DATE_YEAR",
+            R.string.covid_report_date_year
+        )} $year"
+        return labelManager.getText(
+            "ACC_MY_HEALTH_DATE_PICKER_SELECTED",
+            R.string.covid_report_acc_date_selected
+        ).toString()
+            .replace("$1", "$dayDescription $monthDescription $yearDescription")
+    }
+
 }

@@ -216,6 +216,8 @@
     <string name="covid_report_date_day">Día</string>
     <string name="covid_report_date_month">Mes</string>
     <string name="covid_report_date_year">Año</string>
+    <string name="covid_report_acc_date_not_selected">Seleccionar fecha</string>
+    <string name="covid_report_acc_date_selected">Fecha seleccionada $1</string>
     <string name="covid_report_hint_day_month">- -</string>
     <string name="covid_report_hint_year">- - - -</string>
     <string name="covid_report_start">Comenzar</string>
