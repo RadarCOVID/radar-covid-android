@@ -116,7 +116,7 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                 ).toString()
             ) {
                 it.dismiss()
-            }.setItems(languages, selectedIndex) { position ->
+            }.setItems(languages, selectedIndex) { _, position ->
                 presenter.onLanguageSelectionChange(position)
             }
             .build()

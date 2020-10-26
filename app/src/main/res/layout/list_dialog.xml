@@ -8,58 +8,74 @@
   ~ SPDX-License-Identifier: MPL-2.0
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_rounded_corners_white"
-    android:orientation="vertical"
-    android:paddingTop="29dp">
+    android:paddingStart="20dp"
+    android:paddingTop="40dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="40dp">
 
-    <es.gob.radarcovid.common.view.LabelTextView
-        android:id="@+id/textViewDialogTitle"
-        style="@style/TitleMedium"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="25dp"
-        android:visibility="gone"
-        tools:text="title"
-        tools:visibility="visible" />
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_rounded_corners_white">
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@null"
-        android:listSelector="@android:color/transparent"
-        tools:layout_height="400dp"/>
+        <es.gob.radarcovid.common.view.LabelTextView
+            android:id="@+id/textViewDialogTitle"
+            style="@style/TitleMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="25dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="title"
+            tools:visibility="visible" />
 
-    <Button
-        android:id="@+id/buttonOk"
-        style="@style/ButtonNormal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/white"
-        android:visibility="gone"
-        tools:text="Button"
-        tools:visibility="visible" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toTopOf="@id/buttonOk"
+            app:layout_constraintTop_toBottomOf="@id/textViewDialogTitle">
 
-    <Button
-        android:id="@+id/buttonCancel"
-        style="@style/ButtonSecondary"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:visibility="gone"
-        tools:text="Button"
-        tools:visibility="visible" />
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:listSelector="@android:color/transparent" />
 
-</LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonOk"
+            style="@style/ButtonNormal"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/buttonCancel"
+            tools:text="Button"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            style="@style/ButtonSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Button"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

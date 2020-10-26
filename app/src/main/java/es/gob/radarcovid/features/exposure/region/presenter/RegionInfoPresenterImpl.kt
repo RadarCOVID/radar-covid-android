@@ -25,21 +25,28 @@ class RegionInfoPresenterImpl @Inject constructor(
 
     private val localeInfo: LocaleInfo = getLocaleInfoUseCase.getLocaleInfo()
 
+    private var selectedRegionIndex: Int = 0
+
     override fun viewReady() {
-        view.setRegions(localeInfo.regions.map { it.name })
+
     }
 
     override fun onPhoneButtonClick() {
-        router.navigateToDialer(localeInfo.regions[view.getSelectedRegionIndex()].phone)
+        router.navigateToDialer(localeInfo.regions[selectedRegionIndex].phone)
     }
 
     override fun onWebButtonClick() {
-        router.navigateToBrowser(localeInfo.regions[view.getSelectedRegionIndex()].url)
+        router.navigateToBrowser(localeInfo.regions[selectedRegionIndex].url)
     }
 
-    override fun onRegionSelected() {
-        with(localeInfo.regions[view.getSelectedRegionIndex()]) {
-            view.showRegionInfo(phone, webName)
+    override fun onRegionButtonClick() {
+        view.showRegionSelector(localeInfo.regions.map { it.name }, selectedRegionIndex)
+    }
+
+    override fun onRegionSelected(position: Int) {
+        selectedRegionIndex = position
+        with(localeInfo.regions[selectedRegionIndex]) {
+            view.showRegionInfo(name, phone, webName)
         }
     }
 
