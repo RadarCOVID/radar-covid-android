@@ -46,8 +46,8 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
     }
 
     private fun initViews() {
-        wrapperPhone.setOnClickListener { presenter.onPhoneButtonClick() }
-        wrapperWeb.setOnClickListener { presenter.onWebButtonClick() }
+        textViewPhone.setOnClickListener { presenter.onPhoneButtonClick() }
+        textViewWeb.setOnClickListener { presenter.onWebButtonClick() }
         buttonSelectRegion.setOnClickListener { presenter.onRegionButtonClick() }
     }
 
