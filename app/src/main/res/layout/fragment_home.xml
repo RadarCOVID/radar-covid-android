@@ -97,7 +97,7 @@
                     android:gravity="start"
                     android:text="@string/exposition_block_low_title"
                     android:textAllCaps="false"
-                    android:textColor="@color/green"
+                    android:textColor="@color/black"
                     android:textSize="24sp"
                     app:actionDescription="@string/exposition_block_action_more_detail"
                     app:actionDescriptionLabelId="ACC_ACTION_MORE_DETAILS"
