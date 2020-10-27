@@ -144,7 +144,6 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_EXPOSITION_MESSAGE_LOW",
                 R.string.exposition_block_low_description
             )
-        textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.green))
         textViewMoreInfo.visibility = View.GONE
     }
 
@@ -157,7 +156,6 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_EXPOSITION_MESSAGE_HIGH",
                 labelManager.getContactPhone()
             ).default(getString(R.string.exposition_block_high_description)).parseHtml()
-        textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
         textViewMoreInfo.visibility = View.GONE
     }
 
@@ -172,7 +170,6 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_EXPOSITION_MESSAGE_INFECTED",
                 R.string.exposition_block_infected_description
             )
-        textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
         textViewMoreInfo.visibility = View.VISIBLE
     }
 
