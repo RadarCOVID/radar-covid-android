@@ -94,10 +94,7 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
         })
 
         layoutSelectDate.setOnClickListener { presenter.onSelectDateClick() }
-        layoutSelectDate.contentDescription = labelManager.getText(
-            "ACC_MY_HEALTH_DATE_PICKER_NO_SELECTED",
-            R.string.covid_report_acc_date_not_selected
-        )
+        layoutSelectDate.contentDescription = getSelectDateContentDescription()
 
         imageButtonBack.setOnClickListener { presenter.onBackButtonClick() }
 
@@ -133,7 +130,7 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
                     if (realMonth < 10) "0$realMonth" else "$realMonth"
                 layoutSelectDate.layoutInputDate.labelYear.text = year.toString()
                 layoutSelectDate.contentDescription =
-                    getSelectedDateContentDescription(dayOfMonth, realMonth, year)
+                    getDateSelectedContentDescription(dayOfMonth, realMonth, year)
             }
 
         val datePicker = DatePickerDialog(context!!, dateSetListener, year, month, day)
@@ -175,7 +172,26 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
         (activity as? CovidReportCallback)?.onFinishButtonClick()
     }
 
-    private fun getSelectedDateContentDescription(day: Int, month: Int, year: Int): String {
+    private fun getSelectDateContentDescription() =
+        "${labelManager.getText(
+            "ACC_MY_HEALTH_DATE_PICKER_NO_SELECTED",
+            R.string.covid_report_acc_date_not_selected
+        )}, " +
+                "${labelManager.getText(
+                    "MY_HEALTH_DIAGNOSTIC_DATE_DAY",
+                    R.string.covid_report_date_day
+                )}, " +
+                "${labelManager.getText(
+                    "MY_HEALTH_DIAGNOSTIC_DATE_MONTH",
+                    R.string.covid_report_date_month
+                )}, " +
+                "${labelManager.getText(
+                    "MY_HEALTH_DIAGNOSTIC_DATE_YEAR",
+                    R.string.covid_report_date_year
+                )}"
+
+
+    private fun getDateSelectedContentDescription(day: Int, month: Int, year: Int): String {
         val dayDescription = "${labelManager.getText(
             "MY_HEALTH_DIAGNOSTIC_DATE_DAY",
             R.string.covid_report_date_day
