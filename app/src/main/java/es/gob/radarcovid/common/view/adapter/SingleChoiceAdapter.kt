@@ -53,8 +53,9 @@ class SingleChoiceAdapter(
 
         if (position == selectedItemIndex) {
             textView.contentDescription =
-                "${labelManager.getText("ACC_SELECTED", R.string.single_choice_selected)} ${getItem(
-                    position
+                "${getItem(position)} ${labelManager.getText(
+                    "ACC_SELECTED",
+                    R.string.single_choice_selected
                 )}"
             textView.setTypeface(textView.typeface, Typeface.BOLD)
             textView.setTextColor(ContextCompat.getColor(context, R.color.black))

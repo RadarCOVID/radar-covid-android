@@ -90,7 +90,7 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
 
         buttonSelectRegion.text = name
         buttonSelectRegion.contentDescription =
-            "${labelManager.getText("ACC_SELECTED", R.string.single_choice_selected)} $name"
+            "$name ${labelManager.getText("ACC_SELECTED", R.string.single_choice_selected)}"
 
         wrapperRegionInfo.visibility = View.VISIBLE
 
