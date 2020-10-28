@@ -35,7 +35,6 @@ class LocaleSelectionPresenterImpl @Inject constructor(
     }
 
     override fun onLanguageSelectionChange(index: Int) {
-        if (isLanguageChanged(index))
             selectedIndex = index
     }
 
