@@ -148,6 +148,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginEnd="2dp"
             android:text="@string/accept"
+            app:labelId="ALERT_ACCEPT_BUTTON"
             android:textColor="@color/white"
             android:enabled="false"
             app:layout_constraintBottom_toBottomOf="parent" />
