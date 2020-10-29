@@ -106,6 +106,7 @@
             android:layout_marginEnd="2dp"
             android:text="@string/accept"
             android:textColor="@color/white"
+            app:labelId="ALERT_ACCEPT_BUTTON"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <es.gob.radarcovid.common.view.LabelButton

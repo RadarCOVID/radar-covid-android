@@ -28,6 +28,15 @@
             android:layout_gravity="center_horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
+            <es.gob.radarcovid.common.view.LabelTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_home"
+                android:textColor="@android:color/transparent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:isHeading="true"/>
+
             <ImageView
                 android:id="@+id/imageViewLogoBackground"
                 android:layout_width="wrap_content"
@@ -97,7 +106,7 @@
                     android:gravity="start"
                     android:text="@string/exposition_block_low_title"
                     android:textAllCaps="false"
-                    android:textColor="@color/green"
+                    android:textColor="@color/black"
                     android:textSize="24sp"
                     app:actionDescription="@string/exposition_block_action_more_detail"
                     app:actionDescriptionLabelId="ACC_ACTION_MORE_DETAILS"

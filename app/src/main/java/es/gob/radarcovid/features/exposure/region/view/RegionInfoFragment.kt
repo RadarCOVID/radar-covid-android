@@ -46,8 +46,8 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
     }
 
     private fun initViews() {
-        wrapperPhone.setOnClickListener { presenter.onPhoneButtonClick() }
-        wrapperWeb.setOnClickListener { presenter.onWebButtonClick() }
+        textViewPhone.setOnClickListener { presenter.onPhoneButtonClick() }
+        textViewWeb.setOnClickListener { presenter.onWebButtonClick() }
         buttonSelectRegion.setOnClickListener { presenter.onRegionButtonClick() }
     }
 
@@ -61,9 +61,26 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
                     "LOCALE_SELECTION_REGION_DEFAULT",
                     R.string.locale_selection_region_default
                 ).toString()
-            ).setItems(regions, selectedRegionIndex) { dialog, position ->
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_ACCEPT_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                presenter.onRegionSelectorAcceptButtonClick()
+                it.dismiss()
+            }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ALERT_CANCEL_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                it.dismiss()
+            }
+            .setItems(regions, selectedRegionIndex) { dialog, position ->
                 presenter.onRegionSelected(position)
-                dialog.dismiss()
             }
             .build()
             .show()
@@ -73,7 +90,7 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
 
         buttonSelectRegion.text = name
         buttonSelectRegion.contentDescription =
-            "${labelManager.getText("ACC_SELECTED", R.string.single_choice_selected)} $name"
+            "$name ${labelManager.getText("ACC_SELECTED", R.string.single_choice_selected)}"
 
         wrapperRegionInfo.visibility = View.VISIBLE
 
@@ -92,5 +109,5 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
         }
 
     }
-    
+
 }

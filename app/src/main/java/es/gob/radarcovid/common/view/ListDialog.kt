@@ -38,7 +38,9 @@ class ListDialog(context: Context, view: View) : Dialog(context) {
             SingleChoiceAdapter(context, items, selectedItemIndex) { position ->
                 onItemClickListener(this, position)
             }
-        listView.setSelection(selectedItemIndex)
+        listView.post {
+            listView.smoothScrollToPositionFromTop(selectedItemIndex, 0, 0)
+        }
     }
 
     class Builder(context: Context) {

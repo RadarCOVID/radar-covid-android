@@ -33,6 +33,8 @@ interface RegionInfoPresenter {
 
     fun onRegionSelected(position: Int)
 
+    fun onRegionSelectorAcceptButtonClick()
+
 }
 
 interface RegionInfoRouter {

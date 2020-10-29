@@ -66,19 +66,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/region_info_phone_title"
+                app:isHeading="true"
                 app:labelId="REGION_INFO_PHONE_TITLE"
                 app:layout_constraintStart_toEndOf="@id/imageViewPhoneIcon"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelButton
                 android:id="@+id/textViewPhone"
+                android:background="@null"
                 style="@style/TitleMedium"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/textViewPhoneTitle"
                 app:layout_constraintTop_toBottomOf="@id/textViewPhoneTitle"
-                tools:text="900 100 1000" />
+                android:text="900 100 1000"/>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -107,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/region_info_web_title"
+                app:isHeading="true"
                 app:labelId="REGION_INFO_WEB_TITLE"
                 app:layout_constraintStart_toEndOf="@id/imageViewWebIcon"
                 app:layout_constraintTop_toTopOf="parent" />

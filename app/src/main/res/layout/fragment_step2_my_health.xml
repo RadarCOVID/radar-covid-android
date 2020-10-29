@@ -92,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:checked="true"
+                    app:labelId="MY_HEALTH_STEP2_RADIO1"
                     android:text="@string/covid_report_step2_radio1" />
 
                 <es.gob.radarcovid.common.view.LabelRadioButton
@@ -100,6 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
+                    app:labelId="MY_HEALTH_STEP2_RADIO2"
                     android:text="@string/covid_report_step2_radio2" />
 
             </RadioGroup>
