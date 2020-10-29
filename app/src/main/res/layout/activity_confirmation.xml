@@ -66,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/confirmation_subtitle"
                 android:textSize="18sp"
+                android:layout_marginBottom="20dp"
                 app:labelId="MY_HEALTH_REPORTED_SUBTITLE" />
 
             <es.gob.radarcovid.common.view.LabelTextView
