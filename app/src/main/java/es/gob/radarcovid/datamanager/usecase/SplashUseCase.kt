@@ -42,55 +42,34 @@ class SplashUseCase @Inject constructor(
     fun getVersionCode(): Int = buildInfoRepository.getVersionCode()
 
     fun getInitializationObservable(): Observable<InitializationData> =
-        getUuidObservable().flatMap {
-            Observable.zip<Settings, Map<String, String>, List<Language>, List<Region>, InitializationData>(
-                getSettingsObservable(),
-                getLabelsObservable(),
-                getLanguagesObservable(),
-                getRegionsObservable(),
-                Function4 { settings, labels, languages, regions ->
-                    InitializationData(settings, labels, languages, regions)
-                })
-                .map { initializationData ->
+        Observable.zip<Settings, Map<String, String>, List<Language>, List<Region>, InitializationData>(
+            getSettingsObservable(),
+            getLabelsObservable(),
+            getLanguagesObservable(),
+            getRegionsObservable(),
+            Function4 { settings, labels, languages, regions ->
+                InitializationData(settings, labels, languages, regions)
+            })
+            .map { initializationData ->
 
-                    preferencesRepository.setHealingTime(initializationData.settings.healingTime)
+                preferencesRepository.setHealingTime(initializationData.settings.healingTime)
 
-                    preferencesRepository.setSettingsLegalTermsVersion(initializationData.settings.legalTermsVersion)
+                preferencesRepository.setSettingsLegalTermsVersion(initializationData.settings.legalTermsVersion)
 
-                    if (initializationData.labels.isNotEmpty())
-                        preferencesRepository.setLabels(initializationData.labels)
+                if (initializationData.labels.isNotEmpty())
+                    preferencesRepository.setLabels(initializationData.labels)
 
-                    if (initializationData.languages.isNotEmpty())
-                        preferencesRepository.setLanguages(initializationData.languages)
+                if (initializationData.languages.isNotEmpty())
+                    preferencesRepository.setLanguages(initializationData.languages)
 
-                    if (initializationData.regions.isNotEmpty())
-                        preferencesRepository.setRegions(initializationData.regions)
+                if (initializationData.regions.isNotEmpty())
+                    preferencesRepository.setRegions(initializationData.regions)
 
-                    contactTracingRepository.updateTracingSettings(initializationData.settings)
+                contactTracingRepository.updateTracingSettings(initializationData.settings)
 
-                    initializationData
+                initializationData
 
-                }
-        }
-
-    private fun getUuidObservable(): Observable<String> = Observable.create { emitter ->
-        if (isUuidInitialized()) {
-            emitter.onNext(preferencesRepository.getUuid())
-            emitter.onComplete()
-        } else {
-            getUuid(
-                onSuccess = {
-                    if (it.isNotEmpty())
-                        preferencesRepository.setUuid(it)
-                    emitter.onNext(it)
-                    emitter.onComplete()
-                },
-                onError = {
-                    emitter.onError(it)
-                    emitter.onComplete()
-                })
-        }
-    }
+            }
 
     private fun getSettingsObservable(): Observable<Settings> =
         Observable.create { emitter ->
@@ -146,13 +125,6 @@ class SplashUseCase @Inject constructor(
         )
     }
 
-    private fun getUuid(onSuccess: (String) -> Unit, onError: (Throwable) -> Unit) =
-        asyncRequest(onSuccess, onError) {
-            mapperScope(apiRepository.getUuid()) {
-                it.uuid
-            }
-        }
-
     private fun getSettings(onSuccess: (Settings) -> Unit, onError: (Throwable) -> Unit) =
         asyncRequest(onSuccess, onError) {
             mapperScope(apiRepository.getSettings()) {
@@ -163,7 +135,6 @@ class SplashUseCase @Inject constructor(
     private fun getLabels(onSuccess: (Map<String, String>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
             apiRepository.getLabels(
-                preferencesRepository.getUuid(),
                 preferencesRepository.getSelectedLanguage(),
                 preferencesRepository.getSelectedRegion(),
                 SO_NAME,
@@ -177,7 +148,6 @@ class SplashUseCase @Inject constructor(
         asyncRequest(onSuccess, onError) {
             mapperScope(
                 apiRepository.getLanguages(
-                    preferencesRepository.getUuid(),
                     preferencesRepository.getSelectedLanguage(),
                     SO_NAME,
                     BuildConfig.VERSION_NAME
@@ -192,7 +162,6 @@ class SplashUseCase @Inject constructor(
         asyncRequest(onSuccess, onError) {
             mapperScope(
                 apiRepository.getRegions(
-                    preferencesRepository.getUuid(),
                     preferencesRepository.getSelectedLanguage(),
                     SO_NAME,
                     BuildConfig.VERSION_NAME
@@ -202,9 +171,6 @@ class SplashUseCase @Inject constructor(
             }
         }
     }
-
-    fun isUuidInitialized() = preferencesRepository.getUuid().isNotEmpty()
-
 
     fun checkGaenAvailability(callback: (Boolean) -> Unit) =
         contactTracingRepository.checkGaenAvailability(callback)

@@ -15,16 +15,27 @@ import es.gob.radarcovid.models.response.*
 import org.funktionale.either.Either
 
 interface ApiRepository {
-
-    fun getUuid(): Either<Throwable, ResponseUuid>
-
+    
     fun getSettings(): Either<Throwable, ResponseSettings>
 
-    fun getLabels(uuid: String, language: String, region: String, platform: String, version: String): Either<Throwable, ResponseLabels>
+    fun getLabels(
+        language: String,
+        region: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseLabels>
 
-    fun getLanguages(uuid: String, language: String, platform: String, version: String): Either<Throwable, ResponseLanguages>
+    fun getLanguages(
+        language: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseLanguages>
 
-    fun getRegions(uuid: String, language: String, platform: String, version: String): Either<Throwable, ResponseRegions>
+    fun getRegions(
+        language: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseRegions>
 
     fun verifyCode(body: RequestVerifyCode, sharingCode: String): Either<Throwable, ResponseToken>
 
