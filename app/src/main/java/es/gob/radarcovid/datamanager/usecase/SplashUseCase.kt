@@ -14,6 +14,7 @@ import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.common.base.Constants.SO_NAME
 import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.common.base.mapperScope
+import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.datamanager.mapper.LanguagesDataMapper
 import es.gob.radarcovid.datamanager.mapper.RegionsDataMapper
 import es.gob.radarcovid.datamanager.mapper.SettingsDataMapper
@@ -26,7 +27,8 @@ import es.gob.radarcovid.models.domain.Language
 import es.gob.radarcovid.models.domain.Region
 import es.gob.radarcovid.models.domain.Settings
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.functions.Function4
+import io.reactivex.rxjava3.functions.Function3
+import java.util.*
 import javax.inject.Inject
 
 class SplashUseCase @Inject constructor(
@@ -39,37 +41,46 @@ class SplashUseCase @Inject constructor(
     private val buildInfoRepository: BuildInfoRepository
 ) {
 
+    private val languageCodeSpanish = "es-ES"
+
     fun getVersionCode(): Int = buildInfoRepository.getVersionCode()
 
     fun getInitializationObservable(): Observable<InitializationData> =
-        Observable.zip<Settings, Map<String, String>, List<Language>, List<Region>, InitializationData>(
-            getSettingsObservable(),
-            getLabelsObservable(),
-            getLanguagesObservable(),
-            getRegionsObservable(),
-            Function4 { settings, labels, languages, regions ->
-                InitializationData(settings, labels, languages, regions)
-            })
-            .map { initializationData ->
+        getLanguagesObservable().flatMap { languages ->
 
-                preferencesRepository.setHealingTime(initializationData.settings.healingTime)
+            preferencesRepository.setLanguages(languages)
 
-                preferencesRepository.setSettingsLegalTermsVersion(initializationData.settings.legalTermsVersion)
+            if (initializeDefaultLanguage(languages))
+                getInitializationObservable() // Languages list is not translated in the desired language so we need to make the request again
+            else
+                Observable.zip<Settings, Map<String, String>, List<Region>, InitializationData>(
+                    getSettingsObservable(),
+                    getLabelsObservable(),
+                    getRegionsObservable(),
+                    Function3 { settings, labels, regions ->
+                        InitializationData(settings, labels, regions)
+                    })
+                    .map { initializationData ->
 
-                if (initializationData.labels.isNotEmpty())
-                    preferencesRepository.setLabels(initializationData.labels)
+                        if (languages.isNotEmpty())
+                            preferencesRepository.setLanguages(languages)
 
-                if (initializationData.languages.isNotEmpty())
-                    preferencesRepository.setLanguages(initializationData.languages)
+                        preferencesRepository.setHealingTime(initializationData.settings.healingTime)
 
-                if (initializationData.regions.isNotEmpty())
-                    preferencesRepository.setRegions(initializationData.regions)
+                        preferencesRepository.setSettingsLegalTermsVersion(initializationData.settings.legalTermsVersion)
 
-                contactTracingRepository.updateTracingSettings(initializationData.settings)
+                        if (initializationData.labels.isNotEmpty())
+                            preferencesRepository.setLabels(initializationData.labels)
 
-                initializationData
+                        if (initializationData.regions.isNotEmpty())
+                            preferencesRepository.setRegions(initializationData.regions)
 
-            }
+                        contactTracingRepository.updateTracingSettings(initializationData.settings)
+
+                        initializationData
+
+                    }
+        }
 
     private fun getSettingsObservable(): Observable<Settings> =
         Observable.create { emitter ->
@@ -148,7 +159,7 @@ class SplashUseCase @Inject constructor(
         asyncRequest(onSuccess, onError) {
             mapperScope(
                 apiRepository.getLanguages(
-                    preferencesRepository.getSelectedLanguage(),
+                    preferencesRepository.getSelectedLanguage().default(languageCodeSpanish),
                     SO_NAME,
                     BuildConfig.VERSION_NAME
                 )
@@ -170,6 +181,27 @@ class SplashUseCase @Inject constructor(
                 regionsDataMapper.transform(it)
             }
         }
+    }
+
+    private fun initializeDefaultLanguage(languages: List<Language>): Boolean {
+
+        var reloadLanguagesList = false
+
+        if (preferencesRepository.getSelectedLanguage().isEmpty()) {
+
+            val systemLanguageCode = Locale.getDefault().toLanguageTag()
+            val availableLanguageCodes = languages.map { it.code }
+
+            if (availableLanguageCodes.contains(systemLanguageCode) && systemLanguageCode != languageCodeSpanish) {
+                preferencesRepository.setSelectedLanguage(systemLanguageCode)
+                reloadLanguagesList = true
+            } else {
+                preferencesRepository.setSelectedLanguage(languageCodeSpanish)
+            }
+        }
+
+        return reloadLanguagesList
+
     }
 
     fun checkGaenAvailability(callback: (Boolean) -> Unit) =

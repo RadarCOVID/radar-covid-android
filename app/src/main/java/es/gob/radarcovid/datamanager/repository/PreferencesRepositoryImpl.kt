@@ -91,7 +91,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
     }
 
     override fun getSelectedLanguage(): String =
-        preferences.getString(KEY_CURRENT_LANGUAGE, "es-ES") ?: "es-ES"
+        preferences.getString(KEY_CURRENT_LANGUAGE, "") ?: ""
 
     override fun setLabels(labels: Map<String, String>) {
         preferences.edit()
