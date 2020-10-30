@@ -63,7 +63,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     R.string.cancel
                 ).toString()
             ) {
-                presenter.restoreLocaleSettings()
                 it.dismiss()
             }
             .setPositiveButton(
@@ -82,12 +81,10 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     private fun initViews() {
 
         buttonLanguage.setOnClickListener {
-            presenter.onSelectLanguageClick()
+            presenter.onLanguageDropdownButtonClick()
         }
 
     }
-
-    fun restoreLocaleSettings() = presenter.restoreLocaleSettings()
 
     override fun setLanguage(language: String) {
         buttonLanguage.text = language
@@ -107,7 +104,9 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     R.string.accept
                 ).toString()
             ) {
-                showLanguageChangeDialog()
+                presenter.onLanguagesListAcceptButtonClick {
+                    it.dismiss()
+                }
             }
             .setNegativeButton(
                 labelManager.getText(

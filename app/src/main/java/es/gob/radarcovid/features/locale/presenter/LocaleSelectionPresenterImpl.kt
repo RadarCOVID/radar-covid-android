@@ -24,51 +24,41 @@ class LocaleSelectionPresenterImpl @Inject constructor(
 ) : LocaleSelectionPresenter {
 
     private val localeInfo: LocaleInfo = getLocaleInfoUseCase.getLocaleInfo()
-    private val defaultSelectedIndex: Int =
+    private val currentLanguageIndex: Int =
         localeInfo.languages.indexOfFirst { it.code == getLocaleInfoUseCase.getSelectedLanguage() }
-    private var selectedIndex: Int = defaultSelectedIndex
+    private var selectedLanguageIndex: Int = currentLanguageIndex
 
     override fun viewReady() {
-        if(defaultSelectedIndex > -1) {
-            view.setLanguage(localeInfo.languages[defaultSelectedIndex].name)
-        }
+        if (currentLanguageIndex > -1)
+            view.setLanguage(localeInfo.languages[currentLanguageIndex].name)
+    }
+
+    override fun onLanguageDropdownButtonClick() {
+        selectedLanguageIndex = currentLanguageIndex
+        view.showLanguageSelectionDialog(localeInfo.languages.map { it.name }, currentLanguageIndex)
     }
 
     override fun onLanguageSelectionChange(index: Int) {
-            selectedIndex = index
+        selectedLanguageIndex = index
     }
 
-    override fun isLanguageChanged(index: Int): Boolean =
-        defaultSelectedIndex != index
+    override fun onLanguagesListAcceptButtonClick(dialogDismissCallback: () -> Unit) {
+        val selectedLanguageCode = localeInfo.languages[selectedLanguageIndex].code
+        val currentLanguage = getLocaleInfoUseCase.getSelectedLanguage()
+        if (selectedLanguageCode == currentLanguage)
+            dialogDismissCallback()
+        else
+            view.showLanguageChangeDialog()
+    }
 
     override fun onLocaleChangeConfirm() {
         applyLocaleSettings()
     }
 
-    override fun applyLocaleSettings() {
-        val selectedLanguage = localeInfo.languages[selectedIndex].code
+    private fun applyLocaleSettings() {
+        val selectedLanguage = localeInfo.languages[selectedLanguageIndex].code
         getLocaleInfoUseCase.setSelectedLanguage(selectedLanguage)
         router.restartApplication()
-    }
-
-    override fun restoreLocaleSettings() {
-        view.setLanguage(localeInfo.languages[defaultSelectedIndex].name)
-    }
-
-    override fun onSelectLanguageClick() {
-        view.showLanguageSelectionDialog(localeInfo.languages.map { it.name }, defaultSelectedIndex)
-    }
-
-    private fun requestLabels() {
-        view.showLoading()
-        getLocaleInfoUseCase.getLabels(
-            onSuccess = {
-                view.hideLoading()
-            },
-            onError = {
-                view.hideLoading()
-            }
-        )
     }
 
 }

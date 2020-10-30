@@ -27,17 +27,13 @@ interface LocaleSelectionPresenter {
 
     fun viewReady()
 
+    fun onLanguageDropdownButtonClick()
+
     fun onLanguageSelectionChange(index: Int)
 
-    fun isLanguageChanged(index: Int): Boolean
-
-    fun applyLocaleSettings()
-
-    fun restoreLocaleSettings()
+    fun onLanguagesListAcceptButtonClick(dialogDismissCallback: () -> Unit)
 
     fun onLocaleChangeConfirm()
-
-    fun onSelectLanguageClick()
 
 }
 
