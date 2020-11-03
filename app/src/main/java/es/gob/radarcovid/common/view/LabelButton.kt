@@ -29,8 +29,6 @@ class LabelButton @JvmOverloads constructor(
     @Inject
     lateinit var labelManager: LabelManager
 
-    private var labelId: String?
-    
     init {
         (context.applicationContext as HasAndroidInjector)
             .androidInjector()
@@ -42,7 +40,7 @@ class LabelButton @JvmOverloads constructor(
             0, 0
         ).apply {
             try {
-                labelId = getString(R.styleable.LabelButton_labelId)
+                val labelId = getString(R.styleable.LabelButton_labelId) ?: ""
                 val defaultText = getText(R.styleable.LabelButton_android_text)
                 text = labelManager.getText(labelId, defaultText)
 
@@ -78,10 +76,6 @@ class LabelButton @JvmOverloads constructor(
 
     fun setText(labelId: String?, defaultText: CharSequence) {
         text = labelManager.getText(labelId, defaultText)
-    }
-
-    fun reloadText() {
-        text = labelManager.getText(labelId, text)
     }
 
     private fun setAccessibilityAction(action: String) {
