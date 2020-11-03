@@ -20,43 +20,36 @@ import javax.inject.Inject
 class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterface) :
     BaseRepository(), ApiRepository {
 
-    override fun getUuid(): Either<Throwable, ResponseUuid> = callService {
-        apiInterface.getUuid()
-    }
-
     override fun getSettings(): Either<Throwable, ResponseSettings> = callService {
         apiInterface.getSettings()
     }
 
     override fun getLabels(
-        uuid: String,
         language: String,
         region: String,
         platform: String,
         version: String
     ): Either<Throwable, ResponseLabels> =
         callService {
-            apiInterface.getLabels(uuid, language, region, platform, version)
+            apiInterface.getLabels(language, region, platform, version)
         }
 
     override fun getLanguages(
-        uuid: String,
         language: String,
         platform: String,
         version: String
     ): Either<Throwable, ResponseLanguages> =
         callService {
-            apiInterface.getLanguages(uuid, language, platform, version)
+            apiInterface.getLanguages(language, platform, version)
         }
 
     override fun getRegions(
-        uuid: String,
         language: String,
         platform: String,
         version: String
     ): Either<Throwable, ResponseRegions> =
         callService {
-            apiInterface.getRegions(uuid, language, true, platform, version)
+            apiInterface.getRegions(language, true, platform, version)
         }
 
     override fun verifyCode(body: RequestVerifyCode, sharingCode: String): Either<Throwable, ResponseToken> =

@@ -16,7 +16,6 @@ import android.view.View
 import android.view.ViewGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
-import es.gob.radarcovid.features.locale.view.LocaleSelectionFragment
 import es.gob.radarcovid.features.onboarding.pages.welcome.protocols.WelcomePresenter
 import es.gob.radarcovid.features.onboarding.pages.welcome.protocols.WelcomeView
 import es.gob.radarcovid.features.onboarding.view.OnboardingPageCallback
@@ -48,12 +47,6 @@ class WelcomeFragment : BaseFragment(), WelcomeView {
 
     private fun initViews() {
         buttonContinue.setOnClickListener { presenter.onContinueButtonClick() }
-    }
-
-    override fun restorePreviousLanguage() {
-        (childFragmentManager
-            .findFragmentById(R.id.fragmentLocaleSelection) as LocaleSelectionFragment)
-            .restoreLocaleSettings()
     }
 
     override fun performContinueButtonClick() {

@@ -21,10 +21,6 @@ interface PreferencesRepository {
 
     fun setOnboardingCompleted(onboardingCompleted: Boolean)
 
-    fun getUuid(): String
-
-    fun setUuid(uuid: String)
-
     fun getInfectionReportDate(): Date?
 
     fun setInfectionReportDate(date: Date)

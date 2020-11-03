@@ -42,7 +42,6 @@ class GetLocaleInfoUseCase @Inject constructor(
     fun getLabels(onSuccess: (Map<String, String>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
             apiRepository.getLabels(
-                preferencesRepository.getUuid(),
                 preferencesRepository.getSelectedLanguage(),
                 preferencesRepository.getSelectedRegion(),
                 SO_NAME,

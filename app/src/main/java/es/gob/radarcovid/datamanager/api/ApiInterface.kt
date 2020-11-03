@@ -19,7 +19,6 @@ interface ApiInterface {
 
     companion object {
 
-        const val SEDIA_USER_TOKEN = "SEDIA-UserToken"
         const val EFGS_SHARING = "X-EFGS-Sharing"
 
     }
@@ -35,7 +34,6 @@ interface ApiInterface {
 
     @GET("/configuration/texts")
     fun getLabels(
-        @Header(SEDIA_USER_TOKEN) uuid: String,
         @Query("locale") language: String,
         @Query("ccaa") region: String,
         @Query("platform") platform: String,
@@ -44,7 +42,6 @@ interface ApiInterface {
 
     @GET("/configuration/masterData/locales")
     fun getLanguages(
-        @Header(SEDIA_USER_TOKEN) uuid: String,
         @Query("locale") language: String,
         @Query("platform") platform: String,
         @Query("version") version: String
@@ -52,7 +49,6 @@ interface ApiInterface {
 
     @GET("/configuration/masterData/ccaa")
     fun getRegions(
-        @Header(SEDIA_USER_TOKEN) uuid: String,
         @Query("locale") language: String,
         @Query("additionalInfo") additionalInfo: Boolean,
         @Query("platform") platform: String,

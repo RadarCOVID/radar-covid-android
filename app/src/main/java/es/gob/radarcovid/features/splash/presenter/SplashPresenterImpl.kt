@@ -40,13 +40,11 @@ class SplashPresenterImpl @Inject constructor(
 
     override fun onResume() {
         if (isInitializationCompleted) {
-            if (splashUseCase.isUuidInitialized()) {
-                splashUseCase.checkGaenAvailability { available ->
-                    if (available)
-                        navigateToHomeWithDelay()
-                    else
-                        view.showPlayServicesRequiredDialog()
-                }
+            splashUseCase.checkGaenAvailability { available ->
+                if (available)
+                    navigateToHomeWithDelay()
+                else
+                    view.showPlayServicesRequiredDialog()
             }
         }
     }

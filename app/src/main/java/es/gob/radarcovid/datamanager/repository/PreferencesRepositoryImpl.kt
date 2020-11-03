@@ -27,7 +27,6 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
     companion object {
         private const val PREFERENCES_NAME = "app_preferences"
         private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
-        private const val KEY_UUID = "uuid"
         private const val KEY_INFECTION_REPORT_DATE = "key_infection_report_date"
         private const val KEY_WAS_EXPOSED = "key_was_exposed"
         private const val KEY_LABELS = "key_labels"
@@ -50,17 +49,6 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         preferences
             .edit()
             .putBoolean(KEY_ONBOARDING_COMPLETED, onboardingCompleted)
-            .apply()
-    }
-
-    override fun getUuid(): String =
-        preferences.getString(KEY_UUID, "") ?: ""
-
-
-    override fun setUuid(uuid: String) {
-        preferences
-            .edit()
-            .putString(KEY_UUID, uuid)
             .apply()
     }
 
@@ -103,7 +91,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
     }
 
     override fun getSelectedLanguage(): String =
-        preferences.getString(KEY_CURRENT_LANGUAGE, "es-ES") ?: "es-ES"
+        preferences.getString(KEY_CURRENT_LANGUAGE, "") ?: ""
 
     override fun setLabels(labels: Map<String, String>) {
         preferences.edit()
