@@ -41,7 +41,7 @@ class LabelManager @Inject constructor(
             it,
             HtmlCompat.FROM_HTML_MODE_LEGACY
         )
-    } ?: SpannedString(default)
+    } ?: SpannedString(default ?: "")
 
 
     fun getExposureHighDatesText(
