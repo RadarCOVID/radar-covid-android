@@ -92,7 +92,7 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
             if (tDummy >= now - FACTOR_HOUR_MILLIS * MAX_DELAY_HOURS) {
                 if (BuildConfig.DEBUG)
                     DP3T.addWorkerStartedToHistory(applicationContext, TAG)
-                reportFakeInfectionUseCase.reportFakeInfection().subscribe()
+                reportFakeInfectionUseCase.reportFakeInfection().blockingAwait()
             }
             tDummy += clock.syncInterval();
             preferencesRepository.setTDummy(tDummy)
