@@ -43,8 +43,6 @@ class ContactTracingRepositoryImpl @Inject constructor(
     }
 
     override fun updateTracingSettings(settings: Settings) {
-        GoogleExposureClient.getInstance(activity)
-            .setParams(settings.attenuationThresholdLow, settings.attenuationThresholdMedium)
         DP3T.setMatchingParameters(
             activity,
             settings.attenuationThresholdLow,
