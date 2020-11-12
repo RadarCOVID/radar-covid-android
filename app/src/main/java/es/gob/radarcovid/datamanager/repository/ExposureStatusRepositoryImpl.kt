@@ -46,7 +46,7 @@ class ExposureStatusRepositoryImpl @Inject constructor(
             else
                 ExposureDay(-1, DayDate().subtractDays(1), System.currentTimeMillis())
 
-            addExposureDay(context, newExposureDay)
+            addExposureDays(context, listOf(newExposureDay))
         }
 
     }
