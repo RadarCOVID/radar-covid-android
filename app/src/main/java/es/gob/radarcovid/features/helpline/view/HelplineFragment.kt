@@ -23,6 +23,7 @@ import es.gob.radarcovid.features.helpline.protocols.HelplinePresenter
 import es.gob.radarcovid.features.helpline.protocols.HelplineView
 import kotlinx.android.synthetic.main.fragment_helpline.*
 import kotlinx.android.synthetic.main.fragment_helpline.textViewTitle
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_my_data.*
 import javax.inject.Inject
 
@@ -67,9 +68,11 @@ class HelplineFragment : BaseFragment(), HelplineView {
 
     private fun setAccessibilityFocus() {
         textViewTitle.postDelayed( {
-            textViewTitle.isFocusable = true
-            textViewTitle.requestFocus()
-            textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+            if (textViewTitle != null) {
+                textViewTitle.isFocusable = true
+                textViewTitle.requestFocus()
+                textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+            }
         }, 3000)
     }
 

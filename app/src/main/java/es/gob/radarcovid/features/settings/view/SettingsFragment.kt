@@ -19,7 +19,9 @@ import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.features.settings.protocols.SettingsPresenter
 import es.gob.radarcovid.features.settings.protocols.SettingsView
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlinx.android.synthetic.main.fragment_settings.textViewTitle
 import javax.inject.Inject
 
 class SettingsFragment : BaseFragment(), SettingsView {
@@ -51,9 +53,11 @@ class SettingsFragment : BaseFragment(), SettingsView {
 
     private fun setAccessibilityFocus() {
         textViewTitle.postDelayed( {
-            textViewTitle.isFocusable = true
-            textViewTitle.requestFocus()
-            textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+            if (textViewTitle != null) {
+                textViewTitle.isFocusable = true
+                textViewTitle.requestFocus()
+                textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+            }
         }, 3000)
     }
 }

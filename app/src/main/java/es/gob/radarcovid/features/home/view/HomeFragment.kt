@@ -370,9 +370,11 @@ class HomeFragment : BaseFragment(), HomeView {
             textViewExpositionTitle.isClickable = false
         }
         textViewTitle.postDelayed( {
-            textViewTitle.isFocusable = true
-            textViewTitle.requestFocus()
-            textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+            if (textViewTitle != null) {
+                textViewTitle.isFocusable = true
+                textViewTitle.requestFocus()
+                textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+            }
         }, 3000)
 
     }
