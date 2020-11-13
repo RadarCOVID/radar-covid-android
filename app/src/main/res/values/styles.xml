@@ -98,6 +98,12 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextSmallBlackBold">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="TextNormal">
         <item name="fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/black</item>
