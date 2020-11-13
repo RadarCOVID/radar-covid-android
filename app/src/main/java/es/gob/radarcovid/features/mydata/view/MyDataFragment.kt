@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.features.mydata.protocols.MyDataPresenter
@@ -42,6 +43,19 @@ class MyDataFragment : BaseFragment(), MyDataView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.viewReady()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setAccessibilityFocus()
+    }
+
+    private fun setAccessibilityFocus() {
+        textViewTitle.postDelayed( {
+            textViewTitle.isFocusable = true
+            textViewTitle.requestFocus()
+            textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+        }, 3000)
     }
 
 }

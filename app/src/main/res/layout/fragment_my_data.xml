@@ -41,11 +41,15 @@
             android:paddingBottom="22dp">
 
             <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewTitle"
                 style="@style/TitleXSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="37dp"
                 android:layout_marginBottom="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:descendantFocusability="beforeDescendants"
                 android:text="@string/my_data_title"
                 app:isHeading="true"
                 android:textColor="@color/gray"

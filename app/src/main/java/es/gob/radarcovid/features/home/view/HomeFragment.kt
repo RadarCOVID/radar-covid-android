@@ -28,6 +28,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import es.gob.radarcovid.BuildConfig
@@ -41,6 +42,8 @@ import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.textViewTitle
+import kotlinx.android.synthetic.main.fragment_settings.*
 import javax.inject.Inject
 
 
@@ -366,6 +369,12 @@ class HomeFragment : BaseFragment(), HomeView {
             wrapperExposure.isClickable = true
             textViewExpositionTitle.isClickable = false
         }
+        textViewTitle.postDelayed( {
+            textViewTitle.isFocusable = true
+            textViewTitle.requestFocus()
+            textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+        }, 3000)
+
     }
 
 }

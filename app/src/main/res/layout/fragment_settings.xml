@@ -40,10 +40,14 @@
             android:paddingBottom="22dp">
 
             <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewTitle"
                 style="@style/TitleMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:descendantFocusability="beforeDescendants"
                 android:text="@string/settings_title"
                 app:isHeading="true"
                 app:labelId="SETTINGS_TITLE" />
