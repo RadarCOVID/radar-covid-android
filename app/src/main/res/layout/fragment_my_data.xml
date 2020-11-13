@@ -52,7 +52,6 @@
                 android:descendantFocusability="beforeDescendants"
                 android:text="@string/my_data_title"
                 app:isHeading="true"
-                android:textColor="@color/gray"
                 app:labelId="MY_DATA_TOP_PLACEHOLDER" />
 
             <es.gob.radarcovid.common.view.LabelTextView
