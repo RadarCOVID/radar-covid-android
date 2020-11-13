@@ -43,11 +43,15 @@
 
 
             <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewTitle"
                 style="@style/TitleMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:text="@string/helpline_title"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:descendantFocusability="beforeDescendants"
                 app:isHeading="true"
                 app:labelId="HELP_LINE_TITLE" />
 

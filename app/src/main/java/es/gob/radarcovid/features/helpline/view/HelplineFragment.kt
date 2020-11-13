@@ -16,11 +16,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.features.helpline.protocols.HelplinePresenter
 import es.gob.radarcovid.features.helpline.protocols.HelplineView
 import kotlinx.android.synthetic.main.fragment_helpline.*
+import kotlinx.android.synthetic.main.fragment_helpline.textViewTitle
+import kotlinx.android.synthetic.main.fragment_my_data.*
 import javax.inject.Inject
 
 
@@ -49,12 +52,25 @@ class HelplineFragment : BaseFragment(), HelplineView {
         presenter.viewReady()
     }
 
+    override fun onResume() {
+        super.onResume()
+        setAccessibilityFocus()
+    }
+
     override fun showDialerForSupport() {
         startActivity(Intent(Intent.ACTION_DIAL).apply {
             data = Uri.parse(
                 "tel:${labelManager.getContactPhone()}"
             )
         })
+    }
+
+    private fun setAccessibilityFocus() {
+        textViewTitle.postDelayed( {
+            textViewTitle.isFocusable = true
+            textViewTitle.requestFocus()
+            textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+        }, 3000)
     }
 
 }
