@@ -12,5 +12,4 @@
 <resources>
 
     <dimen name="padding_content">16dp</dimen>
-    <dimen name="rate_item_height">40dp</dimen>
 </resources>

@@ -23,18 +23,7 @@ class WelcomePresenterImpl @Inject constructor(
     }
 
     override fun onContinueButtonClick() {
-        if (view.isLocaleChanged())
-            view.showLanguageChangeDialog()
-        else
-            view.performContinueButtonClick()
-    }
-
-    override fun onLocaleChangeConfirm() {
-        view.applyLocaleSettings()
-    }
-
-    override fun onLocaleChangeCancel() {
-        view.restorePreviousLanguage()
+        view.performContinueButtonClick()
     }
 
 }

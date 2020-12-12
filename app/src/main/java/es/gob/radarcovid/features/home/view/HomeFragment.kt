@@ -30,11 +30,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.common.extensions.parseHtml
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.common.view.LegalTermsDialog
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
@@ -83,6 +85,7 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun onResume() {
         super.onResume()
+        updateViewsForAccessibility()
         presenter.onResume()
     }
 
@@ -107,24 +110,16 @@ class HomeFragment : BaseFragment(), HomeView {
             event.actionMasked == MotionEvent.ACTION_MOVE
         }
 
-        imageViewLogo.setOnLongClickListener {
-            presenter.onBackgroundImageLongClick()
-            true
-        }
-        imageViewInitializationCheck.setOnLongClickListener {
-            presenter.onBackgroundImageLongClick()
-            true
-        }
         wrapperExposure.setOnClickListener { presenter.onExposureBlockClick() }
-        textViewMoreInfo.setOnClickListener {
-            presenter.onMoreInfoButtonClick(
-                labelManager.getText(
-                    "HOME_EXPOSITION_POSITIVE_MORE_INFO_URL",
-                    R.string.exposition_block_infected_more_info_url
-                ).toString()
-            )
-        }
+        textViewExpositionTitle.setOnClickListener { presenter.onExposureBlockClick() }
+
         buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
+    }
+
+    override fun showUpdateLegalTermsDialog() {
+        LegalTermsDialog(context!!).show {
+            presenter.legalTermsAccepted()
+        }
     }
 
     override fun showInitializationCheckAnimation() {
@@ -149,7 +144,6 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_EXPOSITION_MESSAGE_LOW",
                 R.string.exposition_block_low_description
             )
-        textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.green))
         textViewMoreInfo.visibility = View.GONE
     }
 
@@ -162,7 +156,6 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_EXPOSITION_MESSAGE_HIGH",
                 labelManager.getContactPhone()
             ).default(getString(R.string.exposition_block_high_description)).parseHtml()
-        textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
         textViewMoreInfo.visibility = View.GONE
     }
 
@@ -177,7 +170,6 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_EXPOSITION_MESSAGE_INFECTED",
                 R.string.exposition_block_infected_description
             )
-        textViewExpositionTitle.setTextColor(ContextCompat.getColor(context!!, R.color.red))
         textViewMoreInfo.visibility = View.VISIBLE
     }
 
@@ -207,6 +199,25 @@ class HomeFragment : BaseFragment(), HomeView {
         buttonCovidReport.visibility = View.GONE
     }
 
+    override fun setFakeExposureButton() {
+        imageViewInitializationCheck.setOnLongClickListener {
+            presenter.onFakeExposureButtonClick()
+            true
+        }
+        imageViewLogo.setOnLongClickListener {
+            presenter.onFakeExposureButtonClick()
+            true
+        }
+        imageViewLogo.contentDescription = getString(R.string.home_exposure_simulation_description)
+
+        textViewVersion.text = context?.getString(
+            R.string.home_exposure_version,
+            BuildConfig.VERSION_NAME,
+            BuildConfig.VERSION_CODE.toString()
+        )
+        textViewVersion.visibility = View.VISIBLE
+    }
+
     override fun setRadarBlockChecked(checked: Boolean) {
         if (switchRadar.isChecked != checked) {
             switchRadar.isChecked = checked
@@ -229,7 +240,7 @@ class HomeFragment : BaseFragment(), HomeView {
             )
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.muli_light),
+                ResourcesCompat.getFont(context!!, R.font.roboto_light),
                 Typeface.NORMAL
             )
         }
@@ -272,7 +283,6 @@ class HomeFragment : BaseFragment(), HomeView {
                     R.string.accept
                 ).toString()
             ) { it.dismiss() }
-            .setCloseButton { it.dismiss() }
             .build()
             .show()
     }
@@ -295,7 +305,6 @@ class HomeFragment : BaseFragment(), HomeView {
                     R.string.radar_warning_message
                 ).toString()
             )
-            .setCloseButton { it.dismiss() }
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_HOME_RADAR_CANCEL_BUTTON",
@@ -329,7 +338,7 @@ class HomeFragment : BaseFragment(), HomeView {
             )
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.muli_light),
+                ResourcesCompat.getFont(context!!, R.font.roboto_light),
                 Typeface.NORMAL
             )
         } else {
@@ -343,9 +352,20 @@ class HomeFragment : BaseFragment(), HomeView {
             )
             textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.red))
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.muli_bold),
+                ResourcesCompat.getFont(context!!, R.font.roboto_bold),
                 Typeface.NORMAL
             )
         }
     }
+
+    private fun updateViewsForAccessibility() {
+        if (isAccessibilityEnabled()) {
+            wrapperExposure.isClickable = false
+            textViewExpositionTitle.isClickable = true
+        } else {
+            wrapperExposure.isClickable = true
+            textViewExpositionTitle.isClickable = false
+        }
+    }
+
 }

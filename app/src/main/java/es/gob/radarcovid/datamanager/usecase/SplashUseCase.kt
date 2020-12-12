@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.datamanager.usecase
 
+import es.gob.radarcovid.BuildConfig
+import es.gob.radarcovid.common.base.Constants.SO_NAME
 import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.common.base.mapperScope
 import es.gob.radarcovid.datamanager.mapper.LanguagesDataMapper
@@ -52,6 +54,8 @@ class SplashUseCase @Inject constructor(
                 .map { initializationData ->
 
                     preferencesRepository.setHealingTime(initializationData.settings.healingTime)
+
+                    preferencesRepository.setSettingsLegalTermsVersion(initializationData.settings.legalTermsVersion)
 
                     if (initializationData.labels.isNotEmpty())
                         preferencesRepository.setLabels(initializationData.labels)
@@ -161,7 +165,9 @@ class SplashUseCase @Inject constructor(
             apiRepository.getLabels(
                 preferencesRepository.getUuid(),
                 preferencesRepository.getSelectedLanguage(),
-                preferencesRepository.getSelectedRegion()
+                preferencesRepository.getSelectedRegion(),
+                SO_NAME,
+                BuildConfig.VERSION_NAME
             )
         }
     }
@@ -172,7 +178,9 @@ class SplashUseCase @Inject constructor(
             mapperScope(
                 apiRepository.getLanguages(
                     preferencesRepository.getUuid(),
-                    preferencesRepository.getSelectedLanguage()
+                    preferencesRepository.getSelectedLanguage(),
+                    SO_NAME,
+                    BuildConfig.VERSION_NAME
                 )
             ) {
                 languagesDataMapper.transform(it)
@@ -185,7 +193,9 @@ class SplashUseCase @Inject constructor(
             mapperScope(
                 apiRepository.getRegions(
                     preferencesRepository.getUuid(),
-                    preferencesRepository.getSelectedLanguage()
+                    preferencesRepository.getSelectedLanguage(),
+                    SO_NAME,
+                    BuildConfig.VERSION_NAME
                 )
             ) {
                 regionsDataMapper.transform(it)

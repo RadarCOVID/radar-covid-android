@@ -31,28 +31,37 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
     override fun getLabels(
         uuid: String,
         language: String,
-        region: String
+        region: String,
+        platform: String,
+        version: String
     ): Either<Throwable, ResponseLabels> =
         callService {
-            apiInterface.getLabels(uuid, language, region)
+            apiInterface.getLabels(uuid, language, region, platform, version)
         }
 
     override fun getLanguages(
         uuid: String,
-        language: String
+        language: String,
+        platform: String,
+        version: String
     ): Either<Throwable, ResponseLanguages> =
         callService {
-            apiInterface.getLanguages(uuid, language)
+            apiInterface.getLanguages(uuid, language, platform, version)
         }
 
-    override fun getRegions(uuid: String, language: String): Either<Throwable, ResponseRegions> =
+    override fun getRegions(
+        uuid: String,
+        language: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseRegions> =
         callService {
-            apiInterface.getRegions(uuid, language, true)
+            apiInterface.getRegions(uuid, language, true, platform, version)
         }
 
-    override fun verifyCode(body: RequestVerifyCode): Either<Throwable, ResponseToken> =
+    override fun verifyCode(body: RequestVerifyCode, sharingCode: String): Either<Throwable, ResponseToken> =
         callService {
-            apiInterface.verifyCode(body)
+            apiInterface.verifyCode(body, sharingCode)
         }
 
 

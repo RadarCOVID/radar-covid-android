@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~  This Source Code Form is subject to the terms of the Mozilla Public
+  ~  License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~  SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_select_date"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutLabels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <es.gob.radarcovid.common.view.LabelTextView
+            style="@style/TitleXSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:gravity="center"
+            android:text="@string/covid_report_date_day"
+            android:textSize="16sp"
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_DAY" />
+
+        <es.gob.radarcovid.common.view.LabelTextView
+            style="@style/TitleXSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="25"
+            android:gravity="center"
+            android:text="@string/covid_report_date_month"
+            android:textSize="16sp"
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_MONTH" />
+
+        <es.gob.radarcovid.common.view.LabelTextView
+            style="@style/TitleXSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/covid_report_date_year"
+            android:textSize="16sp"
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_YEAR" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutInputDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <es.gob.radarcovid.common.view.LabelTextView
+            android:id="@+id/labelDay"
+            style="@style/TitleXSmall"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="11dp"
+            android:layout_weight="25"
+            android:background="@drawable/shape_rounded_border_accent"
+            android:gravity="center"
+            android:hint="@string/covid_report_hint_day_month"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="16sp" />
+
+        <es.gob.radarcovid.common.view.LabelTextView
+            android:id="@+id/labelMonth"
+            style="@style/TitleXSmall"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="25"
+            android:background="@drawable/shape_rounded_border_accent"
+            android:gravity="center"
+            android:hint="@string/covid_report_hint_day_month"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="16sp" />
+
+        <es.gob.radarcovid.common.view.LabelTextView
+            android:id="@+id/labelYear"
+            style="@style/TitleXSmall"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="11dp"
+            android:layout_weight="50"
+            android:background="@drawable/shape_rounded_border_accent"
+            android:gravity="center"
+            android:hint="@string/covid_report_hint_year"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="16sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

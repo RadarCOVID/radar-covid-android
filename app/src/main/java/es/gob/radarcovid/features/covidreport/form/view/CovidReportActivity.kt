@@ -13,21 +13,23 @@ package es.gob.radarcovid.features.covidreport.form.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.view.accessibility.AccessibilityManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.view.CMDialog
+import es.gob.radarcovid.features.covidreport.form.pages.step0.view.Step0MyHealthFragment
+import es.gob.radarcovid.features.covidreport.form.pages.step1.view.Step1MyHealthFragment
+import es.gob.radarcovid.features.covidreport.form.pages.step2.view.Step2MyHealthFragment
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
 import kotlinx.android.synthetic.main.activity_covid_report.*
 import org.dpppt.android.sdk.DP3T
+import java.util.*
 import javax.inject.Inject
 
-
-class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
+class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, CovidReportCallback {
 
     companion object {
 
@@ -39,6 +41,9 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
 
     @Inject
     lateinit var presenter: CovidReportPresenter
+
+    private lateinit var _reportCode: String
+    private var _date: Date? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -53,55 +58,29 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
         presenter.viewReady()
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (isAccessibilityEnabled()) {
-            codeEditText.visibility = View.INVISIBLE
-            editTextCodeAccessibility.visibility = View.VISIBLE
-            presenter.onCodeChanged(editTextCodeAccessibility.text.toString())
-        } else {
-            codeEditText.visibility = View.VISIBLE
-            editTextCodeAccessibility.visibility = View.GONE
-            presenter.onCodeChanged(codeEditText.getText())
-        }
-    }
-
     override fun onPause() {
         super.onPause()
         hideKeyBoard()
     }
 
     private fun initViews() {
-        buttonSend.setOnClickListener {
-            hideKeyBoard()
-            presenter.onSendButtonClick()
-        }
-        codeEditText.textChangedListener = {
-            presenter.onCodeChanged(it)
-        }
-        editTextCodeAccessibility.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                presenter.onCodeChanged(s.toString())
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-        })
+        viewPager.adapter = CovidReportAdapter(this)
+        viewPager.isUserInputEnabled = false
+        viewPager.offscreenPageLimit = 4
     }
 
     override fun onBackPressed() {
-        presenter.onBackPressed()
+        presenter.onBackButtonPressed(viewPager.currentItem == 0)
     }
 
-    override fun onBackArrowClick(view: View) {
-        hideKeyBoard()
-        presenter.onBackPressed()
+    override fun showPreviousPage() {
+        viewPager.setCurrentItem(viewPager.currentItem - 1, true)
     }
+
+    override fun showNextPage() {
+        viewPager.setCurrentItem(viewPager.currentItem + 1, true)
+    }
+
 
     override fun showExitConfirmationDialog() {
         CMDialog.Builder(this)
@@ -119,59 +98,64 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView {
             )
             .setPositiveButton(
                 labelManager.getText(
-                    "ALERT_CANCEL_BUTTON",
-                    R.string.covid_report_abort_warning_button
+                    "ALERT_CANCEL_SEND_BUTTON",
+                    R.string.covid_report_abort_send_warning_button
                 ).toString()
             ) {
                 it.dismiss()
                 presenter.onExitConfirmed()
             }
-            .setCloseButton { it.dismiss() }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ACC_BUTTON_CLOSE",
+                    R.string.dialog_close_button_description
+                ).toString()
+            ) {
+                it.dismiss()
+            }
             .build()
             .show()
     }
 
-    override fun getReportCode(): String =
-        if (isAccessibilityEnabled())
-            editTextCodeAccessibility.text.toString()
+
+    private class CovidReportAdapter(fragmentActivity: FragmentActivity) :
+        FragmentStateAdapter(fragmentActivity) {
+
+        private val totalPages = 3
+
+        override fun getItemCount(): Int = totalPages
+
+        override fun createFragment(position: Int): Fragment =
+            when (position) {
+                0 -> Step0MyHealthFragment.newInstance()
+                1 -> Step1MyHealthFragment.newInstance()
+                2 -> Step2MyHealthFragment.newInstance()
+                else -> Step0MyHealthFragment.newInstance()
+            }
+    }
+
+    override fun onContinueButtonClick(pageIndex: Int) {
+        if (viewPager.currentItem == pageIndex)
+            presenter.onContinueButtonClick()
         else
-            codeEditText.getText()
-
-    override fun setButtonSendEnabled(enabled: Boolean) {
-        buttonSend.isEnabled = enabled
+            presenter.onBackButtonClick()
     }
 
-    override fun hideLoadingWithNetworkError() {
-        hideLoadingWithError(
-            labelManager.getText(
-                "ALERT_NETWORK_ERROR_TITLE",
-                R.string.network_warning_dialog_title
-            ).toString(),
-            labelManager.getText(
-                "ALERT_POSITIVE_REPORT_NETWORK_ERROR_MESSAGE",
-                R.string.network_warning_dialog_message
-            ).toString(),
-            labelManager.getText(
-                "ALERT_RETRY_BUTTON",
-                R.string.network_warning_dialog_button
-            ).toString()
-        ) {
-            presenter.onRetryButtonClick()
-        }
+    override fun onFinishButtonClick() {
+        presenter.onFinishButtonClick()
     }
 
-    override fun hideLoadingWithErrorOnReport() {
-        hideLoadingWithError(
-            Exception(
-                labelManager.getText(
-                    "ALERT_MY_HEALTH_CODE_ERROR_CONTENT",
-                    R.string.covid_report_error
-                ).toString()
-            )
-        )
+    override fun hideKeyboard() {
+        hideKeyBoard()
     }
 
-    private fun isAccessibilityEnabled() =
-        (getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
+    override fun setValuesFromStep1(reportCode: String, date: Date?) {
+        _reportCode = reportCode
+        _date = date
+    }
+
+    override fun getDateFromStep1(): Date? = _date
+
+    override fun getReportCodeFromStep1(): String = _reportCode
 
 }

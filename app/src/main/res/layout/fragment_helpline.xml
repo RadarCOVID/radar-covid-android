@@ -35,8 +35,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:orientation="vertical"
             android:paddingStart="16dp"
             android:paddingTop="60dp"
@@ -50,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:text="@string/helpline_title"
+                app:isHeading="true"
                 app:labelId="HELP_LINE_TITLE" />
 
             <ImageView
@@ -100,8 +99,13 @@
                         android:layout_marginStart="20dp"
                         android:text="@string/helpline_faqs_web_title"
                         android:textColor="@color/purple_9C"
+                        android:textColorLink="@color/purple_9C"
                         android:textSize="18sp"
                         app:labelId="HELPLINE_FAQS_WEB_TITLE"
+                        app:isLink="true"
+                        app:removeUnderlineLink="true"
+                        android:contentDescription="@string/helpline_faqs_web_title_acc"
+                        app:contentDescriptionLabelId="ACC_HELPLINE_FAQS_WEB_TITLE"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/imageViewFaqsIcon"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -130,7 +134,10 @@
                         android:layout_marginStart="20dp"
                         android:text="@string/helpline_info_web_title"
                         android:textColor="@color/purple_9C"
+                        android:textColorLink="@color/purple_9C"
                         android:textSize="18sp"
+                        app:isLink="true"
+                        app:removeUnderlineLink="true"
                         app:labelId="HELPLINE_INFO_WEB_TITLE"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/imageViewWebIcon"
@@ -159,8 +166,11 @@
                         android:layout_marginStart="20dp"
                         android:text="@string/helpline_other_web_title"
                         android:textColor="@color/purple_9C"
+                        android:textColorLink="@color/purple_9C"
                         android:textSize="18sp"
                         app:labelId="HELPLINE_OTHER_WEB_TITLE"
+                        app:isLink="true"
+                        app:removeUnderlineLink="true"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/imageOtherWebIcon"
                         app:layout_constraintTop_toTopOf="parent" />

@@ -41,13 +41,7 @@ class MyDataFragment : BaseFragment(), MyDataView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews()
         presenter.viewReady()
-    }
-
-    private fun initViews() {
-        textViewConditions.setOnClickListener { presenter.onConditionsButtonClick() }
-        textViewPrivacy.setOnClickListener { presenter.onPrivacyButtonClick() }
     }
 
 }

@@ -18,7 +18,8 @@ data class ResponseSettings(
     val riskScoreClassification: List<ResponseSettingsRiskScore>? = emptyList(),
     val attenuationDurationThresholds: ResponseSettingsAttenuationThresholds? = ResponseSettingsAttenuationThresholds(),
     val attenuationFactor: ResponseSettingsAttenuationFactor? = ResponseSettingsAttenuationFactor(),
-    val applicationVersion: ResponseSettingsAppVersion? = ResponseSettingsAppVersion()
+    val applicationVersion: ResponseSettingsAppVersion? = ResponseSettingsAppVersion(),
+    val legalTermsVersion: String? = ""
 )
 
 data class ResponseSettingsExposureConfiguration(

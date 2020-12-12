@@ -26,8 +26,4 @@ class HomeRouterImpl @Inject constructor(
 
     override fun navigateToCovidReport() = CovidReportActivity.open(context)
 
-    override fun navigateToBrowser(url: String) {
-        navigationUtils.navigateToBrowser(context, url)
-    }
-
 }

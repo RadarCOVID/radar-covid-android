@@ -63,55 +63,80 @@
                     android:layout_marginBottom="6dp"
                     android:text="@string/onboarding_title_step_3"
                     android:textColor="@color/black"
+                    app:isHeading="true"
                     app:labelId="ONBOARDING_STEP_3_TITLE" />
 
-                <es.gob.radarcovid.common.view.LabelTextView
-                    style="@style/TitleEnumPurple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/onboarding_step_3_instructions_title_1"
-                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_1_TITLE" />
-
-                <es.gob.radarcovid.common.view.LabelTextView
-                    style="@style/TextRegular"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/onboarding_step_3_instructions_detail_1"
-                    android:textColor="@color/black"
-                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_1_DESCRIPTION" />
+                    android:importantForAccessibility="yes"
+                    android:orientation="vertical">
 
-                <es.gob.radarcovid.common.view.LabelTextView
-                    style="@style/TitleEnumPurple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/onboarding_step_3_instructions_title_2"
-                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_2_TITLE" />
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        style="@style/TitleEnumPurple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_step_3_instructions_title_1"
+                        app:labelId="ONBOARDING_STEP_3_PARAGRAPH_1_TITLE" />
 
-                <es.gob.radarcovid.common.view.LabelTextView
-                    style="@style/TextRegular"
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        style="@style/TextRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/onboarding_step_3_instructions_detail_1"
+                        android:textColor="@color/black"
+                        app:labelId="ONBOARDING_STEP_3_PARAGRAPH_1_DESCRIPTION" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/onboarding_step_3_instructions_detail_2"
-                    android:textColor="@color/black"
-                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_2_DESCRIPTION" />
+                    android:importantForAccessibility="yes"
+                    android:orientation="vertical">
 
-                <es.gob.radarcovid.common.view.LabelTextView
-                    style="@style/TitleEnumPurple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/onboarding_step_3_instructions_title_3"
-                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_3_TITLE" />
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        style="@style/TitleEnumPurple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_step_3_instructions_title_2"
+                        app:labelId="ONBOARDING_STEP_3_PARAGRAPH_2_TITLE" />
 
-                <es.gob.radarcovid.common.view.LabelTextView
-                    style="@style/TextRegular"
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        style="@style/TextRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/onboarding_step_3_instructions_detail_2"
+                        android:textColor="@color/black"
+                        app:labelId="ONBOARDING_STEP_3_PARAGRAPH_2_DESCRIPTION" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="60dp"
-                    android:text="@string/onboarding_step_3_instructions_detail_3"
-                    android:textColor="@color/black"
-                    app:labelId="ONBOARDING_STEP_3_PARAGRAPH_3_DESCRIPTION" />
+                    android:importantForAccessibility="yes"
+                    android:orientation="vertical">
+
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        style="@style/TitleEnumPurple"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/onboarding_step_3_instructions_title_3"
+                        app:labelId="ONBOARDING_STEP_3_PARAGRAPH_3_TITLE" />
+
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        style="@style/TextRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="60dp"
+                        android:text="@string/onboarding_step_3_instructions_detail_3"
+                        android:textColor="@color/black"
+                        app:labelId="ONBOARDING_STEP_3_PARAGRAPH_3_DESCRIPTION" />
+
+                </LinearLayout>
 
             </LinearLayout>
 

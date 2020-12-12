@@ -12,7 +12,11 @@ package es.gob.radarcovid.common.view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
 import es.gob.radarcovid.datamanager.utils.LabelManager
@@ -41,6 +45,26 @@ class LabelButton @JvmOverloads constructor(
                 labelId = getString(R.styleable.LabelButton_labelId)
                 val defaultText = getText(R.styleable.LabelButton_android_text)
                 text = labelManager.getText(labelId, defaultText)
+
+                val actionDescriptionLabelId =
+                    getString(R.styleable.LabelButton_actionDescriptionLabelId)
+                val defaultTextAction = getText(R.styleable.LabelButton_actionDescription) ?: ""
+                val actionDescription =
+                    labelManager.getText(actionDescriptionLabelId, defaultTextAction).toString()
+                if (actionDescription.isNotEmpty()) {
+                    setAccessibilityAction(actionDescription)
+                }
+
+                val contentDescriptionLabelId =
+                    getString(R.styleable.LabelButton_contentDescriptionLabelId)
+                val defaultTextContent =
+                    getText(R.styleable.LabelButton_android_contentDescription) ?: ""
+                val customContentDescription =
+                    labelManager.getText(contentDescriptionLabelId, defaultTextContent).toString()
+                if (customContentDescription.isNotEmpty()) {
+                    contentDescription = customContentDescription
+                }
+
             } finally {
                 recycle()
             }
@@ -58,6 +82,23 @@ class LabelButton @JvmOverloads constructor(
 
     fun reloadText() {
         text = labelManager.getText(labelId, text)
+    }
+
+    private fun setAccessibilityAction(action: String) {
+        ViewCompat.setAccessibilityDelegate(this, object : AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(
+                host: View,
+                info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                // A custom action description. For example, you could use "pause"
+                // to have TalkBack speak "double-tap to pause."
+                val customClick = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                    AccessibilityNodeInfoCompat.ACTION_CLICK, action
+                )
+                info.addAction(customClick)
+            }
+        })
     }
 
 }

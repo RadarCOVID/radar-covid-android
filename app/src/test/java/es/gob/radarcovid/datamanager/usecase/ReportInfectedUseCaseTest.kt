@@ -31,7 +31,7 @@ class ReportInfectedUseCaseTest {
         }
     private val preferencesRepository: PreferencesRepository = mock()
     private val apiRepository: ApiRepository = mock {
-        on { verifyCode(any()) } doReturn Either.right(ResponseToken(""))
+        on { verifyCode(any(), any()) } doReturn Either.right(ResponseToken(""))
     }
     private val jwtTokenUtils: JwtTokenUtils = mock {
         on { getOnset(any()) } doReturn Date()
@@ -51,26 +51,26 @@ class ReportInfectedUseCaseTest {
 
     @Test
     fun assertReportUpstreamCompletedNormally() {
-        reportInfectedUseCase.reportInfected("").test()
+        reportInfectedUseCase.reportInfected("", null, 0).test()
             .assertResult()
     }
 
     @Test
     fun onReportInfectedThenVerifyCode() {
 
-        reportInfectedUseCase.reportInfected("").subscribe()
+        reportInfectedUseCase.reportInfected("", null, 0).subscribe()
 
-        verify(apiRepository).verifyCode(any())
+        verify(apiRepository).verifyCode(any(), any())
 
     }
 
     @Test
     fun onCodeVerifiedThenGenerateOnsetDate() {
 
-        reportInfectedUseCase.reportInfected("").subscribe()
+        reportInfectedUseCase.reportInfected("", null, 0).subscribe()
 
         inOrder(apiRepository, jwtTokenUtils).apply {
-            verify(apiRepository).verifyCode(any())
+            verify(apiRepository).verifyCode(any(), any())
             verify(jwtTokenUtils).getOnset(any())
         }
 
@@ -79,7 +79,7 @@ class ReportInfectedUseCaseTest {
     @Test
     fun onReportInfectedThenNotifyInfected() {
 
-        reportInfectedUseCase.reportInfected("").subscribe()
+        reportInfectedUseCase.reportInfected("", null, 0).subscribe()
 
         verify(contactTracingRepository).notifyInfected(any(), any())
 
@@ -88,7 +88,7 @@ class ReportInfectedUseCaseTest {
     @Test
     fun onNotifyInfectedThenSaveTheInfectionReportDate() {
 
-        reportInfectedUseCase.reportInfected("").subscribe()
+        reportInfectedUseCase.reportInfected("", null, 0).subscribe()
 
         inOrder(contactTracingRepository, preferencesRepository).apply {
             verify(contactTracingRepository).notifyInfected(any(), any())

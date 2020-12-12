@@ -32,6 +32,8 @@ interface MainPresenter {
 
     fun onHelplineButtonClick()
 
+    fun onSettingsButtonClick()
+
     fun onBackPressed()
 
     fun onExitConfirmed()
@@ -46,4 +48,5 @@ interface MainRouter {
 
     fun navigateToHelpline()
 
+    fun navigateToSettings()
 }

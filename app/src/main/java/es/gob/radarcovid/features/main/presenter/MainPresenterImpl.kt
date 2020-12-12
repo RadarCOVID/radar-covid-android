@@ -14,7 +14,11 @@ import es.gob.radarcovid.datamanager.usecase.MainUseCase
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.main.protocols.MainView
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
+
 
 class MainPresenterImpl @Inject constructor(
     private val view: MainView,
@@ -27,7 +31,9 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onResume() {
-        mainUseCase.syncExposureInfo()
+        Observable.fromCallable { mainUseCase.syncExposureInfo() }
+            .subscribeOn(Schedulers.io())
+            .subscribe()
     }
 
     override fun onHomeButtonClick() {
@@ -40,6 +46,10 @@ class MainPresenterImpl @Inject constructor(
 
     override fun onHelplineButtonClick() {
         router.navigateToHelpline()
+    }
+
+    override fun onSettingsButtonClick() {
+        router.navigateToSettings()
     }
 
     override fun onBackPressed() {

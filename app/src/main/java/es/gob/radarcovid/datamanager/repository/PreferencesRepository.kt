@@ -57,4 +57,15 @@ interface PreferencesRepository {
 
     fun getHealingTime(): HealingTime
 
+    fun getTDummy(): Long
+
+    fun setTDummy(time: Long)
+
+    fun setSettingsLegalTermsVersion(version: String)
+
+    fun getSettingsLegalTermsVersion(): String
+
+    fun setSavedLegalTermsVersion(version: String)
+
+    fun getSavedLegalTermsVersion(): String
 }

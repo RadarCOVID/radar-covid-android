@@ -13,6 +13,10 @@
     <attr name="labelId" format="string" />
     <attr name="contentDescriptionLabelId" format="string" />
     <attr name="hintLabelId" format="string" />
+    <attr name="actionDescription" format="string" />
+    <attr name="actionDescriptionLabelId" format="string" />
+    <attr name="numberSteps" format="integer" />
+    <attr name="actualStep" format="integer" />
 
     <declare-styleable name="CMCheckBox">
         <attr name="android:text" />
@@ -26,17 +30,29 @@
     <declare-styleable name="LabelTextView">
         <attr name="labelId" />
         <attr name="android:text" />
+        <attr name="isHeading" format="boolean" />
+        <attr name="actionDescription" />
+        <attr name="actionDescriptionLabelId" />
+        <attr name="isLink" format="boolean" />
+        <attr name="removeUnderlineLink" format="boolean" />
+        <attr name="contentDescriptionLabelId" />
+        <attr name="android:contentDescription" />
     </declare-styleable>
 
     <declare-styleable name="LabelButton">
         <attr name="labelId" />
         <attr name="android:text" />
+        <attr name="actionDescription" />
+        <attr name="actionDescriptionLabelId" />
+        <attr name="contentDescriptionLabelId" />
+        <attr name="android:contentDescription" />
     </declare-styleable>
 
     <declare-styleable name="LabelDotTextView">
         <attr name="android:text" />
         <attr name="android:textSize" />
         <attr name="labelId" />
+        <attr name="isLink" />
         <attr name="dotVisibility">
             <!-- Visible on screen; the default value. -->
             <enum name="visible" value="0" />
@@ -45,6 +61,13 @@
             <!-- Completely hidden, as if the view had not been added. -->
             <enum name="gone" value="2" />
         </attr>
+        <attr name="contentDescriptionLabelId" />
+        <attr name="contentDescription" />
+    </declare-styleable>
+
+    <declare-styleable name="MoreInfoButton">
+        <attr name="labelId" />
+        <attr name="android:text" />
     </declare-styleable>
 
     <declare-styleable name="LabelImageButton">
@@ -55,6 +78,32 @@
     <declare-styleable name="LabelEditText">
         <attr name="android:hint" />
         <attr name="hintLabelId" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelCheckBox">
+        <attr name="android:contentDescription" />
+        <attr name="contentDescriptionLabelId" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelConstraintLayout">
+        <attr name="actionDescription" />
+        <attr name="actionDescriptionLabelId" />
+    </declare-styleable>
+
+    <declare-styleable name="LabelRadioButton">
+        <attr name="android:text" />
+        <attr name="labelId" />
+        <attr name="android:contentDescription" />
+        <attr name="contentDescriptionLabelId" />
+    </declare-styleable>
+
+    <declare-styleable name="StepsProgress">
+        <attr name="numberSteps" />
+        <attr name="actualStep" />
+        <attr name="labelId" />
+        <attr name="android:text" />
+        <attr name="android:contentDescription" />
+        <attr name="contentDescriptionLabelId" />
     </declare-styleable>
 
 </resources>

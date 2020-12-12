@@ -14,10 +14,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
-import es.gob.radarcovid.common.view.HintSpinnerAdapter
+import es.gob.radarcovid.common.view.ListDialog
 import es.gob.radarcovid.features.exposure.region.protocols.RegionInfoPresenter
 import es.gob.radarcovid.features.exposure.region.protocols.RegionInfoView
 import kotlinx.android.synthetic.main.fragment_region_info.*
@@ -47,42 +46,52 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
     }
 
     private fun initViews() {
-        wrapperPhone.setOnClickListener { presenter.onPhoneButtonClick() }
-        wrapperWeb.setOnClickListener { presenter.onWebButtonClick() }
-        spinnerRegion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                if (position > 0)
-                    presenter.onRegionSelected()
-            }
-
-        }
+        textViewPhone.setOnClickListener { presenter.onPhoneButtonClick() }
+        textViewWeb.setOnClickListener { presenter.onWebButtonClick() }
+        buttonSelectRegion.setOnClickListener { presenter.onRegionButtonClick() }
     }
 
-    override fun setRegions(regions: List<String>) {
-        spinnerRegion.adapter =
-            HintSpinnerAdapter(
-                context!!,
+    override fun showRegionSelector(
+        regions: List<String>,
+        selectedRegionIndex: Int
+    ) {
+        ListDialog.Builder(context!!)
+            .setTitle(
                 labelManager.getText(
                     "LOCALE_SELECTION_REGION_DEFAULT",
                     R.string.locale_selection_region_default
-                ).toString(),
-                R.layout.row_spinner,
-                regions
+                ).toString()
             )
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_ACCEPT_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                presenter.onRegionSelectorAcceptButtonClick()
+                it.dismiss()
+            }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ALERT_CANCEL_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                it.dismiss()
+            }
+            .setItems(regions, selectedRegionIndex) { dialog, position ->
+                presenter.onRegionSelected(position)
+            }
+            .build()
+            .show()
     }
 
-    override fun showRegionInfo(phone: String, webName: String) {
-        
+    override fun showRegionInfo(name: String, phone: String, webName: String) {
+
+        buttonSelectRegion.text = name
+        buttonSelectRegion.contentDescription =
+            "$name ${labelManager.getText("ACC_SELECTED", R.string.single_choice_selected)}"
+
         wrapperRegionInfo.visibility = View.VISIBLE
 
         if (phone.isNotEmpty()) {
@@ -96,12 +105,9 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
             wrapperWeb.visibility = View.VISIBLE
             textViewWeb.text = webName
         } else {
-            wrapperWeb.visibility = View.VISIBLE
+            wrapperWeb.visibility = View.GONE
         }
 
     }
-
-    override fun getSelectedRegionIndex(): Int =
-        spinnerRegion.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
 
 }
