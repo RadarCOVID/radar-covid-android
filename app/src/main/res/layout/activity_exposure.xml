@@ -54,24 +54,26 @@
                 android:paddingEnd="16dp"
                 android:paddingBottom="8dp">
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExpositionDetailTitleSmall"
                     style="@style/TitleXSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/exposure_detail_title" />
+                    android:text="@string/exposure_detail_title"
+                    app:isHeading="true" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExpositionDetailTitle"
                     style="@style/TitleMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:text="@string/exposure_detail_low_title"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    app:isHeading="true" />
 
-                <TextView
+                <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExposureDescription"
                     style="@style/TextSmall"
                     android:layout_width="wrap_content"
@@ -85,9 +87,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
+                    android:contentDescription="@string/more_info"
                     android:text="@string/exposition_block_infected_more_info"
+                    android:textColorLink="@color/black_26"
                     android:textSize="16sp"
                     android:visibility="gone"
+                    app:contentDescriptionLabelId="ACC_MORE_INFO"
+                    app:isLink="true"
                     app:labelId="EXPOSITION_HIGH_MORE_INFO"
                     tools:visibility="visible" />
 
@@ -99,16 +105,17 @@
                     android:visibility="gone"
                     tools:visibility="visible">
 
-                    <TextView
+                    <es.gob.radarcovid.common.view.LabelTextView
                         style="@style/Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
                         android:text="@string/exposure_detail_high_exposure_dates_title"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        app:isHeading="true" />
 
-                    <TextView
+                    <es.gob.radarcovid.common.view.LabelTextView
                         android:id="@+id/textViewExposureDates"
                         style="@style/TextSmall"
                         android:layout_width="wrap_content"

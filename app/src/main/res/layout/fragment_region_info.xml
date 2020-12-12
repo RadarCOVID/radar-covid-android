@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2020 Gobierno de España
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -16,19 +15,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonSelectRegion"
+        style="@style/SpinnerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_rounded_corners_white"
-        android:elevation="10dp">
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerRegion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dialog" />
-
-    </FrameLayout>
+        android:text="@string/locale_selection_region_default"
+        android:textSize="16sp"
+        app:labelId="LOCALE_SELECTION_REGION_DEFAULT" />
 
     <LinearLayout
         android:id="@+id/wrapperRegionInfo"
@@ -71,19 +66,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/region_info_phone_title"
+                app:isHeading="true"
                 app:labelId="REGION_INFO_PHONE_TITLE"
                 app:layout_constraintStart_toEndOf="@id/imageViewPhoneIcon"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelButton
                 android:id="@+id/textViewPhone"
+                android:background="@null"
                 style="@style/TitleMedium"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/textViewPhoneTitle"
                 app:layout_constraintTop_toBottomOf="@id/textViewPhoneTitle"
-                tools:text="900 100 1000" />
+                android:text="900 100 1000"/>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -112,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/region_info_web_title"
+                app:isHeading="true"
                 app:labelId="REGION_INFO_WEB_TITLE"
                 app:layout_constraintStart_toEndOf="@id/imageViewWebIcon"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -122,7 +121,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:textColor="@color/purple_9C"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"

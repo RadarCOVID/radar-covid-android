@@ -56,14 +56,10 @@ interface ExposurePresenter {
 
     fun onReportButtonClick()
 
-    fun onUrlButtonClick(url: String)
-
 }
 
 interface ExposureRouter {
 
     fun navigateToCovidReport()
-
-    fun navigateToBrowser(url: String)
 
 }

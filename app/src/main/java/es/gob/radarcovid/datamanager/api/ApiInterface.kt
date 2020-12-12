@@ -20,6 +20,7 @@ interface ApiInterface {
     companion object {
 
         const val SEDIA_USER_TOKEN = "SEDIA-UserToken"
+        const val EFGS_SHARING = "X-EFGS-Sharing"
 
     }
 
@@ -36,24 +37,33 @@ interface ApiInterface {
     fun getLabels(
         @Header(SEDIA_USER_TOKEN) uuid: String,
         @Query("locale") language: String,
-        @Query("ccaa") region: String
+        @Query("ccaa") region: String,
+        @Query("platform") platform: String,
+        @Query("version") version: String
     ): Call<ResponseLabels>
 
     @GET("/configuration/masterData/locales")
     fun getLanguages(
         @Header(SEDIA_USER_TOKEN) uuid: String,
-        @Query("locale") language: String
+        @Query("locale") language: String,
+        @Query("platform") platform: String,
+        @Query("version") version: String
     ): Call<ResponseLanguages>
 
     @GET("/configuration/masterData/ccaa")
     fun getRegions(
         @Header(SEDIA_USER_TOKEN) uuid: String,
         @Query("locale") language: String,
-        @Query("additionalInfo") additionalInfo: Boolean
+        @Query("additionalInfo") additionalInfo: Boolean,
+        @Query("platform") platform: String,
+        @Query("version") version: String
     ): Call<ResponseRegions>
 
     @POST("/verification/verify/code")
-    fun verifyCode(@Body body: RequestVerifyCode): Call<ResponseToken>
+    fun verifyCode(
+        @Body body: RequestVerifyCode,
+        @Header(EFGS_SHARING) sharingEFGSHeader: String
+    ): Call<ResponseToken>
 
 
 }

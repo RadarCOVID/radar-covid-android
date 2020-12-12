@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2020 Gobierno de España
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -24,6 +23,7 @@
         android:layout_marginBottom="21dp"
         android:text="@string/exposure_detail_what_to_do"
         android:textSize="22sp"
+        app:isHeading="true"
         app:labelId="EXPOSITION_LOW_WHAT_TO_DO_TITLE" />
 
     <es.gob.radarcovid.common.view.LabelTextView
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="21dp"
         android:text="@string/exposure_detail_tips_title_low"
-        android:textColor="@color/green"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:labelId="EXPOSITION_LOW_WHAT_TO_DO_DESCRIPTION" />
 
@@ -202,15 +202,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:contentDescription="@string/symptoms_what_to_do"
         android:text="@string/exposure_detail_low_symptoms_what_to_do"
+        android:textColorLink="@color/black_26"
         android:textSize="16sp"
+        app:contentDescriptionLabelId="ACC_SYMPTOMS_WHAT_TO_DO"
+        app:isLink="true"
         app:labelId="EXPOSITION_LOW_SYMPTOMS_WHAT_TO_DO" />
 
     <es.gob.radarcovid.common.view.MoreInfoButton
         android:id="@+id/buttonMoreInfoLow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:text="@string/more_info_exposure_low"
+        app:labelId="MORE_INFO_EXPOSURE_LOW" />
 
     <es.gob.radarcovid.common.view.LabelTextView
         style="@style/TitleSmall"

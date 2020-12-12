@@ -28,6 +28,8 @@ interface HomeView : RequestView {
 
     fun hideReportButton()
 
+    fun setFakeExposureButton()
+
     fun setRadarBlockChecked(checked: Boolean)
 
     fun setRadarBlockEnabled(enabled: Boolean)
@@ -39,6 +41,8 @@ interface HomeView : RequestView {
     fun showUnableToReportCovidDialog()
 
     fun showExposureHealedDialog()
+
+    fun showUpdateLegalTermsDialog()
 
 }
 
@@ -52,15 +56,17 @@ interface HomePresenter {
 
     fun onExposureBlockClick()
 
-    fun onMoreInfoButtonClick(url: String)
-
     fun onReportButtonClick()
 
-    fun onBackgroundImageLongClick()
+    fun onFakeExposureButtonClick()
 
     fun onSwitchRadarClick(currentlyEnabled: Boolean)
 
     fun onBatteryOptimizationsIgnored()
+
+    fun needChangeLegalTerms(): Boolean
+
+    fun legalTermsAccepted()
 
 }
 
@@ -69,7 +75,5 @@ interface HomeRouter {
     fun navigateToExpositionDetail()
 
     fun navigateToCovidReport()
-
-    fun navigateToBrowser(url: String)
 
 }

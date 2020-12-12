@@ -17,9 +17,7 @@ import es.gob.radarcovid.datamanager.repository.ContactTracingRepository
 import es.gob.radarcovid.datamanager.repository.ContactTracingRepositoryImpl
 import es.gob.radarcovid.features.covidreport.form.presenter.CovidReportPresenterImpl
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportPresenter
-import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportRouter
 import es.gob.radarcovid.features.covidreport.form.protocols.CovidReportView
-import es.gob.radarcovid.features.covidreport.form.router.CovidReportRouterImpl
 import es.gob.radarcovid.features.covidreport.form.view.CovidReportActivity
 import dagger.Module
 import dagger.Provides
@@ -39,10 +37,6 @@ class CovidReportModule {
     @Provides
     @PerActivity
     fun providesPresenter(presenter: CovidReportPresenterImpl): CovidReportPresenter = presenter
-
-    @Provides
-    @PerActivity
-    fun providesCovidReportRouter(router: CovidReportRouterImpl): CovidReportRouter = router
 
     @Provides
     @PerActivity

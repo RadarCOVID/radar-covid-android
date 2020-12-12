@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.datamanager.usecase
 
+import es.gob.radarcovid.BuildConfig
+import es.gob.radarcovid.common.base.Constants.SO_NAME
 import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
@@ -42,7 +44,9 @@ class GetLocaleInfoUseCase @Inject constructor(
             apiRepository.getLabels(
                 preferencesRepository.getUuid(),
                 preferencesRepository.getSelectedLanguage(),
-                preferencesRepository.getSelectedRegion()
+                preferencesRepository.getSelectedRegion(),
+                SO_NAME,
+                BuildConfig.VERSION_NAME
             )
         }
     }

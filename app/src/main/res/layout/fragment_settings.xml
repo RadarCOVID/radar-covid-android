@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_covid_report"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        style="@style/ScrollVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="60dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="22dp">
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TitleMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="@string/settings_title"
+                app:isHeading="true"
+                app:labelId="SETTINGS_TITLE" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                android:src="@drawable/img_background_settings" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TitleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/settings_change_language"
+                app:isHeading="true"
+                app:labelId="LOCALE_CHANGE_LANGUAGE" />
+
+            <fragment
+                android:id="@+id/fragmentLocaleSelection"
+                android:name="es.gob.radarcovid.features.locale.view.LocaleSelectionFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/settings_paragraph_1"
+                app:labelId="SETTINGS_PARAGRAPH_1" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

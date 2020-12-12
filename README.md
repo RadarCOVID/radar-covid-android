@@ -3,7 +3,7 @@
 <p align="center">
     <a href="https://github.com/RadarCOVID/radar-covid-android/commits/" title="Last Commit"><img src="https://img.shields.io/github/last-commit/RadarCOVID/radar-covid-android?style=flat"></a>
     <a href="https://github.com/RadarCOVID/radar-covid-android/issues" title="Open Issues"><img src="https://img.shields.io/github/issues/RadarCOVID/radar-covid-android?style=flat"></a>
-    <a href="https://github.com/RadarCOVID/radar-covid-ios/blob/master/LICENSE" title="License"><img src="https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg?style=flat"></a>
+    <a href="https://github.com/RadarCOVID/radar-covid-android/blob/master/LICENSE" title="License"><img src="https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg?style=flat"></a>
 </p>
 
 ## Introduction
@@ -21,7 +21,9 @@ These are the tools used to develop the solution:
 
 Clone this repository and import into **Android Studio**.
 
+```bash
 git clone https://github.com/RadarCOVID/radar-covid-android.git
+```
 
 ## Building
 ### Create APK

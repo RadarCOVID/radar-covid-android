@@ -44,18 +44,12 @@ class LoadingDialog(context: Context) :
             WindowManager.LayoutParams.MATCH_PARENT
         )
 
-        initViews()
-
         viewBackground.startAnimation(AlphaAnimation(0f, viewBackground.alpha).apply {
             duration = fadeInDuration
         })
     }
 
-    private fun initViews() {
-        buttonClose.setOnClickListener { hide() }
-    }
-
-    override fun hide() {
+    fun dismissWithAnimation() {
         if (!isHiding) {
             isHiding = true
             viewBackground.startAnimation(AlphaAnimation(viewBackground.alpha, 0f).apply {
@@ -66,7 +60,7 @@ class LoadingDialog(context: Context) :
                     }
 
                     override fun onAnimationEnd(animation: Animation?) {
-                        super@LoadingDialog.hide()
+                        super@LoadingDialog.dismiss()
                         isHiding = false
                     }
 
@@ -89,7 +83,7 @@ class LoadingDialog(context: Context) :
         }
         buttonOk.text = button
         buttonOk.setOnClickListener {
-            hide()
+            dismissWithAnimation()
             onClick()
         }
 

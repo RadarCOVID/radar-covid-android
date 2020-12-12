@@ -34,8 +34,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:orientation="vertical"
             android:paddingLeft="22dp"
             android:paddingTop="60dp"
@@ -49,6 +47,7 @@
                 android:layout_marginTop="37dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/my_data_title"
+                app:isHeading="true"
                 android:textColor="@color/gray"
                 app:labelId="MY_DATA_TOP_PLACEHOLDER" />
 
@@ -61,7 +60,6 @@
                 app:labelId="MY_DATA_TITLE" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
-                android:id="@+id/dottedTextViewL1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -69,15 +67,15 @@
                 app:labelId="MY_DATA_BULLET_1" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
-                android:id="@+id/dottedTextViewL2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/my_data_l2"
+                android:contentDescription="@string/my_data_l2_acc"
+                app:contentDescriptionLabelId="ACC_MY_DATA_BULLET_2"
                 app:labelId="MY_DATA_BULLET_2" />
 
             <es.gob.radarcovid.common.view.LabelDotTextView
-                android:id="@+id/dottedTextViewL3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -89,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="11dp"
-                android:fontFamily="@font/muli_regular"
+                android:fontFamily="@font/roboto_regular"
                 android:text="@string/my_data_encription_info"
                 android:textColor="@color/black_26"
                 android:textSize="16sp"
@@ -99,12 +97,14 @@
                 android:id="@+id/textViewPrivacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/muli_light"
+                android:fontFamily="@font/roboto_light"
                 android:paddingTop="13dp"
                 android:paddingBottom="13dp"
                 android:text="@string/my_data_privacy"
                 android:textColor="@color/black_28"
+                android:textColorLink="@color/black_28"
                 android:textSize="16sp"
+                app:isLink="true"
                 app:labelId="MY_DATA_PRIVACY" />
 
             <es.gob.radarcovid.common.view.LabelTextView
@@ -112,12 +112,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="11dp"
-                android:fontFamily="@font/muli_light"
+                android:fontFamily="@font/roboto_light"
                 android:paddingTop="13dp"
                 android:paddingBottom="13dp"
                 android:text="@string/my_data_conditions"
                 android:textColor="@color/black_28"
+                android:textColorLink="@color/black_28"
                 android:textSize="16sp"
+                app:isLink="true"
                 app:labelId="MY_DATA_TERMS" />
 
         </LinearLayout>
