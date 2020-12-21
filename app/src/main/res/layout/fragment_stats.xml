@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".features.stats.view.StatsFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_covid_report"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        style="@style/ScrollVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="60dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="22dp">
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewTitle"
+                style="@style/TitleMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:descendantFocusability="beforeDescendants"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:text="@string/stats_title"
+                app:isHeading="true"
+                app:labelId="STATS_TITLE" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewUpdateData"
+                style="@style/TextNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="17dp"
+                tools:text="@string/stats_update_date" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rounded_corners_white"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_download" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDownloadsTitle"
+                    style="@style/TextNormal18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/stats_downloads_title"
+                    app:labelId="STATS_DOWNLOAD_APP" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDownloads"
+                    style="@style/TextBold22Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    tools:text="1000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_rounded_corners_white"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_check" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewPositiveTitle"
+                    style="@style/TextNormal18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/stats_positive_title"
+                    app:labelId="STATS_CODES_PLACEHOLDER" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewPositive"
+                    style="@style/TextBold22Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    tools:text="1000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_rounded_corners_white"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_location" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewCountriesTitle"
+                    style="@style/TextNormal18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/stats_countries_title"
+                    app:labelId="STATS_CONNECTED_COUNTRY" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewCountries"
+                    style="@style/TextBold22Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    tools:text="12" />
+
+                <es.gob.radarcovid.common.view.LabelButton
+                    android:id="@+id/textViewCountriesLink"
+                    style="@style/Title18PurpleA7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/stats_countries_link"
+                    android:textAllCaps="false"
+                    app:labelId="STATS_KNOW_CONNECTED_COUNTRY" />
+
+            </LinearLayout>
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewMoreData"
+                style="@style/TextNormal18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/stats_more_data"
+                app:labelId="STATS_WEB_SITE_PLACEHOLDER" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageWeb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_pointer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textViewWeb1"
+                    app:layout_constraintBottom_toBottomOf="@id/textViewWeb1"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewWeb1"
+                    style="@style/Title18PurpleA7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/stats_more_data_link_1"
+                    android:textColorLink="@color/purple_A7"
+                    app:isLink="true"
+                    app:labelId="STATS_WEB_LINK"
+                    app:removeUnderlineLink="true"
+                    app:layout_constraintStart_toEndOf="@id/imageWeb"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageWeb2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_pointer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textViewWeb2"
+                    app:layout_constraintBottom_toBottomOf="@id/textViewWeb2"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewWeb2"
+                    style="@style/Title18PurpleA7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/stats_more_data_link_2"
+                    android:textColorLink="@color/purple_A7"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    app:isLink="true"
+                    app:labelId="STATS_WEB_LINK_CNECOVID_ISCII"
+                    app:removeUnderlineLink="true"
+                    app:layout_constraintStart_toEndOf="@id/imageWeb2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

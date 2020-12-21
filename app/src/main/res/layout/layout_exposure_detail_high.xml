@@ -30,6 +30,16 @@
         app:labelId="EXPOSITION_HIGH_WHAT_TO_DO_TITLE" />
 
     <es.gob.radarcovid.common.view.LabelTextView
+        style="@style/TitleExtraBoldSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:text="@string/exposure_detail_high_region"
+        android:textSize="20sp"
+        app:isHeading="true"
+        app:labelId="EXPOSITION_HIGH_REGION_TITLE" />
+
+    <es.gob.radarcovid.common.view.LabelTextView
         style="@style/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,12 +65,22 @@
         android:visibility="gone" />
 
     <es.gob.radarcovid.common.view.LabelTextView
-        style="@style/Title"
+        style="@style/TitleExtraBoldSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/exposure_detail_high_security"
+        android:textSize="20sp"
+        app:isHeading="true"
+        app:labelId="EXPOSITION_HIGH_WARNING_TITLE" />
+
+    <es.gob.radarcovid.common.view.LabelTextView
+        style="@style/TextNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/exposure_detail_high_tips_title"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:labelId="EXPOSITION_HIGH_RECOMENDATIONS_BULLET_TITLE" />
 
@@ -186,7 +206,7 @@
             android:src="@drawable/ic_cough" />
 
         <es.gob.radarcovid.common.view.LabelTextView
-            style="@style/TextSemibold"
+            style="@style/TextSmallBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -206,7 +226,7 @@
             android:src="@drawable/ic_fever" />
 
         <es.gob.radarcovid.common.view.LabelTextView
-            style="@style/TextSemibold"
+            style="@style/TextSmallBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -226,7 +246,7 @@
             android:src="@drawable/ic_breathing_difficulty" />
 
         <es.gob.radarcovid.common.view.LabelTextView
-            style="@style/TextSemibold"
+            style="@style/TextSmallBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="19dp"
@@ -237,7 +257,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center">
 
         <ImageView
@@ -246,7 +266,7 @@
             android:src="@drawable/ic_taste_and_smell" />
 
         <es.gob.radarcovid.common.view.LabelTextView
-            style="@style/TextSemibold"
+            style="@style/TextSmallBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -262,10 +282,11 @@
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/other_symptoms"
         android:text="@string/exposure_detail_high_other_symptoms"
-        android:textColorLink="@color/black_26"
+        android:textColorLink="@color/purple_A7"
         android:textSize="16sp"
         app:contentDescriptionLabelId="ACC_OTHER_SYMPTOMS"
         app:isLink="true"
+        app:removeUnderlineLink="true"
         app:labelId="EXPOSITION_HIGH_OTHER_SYMPTOMS" />
 
     <es.gob.radarcovid.common.view.LabelTextView
@@ -273,13 +294,14 @@
         style="@style/TitleTipSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="30dp"
         android:contentDescription="@string/symptoms_what_to_do"
         android:text="@string/exposure_detail_high_symptoms_what_to_do"
-        android:textColorLink="@color/black_26"
+        android:textColorLink="@color/purple_A7"
         android:textSize="16sp"
         app:contentDescriptionLabelId="ACC_SYMPTOMS_WHAT_TO_DO"
         app:isLink="true"
+        app:removeUnderlineLink="true"
         app:labelId="EXPOSITION_HIGH_SYMPTOMS_WHAT_TO_DO" />
 
     <es.gob.radarcovid.common.view.MoreInfoButton

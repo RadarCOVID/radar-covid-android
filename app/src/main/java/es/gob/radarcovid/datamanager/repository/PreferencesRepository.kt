@@ -64,4 +64,12 @@ interface PreferencesRepository {
     fun setSavedLegalTermsVersion(version: String)
 
     fun getSavedLegalTermsVersion(): String
+
+    fun setRadarCovidDownloadUrl(url: String)
+
+    fun getRadarCovidDownloadUrl(): String
+
+    fun setNotificationReminder(time: Int)
+
+    fun getNotificationReminder(): Int
 }

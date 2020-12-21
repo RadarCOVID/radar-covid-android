@@ -10,7 +10,6 @@
 
 package es.gob.radarcovid.features.covidreport.form.pages.step2.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +21,6 @@ import es.gob.radarcovid.features.covidreport.form.pages.step2.protocols.Step2My
 import es.gob.radarcovid.features.covidreport.form.view.CovidReportCallback
 import kotlinx.android.synthetic.main.fragment_step2_my_health.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
-import org.dpppt.android.sdk.DP3T
 import java.util.*
 import javax.inject.Inject
 

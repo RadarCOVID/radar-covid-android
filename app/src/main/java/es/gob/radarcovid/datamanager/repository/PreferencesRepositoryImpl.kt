@@ -13,6 +13,7 @@ package es.gob.radarcovid.datamanager.repository
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
 import es.gob.radarcovid.common.extensions.toJson
 import es.gob.radarcovid.models.domain.HealingTime
 import es.gob.radarcovid.models.domain.Language
@@ -38,6 +39,8 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_T_DUMMY = "KEY_T_DUMMY"
         private const val KEY_SAVED_LEGAL_TERMS_VERSION = "key_saved_legal_terms_version"
         private const val KEY_SETTINGS_LEGAL_TERMS_VERSION = "key_settings_legal_terms_version"
+        private const val KEY_RADARCOVID_DOWNLOAD_URL = "key_radarcovid_download_url"
+        private const val KEY_NOTIFICATION_REMINDER = "key_notification_reminder"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -182,4 +185,19 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         return preferences.getString(KEY_SETTINGS_LEGAL_TERMS_VERSION, "") ?: ""
     }
 
+    override fun setRadarCovidDownloadUrl(url: String) {
+        preferences.edit().putString(KEY_RADARCOVID_DOWNLOAD_URL, url).apply()
+    }
+
+    override fun getRadarCovidDownloadUrl(): String {
+        return preferences.getString(KEY_RADARCOVID_DOWNLOAD_URL, "") ?: ""
+    }
+
+    override fun setNotificationReminder(time: Int) {
+        preferences.edit().putInt(KEY_NOTIFICATION_REMINDER, time).apply()
+    }
+
+    override fun getNotificationReminder(): Int {
+        return preferences.getInt(KEY_NOTIFICATION_REMINDER, NOTIFICATION_REMINDER_DEFAULT)
+    }
 }

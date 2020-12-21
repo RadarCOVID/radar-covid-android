@@ -19,6 +19,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
+import es.gob.radarcovid.common.extensions.removeUnderline
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import kotlinx.android.synthetic.main.view_dotted_textview.view.*
 import javax.inject.Inject
@@ -64,12 +65,16 @@ class LabelDotTextView @JvmOverloads constructor(
                     getText(R.styleable.LabelDotTextView_contentDescription) ?: ""
                 val customContentDescription =
                     labelManager.getText(contentDescriptionLabelId, defaultTextContent).toString()
-                if (!customContentDescription.isNullOrEmpty()) {
+                if (!customContentDescription.isEmpty()) {
                     textView.setCustomContentDescription(customContentDescription)
                 }
 
                 val isLink = getBoolean(R.styleable.LabelDotTextView_isLink, false)
+                val removeUnderlineLink =
+                    getBoolean(R.styleable.LabelDotTextView_removeUnderlineLink, false)
                 if (isLink) textView.setIsLink()
+                if (removeUnderlineLink)
+                    removeUnderlineLink()
 
             } finally {
                 recycle()
@@ -91,5 +96,9 @@ class LabelDotTextView @JvmOverloads constructor(
 
     fun reloadText() {
         textView.text = labelManager.getText(labelId, textView.text)
+    }
+
+    fun removeUnderlineLink() {
+        textView.text = textView.text.removeUnderline()
     }
 }

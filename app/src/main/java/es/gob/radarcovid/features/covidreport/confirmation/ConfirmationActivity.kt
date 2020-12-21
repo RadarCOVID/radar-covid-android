@@ -16,7 +16,6 @@ import android.os.Bundle
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.base.utils.NavigationUtils
-import kotlinx.android.synthetic.main.activity_confirmation.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
 import javax.inject.Inject
 

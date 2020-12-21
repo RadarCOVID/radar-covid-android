@@ -18,7 +18,6 @@ import io.reactivex.rxjava3.core.Completable
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.GaenAvailability
 import org.dpppt.android.sdk.backend.ResponseCallback
-import org.dpppt.android.sdk.internal.nearby.GoogleExposureClient
 import org.dpppt.android.sdk.models.ExposeeAuthMethodAuthorization
 import java.util.*
 import javax.inject.Inject

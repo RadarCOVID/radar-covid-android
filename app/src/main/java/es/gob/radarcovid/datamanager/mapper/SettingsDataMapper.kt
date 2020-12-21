@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.datamanager.mapper
 
+import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
 import es.gob.radarcovid.models.domain.*
 import es.gob.radarcovid.models.response.*
 import javax.inject.Inject
@@ -29,7 +30,9 @@ class SettingsDataMapper @Inject constructor() {
                 minDurationForExposure = minDurationForExposure ?: 15,
                 riskScoreClassification = transform(riskScoreClassification),
                 appInfo = transform(applicationVersion),
-                legalTermsVersion = legalTermsVersion ?: ""
+                legalTermsVersion = legalTermsVersion ?: "",
+                radarCovidDownloadUrl = radarCovidDownloadUrl ?: "",
+                notificationReminder = notificationReminder ?: NOTIFICATION_REMINDER_DEFAULT
             )
         }
     } ?: Settings()

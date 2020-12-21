@@ -10,7 +10,6 @@
 
 package es.gob.radarcovid
 
-import android.os.Build
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastReceiver
@@ -51,6 +50,7 @@ class RadarCovidApplication : DaggerApplication() {
         )
         DP3T.setCertificatePinner(certificatePinner)
         DP3T.setUserAgent { userAgent }
+        DP3T.setErrorNotificationGracePeriod(0)
 
         FakeInfectionReportWorker.start(this, preferencesRepository)
 

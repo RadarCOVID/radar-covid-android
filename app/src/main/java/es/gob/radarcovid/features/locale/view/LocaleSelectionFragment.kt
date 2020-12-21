@@ -20,6 +20,8 @@ import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.common.view.ListDialog
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionPresenter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionView
+import es.gob.radarcovid.features.main.view.MainActivity
+import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
 import kotlinx.android.synthetic.main.fragment_locale_selection.*
 import javax.inject.Inject
 
@@ -37,7 +39,12 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_locale_selection, container, false)
+        return if (activity is MainActivity) {
+            inflater.inflate(R.layout.fragment_locale_selection_settings, container, false)
+        } else {
+            inflater.inflate(R.layout.fragment_locale_selection, container, false)
+        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,7 +64,13 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     "LOCALE_CHANGE_WARNING",
                     R.string.locale_selection_warning_message
                 ).toString()
-            ).setNegativeButton(
+            ).setTitle(
+                labelManager.getText(
+                    "LOCALE_CHANGE_LANGUAGE",
+                    R.string.locale_selection_region_title
+                ).toString()
+            )
+            .setNegativeButton(
                 labelManager.getText(
                     "ALERT_CANCEL_BUTTON",
                     R.string.cancel
@@ -83,11 +96,17 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
         buttonLanguage.setOnClickListener {
             presenter.onLanguageDropdownButtonClick()
         }
-
     }
 
     override fun setLanguage(language: String) {
-        buttonLanguage.text = language
+        if (activity is OnboardingActivity) {
+            buttonLanguage.text = language
+        }
+        buttonLanguage.contentDescription =
+            "${labelManager.getText(
+                "ACC_BUTTON_SELECTOR_SELECT",
+                R.string.settings_change_language_desc
+            )} $language"
     }
 
     override fun showLanguageSelectionDialog(languages: List<String>, selectedIndex: Int) {

@@ -17,15 +17,16 @@ import es.gob.radarcovid.features.home.view.HomeFragment
 import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.mydata.view.MyDataFragment
 import es.gob.radarcovid.features.settings.view.SettingsFragment
+import es.gob.radarcovid.features.stats.view.StatsFragment
 import javax.inject.Inject
 
 class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity) : MainRouter {
 
-    override fun navigateToHome(activateRadar: Boolean) {
+    override fun navigateToHome(activateRadar: Boolean, manualNavigation: Boolean) {
         activity
             .supportFragmentManager
             .beginTransaction()
-            .replace(R.id.wrapperContent, HomeFragment.newInstance(activateRadar))
+            .replace(R.id.wrapperContent, HomeFragment.newInstance(activateRadar, manualNavigation))
             .commit()
     }
 
@@ -42,6 +43,14 @@ class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity
             .supportFragmentManager
             .beginTransaction()
             .replace(R.id.wrapperContent, HelplineFragment.newInstance())
+            .commit()
+    }
+
+    override fun navigateToStats() {
+        activity
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.wrapperContent, StatsFragment.newInstance())
             .commit()
     }
 

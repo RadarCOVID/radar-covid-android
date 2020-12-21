@@ -36,14 +36,14 @@ import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.common.extensions.parseHtml
+import es.gob.radarcovid.common.extensions.setAccessibilityAction
+import es.gob.radarcovid.common.extensions.setSafeOnClickListener
 import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.common.view.LegalTermsDialog
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.textViewTitle
-import kotlinx.android.synthetic.main.fragment_settings.*
 import javax.inject.Inject
 
 
@@ -55,9 +55,12 @@ class HomeFragment : BaseFragment(), HomeView {
 
         private const val ARG_ACTIVATE_RADAR = "arg_activate_radar"
 
-        fun newInstance(activateRadar: Boolean) = HomeFragment().apply {
+        private const val MANUAL_NAVIGATION = "arg_manual_navigation"
+
+        fun newInstance(activateRadar: Boolean, manualNavigation: Boolean) = HomeFragment().apply {
             arguments = Bundle().apply {
                 putBoolean(ARG_ACTIVATE_RADAR, activateRadar)
+                putBoolean(MANUAL_NAVIGATION, manualNavigation)
             }
         }
 
@@ -88,7 +91,7 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun onResume() {
         super.onResume()
-        updateViewsForAccessibility()
+        updateViewsForAccessibility(arguments?.getBoolean(MANUAL_NAVIGATION) ?: false)
         presenter.onResume()
     }
 
@@ -113,10 +116,12 @@ class HomeFragment : BaseFragment(), HomeView {
             event.actionMasked == MotionEvent.ACTION_MOVE
         }
 
-        wrapperExposure.setOnClickListener { presenter.onExposureBlockClick() }
-        textViewExpositionTitle.setOnClickListener { presenter.onExposureBlockClick() }
+        wrapperExposure.setSafeOnClickListener { presenter.onExposureBlockClick() }
+        textViewExpositionTitle.setSafeOnClickListener { presenter.onExposureBlockClick() }
 
-        buttonCovidReport.setOnClickListener { presenter.onReportButtonClick() }
+        buttonCovidReport.setSafeOnClickListener { presenter.onReportButtonClick() }
+
+        buttonShare.setSafeOnClickListener { presenter.onButtonShareClick() }
     }
 
     override fun showUpdateLegalTermsDialog() {
@@ -148,9 +153,10 @@ class HomeFragment : BaseFragment(), HomeView {
                 R.string.exposition_block_low_description
             )
         textViewMoreInfo.visibility = View.GONE
+        textViewExpositionCount.visibility = View.INVISIBLE
     }
 
-    override fun showExposureBlockHigh() {
+    override fun showExposureBlockHigh(daysToHeal: Int) {
         wrapperExposure.setBackgroundResource(R.drawable.background_shape_exposure_high)
         textViewExpositionTitle.text =
             labelManager.getText("HOME_EXPOSITION_TITLE_HIGH", R.string.exposition_block_high_title)
@@ -160,6 +166,18 @@ class HomeFragment : BaseFragment(), HomeView {
                 labelManager.getContactPhone()
             ).default(getString(R.string.exposition_block_high_description)).parseHtml()
         textViewMoreInfo.visibility = View.GONE
+
+        if (daysToHeal >= 0) {
+            val labelId =
+                if (daysToHeal == 1) "HOME_EXPOSITION_COUNT_ONE_DAY" else "HOME_EXPOSITION_COUNT_ANYMORE"
+            textViewExpositionCount.text =
+                labelManager.getFormattedText(labelId, daysToHeal.toString())
+                    .default(getString(R.string.exposition_block_high_count)).parseHtml()
+            textViewExpositionCount.visibility = View.VISIBLE
+        } else {
+            textViewExpositionCount.visibility = View.INVISIBLE
+        }
+
     }
 
     override fun showExposureBlockInfected() {
@@ -174,6 +192,7 @@ class HomeFragment : BaseFragment(), HomeView {
                 R.string.exposition_block_infected_description
             )
         textViewMoreInfo.visibility = View.VISIBLE
+        textViewExpositionCount.visibility = View.INVISIBLE
     }
 
     override fun showBackgroundEnabled(enabled: Boolean) {
@@ -219,6 +238,10 @@ class HomeFragment : BaseFragment(), HomeView {
             BuildConfig.VERSION_CODE.toString()
         )
         textViewVersion.visibility = View.VISIBLE
+        textViewVersion.setOnLongClickListener {
+            presenter.onFakeShowExposureHealedDialogClick()
+            true
+        }
     }
 
     override fun setRadarBlockChecked(checked: Boolean) {
@@ -294,6 +317,17 @@ class HomeFragment : BaseFragment(), HomeView {
         ExposureHealedDialog(context!!).show()
     }
 
+    override fun showShareDialog() {
+        ShareDialog(context!!) {
+            presenter.doShareApp(
+                labelManager.getText(
+                    "SHARE_TEXT",
+                    getString(R.string.share_app_text)
+                ).toString()
+            )
+        }.show()
+    }
+
     private fun showDialogDisableRadarWarning() {
         CMDialog.Builder(context!!)
             .setTitle(
@@ -361,7 +395,7 @@ class HomeFragment : BaseFragment(), HomeView {
         }
     }
 
-    private fun updateViewsForAccessibility() {
+    private fun updateViewsForAccessibility(manualNavigation: Boolean) {
         if (isAccessibilityEnabled()) {
             wrapperExposure.isClickable = false
             textViewExpositionTitle.isClickable = true
@@ -369,14 +403,30 @@ class HomeFragment : BaseFragment(), HomeView {
             wrapperExposure.isClickable = true
             textViewExpositionTitle.isClickable = false
         }
-        textViewTitle.postDelayed( {
-            if (textViewTitle != null) {
-                textViewTitle.isFocusable = true
-                textViewTitle.requestFocus()
-                textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
-            }
-        }, 3000)
+        if (manualNavigation) {
+            if (isAccessibilityEnabled())
+                textViewTitle.postDelayed({
+                    if (textViewTitle != null) {
+                        textViewTitle.isFocusable = true
+                        textViewTitle.requestFocus()
+                        textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+                    }
+                }, 3000)
+        }
 
+    }
+
+    override fun updateContentDescriptionRadar(enabled: Boolean) {
+        val action = if (enabled)
+            labelManager.getText(
+                "ALERT_HOME_RADAR_OK_BUTTON",
+                R.string.radar_warning_button_negative
+            ).toString()
+        else labelManager.getText(
+            "ALERT_HOME_COVID_NOTIFICATION_OK_BUTTON",
+            R.string.radar_warning_button_activate
+        ).toString()
+        switchRadar.setAccessibilityAction(action)
     }
 
 }

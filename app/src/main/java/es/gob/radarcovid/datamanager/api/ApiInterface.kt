@@ -26,9 +26,6 @@ interface ApiInterface {
     @GET("/")
     fun test(): Call<String>
 
-    @GET("/configuration/token/uuid")
-    fun getUuid(): Call<ResponseUuid>
-
     @GET("/configuration/settings")
     fun getSettings(): Call<ResponseSettings>
 
@@ -61,5 +58,14 @@ interface ApiInterface {
         @Header(EFGS_SHARING) sharingEFGSHeader: String
     ): Call<ResponseToken>
 
+    @GET("/configuration/masterData/countries")
+    fun getCountries(
+        @Query("locale") language: String,
+        @Query("platform") platform: String,
+        @Query("version") version: String
+    ): Call<ResponseRegions>
+
+    @GET("kpi/statistics/basics")
+    fun getStats(): Call<ResponseStats>
 
 }

@@ -45,9 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
+                android:descendantFocusability="beforeDescendants"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:descendantFocusability="beforeDescendants"
                 android:text="@string/settings_title"
                 app:isHeading="true"
                 app:labelId="SETTINGS_TITLE" />
@@ -56,33 +56,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="24dp"
                 android:src="@drawable/img_background_settings" />
 
-            <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TitleSmall"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="10dp"
-                android:text="@string/settings_change_language"
-                app:isHeading="true"
-                app:labelId="LOCALE_CHANGE_LANGUAGE" />
+                android:elevation="5dp"
+                android:minHeight="80dp"
+                android:gravity="center"
+                android:background="@drawable/shape_rounded_corners_white">
 
-            <fragment
-                android:id="@+id/fragmentLocaleSelection"
-                android:name="es.gob.radarcovid.features.locale.view.LocaleSelectionFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp" />
+                <fragment
+                    android:id="@+id/fragmentLocaleSelectionSettings"
+                    android:name="es.gob.radarcovid.features.locale.view.LocaleSelectionFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-            <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TextNormal"
+            </LinearLayout>
+
+            <es.gob.radarcovid.common.view.LabelButton
+                android:id="@+id/buttonInformation"
+                style="@style/ButtonSelector"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/settings_paragraph_1"
-                app:labelId="SETTINGS_PARAGRAPH_1" />
+                android:layout_height="80dp"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:background="@drawable/shape_rounded_corners_white"
+                android:drawableStart="@drawable/ic_info"
+                android:drawablePadding="20dp"
+                android:text="@string/settings_information"
+                app:labelId="SETTINGS_INFO_BUTTON"
+                android:textAllCaps="false"
+                android:elevation="5dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:contentDescriptionLabelId="SETTINGS_INFO_BUTTON" />
+
 
         </LinearLayout>
 

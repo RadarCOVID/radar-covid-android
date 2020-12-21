@@ -15,6 +15,7 @@ import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.common.extensions.format
 import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
+import es.gob.radarcovid.datamanager.usecase.GetHealingTimeUseCase
 import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
 import es.gob.radarcovid.features.exposure.protocols.ExposureRouter
 import es.gob.radarcovid.features.exposure.protocols.ExposureView
@@ -26,7 +27,8 @@ import javax.inject.Inject
 class ExposurePresenterImpl @Inject constructor(
     private val view: ExposureView,
     private val router: ExposureRouter,
-    private val exposureInfoUseCase: ExposureInfoUseCase
+    private val exposureInfoUseCase: ExposureInfoUseCase,
+    private val getHealingTimeUseCase: GetHealingTimeUseCase
 ) : ExposurePresenter {
 
     override fun viewReady() {
@@ -105,12 +107,18 @@ class ExposurePresenterImpl @Inject constructor(
                 val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
                 val minutesElapsed =
                     TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
+                val daysToHeal =
+                    getHealingTimeUseCase.getHealingTime().exposureHighMinutes / 60 / 24
+                val daysLeft = daysToHeal - daysElapsed
 
                 view.setExposureInfo(
                     exposureInfo.lastUpdateTime.format(),
                     daysElapsed.toInt(),
                     hoursElapsed.toInt(),
                     minutesElapsed.toInt()
+                )
+                view.setDaysToHeal(
+                    daysLeft.toInt()
                 )
                 view.hideExposureDates()
                 //view.showExposureDates(exposureInfo.exposureDates.joinToString("\n") { it.format() })

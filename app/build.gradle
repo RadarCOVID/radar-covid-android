@@ -23,6 +23,7 @@ android {
         targetSdkVersion 29
         versionCode 9
         versionName "1.2.0"
+        resConfigs "en", "es", "ro", "ca", "gl", "eu", "fr"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

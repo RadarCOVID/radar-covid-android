@@ -15,10 +15,11 @@ import androidx.fragment.app.Fragment
 import dagger.Module
 import dagger.Provides
 import es.gob.radarcovid.common.di.scope.PerFragment
-import es.gob.radarcovid.features.helpline.view.HelplineFragment
 import es.gob.radarcovid.features.settings.presenter.SettingsPresenterImpl
 import es.gob.radarcovid.features.settings.protocols.SettingsPresenter
+import es.gob.radarcovid.features.settings.protocols.SettingsRouter
 import es.gob.radarcovid.features.settings.protocols.SettingsView
+import es.gob.radarcovid.features.settings.router.SettingsRouterImpl
 import es.gob.radarcovid.features.settings.view.SettingsFragment
 
 @Module
@@ -36,4 +37,8 @@ class SettingsModule {
     @Provides
     @PerFragment
     fun providesPresenter(presenter: SettingsPresenterImpl): SettingsPresenter = presenter
+
+    @Provides
+    @PerFragment
+    fun providesRouter(router: SettingsRouterImpl): SettingsRouter = router
 }

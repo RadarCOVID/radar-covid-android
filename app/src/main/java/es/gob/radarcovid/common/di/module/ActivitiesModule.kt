@@ -18,12 +18,16 @@ import es.gob.radarcovid.features.covidreport.form.di.CovidReportModule
 import es.gob.radarcovid.features.covidreport.form.view.CovidReportActivity
 import es.gob.radarcovid.features.exposure.di.ExposureModule
 import es.gob.radarcovid.features.exposure.view.ExposureActivity
+import es.gob.radarcovid.features.information.di.InformationModule
+import es.gob.radarcovid.features.information.view.InformationActivity
 import es.gob.radarcovid.features.main.di.MainModule
 import es.gob.radarcovid.features.main.view.MainActivity
 import es.gob.radarcovid.features.onboarding.di.OnboardingModule
 import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
 import es.gob.radarcovid.features.splash.di.SplashModule
 import es.gob.radarcovid.features.splash.view.SplashActivity
+import es.gob.radarcovid.features.stats.di.StatsModule
+import es.gob.radarcovid.features.stats.view.StatsFragment
 
 @Module
 abstract class ActivitiesModule {
@@ -47,6 +51,14 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [CovidReportModule::class, CovidReportFragmentModule::class])
     abstract fun bindsReportActivity(): CovidReportActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [InformationModule::class, InformationModule::class])
+    abstract fun bindsInformationActivity(): InformationActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [StatsModule::class])
+    abstract fun bindsStatsActivity(): StatsFragment
 
     @PerActivity
     @ContributesAndroidInjector

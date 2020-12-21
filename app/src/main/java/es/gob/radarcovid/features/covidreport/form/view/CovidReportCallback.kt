@@ -25,4 +25,6 @@ interface CovidReportCallback {
     fun getDateFromStep1(): Date?
 
     fun getReportCodeFromStep1(): String
+
+    fun getIncomingCode(): String?
 }

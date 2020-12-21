@@ -15,7 +15,7 @@ import es.gob.radarcovid.models.response.*
 import org.funktionale.either.Either
 
 interface ApiRepository {
-    
+
     fun getSettings(): Either<Throwable, ResponseSettings>
 
     fun getLabels(
@@ -38,5 +38,13 @@ interface ApiRepository {
     ): Either<Throwable, ResponseRegions>
 
     fun verifyCode(body: RequestVerifyCode, sharingCode: String): Either<Throwable, ResponseToken>
+
+    fun getCountries(
+        language: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseRegions>
+
+    fun getStats(): Either<Throwable, ResponseStats>
 
 }

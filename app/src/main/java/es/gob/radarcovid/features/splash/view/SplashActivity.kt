@@ -46,7 +46,10 @@ class SplashActivity : BaseActivity(), SplashView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        presenter.viewReady(intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false))
+        presenter.viewReady(
+            intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false),
+            intent?.data
+        )
     }
 
     override fun onResume() {

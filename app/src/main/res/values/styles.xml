@@ -46,6 +46,7 @@
     </style>
 
     <style name="TitleTipSmall" parent="TitleTip">
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
 
@@ -57,6 +58,21 @@
     <style name="TitleSmall" parent="Title">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Title18Black" parent="Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Title18Purple9C" parent="Title">
+        <item name="android:textColor">@color/purple_9C</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Title18PurpleA7" parent="Title">
+        <item name="android:textColor">@color/purple_A7</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="TitleMedium" parent="Title">
@@ -86,6 +102,18 @@
         <item name="android:textColor">@color/black_26</item>
     </style>
 
+    <style name="TextRegular18Black">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    
+    <style name="TextRegular20Black">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextSmall">
         <item name="android:fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/black_26</item>
@@ -94,6 +122,12 @@
 
     <style name="TextSmallBlack">
         <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextRegular16Black">
+        <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -108,6 +142,25 @@
         <item name="fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextNormal18" parent="TextNormal">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextBold18Black" parent="TextNormal">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextNormal22" parent="TextNormal">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextBold22Black">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="TextSemibold">
@@ -159,9 +212,14 @@
         <item name="android:background">@drawable/background_button</item>
     </style>
 
+    <style name="ButtonSelection" parent="Button">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/background_button</item>
+        <item name="android:textColor">@color/selector_color_button</item>
+    </style>
+
     <style name="ButtonSecondary" parent="Button">
         <item name="android:gravity">center</item>
-        <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/purple_A7</item>
         <item name="android:background">@drawable/shape_rounded_border_accent</item>
     </style>

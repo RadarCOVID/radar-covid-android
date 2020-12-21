@@ -11,13 +11,19 @@
 package es.gob.radarcovid.features.settings.presenter
 
 import es.gob.radarcovid.features.settings.protocols.SettingsPresenter
+import es.gob.radarcovid.features.settings.protocols.SettingsRouter
 import javax.inject.Inject
 
 class SettingsPresenterImpl @Inject constructor(
+    private val router: SettingsRouter
 ) : SettingsPresenter {
 
     override fun viewReady() {
 
+    }
+
+    override fun onInformationClick() {
+        router.navigateToInformation()
     }
 
 }

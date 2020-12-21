@@ -110,6 +110,18 @@ class LabelManager @Inject constructor(
         }
     }
 
+    fun getFormattedTextHtml(labelId: String, default: String, vararg values: String): Spanned {
+        var text: String = labels[labelId] ?: default
+        return if (text.isNotEmpty()) {
+            values.forEach {
+                text = text.replaceFirst("%@", it)
+            }
+            HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        } else {
+            HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        }
+    }
+
     fun getContactPhone(): String =
         getText("CONTACT_PHONE", R.string.contact_support_phone).toString()
 

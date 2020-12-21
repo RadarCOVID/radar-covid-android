@@ -22,14 +22,19 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#FF939393</color>
     <color name="gray_97">#FF979797</color>
+    <color name="gray_75">#FF757575</color>
     <color name="gray_f0">#FFF0F0F0</color>
+    <color name="gray_BD">#FFBDBDBD</color>
 
     <color name="purple_9C">#FF70509C</color>
     <color name="purple_8D">#FF65498D</color>
     <color name="purple_FF">#FFD6CFFF</color>
     <color name="purple_A7">#FF493BA7</color>
+    <color name="blue_E2">#FF006CE2</color>
 
     <color name="red">#FFE06C57</color>
+    <color name="red_00">#FFB81C00</color>
     <color name="green">#FF58B06A</color>
+    <color name="green_53">#FF219653</color>
 
 </resources>

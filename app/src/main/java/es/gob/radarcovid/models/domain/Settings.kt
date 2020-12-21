@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.models.domain
 
+import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
+
 data class Settings(
     val exposureConfiguration: ExposureConfiguration = ExposureConfiguration(),
     val healingTime: HealingTime = HealingTime(),
@@ -32,7 +34,9 @@ data class Settings(
         )
     ),
     val appInfo: SettingsAppInfo = SettingsAppInfo(),
-    val legalTermsVersion: String = ""
+    val legalTermsVersion: String = "",
+    val radarCovidDownloadUrl: String = "",
+    val notificationReminder: Int = NOTIFICATION_REMINDER_DEFAULT
 )
 
 data class ExposureConfiguration(

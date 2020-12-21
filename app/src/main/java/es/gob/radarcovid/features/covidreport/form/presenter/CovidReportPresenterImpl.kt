@@ -19,8 +19,10 @@ class CovidReportPresenterImpl @Inject constructor(
     private val view: CovidReportView
 ) : CovidReportPresenter {
 
-    override fun viewReady() {
-
+    override fun viewReady(incomingRepoortCode: String?) {
+        if (incomingRepoortCode != null) {
+            view.showPage(1)
+        }
     }
 
     override fun onExitConfirmed() {
@@ -28,7 +30,7 @@ class CovidReportPresenterImpl @Inject constructor(
     }
 
     override fun onBackButtonPressed(isFirstItem: Boolean) {
-        if(isFirstItem)
+        if (isFirstItem)
             view.showExitConfirmationDialog()
         else
             view.showPreviousPage()

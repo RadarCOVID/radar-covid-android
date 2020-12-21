@@ -19,19 +19,21 @@
 
     <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textViewDialogTitle"
-        style="@style/TextDialogTitle"
+        style="@style/TitleMedium"
+        android:textSize="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:layout_marginEnd="13dp"
         android:layout_marginBottom="13dp"
         android:visibility="gone"
+        app:isHeading="true"
         tools:text="title"
         tools:visibility="visible" />
 
     <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textViewDialogDescription"
-        style="@style/TextDialogDescription"
+        style="@style/TextRegular16Black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"

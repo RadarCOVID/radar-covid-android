@@ -16,6 +16,7 @@ import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastRece
 import es.gob.radarcovid.common.di.scope.PerService
 import es.gob.radarcovid.features.worker.FakeInfectionReportWorker
 import es.gob.radarcovid.features.worker.HealerWorker
+import es.gob.radarcovid.features.worker.ReminderWorker
 
 @Module
 abstract class ServicesModule {
@@ -31,5 +32,9 @@ abstract class ServicesModule {
     @PerService
     @ContributesAndroidInjector
     abstract fun bindsExposureStatusChangeBroadcastReceiver(): ExposureStatusChangeBroadcastReceiver
+
+    @PerService
+    @ContributesAndroidInjector
+    abstract fun bindsReminderWorker(): ReminderWorker
 
 }

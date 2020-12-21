@@ -33,8 +33,12 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
 
     companion object {
 
-        fun open(context: Context) {
-            context.startActivity(Intent(context, CovidReportActivity::class.java))
+        private const val EXTRA_REPORT_CODE = "extra_report_code"
+
+        fun open(context: Context, reportCode: String?) {
+            context.startActivity(Intent(context, CovidReportActivity::class.java).apply {
+                putExtra(EXTRA_REPORT_CODE, reportCode)
+            })
         }
 
     }
@@ -44,6 +48,8 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
 
     private lateinit var _reportCode: String
     private var _date: Date? = null
+    private var _incomingReportCode: String? = null
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -54,8 +60,10 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_covid_report)
 
+        _incomingReportCode = intent.getStringExtra(EXTRA_REPORT_CODE)
+
         initViews()
-        presenter.viewReady()
+        presenter.viewReady(_incomingReportCode)
     }
 
     override fun onPause() {
@@ -67,6 +75,10 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
         viewPager.adapter = CovidReportAdapter(this)
         viewPager.isUserInputEnabled = false
         viewPager.offscreenPageLimit = 4
+    }
+
+    override fun showPage(index: Int) {
+        viewPager.setCurrentItem(index, true)
     }
 
     override fun onBackPressed() {
@@ -157,5 +169,7 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
     override fun getDateFromStep1(): Date? = _date
 
     override fun getReportCodeFromStep1(): String = _reportCode
+
+    override fun getIncomingCode(): String? = _incomingReportCode
 
 }

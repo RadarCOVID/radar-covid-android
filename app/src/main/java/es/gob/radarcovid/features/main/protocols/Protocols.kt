@@ -16,6 +16,10 @@ interface MainView : RequestView {
 
     fun showExitConfirmationDialog()
 
+    fun createNotificationReminder(time: Int)
+
+    fun cancelNotificationReminder()
+
     fun finish()
 
 }
@@ -26,11 +30,17 @@ interface MainPresenter {
 
     fun onResume()
 
+    fun onStop()
+
+    fun onRestart()
+
     fun onHomeButtonClick()
-    
+
     fun onProfileButtonClick()
 
     fun onHelplineButtonClick()
+
+    fun onStatsButtonClick()
 
     fun onSettingsButtonClick()
 
@@ -42,11 +52,13 @@ interface MainPresenter {
 
 interface MainRouter {
 
-    fun navigateToHome(activateRadar: Boolean)
+    fun navigateToHome(activateRadar: Boolean, manualNavigation: Boolean)
 
     fun navigateToProfile()
 
     fun navigateToHelpline()
+
+    fun navigateToStats()
 
     fun navigateToSettings()
 }

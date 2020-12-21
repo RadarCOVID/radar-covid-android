@@ -18,10 +18,6 @@
     <attr name="numberSteps" format="integer" />
     <attr name="actualStep" format="integer" />
 
-    <declare-styleable name="CMCheckBox">
-        <attr name="android:text" />
-    </declare-styleable>
-
     <declare-styleable name="DropdownView">
         <attr name="title" format="string" localization="suggested" />
         <attr name="dropdownText" format="string" localization="suggested" />
@@ -53,6 +49,7 @@
         <attr name="android:textSize" />
         <attr name="labelId" />
         <attr name="isLink" />
+        <attr name="removeUnderlineLink" />
         <attr name="dotVisibility">
             <!-- Visible on screen; the default value. -->
             <enum name="visible" value="0" />

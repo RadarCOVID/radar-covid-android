@@ -93,6 +93,16 @@
                 app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_EXAMPLE" />
 
             <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TitleXSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/covid_report_code_date_subtitle"
+                app:isHeading="true"
+                android:textAllCaps="true"
+                app:labelId="MY_HEALTH_TITLE_DATE_STEP1" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextSemibold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,12 +137,13 @@
 
             <es.gob.radarcovid.common.view.LabelButton
                 android:id="@+id/buttonContinue"
-                style="@style/ButtonNormal"
+                style="@style/ButtonSelection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:enabled="false"
                 android:text="@string/covid_report_continue"
+                android:background="@drawable/selector_button"
                 app:labelId="ACC_BUTTON_CONTINUE" />
 
             <es.gob.radarcovid.common.view.LabelButton

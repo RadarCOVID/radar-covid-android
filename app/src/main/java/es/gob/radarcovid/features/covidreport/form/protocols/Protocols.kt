@@ -12,6 +12,8 @@ package es.gob.radarcovid.features.covidreport.form.protocols
 
 interface CovidReportView {
 
+    fun showPage(index: Int)
+
     fun showPreviousPage()
 
     fun showNextPage()
@@ -24,7 +26,7 @@ interface CovidReportView {
 
 interface CovidReportPresenter {
 
-    fun viewReady()
+    fun viewReady(incomingRepoortCode: String?)
 
     fun onExitConfirmed()
 

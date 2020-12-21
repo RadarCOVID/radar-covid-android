@@ -17,10 +17,9 @@ import es.gob.radarcovid.features.exposure.protocols.ExposureRouter
 import javax.inject.Inject
 
 class ExposureRouterImpl @Inject constructor(
-    private val context: Context,
-    private val navigationUtils: NavigationUtils
+    private val context: Context
 ) : ExposureRouter {
 
-    override fun navigateToCovidReport() = CovidReportActivity.open(context)
+    override fun navigateToCovidReport() = CovidReportActivity.open(context, null)
 
 }

@@ -18,4 +18,6 @@ interface ExposureStatusRepository {
 
     fun addFakeExposureDate()
 
+    fun resetExposure()
+
 }

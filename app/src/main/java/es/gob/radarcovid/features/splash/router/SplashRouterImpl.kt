@@ -14,6 +14,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import es.gob.radarcovid.features.covidreport.form.view.CovidReportActivity
 import es.gob.radarcovid.features.main.view.MainActivity
 import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
 import es.gob.radarcovid.features.splash.protocols.SplashRouter
@@ -47,6 +48,10 @@ class SplashRouterImpl @Inject constructor(private val context: Context) : Splas
 
     override fun navigateToMain(activateRadar: Boolean) {
         MainActivity.open(context, activateRadar)
+    }
+
+    override fun navigateToReport(reportCode: String?) {
+        CovidReportActivity.open(context, reportCode)
     }
 
     override fun navigateToPlayStore() {

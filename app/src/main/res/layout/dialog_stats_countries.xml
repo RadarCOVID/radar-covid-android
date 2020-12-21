@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_rounded_corners_white"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:paddingTop="23dp">
+
+        <ScrollView
+            android:id="@+id/scrollViewContent"
+            style="@style/ScrollVertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDialogTitle"
+                    style="@style/TitleMedium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:isHeading="true"
+                    android:text="@string/stats_dialog_countries_title"
+                    android:accessibilityTraversalAfter="@id/buttonClose"
+                    app:labelId="DETAIL_INTEROPERABILITY_TITLE"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/buttonClose"/>
+
+                <es.gob.radarcovid.common.view.LabelImageButton
+                    android:id="@+id/buttonClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:src="@drawable/ic_close"
+                    android:background="@null"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="@string/dialog_close_button_description"
+                    app:labelId="ACC_BUTTON_CLOSE"/>
+
+                <ImageView
+                    android:id="@+id/imageViewLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_countries"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/textViewDialogTitle"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDialogParagraph1"
+                    style="@style/TextNormal18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    app:isHeading="true"
+                    android:text="@string/stats_dialog_countries_paragraph1"
+                    app:labelId="DETAIL_INTEROPERABILITY_DESCRIPTION_1"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewLogo"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDialogParagraph2"
+                    style="@style/TextNormal18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:isHeading="true"
+                    android:text="@string/stats_dialog_countries_paragraph2"
+                    app:labelId="DETAIL_INTEROPERABILITY_DESCRIPTION_2"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewDialogParagraph1"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewDialogParagraph2"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

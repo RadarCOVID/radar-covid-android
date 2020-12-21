@@ -25,6 +25,8 @@ interface ExposureView {
         minutesElapsed: Int?
     )
 
+    fun setDaysToHeal(daysToHeal: Int)
+
     fun showExposureDates(exposureDates: String)
 
     fun hideExposureDates()

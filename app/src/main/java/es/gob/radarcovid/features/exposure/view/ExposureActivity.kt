@@ -18,14 +18,14 @@ import android.view.View
 import androidx.core.text.HtmlCompat
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
+import es.gob.radarcovid.common.extensions.default
+import es.gob.radarcovid.common.extensions.parseHtml
 import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
 import es.gob.radarcovid.features.exposure.protocols.ExposureView
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
 import kotlinx.android.synthetic.main.activity_exposure.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
 import kotlinx.android.synthetic.main.layout_exposure_detail_high.*
-import kotlinx.android.synthetic.main.layout_exposure_detail_infected.*
-import kotlinx.android.synthetic.main.layout_exposure_detail_low.*
 import javax.inject.Inject
 
 class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
@@ -62,10 +62,10 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
     private fun initViews() {
         imageButtonBack.contentDescription =
             "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
-                labelManager.getText(
-                    "ACC_BUTTON_BACK_TO",
-                    R.string.navigation_back_to
-                )
+            labelManager.getText(
+                "ACC_BUTTON_BACK_TO",
+                R.string.navigation_back_to
+            )
             }"
 
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
@@ -131,6 +131,20 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         textViewExposureDescription.visibility = View.VISIBLE
         textViewExposureDescription.text =
             labelManager.getExposureHighDatesText(date, daysElapsed, hoursElapsed, minutesElapsed)
+    }
+
+    override fun setDaysToHeal(daysToHeal: Int) {
+        if (daysToHeal >= 0) {
+            textViewExpositionCount.visibility = View.VISIBLE
+            val labelId =
+                if (daysToHeal == 1) "EXPOSED_EXPOSITION_COUNT_ONE_DAY" else "EXPOSED_EXPOSITION_COUNT_ANYMORE"
+            textViewExpositionCount.text =
+                labelManager.getFormattedText(labelId, daysToHeal.toString())
+                    .default(getString(R.string.exposition_block_exposure_high_count)).parseHtml()
+        } else {
+            textViewExpositionCount.visibility = View.INVISIBLE
+        }
+
     }
 
     override fun showExposureDates(exposureDates: String) {

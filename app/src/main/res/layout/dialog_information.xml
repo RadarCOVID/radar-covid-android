@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:background="@drawable/shape_rounded_corners_white"
+        android:orientation="vertical"
+        android:paddingStart="25dp"
+        android:paddingTop="23dp"
+        android:paddingEnd="25dp">
+
+        <ScrollView
+            android:id="@+id/scrollViewContent"
+            style="@style/ScrollVertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="15dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        android:id="@+id/textViewDialogTitle"
+                        style="@style/TitleMedium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/information_popup_title"
+                        android:accessibilityTraversalAfter="@id/buttonClose"
+                        app:isHeading="true"
+                        app:labelId="INFO_HELP_TITLE"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/buttonClose"/>
+
+                    <es.gob.radarcovid.common.view.LabelImageButton
+                        android:id="@+id/buttonClose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="25dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_close"
+                        android:contentDescription="@string/dialog_close_button_description"
+                        app:contentDescriptionLabelId="ACC_BUTTON_CLOSE"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextRegular18Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/information_popup_paragraph_1"
+                    app:labelId="INFO_HELP_PARAGRAPH1" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextRegular18Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/information_popup_paragraph_2"
+                    app:labelId="INFO_POPUP_PARAGRAPH2" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/information_popup_bluetooth"
+                    app:labelId="“INFO_HELP_BLUETOOTH_TITLE”" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextSmallBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/information_popup_bluetooth_active"
+                    app:labelId="INFO_HELP_CHECK_ALWAYS_ACTIVE" />
+
+                <ImageView
+                    android:id="@+id/imageViewBluetooth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/img_bluetooth"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/information_popup_radar"
+                    app:labelId="INFO_HELP_RADAR_TITLE" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextSmallBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/information_popup_radar_active"
+                    app:labelId="INFO_HELP_CHECK_RADAR_ACTIVE" />
+
+                <ImageView
+                    android:id="@+id/imageViewRadar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/img_radar"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="@string/information_popup_notifications_title"
+                    app:labelId="INFO_HELP_NOTIFICATIONS_TITLE" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TextSmallBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/information_popup_notifications_desc"
+                    app:labelId="INFO_HELP_NOTIFICATIONS_PARAGRAPH1" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleTipSmall"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/information_popup_notifications_step_1"
+                    app:labelId="INFO_HELP_NOTIFICATIONS_STEP_1" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleTipSmall"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/information_popup_notifications_step_2"
+                    app:labelId="INFO_HELP_NOTIFICATIONS_STEP_2" />
+
+                <ImageView
+                    android:id="@+id/imageViewGooogle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/img_google"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleTipSmall"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/information_popup_notifications_step_3"
+                    app:labelId="INFO_HELP_NOTIFICATIONS_STEP_3" />
+
+                <ImageView
+                    android:id="@+id/imageViewNotification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="@string/information_popup_notifications_title"
+                    android:src="@drawable/img_exposure"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    style="@style/TitleTipSmall"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/information_popup_notifications_step_4"
+                    app:labelId="INFO_HELP_NOTIFICATIONS_STEP_4" />
+
+                <ImageView
+                    android:id="@+id/imageViewNotificationActive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/information_popup_notifications_title"
+                    android:src="@drawable/img_exposure_notification"/>
+
+                <es.gob.radarcovid.common.view.LabelButton
+                    android:id="@+id/buttonCancel"
+                    style="@style/ButtonSecondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/dialog_close_button_description"
+                    app:labelId="ACC_BUTTON_CLOSE"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -19,6 +19,7 @@ import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainView
+import es.gob.radarcovid.features.worker.ReminderWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
@@ -59,6 +60,16 @@ class MainActivity : BaseActivity(), MainView {
         presenter.onResume()
     }
 
+    override fun onStop() {
+        presenter.onStop()
+        super.onStop()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        presenter.onRestart()
+    }
+
     private fun initViews() {
         bottomNavigation.menu.forEach {
             when (it.itemId) {
@@ -68,8 +79,10 @@ class MainActivity : BaseActivity(), MainView {
                     labelManager.getText("ACC_MYDATA_TITLE", R.string.title_mydata)
                 R.id.menuItemHelpline -> it.title =
                     labelManager.getText("ACC_HELPLINE_TITLE", R.string.title_helpline)
+                R.id.menuItemStats -> it.title =
+                    labelManager.getText("ACC_STATS_TITLE", R.string.title_stats)
                 R.id.menuItemSettings -> it.title =
-                        labelManager.getText("ACC_SETTINGS_TITLE", R.string.title_settings)
+                    labelManager.getText("ACC_SETTINGS_TITLE", R.string.title_settings)
             }
         }
         bottomNavigation.setOnNavigationItemSelectedListener {
@@ -77,6 +90,7 @@ class MainActivity : BaseActivity(), MainView {
                 R.id.menuItemHome -> presenter.onHomeButtonClick()
                 R.id.menuItemProfile -> presenter.onProfileButtonClick()
                 R.id.menuItemHelpline -> presenter.onHelplineButtonClick()
+                R.id.menuItemStats -> presenter.onStatsButtonClick()
                 R.id.menuItemSettings -> presenter.onSettingsButtonClick()
             }
             true
@@ -118,5 +132,13 @@ class MainActivity : BaseActivity(), MainView {
             }
             .build()
             .show()
+    }
+
+    override fun createNotificationReminder(time: Int) {
+        ReminderWorker.set(this, time)
+    }
+
+    override fun cancelNotificationReminder() {
+        ReminderWorker.cancel(this)
     }
 }

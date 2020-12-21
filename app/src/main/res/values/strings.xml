@@ -15,6 +15,7 @@
     /********** ERROR MESSAGES ************/
     <string name="error_generic_title">Error</string>
     <string name="error_generic_message">Se ha producido un error. Compruebe la conexión</string>
+    <string name="error_common_message">Se ha producido un error. Vuelve a intentarlo más tarde</string>
 
     /********** Play services dialog ************/
 
@@ -65,10 +66,12 @@
     <string name="title_home">Radar</string>
     <string name="title_mydata">Mis datos</string>
     <string name="title_helpline">Helpline</string>
+    <string name="title_stats">Estadísticas</string>
     <string name="title_settings">Ajustes</string>
 
     /********** Healing Info Dialog ************/
 
+    <string name="low_risk_info_dialog_header">Cambio de estado</string>
     <string name="low_risk_info_dialog_title">Han pasado 14 días desde tu último contacto detectado con alguien diagnosticado de COVID-19. Por este motivo tu estado en a aplicación vuelve a estar “Sin contactos de riesgo identificados”.</string>
     <string name="low_risk_info_dialog_p1">Si no presentas síntomas ni has sido diagnosticado de COVID-19 en los últimos días, puedes volver a tu rutina, manteniendo las <a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_como_protegerse.jpg"><u>precauciones habituales</u></a>.</string>
     <string name="low_risk_info_dialog_p1_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/COVID19_como_protegerse.jpg</string>
@@ -86,6 +89,8 @@
 
     /********** Home ************/
 
+    <string name="home_head">RadarCOVID</string>
+
     <string name="home_exposure_simulation_description">Simular contacto de riesgo.</string>
     <string name="home_exposure_version">PRE - V_%1$s_%2$s</string>
 
@@ -94,12 +99,14 @@
     <string name="exposition_block_infected_title">COVID-19 Positivo</string>
 
     <string name="exposition_block_low_description"><b>Te informaremos en el caso de un posible contacto de riesgo.</b></string>
-    <string name="exposition_block_high_description"><b>Has estado en contacto con una persona contagiada de COVID-19.\nInfórmalo en el 900 112 061 (gratuito)</b>.</string>
+    <string name="exposition_block_high_description">Has estado en contacto con alguien que ha sido diagnosticado de COVID-19. <b>Debes realizar cuarentena domiciliaria.</b>.</string>
     <string name="exposition_block_infected_description"><b>Tu diagnóstico ha sido enviado.\nPor favor, aíslate durante 14 días</b>.</string>
     <string name="exposition_block_infected_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg"><u>Más información ></u></a></string>
     <string name="home_exposition_block_infected_more_info"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg">Más información ></a></string>
     <string name="exposition_block_infected_more_info_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/img/20.03.24_AislamientoDomiciliario_COVID19.jpg</string>
     <string name="exposition_block_action_more_detail">Acceder a más detalles</string>
+    <string name="exposition_block_high_count">Te quedan <b>%@ días</b> para finalizarla.</string>
+    <string name="exposition_block_exposure_high_count">Debes realizar cuarentena domiciliaria. Te quedan %@ días para finalizarla.</string>
 
     <string name="radar_block_checked_title">&appname; activo</string>
     <string name="radar_block_not_checked_title">&appname; inactivo</string>
@@ -112,6 +119,7 @@
     <string name="radar_warning_message">Si desactivas &appname;, la aplicación dejará de registrar contactos. Ayúdanos a cuidarte</string>
     <string name="radar_warning_button_positive">Mantener activo</string>
     <string name="radar_warning_button_negative">Desactivar</string>
+    <string name="radar_warning_button_activate">Activar</string>
 
     <string name="covid_report_warning">Es necesario tener el Radar COVID activo para poder enviar el diagnóstico</string>
 
@@ -146,6 +154,10 @@
     <string name="exposure_detail_low_symptoms_what_to_do_url">https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/documentos/20200325_Decalogo_como_actuar_COVID19.pdf</string>
 
     /********** Exposure detail high ************/
+
+    <string name="exposure_detail_high_region">Aviso a la Comunidad Autónoma</string>
+    <string name="exposure_detail_high_security">Precauciones de seguridad</string>
+
     <string name="exposure_detail_high_title_small">RIESGO ALTO</string>
     <string name="exposure_detail_high_title">Tu exposición es alta</string>
     <string name="exposure_detail_high_last_update">Podrías estar infectado desde hace <b>%1$s</b> (actualizado %2$s)</string>
@@ -204,6 +216,7 @@
     <string name="covid_report_step2_radio2">Compartir con personas usuarias Radar COVID y aplicaciones europeas</string>
     <string name="covid_report_code_hint_title">Código de diagnóstico</string>
     <string name="covid_report_code_hint_subtitle">Introduce el código que te han proporcionado</string>
+    <string name="covid_report_code_date_subtitle">Fecha de inicio de síntomas</string>
     <string name="covid_report_code_input_example">ejemplo 123456789123</string>
     <string name="covid_report_footer">Al enviar tu diagnóstico los identificadores aleatorios generados en los últimos días servirán para avisar a las personas que hayan estado cerca de ti. Tu identidad no se comparte con nadie.</string>
     <string name="covid_report_send_button">Enviar diagnóstico anónimo</string>
@@ -277,12 +290,13 @@
 
     /********** Settings ************/
     <string name="settings_title">Ajustes</string>
-    <string name="settings_change_language">Idioma</string>
+    <string name="settings_change_language">Cambio de idioma</string>
     <string name="settings_language_title">Selecciona un idioma</string>
     <string name="settings_paragraph_1">Permite seleccionar el idioma de consulta de RadarCOVID</string>
     <string name="settings_list_action">cambiar</string>
     <string name="settings_list_description">Lista desplegable</string>
     <string name="settings_change_language_desc">Cambiar idioma</string>
+    <string name="settings_information">Información de la aplicación</string>
 
     /********** DP3T ************/
 
@@ -305,6 +319,7 @@
         funcione correctamente.</string>
 
     /********** Locale selection module ************/
+    <string name="locale_selection_region_title">Idioma</string>
     <string name="locale_selection_region_default">Selecciona tu Comunidad Autónoma</string>
     <string name="locale_selection_warning_message">Para aplicar los cambios realizados es necesario reiniciar la aplicación.</string>
 
@@ -313,6 +328,21 @@
     <string name="description_arrow_button_back">Botón atrás</string>
     <string name="description_arrow_button_enter">Botón entrar</string>
     <string name="single_choice_selected">Seleccionado</string>
+
+    /********** Estadística ************/
+    <string name="stats_title">Estadísticas de Radar COVID</string>
+    <string name="stats_update_date">Datos actualizados %1$s</string>
+    <string name="stats_downloads_title">Descarga de Radar COVID</string>
+    <string name="stats_positive_title">Casos positivos declarados en Radar COVID</string>
+    <string name="stats_countries_title">Países conectados con Radar COVID</string>
+    <string name="stats_countries_link">Conoce los países conectados</string>
+    <string name="stats_more_data">Consulta más datos estadísticos en:</string>
+    <string name="stats_more_data_link_1"><a href="www.radarcovid.gob.es/estadísticas">Web Radar Covid, estadísticas</a></string>
+    <string name="stats_more_data_link_2"><a href="https://www.mscbs.gob.es/profesionales/saludPublica/ccayes/alertasActual/nCov/situacionActual.htm">Web Ministerio Sanidad, situación COVID-19</a></string>
+
+    <string name="stats_dialog_countries_title">Países conectados con Radar COVID</string>
+    <string name="stats_dialog_countries_paragraph1">Radar COVID forma parte de una red en continuo crecimiento de países en la Unión Europea cuyas aplicaciones interoperan entre sí, funcionando más allá de sus fronteras.</string>
+    <string name="stats_dialog_countries_paragraph2">Actualmente Radar COVID contecta con las aplicaciones de los siguientes países:</string>
 
     /********** Common ************/
 
@@ -364,5 +394,67 @@
     </plurals>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Notification reminder -->
+    <string name="notification_reminder_title">Hace tiempo que no accedes a Radar COVID</string>
+    <string name="notification_reminder_body">Accede regularmente para comprobar si tu riesgo de exposición ha cambiado.</string>
+
+    /********** Information ************/
+    <string name="image_desc">Gráfico</string>
+    <string name="active">Activo</string>
+    <string name="inactive">Inactivo</string>
+    <string name="information_header">Información de la aplicación</string>
+    <string name="information_title">Información útil</string>
+    <string name="information_description_1">Comprueba la siguiente información para saber si Radar COVID está funcionando correctamente.</string>
+    <string name="information_radar_status">Estado Radar COVID</string>
+    <string name="information_notification_status">Estado notificaciones de exposición</string>
+    <string name="information_sync_status">Última sincronización</string>
+    <string name="information_bluetooth_status">Bluetooth</string>
+    <string name="information_maintenance">Aprende cómo mantener activo Radar COVID</string>
+    <string name="information_title_version">Versión de la app Radar COVID</string>
+    <string name="information_title_update">Última actualización</string>
+    <string name="information_date_format">$D $M de $Y a las $H</string>
+    <string name="information_no_last_update">Primera sincronización pendiente</string>
+    <string name="information_title_so">Sistema operativo</string>
+    <string name="information_title_model">Modelo</string>
+    <string name="information_title_advice">Consejos</string>
+    <string name="information_advice_description">Recuerda utilizar la aplicación de la forma adecuada:</string>
+    <string name="information_advice_bullet_1">Mantén el bluetooth activado,</string>
+    <string name="information_advice_bullet_2">desactiva el modo de ahorro de energía,</string>
+    <string name="information_advice_bullet_3">y recuerda abrir la aplicación frecuentemente y revisar las notificaciones.</string>
+    <string name="information_advice_description_2">Resuelve otras dudas:</string>
+    <string name="information_faqs"><a href="https://radarcovid.gob.es/preguntas-frecuentes">Preguntas frecuentes Radar COVID</a></string>
+    <string name="information_title_help">Ayuda técnica</string>
+    <string name="information_help_description_1">Si no has encontrado respuesta, puedes contactar por correo electrónico:</string>
+    <string name="information_help_description_2">Si utilizas este medio, el equipo de soporte técnico podrá ver tu dirección de correo electrónico</string>
+    <string name="information_email_help">soporte.radarcovid@economia.gob.es</string>
+    <string name="information_support_mail">Describe aquí tus dudas o problemas de funcionamiento con Radar COVID.<br /><br />Por favor, no elimines el texto de este mensaje, ayudará al equipo de soporte técnico a darte una respuesta.<br /><br />Estado Radar COVID: %@; Estado notificaciones exposición: %@; Bluetooth: %@; última sincronización: %@; Versión de la app Radar COVID: %@; Última actualización: %@;Sistema operativo: %@; Modelo: %@</string>
+    <string name="information_last_sync_anymore">hace %@ días</string>
+    <string name="information_last_sync_one_day">hace 1 día</string>
+
+    <string name="information_popup_title">Cómo mantener activo Radar COVID</string>
+    <string name="information_popup_paragraph_1">Te explicamos qué elementos debes mantener siempre activados para que Radar COVID funcione correctamente.</string>
+    <string name="information_popup_paragraph_2">(A modo de ejemplo, te describimos los pasos para la versión Android 10 y dispositivo Samsung A7 , ten en cuenta para otras versiones y marcas los pasos pueden cambiar)</string>
+    <string name="information_popup_bluetooth">Bluetooth</string>
+    <string name="information_popup_bluetooth_image">Bluetooth activado</string>
+    <string name="information_popup_bluetooth_active">Comprueba que siempre esté activado</string>
+    <string name="information_popup_radar">Radar COVID “activo”</string>
+    <string name="information_popup_radar_active">Al acceder a la aplicación de Radar COVID, comprueba que está activo</string>
+    <string name="information_popup_notifications_title">Notificaciones de exposición</string>
+    <string name="information_popup_notifications_image">Usar notificaciones de exposición activadas</string>
+    <string name="information_popup_notifications_desc">Sigue los siguientes pasos para comprobar que están activas:</string>
+    <string name="information_popup_notifications_step_1">1. Accede a los ajustes del dispositivo</string>
+    <string name="information_popup_notifications_step_2">2. Selecciona la opción Google</string>
+    <string name="information_popup_notifications_step_3">3. Comprueba el estado de “Notificaciones de exposición”</string>
+    <string name="information_popup_notifications_step_4">4. Si están desactivadas, entra en “Notificaciones de exposición” para activarlas.</string>
+    
+    <!-- Share app -->
+    <string name="share_app_button">Compartir Radar COVID</string>
+    <string name="share_app_title">Comparte Radar COVID app</string>
+    <string name="share_app_description1">Ayúdanos a frenar juntos la pandemia</string>
+    <string name="share_app_description2">Invita a tus familiares y amigos a descargar la aplicación</string>
+    <string name="share_app_description3">Cuantas más personas utilicemos Radar <br /> COVID, antes podremos romper la cadena de contagios.</string>
+    <string name="share_app_share_button">Compartir enlace descarg</string>
+    <string name="share_app_text">Ayúdanos a frenar juntos la pandemia.\nCuantas más personas utilicemos Radar COVID, antes podremos romper la cadena de contagios.\n\nDescárgate Radar COVID:\nDispositivos iOS:\n<a href="http://apple.co/3bZvdxK" >http://apple.co/3bZvdxK </a> \n\nDispositivos Android:\n<a href="http://bit.ly/32typyT" > http://bit.ly/32typyT </a>\n\nMás información en:\n<a href="radarcovid.gob.es" > radarcovid.gob.es</a> </string>
 
 </resources>

@@ -15,4 +15,11 @@ interface SettingsView
 interface SettingsPresenter {
 
     fun viewReady()
+
+    fun onInformationClick()
+}
+
+interface SettingsRouter {
+
+    fun navigateToInformation()
 }

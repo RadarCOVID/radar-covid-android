@@ -12,13 +12,15 @@ package es.gob.radarcovid.common.base
 
 object Constants {
 
-    const val URL_PRIVACY_POLICY =
-        "https://radarcovid.gob.es/politica-de-privacidad"
-    const val URL_USAGE_CONDITIONS =
-        "https://radarcovid.gob.es/condiciones-de-uso"
-
     const val SO_NAME = "Android"
 
     const val DATE_FORMAT = "dd/MM/yyyy"
+
+    const val INCOMING_CODE_QUERY_PARAM = "code"
+    const val HOST_REPORT = "report"
+
+    const val NOTIFICATION_REMINDER_DEFAULT = 1440
+
+    const val EXPOSURE_HEALED_DAYS = 14
 
 }

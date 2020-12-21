@@ -63,7 +63,7 @@ class LabelTextView @JvmOverloads constructor(
                 val actionDescription =
                     labelManager.getText(actionDescriptionLabelId, defaultTextAction).toString()
                 if (!actionDescription.isNullOrEmpty()) {
-                    setAccessibilityAction(actionDescription!!)
+                    setAccessibilityAction(actionDescription)
                 }
 
                 val contentDescriptionLabelId =
@@ -83,11 +83,10 @@ class LabelTextView @JvmOverloads constructor(
                 val isLink = getBoolean(R.styleable.LabelTextView_isLink, false)
                 val removeUnderlineLink =
                     getBoolean(R.styleable.LabelTextView_removeUnderlineLink, false)
-                if (isLink) {
+                if (isLink)
                     setIsLink()
-                    if (removeUnderlineLink)
-                        removeUnderlineLink()
-                }
+                if (removeUnderlineLink)
+                    removeUnderlineLink()
 
             } finally {
                 recycle()
@@ -102,10 +101,6 @@ class LabelTextView @JvmOverloads constructor(
             if (customContentDescription.isNullOrEmpty())
                 contentDescription = it.toString().toLowerCase(Locale.ROOT)
         }
-    }
-
-    fun setText(labelId: String?, resId: Int) {
-        setText(labelId, context.getString(resId))
     }
 
     fun setText(labelId: String?, defaultText: CharSequence) {
@@ -137,10 +132,6 @@ class LabelTextView @JvmOverloads constructor(
 
     fun removeUnderlineLink() {
         text = text.removeUnderline()
-    }
-
-    fun reloadText() {
-        text = labelManager.getText(labelId, text)
     }
 
     private fun setIsHeading(isHeading: Boolean) {

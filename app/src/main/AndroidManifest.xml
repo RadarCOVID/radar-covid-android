@@ -41,8 +41,13 @@
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="radarcovid" android:host="report" />
             </intent-filter>
         </activity>
         <activity
@@ -59,6 +64,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.covidreport.confirmation.ConfirmationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.information.view.InformationActivity"
             android:screenOrientation="portrait" />
 
     </application>

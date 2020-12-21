@@ -48,6 +48,19 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         progressBar?.dismissWithAnimation()
     }
 
+    fun hideLoadingWithCommonError() {
+        val title = labelManager.getText("ALERT_GENERIC_ERROR_TITLE", R.string.error_generic_title)
+            .toString()
+        val message = labelManager.getText("ALERT_GENERIC_ERROR", R.string.error_common_message)
+            .toString()
+        val button = labelManager.getText(
+            "ALERT_ACCEPT_BUTTON",
+            R.string.accept
+        ).toString()
+
+        progressBar?.showError(title, message, button)
+    }
+
     fun hideLoadingWithError(error: Throwable) {
         val title = if (error.message == null)
             labelManager.getText("ALERT_GENERIC_ERROR_TITLE", R.string.error_generic_title)

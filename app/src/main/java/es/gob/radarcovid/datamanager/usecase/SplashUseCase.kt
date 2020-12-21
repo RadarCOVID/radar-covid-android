@@ -69,6 +69,10 @@ class SplashUseCase @Inject constructor(
 
                         preferencesRepository.setSettingsLegalTermsVersion(initializationData.settings.legalTermsVersion)
 
+                        preferencesRepository.setRadarCovidDownloadUrl(initializationData.settings.radarCovidDownloadUrl)
+
+                        preferencesRepository.setNotificationReminder(initializationData.settings.notificationReminder)
+
                         if (initializationData.labels.isNotEmpty())
                             preferencesRepository.setLabels(initializationData.labels)
 

@@ -94,7 +94,7 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
                     DP3T.addWorkerStartedToHistory(applicationContext, TAG)
                 reportFakeInfectionUseCase.reportFakeInfection().blockingAwait()
             }
-            tDummy += clock.syncInterval();
+            tDummy += clock.syncInterval()
             preferencesRepository.setTDummy(tDummy)
         }
 

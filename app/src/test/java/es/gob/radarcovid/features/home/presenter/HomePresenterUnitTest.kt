@@ -20,6 +20,7 @@ import es.gob.radarcovid.features.home.protocols.HomeRouter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.models.domain.Environment
 import es.gob.radarcovid.models.domain.ExposureInfo
+import es.gob.radarcovid.models.domain.HealingTime
 import org.junit.Assert.assertFalse
 import org.junit.Test
 
@@ -31,6 +32,7 @@ class HomePresenterUnitTest {
     private val exposureInfoUseCase: ExposureInfoUseCase = mock()
     private val fakeExposureInfoUseCase: FakeExposureInfoUseCase = mock()
     private val legalTermsUseCase: LegalTermsUseCase = mock()
+    private val getHealingTimeUseCase: GetHealingTimeUseCase = mock()
 
     private val presenter: HomePresenter = HomePresenterImpl(
         view,
@@ -39,7 +41,8 @@ class HomePresenterUnitTest {
         exposureRadarUseCase,
         exposureInfoUseCase,
         fakeExposureInfoUseCase,
-        legalTermsUseCase
+        legalTermsUseCase,
+        getHealingTimeUseCase
     )
 
     @Test
@@ -122,6 +125,8 @@ class HomePresenterUnitTest {
             level = ExposureInfo.Level.HIGH
         })
 
+        whenever (getHealingTimeUseCase.getHealingTime()).thenReturn(HealingTime())
+
         presenter.onResume()
 
         verify(view).setRadarBlockEnabled(true)
@@ -132,6 +137,8 @@ class HomePresenterUnitTest {
         whenever(exposureInfoUseCase.getExposureInfo()).thenReturn(ExposureInfo().apply {
             level = ExposureInfo.Level.HIGH
         })
+
+        whenever (getHealingTimeUseCase.getHealingTime()).thenReturn(HealingTime())
 
         presenter.onResume()
 
@@ -144,9 +151,11 @@ class HomePresenterUnitTest {
             level = ExposureInfo.Level.HIGH
         })
 
+        whenever (getHealingTimeUseCase.getHealingTime()).thenReturn(HealingTime())
+
         presenter.onResume()
 
-        verify(view).showExposureBlockHigh()
+        verify(view).showExposureBlockHigh(14)
     }
 
     @Test

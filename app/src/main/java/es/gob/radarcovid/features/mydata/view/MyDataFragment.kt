@@ -19,9 +19,7 @@ import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.features.mydata.protocols.MyDataPresenter
 import es.gob.radarcovid.features.mydata.protocols.MyDataView
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_my_data.*
-import kotlinx.android.synthetic.main.fragment_my_data.textViewTitle
 import javax.inject.Inject
 
 
@@ -53,13 +51,14 @@ class MyDataFragment : BaseFragment(), MyDataView {
     }
 
     private fun setAccessibilityFocus() {
-        textViewTitle.postDelayed( {
-            if (textViewTitle != null) {
-                textViewTitle.isFocusable = true
-                textViewTitle.requestFocus()
-                textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
-            }
-        }, 3000)
+        if (isAccessibilityEnabled())
+            textViewTitle.postDelayed({
+                if (textViewTitle != null) {
+                    textViewTitle.isFocusable = true
+                    textViewTitle.requestFocus()
+                    textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+                }
+            }, 3000)
     }
 
 }

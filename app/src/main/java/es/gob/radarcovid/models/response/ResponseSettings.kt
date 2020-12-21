@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.models.response
 
+import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
+
 data class ResponseSettings(
     val exposureConfiguration: ResponseSettingsExposureConfiguration? = ResponseSettingsExposureConfiguration(),
     val timeBetweenStates: ResponseSettingsTimeBetweenStates? = ResponseSettingsTimeBetweenStates(),
@@ -19,7 +21,9 @@ data class ResponseSettings(
     val attenuationDurationThresholds: ResponseSettingsAttenuationThresholds? = ResponseSettingsAttenuationThresholds(),
     val attenuationFactor: ResponseSettingsAttenuationFactor? = ResponseSettingsAttenuationFactor(),
     val applicationVersion: ResponseSettingsAppVersion? = ResponseSettingsAppVersion(),
-    val legalTermsVersion: String? = ""
+    val legalTermsVersion: String? = "",
+    val radarCovidDownloadUrl: String? = "",
+    val notificationReminder: Int? = NOTIFICATION_REMINDER_DEFAULT
 )
 
 data class ResponseSettingsExposureConfiguration(

@@ -26,3 +26,19 @@ All notable changes to this project will be documented in this file.
 * New language settings functionality. 
 * Improved accessibility.
 * Bug fixing.
+
+### 1.2.0 (2020-12-17)
+
+* DP-3T version upgrade.
+* Radar COVID statistics view.
+* Application status information view.
+* Opening reminder notification.
+* Confinement counter.
+* Share link for easy download.
+* Added French language.
+* Get positive code from SMS.
+* Accessibility improvements:
+    * Increased text size and contrast.
+    * Changed links style.
+    * Tagged elements on screen.
+    * Incorporated headings.

@@ -17,7 +17,6 @@ import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.models.ExposeeAuthMethodAuthorization
 import javax.inject.Inject
 import javax.inject.Named
-import kotlin.random.Random
 
 class FakeInfectionReportRepositoryImpl @Inject constructor(
     @Named("applicationContext") private val context: Context

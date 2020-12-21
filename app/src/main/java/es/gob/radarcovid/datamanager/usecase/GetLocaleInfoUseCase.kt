@@ -23,6 +23,9 @@ class GetLocaleInfoUseCase @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ) {
 
+    private val languageCodeCatalan = "ca-ES"
+    private val languageCodeValencian = "va-ES"
+
     fun getLocaleInfo(): LocaleInfo = LocaleInfo(
         preferencesRepository.getLanguages(),
         preferencesRepository.getRegions()
@@ -30,6 +33,11 @@ class GetLocaleInfoUseCase @Inject constructor(
 
     fun getSelectedLanguage(): String =
         preferencesRepository.getSelectedLanguage()
+
+    fun getSelectedLanguageForLocale(): String {
+        val language = preferencesRepository.getSelectedLanguage()
+        return if (language == languageCodeValencian) languageCodeCatalan else language
+    }
 
     fun setSelectedLanguage(languageCode: String) =
         preferencesRepository.setSelectedLanguage(languageCode)

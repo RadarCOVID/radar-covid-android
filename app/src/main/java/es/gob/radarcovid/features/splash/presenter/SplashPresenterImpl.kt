@@ -10,7 +10,10 @@
 
 package es.gob.radarcovid.features.splash.presenter
 
+import android.net.Uri
 import android.os.Handler
+import es.gob.radarcovid.common.base.Constants.HOST_REPORT
+import es.gob.radarcovid.common.base.Constants.INCOMING_CODE_QUERY_PARAM
 import es.gob.radarcovid.datamanager.usecase.OnboardingCompletedUseCase
 import es.gob.radarcovid.datamanager.usecase.SplashUseCase
 import es.gob.radarcovid.features.splash.protocols.SplashPresenter
@@ -32,9 +35,11 @@ class SplashPresenterImpl @Inject constructor(
     private var isWaitingToStart: Boolean = false
     private var isInitializationCompleted: Boolean = false
     private var activateRadar: Boolean = false
+    private var deepLinkData: Uri? = null
 
-    override fun viewReady(activateRadar: Boolean) {
+    override fun viewReady(activateRadar: Boolean, data: Uri?) {
         this.activateRadar = activateRadar
+        deepLinkData = data
         requestInitialization()
     }
 
@@ -103,13 +108,28 @@ class SplashPresenterImpl @Inject constructor(
         if (!isWaitingToStart) {
             isWaitingToStart = true
             Handler().postDelayed({
-                if (onboardingCompletedUseCase.isOnBoardingCompleted())
-                    router.navigateToMain(activateRadar)
-                else
+                if (!onboardingCompletedUseCase.isOnBoardingCompleted())
                     router.navigateToOnboarding()
+                else if (deepLinkData != null)
+                    urlSchemeToSection()
+                else
+                    router.navigateToMain(activateRadar)
                 view.finish()
             }, 2000)
         }
+    }
+
+    private fun urlSchemeToSection() {
+        var match = false
+        when (deepLinkData?.host) {
+            HOST_REPORT -> {
+                match = true
+                val incomingReportCode = deepLinkData?.getQueryParameter(INCOMING_CODE_QUERY_PARAM)
+                router.navigateToReport(incomingReportCode?.filter { it.isDigit() })
+            }
+        }
+        //Deafult if there is not match
+        if (!match) router.navigateToMain(activateRadar)
     }
 
 }

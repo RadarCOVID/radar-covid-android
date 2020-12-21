@@ -56,7 +56,8 @@
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExpositionDetailTitleSmall"
-                    style="@style/TitleXSmall"
+                    style="@style/TitleTipSmall"
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -80,6 +81,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     tools:text="01.06.2020 / hace 2 min." />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewExpositionCount"
+                    style="@style/TextSmallBlackBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/exposition_block_exposure_high_count"
+                    android:visibility="gone"
+                    tools:visibility="visible"/>
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewMoreInfo"

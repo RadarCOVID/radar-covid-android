@@ -10,4 +10,17 @@
 
 package es.gob.radarcovid.models.response
 
-data class ResponseUuid (val uuid:String)
+import java.util.*
+
+class ResponseStats : ArrayList<ResponseStat>()
+
+data class ResponseStat(
+    val date: Date,
+    val applicationsDownloads: TotalDataResponse,
+    val communicatedContagions: TotalDataResponse
+)
+
+data class TotalDataResponse(
+    val totalActualDay: Int,
+    val totalAcummulated: Int
+)

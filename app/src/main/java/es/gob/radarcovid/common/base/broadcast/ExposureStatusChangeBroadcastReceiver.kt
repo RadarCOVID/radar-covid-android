@@ -62,7 +62,7 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
                         )
                         showHighExposureNotification(it)
                     }
-                }, 1000)
+                }, 2000)
             }
             DP3T.ACTION_UPDATE -> BUS.post(EventExposureStatusChange())
         }

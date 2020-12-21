@@ -66,6 +66,10 @@ class Step1MyHealthFragment : BaseFragment(), Step1MyHealthView {
 
     private fun initViews() {
 
+        (activity as? CovidReportCallback)?.getIncomingCode()?.let {
+            editTextCodeAccessibility.setText(it)
+        }
+
         imageButtonBack.contentDescription =
             "${labelManager.getText("MY_HEALTH_TITLE_PAGE", R.string.covid_report_title)} ${
             labelManager.getText(
