@@ -20,7 +20,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.adapter.SingleChoiceAdapter
+import kotlinx.android.synthetic.main.dialog_stats_countries.*
 import kotlinx.android.synthetic.main.list_dialog.*
+import kotlinx.android.synthetic.main.list_dialog.buttonClose
 
 class ListDialog(context: Context, view: View) : Dialog(context) {
     init {
@@ -41,6 +43,7 @@ class ListDialog(context: Context, view: View) : Dialog(context) {
         listView.post {
             listView.smoothScrollToPositionFromTop(selectedItemIndex, 0, 0)
         }
+        buttonClose.setOnClickListener { this.dismiss() }
     }
 
     class Builder(context: Context) {

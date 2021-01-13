@@ -23,20 +23,45 @@
         android:layout_height="match_parent"
         android:background="@drawable/shape_rounded_corners_white">
 
-        <es.gob.radarcovid.common.view.LabelTextView
-            android:id="@+id/textViewDialogTitle"
-            style="@style/TitleMedium"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintDialogTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="25dp"
-            android:visibility="gone"
-            app:isHeading="true"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="title"
-            tools:visibility="visible" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewDialogTitle"
+                style="@style/TitleMedium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="25dp"
+                android:accessibilityTraversalAfter="@id/buttonClose"
+                android:visibility="gone"
+                app:isHeading="true"
+                tools:text="title"
+                tools:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/buttonClose"/>
+
+            <es.gob.radarcovid.common.view.LabelImageButton
+                android:id="@+id/buttonClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:src="@drawable/ic_close"
+                android:contentDescription="@string/dialog_close_button_description"
+                app:labelId="ACC_BUTTON_CLOSE"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +70,7 @@
             android:layout_marginBottom="10dp"
             android:gravity="center_vertical"
             app:layout_constraintBottom_toTopOf="@id/buttonOk"
-            app:layout_constraintTop_toBottomOf="@id/textViewDialogTitle">
+            app:layout_constraintTop_toBottomOf="@id/constraintDialogTitle">
 
             <ListView
                 android:id="@+id/listView"
