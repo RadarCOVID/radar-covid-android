@@ -14,11 +14,13 @@ import android.net.Uri
 import android.os.Handler
 import es.gob.radarcovid.common.base.Constants.HOST_REPORT
 import es.gob.radarcovid.common.base.Constants.INCOMING_CODE_QUERY_PARAM
+import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
 import es.gob.radarcovid.datamanager.usecase.OnboardingCompletedUseCase
 import es.gob.radarcovid.datamanager.usecase.SplashUseCase
 import es.gob.radarcovid.features.splash.protocols.SplashPresenter
 import es.gob.radarcovid.features.splash.protocols.SplashRouter
 import es.gob.radarcovid.features.splash.protocols.SplashView
+import es.gob.radarcovid.models.domain.ExposureInfo
 import es.gob.radarcovid.models.domain.InitializationData
 import es.gob.radarcovid.models.exception.NetworkUnavailableException
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -29,7 +31,8 @@ class SplashPresenterImpl @Inject constructor(
     private val view: SplashView,
     private val router: SplashRouter,
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase,
-    private val splashUseCase: SplashUseCase
+    private val splashUseCase: SplashUseCase,
+    private val exposureInfoUseCase: ExposureInfoUseCase
 ) : SplashPresenter {
 
     private var isWaitingToStart: Boolean = false
@@ -124,8 +127,14 @@ class SplashPresenterImpl @Inject constructor(
         when (deepLinkData?.host) {
             HOST_REPORT -> {
                 match = true
-                val incomingReportCode = deepLinkData?.getQueryParameter(INCOMING_CODE_QUERY_PARAM)
-                router.navigateToReport(incomingReportCode?.filter { it.isDigit() })
+                val exposureInfo = exposureInfoUseCase.getExposureInfo()
+                if (exposureInfo.level == ExposureInfo.Level.INFECTED) {
+                    router.navigateToMain(activateRadar)
+                } else {
+                    val incomingReportCode =
+                        deepLinkData?.getQueryParameter(INCOMING_CODE_QUERY_PARAM)
+                    router.navigateToReport(incomingReportCode?.filter { it.isDigit() })
+                }
             }
         }
         //Deafult if there is not match
