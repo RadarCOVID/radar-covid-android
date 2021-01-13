@@ -50,6 +50,7 @@ class ExposureHealedDialog(context: Context) : LayoutContainer {
             }
 
         buttonClose.setOnClickListener { dialog.dismiss() }
+        imageButtonClose.setOnClickListener { dialog.dismiss() }
 
         buttonOk.setOnClickListener { dialog.dismiss() }
 
