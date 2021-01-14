@@ -72,4 +72,8 @@ interface PreferencesRepository {
     fun setNotificationReminder(time: Int)
 
     fun getNotificationReminder(): Int
+
+    fun setLanguageChanged(changed: Boolean)
+
+    fun getLanguageChanged(): Boolean
 }
