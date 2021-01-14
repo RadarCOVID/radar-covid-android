@@ -95,7 +95,10 @@ class MainActivity : BaseActivity(), MainView {
             }
             true
         }
+    }
 
+    override fun setSettingSelected() {
+        bottomNavigation.selectedItemId = R.id.menuItemSettings
     }
 
     override fun onBackPressed() {

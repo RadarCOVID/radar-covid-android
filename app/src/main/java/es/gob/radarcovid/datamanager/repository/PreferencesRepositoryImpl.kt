@@ -41,6 +41,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_SETTINGS_LEGAL_TERMS_VERSION = "key_settings_legal_terms_version"
         private const val KEY_RADARCOVID_DOWNLOAD_URL = "key_radarcovid_download_url"
         private const val KEY_NOTIFICATION_REMINDER = "key_notification_reminder"
+        private const val KEY_LANGUAGE_CHANGED = "key_language_changed"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -200,4 +201,13 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
     override fun getNotificationReminder(): Int {
         return preferences.getInt(KEY_NOTIFICATION_REMINDER, NOTIFICATION_REMINDER_DEFAULT)
     }
+
+    override fun setLanguageChanged(changed: Boolean) {
+        preferences.edit()
+            .putBoolean(KEY_LANGUAGE_CHANGED, changed)
+            .apply()
+    }
+
+    override fun getLanguageChanged(): Boolean =
+        preferences.getBoolean(KEY_LANGUAGE_CHANGED, false)
 }

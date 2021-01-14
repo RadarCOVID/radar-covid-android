@@ -39,9 +39,16 @@ class GetLocaleInfoUseCase @Inject constructor(
         return if (language == languageCodeValencian) languageCodeCatalan else language
     }
 
-    fun setSelectedLanguage(languageCode: String) =
+    fun setSelectedLanguage(languageCode: String) {
         preferencesRepository.setSelectedLanguage(languageCode)
+        preferencesRepository.setLanguageChanged(true)
+    }
 
+    fun isLanguageChanged(): Boolean =
+        preferencesRepository.getLanguageChanged()
+
+    fun resetLanguageChanged() =
+        preferencesRepository.setLanguageChanged(false)
 
     fun setSelectedRegion(regionCode: String) =
         preferencesRepository.setSelectedRegion(regionCode)

@@ -20,6 +20,8 @@ interface MainView : RequestView {
 
     fun cancelNotificationReminder()
 
+    fun setSettingSelected()
+
     fun finish()
 
 }
