@@ -249,6 +249,7 @@
 
     /********** Report Confirmation ************/
 
+    <string name="confirmation_sub_title">Diagnóstico enviado</string>
     <string name="confirmation_title">Gracias por contribuir a parar el virus</string>
     <string name="confirmation_subtitle">Tu diagnóstico nos ayudará a proteger a los demás.</string>
     <string name="confirmation_p1">Sin revelar tu identidad en ningún momento, vamos a rastrear qué móviles han estado cerca de ti en los últimos días y les enviaremos una alerta para su seguridad.\n\nPor favor, permanece en aislamiento siguiendo las recomendaciones que te han dado los servicios sanitarios.</string>
