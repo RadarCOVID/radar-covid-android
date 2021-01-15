@@ -13,9 +13,11 @@ package es.gob.radarcovid.features.covidreport.confirmation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.base.utils.NavigationUtils
+import kotlinx.android.synthetic.main.activity_confirmation.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
 import javax.inject.Inject
 
@@ -42,11 +44,14 @@ class ConfirmationActivity : BaseBackNavigationActivity() {
     private fun initViews() {
         imageButtonBack.contentDescription =
             "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
-                labelManager.getText(
-                    "ACC_BUTTON_BACK_TO",
-                    R.string.navigation_back_to
-                )
+            labelManager.getText(
+                "ACC_BUTTON_BACK_TO",
+                R.string.navigation_back_to
+            )
             }"
+
+        accessibilityTitle.visibility = if (isAccessibilityEnabled()) View.VISIBLE else View.GONE
+
     }
 
 }
