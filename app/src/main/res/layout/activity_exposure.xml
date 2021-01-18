@@ -105,6 +105,7 @@
                     android:visibility="gone"
                     app:contentDescriptionLabelId="ACC_MORE_INFO"
                     app:isLink="true"
+                    app:removeUnderlineLink="true"
                     app:labelId="EXPOSITION_HIGH_MORE_INFO"
                     tools:visibility="visible" />
 
