@@ -69,6 +69,8 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
             }"
 
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
+
+        textViewMoreInfo.text = String.format("%s >", textViewMoreInfo.text)
     }
 
     override fun showExposureLevelLow() {
