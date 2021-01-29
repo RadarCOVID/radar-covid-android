@@ -40,6 +40,9 @@ class LabelTextView @JvmOverloads constructor(
 
     private var labelId: String?
 
+    private var isLink: Boolean = false
+    private var removeUnderlineLink: Boolean = false
+
     private var customContentDescription: String?
 
     init {
@@ -80,13 +83,10 @@ class LabelTextView @JvmOverloads constructor(
                 val isHeading = getBoolean(R.styleable.LabelTextView_isHeading, false)
                 setIsHeading(isHeading)
 
-                val isLink = getBoolean(R.styleable.LabelTextView_isLink, false)
-                val removeUnderlineLink =
+                isLink = getBoolean(R.styleable.LabelTextView_isLink, false)
+                removeUnderlineLink =
                     getBoolean(R.styleable.LabelTextView_removeUnderlineLink, false)
-                if (isLink)
-                    setIsLink()
-                if (removeUnderlineLink)
-                    removeUnderlineLink()
+                setLinkParameters()
 
             } finally {
                 recycle()
@@ -105,6 +105,13 @@ class LabelTextView @JvmOverloads constructor(
 
     fun setText(labelId: String?, defaultText: CharSequence) {
         text = labelManager.getText(labelId, defaultText)
+    }
+
+    fun setLinkParameters() {
+        if (isLink)
+            setIsLink()
+        if (removeUnderlineLink)
+            removeUnderlineLink()
     }
 
     private fun getTextUrl(): String? {

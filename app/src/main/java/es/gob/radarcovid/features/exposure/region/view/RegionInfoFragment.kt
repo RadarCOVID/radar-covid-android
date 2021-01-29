@@ -86,7 +86,7 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
             .show()
     }
 
-    override fun showRegionInfo(name: String, phone: String, webName: String) {
+    override fun showRegionInfo(name: String, phone: String, webName: String, url: String) {
 
         buttonSelectRegion.text = name
         buttonSelectRegion.contentDescription =
@@ -103,7 +103,8 @@ class RegionInfoFragment : BaseFragment(), RegionInfoView {
 
         if (webName.isNotEmpty()) {
             wrapperWeb.visibility = View.VISIBLE
-            textViewWeb.text = webName
+            textViewWeb.text = labelManager.getLinkLabel(webName, url)
+            textViewWeb.setLinkParameters()
         } else {
             wrapperWeb.visibility = View.GONE
         }
