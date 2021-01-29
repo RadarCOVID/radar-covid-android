@@ -125,4 +125,7 @@ class LabelManager @Inject constructor(
     fun getContactPhone(): String =
         getText("CONTACT_PHONE", R.string.contact_support_phone).toString()
 
+    fun getLinkLabel(label: String, url: String): Spanned =
+        HtmlCompat.fromHtml("<a href=\"$url\"><b>$label</b></a>", HtmlCompat.FROM_HTML_MODE_LEGACY)
+
 }

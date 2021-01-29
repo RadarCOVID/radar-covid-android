@@ -17,7 +17,7 @@ interface RegionInfoView {
         selectedRegionIndex: Int
     )
 
-    fun showRegionInfo(name: String, phone: String, webName: String)
+    fun showRegionInfo(name: String, phone: String, webName: String, url: String)
 
 }
 

@@ -117,7 +117,7 @@
                 app:layout_constraintStart_toEndOf="@id/imageViewWebIcon"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <es.gob.radarcovid.common.view.LabelTextView
                 android:id="@+id/textViewWeb"
                 style="@style/TitleSmall"
                 android:layout_width="0dp"
@@ -126,6 +126,8 @@
                 android:maxLines="2"
                 android:textColor="@color/purple_9C"
                 android:textSize="18sp"
+                app:isLink="true"
+                app:removeUnderlineLink="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/textViewInfoWebTitle"
                 app:layout_constraintTop_toBottomOf="@id/textViewInfoWebTitle"
