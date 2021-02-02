@@ -30,7 +30,10 @@
             android:gravity="center"
             android:text="@string/covid_report_date_day"
             android:textSize="16sp"
-            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_DAY" />
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_DAY"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:importantForAccessibility="no"/>
 
         <es.gob.radarcovid.common.view.LabelTextView
             style="@style/TitleXSmall"
@@ -42,7 +45,10 @@
             android:gravity="center"
             android:text="@string/covid_report_date_month"
             android:textSize="16sp"
-            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_MONTH" />
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_MONTH"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:importantForAccessibility="no"/>
 
         <es.gob.radarcovid.common.view.LabelTextView
             style="@style/TitleXSmall"
@@ -53,7 +59,10 @@
             android:gravity="center"
             android:text="@string/covid_report_date_year"
             android:textSize="16sp"
-            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_YEAR" />
+            app:labelId="MY_HEALTH_DIAGNOSTIC_DATE_YEAR"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:importantForAccessibility="no"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -75,7 +84,10 @@
             android:hint="@string/covid_report_hint_day_month"
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:importantForAccessibility="no"/>
 
         <es.gob.radarcovid.common.view.LabelTextView
             android:id="@+id/labelMonth"
@@ -91,7 +103,10 @@
             android:hint="@string/covid_report_hint_day_month"
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:importantForAccessibility="no" />
 
         <es.gob.radarcovid.common.view.LabelTextView
             android:id="@+id/labelYear"
@@ -105,7 +120,10 @@
             android:hint="@string/covid_report_hint_year"
             android:textColor="@android:color/black"
             android:textColorHint="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:importantForAccessibility="no"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
