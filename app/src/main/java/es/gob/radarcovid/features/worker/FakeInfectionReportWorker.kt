@@ -27,7 +27,6 @@ private const val FACTOR_DAY_MILLIS: Long = 24 * FACTOR_HOUR_MILLIS
 private const val MAX_DELAY_HOURS: Long = 48
 private val SAMPLING_RATE =
     if (BuildConfig.DEBUG) 1.0f else 0.2f
-private const val KEY_T_DUMMY = "KEY_T_DUMMY"
 
 class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
@@ -70,7 +69,7 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
                     .Builder(FakeInfectionReportWorker::class.java)
                     .setInitialDelay(executionDelay, TimeUnit.MILLISECONDS)
                     .setConstraints(constraints)
-                    .setInputData(Data.Builder().putLong(KEY_T_DUMMY, tDummy).build())
+                    .addTag(TAG)
                     .build()
             WorkManager.getInstance(context)
                 .enqueueUniqueWork(TAG, existingWorkPolicy, work)
@@ -86,13 +85,26 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
 
     override fun doWork(): Result {
         val now = clock.currentTimeMillis()
-        var tDummy = inputData.getLong(KEY_T_DUMMY, now)
-        while (tDummy < now) {
+
+        var tDummy: Long = preferencesRepository.getTDummy()
+        if (tDummy < 0) {
+            //if t_dummy < 0 because of some weird state, we reset it
+            tDummy = now + clock.syncInterval()
+        }
+        //to make sure we can still write the EncryptedSharedPreferences, we always write the value back
+        preferencesRepository.setTDummy(tDummy)
+
+        var send = false
+        while (tDummy < now && !send) {
             // only do request if it was planned to do in the last 48h
             if (tDummy >= now - FACTOR_HOUR_MILLIS * MAX_DELAY_HOURS) {
-                if (BuildConfig.DEBUG)
-                    DP3T.addWorkerStartedToHistory(applicationContext, TAG)
-                reportFakeInfectionUseCase.reportFakeInfection().blockingAwait()
+                DP3T.addWorkerStartedToHistory(applicationContext, "fake")
+                val success = executeFakeRequest()
+                if (success) {
+                    send = true
+                } else {
+                    return Result.retry()
+                }
             }
             tDummy += clock.syncInterval()
             preferencesRepository.setTDummy(tDummy)
@@ -100,6 +112,15 @@ class FakeInfectionReportWorker(context: Context, workerParams: WorkerParameters
 
         start(applicationContext, tDummy, ExistingWorkPolicy.REPLACE)
         return Result.success()
+    }
+
+    private fun executeFakeRequest(): Boolean {
+        return try {
+            reportFakeInfectionUseCase.reportFakeInfection().blockingAwait()
+            true
+        }catch (e: Exception) {
+            false
+        }
     }
 
     interface Clock {

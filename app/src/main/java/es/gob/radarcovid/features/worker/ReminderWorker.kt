@@ -58,6 +58,7 @@ class ReminderWorker(context: Context, workerParams: WorkerParameters) :
                     .Builder(ReminderWorker::class.java)
                     .setInitialDelay(minutesToNotify.toLong(), TimeUnit.MINUTES)
                     .setInputData(Data.Builder().putInt(KEY_DELAY, minutesToNotify).build())
+                    .addTag(TAG)
                     .build()
                 WorkManager.getInstance(context)
                     .enqueueUniqueWork(TAG, ExistingWorkPolicy.REPLACE, work)
@@ -65,7 +66,7 @@ class ReminderWorker(context: Context, workerParams: WorkerParameters) :
         }
 
         fun cancel(context: Context) {
-            WorkManager.getInstance(context).cancelAllWork()
+            WorkManager.getInstance(context).cancelAllWorkByTag(TAG)
         }
 
     }

@@ -56,6 +56,7 @@ class HealerWorker(context: Context, workerParams: WorkerParameters) :
                 val work = OneTimeWorkRequest
                     .Builder(HealerWorker::class.java)
                     .setInitialDelay(minutesToHeal, TimeUnit.MINUTES)
+                    .addTag(TAG)
                     .build()
                 WorkManager.getInstance(context)
                     .enqueueUniqueWork(TAG, ExistingWorkPolicy.REPLACE, work)
