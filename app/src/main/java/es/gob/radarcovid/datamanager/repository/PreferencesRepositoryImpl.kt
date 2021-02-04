@@ -13,6 +13,7 @@ package es.gob.radarcovid.datamanager.repository
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import es.gob.radarcovid.common.base.Constants.ANALYTICS_PERIOD_DEFAULT
 import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
 import es.gob.radarcovid.common.extensions.toJson
 import es.gob.radarcovid.models.domain.HealingTime
@@ -41,6 +42,8 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_SETTINGS_LEGAL_TERMS_VERSION = "key_settings_legal_terms_version"
         private const val KEY_RADARCOVID_DOWNLOAD_URL = "key_radarcovid_download_url"
         private const val KEY_NOTIFICATION_REMINDER = "key_notification_reminder"
+        private const val KEY_EXPOSURE_ANALYTICS_COUNT = "key_exposure_analytics_count"
+        private const val KEY_ANALYTICS_PERIOD = "key_analytics_period"
         private const val KEY_LANGUAGE_CHANGED = "key_language_changed"
     }
 
@@ -200,6 +203,22 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
 
     override fun getNotificationReminder(): Int {
         return preferences.getInt(KEY_NOTIFICATION_REMINDER, NOTIFICATION_REMINDER_DEFAULT)
+    }
+
+    override fun setExposureAnalyticsCount(count: Int) {
+        preferences.edit().putInt(KEY_EXPOSURE_ANALYTICS_COUNT, count).apply()
+    }
+
+    override fun getExposureAnalyticsCount(): Int {
+        return preferences.getInt(KEY_EXPOSURE_ANALYTICS_COUNT, 0)
+    }
+
+    override fun setAnalyticsPeriod(time: Int) {
+        preferences.edit().putInt(KEY_ANALYTICS_PERIOD, time).apply()
+    }
+
+    override fun getAnalyticsPeriod(): Int {
+        return preferences.getInt(KEY_ANALYTICS_PERIOD, ANALYTICS_PERIOD_DEFAULT)
     }
 
     override fun setLanguageChanged(changed: Boolean) {

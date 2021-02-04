@@ -19,6 +19,7 @@ import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainView
+import es.gob.radarcovid.features.worker.AnalyticsWorker
 import es.gob.radarcovid.features.worker.ReminderWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import org.dpppt.android.sdk.DP3T
@@ -135,6 +136,10 @@ class MainActivity : BaseActivity(), MainView {
             }
             .build()
             .show()
+    }
+
+    override fun startAnalyticsWorker(time: Int) {
+        AnalyticsWorker.start(this, time)
     }
 
     override fun createNotificationReminder(time: Int) {

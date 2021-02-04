@@ -12,6 +12,7 @@ package es.gob.radarcovid.datamanager.repository
 
 import es.gob.radarcovid.common.base.BaseRepository
 import es.gob.radarcovid.datamanager.api.ApiInterface
+import es.gob.radarcovid.models.request.RequestKpi
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
 import org.funktionale.either.Either
@@ -72,5 +73,10 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
     override fun getStats(): Either<Throwable, ResponseStats> =
         callService {
             apiInterface.getStats()
+        }
+
+    override fun sendKpi(body: RequestKpi): Either<Throwable, String> =
+        callService {
+            apiInterface.sendKpi(body)
         }
 }

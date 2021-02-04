@@ -73,6 +73,14 @@ interface PreferencesRepository {
 
     fun getNotificationReminder(): Int
 
+    fun setExposureAnalyticsCount(count: Int)
+
+    fun getExposureAnalyticsCount(): Int
+
+    fun setAnalyticsPeriod(time: Int)
+
+    fun getAnalyticsPeriod(): Int
+
     fun setLanguageChanged(changed: Boolean)
 
     fun getLanguageChanged(): Boolean

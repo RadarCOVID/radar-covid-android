@@ -13,6 +13,7 @@ package es.gob.radarcovid.features.main.presenter
 import es.gob.radarcovid.datamanager.usecase.GetLocaleInfoUseCase
 import es.gob.radarcovid.datamanager.usecase.GetReminderTimeUseCase
 import es.gob.radarcovid.datamanager.usecase.MainUseCase
+import es.gob.radarcovid.datamanager.usecase.SendAnalyticsUseCase
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.main.protocols.MainView
@@ -26,11 +27,13 @@ class MainPresenterImpl @Inject constructor(
     private val router: MainRouter,
     private val mainUseCase: MainUseCase,
     private val getReminderTimeUseCase: GetReminderTimeUseCase,
+    private val sendAnalyticsUseCase: SendAnalyticsUseCase,
     private val getLocaleInfoUseCase: GetLocaleInfoUseCase
 ) : MainPresenter {
 
     override fun viewReady(activateRadar: Boolean) {
         view.cancelNotificationReminder()
+        view.startAnalyticsWorker(sendAnalyticsUseCase.getAnalyticsPeriod())
         if (getLocaleInfoUseCase.isLanguageChanged()) {
             getLocaleInfoUseCase.resetLanguageChanged()
             view.setSettingSelected()

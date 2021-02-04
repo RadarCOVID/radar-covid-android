@@ -8,18 +8,13 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.datamanager.repository
+package es.gob.radarcovid.models.domain
 
-import es.gob.radarcovid.models.domain.ExposureInfo
-
-interface ExposureStatusRepository {
-
-    fun getExposureInfo(): ExposureInfo
-
-    fun addFakeExposureDate()
-
-    fun resetExposure()
-
-    fun resetExposureDays()
-
+data class AnalyticsOperationalInfo(
+    val kpi: String,
+    val date: Long,
+    val value: Int,
+    val salt: String
+) {
+    val digest = "$kpi$date$value$salt"
 }

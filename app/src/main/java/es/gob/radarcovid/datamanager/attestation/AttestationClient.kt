@@ -8,18 +8,13 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.datamanager.repository
+package es.gob.radarcovid.datamanager.attestation
 
-import es.gob.radarcovid.models.domain.ExposureInfo
+interface AttestationClient {
 
-interface ExposureStatusRepository {
-
-    fun getExposureInfo(): ExposureInfo
-
-    fun addFakeExposureDate()
-
-    fun resetExposure()
-
-    fun resetExposureDays()
-
+    fun attest(
+        onSuccess: (String?) -> Unit,
+        onError: (Exception) -> Unit,
+        nonce: String
+    )
 }

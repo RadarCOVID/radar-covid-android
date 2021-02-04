@@ -73,6 +73,8 @@ class SplashUseCase @Inject constructor(
 
                         preferencesRepository.setNotificationReminder(initializationData.settings.notificationReminder)
 
+                        preferencesRepository.setAnalyticsPeriod(initializationData.settings.timeBetweenKpi)
+
                         if (initializationData.labels.isNotEmpty())
                             preferencesRepository.setLabels(initializationData.labels)
 

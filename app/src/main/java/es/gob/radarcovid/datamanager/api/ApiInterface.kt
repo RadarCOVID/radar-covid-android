@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.datamanager.api
 
+import es.gob.radarcovid.models.request.RequestKpi
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
 import retrofit2.Call
@@ -67,5 +68,10 @@ interface ApiInterface {
 
     @GET("kpi/statistics/basics")
     fun getStats(): Call<ResponseStats>
+
+    @POST("/kpi/google")
+    fun sendKpi(
+        @Body body: RequestKpi
+    ): Call<String>
 
 }

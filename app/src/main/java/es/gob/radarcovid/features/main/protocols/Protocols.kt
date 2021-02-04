@@ -20,6 +20,8 @@ interface MainView : RequestView {
 
     fun cancelNotificationReminder()
 
+    fun startAnalyticsWorker(time: Int)
+
     fun setSettingSelected()
 
     fun finish()

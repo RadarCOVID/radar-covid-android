@@ -21,6 +21,7 @@ object Constants {
 
     const val NOTIFICATION_REMINDER_DEFAULT = 1440
 
-    const val EXPOSURE_HEALED_DAYS = 14
+    const val KPI_MATCH_CONFIRMED = "MATCH_CONFIRMED"
+    const val ANALYTICS_PERIOD_DEFAULT = 1440
 
 }

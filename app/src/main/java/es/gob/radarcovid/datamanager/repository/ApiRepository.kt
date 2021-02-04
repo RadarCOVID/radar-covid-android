@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.datamanager.repository
 
+import es.gob.radarcovid.models.request.RequestKpi
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
 import org.funktionale.either.Either
@@ -46,5 +47,7 @@ interface ApiRepository {
     ): Either<Throwable, ResponseRegions>
 
     fun getStats(): Either<Throwable, ResponseStats>
+
+    fun sendKpi(body: RequestKpi): Either<Throwable, String>
 
 }

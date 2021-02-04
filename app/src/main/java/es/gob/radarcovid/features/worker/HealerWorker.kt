@@ -73,12 +73,12 @@ class HealerWorker(context: Context, workerParams: WorkerParameters) :
                     if (!iAmInfectedIsResettable)
                         iAmInfectedIsResettable = true
                 }
-                DP3T.resetExposureDays(applicationContext)
+                exposureInfoUseCase.resetExposureDays()
                 DP3T.resetInfectionStatus(applicationContext)
                 showLowExposureNotification(applicationContext, true)
             }
             ExposureInfo.Level.HIGH -> {
-                DP3T.resetExposureDays(applicationContext)
+                exposureInfoUseCase.resetExposureDays()
                 showLowExposureNotification(applicationContext, false)
             }
             else -> {

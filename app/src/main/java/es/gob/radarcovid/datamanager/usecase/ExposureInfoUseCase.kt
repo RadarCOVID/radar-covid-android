@@ -28,4 +28,6 @@ class ExposureInfoUseCase @Inject constructor(
 
     fun resetExposure() = repository.resetExposure()
 
+    fun resetExposureDays() = repository.resetExposureDays()
+
 }

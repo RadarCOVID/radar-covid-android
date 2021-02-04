@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.datamanager.mapper
 
+import es.gob.radarcovid.common.base.Constants.ANALYTICS_PERIOD_DEFAULT
 import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
 import es.gob.radarcovid.models.domain.*
 import es.gob.radarcovid.models.response.*
@@ -32,7 +33,8 @@ class SettingsDataMapper @Inject constructor() {
                 appInfo = transform(applicationVersion),
                 legalTermsVersion = legalTermsVersion ?: "",
                 radarCovidDownloadUrl = radarCovidDownloadUrl ?: "",
-                notificationReminder = notificationReminder ?: NOTIFICATION_REMINDER_DEFAULT
+                notificationReminder = notificationReminder ?: NOTIFICATION_REMINDER_DEFAULT,
+                timeBetweenKpi = timeBetweenKpi ?: ANALYTICS_PERIOD_DEFAULT
             )
         }
     } ?: Settings()

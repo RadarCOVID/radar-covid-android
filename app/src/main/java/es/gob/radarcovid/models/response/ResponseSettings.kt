@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.models.response
 
+import es.gob.radarcovid.common.base.Constants.ANALYTICS_PERIOD_DEFAULT
 import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
 
 data class ResponseSettings(
@@ -23,7 +24,8 @@ data class ResponseSettings(
     val applicationVersion: ResponseSettingsAppVersion? = ResponseSettingsAppVersion(),
     val legalTermsVersion: String? = "",
     val radarCovidDownloadUrl: String? = "",
-    val notificationReminder: Int? = NOTIFICATION_REMINDER_DEFAULT
+    val notificationReminder: Int? = NOTIFICATION_REMINDER_DEFAULT,
+    val timeBetweenKpi: Int? = ANALYTICS_PERIOD_DEFAULT
 )
 
 data class ResponseSettingsExposureConfiguration(

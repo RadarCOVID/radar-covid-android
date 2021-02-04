@@ -19,8 +19,6 @@ class SafeClickListener(
 ) : View.OnClickListener {
     private var lastTimeClicked: Long = 0
     override fun onClick(v: View) {
-        println("**** TIME: ${SystemClock.elapsedRealtime()} ")
-        println("**** LAST TIME: $lastTimeClicked ")
         if (SystemClock.elapsedRealtime() - lastTimeClicked < defaultInterval) {
             return
         }

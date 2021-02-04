@@ -14,6 +14,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastReceiver
 import es.gob.radarcovid.common.di.scope.PerService
+import es.gob.radarcovid.features.worker.AnalyticsWorker
 import es.gob.radarcovid.features.worker.FakeInfectionReportWorker
 import es.gob.radarcovid.features.worker.HealerWorker
 import es.gob.radarcovid.features.worker.ReminderWorker
@@ -36,5 +37,9 @@ abstract class ServicesModule {
     @PerService
     @ContributesAndroidInjector
     abstract fun bindsReminderWorker(): ReminderWorker
+
+    @PerService
+    @ContributesAndroidInjector
+    abstract fun bindsAnalyticsWorker(): AnalyticsWorker
 
 }

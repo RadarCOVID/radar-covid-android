@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.common.di.module
 
+import android.content.Context
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -18,6 +19,8 @@ import es.gob.radarcovid.common.base.Constants.DATE_FORMAT
 import es.gob.radarcovid.common.di.scope.PerApplication
 import es.gob.radarcovid.datamanager.api.ApiInterface
 import es.gob.radarcovid.datamanager.api.UserAgentInterceptor
+import es.gob.radarcovid.datamanager.attestation.AttestationClient
+import es.gob.radarcovid.datamanager.attestation.SafetyNetAttestationClient
 import es.gob.radarcovid.datamanager.repository.BuildInfoRepository
 import es.gob.radarcovid.datamanager.repository.SystemInfoRepository
 import okhttp3.CertificatePinner
@@ -93,5 +96,19 @@ class NetworkModule {
         retrofitBuilder.baseUrl(BuildConfig.API_URL)
             .build()
             .create(ApiInterface::class.java)
+
+
+    @Provides
+    @PerApplication
+    fun providesAttestationClient(@Named("applicationContext") application: Context): AttestationClient = SafetyNetAttestationClient(
+        application,
+        SafetyNetAttestationClient.AttestationParameters(
+            apiKey = BuildConfig.SAFETY_NET_API_KEY,
+            apkPackageName = application.packageName,
+            requiresBasicIntegrity = true,
+            requiresCtsProfile = true,
+            requiresHardwareAttestation = true
+        )
+    )
 
 }

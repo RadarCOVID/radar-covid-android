@@ -59,6 +59,11 @@ class ExposureStatusRepositoryImpl @Inject constructor(
         }
         DP3T.resetExposureDays(context)
         DP3T.resetInfectionStatus(context)
+        preferencesRepository.setExposureAnalyticsCount(0)
     }
 
+    override fun resetExposureDays() {
+        DP3T.resetExposureDays(context)
+        preferencesRepository.setExposureAnalyticsCount(0)
+    }
 }
