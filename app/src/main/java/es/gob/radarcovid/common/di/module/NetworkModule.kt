@@ -105,9 +105,9 @@ class NetworkModule {
         SafetyNetAttestationClient.AttestationParameters(
             apiKey = BuildConfig.SAFETY_NET_API_KEY,
             apkPackageName = application.packageName,
-            requiresBasicIntegrity = true,
-            requiresCtsProfile = true,
-            requiresHardwareAttestation = true
+            requiresBasicIntegrity = false,
+            requiresCtsProfile = false,
+            requiresHardwareAttestation = false
         )
     )
 
