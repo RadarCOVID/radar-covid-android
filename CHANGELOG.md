@@ -42,3 +42,13 @@ All notable changes to this project will be documented in this file.
     * Changed links style.
     * Tagged elements on screen.
     * Incorporated headings.
+
+### 1.3.0 (2021-02-17)
+
+* Changed privacy policy.
+* Anonymous metrics report to measure application efficiency.
+* Added Romanian language.
+* Bug fixing.
+* Accessibility improvements:
+    * Fixed "Status Change" header in healed pop-up.
+    * Added closing icon on popups.
