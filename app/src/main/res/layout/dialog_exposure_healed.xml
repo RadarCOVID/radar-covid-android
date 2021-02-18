@@ -43,21 +43,6 @@
                     android:layout_marginBottom="15dp"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <es.gob.radarcovid.common.view.LabelTextView
-                        android:id="@+id/textViewTitle"
-                        style="@style/TitleSmall"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:accessibilityTraversalAfter="@id/buttonClose"
-                        app:isHeading="true"
-                        android:text="@string/low_risk_info_dialog_header"
-                        app:labelId="ALERT_HIGH_EXPOSURE_HEALED_HEADER"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/imageButtonClose"/>
-
                     <es.gob.radarcovid.common.view.LabelImageButton
                         android:id="@+id/imageButtonClose"
                         android:layout_width="wrap_content"
@@ -66,9 +51,24 @@
                         android:background="@null"
                         android:src="@drawable/ic_close"
                         android:contentDescription="@string/dialog_close_button_description"
+                        android:accessibilityTraversalBefore="@id/textViewTitle"
                         app:labelId="ACC_BUTTON_CLOSE"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        android:id="@+id/textViewTitle"
+                        style="@style/TitleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        app:isHeading="true"
+                        android:text="@string/low_risk_info_dialog_header"
+                        app:labelId="ALERT_HIGH_EXPOSURE_HEALED_HEADER"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/imageButtonClose"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
