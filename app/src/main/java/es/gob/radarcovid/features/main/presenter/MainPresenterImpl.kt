@@ -65,6 +65,10 @@ class MainPresenterImpl @Inject constructor(
         router.navigateToProfile()
     }
 
+    override fun onVenueButtonClick() {
+        router.navigateToVenueRecord()
+    }
+
     override fun onHelplineButtonClick() {
         router.navigateToHelpline()
     }

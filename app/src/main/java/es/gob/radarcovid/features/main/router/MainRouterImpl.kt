@@ -18,6 +18,7 @@ import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.mydata.view.MyDataFragment
 import es.gob.radarcovid.features.settings.view.SettingsFragment
 import es.gob.radarcovid.features.stats.view.StatsFragment
+import es.gob.radarcovid.features.venue.view.VenueFragment
 import javax.inject.Inject
 
 class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity) : MainRouter {
@@ -59,6 +60,14 @@ class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity
             .supportFragmentManager
             .beginTransaction()
             .replace(R.id.wrapperContent, SettingsFragment.newInstance())
+            .commit()
+    }
+
+    override fun navigateToVenueRecord() {
+        activity
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.wrapperContent, VenueFragment.newInstance())
             .commit()
     }
 

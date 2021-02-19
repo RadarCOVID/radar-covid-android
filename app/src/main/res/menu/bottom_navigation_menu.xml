@@ -15,15 +15,15 @@
         android:icon="@drawable/ic_home"
         android:title="@string/title_home" />
     <item
-        android:id="@+id/menuItemProfile"
-        android:enabled="true"
-        android:icon="@drawable/ic_mydata"
-        android:title="@string/title_mydata" />
-    <item
         android:id="@+id/menuItemHelpline"
         android:enabled="true"
         android:icon="@drawable/ic_helpline"
         android:title="@string/title_helpline" />
+    <item
+        android:id="@+id/menuItemVenue"
+        android:enabled="true"
+        android:icon="@drawable/ic_mydata"
+        android:title="@string/title_qr" />
     <item
         android:id="@+id/menuItemStats"
         android:enabled="true"

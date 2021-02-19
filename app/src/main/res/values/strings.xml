@@ -65,6 +65,7 @@
     /********** Menu ************/
     <string name="title_home">Radar</string>
     <string name="title_mydata">Mis datos</string>
+    <string name="title_qr">QR</string>
     <string name="title_helpline">Helpline</string>
     <string name="title_stats">Estadísticas</string>
     <string name="title_settings">Ajustes</string>
@@ -457,5 +458,13 @@
     <string name="share_app_description3">Cuantas más personas utilicemos Radar <br /> COVID, antes podremos romper la cadena de contagios.</string>
     <string name="share_app_share_button">Compartir enlace descarg</string>
     <string name="share_app_text">Ayúdanos a frenar juntos la pandemia.\nCuantas más personas utilicemos Radar COVID, antes podremos romper la cadena de contagios.\n\nDescárgate Radar COVID:\nDispositivos iOS:\n<a href="http://apple.co/3bZvdxK" >http://apple.co/3bZvdxK </a> \n\nDispositivos Android:\n<a href="http://bit.ly/32typyT" > http://bit.ly/32typyT </a>\n\nMás información en:\n<a href="radarcovid.gob.es" > radarcovid.gob.es</a> </string>
+
+    /********** Venue Record ************/
+
+    <string name="venue_title">Registro de lugares</string>
+    <string name="venue_record_start">Comunicar código QR</string>
+
+    <string name="venue_record_scan_title">Escanea el código QR</string>
+    <string name="venue_record_scan_desc">Escanea el código QR para realizar el registro de entrada</string>
 
 </resources>

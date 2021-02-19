@@ -14,10 +14,10 @@
     package="es.gob.radarcovid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".RadarCovidApplication"
@@ -68,6 +68,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.information.view.InformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.qrcodescan.view.QRScanActivity"
             android:screenOrientation="portrait" />
 
     </application>

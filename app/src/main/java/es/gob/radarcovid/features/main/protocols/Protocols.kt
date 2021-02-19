@@ -42,6 +42,8 @@ interface MainPresenter {
 
     fun onProfileButtonClick()
 
+    fun onVenueButtonClick()
+
     fun onHelplineButtonClick()
 
     fun onStatsButtonClick()
@@ -65,4 +67,6 @@ interface MainRouter {
     fun navigateToStats()
 
     fun navigateToSettings()
+
+    fun navigateToVenueRecord()
 }

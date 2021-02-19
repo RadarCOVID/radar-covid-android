@@ -8,13 +8,13 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.features.scanqr.presenter
+package es.gob.radarcovid.features.qrcodescan.presenter
 
-import es.gob.radarcovid.features.scanqr.protocols.ScanQRPresenter
-import es.gob.radarcovid.features.scanqr.protocols.ScanQRView
+import es.gob.radarcovid.features.qrcodescan.protocols.ScanQRPresenter
+import es.gob.radarcovid.features.qrcodescan.protocols.ScanQRView
 import javax.inject.Inject
 
-class ScanQRPresenterImpl @Inject constructor(
+class QRScanPresenterImpl @Inject constructor(
     private val view: ScanQRView
 ) : ScanQRPresenter {
 

@@ -76,8 +76,10 @@ class MainActivity : BaseActivity(), MainView {
             when (it.itemId) {
                 R.id.menuItemHome -> it.title =
                     labelManager.getText("ACC_HOME_TITLE", R.string.title_home)
-                R.id.menuItemProfile -> it.title =
-                    labelManager.getText("ACC_MYDATA_TITLE", R.string.title_mydata)
+//                R.id.menuItemProfile -> it.title =
+//                    labelManager.getText("ACC_MYDATA_TITLE", R.string.title_mydata)
+                R.id.menuItemVenue -> it.title =
+                    labelManager.getText("ACC_VENUE_TITLE", R.string.title_qr)
                 R.id.menuItemHelpline -> it.title =
                     labelManager.getText("ACC_HELPLINE_TITLE", R.string.title_helpline)
                 R.id.menuItemStats -> it.title =
@@ -89,7 +91,8 @@ class MainActivity : BaseActivity(), MainView {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menuItemHome -> presenter.onHomeButtonClick()
-                R.id.menuItemProfile -> presenter.onProfileButtonClick()
+                //R.id.menuItemProfile -> presenter.onProfileButtonClick()
+                R.id.menuItemVenue -> presenter.onVenueButtonClick()
                 R.id.menuItemHelpline -> presenter.onHelplineButtonClick()
                 R.id.menuItemStats -> presenter.onStatsButtonClick()
                 R.id.menuItemSettings -> presenter.onSettingsButtonClick()

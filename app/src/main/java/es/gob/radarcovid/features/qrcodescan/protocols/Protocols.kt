@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.features.scanqr.protocols
+package es.gob.radarcovid.features.qrcodescan.protocols
 
 interface ScanQRView {
 
