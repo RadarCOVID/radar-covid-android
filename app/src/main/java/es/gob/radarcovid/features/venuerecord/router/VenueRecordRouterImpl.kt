@@ -8,19 +8,18 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.features.venue.router
+package es.gob.radarcovid.features.venuerecord.router
 
 import android.content.Context
-import es.gob.radarcovid.features.venue.protocols.VenueRouter
-import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
+import es.gob.radarcovid.features.qrcodescan.view.QRScanActivity
+import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordRouter
 import javax.inject.Inject
 
-class VenueRouterImpl @Inject constructor(
+class VenueRecordRouterImpl @Inject constructor(
     private val context: Context
-) : VenueRouter {
+): VenueRecordRouter {
 
-    override fun navigateToVenueRecord() {
-        VenueRecordActivity.open(context)
-    }
-
+//    override fun openQRCodeScan() {
+//        QRScanActivity.open(context)
+//    }
 }

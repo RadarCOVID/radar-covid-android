@@ -40,7 +40,7 @@
 
         <es.gob.radarcovid.common.view.LabelTextView
             android:id="@+id/titleLabelView"
-            style="@style/TitleSmallMedium"
+            style="@style/StyleRegularBlack24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
@@ -67,7 +67,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <es.gob.radarcovid.common.view.LabelTextView
-            style="@style/TitleSmall"
+            style="@style/StyleRegularBlack18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"

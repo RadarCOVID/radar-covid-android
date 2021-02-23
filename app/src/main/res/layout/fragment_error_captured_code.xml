@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2020 Gobierno de España
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -23,73 +22,80 @@
         android:src="@drawable/background_covid_report"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <include
+        android:id="@+id/layoutBackButton"
+        layout="@layout/layout_back_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         style="@style/ScrollVertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/buttonVenueRecord">
+        app:layout_constraintTop_toBottomOf="@id/layoutBackButton">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipToPadding="false"
             android:orientation="vertical"
-            android:paddingStart="16dp"
-            android:paddingTop="60dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="22dp">
-
-            <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TitleMedium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:text="@string/venue_title"
-                app:isHeading="true"
-                app:labelId="VENUE_TITLE" />
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@drawable/ic_error_check"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:importantForAccessibility="no" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/StyleRegularBlack24"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="24dp"
-                android:src="@drawable/img_venue" />
+                android:layout_marginTop="13dp"
+                android:text="@string/venue_record_error_code_title"
+                app:isHeading="true"
+                app:labelId="VENUE_RECORD_ERROR_CODE_TITLE" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextNormal18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/venue_paragraph_1"
-                app:isHeading="true"
-                app:labelId="VENUE_TITLE" />
-
-            <es.gob.radarcovid.common.view.LabelButton
-                android:id="@+id/textViewCountriesLink"
-                style="@style/Title18PurpleA7"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:background="@android:color/transparent"
-                android:text="@string/more_info"
-                android:textAllCaps="false"
-                app:labelId="ACC_MORE_INFO" />
+                android:text="@string/venue_record_error_code_desc"
+                app:isHeading="true"
+                app:labelId="VENUE_RECORD_ERROR_CODE_DESC" />
 
         </LinearLayout>
 
     </ScrollView>
 
     <es.gob.radarcovid.common.view.LabelButton
-        android:id="@+id/buttonVenueRecord"
+        android:id="@+id/buttonScanQR"
         style="@style/ButtonNormal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp"
         android:text="@string/venue_record_start"
-        app:labelId="VENUE_RECORD_BUTTON_START"
+        app:labelId="VENUE_RECORD_CHECK_IN"
+        app:layout_constraintBottom_toTopOf="@id/buttonClose"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonClose"
+        style="@style/ButtonSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/dialog_close_button_description"
+        app:labelId="ACC_BUTTON_CLOSE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

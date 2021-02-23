@@ -60,9 +60,16 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="TitleSmallMedium" parent="Title">
+    <style name="StyleRegularBlack24">
+        <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="StyleRegularBlack18">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="Title18Black" parent="Title">

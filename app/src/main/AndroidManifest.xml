@@ -72,6 +72,9 @@
         <activity
             android:name=".features.qrcodescan.view.QRScanActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.venuerecord.view.VenueRecordActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

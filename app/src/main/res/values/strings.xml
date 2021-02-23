@@ -461,10 +461,22 @@
 
     /********** Venue Record ************/
 
-    <string name="venue_title">Registro de lugares</string>
+    <string name="venue_title">Registro de lugares mediante QR</string>
+    <string name="venue_paragraph_1">Registra los lugares que visitas capturando sus códigos QR.\n\nRecibe notificaciones en caso de coincidir con personas posteriormente diagnosticadas de COVID-19.\n\nTu privacidad está protegida en todo momento.</string>
     <string name="venue_record_start">Comunicar código QR</string>
 
     <string name="venue_record_scan_title">Escanea el código QR</string>
     <string name="venue_record_scan_desc">Escanea el código QR para realizar el registro de entrada</string>
+
+    <string name="venue_record_captured_code_title">Código capturado</string>
+    <string name="venue_record_captured_code_desc">Confirmando tu entrada y salida del lugar visitado, podremos notificarte si coincides en el lugar con personas diagnosticadas posteriormente como positivo COVID-19.</string>
+    <string name="venue_record_captured_code_check_in">Confirmar entrada</string>
+
+    <string name="venue_record_error_code_title">Código no reconocido</string>
+    <string name="venue_record_error_code_desc">Puede que estés intentando escanear un código no oficial de Radar COVID o que el código esté dañado.</string>
+
+    <string name="venue_record_initiated_title">Registro iniciado</string>
+    <string name="venue_record_initiated_time">Tiempo transcurrido</string>
+    <string name="venue_record_initiated_confirm">Confirmar salida</string>
 
 </resources>

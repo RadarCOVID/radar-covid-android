@@ -30,6 +30,8 @@ import es.gob.radarcovid.features.splash.di.SplashModule
 import es.gob.radarcovid.features.splash.view.SplashActivity
 import es.gob.radarcovid.features.stats.di.StatsModule
 import es.gob.radarcovid.features.stats.view.StatsFragment
+import es.gob.radarcovid.features.venuerecord.di.VenueRecordModule
+import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
 
 @Module
 abstract class ActivitiesModule {
@@ -69,5 +71,9 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [QRScanModule::class])
     abstract fun bindsQRScanActivity(): QRScanActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [VenueRecordModule::class, VenueRecordFragmentsModule::class])
+    abstract fun bindsVenueRecordActivity(): VenueRecordActivity
 
 }
