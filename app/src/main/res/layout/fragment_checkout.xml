@@ -22,27 +22,28 @@
         android:src="@drawable/background_covid_report"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButtonBack"
+    <es.gob.radarcovid.common.view.LabelImageButton
+        android:id="@+id/buttonClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:contentDescription="@string/description_arrow_button_back"
-        android:onClick="onBackArrowClick"
-        android:paddingLeft="22dp"
+        android:paddingEnd="20dp"
         android:paddingTop="22dp"
-        android:paddingRight="22dp"
         android:paddingBottom="32dp"
-        android:src="@drawable/ic_arrow_left"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@null"
+        android:src="@drawable/ic_close"
+        android:contentDescription="@string/dialog_close_button_description"
+        app:contentDescriptionLabelId="ACC_BUTTON_CLOSE"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         style="@style/ScrollVertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/buttonCheckIn"
-        app:layout_constraintTop_toBottomOf="@id/imageButtonBack">
+        app:layout_constraintTop_toBottomOf="@id/buttonClose"
+        app:layout_constraintBottom_toTopOf="@id/buttonCheckOut"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,10 +52,9 @@
             android:paddingLeft="26dp"
             android:paddingRight="26dp">
 
-            <ImageView
+            <View
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:src="@drawable/ic_confirmation_check"
                 android:clickable="false"
                 android:focusableInTouchMode="false"
                 android:importantForAccessibility="no" />
@@ -64,9 +64,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
-                android:text="@string/venue_record_captured_code_title"
+                android:text="@string/venue_checkout_title"
                 app:isHeading="true"
-                app:labelId="VENUE_RECORD_CAPTURED_CODE_TITLE" />
+                app:labelId="VENUE_CHECKOUT_TITLE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -76,54 +76,98 @@
                 android:elevation="10dp"
                 android:paddingStart="18dp"
                 android:paddingTop="21dp"
-                android:paddingBottom="21dp"
-                android:paddingEnd="18dp">
+                android:paddingEnd="18dp"
+                android:paddingBottom="21dp">
 
                 <ImageView
                     android:id="@+id/imageViewVenue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_venue"
                     android:clickable="false"
                     android:focusableInTouchMode="false"
-                    android:importantForAccessibility="no"/>
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_venue" />
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewVenueName"
                     style="@style/TextSmallBlackBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginStart="20dp"
-                    tools:text="Nombre del establecimiento dos líneas"
+                    android:layout_marginEnd="10dp"
                     app:isHeading="true"
-                    app:labelId="VENUE_RECORD_NAME"/>
+                    app:labelId="VENUE_RECORD_NAME"
+                    tools:text="Nombre del establecimiento dos líneas" />
 
             </LinearLayout>
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextNormal18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="@string/venue_checkout_datetime"
+                app:isHeading="true"
+                app:labelId="VENUE_CHECKOUT_DATETIME" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
-                android:text="@string/venue_record_captured_code_desc"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_rounded_corners_gray_stroke"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDay"
+                    style="@style/TitleTipSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Hoy, 15 Feb"
+                    app:isHeading="true"
+                    app:labelId="VENUE_CHECKOUT_TIME"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewTime"
+                    style="@style/TitleTipSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    tools:text="17:30 h"
+                    app:isHeading="true"
+                    app:labelId="VENUE_CHECKOUT_TIME"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextNormal18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/venue_checkout_time"
                 app:isHeading="true"
-                app:labelId="VENUE_RECORD_CAPTURED_CODE_DESC" />
+                app:labelId="VENUE_CHECKOUT_TIME" />
 
         </LinearLayout>
 
     </ScrollView>
 
     <es.gob.radarcovid.common.view.LabelButton
-        android:id="@+id/buttonCheckIn"
+        android:id="@+id/buttonCheckOut"
         style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp"
-        android:text="@string/venue_record_captured_code_check_in"
-        app:labelId="VENUE_RECORD_CHECK_IN"
+        android:text="@string/venue_checkout_record_end"
+        app:labelId="VENUE_CHECKOUT_RECORD_END"
         app:layout_constraintBottom_toTopOf="@id/buttonCancel"
         app:layout_constraintStart_toStartOf="parent" />
 

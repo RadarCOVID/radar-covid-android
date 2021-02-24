@@ -15,10 +15,14 @@ import dagger.android.ContributesAndroidInjector
 import es.gob.radarcovid.common.di.scope.PerFragment
 import es.gob.radarcovid.features.venuerecord.pages.capturedcode.di.CapturedCodeModule
 import es.gob.radarcovid.features.venuerecord.pages.capturedcode.view.CapturedCodeFragment
+import es.gob.radarcovid.features.venuerecord.pages.checkout.di.CheckOutModule
+import es.gob.radarcovid.features.venuerecord.pages.checkout.view.CheckOutFragment
 import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.di.ErrorCapturedCodeModule
 import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.view.ErrorCapturedCodeFragment
 import es.gob.radarcovid.features.venuerecord.pages.recordinitiated.di.RecordInitiatedModule
 import es.gob.radarcovid.features.venuerecord.pages.recordinitiated.view.RecordInitiatedFragment
+import es.gob.radarcovid.features.venuerecord.pages.recordsuccess.di.RecordSuccessModule
+import es.gob.radarcovid.features.venuerecord.pages.recordsuccess.view.RecordSuccessFragment
 
 @Module
 abstract class VenueRecordFragmentsModule {
@@ -34,4 +38,13 @@ abstract class VenueRecordFragmentsModule {
     @PerFragment
     @ContributesAndroidInjector(modules = [RecordInitiatedModule::class])
     abstract fun bindsRecordInitiatedFragment(): RecordInitiatedFragment
+
+    @PerFragment
+    @ContributesAndroidInjector(modules = [CheckOutModule::class])
+    abstract fun bindsCheckOutFragment(): CheckOutFragment
+
+    @PerFragment
+    @ContributesAndroidInjector(modules = [RecordSuccessModule::class])
+    abstract fun bindsRecordSuccessFragment(): RecordSuccessFragment
+
 }

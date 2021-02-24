@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/shape_rounded_corners_white"
+        android:orientation="vertical"
+        android:paddingTop="23dp">
+
+        <ScrollView
+            android:id="@+id/scrollViewContent"
+            style="@style/ScrollVertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="15dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        android:id="@+id/textViewDialogTitle"
+                        style="@style/TitleMedium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Título de diálogo"
+                        android:accessibilityTraversalAfter="@id/buttonClose"
+                        app:isHeading="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/buttonClose"/>
+
+                    <es.gob.radarcovid.common.view.LabelImageButton
+                        android:id="@+id/buttonClose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="25dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_close"
+                        android:contentDescription="@string/dialog_close_button_description"
+                        app:contentDescriptionLabelId="ACC_BUTTON_CLOSE"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewMessage"
+                    style="@style/TextRegular18Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="100dp"
+                    tools:text="Mensaje de dialogo"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <es.gob.radarcovid.common.view.LabelButton
+            android:id="@+id/buttonOk"
+            style="@style/ButtonNormal"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="15dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            tools:text="Confirmar"
+            app:layout_constraintBottom_toTopOf="@id/buttonCancel"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <es.gob.radarcovid.common.view.LabelButton
+            android:id="@+id/buttonCancel"
+            style="@style/ButtonSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_marginBottom="5dp"
+            tools:text="@string/cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

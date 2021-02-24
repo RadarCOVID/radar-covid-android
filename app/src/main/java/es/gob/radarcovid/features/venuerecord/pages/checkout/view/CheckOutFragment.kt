@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.view
+package es.gob.radarcovid.features.venuerecord.pages.checkout.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,28 +17,29 @@ import android.view.ViewGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.setSafeOnClickListener
-import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.protocols.ErrorCapturedCodePresenter
-import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.protocols.ErrorCapturedCodeView
+import es.gob.radarcovid.features.venuerecord.pages.checkout.protocols.CheckOutPresenter
+import es.gob.radarcovid.features.venuerecord.pages.checkout.protocols.CheckOutView
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
-import kotlinx.android.synthetic.main.fragment_error_captured_code.*
+import kotlinx.android.synthetic.main.fragment_checkout.*
 import javax.inject.Inject
 
-class ErrorCapturedCodeFragment : BaseFragment(), ErrorCapturedCodeView {
+class CheckOutFragment : BaseFragment(), CheckOutView {
 
     companion object {
 
-        fun newInstance() = ErrorCapturedCodeFragment()
+        fun newInstance() = CheckOutFragment()
+
     }
 
     @Inject
-    lateinit var presenter: ErrorCapturedCodePresenter
+    lateinit var presenter: CheckOutPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_error_captured_code, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_checkout, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,16 +47,15 @@ class ErrorCapturedCodeFragment : BaseFragment(), ErrorCapturedCodeView {
     }
 
     private fun initViews() {
-        buttonScanQR.setSafeOnClickListener { presenter.onContinueButtonClick() }
-        buttonClose.setSafeOnClickListener { presenter.onCancelButtonClick() }
+        buttonCheckOut.setSafeOnClickListener { presenter.onContinueButtonClick() }
+        buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
     }
 
     override fun performContinueButtonClick() {
-        (activity as? VenueRecordPageCallback)?.onContinueButtonClick(VenueRecordPresenterImpl.ERROR_CAPTURED_CODE_FRAGMENT)
+        (activity as? VenueRecordPageCallback)?.onContinueButtonClick(VenueRecordPresenterImpl.CHECK_OUT_FRAGMENT)
     }
 
     override fun performCancelButtonClick() {
-        (activity as? VenueRecordPageCallback)?.onExitButtonClick()
+        (activity as? VenueRecordPageCallback)?.onCancelButtonClick()
     }
-
 }

@@ -45,6 +45,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_EXPOSURE_ANALYTICS_COUNT = "key_exposure_analytics_count"
         private const val KEY_ANALYTICS_PERIOD = "key_analytics_period"
         private const val KEY_LANGUAGE_CHANGED = "key_language_changed"
+        private const val KEY_RECORD_IN_PROGRESS = "key_record_in_progress"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -229,4 +230,14 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
 
     override fun getLanguageChanged(): Boolean =
         preferences.getBoolean(KEY_LANGUAGE_CHANGED, false)
+
+    override fun setRecordInProgress(recordInProgress: Boolean) {
+        preferences.edit()
+            .putBoolean(KEY_RECORD_IN_PROGRESS, recordInProgress)
+            .apply()
+    }
+
+    override fun isRecordInProgress(): Boolean =
+        preferences.getBoolean(KEY_RECORD_IN_PROGRESS, false)
+
 }

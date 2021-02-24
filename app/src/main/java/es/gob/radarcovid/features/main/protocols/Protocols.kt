@@ -68,5 +68,5 @@ interface MainRouter {
 
     fun navigateToSettings()
 
-    fun navigateToVenueRecord()
+    fun navigateToVenueRecord(recordInProgress: Boolean)
 }

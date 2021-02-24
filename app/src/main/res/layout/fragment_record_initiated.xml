@@ -22,19 +22,26 @@
         android:src="@drawable/background_covid_report"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/layoutBackButton"
-        layout="@layout/layout_back_navigation"
-        android:layout_width="match_parent"
+    <ImageButton
+        android:id="@+id/imageButtonBack"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="@string/description_arrow_button_back"
+        android:paddingLeft="22dp"
+        android:paddingTop="22dp"
+        android:paddingRight="22dp"
+        android:paddingBottom="32dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         style="@style/ScrollVertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutBackButton">
+        app:layout_constraintBottom_toTopOf="@id/buttonConfirm"
+        app:layout_constraintTop_toBottomOf="@id/imageButtonBack">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -129,11 +136,11 @@
         android:layout_marginBottom="10dp"
         android:text="@string/venue_record_initiated_confirm"
         app:labelId="VENUE_RECORD_INITIATED_CONFIRM"
-        app:layout_constraintBottom_toTopOf="@id/buttonVenueCancel"
+        app:layout_constraintBottom_toTopOf="@id/buttonCancel"
         app:layout_constraintStart_toStartOf="parent" />
 
     <es.gob.radarcovid.common.view.LabelButton
-        android:id="@+id/buttonVenueCancel"
+        android:id="@+id/buttonCancel"
         style="@style/ButtonSecondary"
         android:layout_width="match_parent"
         android:layout_height="56dp"

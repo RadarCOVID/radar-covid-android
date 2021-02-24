@@ -10,13 +10,12 @@
 
 package es.gob.radarcovid.features.venue.presenter
 
+import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
 import es.gob.radarcovid.features.venue.protocols.VenuePresenter
 import es.gob.radarcovid.features.venue.protocols.VenueRouter
-import es.gob.radarcovid.features.venue.protocols.VenueView
 import javax.inject.Inject
 
 class VenuePresenterImpl @Inject constructor(
-    private val view: VenueView,
     private val router: VenueRouter
 ) : VenuePresenter {
 

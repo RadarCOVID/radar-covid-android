@@ -23,4 +23,8 @@ class CapturedCodePresenterImpl  @Inject constructor(
     override fun onContinueButtonClick() {
         view.performContinueButtonClick()
     }
+
+    override fun onCancelButtonClick() {
+        view.performCancelButtonClick()
+    }
 }

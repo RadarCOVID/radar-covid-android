@@ -84,4 +84,8 @@ interface PreferencesRepository {
     fun setLanguageChanged(changed: Boolean)
 
     fun getLanguageChanged(): Boolean
+
+    fun setRecordInProgress(recordInProgress: Boolean)
+
+    fun isRecordInProgress(): Boolean
 }

@@ -20,14 +20,15 @@ interface VenueRecordView {
 
 interface VenueRecordPresenter {
 
-    fun startScan()
+    fun viewReady()
+
+    fun onContinueButtonClick(pageIndex: Int)
 
     fun onOkScan(data: String)
 
     fun onErrorScan()
 
-    fun doCheckIn()
-
+    fun cancelRecord()
 }
 
 interface VenueRecordRouter {

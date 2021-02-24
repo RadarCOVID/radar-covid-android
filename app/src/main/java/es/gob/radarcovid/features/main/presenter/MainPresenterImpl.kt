@@ -10,10 +10,7 @@
 
 package es.gob.radarcovid.features.main.presenter
 
-import es.gob.radarcovid.datamanager.usecase.GetLocaleInfoUseCase
-import es.gob.radarcovid.datamanager.usecase.GetReminderTimeUseCase
-import es.gob.radarcovid.datamanager.usecase.MainUseCase
-import es.gob.radarcovid.datamanager.usecase.SendAnalyticsUseCase
+import es.gob.radarcovid.datamanager.usecase.*
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.main.protocols.MainView
@@ -28,7 +25,8 @@ class MainPresenterImpl @Inject constructor(
     private val mainUseCase: MainUseCase,
     private val getReminderTimeUseCase: GetReminderTimeUseCase,
     private val sendAnalyticsUseCase: SendAnalyticsUseCase,
-    private val getLocaleInfoUseCase: GetLocaleInfoUseCase
+    private val getLocaleInfoUseCase: GetLocaleInfoUseCase,
+    private val venueRecordUseCase: VenueRecordUseCase
 ) : MainPresenter {
 
     override fun viewReady(activateRadar: Boolean) {
@@ -66,7 +64,7 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onVenueButtonClick() {
-        router.navigateToVenueRecord()
+        router.navigateToVenueRecord(venueRecordUseCase.isRecordInProgress())
     }
 
     override fun onHelplineButtonClick() {

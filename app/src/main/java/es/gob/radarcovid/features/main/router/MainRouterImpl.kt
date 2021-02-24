@@ -19,6 +19,7 @@ import es.gob.radarcovid.features.mydata.view.MyDataFragment
 import es.gob.radarcovid.features.settings.view.SettingsFragment
 import es.gob.radarcovid.features.stats.view.StatsFragment
 import es.gob.radarcovid.features.venue.view.VenueFragment
+import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
 import javax.inject.Inject
 
 class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity) : MainRouter {
@@ -63,12 +64,16 @@ class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity
             .commit()
     }
 
-    override fun navigateToVenueRecord() {
-        activity
-            .supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.wrapperContent, VenueFragment.newInstance())
-            .commit()
+    override fun navigateToVenueRecord(recordInProgress: Boolean) {
+        if (recordInProgress) {
+            VenueRecordActivity.open(activity)
+        } else {
+            activity
+                .supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.wrapperContent, VenueFragment.newInstance())
+                .commit()
+        }
     }
 
 }

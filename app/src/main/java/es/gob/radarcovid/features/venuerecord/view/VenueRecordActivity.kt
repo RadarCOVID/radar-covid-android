@@ -14,24 +14,23 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
-import es.gob.radarcovid.features.onboarding.pages.ActivationPageFragment
-import es.gob.radarcovid.features.onboarding.pages.legal.view.LegalInfoFragment
-import es.gob.radarcovid.features.onboarding.pages.welcome.view.WelcomeFragment
+import es.gob.radarcovid.common.view.CommonDialog
 import es.gob.radarcovid.features.qrcodescan.view.QRScanActivity
 import es.gob.radarcovid.features.venuerecord.pages.capturedcode.view.CapturedCodeFragment
+import es.gob.radarcovid.features.venuerecord.pages.checkout.view.CheckOutFragment
 import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.view.ErrorCapturedCodeFragment
 import es.gob.radarcovid.features.venuerecord.pages.recordinitiated.view.RecordInitiatedFragment
+import es.gob.radarcovid.features.venuerecord.pages.recordsuccess.view.RecordSuccessFragment
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordView
-import kotlinx.android.synthetic.main.activity_onboarding.*
 import kotlinx.android.synthetic.main.activity_venue_record.*
-import kotlinx.android.synthetic.main.activity_venue_record.viewPager
 import javax.inject.Inject
 
 class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, VenueRecordPageCallback {
@@ -71,7 +70,7 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_venue_record)
         initViews()
-        presenter.startScan()
+        presenter.viewReady()
     }
 
     override fun startQRScan() {
@@ -88,13 +87,13 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
     private fun initViews() {
         viewPager.adapter = VenueRecordAdapter(this)
         viewPager.isUserInputEnabled = false
-        viewPager.offscreenPageLimit = 4
+        viewPager.offscreenPageLimit = 5
     }
 
     private class VenueRecordAdapter(fragmentActivity: FragmentActivity) :
         FragmentStateAdapter(fragmentActivity) {
 
-        private val totalPages = 3
+        private val totalPages = 5
 
         override fun getItemCount(): Int = totalPages
 
@@ -103,25 +102,53 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
                 VenueRecordPresenterImpl.ERROR_CAPTURED_CODE_FRAGMENT -> ErrorCapturedCodeFragment.newInstance()
                 VenueRecordPresenterImpl.CAPTURED_CODE_FRAGMENT -> CapturedCodeFragment.newInstance()
                 VenueRecordPresenterImpl.INITIATED_RECORD_FRAGMENT -> RecordInitiatedFragment.newInstance()
+                VenueRecordPresenterImpl.CHECK_OUT_FRAGMENT -> CheckOutFragment.newInstance()
+                VenueRecordPresenterImpl.RECORD_SUCCESS_FRAGMENT -> RecordSuccessFragment.newInstance()
                 else -> CapturedCodeFragment.newInstance()
             }
     }
 
     override fun onContinueButtonClick(pageIndex: Int) {
-        when (pageIndex) {
-            VenueRecordPresenterImpl.ERROR_CAPTURED_CODE_FRAGMENT -> {
-                //Retry Scan
-                presenter.startScan()
-            }
-            VenueRecordPresenterImpl.CAPTURED_CODE_FRAGMENT -> {
-                //do check in
-                presenter.doCheckIn()
-            }
-        }
+        presenter.onContinueButtonClick(pageIndex)
     }
 
     override fun onCancelButtonClick() {
-        TODO("Not yet implemented")
+        CommonDialog.Builder(this)
+            .setTitle(
+                labelManager.getText(
+                    "VENUE_RECORD_CANCEL_TITLE",
+                    R.string.venue_record_cancel_title
+                ).toString()
+            )
+            .setMessage(
+                labelManager.getText(
+                    "VENUE_RECORD_CANCEL_TEXT",
+                    R.string.venue_record_cancel_text
+                ).toString()
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "VENUE_RECORD_CANCEL_CONTINUE",
+                    R.string.venue_record_cancel_continue
+                ).toString()
+            ) {
+                it.dismiss()
+            }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ALERT_CANCEL_BUTTON",
+                    R.string.cancel
+                ).toString()
+            ) {
+                it.dismiss()
+                presenter.cancelRecord()
+                this.finish()
+            }
+            .setCloseButton() {
+                it.dismiss()
+            }
+            .build()
+            .show()
     }
 
     override fun onExitButtonClick() {

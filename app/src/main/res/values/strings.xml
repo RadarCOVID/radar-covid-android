@@ -464,6 +464,9 @@
     <string name="venue_title">Registro de lugares mediante QR</string>
     <string name="venue_paragraph_1">Registra los lugares que visitas capturando sus códigos QR.\n\nRecibe notificaciones en caso de coincidir con personas posteriormente diagnosticadas de COVID-19.\n\nTu privacidad está protegida en todo momento.</string>
     <string name="venue_record_start">Comunicar código QR</string>
+    <string name="venue_record_cancel_title">Cancelar registro</string>
+    <string name="venue_record_cancel_text">¿Estás seguro que deseas cancelar el registro de este lugar?</string>
+    <string name="venue_record_cancel_continue">Continuar registro</string>
 
     <string name="venue_record_scan_title">Escanea el código QR</string>
     <string name="venue_record_scan_desc">Escanea el código QR para realizar el registro de entrada</string>
@@ -478,5 +481,14 @@
     <string name="venue_record_initiated_title">Registro iniciado</string>
     <string name="venue_record_initiated_time">Tiempo transcurrido</string>
     <string name="venue_record_initiated_confirm">Confirmar salida</string>
+
+    <string name="venue_checkout_title">Confirmación de salida</string>
+    <string name="venue_checkout_datetime">Fecha y hora de entrada</string>
+    <string name="venue_checkout_leave_now">SALGO AHORA</string>
+    <string name="venue_checkout_time">¿Cuánto tiempo has estado?</string>
+    <string name="venue_checkout_record_end">Finalizar registro</string>
+
+    <string name="venue_record_success_title">Se ha registrado la visita con éxito</string>
+    <string name="venue_record_success_paragraph1">El registro se guardará de forma encriptada localmente en tu dispositivo móvil, de forma anónima, durante 14 días.\n\nRecuerda que recibirás una notificación si has tenido contacto en el lugar y horas registradas con personas diagnosticadas posteriormente como positivo COVID-19.</string>
 
 </resources>

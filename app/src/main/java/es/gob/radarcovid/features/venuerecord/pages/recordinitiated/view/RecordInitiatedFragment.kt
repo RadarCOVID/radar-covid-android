@@ -16,9 +16,12 @@ import android.view.View
 import android.view.ViewGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
+import es.gob.radarcovid.common.extensions.setSafeOnClickListener
 import es.gob.radarcovid.features.venuerecord.pages.recordinitiated.protocols.RecordInitiatedPresenter
 import es.gob.radarcovid.features.venuerecord.pages.recordinitiated.protocols.RecordInitiatedView
+import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
+import kotlinx.android.synthetic.main.fragment_record_initiated.*
 import javax.inject.Inject
 
 class RecordInitiatedFragment : BaseFragment(), RecordInitiatedView {
@@ -44,14 +47,15 @@ class RecordInitiatedFragment : BaseFragment(), RecordInitiatedView {
     }
 
     private fun initViews() {
-        //buttonContinue.setOnClickListener { presenter.onContinueButtonClick() }
+        buttonConfirm.setSafeOnClickListener { presenter.onContinueButtonClick() }
+        buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
     }
 
     override fun performContinueButtonClick() {
-        (activity as? VenueRecordPageCallback)?.onContinueButtonClick(0)
+        (activity as? VenueRecordPageCallback)?.onContinueButtonClick(VenueRecordPresenterImpl.INITIATED_RECORD_FRAGMENT)
     }
 
-    override fun finish() {
-        activity?.finish()
+    override fun performCancelButtonClick() {
+        (activity as? VenueRecordPageCallback)?.onCancelButtonClick()
     }
 }

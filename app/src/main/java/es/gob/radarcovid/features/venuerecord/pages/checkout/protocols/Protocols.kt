@@ -8,16 +8,16 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.features.venuerecord.pages.capturedcode.protocols
+package es.gob.radarcovid.features.venuerecord.pages.checkout.protocols
 
-interface CapturedCodeView {
+interface CheckOutView {
 
     fun performContinueButtonClick()
 
     fun performCancelButtonClick()
 }
 
-interface CapturedCodePresenter {
+interface CheckOutPresenter {
 
     fun onContinueButtonClick()
 

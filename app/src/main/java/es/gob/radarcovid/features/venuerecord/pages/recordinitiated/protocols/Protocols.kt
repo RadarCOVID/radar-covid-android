@@ -14,10 +14,12 @@ interface RecordInitiatedView {
 
     fun performContinueButtonClick()
 
-    fun finish()
+    fun performCancelButtonClick()
 }
 
 interface RecordInitiatedPresenter {
 
     fun onContinueButtonClick()
+
+    fun onCancelButtonClick()
 }
