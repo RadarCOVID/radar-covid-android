@@ -55,7 +55,7 @@ class ErrorCapturedCodeFragment : BaseFragment(), ErrorCapturedCodeView {
     }
 
     override fun performCancelButtonClick() {
-        (activity as? VenueRecordPageCallback)?.onExitButtonClick()
+        (activity as? VenueRecordPageCallback)?.onBackButtonClick()
     }
 
 }

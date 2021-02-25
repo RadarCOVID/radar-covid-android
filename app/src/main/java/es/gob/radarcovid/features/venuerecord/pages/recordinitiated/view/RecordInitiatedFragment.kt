@@ -49,6 +49,7 @@ class RecordInitiatedFragment : BaseFragment(), RecordInitiatedView {
     private fun initViews() {
         buttonConfirm.setSafeOnClickListener { presenter.onContinueButtonClick() }
         buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
+        imageButtonBack.setSafeOnClickListener { presenter.onExitButtonClick() }
     }
 
     override fun performContinueButtonClick() {
@@ -57,5 +58,9 @@ class RecordInitiatedFragment : BaseFragment(), RecordInitiatedView {
 
     override fun performCancelButtonClick() {
         (activity as? VenueRecordPageCallback)?.onCancelButtonClick()
+    }
+
+    override fun performExitButtonClick() {
+        (activity as? VenueRecordPageCallback)?.onBackButtonClick()
     }
 }

@@ -58,7 +58,7 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun onResume() {
         super.onResume()
-        presenter.onResume()
+        presenter.onResume(bottomNavigation.selectedItemId == R.id.menuItemVenue)
     }
 
     override fun onStop() {
@@ -103,6 +103,10 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun setSettingSelected() {
         bottomNavigation.selectedItemId = R.id.menuItemSettings
+    }
+
+    override fun setHomeSelected() {
+        bottomNavigation.selectedItemId = R.id.menuItemHome
     }
 
     override fun onBackPressed() {

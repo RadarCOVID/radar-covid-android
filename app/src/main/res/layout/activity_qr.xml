@@ -14,59 +14,149 @@
     android:layout_height="match_parent"
     android:layout_below="@+id/app_toolbar">
 
-    <SurfaceView
-        android:id="@+id/cameraSurfaceView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        android:background="#CC818CC1">
+        <SurfaceView
+            android:id="@+id/cameraSurfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <include
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutBackButton"
-            layout="@layout/layout_back_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="#CC818CC1">
+
+            <ImageButton
+                android:id="@+id/imageButtonBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="@string/description_arrow_button_back"
+                android:onClick="onBackArrowClick"
+                android:paddingLeft="22dp"
+                android:paddingTop="22dp"
+                android:paddingRight="22dp"
+                android:paddingBottom="32dp"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <es.gob.radarcovid.common.view.LabelTextView
             android:id="@+id/titleLabelView"
             style="@style/StyleRegularBlack24"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
             android:paddingEnd="10dp"
             android:text="@string/venue_record_scan_title"
             app:labelId="VENUE_RECORD_SCAN_TITLE"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutBackButton"/>
+            app:layout_constraintTop_toBottomOf="@id/layoutBackButton"
+            android:background="#CC818CC1"/>
 
-        <ImageView
-            android:id="@+id/imageScanFrame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/img_scan_frame"
-            android:clickable="false"
-            android:layout_margin="20dp"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:focusableInTouchMode="false"
-            android:importantForAccessibility="no"
+        <View
+            android:id="@+id/spaceTop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleLabelView"
+            app:layout_constraintBottom_toTopOf="@id/qr_code_scanner_camera_hole"
+            android:background="@color/blue_C1"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/spaceBottom"
+            app:layout_constraintEnd_toStartOf="@id/qr_code_scanner_camera_hole"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spaceTop"
+            android:background="@color/blue_C1"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/spaceBottom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toEndOf="@id/qr_code_scanner_camera_hole"
+            app:layout_constraintTop_toBottomOf="@id/spaceTop"
+            android:background="@color/blue_C1"/>
+
+        <View
+            android:id="@+id/spaceBottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/qr_code_scanner_camera_hole"
+            app:layout_constraintBottom_toTopOf="@id/textViewDesc"
+            android:background="@color/blue_C1"/>
+
+        <View
+            android:id="@+id/qr_code_scanner_camera_hole"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/camera_preview_container"
+            app:layout_constraintEnd_toEndOf="@id/camera_preview_container"
+            app:layout_constraintStart_toStartOf="@id/camera_preview_container"
+            app:layout_constraintTop_toTopOf="@id/camera_preview_container" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/camera_preview_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintTop_toBottomOf="@id/titleLabelView"
+            app:layout_constraintBottom_toTopOf="@id/textViewDesc"
+            app:layout_constraintDimensionRatio="1:1">
+
+            <View
+                android:id="@+id/qr_code_scanner_top_right_indicator"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_scanner_top_right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/qr_code_scanner_top_left_indicator"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_scanner_top_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/qr_code_scanner_bottom_left_indicator"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_scanner_bottom_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/qr_code_scanner_bottom_right_indicator"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_scanner_bottom_right"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <es.gob.radarcovid.common.view.LabelTextView
+            android:id="@+id/textViewDesc"
             style="@style/StyleRegularBlack18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +166,16 @@
             android:text="@string/venue_record_scan_desc"
             app:labelId="VENUE_RECORD_SCAN_TITLE"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="#CC818CC1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewDesc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/blue_C1"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

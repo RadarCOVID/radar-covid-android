@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.features.venuerecord.pages.recordinitiated.presenter
 
+import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
 import es.gob.radarcovid.features.venuerecord.pages.recordinitiated.protocols.RecordInitiatedPresenter
 import es.gob.radarcovid.features.venuerecord.pages.recordinitiated.protocols.RecordInitiatedView
 import javax.inject.Inject
@@ -24,5 +25,9 @@ class RecordInitiatedPresenterImpl  @Inject constructor(
 
     override fun onCancelButtonClick() {
         view.performCancelButtonClick()
+    }
+
+    override fun onExitButtonClick() {
+        view.performExitButtonClick()
     }
 }

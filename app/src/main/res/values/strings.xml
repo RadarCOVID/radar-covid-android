@@ -464,6 +464,7 @@
     <string name="venue_title">Registro de lugares mediante QR</string>
     <string name="venue_paragraph_1">Registra los lugares que visitas capturando sus códigos QR.\n\nRecibe notificaciones en caso de coincidir con personas posteriormente diagnosticadas de COVID-19.\n\nTu privacidad está protegida en todo momento.</string>
     <string name="venue_record_start">Comunicar código QR</string>
+    <string name="venue_record_places">Ver listado de sitios</string>
     <string name="venue_record_cancel_title">Cancelar registro</string>
     <string name="venue_record_cancel_text">¿Estás seguro que deseas cancelar el registro de este lugar?</string>
     <string name="venue_record_cancel_continue">Continuar registro</string>

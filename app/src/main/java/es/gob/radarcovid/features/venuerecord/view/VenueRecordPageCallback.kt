@@ -16,5 +16,5 @@ interface VenueRecordPageCallback {
 
     fun onCancelButtonClick()
 
-    fun onExitButtonClick()
+    fun onBackButtonClick()
 }

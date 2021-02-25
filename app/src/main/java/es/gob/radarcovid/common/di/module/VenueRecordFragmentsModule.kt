@@ -13,8 +13,8 @@ package es.gob.radarcovid.common.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import es.gob.radarcovid.common.di.scope.PerFragment
-import es.gob.radarcovid.features.venuerecord.pages.capturedcode.di.CapturedCodeModule
-import es.gob.radarcovid.features.venuerecord.pages.capturedcode.view.CapturedCodeFragment
+import es.gob.radarcovid.features.venuerecord.pages.checkin.di.CheckInModule
+import es.gob.radarcovid.features.venuerecord.pages.checkin.view.CheckInFragment
 import es.gob.radarcovid.features.venuerecord.pages.checkout.di.CheckOutModule
 import es.gob.radarcovid.features.venuerecord.pages.checkout.view.CheckOutFragment
 import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.di.ErrorCapturedCodeModule
@@ -28,8 +28,8 @@ import es.gob.radarcovid.features.venuerecord.pages.recordsuccess.view.RecordSuc
 abstract class VenueRecordFragmentsModule {
 
     @PerFragment
-    @ContributesAndroidInjector(modules = [CapturedCodeModule::class])
-    abstract fun bindsCapturedCodeFragment(): CapturedCodeFragment
+    @ContributesAndroidInjector(modules = [CheckInModule::class])
+    abstract fun bindsCapturedCodeFragment(): CheckInFragment
 
     @PerFragment
     @ContributesAndroidInjector(modules = [ErrorCapturedCodeModule::class])

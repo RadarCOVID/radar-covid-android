@@ -16,6 +16,10 @@ interface VenueRecordView {
 
     fun showFragment(position: Int)
 
+    fun onBackButtonClick()
+
+    fun exit()
+
 }
 
 interface VenueRecordPresenter {
@@ -29,6 +33,8 @@ interface VenueRecordPresenter {
     fun onErrorScan()
 
     fun cancelRecord()
+
+    fun onBackPressed(pageIndex: Int)
 }
 
 interface VenueRecordRouter {

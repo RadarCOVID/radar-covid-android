@@ -54,10 +54,10 @@
             <ImageView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:src="@drawable/ic_confirmation_check"
                 android:clickable="false"
                 android:focusableInTouchMode="false"
-                android:importantForAccessibility="no" />
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_confirmation_check" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/StyleRegularBlack24"
@@ -76,28 +76,27 @@
                 android:elevation="10dp"
                 android:paddingStart="18dp"
                 android:paddingTop="21dp"
-                android:paddingBottom="21dp"
-                android:paddingEnd="18dp">
+                android:paddingEnd="18dp"
+                android:paddingBottom="21dp">
 
                 <ImageView
                     android:id="@+id/imageViewVenue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_venue"
                     android:clickable="false"
                     android:focusableInTouchMode="false"
-                    android:importantForAccessibility="no"/>
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_venue" />
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewVenueName"
                     style="@style/TextSmallBlackBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginStart="20dp"
-                    tools:text="Nombre del establecimiento dos líneas"
-                    app:isHeading="true"
-                    app:labelId="VENUE_RECORD_NAME"/>
+                    android:layout_marginEnd="10dp"
+                    app:labelId="VENUE_RECORD_NAME"
+                    tools:text="Nombre del establecimiento dos líneas" />
 
             </LinearLayout>
 
@@ -107,7 +106,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="29dp"
                 android:text="@string/venue_record_captured_code_desc"
-                app:isHeading="true"
                 app:labelId="VENUE_RECORD_CAPTURED_CODE_DESC" />
 
         </LinearLayout>

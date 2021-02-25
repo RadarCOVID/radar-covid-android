@@ -15,6 +15,8 @@ interface CheckOutView {
     fun performContinueButtonClick()
 
     fun performCancelButtonClick()
+
+    fun performCloseButtonClick()
 }
 
 interface CheckOutPresenter {
@@ -22,4 +24,6 @@ interface CheckOutPresenter {
     fun onContinueButtonClick()
 
     fun onCancelButtonClick()
+
+    fun onCloseButtonClick()
 }

@@ -12,9 +12,7 @@ package es.gob.radarcovid.features.venuerecord.presenter
 
 import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
-import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordRouter
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordView
-import org.funktionale.collections.prependTo
 import javax.inject.Inject
 
 class VenueRecordPresenterImpl  @Inject constructor(
@@ -24,7 +22,7 @@ class VenueRecordPresenterImpl  @Inject constructor(
 
     companion object {
         const val ERROR_CAPTURED_CODE_FRAGMENT = 0
-        const val CAPTURED_CODE_FRAGMENT = 1
+        const val CHECK_IN_FRAGMENT = 1
         const val INITIATED_RECORD_FRAGMENT = 2
         const val CHECK_OUT_FRAGMENT = 3
         const val RECORD_SUCCESS_FRAGMENT = 4
@@ -44,7 +42,7 @@ class VenueRecordPresenterImpl  @Inject constructor(
                 //Retry Scan
                 startScan()
             }
-            CAPTURED_CODE_FRAGMENT -> {
+            CHECK_IN_FRAGMENT -> {
                 //do check in
                 doCheckIn()
             }
@@ -59,8 +57,28 @@ class VenueRecordPresenterImpl  @Inject constructor(
         }
     }
 
+    override fun onBackPressed(pageIndex: Int) {
+        when (pageIndex) {
+            ERROR_CAPTURED_CODE_FRAGMENT -> {
+                view.exit()
+            }
+            CHECK_IN_FRAGMENT -> {
+                view.exit()
+            }
+            INITIATED_RECORD_FRAGMENT -> {
+                view.exit()
+            }
+            CHECK_OUT_FRAGMENT -> {
+                view.showFragment(INITIATED_RECORD_FRAGMENT)
+            }
+            RECORD_SUCCESS_FRAGMENT -> {
+                view.exit()
+            }
+        }
+    }
+
     override fun onOkScan(data: String) {
-        view.showFragment(CAPTURED_CODE_FRAGMENT)
+        view.showFragment(CHECK_IN_FRAGMENT)
     }
 
     override fun onErrorScan() {

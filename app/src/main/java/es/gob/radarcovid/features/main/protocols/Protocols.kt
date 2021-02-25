@@ -24,6 +24,8 @@ interface MainView : RequestView {
 
     fun setSettingSelected()
 
+    fun setHomeSelected()
+
     fun finish()
 
 }
@@ -32,7 +34,7 @@ interface MainPresenter {
 
     fun viewReady(activateRadar: Boolean)
 
-    fun onResume()
+    fun onResume(isVenueRecordSelected: Boolean)
 
     fun onStop()
 

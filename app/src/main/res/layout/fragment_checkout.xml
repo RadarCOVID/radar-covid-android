@@ -26,12 +26,12 @@
         android:id="@+id/buttonClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingEnd="20dp"
-        android:paddingTop="22dp"
-        android:paddingBottom="32dp"
         android:background="@null"
-        android:src="@drawable/ic_close"
         android:contentDescription="@string/dialog_close_button_description"
+        android:paddingTop="22dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="32dp"
+        android:src="@drawable/ic_close"
         app:contentDescriptionLabelId="ACC_BUTTON_CLOSE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,8 +40,8 @@
         style="@style/ScrollVertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/buttonClose"
         app:layout_constraintBottom_toTopOf="@id/buttonCheckOut"
+        app:layout_constraintTop_toBottomOf="@id/buttonClose"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp">
 
@@ -95,7 +95,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="10dp"
-                    app:isHeading="true"
                     app:labelId="VENUE_RECORD_NAME"
                     tools:text="Nombre del establecimiento dos líneas" />
 
@@ -107,7 +106,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:text="@string/venue_checkout_datetime"
-                app:isHeading="true"
                 app:labelId="VENUE_CHECKOUT_DATETIME" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -116,8 +114,8 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/shape_rounded_corners_gray_stroke"
                 android:paddingStart="18dp"
-                android:paddingEnd="18dp"
                 android:paddingTop="10dp"
+                android:paddingEnd="18dp"
                 android:paddingBottom="10dp">
 
                 <es.gob.radarcovid.common.view.LabelTextView
@@ -125,11 +123,10 @@
                     style="@style/TitleTipSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="Hoy, 15 Feb"
-                    app:isHeading="true"
                     app:labelId="VENUE_CHECKOUT_TIME"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    tools:text="Hoy, 15 Feb" />
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewTime"
@@ -137,11 +134,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    tools:text="17:30 h"
-                    app:isHeading="true"
                     app:labelId="VENUE_CHECKOUT_TIME"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    tools:text="17:30 h" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -151,7 +147,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="@string/venue_checkout_time"
-                app:isHeading="true"
                 app:labelId="VENUE_CHECKOUT_TIME" />
 
         </LinearLayout>

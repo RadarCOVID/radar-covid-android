@@ -49,6 +49,7 @@ class CheckOutFragment : BaseFragment(), CheckOutView {
     private fun initViews() {
         buttonCheckOut.setSafeOnClickListener { presenter.onContinueButtonClick() }
         buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
+        buttonClose.setSafeOnClickListener { presenter.onCloseButtonClick() }
     }
 
     override fun performContinueButtonClick() {
@@ -57,5 +58,9 @@ class CheckOutFragment : BaseFragment(), CheckOutView {
 
     override fun performCancelButtonClick() {
         (activity as? VenueRecordPageCallback)?.onCancelButtonClick()
+    }
+
+    override fun performCloseButtonClick() {
+        (activity as? VenueRecordPageCallback)?.onBackButtonClick()
     }
 }

@@ -14,7 +14,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -22,7 +21,7 @@ import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.view.CommonDialog
 import es.gob.radarcovid.features.qrcodescan.view.QRScanActivity
-import es.gob.radarcovid.features.venuerecord.pages.capturedcode.view.CapturedCodeFragment
+import es.gob.radarcovid.features.venuerecord.pages.checkin.view.CheckInFragment
 import es.gob.radarcovid.features.venuerecord.pages.checkout.view.CheckOutFragment
 import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.view.ErrorCapturedCodeFragment
 import es.gob.radarcovid.features.venuerecord.pages.recordinitiated.view.RecordInitiatedFragment
@@ -81,7 +80,7 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
     }
 
     override fun showFragment(position: Int) {
-        viewPager.setCurrentItem(position, true)
+        viewPager.setCurrentItem(position, false)
     }
 
     private fun initViews() {
@@ -100,12 +99,16 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
         override fun createFragment(position: Int): Fragment =
             when (position) {
                 VenueRecordPresenterImpl.ERROR_CAPTURED_CODE_FRAGMENT -> ErrorCapturedCodeFragment.newInstance()
-                VenueRecordPresenterImpl.CAPTURED_CODE_FRAGMENT -> CapturedCodeFragment.newInstance()
+                VenueRecordPresenterImpl.CHECK_IN_FRAGMENT -> CheckInFragment.newInstance()
                 VenueRecordPresenterImpl.INITIATED_RECORD_FRAGMENT -> RecordInitiatedFragment.newInstance()
                 VenueRecordPresenterImpl.CHECK_OUT_FRAGMENT -> CheckOutFragment.newInstance()
                 VenueRecordPresenterImpl.RECORD_SUCCESS_FRAGMENT -> RecordSuccessFragment.newInstance()
-                else -> CapturedCodeFragment.newInstance()
+                else -> CheckInFragment.newInstance()
             }
+    }
+
+    override fun onBackPressed() {
+        presenter.onBackPressed(viewPager.currentItem)
     }
 
     override fun onContinueButtonClick(pageIndex: Int) {
@@ -151,7 +154,11 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
             .show()
     }
 
-    override fun onExitButtonClick() {
+    override fun onBackButtonClick() {
+        onBackPressed()
+    }
+
+    override fun exit() {
         this.finish()
     }
 

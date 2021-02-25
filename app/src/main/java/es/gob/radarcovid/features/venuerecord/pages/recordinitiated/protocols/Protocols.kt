@@ -15,6 +15,9 @@ interface RecordInitiatedView {
     fun performContinueButtonClick()
 
     fun performCancelButtonClick()
+
+    fun performExitButtonClick()
+
 }
 
 interface RecordInitiatedPresenter {
@@ -22,4 +25,6 @@ interface RecordInitiatedPresenter {
     fun onContinueButtonClick()
 
     fun onCancelButtonClick()
+
+    fun onExitButtonClick()
 }

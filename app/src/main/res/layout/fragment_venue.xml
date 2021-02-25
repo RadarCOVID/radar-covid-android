@@ -29,7 +29,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/buttonVenueRecord">
+        app:layout_constraintBottom_toTopOf="@id/layoutButtons">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,7 +62,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/venue_paragraph_1"
-                app:isHeading="true"
                 app:labelId="VENUE_TITLE" />
 
             <es.gob.radarcovid.common.view.LabelButton
@@ -80,17 +79,42 @@
 
     </ScrollView>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
     <es.gob.radarcovid.common.view.LabelButton
         android:id="@+id/buttonVenueRecord"
         style="@style/ButtonNormal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:text="@string/venue_record_start"
         app:labelId="VENUE_RECORD_BUTTON_START"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonPlacesRecord"/>
+
+        <es.gob.radarcovid.common.view.LabelImageButton
+            android:id="@+id/buttonPlacesRecord"
+            style="@style/ButtonSecondary"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_places_record"
+            android:contentDescription="@string/venue_record_places"
+            app:contentDescriptionLabelId="ACC_VENUE_RECORD_PLACES"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/buttonVenueRecord"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

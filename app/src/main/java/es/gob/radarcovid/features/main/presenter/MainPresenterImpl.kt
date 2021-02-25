@@ -41,10 +41,19 @@ class MainPresenterImpl @Inject constructor(
         }
     }
 
-    override fun onResume() {
+    override fun onResume(isVenueRecordSelected: Boolean) {
         Observable.fromCallable { mainUseCase.syncExposureInfo() }
             .subscribeOn(Schedulers.io())
             .subscribe()
+        if (isVenueRecordSelected) {
+            if (venueRecordUseCase.isRecordInProgress()) {
+                //navigate to home
+                view.setHomeSelected()
+                router.navigateToHome(activateRadar = false, manualNavigation = false)
+            } else {
+                router.navigateToVenueRecord(false)
+            }
+        }
     }
 
     override fun onStop() {
