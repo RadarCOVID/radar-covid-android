@@ -22,15 +22,15 @@ class VenueRecordPresenterImpl  @Inject constructor(
 
     companion object {
         const val ERROR_CAPTURED_CODE_FRAGMENT = 0
-        const val CHECK_IN_FRAGMENT = 1
-        const val INITIATED_RECORD_FRAGMENT = 2
+        const val CONFIRM_RECORD_FRAGMENT = 1
+        const val CHECK_IN_FRAGMENT = 2
         const val CHECK_OUT_FRAGMENT = 3
         const val RECORD_SUCCESS_FRAGMENT = 4
     }
 
     override fun viewReady() {
         if (venueRecordUseCase.isRecordInProgress()) {
-            view.showFragment(INITIATED_RECORD_FRAGMENT)
+            view.showFragment(CHECK_IN_FRAGMENT)
         } else {
             startScan()
         }
@@ -42,11 +42,11 @@ class VenueRecordPresenterImpl  @Inject constructor(
                 //Retry Scan
                 startScan()
             }
-            CHECK_IN_FRAGMENT -> {
+            CONFIRM_RECORD_FRAGMENT -> {
                 //do check in
                 doCheckIn()
             }
-            INITIATED_RECORD_FRAGMENT -> {
+            CHECK_IN_FRAGMENT -> {
                 //Go to check out
                 navigateToCheckOut()
             }
@@ -62,14 +62,14 @@ class VenueRecordPresenterImpl  @Inject constructor(
             ERROR_CAPTURED_CODE_FRAGMENT -> {
                 view.exit()
             }
+            CONFIRM_RECORD_FRAGMENT -> {
+                view.exit()
+            }
             CHECK_IN_FRAGMENT -> {
                 view.exit()
             }
-            INITIATED_RECORD_FRAGMENT -> {
-                view.exit()
-            }
             CHECK_OUT_FRAGMENT -> {
-                view.showFragment(INITIATED_RECORD_FRAGMENT)
+                view.showFragment(CHECK_IN_FRAGMENT)
             }
             RECORD_SUCCESS_FRAGMENT -> {
                 view.exit()
@@ -78,7 +78,7 @@ class VenueRecordPresenterImpl  @Inject constructor(
     }
 
     override fun onOkScan(data: String) {
-        view.showFragment(CHECK_IN_FRAGMENT)
+        view.showFragment(CONFIRM_RECORD_FRAGMENT)
     }
 
     override fun onErrorScan() {
@@ -95,7 +95,7 @@ class VenueRecordPresenterImpl  @Inject constructor(
 
     private fun doCheckIn() {
         venueRecordUseCase.setRecordInProgress(true)
-        view.showFragment(INITIATED_RECORD_FRAGMENT)
+        view.showFragment(CHECK_IN_FRAGMENT)
     }
 
     private fun navigateToCheckOut() {

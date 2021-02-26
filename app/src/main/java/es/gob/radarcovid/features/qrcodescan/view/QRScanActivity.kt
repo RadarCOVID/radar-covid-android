@@ -48,14 +48,17 @@ class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr)
+
         barcodeDetector = BarcodeDetector.Builder(this)
             .setBarcodeFormats(Barcode.QR_CODE)
             .build()
+
         cameraSource = CameraSource.Builder(this, barcodeDetector)
             .setFacing(CameraSource.CAMERA_FACING_BACK)
             .setAutoFocusEnabled(true)
             .setRequestedPreviewSize(1600, 1024)
             .build()
+
         cameraSurfaceView.holder.addCallback(object : SurfaceHolder.Callback {
             override fun surfaceCreated(holder: SurfaceHolder) {
                 try {

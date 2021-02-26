@@ -8,23 +8,18 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.features.venuerecord.pages.recordinitiated.protocols
+package es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols
 
-interface RecordInitiatedView {
+interface ConfirmRecordView {
 
     fun performContinueButtonClick()
 
     fun performCancelButtonClick()
-
-    fun performExitButtonClick()
-
 }
 
-interface RecordInitiatedPresenter {
+interface ConfirmRecordPresenter {
 
     fun onContinueButtonClick()
 
     fun onCancelButtonClick()
-
-    fun onExitButtonClick()
 }

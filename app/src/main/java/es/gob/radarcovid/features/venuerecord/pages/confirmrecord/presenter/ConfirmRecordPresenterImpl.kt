@@ -8,15 +8,15 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.features.venuerecord.pages.checkin.presenter
+package es.gob.radarcovid.features.venuerecord.pages.confirmrecord.presenter
 
-import es.gob.radarcovid.features.venuerecord.pages.checkin.protocols.CheckInPresenter
-import es.gob.radarcovid.features.venuerecord.pages.checkin.protocols.CheckInView
+import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols.ConfirmRecordPresenter
+import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols.ConfirmRecordView
 import javax.inject.Inject
 
-class CheckInPresenterImpl  @Inject constructor(
-    private val view: CheckInView
-) : CheckInPresenter {
+class ConfirmRecordPresenterImpl  @Inject constructor(
+    private val view: ConfirmRecordView
+) : ConfirmRecordPresenter {
 
     override fun onContinueButtonClick() {
         view.performContinueButtonClick()
@@ -24,9 +24,5 @@ class CheckInPresenterImpl  @Inject constructor(
 
     override fun onCancelButtonClick() {
         view.performCancelButtonClick()
-    }
-
-    override fun onExitButtonClick() {
-        view.performExitButtonClick()
     }
 }

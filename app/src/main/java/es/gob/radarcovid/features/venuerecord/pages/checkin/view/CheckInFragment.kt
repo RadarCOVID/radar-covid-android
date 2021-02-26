@@ -21,7 +21,7 @@ import es.gob.radarcovid.features.venuerecord.pages.checkin.protocols.CheckInPre
 import es.gob.radarcovid.features.venuerecord.pages.checkin.protocols.CheckInView
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
-import kotlinx.android.synthetic.main.fragment_captured_code.*
+import kotlinx.android.synthetic.main.fragment_record_initiated.*
 import javax.inject.Inject
 
 class CheckInFragment : BaseFragment(), CheckInView {
@@ -39,7 +39,7 @@ class CheckInFragment : BaseFragment(), CheckInView {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_captured_code, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_record_initiated, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,8 +47,9 @@ class CheckInFragment : BaseFragment(), CheckInView {
     }
 
     private fun initViews() {
-        buttonCheckIn.setSafeOnClickListener { presenter.onContinueButtonClick() }
+        buttonConfirm.setSafeOnClickListener { presenter.onContinueButtonClick() }
         buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
+        imageButtonBack.setSafeOnClickListener { presenter.onExitButtonClick() }
     }
 
     override fun performContinueButtonClick() {
@@ -59,4 +60,7 @@ class CheckInFragment : BaseFragment(), CheckInView {
         (activity as? VenueRecordPageCallback)?.onCancelButtonClick()
     }
 
+    override fun performExitButtonClick() {
+        (activity as? VenueRecordPageCallback)?.onBackButtonClick()
+    }
 }
