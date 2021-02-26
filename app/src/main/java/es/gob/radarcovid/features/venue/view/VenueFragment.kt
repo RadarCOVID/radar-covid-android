@@ -21,8 +21,7 @@ import es.gob.radarcovid.common.extensions.setSafeOnClickListener
 import es.gob.radarcovid.features.venue.protocols.VenuePresenter
 import es.gob.radarcovid.features.venue.protocols.VenueView
 import kotlinx.android.synthetic.main.fragment_helpline.*
-import kotlinx.android.synthetic.main.fragment_helpline.textViewTitle
-import kotlinx.android.synthetic.main.fragment_venue.*
+import kotlinx.android.synthetic.main.fragment_venue_home.*
 import javax.inject.Inject
 
 class VenueFragment : BaseFragment(), VenueView {
@@ -39,7 +38,7 @@ class VenueFragment : BaseFragment(), VenueView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_venue, container, false)
+        return inflater.inflate(R.layout.fragment_venue_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

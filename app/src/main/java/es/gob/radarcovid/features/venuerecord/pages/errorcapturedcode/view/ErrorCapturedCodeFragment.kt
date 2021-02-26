@@ -21,7 +21,7 @@ import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.protocols.
 import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.protocols.ErrorCapturedCodeView
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
-import kotlinx.android.synthetic.main.fragment_error_captured_code.*
+import kotlinx.android.synthetic.main.fragment_venue_record_errorcode.*
 import javax.inject.Inject
 
 class ErrorCapturedCodeFragment : BaseFragment(), ErrorCapturedCodeView {
@@ -38,7 +38,7 @@ class ErrorCapturedCodeFragment : BaseFragment(), ErrorCapturedCodeView {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_error_captured_code, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_venue_record_errorcode, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

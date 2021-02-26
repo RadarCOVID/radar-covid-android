@@ -21,7 +21,7 @@ import es.gob.radarcovid.features.venuerecord.pages.checkout.protocols.CheckOutP
 import es.gob.radarcovid.features.venuerecord.pages.checkout.protocols.CheckOutView
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
-import kotlinx.android.synthetic.main.fragment_checkout.*
+import kotlinx.android.synthetic.main.fragment_venue_record_checkout.*
 import javax.inject.Inject
 
 class CheckOutFragment : BaseFragment(), CheckOutView {
@@ -39,7 +39,7 @@ class CheckOutFragment : BaseFragment(), CheckOutView {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_checkout, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_venue_record_checkout, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -29,7 +29,7 @@ class RecordSuccessFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_record_success, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_venue_record_success, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

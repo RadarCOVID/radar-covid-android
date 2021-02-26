@@ -23,7 +23,6 @@ import com.google.android.gms.vision.Detector.Detections
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import es.gob.radarcovid.R
-import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.features.qrcodescan.protocols.ScanQRView
 import kotlinx.android.synthetic.main.activity_qr.*
@@ -34,7 +33,7 @@ class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
 
     companion object {
         private const val PERMISSIONS_REQUEST = 100
-        public const val EXTRA_QR_RESULT = "EXTRA_QR_RESULT"
+        const val EXTRA_QR_RESULT = "EXTRA_QR_RESULT"
 
         fun open(context: Context) {
             context.startActivity(Intent(context, QRScanActivity::class.java))

@@ -21,7 +21,7 @@ import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols.Conf
 import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols.ConfirmRecordView
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
-import kotlinx.android.synthetic.main.fragment_captured_code.*
+import kotlinx.android.synthetic.main.fragment_venue_record_confirm.*
 import javax.inject.Inject
 
 class ConfirmRecordFragment : BaseFragment(), ConfirmRecordView {
@@ -39,7 +39,7 @@ class ConfirmRecordFragment : BaseFragment(), ConfirmRecordView {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_captured_code, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_venue_record_confirm, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
