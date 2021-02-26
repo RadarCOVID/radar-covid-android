@@ -13,6 +13,7 @@ package es.gob.radarcovid.features.main.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.core.view.forEach
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
@@ -114,6 +115,18 @@ class MainActivity : BaseActivity(), MainView {
             presenter.onBackPressed()
         else
             bottomNavigation.selectedItemId = R.id.menuItemHome
+    }
+
+    override fun updateVenueIcon(isVenueRecordSelected: Boolean) {
+        if (isVenueRecordSelected) {
+            bottomNavigation.getOrCreateBadge(R.id.menuItemVenue).apply {
+                backgroundColor = ContextCompat.getColor(applicationContext, R.color.red_2300)
+                number = 1
+                badgeTextColor = ContextCompat.getColor(applicationContext, R.color.red_2300)
+            }
+        } else {
+            bottomNavigation.removeBadge(R.id.menuItemVenue)
+        }
     }
 
     override fun showExitConfirmationDialog() {

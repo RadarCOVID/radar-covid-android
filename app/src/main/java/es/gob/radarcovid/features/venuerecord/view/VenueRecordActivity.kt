@@ -59,7 +59,7 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
                 }
 
                 Activity.RESULT_CANCELED -> {
-                    presenter.onErrorScan()
+                    presenter.onBackPressed(-1)
                 }
             }
         }

@@ -28,6 +28,8 @@ interface MainView : RequestView {
 
     fun finish()
 
+    fun updateVenueIcon(isVenueRecordSelected: Boolean)
+
 }
 
 interface MainPresenter {

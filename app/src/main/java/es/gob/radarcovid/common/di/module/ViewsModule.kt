@@ -70,4 +70,7 @@ abstract class ViewsModule {
     @ContributesAndroidInjector
     abstract fun bindsStatsCountriesDialog(): StatsCountriesDialog
 
+    @ContributesAndroidInjector
+    abstract fun bindsSegmentedControlLabelButton(): SegmentedControlLabelButton
+
 }

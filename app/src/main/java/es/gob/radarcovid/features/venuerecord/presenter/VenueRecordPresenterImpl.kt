@@ -15,7 +15,7 @@ import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordView
 import javax.inject.Inject
 
-class VenueRecordPresenterImpl  @Inject constructor(
+class VenueRecordPresenterImpl @Inject constructor(
     private val view: VenueRecordView,
     private val venueRecordUseCase: VenueRecordUseCase
 ) : VenueRecordPresenter {
@@ -59,21 +59,10 @@ class VenueRecordPresenterImpl  @Inject constructor(
 
     override fun onBackPressed(pageIndex: Int) {
         when (pageIndex) {
-            ERROR_CAPTURED_CODE_FRAGMENT -> {
-                view.exit()
-            }
-            CONFIRM_RECORD_FRAGMENT -> {
-                view.exit()
-            }
-            CHECK_IN_FRAGMENT -> {
-                view.exit()
-            }
-            CHECK_OUT_FRAGMENT -> {
+            CHECK_OUT_FRAGMENT ->
                 view.showFragment(CHECK_IN_FRAGMENT)
-            }
-            RECORD_SUCCESS_FRAGMENT -> {
+            else ->
                 view.exit()
-            }
         }
     }
 

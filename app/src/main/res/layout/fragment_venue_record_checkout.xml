@@ -43,7 +43,8 @@
         app:layout_constraintBottom_toTopOf="@id/buttonCheckOut"
         app:layout_constraintTop_toBottomOf="@id/buttonClose"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_marginBottom="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -148,6 +149,66 @@
                 android:layout_marginTop="30dp"
                 android:text="@string/venue_checkout_time"
                 app:labelId="VENUE_CHECKOUT_TIME" />
+
+            <es.gob.radarcovid.common.view.SegmentedControl
+                android:id="@+id/segmented_control"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/SegmentedControlButtonLeft"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"
+                    android:id="@+id/opt_1"
+                    android:text="@string/venue_checkout_time_now"
+                    app:labelId="VENUE_CHECKOUT_TIME_NOW"/>
+
+                <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/SegmentedControlButton"
+                    android:id="@+id/opt_2"
+                    android:text="@string/venue_checkout_time_30s"
+                    app:labelId="VENUE_CHECKOUT_TIME_30"/>
+
+                <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/SegmentedControlButton"
+                    android:id="@+id/opt_3"
+                    android:text="@string/venue_checkout_time_1h"
+                    app:labelId="VENUE_CHECKOUT_TIME_1H"/>
+
+                <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/SegmentedControlButton"
+                    android:id="@+id/opt_4"
+                    android:text="@string/venue_checkout_time_2h"
+                    app:labelId="VENUE_CHECKOUT_TIME_2H"/>
+
+                <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/SegmentedControlButton"
+                    android:id="@+id/opt_5"
+                    android:text="@string/venue_checkout_time_4h"
+                    app:labelId="VENUE_CHECKOUT_TIME_4H"/>
+
+                <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/SegmentedControlButtonRight"
+                    android:id="@+id/opt_6"
+                    android:text="@string/venue_checkout_time_5h"
+                    app:labelId="VENUE_CHECKOUT_TIME_5H"/>
+
+            </es.gob.radarcovid.common.view.SegmentedControl>
 
         </LinearLayout>
 

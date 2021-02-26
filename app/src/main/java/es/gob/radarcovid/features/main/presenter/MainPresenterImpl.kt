@@ -45,6 +45,7 @@ class MainPresenterImpl @Inject constructor(
         Observable.fromCallable { mainUseCase.syncExposureInfo() }
             .subscribeOn(Schedulers.io())
             .subscribe()
+        updateMenuIcon()
         if (isVenueRecordSelected) {
             if (venueRecordUseCase.isRecordInProgress()) {
                 //navigate to home
@@ -94,6 +95,10 @@ class MainPresenterImpl @Inject constructor(
 
     override fun onExitConfirmed() {
         view.finish()
+    }
+
+    private fun updateMenuIcon() {
+        view.updateVenueIcon(venueRecordUseCase.isRecordInProgress())
     }
 
 }
