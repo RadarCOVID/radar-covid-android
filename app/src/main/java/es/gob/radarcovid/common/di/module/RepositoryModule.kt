@@ -48,4 +48,12 @@ class RepositoryModule {
     @PerApplication
     fun providesApiRepository(repository: ApiRepositoryImpl): ApiRepository = repository
 
+    @Provides
+    @PerApplication
+    fun providesCrowdNotifierRepository(repository: CrowdNotifierRepositoryImpl): CrowdNotifierRepository = repository
+
+    @Provides
+    @PerApplication
+    fun providesEncryptedPreferencesRepository(repository: EncryptedPreferencesRepositoryImpl): EncryptedPreferencesRepository = repository
+
 }

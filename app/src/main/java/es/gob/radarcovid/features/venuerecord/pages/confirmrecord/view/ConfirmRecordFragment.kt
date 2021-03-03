@@ -20,6 +20,7 @@ import es.gob.radarcovid.common.extensions.setSafeOnClickListener
 import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols.ConfirmRecordPresenter
 import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols.ConfirmRecordView
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
+import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
 import kotlinx.android.synthetic.main.fragment_venue_record_confirm.*
 import javax.inject.Inject
@@ -49,6 +50,7 @@ class ConfirmRecordFragment : BaseFragment(), ConfirmRecordView {
     private fun initViews() {
         buttonCheckIn.setSafeOnClickListener { presenter.onContinueButtonClick() }
         buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
+        textViewVenueName.text = (activity as? VenueRecordActivity)?.getCurrentVenueName()
     }
 
     override fun performContinueButtonClick() {

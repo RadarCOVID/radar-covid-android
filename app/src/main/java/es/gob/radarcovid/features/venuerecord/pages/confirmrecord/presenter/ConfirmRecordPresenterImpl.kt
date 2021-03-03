@@ -10,12 +10,14 @@
 
 package es.gob.radarcovid.features.venuerecord.pages.confirmrecord.presenter
 
+import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
 import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols.ConfirmRecordPresenter
 import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols.ConfirmRecordView
 import javax.inject.Inject
 
 class ConfirmRecordPresenterImpl  @Inject constructor(
-    private val view: ConfirmRecordView
+    private val view: ConfirmRecordView,
+    private val venueRecordUseCase: VenueRecordUseCase
 ) : ConfirmRecordPresenter {
 
     override fun onContinueButtonClick() {

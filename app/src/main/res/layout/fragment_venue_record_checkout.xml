@@ -67,7 +67,7 @@
                 android:layout_marginTop="13dp"
                 android:text="@string/venue_checkout_title"
                 app:isHeading="true"
-                app:labelId="VENUE_CHECKOUT_TITLE" />
+                app:labelId="VENUE_RECORD_CHECKOUT_TITLE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -96,7 +96,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="10dp"
-                    app:labelId="VENUE_RECORD_NAME"
                     tools:text="Nombre del establecimiento dos líneas" />
 
             </LinearLayout>
@@ -107,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:text="@string/venue_checkout_datetime"
-                app:labelId="VENUE_CHECKOUT_DATETIME" />
+                app:labelId="VENUE_RECORD_CHECKOUT_DATETIME" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -124,7 +123,6 @@
                     style="@style/TitleTipSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:labelId="VENUE_CHECKOUT_TIME"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Hoy, 15 Feb" />
@@ -135,7 +133,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    app:labelId="VENUE_CHECKOUT_TIME"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="17:30 h" />
@@ -148,10 +145,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="@string/venue_checkout_time"
-                app:labelId="VENUE_CHECKOUT_TIME" />
+                app:labelId="VENUE_RECORD_CHECKOUT_TIME_ELAPSED" />
 
             <es.gob.radarcovid.common.view.SegmentedControl
-                android:id="@+id/segmented_control"
+                android:id="@+id/segmentedControlTime"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="5dp"
@@ -159,54 +156,54 @@
                 android:gravity="center">
 
                 <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:id="@+id/timeOptionNow"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     style="@style/SegmentedControlButtonLeft"
                     android:textSize="12sp"
                     android:textAllCaps="true"
-                    android:id="@+id/opt_1"
                     android:text="@string/venue_checkout_time_now"
-                    app:labelId="VENUE_CHECKOUT_TIME_NOW"/>
+                    app:labelId="VENUE_RECORD_CHECKOUT_LEAVE_NOW"/>
 
                 <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:id="@+id/timeOption30"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     style="@style/SegmentedControlButton"
-                    android:id="@+id/opt_2"
                     android:text="@string/venue_checkout_time_30s"
-                    app:labelId="VENUE_CHECKOUT_TIME_30"/>
+                    app:labelId="VENUE_RECORD_CHECKOUT_TIME_30"/>
 
                 <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:id="@+id/timeOption1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     style="@style/SegmentedControlButton"
-                    android:id="@+id/opt_3"
                     android:text="@string/venue_checkout_time_1h"
-                    app:labelId="VENUE_CHECKOUT_TIME_1H"/>
+                    app:labelId="VENUE_RECORD_CHECKOUT_TIME_1H"/>
 
                 <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:id="@+id/timeOption2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     style="@style/SegmentedControlButton"
-                    android:id="@+id/opt_4"
                     android:text="@string/venue_checkout_time_2h"
-                    app:labelId="VENUE_CHECKOUT_TIME_2H"/>
+                    app:labelId="VENUE_RECORD_CHECKOUT_TIME_2H"/>
 
                 <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:id="@+id/timeOption4"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     style="@style/SegmentedControlButton"
-                    android:id="@+id/opt_5"
                     android:text="@string/venue_checkout_time_4h"
-                    app:labelId="VENUE_CHECKOUT_TIME_4H"/>
+                    app:labelId="VENUE_RECORD_CHECKOUT_TIME_4H"/>
 
                 <es.gob.radarcovid.common.view.SegmentedControlLabelButton
+                    android:id="@+id/timeOption5"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     style="@style/SegmentedControlButtonRight"
-                    android:id="@+id/opt_6"
                     android:text="@string/venue_checkout_time_5h"
-                    app:labelId="VENUE_CHECKOUT_TIME_5H"/>
+                    app:labelId="VENUE_RECORD_CHECKOUT_TIME_5H"/>
 
             </es.gob.radarcovid.common.view.SegmentedControl>
 
@@ -216,14 +213,16 @@
 
     <es.gob.radarcovid.common.view.LabelButton
         android:id="@+id/buttonCheckOut"
-        style="@style/ButtonNormal"
+        style="@style/ButtonSelection"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp"
         android:text="@string/venue_checkout_record_end"
-        app:labelId="VENUE_CHECKOUT_RECORD_END"
+        android:enabled="false"
+        android:background="@drawable/selector_button"
+        app:labelId="VENUE_RECORD_CHECKOUT_END"
         app:layout_constraintBottom_toTopOf="@id/buttonCancel"
         app:layout_constraintStart_toStartOf="parent" />
 

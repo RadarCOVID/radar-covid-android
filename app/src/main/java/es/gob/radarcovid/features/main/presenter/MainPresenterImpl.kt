@@ -47,7 +47,7 @@ class MainPresenterImpl @Inject constructor(
             .subscribe()
         updateMenuIcon()
         if (isVenueRecordSelected) {
-            if (venueRecordUseCase.isRecordInProgress()) {
+            if (venueRecordUseCase.isCurrentVenue()) {
                 //navigate to home
                 view.setHomeSelected()
                 router.navigateToHome(activateRadar = false, manualNavigation = false)
@@ -74,7 +74,7 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onVenueButtonClick() {
-        router.navigateToVenueRecord(venueRecordUseCase.isRecordInProgress())
+        router.navigateToVenueRecord(venueRecordUseCase.isCurrentVenue())
     }
 
     override fun onHelplineButtonClick() {
@@ -98,7 +98,7 @@ class MainPresenterImpl @Inject constructor(
     }
 
     private fun updateMenuIcon() {
-        view.updateVenueIcon(venueRecordUseCase.isRecordInProgress())
+        view.updateVenueIcon(venueRecordUseCase.isCurrentVenue())
     }
 
 }

@@ -10,7 +10,9 @@
 
 package es.gob.radarcovid.features.venuerecord.protocols
 
-interface VenueRecordView {
+import es.gob.radarcovid.common.view.RequestView
+
+interface VenueRecordView: RequestView {
 
     fun startQRScan()
 
@@ -25,6 +27,8 @@ interface VenueRecordView {
 interface VenueRecordPresenter {
 
     fun viewReady()
+
+    fun getCurrentVenueName(): String
 
     fun onContinueButtonClick(pageIndex: Int)
 

@@ -10,6 +10,9 @@
 
 package es.gob.radarcovid.features.venuerecord.pages.checkout.protocols
 
+import es.gob.radarcovid.features.venuerecord.pages.checkout.presenter.VenueTimeOut
+import es.gob.radarcovid.models.domain.VenueRecord
+
 interface CheckOutView {
 
     fun performContinueButtonClick()
@@ -17,13 +20,23 @@ interface CheckOutView {
     fun performCancelButtonClick()
 
     fun performCloseButtonClick()
+
+    fun setVenueData(currentVenue: VenueRecord?)
+
+    fun getTimeOut(): VenueTimeOut
+
+    fun setButtonContinueEnabled(enabled: Boolean)
 }
 
 interface CheckOutPresenter {
+
+    fun viewReady()
 
     fun onContinueButtonClick()
 
     fun onCancelButtonClick()
 
     fun onCloseButtonClick()
+
+    fun onControlTimeClick()
 }

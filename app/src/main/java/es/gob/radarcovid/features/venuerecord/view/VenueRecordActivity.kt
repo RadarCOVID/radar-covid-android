@@ -83,6 +83,9 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
         viewPager.setCurrentItem(position, false)
     }
 
+    fun getCurrentVenueName(): String =
+        presenter.getCurrentVenueName()
+
     private fun initViews() {
         viewPager.adapter = VenueRecordAdapter(this)
         viewPager.isUserInputEnabled = false

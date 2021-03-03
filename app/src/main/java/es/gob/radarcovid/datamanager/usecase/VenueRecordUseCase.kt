@@ -10,15 +10,84 @@
 
 package es.gob.radarcovid.datamanager.usecase
 
-import es.gob.radarcovid.datamanager.repository.PreferencesRepository
+import es.gob.radarcovid.datamanager.repository.CrowdNotifierRepository
+import es.gob.radarcovid.datamanager.repository.EncryptedPreferencesRepository
+import es.gob.radarcovid.models.domain.VenueRecord
+import io.reactivex.rxjava3.core.Observable
+import org.crowdnotifier.android.sdk.model.VenueInfo
+import java.util.*
 import javax.inject.Inject
 
 class VenueRecordUseCase @Inject constructor(
-    private val preferencesRepository: PreferencesRepository
+    private val crowdNotifierRepository: CrowdNotifierRepository,
+    private val encryptedPreferencesRepository: EncryptedPreferencesRepository
 ) {
 
-    fun setRecordInProgress(recordInProgress: Boolean) = preferencesRepository.setRecordInProgress(recordInProgress)
+    fun isCurrentVenue(): Boolean =
+        encryptedPreferencesRepository.getCurrentVenue() != null
 
-    fun isRecordInProgress(): Boolean = preferencesRepository.isRecordInProgress()
+    fun getCurrentVenue(): VenueRecord? =
+        encryptedPreferencesRepository.getCurrentVenue()
+
+    fun setCurrentVenue(currentVenue: VenueRecord) =
+        encryptedPreferencesRepository.setCurrentVenueRecord(currentVenue)
+
+    //TODO Change mock function
+    fun getVenueInfo(qrCode: String): VenueInfo =
+        crowdNotifierRepository.getVenueInfoMock(qrCode)
+
+    fun checkIn(qrCaptured: String): Observable<Boolean> =
+        Observable.create { emitter ->
+            try {
+                val venueInfo = getVenueInfo(qrCaptured)
+                val currentVenueRecord = VenueRecord(
+                    qr = qrCaptured,
+                    name = venueInfo.name,
+                    dateIn = Date()
+                )
+                setCurrentVenue(currentVenueRecord)
+                //TODO Comenzar proceso para notificar y hacer checkout automático a las X horas
+
+                emitter.onNext(true)
+                emitter.onComplete()
+
+            } catch (e: Exception) {
+                emitter.onError(e)
+            }
+        }
+
+    //TODO Change mock function
+    fun checkOut(): Observable<Boolean> =
+        Observable.create { emitter ->
+            try {
+                val currentVenue = encryptedPreferencesRepository.getCurrentVenue()
+                if (currentVenue != null) {
+                    val listVisited =
+                        encryptedPreferencesRepository.getVisitedVenue().toMutableList()
+                    val venueInfo = getVenueInfo(currentVenue.qr)
+
+                    currentVenue.dateOut = Date()
+                    crowdNotifierRepository.checkInMock(
+                        currentVenue.dateIn.time,
+                        currentVenue.dateOut!!.time,
+                        venueInfo
+                    )
+                    listVisited.add(currentVenue)
+
+                    encryptedPreferencesRepository.setVisitedVenue(listVisited)
+                    encryptedPreferencesRepository.removeCurrentVenue()
+                }
+
+                emitter.onNext(true)
+                emitter.onComplete()
+
+            } catch (e: Exception) {
+                emitter.onError(e)
+            }
+        }
+
+    fun cancelCheckIn() {
+        encryptedPreferencesRepository.removeCurrentVenue()
+    }
 
 }

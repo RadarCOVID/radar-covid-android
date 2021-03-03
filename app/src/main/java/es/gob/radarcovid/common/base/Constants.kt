@@ -24,4 +24,8 @@ object Constants {
     const val KPI_MATCH_CONFIRMED = "MATCH_CONFIRMED"
     const val ANALYTICS_PERIOD_DEFAULT = 1440
 
+    //Encrypted shared preferences
+    const val ENCRYPTED_PREFERENCES_NAME = "app_encrypted_preferences"
+    const val ENCRYPTED_PREFERENCES_KEY_SIZE = 256
+
 }

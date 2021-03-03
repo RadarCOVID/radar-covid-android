@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="29dp"
                 android:text="@string/venue_record_captured_code_desc"
-                app:labelId="VENUE_RECORD_CAPTURED_CODE_DESC" />
+                app:labelId="VENUE_RECORD_CAPTURED_CODE_PARAGRAPH_1" />
 
         </LinearLayout>
 
@@ -121,7 +121,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp"
         android:text="@string/venue_record_captured_code_check_in"
-        app:labelId="VENUE_RECORD_CHECK_IN"
+        app:labelId="VENUE_RECORD_CHECKIN_ACTION"
         app:layout_constraintBottom_toTopOf="@id/buttonCancel"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -47,7 +47,7 @@
                 android:layout_marginBottom="24dp"
                 android:text="@string/venue_title"
                 app:isHeading="true"
-                app:labelId="VENUE_TITLE" />
+                app:labelId="VENUE_HOME_TITLE" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/venue_paragraph_1"
-                app:labelId="VENUE_TITLE" />
+                app:labelId="VENUE_HOME_PARAGRAPH_1" />
 
             <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
@@ -117,7 +117,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:text="@string/venue_record_start"
-        app:labelId="VENUE_RECORD_BUTTON_START"
+        app:labelId="VENUE_HOME_BUTTON_START"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/buttonPlacesRecord"/>
@@ -132,7 +132,7 @@
             android:padding="10dp"
             android:src="@drawable/ic_places_record"
             android:contentDescription="@string/venue_record_places"
-            app:contentDescriptionLabelId="ACC_VENUE_RECORD_PLACES"
+            app:contentDescriptionLabelId="ACC_VENUE_HOME_PLACES"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/buttonVenueRecord"
             app:layout_constraintEnd_toEndOf="parent"/>

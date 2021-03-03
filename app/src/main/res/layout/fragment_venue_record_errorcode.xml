@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/venue_record_error_code_desc"
-                app:labelId="VENUE_RECORD_ERROR_CODE_DESC" />
+                app:labelId="VENUE_RECORD_ERROR_CODE_PARAGRAPH_1" />
 
         </LinearLayout>
 
@@ -88,7 +88,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp"
         android:text="@string/venue_record_start"
-        app:labelId="VENUE_RECORD_CHECK_IN"
+        app:labelId="VENUE_HOME_BUTTON_START"
         app:layout_constraintBottom_toTopOf="@id/buttonClose"
         app:layout_constraintStart_toStartOf="parent" />
 

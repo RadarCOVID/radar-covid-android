@@ -10,6 +10,9 @@
 
 package es.gob.radarcovid.features.venuerecord.pages.checkin.protocols
 
+import es.gob.radarcovid.models.domain.VenueRecord
+import java.util.*
+
 interface CheckInView {
 
     fun performContinueButtonClick()
@@ -18,9 +21,19 @@ interface CheckInView {
 
     fun performExitButtonClick()
 
+    fun setVenueInfo(currentVenue: VenueRecord)
+
+    fun startTimer(date: Date)
+
+    fun setVenueData(currentVenue: VenueRecord?)
+
 }
 
 interface CheckInPresenter {
+
+    fun viewReady()
+
+    fun getDateIn(): Date
 
     fun onContinueButtonClick()
 

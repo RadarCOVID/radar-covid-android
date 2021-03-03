@@ -11,6 +11,7 @@
 package es.gob.radarcovid.common.di.module
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

@@ -463,7 +463,7 @@
 
     <string name="venue_title">Registro de lugares mediante QR</string>
     <string name="venue_paragraph_1">Registra los lugares que visitas capturando sus códigos QR.\n\nRecibe notificaciones en caso de coincidir con personas posteriormente diagnosticadas de COVID-19.\n\nTu privacidad está protegida en todo momento.</string>
-    <string name="venue_record_start">Comunicar código QR</string>
+    <string name="venue_record_start">Capturar Código QR</string>
     <string name="venue_record_places">Ver listado de sitios</string>
     <string name="venue_record_cancel_title">Cancelar registro</string>
     <string name="venue_record_cancel_text">¿Estás seguro que deseas cancelar el registro de este lugar?</string>
@@ -489,13 +489,13 @@
     <string name="venue_checkout_time">¿Cuánto tiempo has estado?</string>
     <string name="venue_checkout_record_end">Finalizar registro</string>
     <string name="venue_checkout_time_now">Salgo ahora</string>
-    <string name="venue_checkout_time_30s">1h</string>
-    <string name="venue_checkout_time_1h">2h</string>
-    <string name="venue_checkout_time_2h">3h</string>
+    <string name="venue_checkout_time_30s">30\'</string>
+    <string name="venue_checkout_time_1h">1h</string>
+    <string name="venue_checkout_time_2h">2h</string>
     <string name="venue_checkout_time_4h">4h</string>
-    <string name="venue_checkout_time_5h">5h</string>
-
-
+    <string name="venue_checkout_time_5h">+5h</string>
+    <string name="venue_checkout_day">Hoy, %@</string>
+    <string name="venue_checkout_hour">%@ h</string>
 
     <string name="venue_record_success_title">Se ha registrado la visita con éxito</string>
     <string name="venue_record_success_paragraph1">El registro se guardará de forma encriptada localmente en tu dispositivo móvil, de forma anónima, durante 14 días.\n\nRecuerda que recibirás una notificación si has tenido contacto en el lugar y horas registradas con personas diagnosticadas posteriormente como positivo COVID-19.</string>

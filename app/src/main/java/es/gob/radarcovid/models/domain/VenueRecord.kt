@@ -8,19 +8,14 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package es.gob.radarcovid.features.venuerecord.pages.confirmrecord.protocols
+package es.gob.radarcovid.models.domain
 
-interface ConfirmRecordView {
+import java.util.*
 
-    fun performContinueButtonClick()
-
-    fun performCancelButtonClick()
-}
-
-interface ConfirmRecordPresenter {
-
-    fun onContinueButtonClick()
-
-    fun onCancelButtonClick()
-
-}
+data class VenueRecord (
+    var qr: String,
+    var name: String? = null,
+    var hidden: Boolean = false,
+    var dateIn: Date,
+    var dateOut: Date? = null
+)

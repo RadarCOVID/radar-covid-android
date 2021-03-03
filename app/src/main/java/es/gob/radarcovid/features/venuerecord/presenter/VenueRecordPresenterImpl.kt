@@ -13,6 +13,10 @@ package es.gob.radarcovid.features.venuerecord.presenter
 import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordView
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import java.lang.Exception
+import java.util.*
 import javax.inject.Inject
 
 class VenueRecordPresenterImpl @Inject constructor(
@@ -28,13 +32,18 @@ class VenueRecordPresenterImpl @Inject constructor(
         const val RECORD_SUCCESS_FRAGMENT = 4
     }
 
+    private var qrCaptured: String = ""
+    private var venueName: String = ""
+
     override fun viewReady() {
-        if (venueRecordUseCase.isRecordInProgress()) {
+        if (venueRecordUseCase.isCurrentVenue()) {
             view.showFragment(CHECK_IN_FRAGMENT)
         } else {
             startScan()
         }
     }
+
+    override fun getCurrentVenueName(): String = venueName
 
     override fun onContinueButtonClick(pageIndex: Int) {
         when (pageIndex) {
@@ -67,7 +76,15 @@ class VenueRecordPresenterImpl @Inject constructor(
     }
 
     override fun onOkScan(data: String) {
-        view.showFragment(CONFIRM_RECORD_FRAGMENT)
+        qrCaptured = data
+        try {
+            val venueInfo = venueRecordUseCase.getVenueInfo(qrCaptured)
+            venueName = venueInfo.name
+            view.showFragment(CONFIRM_RECORD_FRAGMENT)
+        } catch (e: Exception) {
+            view.showFragment(ERROR_CAPTURED_CODE_FRAGMENT)
+        }
+
     }
 
     override fun onErrorScan() {
@@ -75,7 +92,7 @@ class VenueRecordPresenterImpl @Inject constructor(
     }
 
     override fun cancelRecord() {
-        venueRecordUseCase.setRecordInProgress(false)
+        venueRecordUseCase.cancelCheckIn()
     }
 
     private fun startScan() {
@@ -83,8 +100,21 @@ class VenueRecordPresenterImpl @Inject constructor(
     }
 
     private fun doCheckIn() {
-        venueRecordUseCase.setRecordInProgress(true)
+        venueRecordUseCase.checkIn(qrCaptured)
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { onCheckInSuccess(it) },
+                { onCheckInError(it) }
+            )
+    }
+
+    private fun onCheckInSuccess(result: Boolean) {
         view.showFragment(CHECK_IN_FRAGMENT)
+    }
+
+    private fun onCheckInError(error: Throwable) {
+        view.showError(error, true)
     }
 
     private fun navigateToCheckOut() {
@@ -92,7 +122,22 @@ class VenueRecordPresenterImpl @Inject constructor(
     }
 
     private fun doCheckOut() {
-        venueRecordUseCase.setRecordInProgress(false)
+        venueRecordUseCase.checkOut()
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { onCheckOutSuccess(it) },
+                { onCheckOutError(it) }
+            )
         view.showFragment(RECORD_SUCCESS_FRAGMENT)
+    }
+
+    private fun onCheckOutSuccess(result: Boolean) {
+        view.showFragment(RECORD_SUCCESS_FRAGMENT)
+    }
+
+    private fun onCheckOutError(error: Throwable) {
+        //TODO: ¿cancel record on error?
+        view.showError(error, true)
     }
 }

@@ -65,7 +65,7 @@
                 android:layout_marginTop="13dp"
                 android:text="@string/venue_record_initiated_title"
                 app:isHeading="true"
-                app:labelId="VENUE_RECORD_INITIATED_TITLE" />
+                app:labelId="VENUE_RECORD_CHECKIN_TITLE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -106,7 +106,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="36dp"
                 android:text="@string/venue_record_initiated_time"
-                app:labelId="VENUE_RECORD_INITIATED_TIME" />
+                app:labelId="VENUE_RECORD_CHECKIN_TIME" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 android:id="@+id/textViewTime"
@@ -116,8 +116,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
                 android:text="11:00:00"
-                android:textSize="38sp"
-                app:labelId="VENUE_RECORD_INITIATED_TIME" />
+                android:textSize="38sp"/>
 
         </LinearLayout>
 
@@ -132,7 +131,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="10dp"
         android:text="@string/venue_record_initiated_confirm"
-        app:labelId="VENUE_RECORD_INITIATED_CONFIRM"
+        app:labelId="VENUE_RECORD_CHECKOUT_ACTION"
         app:layout_constraintBottom_toTopOf="@id/buttonCancel"
         app:layout_constraintStart_toStartOf="parent" />
 

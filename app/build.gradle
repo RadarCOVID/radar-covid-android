@@ -114,6 +114,8 @@ android {
             buildConfigField 'String', 'CERTIFICATE_PIN', '"sha256/BZkFfM++uLfyl8jDpVoLvQWjyGm0xNAZRjEXy9jX798="'
 
             buildConfigField("String", "SAFETY_NET_API_KEY", loadProperty("pre.safetyNet"))
+
+            buildConfigField "String", "ENTRY_QR_CODE_PREFIX", '"https://qr-pre.radarcovid.es"'
         }
         pro {
             dimension = 'environment'
@@ -130,6 +132,8 @@ android {
             buildConfigField 'String', 'CERTIFICATE_PIN', '"sha256/V5NaZx/jvh7NR/Ne6tXTw/g2Pcu9ztv08prWsUh7czI="'
 
             buildConfigField("String", "SAFETY_NET_API_KEY", loadProperty("pro.safetyNet"))
+
+            buildConfigField "String", "ENTRY_QR_CODE_PREFIX", '"https://qr.radarcovid.es"'
         }
     }
 
@@ -269,5 +273,10 @@ dependencies {
 
     // google vision gradle
     implementation 'com.google.android.gms:play-services-vision:20.1.3'
+
+    //CrowdNotifier
+    implementation 'org.crowdnotifier:crowdnotifier-sdk-android:2.1.0'
+    //TODO eliminar al quitar los mocks
+    implementation 'com.google.protobuf:protobuf-lite:3.0.1'
 
 }
