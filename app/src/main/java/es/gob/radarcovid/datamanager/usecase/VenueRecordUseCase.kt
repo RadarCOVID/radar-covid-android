@@ -13,7 +13,7 @@ package es.gob.radarcovid.datamanager.usecase
 import es.gob.radarcovid.datamanager.repository.CrowdNotifierRepository
 import es.gob.radarcovid.datamanager.repository.EncryptedPreferencesRepository
 import es.gob.radarcovid.models.domain.VenueRecord
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Completable
 import org.crowdnotifier.android.sdk.model.VenueInfo
 import java.util.*
 import javax.inject.Inject
@@ -36,8 +36,8 @@ class VenueRecordUseCase @Inject constructor(
     fun getVenueInfo(qrCode: String): VenueInfo =
         crowdNotifierRepository.getVenueInfoMock(qrCode)
 
-    fun checkIn(qrCaptured: String): Observable<Boolean> =
-        Observable.create { emitter ->
+    fun checkIn(qrCaptured: String): Completable =
+        Completable.create { emitter ->
             try {
                 val venueInfo = getVenueInfo(qrCaptured)
                 val currentVenueRecord = VenueRecord(
@@ -48,7 +48,6 @@ class VenueRecordUseCase @Inject constructor(
                 setCurrentVenue(currentVenueRecord)
                 //TODO Comenzar proceso para notificar y hacer checkout automático a las X horas
 
-                emitter.onNext(true)
                 emitter.onComplete()
 
             } catch (e: Exception) {
@@ -57,8 +56,8 @@ class VenueRecordUseCase @Inject constructor(
         }
 
     //TODO Change mock function
-    fun checkOut(): Observable<Boolean> =
-        Observable.create { emitter ->
+    fun checkOut(dateOut: Date): Completable =
+        Completable.create { emitter ->
             try {
                 val currentVenue = encryptedPreferencesRepository.getCurrentVenue()
                 if (currentVenue != null) {
@@ -66,7 +65,7 @@ class VenueRecordUseCase @Inject constructor(
                         encryptedPreferencesRepository.getVisitedVenue().toMutableList()
                     val venueInfo = getVenueInfo(currentVenue.qr)
 
-                    currentVenue.dateOut = Date()
+                    currentVenue.dateOut = dateOut
                     crowdNotifierRepository.checkInMock(
                         currentVenue.dateIn.time,
                         currentVenue.dateOut!!.time,
@@ -78,7 +77,6 @@ class VenueRecordUseCase @Inject constructor(
                     encryptedPreferencesRepository.removeCurrentVenue()
                 }
 
-                emitter.onNext(true)
                 emitter.onComplete()
 
             } catch (e: Exception) {

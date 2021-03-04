@@ -23,8 +23,6 @@ interface CheckOutView {
 
     fun setVenueData(currentVenue: VenueRecord?)
 
-    fun getTimeOut(): VenueTimeOut
-
     fun setButtonContinueEnabled(enabled: Boolean)
 }
 

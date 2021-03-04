@@ -36,7 +36,7 @@ interface MainPresenter {
 
     fun viewReady(activateRadar: Boolean)
 
-    fun onResume(isVenueRecordSelected: Boolean)
+    fun onResume(isVenueRecordSelected: Boolean, isHomeSelected: Boolean)
 
     fun onStop()
 

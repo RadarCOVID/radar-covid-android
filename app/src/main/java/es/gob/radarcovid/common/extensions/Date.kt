@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.common.extensions
 
+import androidx.core.util.rangeTo
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,6 +41,18 @@ fun Date.getHourString(): String =
 
 fun Date.toDateFormat(): String =
     SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(this)
+
+fun Date.isToday(): Boolean {
+    Calendar.getInstance().apply {
+        return this.get(Calendar.DAY_OF_YEAR) == get(Calendar.DAY_OF_YEAR)
+    }
+}
+
+fun Date.isYesterday(): Boolean {
+    Calendar.getInstance().apply {
+        return this.get(Calendar.DAY_OF_YEAR) - get(Calendar.DAY_OF_YEAR) == 1
+    }
+}
 
 fun Date.add(field: Int, amount: Int): Date {
     Calendar.getInstance().apply {

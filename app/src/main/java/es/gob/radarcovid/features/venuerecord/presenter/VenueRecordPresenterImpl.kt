@@ -10,12 +10,14 @@
 
 package es.gob.radarcovid.features.venuerecord.presenter
 
+import es.gob.radarcovid.common.extensions.addHours
+import es.gob.radarcovid.common.extensions.addMinutes
 import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
+import es.gob.radarcovid.features.venuerecord.pages.checkout.presenter.VenueTimeOut
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.lang.Exception
 import java.util.*
 import javax.inject.Inject
 
@@ -34,6 +36,7 @@ class VenueRecordPresenterImpl @Inject constructor(
 
     private var qrCaptured: String = ""
     private var venueName: String = ""
+    private lateinit var timeOut: VenueTimeOut
 
     override fun viewReady() {
         if (venueRecordUseCase.isCurrentVenue()) {
@@ -44,6 +47,10 @@ class VenueRecordPresenterImpl @Inject constructor(
     }
 
     override fun getCurrentVenueName(): String = venueName
+
+    override fun setVenueTimeOut(venueTimeOut: VenueTimeOut) {
+        timeOut = venueTimeOut
+    }
 
     override fun onContinueButtonClick(pageIndex: Int) {
         when (pageIndex) {
@@ -93,6 +100,7 @@ class VenueRecordPresenterImpl @Inject constructor(
 
     override fun cancelRecord() {
         venueRecordUseCase.cancelCheckIn()
+        view.cancelVenueRecordWorker()
     }
 
     private fun startScan() {
@@ -104,12 +112,13 @@ class VenueRecordPresenterImpl @Inject constructor(
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { onCheckInSuccess(it) },
+                { onCheckInSuccess() },
                 { onCheckInError(it) }
             )
     }
 
-    private fun onCheckInSuccess(result: Boolean) {
+    private fun onCheckInSuccess() {
+        view.startVenueRecordWorker()
         view.showFragment(CHECK_IN_FRAGMENT)
     }
 
@@ -122,17 +131,34 @@ class VenueRecordPresenterImpl @Inject constructor(
     }
 
     private fun doCheckOut() {
-        venueRecordUseCase.checkOut()
+
+        //Calculate time out
+        val currentVenue = venueRecordUseCase.getCurrentVenue()
+
+        val hours = when (timeOut) {
+            VenueTimeOut.OPT_30 -> 30 //Minutes
+            VenueTimeOut.OPT_1 -> 1
+            VenueTimeOut.OPT_2 -> 2
+            VenueTimeOut.OPT_4 -> 3
+            VenueTimeOut.OPT_5 -> 4
+            else -> 0  //NOW
+        }
+        val dateOut =
+            if (hours > 5) currentVenue?.dateIn?.addMinutes(hours)
+            else currentVenue?.dateIn?.addHours(hours)
+
+        venueRecordUseCase.checkOut(dateOut?: Date())
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { onCheckOutSuccess(it) },
+                { onCheckOutSuccess() },
                 { onCheckOutError(it) }
             )
         view.showFragment(RECORD_SUCCESS_FRAGMENT)
     }
 
-    private fun onCheckOutSuccess(result: Boolean) {
+    private fun onCheckOutSuccess() {
+        view.cancelVenueRecordWorker()
         view.showFragment(RECORD_SUCCESS_FRAGMENT)
     }
 

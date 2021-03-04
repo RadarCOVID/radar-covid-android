@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.features.venuerecord.view
 
+import es.gob.radarcovid.features.venuerecord.pages.checkout.presenter.VenueTimeOut
+
 interface VenueRecordPageCallback {
 
     fun onContinueButtonClick(pageIndex: Int)
@@ -17,4 +19,7 @@ interface VenueRecordPageCallback {
     fun onCancelButtonClick()
 
     fun onBackButtonClick()
+
+    fun setVenueTimeOut(venueTimeOut: VenueTimeOut)
+
 }

@@ -17,10 +17,7 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
-import es.gob.radarcovid.common.extensions.geMonthNameDefault
-import es.gob.radarcovid.common.extensions.getDayString
-import es.gob.radarcovid.common.extensions.getHourString
-import es.gob.radarcovid.common.extensions.setSafeOnClickListener
+import es.gob.radarcovid.common.extensions.*
 import es.gob.radarcovid.features.venuerecord.pages.checkout.presenter.VenueTimeOut
 import es.gob.radarcovid.features.venuerecord.pages.checkout.protocols.CheckOutPresenter
 import es.gob.radarcovid.features.venuerecord.pages.checkout.protocols.CheckOutView
@@ -51,13 +48,13 @@ class CheckOutFragment : BaseFragment(), CheckOutView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.viewReady()
         initViews()
     }
 
     override fun onResume() {
         super.onResume()
         buttonCheckOut.isEnabled = segmentedControlTime.checkedRadioButtonId != -1
+        presenter.viewReady()
     }
 
     private fun initViews() {
@@ -74,11 +71,20 @@ class CheckOutFragment : BaseFragment(), CheckOutView {
     override fun setVenueData(currentVenue: VenueRecord?) {
         currentVenue?.let {
             textViewVenueName.text = it.name
-            textViewDay.text = labelManager.getFormattedTextHtml(
-                "VENUE_RECORD_CHECKOUT_DAY",
-                getString(R.string.venue_checkout_day),
-                String.format("%s %s", it.dateIn.getDayString(), it.dateIn.geMonthNameDefault())
-            )
+            if (it.dateIn.isToday()) {
+                textViewDay.text = labelManager.getFormattedTextHtml(
+                    "VENUE_RECORD_CHECKOUT_TODAY",
+                    getString(R.string.venue_checkout_today),
+                    String.format("%s %s", it.dateIn.getDayString(), it.dateIn.geMonthNameDefault())
+                )
+            } else {
+                textViewDay.text = labelManager.getFormattedTextHtml(
+                    "VENUE_RECORD_CHECKOUT_YESTERDAY",
+                    getString(R.string.venue_checkout_yesterday),
+                    String.format("%s %s", it.dateIn.getDayString(), it.dateIn.geMonthNameDefault())
+                )
+            }
+
             textViewTime.text = labelManager.getFormattedTextHtml(
                 "VENUE_RECORD_CHECKOUT_HOUR",
                 getString(R.string.venue_checkout_hour),
@@ -87,7 +93,7 @@ class CheckOutFragment : BaseFragment(), CheckOutView {
         }
     }
 
-    override fun getTimeOut(): VenueTimeOut =
+    private fun getTimeOut(): VenueTimeOut =
         when (segmentedControlTime.checkedRadioButtonId) {
             R.id.timeOptionNow -> VenueTimeOut.NOW
             R.id.timeOption30 -> VenueTimeOut.OPT_30
@@ -98,6 +104,7 @@ class CheckOutFragment : BaseFragment(), CheckOutView {
         }
 
     override fun performContinueButtonClick() {
+        (activity as? VenueRecordPageCallback)?.setVenueTimeOut(getTimeOut())
         (activity as? VenueRecordPageCallback)?.onContinueButtonClick(VenueRecordPresenterImpl.CHECK_OUT_FRAGMENT)
     }
 

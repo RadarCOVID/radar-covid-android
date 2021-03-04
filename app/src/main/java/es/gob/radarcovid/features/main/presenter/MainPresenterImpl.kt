@@ -36,12 +36,14 @@ class MainPresenterImpl @Inject constructor(
             getLocaleInfoUseCase.resetLanguageChanged()
             view.setSettingSelected()
             router.navigateToSettings()
+        }else if (venueRecordUseCase.isCurrentVenue()) {
+            router.navigateToVenueRecord(true)
         } else {
             router.navigateToHome(activateRadar, false)
         }
     }
 
-    override fun onResume(isVenueRecordSelected: Boolean) {
+    override fun onResume(isVenueRecordSelected: Boolean, isHomeSelected: Boolean) {
         Observable.fromCallable { mainUseCase.syncExposureInfo() }
             .subscribeOn(Schedulers.io())
             .subscribe()
@@ -54,6 +56,8 @@ class MainPresenterImpl @Inject constructor(
             } else {
                 router.navigateToVenueRecord(false)
             }
+        } else if (isHomeSelected) {
+            router.navigateToHome(activateRadar = false, manualNavigation = false)
         }
     }
 

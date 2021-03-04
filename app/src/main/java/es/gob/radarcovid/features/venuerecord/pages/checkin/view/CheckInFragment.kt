@@ -59,6 +59,7 @@ class CheckInFragment : BaseFragment(), CheckInView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainHandler = Handler(Looper.getMainLooper())
+        initViews()
     }
 
     override fun setVenueData(currentVenue: VenueRecord?) {
@@ -68,7 +69,6 @@ class CheckInFragment : BaseFragment(), CheckInView {
     override fun onResume() {
         super.onResume()
         presenter.viewReady()
-        initViews()
         mainHandler.post(updateTextTask)
     }
 

@@ -11,6 +11,7 @@
 package es.gob.radarcovid.features.venuerecord.protocols
 
 import es.gob.radarcovid.common.view.RequestView
+import es.gob.radarcovid.features.venuerecord.pages.checkout.presenter.VenueTimeOut
 
 interface VenueRecordView: RequestView {
 
@@ -21,6 +22,10 @@ interface VenueRecordView: RequestView {
     fun onBackButtonClick()
 
     fun exit()
+
+    fun startVenueRecordWorker()
+
+    fun cancelVenueRecordWorker()
 
 }
 
@@ -39,6 +44,8 @@ interface VenueRecordPresenter {
     fun cancelRecord()
 
     fun onBackPressed(pageIndex: Int)
+
+    fun setVenueTimeOut(timeOut: VenueTimeOut)
 }
 
 interface VenueRecordRouter {

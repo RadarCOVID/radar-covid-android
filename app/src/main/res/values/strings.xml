@@ -494,10 +494,14 @@
     <string name="venue_checkout_time_2h">2h</string>
     <string name="venue_checkout_time_4h">4h</string>
     <string name="venue_checkout_time_5h">+5h</string>
-    <string name="venue_checkout_day">Hoy, %@</string>
+    <string name="venue_checkout_today">Hoy, %@</string>
+    <string name="venue_checkout_yesterday">Ayer, %@</string>
     <string name="venue_checkout_hour">%@ h</string>
 
     <string name="venue_record_success_title">Se ha registrado la visita con éxito</string>
     <string name="venue_record_success_paragraph1">El registro se guardará de forma encriptada localmente en tu dispositivo móvil, de forma anónima, durante 14 días.\n\nRecuerda que recibirás una notificación si has tenido contacto en el lugar y horas registradas con personas diagnosticadas posteriormente como positivo COVID-19.</string>
+
+    <string name="venue_record_notification_reminder_title">Recordatorio de registro en marcha</string>
+    <string name="venue_record_notification_reminder_body">¿Deseas confirmar la salida el lugar visitado?</string>
 
 </resources>

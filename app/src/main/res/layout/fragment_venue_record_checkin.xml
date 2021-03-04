@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/shape_rounded_corners_white"
-                android:elevation="10dp"
+                android:elevation="4dp"
                 android:paddingStart="18dp"
                 android:paddingTop="21dp"
                 android:paddingEnd="18dp"

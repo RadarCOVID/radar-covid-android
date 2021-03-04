@@ -59,7 +59,10 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun onResume() {
         super.onResume()
-        presenter.onResume(bottomNavigation.selectedItemId == R.id.menuItemVenue)
+        presenter.onResume(
+            bottomNavigation.selectedItemId == R.id.menuItemVenue,
+            bottomNavigation.selectedItemId == R.id.menuItemHome
+        )
     }
 
     override fun onStop() {

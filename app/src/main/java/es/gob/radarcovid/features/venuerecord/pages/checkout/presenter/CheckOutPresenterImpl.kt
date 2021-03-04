@@ -33,24 +33,6 @@ class CheckOutPresenterImpl @Inject constructor(
     }
 
     override fun onContinueButtonClick() {
-
-        if (currentVenue != null) {
-            //save date out
-            val hours = when (view.getTimeOut()) {
-                VenueTimeOut.OPT_30 -> 30 //Minutes
-                VenueTimeOut.OPT_1 -> 1
-                VenueTimeOut.OPT_2 -> 2
-                VenueTimeOut.OPT_4 -> 3
-                VenueTimeOut.OPT_5 -> 4
-                else -> 0  //NOW
-            }
-            currentVenue?.dateOut =
-                if (hours > 5) currentVenue?.dateIn?.addMinutes(hours)
-                else currentVenue?.dateIn?.addHours(hours)
-
-            venueRecordUseCase.setCurrentVenue(currentVenue!!)
-        }
-
         view.performContinueButtonClick()
     }
 
