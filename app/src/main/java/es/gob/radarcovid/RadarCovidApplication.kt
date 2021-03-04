@@ -10,6 +10,10 @@
 
 package es.gob.radarcovid
 
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ProcessLifecycleOwner
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastReceiver
@@ -25,7 +29,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 
-class RadarCovidApplication : DaggerApplication() {
+class RadarCovidApplication : DaggerApplication(), LifecycleObserver {
 
     @Inject
     lateinit var certificatePinner: CertificatePinner
@@ -39,6 +43,7 @@ class RadarCovidApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        ProcessLifecycleOwner.get().lifecycle.addObserver(this)
 
         initRxJavaSettings()
 
@@ -68,6 +73,16 @@ class RadarCovidApplication : DaggerApplication() {
             if (BuildConfig.DEBUG)
                 it.printStackTrace()
         }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    fun onAppBackgrounded() {
+        preferencesRepository.setApplicationActive(false)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onAppForegrounded() {
+        preferencesRepository.setApplicationActive(true)
     }
 
 }

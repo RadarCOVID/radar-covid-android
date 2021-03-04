@@ -24,6 +24,7 @@ import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.Constants
 import es.gob.radarcovid.common.extensions.default
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import es.gob.radarcovid.features.splash.view.SplashActivity
@@ -45,6 +46,9 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
 
     @Inject
     lateinit var venueRecordUseCase: VenueRecordUseCase
+
+    @Inject
+    lateinit var preferencesRepository: PreferencesRepository
 
     companion object {
 
@@ -84,12 +88,13 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
         val minutesElapsed =
             TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
 
-        if (minutesElapsed >= 1) {
-           //Auto checkout
+        if (minutesElapsed >= 1 && !preferencesRepository.isApplicationActive()) {
+            //Auto checkout only if app is in background
             venueRecordUseCase.checkOut(Date()).blockingAwait()
         } else {
             showVenueRecordNotification(applicationContext)
             set(applicationContext, delayMinutes)
+            applicationContext.applicationInfo
         }
         return Result.success()
     }

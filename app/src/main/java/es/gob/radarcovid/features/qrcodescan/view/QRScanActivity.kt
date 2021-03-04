@@ -14,6 +14,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.hardware.Camera
 import android.os.Bundle
 import android.view.SurfaceHolder
 import androidx.core.app.ActivityCompat
@@ -24,11 +25,13 @@ import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
+import es.gob.radarcovid.common.extensions.setSafeOnClickListener
 import es.gob.radarcovid.features.qrcodescan.protocols.ScanQRView
 import kotlinx.android.synthetic.main.activity_qr.*
 import java.io.IOException
 
 
+@Suppress("DEPRECATION")
 class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
 
     companion object {
@@ -43,6 +46,8 @@ class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
     private lateinit var barcodeDetector: BarcodeDetector
 
     private lateinit var cameraSource: CameraSource
+
+    private var isFlashOn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +74,7 @@ class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
                         requestPermission()
                     } else {
                         cameraSource.start(cameraSurfaceView.holder)
+                        setupFlashButton(cameraSource)
                     }
                 } catch (ie: IOException) {
                     println("CAMERA SOURCE ${ie.message}")
@@ -138,6 +144,49 @@ class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
             setResult(RESULT_CANCELED)
         }
         finish()
+    }
+
+    private fun setupFlashButton(cameraSource: CameraSource) {
+
+        val camera = getCamera(cameraSource)
+        if (camera != null) {
+
+            flashButton.setSafeOnClickListener {
+                try {
+                    if (isFlashOn) {
+                        flashButton.setBackgroundResource(R.drawable.shape_circle_border_white)
+                        flashButton.setImageResource(R.drawable.ic_flash_off)
+                    } else {
+                        flashButton.setBackgroundResource(R.drawable.shape_circle_border_purple)
+                        flashButton.setImageResource(R.drawable.ic_flash_on)
+                    }
+                    val param = camera.parameters
+                    param.flashMode =
+                        if (!isFlashOn) Camera.Parameters.FLASH_MODE_TORCH else Camera.Parameters.FLASH_MODE_OFF
+                    camera.parameters = param
+                    isFlashOn = !isFlashOn
+                } catch (e: Exception) {
+                }
+            }
+        }
+    }
+
+    private fun getCamera(cameraSource: CameraSource): Camera? {
+        val declaredFields = CameraSource::class.java.declaredFields
+
+        for (field in declaredFields) {
+            if (field.type == Camera::class.java) {
+                field.isAccessible = true
+                try {
+                    return field.get(cameraSource) as Camera
+                } catch (e: IllegalAccessException) {
+                    e.printStackTrace()
+                }
+
+                break
+            }
+        }
+        return null
     }
 
 }

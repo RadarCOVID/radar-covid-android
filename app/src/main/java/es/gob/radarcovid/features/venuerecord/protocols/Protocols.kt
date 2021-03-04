@@ -31,6 +31,8 @@ interface VenueRecordView: RequestView {
 
 interface VenueRecordPresenter {
 
+    fun onResume(pageIndex: Int)
+
     fun viewReady()
 
     fun getCurrentVenueName(): String

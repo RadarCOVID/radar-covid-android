@@ -88,4 +88,8 @@ interface PreferencesRepository {
     fun setRecordInProgress(recordInProgress: Boolean)
 
     fun isRecordInProgress(): Boolean
+
+    fun setApplicationActive(active: Boolean)
+
+    fun isApplicationActive(): Boolean
 }

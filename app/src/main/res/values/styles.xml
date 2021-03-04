@@ -236,6 +236,16 @@
         <item name="android:background">@drawable/shape_rounded_border_accent</item>
     </style>
 
+    <style name="ButtonFloatingOn" parent="Button">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_circle_border_purple</item>
+    </style>
+
+    <style name="ButtonFloatingOff" parent="Button">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_circle_border_white</item>
+    </style>
+
     <style name="EditTextDigit" parent="TextSemibold">
         <item name="android:clickable">true</item>
         <item name="android:paddingEnd">0dp</item>

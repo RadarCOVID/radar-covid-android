@@ -46,6 +46,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_ANALYTICS_PERIOD = "key_analytics_period"
         private const val KEY_LANGUAGE_CHANGED = "key_language_changed"
         private const val KEY_RECORD_IN_PROGRESS = "key_record_in_progress"
+        private const val KEY_APP_ACTIVE = "key_app_active"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -240,4 +241,12 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
     override fun isRecordInProgress(): Boolean =
         preferences.getBoolean(KEY_RECORD_IN_PROGRESS, false)
 
+    override fun setApplicationActive(active: Boolean) {
+        preferences.edit()
+            .putBoolean(KEY_APP_ACTIVE, active)
+            .apply()
+    }
+
+    override fun isApplicationActive(): Boolean =
+        preferences.getBoolean(KEY_APP_ACTIVE, false)
 }

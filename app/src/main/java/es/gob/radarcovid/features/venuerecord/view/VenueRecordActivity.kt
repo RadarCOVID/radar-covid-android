@@ -74,6 +74,11 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
         presenter.viewReady()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume(viewPager.currentItem)
+    }
+
     override fun startQRScan() {
         startActivityForResult(
             Intent(this, QRScanActivity::class.java),

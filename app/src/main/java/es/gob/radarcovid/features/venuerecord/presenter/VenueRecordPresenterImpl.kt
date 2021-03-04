@@ -38,6 +38,13 @@ class VenueRecordPresenterImpl @Inject constructor(
     private var venueName: String = ""
     private lateinit var timeOut: VenueTimeOut
 
+    override fun onResume(pageIndex: Int) {
+        //Back to app after autocheckout
+        if (pageIndex == CHECK_IN_FRAGMENT && !venueRecordUseCase.isCurrentVenue()) {
+            view.exit()
+        }
+    }
+
     override fun viewReady() {
         if (venueRecordUseCase.isCurrentVenue()) {
             view.showFragment(CHECK_IN_FRAGMENT)

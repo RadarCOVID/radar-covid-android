@@ -46,7 +46,7 @@
                 android:paddingLeft="22dp"
                 android:paddingTop="22dp"
                 android:paddingRight="22dp"
-                android:paddingBottom="32dp"
+                android:paddingBottom="25dp"
                 android:src="@drawable/ic_arrow_left"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -117,8 +117,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="30dp"
-            app:layout_constraintTop_toBottomOf="@id/titleLabelView"
-            app:layout_constraintBottom_toTopOf="@id/textViewDesc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1">
 
             <View
@@ -162,20 +164,35 @@
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginTop="20dp"
             android:text="@string/venue_record_scan_desc"
             app:labelId="VENUE_QR_SCAN_DESC"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/qr_code_scanner_camera_hole"
             android:background="#CC818CC1"/>
 
-        <View
+        <LinearLayout
+            android:id="@+id/layoutFlash"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewDesc"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/blue_C1"/>
+            android:gravity="center"
+            android:background="@color/blue_C1">
+
+            <es.gob.radarcovid.common.view.LabelImageButton
+                android:id="@+id/flashButton"
+                style="@style/ButtonFloatingOff"
+                android:layout_gravity="center"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="15dp"
+                android:src="@drawable/ic_flash_off"
+                android:contentDescription="@string/venue_record_places"
+                app:contentDescriptionLabelId="ACC_VENUE_HOME_PLACES"/>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
