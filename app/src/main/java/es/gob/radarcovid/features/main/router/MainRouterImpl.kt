@@ -15,7 +15,6 @@ import es.gob.radarcovid.R
 import es.gob.radarcovid.features.helpline.view.HelplineFragment
 import es.gob.radarcovid.features.home.view.HomeFragment
 import es.gob.radarcovid.features.main.protocols.MainRouter
-import es.gob.radarcovid.features.mydata.view.MyDataFragment
 import es.gob.radarcovid.features.settings.view.SettingsFragment
 import es.gob.radarcovid.features.stats.view.StatsFragment
 import es.gob.radarcovid.features.venue.view.VenueFragment
@@ -29,14 +28,6 @@ class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity
             .supportFragmentManager
             .beginTransaction()
             .replace(R.id.wrapperContent, HomeFragment.newInstance(activateRadar, manualNavigation))
-            .commit()
-    }
-
-    override fun navigateToProfile() {
-        activity
-            .supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.wrapperContent, MyDataFragment.newInstance())
             .commit()
     }
 

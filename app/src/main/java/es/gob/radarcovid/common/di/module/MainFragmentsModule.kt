@@ -17,8 +17,6 @@ import es.gob.radarcovid.features.helpline.di.HelplineModule
 import es.gob.radarcovid.features.helpline.view.HelplineFragment
 import es.gob.radarcovid.features.home.di.HomeModule
 import es.gob.radarcovid.features.home.view.HomeFragment
-import es.gob.radarcovid.features.mydata.di.MyDataModule
-import es.gob.radarcovid.features.mydata.view.MyDataFragment
 import es.gob.radarcovid.features.settings.di.SettingsModule
 import es.gob.radarcovid.features.settings.view.SettingsFragment
 import es.gob.radarcovid.features.venue.di.VenueModule
@@ -30,10 +28,6 @@ abstract class MainFragmentsModule {
     @PerFragment
     @ContributesAndroidInjector(modules = [HomeModule::class])
     abstract fun bindsHomeFragment(): HomeFragment
-
-    @PerFragment
-    @ContributesAndroidInjector(modules = [MyDataModule::class])
-    abstract fun bindsMyDataFragment(): MyDataFragment
 
     @PerFragment
     @ContributesAndroidInjector(modules = [HelplineModule::class])

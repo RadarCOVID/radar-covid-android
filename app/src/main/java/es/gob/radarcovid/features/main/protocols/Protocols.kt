@@ -44,8 +44,6 @@ interface MainPresenter {
 
     fun onHomeButtonClick()
 
-    fun onProfileButtonClick()
-
     fun onVenueButtonClick()
 
     fun onHelplineButtonClick()
@@ -63,8 +61,6 @@ interface MainPresenter {
 interface MainRouter {
 
     fun navigateToHome(activateRadar: Boolean, manualNavigation: Boolean)
-
-    fun navigateToProfile()
 
     fun navigateToHelpline()
 

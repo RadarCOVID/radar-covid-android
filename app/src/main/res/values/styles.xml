@@ -41,7 +41,7 @@
     </style>
 
     <style name="TitleTip" parent="Title">
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
 
@@ -88,8 +88,13 @@
     </style>
 
     <style name="TitleMedium" parent="Title">
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="Title22Black" parent="Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="TitleExtraBold">

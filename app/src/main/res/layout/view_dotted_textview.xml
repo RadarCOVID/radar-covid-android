@@ -21,7 +21,7 @@
 
     <es.gob.radarcovid.common.view.LabelTextView
         android:id="@+id/textView"
-        style="@style/TextNormal"
+        style="@style/TextNormal18"
         android:textColorLink="@color/black_26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
