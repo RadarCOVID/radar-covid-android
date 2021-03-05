@@ -13,7 +13,7 @@ package es.gob.radarcovid.features.venuerecord.protocols
 import es.gob.radarcovid.common.view.RequestView
 import es.gob.radarcovid.features.venuerecord.pages.checkout.presenter.VenueTimeOut
 
-interface VenueRecordView: RequestView {
+interface VenueRecordView : RequestView {
 
     fun startQRScan()
 
@@ -48,9 +48,4 @@ interface VenueRecordPresenter {
     fun onBackPressed(pageIndex: Int)
 
     fun setVenueTimeOut(timeOut: VenueTimeOut)
-}
-
-interface VenueRecordRouter {
-
-    //fun openQRCodeScan()
 }

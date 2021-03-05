@@ -14,12 +14,9 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import es.gob.radarcovid.common.di.scope.PerActivity
-import es.gob.radarcovid.features.onboarding.protocols.OnboardingView
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
-import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordRouter
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordView
-import es.gob.radarcovid.features.venuerecord.router.VenueRecordRouterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
 
 @Module
@@ -35,7 +32,4 @@ class VenueRecordModule {
     @PerActivity
     fun providesPresenter(presenter: VenueRecordPresenterImpl): VenueRecordPresenter = presenter
 
-    @Provides
-    @PerActivity
-    fun providesRouter(router: VenueRecordRouterImpl): VenueRecordRouter = router
 }
