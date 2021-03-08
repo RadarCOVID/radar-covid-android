@@ -48,16 +48,12 @@ class MainPresenterImpl @Inject constructor(
             .subscribeOn(Schedulers.io())
             .subscribe()
         updateMenuIcon()
-        if (isVenueRecordSelected) {
-            if (venueRecordUseCase.isCurrentVenue()) {
-                //navigate to home
-                view.setHomeSelected()
-                router.navigateToHome(activateRadar = false, manualNavigation = false)
-            } else {
-                router.navigateToVenueRecord(false)
-            }
-        } else if (isHomeSelected) {
+        if (venueRecordUseCase.isCurrentVenue() && (isVenueRecordSelected || isHomeSelected)) {
+            //navigate to home
+            view.setHomeSelected()
             router.navigateToHome(activateRadar = false, manualNavigation = false)
+        } else if (isVenueRecordSelected) {
+            router.navigateToVenueRecord(false)
         }
     }
 
