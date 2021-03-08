@@ -141,31 +141,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <es.gob.radarcovid.common.view.LabelCheckBox
                     android:id="@+id/checkBoxTermsAndConditions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginEnd="15dp"
                     android:button="@drawable/selector_checkbox"
                     android:contentDescription="@string/legal_info_policy_acc"
-                    android:gravity="center_horizontal"
-                    app:contentDescriptionLabelId="ACC_CHECKBOX_PRIVACY" />
+                    android:gravity="center"
+                    app:contentDescriptionLabelId="ACC_CHECKBOX_PRIVACY"/>
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewPrivacyPolicy"
                     style="@style/TextNormal"
                     android:textColorLink="@color/purple_A7"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/legal_info_privacy_policy"
                     app:isLink="true"
                     app:removeUnderlineLink="true"
-                    app:labelId="ONBOARDING_STEP_2_PRIVACY_POLICY" />
+                    app:labelId="ONBOARDING_STEP_2_PRIVACY_POLICY"/>
 
             </LinearLayout>
 
@@ -173,7 +173,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:gravity="center_vertical"
@@ -181,13 +181,13 @@
 
                 <es.gob.radarcovid.common.view.LabelCheckBox
                     android:id="@+id/checkBoxUsageConditions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginEnd="15dp"
                     android:contentDescription="@string/legal_info_usage_conditions_acc"
                     app:contentDescriptionLabelId="ACC_CHECKBOX_USAGE_CONDITIONS"
                     android:button="@drawable/selector_checkbox"
-                    android:gravity="center_horizontal" />
+                    android:gravity="center" />
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewUsageConditions"

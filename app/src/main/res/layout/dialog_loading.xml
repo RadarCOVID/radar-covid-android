@@ -56,7 +56,7 @@
             tools:text="description"
             tools:visibility="visible" />
 
-        <Button
+        <es.gob.radarcovid.common.view.LabelButton
             android:id="@+id/buttonOk"
             style="@style/ButtonNormal"
             android:layout_width="match_parent"
