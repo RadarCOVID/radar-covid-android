@@ -14,7 +14,7 @@ import java.util.*
 
 data class VenueRecord (
     var qr: String,
-    var checkOutId: String? = null,
+    var checkOutId: Long? = null,
     var name: String? = null,
     var isExposed: Boolean = false,
     var hidden: Boolean = false,

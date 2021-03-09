@@ -23,16 +23,16 @@ import androidx.work.*
 import dagger.android.HasAndroidInjector
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.Constants
+import es.gob.radarcovid.common.base.events.BUS
+import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.common.extensions.default
-import es.gob.radarcovid.datamanager.repository.PreferencesRepository
-import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
+import es.gob.radarcovid.datamanager.usecase.VenueMatcherUseCase
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import es.gob.radarcovid.features.splash.view.SplashActivity
-import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
+class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
 
     init {
@@ -41,24 +41,15 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
             ?.inject(this)
     }
 
-    @Inject
-    lateinit var labelManager: LabelManager
-
-    @Inject
-    lateinit var venueRecordUseCase: VenueRecordUseCase
-
-    @Inject
-    lateinit var preferencesRepository: PreferencesRepository
-
     companion object {
 
-        const val NOTIFICATION_REMINDER_ID = 3
-        private const val TAG = "VenueRecordWorker"
+        const val NOTIFICATION_VENUE_EXPOSURE_ID = 4
+        private const val TAG = "VenueMatcherWorker"
         private const val KEY_DELAY = "KEY_DELAY"
 
         fun set(context: Context, minutesToNotify: Int) {
             val work = OneTimeWorkRequest
-                .Builder(VenueRecordWorker::class.java)
+                .Builder(VenueMatcherWorker::class.java)
                 .setInitialDelay(minutesToNotify.toLong(), TimeUnit.MINUTES)
                 .setInputData(
                     Data.Builder().putInt(KEY_DELAY, minutesToNotify).build()
@@ -72,33 +63,33 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
         fun cancel(context: Context) {
             WorkManager.getInstance(context).cancelAllWorkByTag(TAG)
         }
-
     }
 
+    @Inject
+    lateinit var venueMatcherUseCase: VenueMatcherUseCase
+
+    @Inject
+    lateinit var labelManager: LabelManager
+
     override fun doWork(): Result {
+
         val delayMinutes = inputData.getInt(
             KEY_DELAY,
             Constants.NOTIFICATION_REMINDER_DEFAULT
         )
 
-        val currentVenue = venueRecordUseCase.getCurrentVenue()
-        val millisElapsed = System.currentTimeMillis() - currentVenue?.dateIn?.time!!
-        val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
-        val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
-        val minutesElapsed =
-            TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
-
-        if (minutesElapsed >= 1 && !preferencesRepository.isApplicationActive()) {
-            //Auto checkout only if app is in background
-            venueRecordUseCase.checkOut(Date()).blockingAwait()
-        } else {
-            showVenueRecordNotification(applicationContext)
-            set(applicationContext, delayMinutes)
+        val exposureEvents = venueMatcherUseCase.checkForMatches()
+        if (!exposureEvents.isNullOrEmpty()) {
+            showVenueExposureNotification(applicationContext)
+            BUS.post(EventExposureStatusChange())
         }
+
+        set(applicationContext, delayMinutes)
+
         return Result.success()
     }
 
-    private fun showVenueRecordNotification(context: Context) {
+    private fun showVenueExposureNotification(context: Context) {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -124,15 +115,15 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
             )
 
         val message = labelManager.getFormattedText(
-            "VENUE_RECORD_NOTIFICATION_REMINDER_BODY",
+            "VENUE_EXPOSURE_NOTIFICATION_BODY",
             labelManager.getContactPhone()
-        ).default(context.getString(R.string.venue_record_notification_reminder_body))
+        ).default(context.getString(R.string.venue_exposure_notification_body))
 
         val notification =
             NotificationCompat.Builder(context, context.packageName)
                 .setContentTitle(
                     labelManager.getFormattedText(
-                        "VENUE_RECORD_NOTIFICATION_REMINDER_TITLE",
+                        "NOTIFICATION_TITLE_EXPOSURE_HIGH",
                         labelManager.getContactPhone()
                     ).default(context.getString(R.string.venue_record_notification_reminder_title))
                 )
@@ -148,7 +139,7 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
                 .build()
 
         notificationManager.notify(
-            NOTIFICATION_REMINDER_ID,
+            NOTIFICATION_VENUE_EXPOSURE_ID,
             notification
         )
     }

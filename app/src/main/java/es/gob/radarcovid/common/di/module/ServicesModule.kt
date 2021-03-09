@@ -43,4 +43,8 @@ abstract class ServicesModule {
     @ContributesAndroidInjector
     abstract fun bindsVenueRecordWorker(): VenueRecordWorker
 
+    @PerService
+    @ContributesAndroidInjector
+    abstract fun bindsVenueMatcherWorker(): VenueMatcherWorker
+
 }

@@ -503,5 +503,6 @@
 
     <string name="venue_record_notification_reminder_title">Recordatorio de registro en marcha</string>
     <string name="venue_record_notification_reminder_body">¿Deseas confirmar la salida el lugar visitado?</string>
+    <string name="venue_exposure_notification_body">Se ha detectado un contagio masivo de COVID-19 en un lugar que has visitado</string>
 
 </resources>

@@ -66,7 +66,7 @@ class VenueRecordUseCase @Inject constructor(
                     val venueInfo = getVenueInfo(currentVenue.qr)
 
                     currentVenue.dateOut = dateOut
-                    crowdNotifierRepository.checkInMock(
+                    currentVenue.checkOutId = crowdNotifierRepository.checkInMock(
                         currentVenue.dateIn.time,
                         currentVenue.dateOut!!.time,
                         venueInfo

@@ -13,6 +13,8 @@ package es.gob.radarcovid.datamanager.repository
 import android.content.Context
 import es.gob.radarcovid.BuildConfig
 import org.crowdnotifier.android.sdk.CrowdNotifier
+import org.crowdnotifier.android.sdk.model.ExposureEvent
+import org.crowdnotifier.android.sdk.model.ProblematicEventInfo
 import org.crowdnotifier.android.sdk.model.Qr
 import org.crowdnotifier.android.sdk.model.VenueInfo
 import javax.inject.Inject
@@ -45,4 +47,12 @@ class CrowdNotifierRepositoryImpl @Inject constructor(
         venueInfo: VenueInfo
     ): Long = 0L
 
+    override fun checkForMatches(problematicEvents: List<ProblematicEventInfo>): List<ExposureEvent> =
+        CrowdNotifier.checkForMatches(
+            problematicEvents,
+            context
+        )
+
+    override fun cleanOldData(days: Int) =
+        CrowdNotifier.cleanUpOldData(context, days)
 }

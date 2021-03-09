@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.datamanager.repository
 
+import org.crowdnotifier.android.sdk.model.ExposureEvent
+import org.crowdnotifier.android.sdk.model.ProblematicEventInfo
 import org.crowdnotifier.android.sdk.model.VenueInfo
 
 interface CrowdNotifierRepository {
@@ -21,5 +23,9 @@ interface CrowdNotifierRepository {
     fun checkIn(arrivalTime: Long, departureTime: Long, venueInfo: VenueInfo): Long
 
     fun checkInMock(arrivalTime: Long, departureTime: Long, venueInfo: VenueInfo): Long
+
+    fun checkForMatches(problematicEvents: List<ProblematicEventInfo>): List<ExposureEvent>
+
+    fun cleanOldData(days: Int)
 
 }
