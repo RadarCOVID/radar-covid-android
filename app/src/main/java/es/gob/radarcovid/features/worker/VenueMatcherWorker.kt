@@ -19,18 +19,19 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.work.*
 import dagger.android.HasAndroidInjector
+import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.Constants
-import es.gob.radarcovid.common.base.events.BUS
-import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.datamanager.usecase.VenueMatcherUseCase
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import es.gob.radarcovid.features.splash.view.SplashActivity
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+
 
 class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
@@ -43,11 +44,17 @@ class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
 
     companion object {
 
+        const val ACTION_NEW_VENUE_EXPOSURE_NOTIFICATION =
+            "${BuildConfig.APPLICATION_ID}.ACTION_NEW_VENUE_EXPOSURE_NOTIFICATION"
         const val NOTIFICATION_VENUE_EXPOSURE_ID = 4
         private const val TAG = "VenueMatcherWorker"
         private const val KEY_DELAY = "KEY_DELAY"
 
         fun set(context: Context, minutesToNotify: Int) {
+            set(context, minutesToNotify, ExistingWorkPolicy.KEEP)
+        }
+
+        fun set(context: Context, minutesToNotify: Int, existingWorkPolicy: ExistingWorkPolicy) {
             val work = OneTimeWorkRequest
                 .Builder(VenueMatcherWorker::class.java)
                 .setInitialDelay(minutesToNotify.toLong(), TimeUnit.MINUTES)
@@ -57,7 +64,7 @@ class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
                 .addTag(TAG)
                 .build()
             WorkManager.getInstance(context)
-                .enqueueUniqueWork(TAG, ExistingWorkPolicy.REPLACE, work)
+                .enqueueUniqueWork(TAG, existingWorkPolicy, work)
         }
 
         fun cancel(context: Context) {
@@ -78,13 +85,24 @@ class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
             Constants.NOTIFICATION_REMINDER_DEFAULT
         )
 
-        val exposureEvents = venueMatcherUseCase.checkForMatches()
-        if (!exposureEvents.isNullOrEmpty()) {
-            showVenueExposureNotification(applicationContext)
-            BUS.post(EventExposureStatusChange())
+        val exposureVenues = venueMatcherUseCase.checkForMatches()
+        if (!exposureVenues.isNullOrEmpty()) {
+            exposureVenues.firstOrNull { !it.isNotified }?.let {
+                showVenueExposureNotification(applicationContext)
+                venueMatcherUseCase.setVenueNotified()
+            }
+            //get last exposed venue
+            venueMatcherUseCase.setVenueExposureInfo(exposureVenues.last())
+            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(
+                Intent(
+                    ACTION_NEW_VENUE_EXPOSURE_NOTIFICATION
+                )
+            )
+        } else {
+            venueMatcherUseCase.setVenueExposureInfo(null)
         }
 
-        set(applicationContext, delayMinutes)
+        set(applicationContext, delayMinutes, ExistingWorkPolicy.REPLACE)
 
         return Result.success()
     }

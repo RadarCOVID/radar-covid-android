@@ -30,6 +30,10 @@ interface MainView : RequestView {
 
     fun updateVenueIcon(isVenueRecordSelected: Boolean)
 
+    fun startVenueMatcherWorker(time: Int)
+
+    fun cancelVenueMatcherWorker()
+
 }
 
 interface MainPresenter {

@@ -98,6 +98,15 @@ class LabelManager @Inject constructor(
         return HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
+    fun getVenueExposureHighDatesText(
+        date: String,
+        daysElapsed: Int?
+    ): Spanned {
+        val text = getFormattedText("VENUE_EXPOSITION_HIGH_DESCRIPTION", daysElapsed.toString(), date)
+            .default(context.getString(R.string.venue_exposure_high_detail_description, daysElapsed.toString(), date))
+        return HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
+    }
+
     fun getFormattedText(labelId: String, vararg values: String): String {
         var text: String = labels[labelId] ?: ""
         return if (text.isNotEmpty()) {

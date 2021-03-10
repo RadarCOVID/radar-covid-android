@@ -249,4 +249,5 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
 
     override fun isApplicationActive(): Boolean =
         preferences.getBoolean(KEY_APP_ACTIVE, false)
+
 }

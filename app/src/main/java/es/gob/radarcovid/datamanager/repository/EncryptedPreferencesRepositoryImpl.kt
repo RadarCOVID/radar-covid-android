@@ -13,8 +13,10 @@ package es.gob.radarcovid.datamanager.repository
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import es.gob.radarcovid.common.extensions.addDays
 import es.gob.radarcovid.common.extensions.toJson
 import es.gob.radarcovid.models.domain.VenueRecord
+import java.util.*
 import javax.inject.Inject
 
 class EncryptedPreferencesRepositoryImpl @Inject constructor(
@@ -24,45 +26,8 @@ class EncryptedPreferencesRepositoryImpl @Inject constructor(
     companion object {
         private const val KEY_CURRENT_VENUE_RECORD = "key_current_venue_record"
         private const val KEY_LIST_VENUE_RECORD = "key_list_venue_record"
+        private const val KEY_VENUE_EXPOSURE_INFO = "key_venue_exposure_info"
     }
-
-
-//    private var sharedPreferences: SharedPreferences? = null
-//
-//    private fun encryptedPreferences(context: Context): SharedPreferences? {
-//        try {
-//
-//            if (sharedPreferences == null) {
-//                val keyGenParameterSpec = KeyGenParameterSpec.Builder(
-//                    MasterKey.DEFAULT_MASTER_KEY_ALIAS,
-//                    KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-//                ).setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-//                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-//                    .setKeySize(KEY_SIZE)
-//                    .build()
-//
-//                val masterKeyAlias = MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
-//                    .setKeyGenParameterSpec(keyGenParameterSpec)
-//                    .build()
-//
-//                sharedPreferences = EncryptedSharedPreferences.create(
-//                    context,
-//                    ENCRYPTED_PREFERENCES_NAME,
-//                    masterKeyAlias,
-//                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-//                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-//
-//                )
-//            }
-//
-//            return sharedPreferences!!
-//
-//        } catch (ex: Exception) {
-//            return null
-//        }
-//    }
-//
-//    private val preferences = encryptedPreferences(context)
 
     private fun saveToPrefs(key: String, data: String) {
         encryptedSharedPreferences?.edit()?.putString(key, data)?.apply()
@@ -106,4 +71,37 @@ class EncryptedPreferencesRepositoryImpl @Inject constructor(
     override fun setVisitedVenue(venues: List<VenueRecord>) {
         saveToPrefs(KEY_LIST_VENUE_RECORD, venues.toJson())
     }
+
+    override fun cleanVisitedVenue(maxDaysToKeep: Int) {
+        val venueList = getVisitedVenue().toMutableList()
+        if (venueList.isNotEmpty()) {
+            val lastDateToKeep = Date().addDays(maxDaysToKeep)
+            venueList.removeAll {
+                it.dateOut?.before(lastDateToKeep) == true
+            }
+            setVisitedVenue(venueList)
+        }
+    }
+
+    override fun setVenueExposureInfo(venue: VenueRecord?) {
+        if (venue != null)
+            saveToPrefs(KEY_VENUE_EXPOSURE_INFO, venue.toJson())
+        else
+            removeFromPrefs(KEY_VENUE_EXPOSURE_INFO)
+    }
+
+    override fun getVenueExposureInfo(): VenueRecord? {
+        val venueString = getFromPreferences(KEY_VENUE_EXPOSURE_INFO)
+        return if (venueString != null) {
+            val itemType = object : TypeToken<VenueRecord>() {}.type
+            Gson().fromJson(
+                venueString,
+                itemType
+            )
+        } else {
+            return null
+        }
+
+    }
+
 }

@@ -10,16 +10,19 @@
 
 package es.gob.radarcovid
 
+import android.content.IntentFilter
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import es.gob.radarcovid.common.base.broadcast.ExposureStatusChangeBroadcastReceiver
 import es.gob.radarcovid.common.di.component.DaggerApplicationComponent
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.features.worker.FakeInfectionReportWorker
+import es.gob.radarcovid.features.worker.VenueMatcherWorker
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import okhttp3.CertificatePinner
 import org.dpppt.android.sdk.DP3T
@@ -60,6 +63,10 @@ class RadarCovidApplication : DaggerApplication(), LifecycleObserver {
         FakeInfectionReportWorker.start(this, preferencesRepository)
 
         registerReceiver(ExposureStatusChangeBroadcastReceiver(), DP3T.getUpdateIntentFilter())
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+            ExposureStatusChangeBroadcastReceiver(),
+            IntentFilter(VenueMatcherWorker.ACTION_NEW_VENUE_EXPOSURE_NOTIFICATION)
+        )
 
     }
 

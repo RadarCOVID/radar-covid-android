@@ -14,6 +14,7 @@ import es.gob.radarcovid.datamanager.usecase.*
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.main.protocols.MainView
+import es.gob.radarcovid.models.domain.ExposureInfo
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
@@ -26,7 +27,8 @@ class MainPresenterImpl @Inject constructor(
     private val getReminderTimeUseCase: GetReminderTimeUseCase,
     private val sendAnalyticsUseCase: SendAnalyticsUseCase,
     private val getLocaleInfoUseCase: GetLocaleInfoUseCase,
-    private val venueRecordUseCase: VenueRecordUseCase
+    private val venueRecordUseCase: VenueRecordUseCase,
+    private val exposureInfoUseCase: ExposureInfoUseCase
 ) : MainPresenter {
 
     override fun viewReady(activateRadar: Boolean) {
@@ -36,10 +38,17 @@ class MainPresenterImpl @Inject constructor(
             getLocaleInfoUseCase.resetLanguageChanged()
             view.setSettingSelected()
             router.navigateToSettings()
-        }else if (venueRecordUseCase.isCurrentVenue()) {
+        } else if (venueRecordUseCase.isCurrentVenue()) {
             router.navigateToVenueRecord(true)
         } else {
             router.navigateToHome(activateRadar, false)
+        }
+
+        //Start QR matcher worker only if no infected
+        if (exposureInfoUseCase.getExposureInfo().level != ExposureInfo.Level.INFECTED) {
+            view.startVenueMatcherWorker(1)
+        } else {
+            view.cancelVenueMatcherWorker()
         }
     }
 

@@ -12,12 +12,13 @@ package es.gob.radarcovid.models.domain
 
 import java.util.*
 
-data class VenueRecord (
+data class VenueRecord(
     var qr: String,
     var checkOutId: Long? = null,
     var name: String? = null,
     var isExposed: Boolean = false,
     var hidden: Boolean = false,
     var dateIn: Date,
-    var dateOut: Date? = null
+    var dateOut: Date? = null,
+    var isNotified: Boolean = false
 )

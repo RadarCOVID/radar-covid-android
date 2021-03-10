@@ -92,4 +92,5 @@ interface PreferencesRepository {
     fun setApplicationActive(active: Boolean)
 
     fun isApplicationActive(): Boolean
+
 }

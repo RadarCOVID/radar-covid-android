@@ -22,6 +22,7 @@ import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainView
 import es.gob.radarcovid.features.worker.AnalyticsWorker
 import es.gob.radarcovid.features.worker.ReminderWorker
+import es.gob.radarcovid.features.worker.VenueMatcherWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
@@ -160,6 +161,14 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun startAnalyticsWorker(time: Int) {
         AnalyticsWorker.start(this, time)
+    }
+
+    override fun startVenueMatcherWorker(time: Int) {
+        VenueMatcherWorker.set(this, time)
+    }
+
+    override fun cancelVenueMatcherWorker() {
+        VenueMatcherWorker.cancel(this)
     }
 
     override fun createNotificationReminder(time: Int) {

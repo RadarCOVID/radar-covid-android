@@ -22,7 +22,7 @@ class HomeRouterImpl @Inject constructor(
     private val context: Context
 ) : HomeRouter {
 
-    override fun navigateToExpositionDetail() = ExposureActivity.open(context)
+    override fun navigateToExpositionDetail(venueExposure: Boolean) = ExposureActivity.open(context, venueExposure)
 
     override fun navigateToCovidReport() = CovidReportActivity.open(context, null)
 

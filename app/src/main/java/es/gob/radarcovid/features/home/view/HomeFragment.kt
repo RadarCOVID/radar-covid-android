@@ -119,6 +119,9 @@ class HomeFragment : BaseFragment(), HomeView {
         wrapperExposure.setSafeOnClickListener { presenter.onExposureBlockClick() }
         textViewExpositionTitle.setSafeOnClickListener { presenter.onExposureBlockClick() }
 
+        wrapperVenueExposure.setSafeOnClickListener { presenter.onVenueExposureBlockClick() }
+        textViewVenueExpositionTitle.setSafeOnClickListener { presenter.onVenueExposureBlockClick() }
+
         buttonCovidReport.setSafeOnClickListener { presenter.onReportButtonClick() }
 
         buttonShare.setSafeOnClickListener { presenter.onButtonShareClick() }
@@ -143,7 +146,34 @@ class HomeFragment : BaseFragment(), HomeView {
         }.start()
     }
 
+    override fun showVenueExposureBlock(daysToHeal: Int, hideExposureBlock: Boolean) {
+        wrapperVenueExposure.visibility = View.VISIBLE
+        wrapperExposure.visibility = if (hideExposureBlock) View.GONE else View.VISIBLE
+        wrapperVenueExposure.setBackgroundResource(R.drawable.background_shape_exposure_high)
+        textViewVenueExpositionTitle.text =
+            labelManager.getText("HOME_EXPOSITION_TITLE_HIGH", R.string.exposition_block_high_title)
+        textViewVenueExpositionDescription.text =
+            labelManager.getFormattedText(
+                "HOME_VENUE_EXPOSITION_MESSAGE_HIGH",
+                labelManager.getContactPhone()
+            ).default(getString(R.string.venue_exposure_block_high_description)).parseHtml()
+
+        if (daysToHeal >= 0) {
+            val labelId =
+                if (daysToHeal == 1) "HOME_EXPOSITION_COUNT_ONE_DAY" else "HOME_EXPOSITION_COUNT_ANYMORE"
+            textViewVenueExpositionCount.text =
+                labelManager.getFormattedText(labelId, daysToHeal.toString())
+                    .default(getString(R.string.exposition_block_high_count)).parseHtml()
+            textViewVenueExpositionCount.visibility = View.VISIBLE
+        } else {
+            textViewVenueExpositionCount.visibility = View.INVISIBLE
+        }
+    }
+
     override fun showExposureBlockLow() {
+        wrapperExposure.visibility = View.VISIBLE
+        wrapperVenueExposure.visibility = View.GONE
+        imageViewRisk.visibility = View.GONE
         wrapperExposure.setBackgroundResource(R.drawable.background_shape_expure_low)
         textViewExpositionTitle.text =
             labelManager.getText("HOME_EXPOSITION_TITLE_LOW", R.string.exposition_block_low_title)
@@ -156,7 +186,10 @@ class HomeFragment : BaseFragment(), HomeView {
         textViewExpositionCount.visibility = View.INVISIBLE
     }
 
-    override fun showExposureBlockHigh(daysToHeal: Int) {
+    override fun showExposureBlockHigh(daysToHeal: Int, hideVenueExposureBlock: Boolean) {
+        wrapperExposure.visibility = View.VISIBLE
+        wrapperVenueExposure.visibility = if (hideVenueExposureBlock) View.GONE else View.VISIBLE
+        imageViewRisk.visibility = View.VISIBLE
         wrapperExposure.setBackgroundResource(R.drawable.background_shape_exposure_high)
         textViewExpositionTitle.text =
             labelManager.getText("HOME_EXPOSITION_TITLE_HIGH", R.string.exposition_block_high_title)
@@ -181,6 +214,9 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     override fun showExposureBlockInfected() {
+        wrapperExposure.visibility = View.VISIBLE
+        wrapperVenueExposure.visibility = View.GONE
+        imageViewRisk.visibility = View.GONE
         wrapperExposure.setBackgroundResource(R.drawable.background_shape_exposure_infected)
         textViewExpositionTitle.text = labelManager.getText(
             "HOME_EXPOSITION_TITLE_POSITIVE",
