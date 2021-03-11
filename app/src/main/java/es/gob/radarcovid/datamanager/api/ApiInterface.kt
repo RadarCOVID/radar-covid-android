@@ -13,6 +13,7 @@ package es.gob.radarcovid.datamanager.api
 import es.gob.radarcovid.models.request.RequestKpi
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -74,4 +75,9 @@ interface ApiInterface {
         @Body body: RequestKpi
     ): Call<String>
 
+    @Headers("Accept: application/x-protobuf")
+    @GET("/notifyme/v1/traceKeys ")
+    fun getTraceKeys(
+        @Query("keyBundleTag") keyBundleTag: Long
+    ): Call<ResponseBody>
 }

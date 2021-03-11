@@ -12,6 +12,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.protobuf'
 
 android {
     compileSdkVersion 29
@@ -202,6 +203,28 @@ def loadCredential(String environmentVariableName, String propertyName) {
         return credential
 }
 
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.0.0'
+    }
+    plugins {
+        javalite {
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove javanone
+            }
+            task.plugins {
+                javalite {}
+            }
+        }
+    }
+}
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     // The google exposure library, required for DP3T, is resolved by the aar located in libs folder
@@ -278,7 +301,6 @@ dependencies {
 
     //CrowdNotifier
     implementation 'org.crowdnotifier:crowdnotifier-sdk-android:2.1.0'
-    //TODO eliminar al quitar los mocks
     implementation 'com.google.protobuf:protobuf-lite:3.0.1'
 
 }

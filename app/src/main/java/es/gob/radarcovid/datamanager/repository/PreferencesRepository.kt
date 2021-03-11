@@ -93,4 +93,8 @@ interface PreferencesRepository {
 
     fun isApplicationActive(): Boolean
 
+    fun setLastKeyBundleTag(keyBundleTag: Long)
+
+    fun getLastKeyBundleTag(): Long
+
 }

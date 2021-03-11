@@ -11,18 +11,30 @@
 package es.gob.radarcovid.datamanager.usecase
 
 import es.gob.radarcovid.common.extensions.addHours
+import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.CrowdNotifierRepository
 import es.gob.radarcovid.datamanager.repository.EncryptedPreferencesRepository
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
+import es.gob.radarcovid.models.domain.ProblematicEventOuterClass
 import es.gob.radarcovid.models.domain.VenueRecord
+import okhttp3.ResponseBody
 import org.crowdnotifier.android.sdk.model.ExposureEvent
 import org.crowdnotifier.android.sdk.model.ProblematicEventInfo
+import retrofit2.Response
+import java.io.IOException
 import java.util.*
 import javax.inject.Inject
 
 class VenueMatcherUseCase @Inject constructor(
     private val crowdNotifierRepository: CrowdNotifierRepository,
-    private val encryptedPreferencesRepository: EncryptedPreferencesRepository
+    private val encryptedPreferencesRepository: EncryptedPreferencesRepository,
+    private val preferencesRepository: PreferencesRepository,
+    private val apiRepository: ApiRepository
 ) {
+
+    companion object {
+        private const val KEY_BUNDLE_TAG_HEADER = "x-key-bundle-tag"
+    }
 
     fun setVenueExposureInfo(venue: VenueRecord?) =
         encryptedPreferencesRepository.setVenueExposureInfo(venue)
@@ -37,9 +49,9 @@ class VenueMatcherUseCase @Inject constructor(
 
     fun checkForMatches(): List<VenueRecord> {
         //Call to backend to get problematics events
-        //TODO: falta llamada a backend
-        val problematicEvents: List<ProblematicEventInfo> = emptyList()
+        val problematicEvents = getTraceKeys(preferencesRepository.getLastKeyBundleTag())
 
+        //Check for matches
         val exposures = crowdNotifierRepository.checkForMatches(problematicEvents)
         //val exposures = getExposureEventsMock()
 
@@ -67,6 +79,47 @@ class VenueMatcherUseCase @Inject constructor(
     private fun cleanUpOldData() {
         crowdNotifierRepository.cleanOldData(14)
         encryptedPreferencesRepository.cleanVisitedVenue(14)
+    }
+
+    private fun getTraceKeys(keyBundleTag: Long): List<ProblematicEventInfo> {
+        try {
+            val response = apiRepository.getTraceKeys(keyBundleTag)
+            if (response.isSuccessful) {
+                return handleSuccessfulResponse(response)
+            }
+        } catch (e: IOException) {
+            return emptyList()
+        }
+        return emptyList()
+    }
+
+    private fun handleSuccessfulResponse(response: Response<ResponseBody>): List<ProblematicEventInfo> {
+        return try {
+            val keyBundleTag =
+                response.headers()[KEY_BUNDLE_TAG_HEADER]!!
+                    .toLong()
+            preferencesRepository.setLastKeyBundleTag(keyBundleTag)
+            val problematicEventWrapper: ProblematicEventOuterClass.ProblematicEventWrapper =
+                ProblematicEventOuterClass.ProblematicEventWrapper.parseFrom(
+                    response.body()!!.byteStream()
+                )
+            val problematicEventInfos = ArrayList<ProblematicEventInfo>()
+            for (event in problematicEventWrapper.eventsList) {
+                problematicEventInfos.add(
+                    ProblematicEventInfo(
+                        event.identity.toByteArray(),
+                        event.secretKeyForIdentity.toByteArray(),
+                        event.startTime,
+                        event.endTime,
+                        event.message.toByteArray(),
+                        event.nonce.toByteArray()
+                    )
+                )
+            }
+            problematicEventInfos
+        } catch (e: IOException) {
+            return emptyList()
+        }
     }
 
     private fun getExposureEventsMock(): List<ExposureEvent> {

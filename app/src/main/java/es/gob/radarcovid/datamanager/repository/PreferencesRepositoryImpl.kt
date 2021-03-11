@@ -47,6 +47,7 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_LANGUAGE_CHANGED = "key_language_changed"
         private const val KEY_RECORD_IN_PROGRESS = "key_record_in_progress"
         private const val KEY_APP_ACTIVE = "key_app_active"
+        private const val KEY_KEY_BUNDLE_TAG = "key_bundle_tag"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -250,4 +251,10 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
     override fun isApplicationActive(): Boolean =
         preferences.getBoolean(KEY_APP_ACTIVE, false)
 
+    override fun setLastKeyBundleTag(keyBundleTag: Long) {
+        preferences.edit().putLong(KEY_KEY_BUNDLE_TAG, keyBundleTag).apply()
+    }
+
+    override fun getLastKeyBundleTag(): Long =
+        preferences.getLong(KEY_KEY_BUNDLE_TAG, 0L)
 }
