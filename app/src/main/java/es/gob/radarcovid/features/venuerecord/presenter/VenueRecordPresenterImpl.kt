@@ -12,6 +12,7 @@ package es.gob.radarcovid.features.venuerecord.presenter
 
 import es.gob.radarcovid.common.extensions.addHours
 import es.gob.radarcovid.common.extensions.addMinutes
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
 import es.gob.radarcovid.features.venuerecord.pages.checkout.presenter.VenueTimeOut
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
@@ -23,7 +24,8 @@ import javax.inject.Inject
 
 class VenueRecordPresenterImpl @Inject constructor(
     private val view: VenueRecordView,
-    private val venueRecordUseCase: VenueRecordUseCase
+    private val venueRecordUseCase: VenueRecordUseCase,
+    private val preferencesRepository: PreferencesRepository
 ) : VenueRecordPresenter {
 
     companion object {
@@ -125,7 +127,7 @@ class VenueRecordPresenterImpl @Inject constructor(
     }
 
     private fun onCheckInSuccess() {
-        view.startVenueRecordWorker()
+        view.startVenueRecordWorker(preferencesRepository.getRecordNotificationTime())
         view.showFragment(CHECK_IN_FRAGMENT)
     }
 
@@ -154,7 +156,7 @@ class VenueRecordPresenterImpl @Inject constructor(
             if (hours > 5) currentVenue?.dateIn?.addMinutes(hours)
             else currentVenue?.dateIn?.addHours(hours)
 
-        venueRecordUseCase.checkOut(dateOut?: Date())
+        venueRecordUseCase.checkOut(dateOut ?: Date())
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

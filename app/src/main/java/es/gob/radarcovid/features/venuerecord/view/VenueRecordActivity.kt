@@ -21,11 +21,11 @@ import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.view.CommonDialog
 import es.gob.radarcovid.features.qrcodescan.view.QRScanActivity
-import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.view.ConfirmRecordFragment
-import es.gob.radarcovid.features.venuerecord.pages.checkout.view.CheckOutFragment
-import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.view.ErrorCapturedCodeFragment
 import es.gob.radarcovid.features.venuerecord.pages.checkin.view.CheckInFragment
 import es.gob.radarcovid.features.venuerecord.pages.checkout.presenter.VenueTimeOut
+import es.gob.radarcovid.features.venuerecord.pages.checkout.view.CheckOutFragment
+import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.view.ConfirmRecordFragment
+import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.view.ErrorCapturedCodeFragment
 import es.gob.radarcovid.features.venuerecord.pages.recordsuccess.view.RecordSuccessFragment
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
@@ -175,8 +175,8 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
     override fun setVenueTimeOut(venueTimeOut: VenueTimeOut) =
         presenter.setVenueTimeOut(venueTimeOut)
 
-    override fun startVenueRecordWorker() {
-        VenueRecordWorker.set(this, 1)
+    override fun startVenueRecordWorker(notificationTime: Int) {
+        VenueRecordWorker.set(this, notificationTime)
     }
 
     override fun cancelVenueRecordWorker() {

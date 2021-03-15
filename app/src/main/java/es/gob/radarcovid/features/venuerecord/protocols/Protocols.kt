@@ -23,7 +23,7 @@ interface VenueRecordView : RequestView {
 
     fun exit()
 
-    fun startVenueRecordWorker()
+    fun startVenueRecordWorker(notificationTime: Int)
 
     fun cancelVenueRecordWorker()
 

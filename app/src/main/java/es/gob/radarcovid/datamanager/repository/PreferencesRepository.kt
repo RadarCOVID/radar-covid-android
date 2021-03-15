@@ -97,4 +97,20 @@ interface PreferencesRepository {
 
     fun getLastKeyBundleTag(): Long
 
+    fun setRecordNotificationTime(time: Int)
+
+    fun getRecordNotificationTime(): Int
+
+    fun setAutoCheckoutTime(time: Int)
+
+    fun getAutoCheckoutTime(): Int
+
+    fun setTroubledPlaceCheckTime(time: Int)
+
+    fun getTroubledPlaceCheckTime(): Int
+
+    fun setQuarantineAfterVenueExposedTime(time: Int)
+
+    fun getQuarantineAfterVenueExposedTime(): Int
+
 }

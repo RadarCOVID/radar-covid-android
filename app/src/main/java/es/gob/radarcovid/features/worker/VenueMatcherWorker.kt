@@ -50,16 +50,16 @@ class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
         private const val TAG = "VenueMatcherWorker"
         private const val KEY_DELAY = "KEY_DELAY"
 
-        fun set(context: Context, minutesToNotify: Int) {
-            set(context, minutesToNotify, ExistingWorkPolicy.KEEP)
+        fun set(context: Context, delayMinutes: Int) {
+            set(context, delayMinutes, ExistingWorkPolicy.KEEP)
         }
 
-        fun set(context: Context, minutesToNotify: Int, existingWorkPolicy: ExistingWorkPolicy) {
+        fun set(context: Context, delayMinutes: Int, existingWorkPolicy: ExistingWorkPolicy) {
             val work = OneTimeWorkRequest
                 .Builder(VenueMatcherWorker::class.java)
-                .setInitialDelay(minutesToNotify.toLong(), TimeUnit.MINUTES)
+                .setInitialDelay(delayMinutes.toLong(), TimeUnit.MINUTES)
                 .setInputData(
-                    Data.Builder().putInt(KEY_DELAY, minutesToNotify).build()
+                    Data.Builder().putInt(KEY_DELAY, delayMinutes).build()
                 )
                 .addTag(TAG)
                 .build()
@@ -93,14 +93,16 @@ class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
             }
             //get last exposed venue
             venueMatcherUseCase.setVenueExposureInfo(exposureVenues.last())
-            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(
-                Intent(
-                    ACTION_NEW_VENUE_EXPOSURE_NOTIFICATION
-                )
-            )
         } else {
             venueMatcherUseCase.setVenueExposureInfo(null)
         }
+
+        //Update views state
+        LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(
+            Intent(
+                ACTION_NEW_VENUE_EXPOSURE_NOTIFICATION
+            )
+        )
 
         set(applicationContext, delayMinutes, ExistingWorkPolicy.REPLACE)
 

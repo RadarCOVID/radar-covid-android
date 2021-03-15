@@ -14,6 +14,7 @@ import com.squareup.otto.Subscribe
 import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.common.extensions.format
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
 import es.gob.radarcovid.datamanager.usecase.GetHealingTimeUseCase
 import es.gob.radarcovid.datamanager.usecase.VenueMatcherUseCase
@@ -31,7 +32,8 @@ class ExposurePresenterImpl @Inject constructor(
     private val router: ExposureRouter,
     private val exposureInfoUseCase: ExposureInfoUseCase,
     private val getHealingTimeUseCase: GetHealingTimeUseCase,
-    private val venueMatcherUseCase: VenueMatcherUseCase
+    private val venueMatcherUseCase: VenueMatcherUseCase,
+    private val preferencesRepository: PreferencesRepository
 ) : ExposurePresenter {
 
     override fun viewReady() {
@@ -145,7 +147,7 @@ class ExposurePresenterImpl @Inject constructor(
         val millisElapsed = System.currentTimeMillis() - exposureVenue.dateOut!!.time
         val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
         val daysToHeal =
-            getHealingTimeUseCase.getHealingTime().exposureHighMinutes / 60 / 24
+            preferencesRepository.getQuarantineAfterVenueExposedTime() / 60 / 24
         val daysLeft = daysToHeal - daysElapsed
 
         view.setVenueExposureInfo(

@@ -88,7 +88,7 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
         val minutesElapsed =
             TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
 
-        if (minutesElapsed >= 1 && !preferencesRepository.isApplicationActive()) {
+        if (minutesElapsed > preferencesRepository.getAutoCheckoutTime() && !preferencesRepository.isApplicationActive()) {
             //Auto checkout only if app is in background
             venueRecordUseCase.checkOut(Date()).blockingAwait()
         } else {

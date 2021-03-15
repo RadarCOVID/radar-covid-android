@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.features.main.presenter
 
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.*
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainRouter
@@ -28,7 +29,8 @@ class MainPresenterImpl @Inject constructor(
     private val sendAnalyticsUseCase: SendAnalyticsUseCase,
     private val getLocaleInfoUseCase: GetLocaleInfoUseCase,
     private val venueRecordUseCase: VenueRecordUseCase,
-    private val exposureInfoUseCase: ExposureInfoUseCase
+    private val exposureInfoUseCase: ExposureInfoUseCase,
+    private val preferencesRepository: PreferencesRepository
 ) : MainPresenter {
 
     override fun viewReady(activateRadar: Boolean) {
@@ -46,7 +48,7 @@ class MainPresenterImpl @Inject constructor(
 
         //Start QR matcher worker only if no infected
         if (exposureInfoUseCase.getExposureInfo().level != ExposureInfo.Level.INFECTED) {
-            view.startVenueMatcherWorker(1)
+            view.startVenueMatcherWorker(preferencesRepository.getTroubledPlaceCheckTime())
         } else {
             view.cancelVenueMatcherWorker()
         }

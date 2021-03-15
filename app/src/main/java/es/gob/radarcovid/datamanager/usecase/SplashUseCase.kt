@@ -83,6 +83,11 @@ class SplashUseCase @Inject constructor(
 
                         contactTracingRepository.updateTracingSettings(initializationData.settings)
 
+                        preferencesRepository.setRecordNotificationTime(initializationData.settings.venueConfiguration.recordNotification)
+                        preferencesRepository.setAutoCheckoutTime(initializationData.settings.venueConfiguration.autoCheckout)
+                        preferencesRepository.setTroubledPlaceCheckTime(initializationData.settings.venueConfiguration.troubledPlaceCheck)
+                        preferencesRepository.setQuarantineAfterVenueExposedTime(initializationData.settings.venueConfiguration.quarentineAfterExposed)
+
                         initializationData
 
                     }

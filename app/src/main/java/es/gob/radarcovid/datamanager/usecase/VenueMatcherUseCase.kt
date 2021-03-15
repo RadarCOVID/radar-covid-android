@@ -77,8 +77,8 @@ class VenueMatcherUseCase @Inject constructor(
     }
 
     private fun cleanUpOldData() {
-        crowdNotifierRepository.cleanOldData(14)
-        encryptedPreferencesRepository.cleanVisitedVenue(14)
+        crowdNotifierRepository.cleanOldData(preferencesRepository.getQuarantineAfterVenueExposedTime())
+        encryptedPreferencesRepository.cleanVisitedVenue(preferencesRepository.getQuarantineAfterVenueExposedTime())
     }
 
     private fun getTraceKeys(keyBundleTag: Long): List<ProblematicEventInfo> {
