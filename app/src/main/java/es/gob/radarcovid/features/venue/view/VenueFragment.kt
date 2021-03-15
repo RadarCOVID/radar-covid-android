@@ -15,6 +15,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.setSafeOnClickListener
@@ -54,6 +57,7 @@ class VenueFragment : BaseFragment(), VenueView {
 
     private fun initViews() {
         buttonVenueRecord.setSafeOnClickListener { presenter.onRecordButtonClick() }
+        buttonPlaces.setSafeOnClickListener { presenter.onButtonPlacesClick() }
     }
 
     private fun setAccessibilityFocus() {
@@ -65,5 +69,46 @@ class VenueFragment : BaseFragment(), VenueView {
                     textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
                 }
             }, 3000)
+    }
+
+    override fun authenticateAndShowPlaces() {
+        val executor = ContextCompat.getMainExecutor(context)
+        val biometricPrompt = BiometricPrompt(requireActivity(), executor,
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    presenter.showPlaces()
+                }
+            })
+
+        if (BiometricManager.from(requireContext())
+                .canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL) == BiometricManager.BIOMETRIC_SUCCESS
+        ) {
+            val title = labelManager.getText(
+                "VENUE_BIOMETRIC_PROMPT_TITLE",
+                R.string.venue_biometric_prompt_tittle
+            )
+            val message = labelManager.getText(
+                "VENUE_BIOMETRIC_PROMPT_MESSAGE",
+                R.string.venue_biometric_prompt_message
+            )
+
+            biometricPrompt.authenticate(
+                BiometricPrompt.PromptInfo.Builder()
+                    .setTitle(title)
+                    //.setSubtitle(message)
+                    .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
+                    .build()
+            )
+        } else {
+            presenter.showPlaces()
+            // Prompts the user to create credentials that your app accepts.
+//            val enrollIntent = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+//                Intent(android.provider.Settings.ACTION_FINGERPRINT_ENROLL)
+//            } else {
+//                Intent(android.provider.Settings.ACTION_SECURITY_SETTINGS)
+//            }
+//            startActivityForResult(enrollIntent, 0)
+        }
     }
 }

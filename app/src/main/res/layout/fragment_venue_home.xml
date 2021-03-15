@@ -120,10 +120,10 @@
         app:labelId="VENUE_HOME_BUTTON_START"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/buttonPlacesRecord"/>
+        app:layout_constraintEnd_toStartOf="@id/buttonPlaces"/>
 
         <es.gob.radarcovid.common.view.LabelImageButton
-            android:id="@+id/buttonPlacesRecord"
+            android:id="@+id/buttonPlaces"
             style="@style/ButtonSecondary"
             android:layout_width="60dp"
             android:layout_height="60dp"

@@ -303,4 +303,7 @@ dependencies {
     implementation 'org.crowdnotifier:crowdnotifier-sdk-android:2.1.0'
     implementation 'com.google.protobuf:protobuf-lite:3.0.1'
 
+    //Biometrics
+    implementation "androidx.biometric:biometric-ktx:1.2.0-alpha03"
+
 }

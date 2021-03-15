@@ -75,6 +75,9 @@
         <activity
             android:name=".features.venuerecord.view.VenueRecordActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.venuevisited.view.VenueVisitedActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

@@ -13,6 +13,7 @@ package es.gob.radarcovid.features.venue.router
 import android.content.Context
 import es.gob.radarcovid.features.venue.protocols.VenueRouter
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
+import es.gob.radarcovid.features.venuevisited.view.VenueVisitedActivity
 import javax.inject.Inject
 
 class VenueRouterImpl @Inject constructor(
@@ -23,4 +24,7 @@ class VenueRouterImpl @Inject constructor(
         VenueRecordActivity.open(context)
     }
 
+    override fun navigateToVenuePlaces() {
+        VenueVisitedActivity.open(context)
+    }
 }

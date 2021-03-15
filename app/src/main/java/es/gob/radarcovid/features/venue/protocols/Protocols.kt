@@ -12,14 +12,21 @@ package es.gob.radarcovid.features.venue.protocols
 
 interface VenueView {
 
+    fun authenticateAndShowPlaces()
 }
 
 interface VenuePresenter {
 
     fun onRecordButtonClick()
+
+    fun onButtonPlacesClick()
+
+    fun showPlaces()
 }
 
 interface VenueRouter {
 
     fun navigateToVenueRecord()
+
+    fun navigateToVenuePlaces()
 }

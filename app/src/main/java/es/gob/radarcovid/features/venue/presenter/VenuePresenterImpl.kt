@@ -13,14 +13,24 @@ package es.gob.radarcovid.features.venue.presenter
 import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
 import es.gob.radarcovid.features.venue.protocols.VenuePresenter
 import es.gob.radarcovid.features.venue.protocols.VenueRouter
+import es.gob.radarcovid.features.venue.protocols.VenueView
 import javax.inject.Inject
 
 class VenuePresenterImpl @Inject constructor(
-    private val router: VenueRouter
+    private val router: VenueRouter,
+    private val view: VenueView
 ) : VenuePresenter {
 
     override fun onRecordButtonClick() {
         router.navigateToVenueRecord()
+    }
+
+    override fun onButtonPlacesClick() {
+        view.authenticateAndShowPlaces()
+    }
+
+    override fun showPlaces() {
+        router.navigateToVenuePlaces()
     }
 
 }

@@ -32,6 +32,8 @@ import es.gob.radarcovid.features.stats.di.StatsModule
 import es.gob.radarcovid.features.stats.view.StatsFragment
 import es.gob.radarcovid.features.venuerecord.di.VenueRecordModule
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
+import es.gob.radarcovid.features.venuevisited.di.VenueVisitedModule
+import es.gob.radarcovid.features.venuevisited.view.VenueVisitedActivity
 
 @Module
 abstract class ActivitiesModule {
@@ -75,5 +77,9 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector(modules = [VenueRecordModule::class, VenueRecordFragmentsModule::class])
     abstract fun bindsVenueRecordActivity(): VenueRecordActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [VenueVisitedModule::class])
+    abstract fun bindsVenueVisitedActivity(): VenueVisitedActivity
 
 }

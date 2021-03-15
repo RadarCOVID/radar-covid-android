@@ -508,4 +508,7 @@
     <string name="venue_exposure_block_high_description">Se ha detectado un contagio masivo de COVID-19 en un lugar que has visitado.\n<b>Debes realizar cuarentena domiciliaria.</b>.</string>
     <string name="venue_exposure_high_detail_description">Hace <b>%1$s días</b> registraste tu visita a un lugar donde también estuvo alguien diagnosticado de COVID-19 (actualizado %2$s)</string>
 
+    <string name="venue_biometric_prompt_tittle">Autenticación</string>
+    <string name="venue_biometric_prompt_message">Por favor identifícate para acceder</string>
+
 </resources>
