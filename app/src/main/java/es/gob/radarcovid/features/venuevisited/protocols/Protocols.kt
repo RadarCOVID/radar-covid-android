@@ -10,10 +10,14 @@
 
 package es.gob.radarcovid.features.venuevisited.protocols
 
-interface VenueVisitedView {
+import es.gob.radarcovid.models.domain.VenueVisitedRecyclerItem
 
+interface VenueVisitedView {
+    fun setVenueList(venueItemList: List<VenueVisitedRecyclerItem>, numberHidden: Int, locale: String)
 }
 
 interface VenueVisitedPresenter {
+    fun viewReady()
 
+    fun getVenueList(showHidden: Boolean)
 }

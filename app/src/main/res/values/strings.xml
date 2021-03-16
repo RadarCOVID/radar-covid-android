@@ -511,4 +511,15 @@
     <string name="venue_biometric_prompt_tittle">Autenticación</string>
     <string name="venue_biometric_prompt_message">Por favor identifícate para acceder</string>
 
+    <string name="venue_diary_subtitle">LUGARES VISITADOS</string>
+    <string name="venue_diary_title">Diario</string>
+    <string name="venue_diary_hidden_places">Lugares archivados (%@)</string>
+    <string name="venue_diary_hide">OCULTAR</string>
+    <string name="venue_diary_show">MOSTRAR</string>
+    <string name="venue_diary_time">HORA ENTRADA Y TIEMPO</string>
+    <string name="venue_diary_hide_action">Ocultar elementos archivados</string>
+    <string name="venue_diary_show_action">Mostrar todos los elementos</string>
+    <string name="venue_diary_hide_element_action">Ocultar elemento</string>
+    <string name="venue_diary_show_element_action">Mostrar elemento</string>
+
 </resources>

@@ -134,20 +134,28 @@
 
     <style name="TextSmall">
         <item name="android:fontFamily">@font/roboto_light</item>
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="TextSmallBlack">
-        <item name="android:fontFamily">@font/roboto_light</item>
+    <style name="TextSmallBlack" parent="TextSmall">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextSmallBlack12" parent="TextSmall">
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TextRegular16Black">
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextRegular12Black">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TextSmallBlackBold">

@@ -12,6 +12,10 @@ package es.gob.radarcovid.models.domain
 
 import java.util.*
 
+enum class VenueVisitedRecyclerType {
+    HEADER, VENUE
+}
+
 data class VenueRecord(
     var qr: String,
     var checkOutId: Long? = null,
@@ -22,3 +26,15 @@ data class VenueRecord(
     var dateOut: Date? = null,
     var isNotified: Boolean = false
 )
+
+abstract class VenueVisitedRecyclerItem(
+    var viewType: VenueVisitedRecyclerType
+)
+
+data class VenueVisitedItem(
+    var venueItem : VenueRecord
+): VenueVisitedRecyclerItem(viewType = VenueVisitedRecyclerType.VENUE)
+
+data class VenueHeaderItem(
+    var date: Date
+): VenueVisitedRecyclerItem(viewType = VenueVisitedRecyclerType.HEADER)

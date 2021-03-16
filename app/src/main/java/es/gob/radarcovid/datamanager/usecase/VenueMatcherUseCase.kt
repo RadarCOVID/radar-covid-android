@@ -10,7 +10,9 @@
 
 package es.gob.radarcovid.datamanager.usecase
 
+import es.gob.radarcovid.common.extensions.addDays
 import es.gob.radarcovid.common.extensions.addHours
+import es.gob.radarcovid.common.extensions.addMinutes
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.CrowdNotifierRepository
 import es.gob.radarcovid.datamanager.repository.EncryptedPreferencesRepository
@@ -129,19 +131,19 @@ class VenueMatcherUseCase @Inject constructor(
         return arrayOf(exposure1, exposure2).toList()
     }
 
-    private fun getVenuesMock(): List<VenueRecord> {
+    fun getVenuesMock(): List<VenueRecord> {
         val venue1 = VenueRecord(
             qr = "",
-            dateIn = Date().addHours(-1),
-            dateOut = Date(),
+            dateIn = Date().addDays(-1).addHours(-1),
+            dateOut = Date().addDays(-1),
             checkOutId = 1,
             name = "Venta Pepe"
         )
 
         val venue2 = VenueRecord(
             qr = "",
-            dateIn = Date().addHours(-2),
-            dateOut = Date().addHours(-1),
+            dateIn = Date().addHours(-1),
+            dateOut = Date().addMinutes(-30),
             checkOutId = 2,
             name = "Venta Pepe"
         )
@@ -149,11 +151,19 @@ class VenueMatcherUseCase @Inject constructor(
         val venue3 = VenueRecord(
             qr = "",
             dateIn = Date().addHours(-3),
-            dateOut = Date().addHours(-2),
+            dateOut = Date().addHours(-1),
             checkOutId = 3,
             name = "Venta Pepe"
         )
-        return arrayOf(venue1, venue2, venue3).toList()
+        val venue4 = VenueRecord(
+            qr = "",
+            dateIn = Date().addHours(-5),
+            dateOut = Date().addHours(-2),
+            checkOutId = 3,
+            hidden = true,
+            name = "Bar el camino"
+        )
+        return arrayOf(venue1, venue2, venue3, venue4).toList()
     }
 
 }
