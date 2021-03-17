@@ -41,6 +41,7 @@
             android:paddingBottom="22dp">
 
             <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewTitle"
                 style="@style/TitleMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -521,5 +521,6 @@
     <string name="venue_diary_show_action">Mostrar todos los elementos</string>
     <string name="venue_diary_hide_element_action">Ocultar elemento</string>
     <string name="venue_diary_show_element_action">Mostrar elemento</string>
+    <string name="venue_diary_empty_list">Aún no has registrado ningún lugar visitado</string>
 
 </resources>

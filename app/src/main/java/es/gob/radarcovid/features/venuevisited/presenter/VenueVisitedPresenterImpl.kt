@@ -13,7 +13,6 @@ package es.gob.radarcovid.features.venuevisited.presenter
 import es.gob.radarcovid.common.extensions.getDaysAgo
 import es.gob.radarcovid.datamanager.repository.EncryptedPreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.GetLocaleInfoUseCase
-import es.gob.radarcovid.datamanager.usecase.VenueMatcherUseCase
 import es.gob.radarcovid.features.venuevisited.protocols.VenueVisitedPresenter
 import es.gob.radarcovid.features.venuevisited.protocols.VenueVisitedView
 import es.gob.radarcovid.models.domain.VenueHeaderItem
@@ -25,28 +24,27 @@ import javax.inject.Inject
 class VenueVisitedPresenterImpl @Inject constructor(
     private val view: VenueVisitedView,
     private val encryptedPreferencesRepository: EncryptedPreferencesRepository,
-    private val venueMatcherUseCase: VenueMatcherUseCase,
     private val localeInfoUseCase: GetLocaleInfoUseCase
 ) : VenueVisitedPresenter {
 
     override fun viewReady() {
-        getVenueList(false)
+        getVenueList(showHidden = false, reload = false)
     }
 
-    override fun getVenueList(showHidden: Boolean) {
-        //encryptedPreferencesRepository.setVisitedVenue(venueMatcherUseCase.getVenuesMock())
-        val venueList = if (showHidden) {
-            //venueMatcherUseCase.getVenuesMock().sortedBy { it.dateOut }
-            encryptedPreferencesRepository.getVisitedVenue().sortedBy { it.dateOut }
+    override fun getVenueList(showHidden: Boolean, reload: Boolean) {
+        val visitedVenues = encryptedPreferencesRepository.getVisitedVenue()
+        if (visitedVenues.isNullOrEmpty()) {
+            view.setEmptyList()
         } else {
-            //venueMatcherUseCase.getVenuesMock().filter { !it.hidden }.sortedBy { it.dateOut }
-            encryptedPreferencesRepository.getVisitedVenue().filter { !it.hidden }
-                .sortedBy { it.dateOut }
-        }
-        if (!venueList.isNullOrEmpty()) {
+            val venueList = if (showHidden) {
+                visitedVenues.sortedBy { it.dateOut }
+            } else {
+                visitedVenues.filter { !it.hidden }
+                    .sortedBy { it.dateOut }
+            }
+
             val numberHidden =
-                encryptedPreferencesRepository.getVisitedVenue().filter { it.hidden }.count()
-            //val numberHidden = venueMatcherUseCase.getVenuesMock().filter { it.hidden }.count()
+                visitedVenues.filter { it.hidden }.count()
             val listItems = ArrayList<VenueVisitedRecyclerItem>()
             var daysAgo = -1L
             venueList.forEach {
@@ -60,16 +58,17 @@ class VenueVisitedPresenterImpl @Inject constructor(
             view.setVenueList(
                 listItems,
                 numberHidden,
+                reload,
                 localeInfoUseCase.getSelectedLanguageForLocale()
             )
         }
     }
 
     override fun changeVisibility(venue: VenueRecord, showHidden: Boolean) {
-        val venueList = encryptedPreferencesRepository.getVisitedVenue()
+        val venueList = encryptedPreferencesRepository.getVisitedVenue().sortedBy { it.dateOut }
         venueList.find { it.checkOutId == venue.checkOutId }?.hidden = !venue.hidden
         encryptedPreferencesRepository.setVisitedVenue(venueList)
-        getVenueList(showHidden)
+        getVenueList(showHidden, reload = true)
     }
 
 }

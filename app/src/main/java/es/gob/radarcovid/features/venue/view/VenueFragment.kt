@@ -23,7 +23,6 @@ import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.setSafeOnClickListener
 import es.gob.radarcovid.features.venue.protocols.VenuePresenter
 import es.gob.radarcovid.features.venue.protocols.VenueView
-import kotlinx.android.synthetic.main.fragment_helpline.*
 import kotlinx.android.synthetic.main.fragment_venue_home.*
 import javax.inject.Inject
 

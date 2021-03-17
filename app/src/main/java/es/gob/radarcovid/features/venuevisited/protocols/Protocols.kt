@@ -14,13 +14,15 @@ import es.gob.radarcovid.models.domain.VenueRecord
 import es.gob.radarcovid.models.domain.VenueVisitedRecyclerItem
 
 interface VenueVisitedView {
-    fun setVenueList(venueItemList: List<VenueVisitedRecyclerItem>, numberHidden: Int, locale: String)
+    fun setVenueList(venueItemList: List<VenueVisitedRecyclerItem>, numberHidden: Int, reload: Boolean, locale: String)
+
+    fun setEmptyList()
 }
 
 interface VenueVisitedPresenter {
     fun viewReady()
 
-    fun getVenueList(showHidden: Boolean)
+    fun getVenueList(showHidden: Boolean, reload: Boolean)
 
     fun changeVisibility(venue: VenueRecord, showHidden: Boolean)
 }

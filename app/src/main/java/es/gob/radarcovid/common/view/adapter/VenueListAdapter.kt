@@ -21,12 +21,16 @@ import es.gob.radarcovid.common.view.LabelButton
 import es.gob.radarcovid.models.domain.*
 
 class VenueListAdapter(
-    private val items: List<VenueVisitedRecyclerItem>,
+    private var items: List<VenueVisitedRecyclerItem>,
     private val locale: String
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var onItemClick: ((VenueRecord) -> Unit)? = null
+
+    fun setData(newItems: List<VenueVisitedRecyclerItem>) {
+        items = newItems
+    }
 
     override fun getItemViewType(position: Int): Int {
         return items[position].viewType.ordinal
