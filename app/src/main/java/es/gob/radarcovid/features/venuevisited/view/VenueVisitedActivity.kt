@@ -58,16 +58,19 @@ class VenueVisitedActivity : BaseBackNavigationActivity(), VenueVisitedView {
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = VenueListAdapter(venueItemList, locale)
+        (recyclerView.adapter as VenueListAdapter).onItemClick = {
+            presenter.changeVisibility(it, switchHidden.isChecked)
+        }
     }
 
     private fun initViews() {
         switchHidden.setOnClickListener {
             if (!switchHidden.isChecked) {
-                presenter.getVenueList(true)
+                presenter.getVenueList(false)
                 textViewShowHidden.text =
                     labelManager.getText("VENUE_DIARY_HIDE", getString(R.string.venue_diary_hide))
             } else {
-                presenter.getVenueList(false)
+                presenter.getVenueList(true)
                 textViewShowHidden.text =
                     labelManager.getText("VENUE_DIARY_SHOW", getString(R.string.venue_diary_show))
             }

@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.features.venuevisited.protocols
 
+import es.gob.radarcovid.models.domain.VenueRecord
 import es.gob.radarcovid.models.domain.VenueVisitedRecyclerItem
 
 interface VenueVisitedView {
@@ -20,4 +21,6 @@ interface VenueVisitedPresenter {
     fun viewReady()
 
     fun getVenueList(showHidden: Boolean)
+
+    fun changeVisibility(venue: VenueRecord, showHidden: Boolean)
 }

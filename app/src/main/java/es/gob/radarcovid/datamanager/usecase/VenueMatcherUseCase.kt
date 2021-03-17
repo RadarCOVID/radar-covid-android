@@ -159,7 +159,7 @@ class VenueMatcherUseCase @Inject constructor(
             qr = "",
             dateIn = Date().addHours(-5),
             dateOut = Date().addHours(-2),
-            checkOutId = 3,
+            checkOutId = 4,
             hidden = true,
             name = "Bar el camino"
         )
