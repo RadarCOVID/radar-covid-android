@@ -148,8 +148,8 @@ class VenueRecordPresenterImpl @Inject constructor(
             VenueTimeOut.OPT_30 -> 30 //Minutes
             VenueTimeOut.OPT_1 -> 1
             VenueTimeOut.OPT_2 -> 2
-            VenueTimeOut.OPT_4 -> 3
-            VenueTimeOut.OPT_5 -> 4
+            VenueTimeOut.OPT_4 -> 4
+            VenueTimeOut.OPT_5 -> 5
             else -> 0  //NOW
         }
         val dateOut =

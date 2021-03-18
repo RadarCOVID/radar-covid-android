@@ -18,11 +18,7 @@ interface CrowdNotifierRepository {
 
     fun getVenueInfo(qrCode: String): VenueInfo
 
-    fun getVenueInfoMock(qrCode: String): VenueInfo
-
     fun checkIn(arrivalTime: Long, departureTime: Long, venueInfo: VenueInfo): Long
-
-    fun checkInMock(arrivalTime: Long, departureTime: Long, venueInfo: VenueInfo): Long
 
     fun checkForMatches(problematicEvents: List<ProblematicEventInfo>): List<ExposureEvent>
 

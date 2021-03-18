@@ -29,12 +29,11 @@ class VenueRecordUseCase @Inject constructor(
     fun getCurrentVenue(): VenueRecord? =
         encryptedPreferencesRepository.getCurrentVenue()
 
-    fun setCurrentVenue(currentVenue: VenueRecord) =
+    private fun setCurrentVenue(currentVenue: VenueRecord) =
         encryptedPreferencesRepository.setCurrentVenueRecord(currentVenue)
 
-    //TODO Change mock function
     fun getVenueInfo(qrCode: String): VenueInfo =
-        crowdNotifierRepository.getVenueInfoMock(qrCode)
+        crowdNotifierRepository.getVenueInfo(qrCode)
 
     fun checkIn(qrCaptured: String): Completable =
         Completable.create { emitter ->
@@ -46,7 +45,6 @@ class VenueRecordUseCase @Inject constructor(
                     dateIn = Date()
                 )
                 setCurrentVenue(currentVenueRecord)
-                //TODO Comenzar proceso para notificar y hacer checkout automático a las X horas
 
                 emitter.onComplete()
 
@@ -55,7 +53,6 @@ class VenueRecordUseCase @Inject constructor(
             }
         }
 
-    //TODO Change mock function
     fun checkOut(dateOut: Date): Completable =
         Completable.create { emitter ->
             try {
@@ -66,7 +63,7 @@ class VenueRecordUseCase @Inject constructor(
                     val venueInfo = getVenueInfo(currentVenue.qr)
 
                     currentVenue.dateOut = dateOut
-                    currentVenue.checkOutId = crowdNotifierRepository.checkInMock(
+                    currentVenue.checkOutId = crowdNotifierRepository.checkIn(
                         currentVenue.dateIn.time,
                         currentVenue.dateOut!!.time,
                         venueInfo

@@ -10,9 +10,6 @@
 
 package es.gob.radarcovid.datamanager.usecase
 
-import es.gob.radarcovid.common.extensions.addDays
-import es.gob.radarcovid.common.extensions.addHours
-import es.gob.radarcovid.common.extensions.addMinutes
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.CrowdNotifierRepository
 import es.gob.radarcovid.datamanager.repository.EncryptedPreferencesRepository
@@ -20,7 +17,6 @@ import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.models.domain.ProblematicEventOuterClass
 import es.gob.radarcovid.models.domain.VenueRecord
 import okhttp3.ResponseBody
-import org.crowdnotifier.android.sdk.model.ExposureEvent
 import org.crowdnotifier.android.sdk.model.ProblematicEventInfo
 import retrofit2.Response
 import java.io.IOException
@@ -55,14 +51,12 @@ class VenueMatcherUseCase @Inject constructor(
 
         //Check for matches
         val exposures = crowdNotifierRepository.checkForMatches(problematicEvents)
-        //val exposures = getExposureEventsMock()
 
         cleanUpOldData()
 
         //update local list with exposures
         return if (exposures.isNotEmpty()) {
             val venueList = encryptedPreferencesRepository.getVisitedVenue()
-            //val venueList = getVenuesMock()
             exposures.forEach {
                 val venue = venueList.find { x -> x.checkOutId == it.id }
                 if (venue != null) {
@@ -123,47 +117,4 @@ class VenueMatcherUseCase @Inject constructor(
             return emptyList()
         }
     }
-
-    private fun getExposureEventsMock(): List<ExposureEvent> {
-        val exposure1 = ExposureEvent(1, Date().addHours(-1).time, Date().time, "Exposure Event")
-        val exposure2 =
-            ExposureEvent(3, Date().addHours(-3).time, Date().addHours(-2).time, "Exposure Event")
-        return arrayOf(exposure1, exposure2).toList()
-    }
-
-    fun getVenuesMock(): List<VenueRecord> {
-        val venue1 = VenueRecord(
-            qr = "",
-            dateIn = Date().addDays(-1).addHours(-1),
-            dateOut = Date().addDays(-1),
-            checkOutId = 1,
-            name = "Venta Pepe"
-        )
-
-        val venue2 = VenueRecord(
-            qr = "",
-            dateIn = Date().addHours(-1),
-            dateOut = Date().addMinutes(-30),
-            checkOutId = 2,
-            name = "Venta Pepe"
-        )
-
-        val venue3 = VenueRecord(
-            qr = "",
-            dateIn = Date().addHours(-3),
-            dateOut = Date().addHours(-1),
-            checkOutId = 3,
-            name = "Venta Pepe"
-        )
-        val venue4 = VenueRecord(
-            qr = "",
-            dateIn = Date().addHours(-5),
-            dateOut = Date().addHours(-2),
-            checkOutId = 4,
-            hidden = true,
-            name = "Bar el camino"
-        )
-        return arrayOf(venue1, venue2, venue3, venue4).toList()
-    }
-
 }

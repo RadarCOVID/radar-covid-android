@@ -15,7 +15,6 @@ import es.gob.radarcovid.BuildConfig
 import org.crowdnotifier.android.sdk.CrowdNotifier
 import org.crowdnotifier.android.sdk.model.ExposureEvent
 import org.crowdnotifier.android.sdk.model.ProblematicEventInfo
-import org.crowdnotifier.android.sdk.model.Qr
 import org.crowdnotifier.android.sdk.model.VenueInfo
 import javax.inject.Inject
 import javax.inject.Named
@@ -27,25 +26,12 @@ class CrowdNotifierRepositoryImpl @Inject constructor(
     override fun getVenueInfo(qrCode: String): VenueInfo =
         CrowdNotifier.getVenueInfo(qrCode, BuildConfig.ENTRY_QR_CODE_PREFIX)
 
-    override fun getVenueInfoMock(qrCode: String): VenueInfo =
-        VenueInfo(
-            "Sitio de prueba", "", "", "".toByteArray(), Qr.QRCodeContent.VenueType.CAFETERIA,
-            "".toByteArray(), "".toByteArray(),
-            "".toByteArray(), 0L, 0L
-        )
-
     override fun checkIn(
         arrivalTime: Long,
         departureTime: Long,
         venueInfo: VenueInfo
     ): Long =
         CrowdNotifier.addCheckIn(arrivalTime, departureTime, venueInfo, context)
-
-    override fun checkInMock(
-        arrivalTime: Long,
-        departureTime: Long,
-        venueInfo: VenueInfo
-    ): Long = 0L
 
     override fun checkForMatches(problematicEvents: List<ProblematicEventInfo>): List<ExposureEvent> =
         CrowdNotifier.checkForMatches(
