@@ -478,6 +478,8 @@
 
     <string name="venue_record_error_code_title">Código no reconocido</string>
     <string name="venue_record_error_code_desc">Puede que estés intentando escanear un código no oficial de Radar COVID o que el código esté dañado.</string>
+    <string name="venue_record_error_not_valid_yet">El código QR escaneado todavía no es válido</string>
+    <string name="venue_record_error_not_valid_anymore">El código QR escaneado ya no es válido</string>
 
     <string name="venue_record_initiated_title">Registro iniciado</string>
     <string name="venue_record_initiated_time">Tiempo transcurrido</string>

@@ -24,7 +24,7 @@ interface EncryptedPreferencesRepository {
 
     fun setVisitedVenue(venues: List<VenueRecord>)
 
-    fun cleanVisitedVenue(maxDaysToKeep: Int)
+    fun cleanVisitedVenue(maxMinutesToKeep: Int)
 
     fun setVenueExposureInfo(venue: VenueRecord?)
 

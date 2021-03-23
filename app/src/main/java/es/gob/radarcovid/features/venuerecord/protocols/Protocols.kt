@@ -12,12 +12,15 @@ package es.gob.radarcovid.features.venuerecord.protocols
 
 import es.gob.radarcovid.common.view.RequestView
 import es.gob.radarcovid.features.venuerecord.pages.checkout.presenter.VenueTimeOut
+import es.gob.radarcovid.features.venuerecord.presenter.QRErrorState
 
 interface VenueRecordView : RequestView {
 
     fun startQRScan()
 
     fun showFragment(position: Int)
+
+    fun showFragmentError(error: QRErrorState)
 
     fun onBackButtonClick()
 

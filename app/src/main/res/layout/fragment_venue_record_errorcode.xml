@@ -68,6 +68,7 @@
                 app:labelId="VENUE_RECORD_ERROR_CODE_TITLE" />
 
             <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewError"
                 style="@style/TextNormal18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

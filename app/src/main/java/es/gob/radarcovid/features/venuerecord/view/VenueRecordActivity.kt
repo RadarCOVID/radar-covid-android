@@ -27,6 +27,7 @@ import es.gob.radarcovid.features.venuerecord.pages.checkout.view.CheckOutFragme
 import es.gob.radarcovid.features.venuerecord.pages.confirmrecord.view.ConfirmRecordFragment
 import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.view.ErrorCapturedCodeFragment
 import es.gob.radarcovid.features.venuerecord.pages.recordsuccess.view.RecordSuccessFragment
+import es.gob.radarcovid.features.venuerecord.presenter.QRErrorState
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordView
@@ -48,6 +49,8 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
 
     @Inject
     lateinit var presenter: VenueRecordPresenter
+
+    var errorState: QRErrorState = QRErrorState.NO_VALID_QR_CODE
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -88,6 +91,11 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
 
     override fun showFragment(position: Int) {
         viewPager.setCurrentItem(position, false)
+    }
+
+    override fun showFragmentError(error: QRErrorState) {
+        errorState = error
+        viewPager.setCurrentItem(VenueRecordPresenterImpl.ERROR_CAPTURED_CODE_FRAGMENT, false)
     }
 
     fun getCurrentVenueName(): String =

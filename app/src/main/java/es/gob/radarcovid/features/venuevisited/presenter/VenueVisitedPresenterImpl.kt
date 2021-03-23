@@ -10,7 +10,7 @@
 
 package es.gob.radarcovid.features.venuevisited.presenter
 
-import es.gob.radarcovid.common.extensions.getDaysAgo
+import es.gob.radarcovid.common.extensions.format
 import es.gob.radarcovid.datamanager.repository.EncryptedPreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.GetLocaleInfoUseCase
 import es.gob.radarcovid.features.venuevisited.protocols.VenueVisitedPresenter
@@ -37,21 +37,21 @@ class VenueVisitedPresenterImpl @Inject constructor(
             view.setEmptyList()
         } else {
             val venueList = if (showHidden) {
-                visitedVenues.sortedBy { it.dateOut }
+                visitedVenues.sortedBy { it.dateIn }
             } else {
                 visitedVenues.filter { !it.hidden }
-                    .sortedBy { it.dateOut }
+                    .sortedBy { it.dateIn }
             }
 
             val numberHidden =
                 visitedVenues.filter { it.hidden }.count()
             val listItems = ArrayList<VenueVisitedRecyclerItem>()
-            var daysAgo = -1L
+            var daysAgo = ""
             venueList.forEach {
-                val newDaysAgo = it.dateOut!!.getDaysAgo()
+                val newDaysAgo = it.dateIn.format()
                 if (daysAgo != newDaysAgo) {
                     daysAgo = newDaysAgo
-                    listItems.add(VenueHeaderItem(date = it.dateOut!!))
+                    listItems.add(VenueHeaderItem(date = it.dateIn))
                 }
                 listItems.add(VenueVisitedItem(venueItem = it))
             }

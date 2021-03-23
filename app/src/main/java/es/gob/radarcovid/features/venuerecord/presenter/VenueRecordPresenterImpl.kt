@@ -10,7 +10,6 @@
 
 package es.gob.radarcovid.features.venuerecord.presenter
 
-import es.gob.radarcovid.common.extensions.addHours
 import es.gob.radarcovid.common.extensions.addMinutes
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.VenueRecordUseCase
@@ -19,8 +18,12 @@ import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordView
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import org.crowdnotifier.android.sdk.utils.QrUtils
 import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+
+enum class QRErrorState { NO_VALID_QR_CODE, QR_CODE_NOT_YET_VALID, QR_CODE_NOT_VALID_ANYMORE }
 
 class VenueRecordPresenterImpl @Inject constructor(
     private val view: VenueRecordView,
@@ -98,7 +101,11 @@ class VenueRecordPresenterImpl @Inject constructor(
             venueName = venueInfo.name
             view.showFragment(CONFIRM_RECORD_FRAGMENT)
         } catch (e: Exception) {
-            view.showFragment(ERROR_CAPTURED_CODE_FRAGMENT)
+            when (e) {
+                is QrUtils.NotYetValidException -> view.showFragmentError(QRErrorState.QR_CODE_NOT_YET_VALID)
+                is QrUtils.NotValidAnymoreException -> view.showFragmentError(QRErrorState.QR_CODE_NOT_VALID_ANYMORE)
+                else -> view.showFragmentError(QRErrorState.NO_VALID_QR_CODE)
+            }
         }
 
     }
@@ -144,17 +151,20 @@ class VenueRecordPresenterImpl @Inject constructor(
         //Calculate time out
         val currentVenue = venueRecordUseCase.getCurrentVenue()
 
-        val hours = when (timeOut) {
+        val minutes = when (timeOut) {
             VenueTimeOut.OPT_30 -> 30 //Minutes
-            VenueTimeOut.OPT_1 -> 1
-            VenueTimeOut.OPT_2 -> 2
-            VenueTimeOut.OPT_4 -> 4
-            VenueTimeOut.OPT_5 -> 5
-            else -> 0  //NOW
+            VenueTimeOut.OPT_1 -> 1 * 60
+            VenueTimeOut.OPT_2 -> 2 * 60
+            VenueTimeOut.OPT_4 -> 4 * 60
+            VenueTimeOut.OPT_5 -> 5 * 60
+            else -> {
+                //NOW
+                val millisElapsed =
+                    System.currentTimeMillis() - (if (currentVenue?.dateIn?.time != null) currentVenue.dateIn.time else 0)
+                TimeUnit.MILLISECONDS.toMinutes(millisElapsed).toInt()
+            }
         }
-        val dateOut =
-            if (hours > 5) currentVenue?.dateIn?.addMinutes(hours)
-            else currentVenue?.dateIn?.addHours(hours)
+        val dateOut = currentVenue?.dateIn?.addMinutes(minutes)
 
         venueRecordUseCase.checkOut(dateOut ?: Date())
             .subscribeOn(Schedulers.newThread())

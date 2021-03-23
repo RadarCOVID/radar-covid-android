@@ -87,14 +87,8 @@ class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
 
         val exposureVenues = venueMatcherUseCase.checkForMatches()
         if (!exposureVenues.isNullOrEmpty()) {
-            exposureVenues.firstOrNull { !it.isNotified }?.let {
-                showVenueExposureNotification(applicationContext)
-                venueMatcherUseCase.setVenueNotified()
-            }
-            //get last exposed venue
-            venueMatcherUseCase.setVenueExposureInfo(exposureVenues.last())
-        } else {
-            venueMatcherUseCase.setVenueExposureInfo(null)
+            showVenueExposureNotification(applicationContext)
+            venueMatcherUseCase.setVenueNotified()
         }
 
         //Update views state

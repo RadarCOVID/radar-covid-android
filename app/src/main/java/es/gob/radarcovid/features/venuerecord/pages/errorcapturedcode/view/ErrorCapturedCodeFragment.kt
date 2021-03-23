@@ -19,7 +19,9 @@ import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.setSafeOnClickListener
 import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.protocols.ErrorCapturedCodePresenter
 import es.gob.radarcovid.features.venuerecord.pages.errorcapturedcode.protocols.ErrorCapturedCodeView
+import es.gob.radarcovid.features.venuerecord.presenter.QRErrorState
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
+import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
 import kotlinx.android.synthetic.main.fragment_venue_record_errorcode.*
 import javax.inject.Inject
@@ -50,12 +52,36 @@ class ErrorCapturedCodeFragment : BaseFragment(), ErrorCapturedCodeView {
         buttonClose.setSafeOnClickListener { presenter.onCancelButtonClick() }
     }
 
+    override fun onResume() {
+        super.onResume()
+        setErrorMessage()
+    }
+
     override fun performContinueButtonClick() {
         (activity as? VenueRecordPageCallback)?.onContinueButtonClick(VenueRecordPresenterImpl.ERROR_CAPTURED_CODE_FRAGMENT)
     }
 
     override fun performCancelButtonClick() {
         (activity as? VenueRecordPageCallback)?.onBackButtonClick()
+    }
+
+    private fun setErrorMessage() {
+        val error = (activity as VenueRecordActivity).errorState
+        textViewError.text =
+            when (error) {
+                QRErrorState.QR_CODE_NOT_VALID_ANYMORE -> labelManager.getText(
+                    "QR_OUTDATED_ERROR",
+                    R.string.venue_record_error_not_valid_anymore
+                )
+                QRErrorState.QR_CODE_NOT_YET_VALID -> labelManager.getText(
+                    "QR_NOT_VALID_YET_ERROR",
+                    R.string.venue_record_error_not_valid_yet
+                )
+                else -> labelManager.getText(
+                    "VENUE_RECORD_ERROR_CODE_PARAGRAPH_1",
+                    R.string.venue_record_error_code_desc
+                )
+            }
     }
 
 }

@@ -34,13 +34,16 @@ class VenueMatcherUseCase @Inject constructor(
         private const val KEY_BUNDLE_TAG_HEADER = "x-key-bundle-tag"
     }
 
-    fun setVenueExposureInfo(venue: VenueRecord?) =
+    private fun setVenueExposureInfo(venue: VenueRecord?) =
         encryptedPreferencesRepository.setVenueExposureInfo(venue)
 
     fun getVenueExposureInfo(): VenueRecord? = encryptedPreferencesRepository.getVenueExposureInfo()
 
+    private fun getVisitedVenueList(): List<VenueRecord> =
+        encryptedPreferencesRepository.getVisitedVenue()
+
     fun setVenueNotified() {
-        val venueList = encryptedPreferencesRepository.getVisitedVenue()
+        val venueList = getVisitedVenueList()
         venueList.forEach { it.isNotified = true }
         encryptedPreferencesRepository.setVisitedVenue(venueList)
     }
@@ -54,9 +57,9 @@ class VenueMatcherUseCase @Inject constructor(
 
         cleanUpOldData()
 
-        //update local list with exposures
-        return if (exposures.isNotEmpty()) {
-            val venueList = encryptedPreferencesRepository.getVisitedVenue()
+        if (exposures.isNotEmpty()) {
+            //update local list with exposures
+            val venueList = getVisitedVenueList()
             exposures.forEach {
                 val venue = venueList.find { x -> x.checkOutId == it.id }
                 if (venue != null) {
@@ -65,9 +68,20 @@ class VenueMatcherUseCase @Inject constructor(
             }
             encryptedPreferencesRepository.setVisitedVenue(venueList)
 
-            venueList.filter { it.isExposed }.sortedBy { it.dateOut }.toList()
+            //Set actual exposure
+            val exposedList = venueList.filter { it.isExposed }.sortedBy { it.dateOut }.toList()
+            setVenueExposureInfo(exposedList.last())
+
+            return exposedList
+
         } else {
-            emptyList()
+            //Check actual exposure
+            val exposureVenue = getVisitedVenueList().firstOrNull { it.isExposed }
+            if (exposureVenue == null) {
+                setVenueExposureInfo(null)
+            }
+
+            return emptyList()
         }
 
     }

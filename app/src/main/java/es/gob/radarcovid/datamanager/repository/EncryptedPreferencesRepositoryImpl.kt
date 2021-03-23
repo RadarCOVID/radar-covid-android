@@ -13,7 +13,7 @@ package es.gob.radarcovid.datamanager.repository
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import es.gob.radarcovid.common.extensions.addDays
+import es.gob.radarcovid.common.extensions.addMinutes
 import es.gob.radarcovid.common.extensions.toJson
 import es.gob.radarcovid.models.domain.VenueRecord
 import java.util.*
@@ -72,10 +72,11 @@ class EncryptedPreferencesRepositoryImpl @Inject constructor(
         saveToPrefs(KEY_LIST_VENUE_RECORD, venues.toJson())
     }
 
-    override fun cleanVisitedVenue(maxDaysToKeep: Int) {
+    override fun cleanVisitedVenue(maxMinutesToKeep: Int) {
         val venueList = getVisitedVenue().toMutableList()
+        //val maxDaysToKeep = maxMinutesToKeep / 60 / 24
         if (venueList.isNotEmpty()) {
-            val lastDateToKeep = Date().addDays(maxDaysToKeep)
+            val lastDateToKeep = Date().addMinutes(-maxMinutesToKeep)
             venueList.removeAll {
                 it.dateOut?.before(lastDateToKeep) == true
             }
