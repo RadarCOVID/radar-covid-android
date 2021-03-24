@@ -26,6 +26,8 @@ interface MainView : RequestView {
 
     fun setHomeSelected()
 
+    fun setVenueHomeSelected()
+
     fun finish()
 
     fun updateVenueIcon(isVenueRecordSelected: Boolean)
@@ -38,7 +40,7 @@ interface MainView : RequestView {
 
 interface MainPresenter {
 
-    fun viewReady(activateRadar: Boolean)
+    fun onCreate(activateRadar: Boolean, capturedQR: String?)
 
     fun onResume(isVenueRecordSelected: Boolean, isHomeSelected: Boolean)
 
@@ -73,4 +75,6 @@ interface MainRouter {
     fun navigateToSettings()
 
     fun navigateToVenueRecord(recordInProgress: Boolean)
+
+    fun navigateToVenueRecordWithQR(capturedQR: String)
 }

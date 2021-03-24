@@ -49,6 +49,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="radarcovid" android:host="report" />
+                <data
+                    android:host="${qrCodeHostName}"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity

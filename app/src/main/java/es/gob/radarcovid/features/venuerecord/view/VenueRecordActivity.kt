@@ -40,10 +40,16 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
     companion object {
 
         private const val LAUNCH_QR_SCAN = 1
+        private const val QR_VERIFICATION = "qr_verification"
 
         fun open(context: Context) {
             context.startActivity(Intent(context, VenueRecordActivity::class.java))
         }
+
+        fun openWithQR(context: Context, qr: String) =
+            context.startActivity(Intent(context, VenueRecordActivity::class.java).apply {
+                putExtra(QR_VERIFICATION, qr)
+            })
 
     }
 
@@ -74,7 +80,12 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_venue_record)
         initViews()
-        presenter.viewReady()
+        val qr = intent.getStringExtra(QR_VERIFICATION)
+        if (qr != null) {
+            presenter.onOkScan(qr)
+        } else {
+            presenter.viewReady()
+        }
     }
 
     override fun onResume() {

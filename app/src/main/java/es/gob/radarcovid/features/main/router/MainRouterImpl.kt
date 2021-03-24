@@ -67,4 +67,8 @@ class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity
         }
     }
 
+    override fun navigateToVenueRecordWithQR(capturedQR: String) {
+        VenueRecordActivity.openWithQR(activity, capturedQR)
+    }
+
 }

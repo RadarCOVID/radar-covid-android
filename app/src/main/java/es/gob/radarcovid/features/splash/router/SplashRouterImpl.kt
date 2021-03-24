@@ -20,7 +20,6 @@ import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
 import es.gob.radarcovid.features.splash.protocols.SplashRouter
 import javax.inject.Inject
 
-
 class SplashRouterImpl @Inject constructor(private val context: Context) : SplashRouter {
 
     override fun navigateToPlayServicesPage() {
@@ -48,6 +47,10 @@ class SplashRouterImpl @Inject constructor(private val context: Context) : Splas
 
     override fun navigateToMain(activateRadar: Boolean) {
         MainActivity.open(context, activateRadar)
+    }
+
+    override fun navigateToMainWithQR(capturedQR: String) {
+        MainActivity.openWithQR(context, capturedQR)
     }
 
     override fun navigateToReport(reportCode: String?) {

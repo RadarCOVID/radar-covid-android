@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.common.base
 
+import es.gob.radarcovid.BuildConfig
+
 object Constants {
 
     const val SO_NAME = "Android"
@@ -18,6 +20,7 @@ object Constants {
 
     const val INCOMING_CODE_QUERY_PARAM = "code"
     const val HOST_REPORT = "report"
+    const val HOST_QR_CODE = BuildConfig.QR_CODE_HOST_NAME
 
     const val NOTIFICATION_REMINDER_DEFAULT = 1440
 

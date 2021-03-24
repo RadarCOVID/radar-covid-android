@@ -20,7 +20,6 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-
 class MainPresenterImpl @Inject constructor(
     private val view: MainView,
     private val router: MainRouter,
@@ -33,24 +32,34 @@ class MainPresenterImpl @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ) : MainPresenter {
 
-    override fun viewReady(activateRadar: Boolean) {
+    override fun onCreate(activateRadar: Boolean, capturedQR: String?) {
+
+        //Setup workers
         view.cancelNotificationReminder()
         view.startAnalyticsWorker(sendAnalyticsUseCase.getAnalyticsPeriod())
+        if (exposureInfoUseCase.getExposureInfo().level != ExposureInfo.Level.INFECTED) {
+            //Start QR matcher worker only if no infected
+            view.startVenueMatcherWorker(preferencesRepository.getTroubledPlaceCheckTime())
+        } else {
+            view.cancelVenueMatcherWorker()
+        }
+
+        //Redirection logic
         if (getLocaleInfoUseCase.isLanguageChanged()) {
+            //Redirect to settings when language changed
             getLocaleInfoUseCase.resetLanguageChanged()
             view.setSettingSelected()
             router.navigateToSettings()
         } else if (venueRecordUseCase.isCurrentVenue()) {
+            //Redirect to venue record when record in progress
             router.navigateToVenueRecord(true)
+        } else if (!capturedQR.isNullOrEmpty()) {
+            //Redirect to venue record when qr scanned
+            view.setVenueHomeSelected()
+            router.navigateToVenueRecordWithQR(capturedQR)
         } else {
+            //Home redirection
             router.navigateToHome(activateRadar, false)
-        }
-
-        //Start QR matcher worker only if no infected
-        if (exposureInfoUseCase.getExposureInfo().level != ExposureInfo.Level.INFECTED) {
-            view.startVenueMatcherWorker(preferencesRepository.getTroubledPlaceCheckTime())
-        } else {
-            view.cancelVenueMatcherWorker()
         }
     }
 

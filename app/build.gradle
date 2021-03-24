@@ -117,6 +117,8 @@ android {
             buildConfigField("String", "SAFETY_NET_API_KEY", loadProperty("pre.safetyNet"))
 
             buildConfigField "String", "ENTRY_QR_CODE_PREFIX", '"https://radarcovid.prueba.es"'
+            buildConfigField "String", "QR_CODE_HOST_NAME", '"radarcovid.prueba.es"'
+            manifestPlaceholders = [qrCodeHostName: "radarcovid.prueba.es"]
         }
         pro {
             dimension = 'environment'
@@ -135,6 +137,8 @@ android {
             buildConfigField("String", "SAFETY_NET_API_KEY", loadProperty("pro.safetyNet"))
 
             buildConfigField "String", "ENTRY_QR_CODE_PREFIX", '"https://radarcovid.prueba.es"'
+            buildConfigField "String", "QR_CODE_HOST_NAME", '"radarcovid.prueba.es"'
+            manifestPlaceholders = [qrCodeHostName: "radarcovid.prueba.es"]
         }
     }
 

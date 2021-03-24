@@ -32,11 +32,18 @@ class MainActivity : BaseActivity(), MainView {
     companion object {
 
         private const val EXTRA_ACTIVATE_RADAR = "extra_activate_radar"
+        private const val EXTRA_CAPTURED_QR = "extra_captured_qr"
 
         fun open(context: Context, activateRadar: Boolean) =
             context.startActivity(Intent(context, MainActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 putExtra(EXTRA_ACTIVATE_RADAR, activateRadar)
+            })
+
+        fun openWithQR(context: Context, capturedQR: String) =
+            context.startActivity(Intent(context, MainActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                putExtra(EXTRA_CAPTURED_QR, capturedQR)
             })
 
     }
@@ -55,7 +62,10 @@ class MainActivity : BaseActivity(), MainView {
 
         initViews()
 
-        presenter.viewReady(intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false))
+        presenter.onCreate(
+            intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false),
+            intent.getStringExtra(EXTRA_CAPTURED_QR)
+        )
     }
 
     override fun onResume() {
@@ -109,6 +119,10 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun setHomeSelected() {
         bottomNavigation.selectedItemId = R.id.menuItemHome
+    }
+
+    override fun setVenueHomeSelected() {
+        bottomNavigation.selectedItemId = R.id.menuItemVenue
     }
 
     override fun onBackPressed() {
