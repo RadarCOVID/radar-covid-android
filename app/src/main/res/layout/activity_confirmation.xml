@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="23dp"
                 android:text="@string/confirmation_tips_title"
-                android:textColor="@color/red"
+                android:textColor="@color/red_00"
                 android:textSize="20sp"
                 app:labelId="MY_HEALTH_REPORTED_BULLET_TITLE" />
 

@@ -387,7 +387,7 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_RADAR_CONTENT_INACTIVE",
                 R.string.radar_block_not_checked_description
             )
-            textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.red))
+            textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.red_00))
             textViewRadarDescription.setTypeface(
                 ResourcesCompat.getFont(context!!, R.font.roboto_bold),
                 Typeface.NORMAL

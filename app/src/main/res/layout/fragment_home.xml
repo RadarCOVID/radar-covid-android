@@ -272,7 +272,7 @@
                         android:layout_marginBottom="10dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="@string/radar_block_not_checked_description"
-                        android:textColor="@color/red"
+                        android:textColor="@color/red_00"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:labelId="HOME_RADAR_CONTENT_INACTIVE"
