@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
         android:text="@string/exposure_detail_infected_what_to_do_subtitle"
-        android:textColor="@color/red"
+        android:textColor="@color/red_00"
         android:textSize="20sp"
         app:labelId="EXPOSITION_EXPOSED_WHAT_TO_DO_DESCRIPTION" />
 
