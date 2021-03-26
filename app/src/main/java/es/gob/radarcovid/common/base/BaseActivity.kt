@@ -11,8 +11,12 @@
 package es.gob.radarcovid.common.base
 
 import android.content.Context
+import android.view.View
 import android.view.accessibility.AccessibilityManager
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import dagger.android.support.DaggerAppCompatActivity
 import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.R
@@ -132,5 +136,23 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
 
     fun isAccessibilityEnabled() =
         (getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
+
+    fun setAccessibilityAction(view: View, action: String) {
+        ViewCompat.setAccessibilityDelegate(view, object : AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(
+                host: View,
+                info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                // A custom action description. For example, you could use "pause"
+                // to have TalkBack speak "double-tap to pause."
+                val customClick = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                    AccessibilityNodeInfoCompat.ACTION_CLICK, action
+                )
+                info.addAction(customClick)
+            }
+        })
+    }
+
 
 }

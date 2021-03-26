@@ -15,20 +15,20 @@
         android:icon="@drawable/ic_home"
         android:title="@string/title_home" />
     <item
-        android:id="@+id/menuItemProfile"
+        android:id="@+id/menuItemVenue"
         android:enabled="true"
-        android:icon="@drawable/ic_mydata"
-        android:title="@string/title_mydata" />
-    <item
-        android:id="@+id/menuItemHelpline"
-        android:enabled="true"
-        android:icon="@drawable/ic_helpline"
-        android:title="@string/title_helpline" />
+        android:icon="@drawable/ic_qr"
+        android:title="@string/title_qr" />
     <item
         android:id="@+id/menuItemStats"
         android:enabled="true"
         android:icon="@drawable/ic_stats"
         android:title="@string/title_stats" />
+    <item
+        android:id="@+id/menuItemHelpline"
+        android:enabled="true"
+        android:icon="@drawable/ic_helpline"
+        android:title="@string/title_helpline" />
     <item
         android:id="@+id/menuItemSettings"
         android:enabled="true"

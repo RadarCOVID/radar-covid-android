@@ -24,15 +24,25 @@ interface MainView : RequestView {
 
     fun setSettingSelected()
 
+    fun setHomeSelected()
+
+    fun setVenueHomeSelected()
+
     fun finish()
+
+    fun updateVenueIcon(isVenueRecordSelected: Boolean)
+
+    fun startVenueMatcherWorker(time: Int)
+
+    fun cancelVenueMatcherWorker()
 
 }
 
 interface MainPresenter {
 
-    fun viewReady(activateRadar: Boolean)
+    fun onCreate(activateRadar: Boolean, capturedQR: String?)
 
-    fun onResume()
+    fun onResume(isVenueRecordSelected: Boolean, isHomeSelected: Boolean)
 
     fun onStop()
 
@@ -40,7 +50,7 @@ interface MainPresenter {
 
     fun onHomeButtonClick()
 
-    fun onProfileButtonClick()
+    fun onVenueButtonClick()
 
     fun onHelplineButtonClick()
 
@@ -58,11 +68,13 @@ interface MainRouter {
 
     fun navigateToHome(activateRadar: Boolean, manualNavigation: Boolean)
 
-    fun navigateToProfile()
-
     fun navigateToHelpline()
 
     fun navigateToStats()
 
     fun navigateToSettings()
+
+    fun navigateToVenueRecord(recordInProgress: Boolean)
+
+    fun navigateToVenueRecordWithQR(capturedQR: String)
 }

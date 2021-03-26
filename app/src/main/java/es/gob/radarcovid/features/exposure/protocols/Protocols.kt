@@ -44,13 +44,17 @@ interface ExposureView {
 
     fun showExposureHealedDialog()
 
+    fun showVenueExposureLevelHigh()
+
+    fun setVenueExposureInfo(date: String, daysElapsed: Int?)
+
 }
 
 interface ExposurePresenter {
 
     fun viewReady()
 
-    fun onResume()
+    fun onResume(isVenueExposed: Boolean)
 
     fun onPause()
 

@@ -30,6 +30,7 @@ import es.gob.radarcovid.datamanager.usecase.GetHealingTimeUseCase
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import es.gob.radarcovid.features.splash.view.SplashActivity
 import es.gob.radarcovid.features.worker.HealerWorker
+import es.gob.radarcovid.features.worker.VenueMatcherWorker
 import es.gob.radarcovid.models.domain.ExposureInfo
 import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
@@ -65,6 +66,7 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
                 }, 2000)
             }
             DP3T.ACTION_UPDATE -> BUS.post(EventExposureStatusChange())
+            VenueMatcherWorker.ACTION_NEW_VENUE_EXPOSURE_NOTIFICATION -> BUS.post(EventExposureStatusChange())
         }
     }
 

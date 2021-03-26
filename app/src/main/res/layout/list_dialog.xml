@@ -81,7 +81,7 @@
 
         </LinearLayout>
 
-        <Button
+        <es.gob.radarcovid.common.view.LabelButton
             android:id="@+id/buttonOk"
             style="@style/ButtonNormal"
             android:layout_width="match_parent"
@@ -94,7 +94,7 @@
             tools:text="Button"
             tools:visibility="visible" />
 
-        <Button
+        <es.gob.radarcovid.common.view.LabelButton
             android:id="@+id/buttonCancel"
             style="@style/ButtonSecondary"
             android:layout_width="match_parent"

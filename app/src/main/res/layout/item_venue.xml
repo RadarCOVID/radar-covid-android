@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/shape_rounded_corners_white"
+    android:elevation="5dp"
+    android:paddingStart="25dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="25dp"
+    android:paddingBottom="25dp">
+
+    <ImageView
+        android:id="@+id/imageViewVenue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_venue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <es.gob.radarcovid.common.view.LabelTextView
+        android:id="@+id/textViewName"
+        style="@style/TextBold18Black"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:maxLines="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewVenue"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nombre del establecimiento dos líneas max" />
+
+    <es.gob.radarcovid.common.view.LabelTextView
+        android:id="@+id/textViewTimeTitle"
+        style="@style/TextSmallBlack12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/venue_diary_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewVenue"
+        app:layout_constraintTop_toBottomOf="@id/textViewName" />
+
+    <es.gob.radarcovid.common.view.LabelTextView
+        android:id="@+id/textViewTime"
+        style="@style/TextBold18Black"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewVenue"
+        app:layout_constraintTop_toBottomOf="@id/textViewTimeTitle"
+        tools:text="12:00 (30’)" />
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/archiveButton"
+        android:layout_width="20dp"
+        android:layout_height="18dp"
+        android:background="@drawable/ic_archive"
+        app:actionDescription="@string/venue_diary_hide_element_action"
+        app:actionDescriptionLabelId="VENUE_DIARY_HIDE_ITEM_ACTION"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

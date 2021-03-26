@@ -32,18 +32,25 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     companion object {
 
-        fun open(context: Context) {
-            context.startActivity(Intent(context, ExposureActivity::class.java))
-        }
+        private const val EXTRA_VENUE_EXPOSURE = "extra_venue_exposure"
 
+        fun open(context: Context, venueExposure: Boolean) {
+            context.startActivity(Intent(context, ExposureActivity::class.java).apply {
+                putExtra(EXTRA_VENUE_EXPOSURE, venueExposure)
+            })
+        }
     }
 
     @Inject
     lateinit var presenter: ExposurePresenter
 
+    private var _isVenueExposure: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exposure)
+
+        _isVenueExposure = intent.getBooleanExtra(EXTRA_VENUE_EXPOSURE, false)
 
         initViews()
         presenter.viewReady()
@@ -51,7 +58,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     override fun onResume() {
         super.onResume()
-        presenter.onResume()
+        presenter.onResume(_isVenueExposure)
     }
 
     override fun onPause() {
@@ -62,10 +69,10 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
     private fun initViews() {
         imageButtonBack.contentDescription =
             "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
-            labelManager.getText(
-                "ACC_BUTTON_BACK_TO",
-                R.string.navigation_back_to
-            )
+                labelManager.getText(
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
             }"
 
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
@@ -101,6 +108,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         )
         textViewMoreInfo.visibility = View.GONE
 
+        imageViewRisk.visibility = View.VISIBLE
         wrapperExposureHigh.visibility = View.VISIBLE
         wrapperExposureLow.visibility = View.GONE
         wrapperExposureInfected.visibility = View.GONE
@@ -124,6 +132,24 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         wrapperExposureHigh.visibility = View.GONE
     }
 
+    override fun showVenueExposureLevelHigh() {
+        wrapperExposure.setBackgroundResource(R.drawable.background_shape_exposure_high)
+        textViewExpositionDetailTitleSmall.text = labelManager.getText(
+            "EXPOSITION_HIGH_TITLE_1",
+            R.string.exposure_detail_high_title_small
+        )
+        textViewExpositionDetailTitle.text = labelManager.getText(
+            "EXPOSITION_HIGH_TITLE_2", R.string.exposure_detail_high_title
+        )
+        textViewMoreInfo.visibility = View.GONE
+
+        imageViewRisk.setImageResource(R.drawable.ic_risk_place)
+        imageViewRisk.visibility = View.VISIBLE
+        wrapperExposureHigh.visibility = View.VISIBLE
+        wrapperExposureLow.visibility = View.GONE
+        wrapperExposureInfected.visibility = View.GONE
+    }
+
     override fun setExposureInfo(
         date: String,
         daysElapsed: Int?,
@@ -133,6 +159,12 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         textViewExposureDescription.visibility = View.VISIBLE
         textViewExposureDescription.text =
             labelManager.getExposureHighDatesText(date, daysElapsed, hoursElapsed, minutesElapsed)
+    }
+
+    override fun setVenueExposureInfo(date: String, daysElapsed: Int?) {
+        textViewExposureDescription.visibility = View.VISIBLE
+        textViewExposureDescription.text =
+            labelManager.getVenueExposureHighDatesText(date, daysElapsed)
     }
 
     override fun setDaysToHeal(daysToHeal: Int) {

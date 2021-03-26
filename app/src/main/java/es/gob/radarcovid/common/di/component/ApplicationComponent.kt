@@ -16,17 +16,14 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import es.gob.radarcovid.RadarCovidApplication
-import es.gob.radarcovid.common.di.module.ActivitiesModule
-import es.gob.radarcovid.common.di.module.ServicesModule
-import es.gob.radarcovid.common.di.module.NetworkModule
-import es.gob.radarcovid.common.di.module.RepositoryModule
-import es.gob.radarcovid.common.di.module.ViewsModule
+import es.gob.radarcovid.common.di.module.*
 import es.gob.radarcovid.common.di.scope.PerApplication
 import javax.inject.Named
 
 @PerApplication
 @Component(
     modules = [NetworkModule::class,
+        EncryptedSharedPreferencesModule::class,
         RepositoryModule::class,
         ActivitiesModule::class,
         ViewsModule::class,

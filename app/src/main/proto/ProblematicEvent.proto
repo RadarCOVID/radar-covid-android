@@ -1,0 +1,16 @@
+syntax = "proto3";
+package es.gob.radarcovid.models.domain;
+
+message ProblematicEventWrapper {
+  int32 version = 1;
+  repeated ProblematicEvent events = 2;
+}
+
+message ProblematicEvent {
+  bytes identity = 1;
+  bytes secretKeyForIdentity = 2;
+  int64 startTime = 3;
+  int64 endTime = 4;
+  bytes nonce = 5;
+  bytes message = 6;
+}

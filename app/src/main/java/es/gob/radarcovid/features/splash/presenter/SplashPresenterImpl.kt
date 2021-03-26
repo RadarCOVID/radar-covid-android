@@ -12,6 +12,7 @@ package es.gob.radarcovid.features.splash.presenter
 
 import android.net.Uri
 import android.os.Handler
+import es.gob.radarcovid.common.base.Constants.HOST_QR_CODE
 import es.gob.radarcovid.common.base.Constants.HOST_REPORT
 import es.gob.radarcovid.common.base.Constants.INCOMING_CODE_QUERY_PARAM
 import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
@@ -136,6 +137,11 @@ class SplashPresenterImpl @Inject constructor(
                     router.navigateToReport(incomingReportCode?.filter { it.isDigit() })
                 }
             }
+            HOST_QR_CODE -> {
+                match = true
+                router.navigateToMainWithQR(deepLinkData.toString())
+            }
+
         }
         //Deafult if there is not match
         if (!match) router.navigateToMain(activateRadar)

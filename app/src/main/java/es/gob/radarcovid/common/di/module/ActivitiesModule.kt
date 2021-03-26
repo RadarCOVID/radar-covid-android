@@ -24,10 +24,16 @@ import es.gob.radarcovid.features.main.di.MainModule
 import es.gob.radarcovid.features.main.view.MainActivity
 import es.gob.radarcovid.features.onboarding.di.OnboardingModule
 import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
+import es.gob.radarcovid.features.qrcodescan.di.QRScanModule
+import es.gob.radarcovid.features.qrcodescan.view.QRScanActivity
 import es.gob.radarcovid.features.splash.di.SplashModule
 import es.gob.radarcovid.features.splash.view.SplashActivity
 import es.gob.radarcovid.features.stats.di.StatsModule
 import es.gob.radarcovid.features.stats.view.StatsFragment
+import es.gob.radarcovid.features.venuerecord.di.VenueRecordModule
+import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
+import es.gob.radarcovid.features.venuevisited.di.VenueVisitedModule
+import es.gob.radarcovid.features.venuevisited.view.VenueVisitedActivity
 
 @Module
 abstract class ActivitiesModule {
@@ -63,5 +69,17 @@ abstract class ActivitiesModule {
     @PerActivity
     @ContributesAndroidInjector
     abstract fun bindsConfirmationActivity(): ConfirmationActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [QRScanModule::class])
+    abstract fun bindsQRScanActivity(): QRScanActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [VenueRecordModule::class, VenueRecordFragmentsModule::class])
+    abstract fun bindsVenueRecordActivity(): VenueRecordActivity
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [VenueVisitedModule::class])
+    abstract fun bindsVenueVisitedActivity(): VenueVisitedActivity
 
 }

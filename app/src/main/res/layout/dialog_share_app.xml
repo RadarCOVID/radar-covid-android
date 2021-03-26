@@ -20,8 +20,6 @@
         android:background="@drawable/shape_rounded_corners_white"
         android:orientation="vertical"
         android:layout_margin="15dp"
-        android:paddingStart="25dp"
-        android:paddingEnd="25dp"
         android:paddingTop="23dp">
 
         <ScrollView
@@ -30,6 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:fillViewport="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout

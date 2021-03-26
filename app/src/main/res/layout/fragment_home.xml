@@ -139,11 +139,26 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/background_exposition_low"
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     android:elevation="10dp"
                     android:paddingStart="26dp"
                     android:paddingTop="16dp"
                     android:paddingEnd="15dp"
                     android:paddingBottom="30dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewRisk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_risk_contact"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"
+                        android:importantForAccessibility="no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <es.gob.radarcovid.common.view.LabelButton
                         android:id="@+id/textViewExpositionTitle"
@@ -162,7 +177,7 @@
                         app:actionDescriptionLabelId="ACC_ACTION_MORE_DETAILS"
                         app:layout_constraintEnd_toStartOf="@id/imageButtonArrow"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/imageViewRisk" />
 
                     <es.gob.radarcovid.common.view.LabelTextView
                         android:id="@+id/textViewExpositionDescription"
@@ -211,6 +226,89 @@
 
                     <ImageButton
                         android:id="@+id/imageButtonArrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:clickable="false"
+                        android:contentDescription="@string/description_arrow_button_enter"
+                        android:focusableInTouchMode="false"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_arrow_right"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </es.gob.radarcovid.common.view.LabelConstraintLayout>
+
+                <es.gob.radarcovid.common.view.LabelConstraintLayout
+                    android:id="@+id/wrapperVenueExposure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/background_shape_exposure_high"
+                    android:elevation="10dp"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:paddingStart="26dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="30dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewVenueRisk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_risk_place"
+                        android:clickable="false"
+                        android:focusableInTouchMode="false"
+                        android:importantForAccessibility="no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <es.gob.radarcovid.common.view.LabelButton
+                        android:id="@+id/textViewVenueExpositionTitle"
+                        style="@style/TitleExtraBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:background="@null"
+                        android:backgroundTint="@null"
+                        android:gravity="start"
+                        android:text="@string/exposition_block_low_title"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        app:actionDescription="@string/exposition_block_action_more_detail"
+                        app:actionDescriptionLabelId="ACC_ACTION_MORE_DETAILS"
+                        app:layout_constraintEnd_toStartOf="@id/imageButtonVenueArrow"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewVenueRisk" />
+
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        android:id="@+id/textViewVenueExpositionDescription"
+                        style="@style/TextRegular16Black"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/exposition_block_low_description"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewVenueExpositionTitle" />
+
+                    <es.gob.radarcovid.common.view.LabelTextView
+                        android:id="@+id/textViewVenueExpositionCount"
+                        style="@style/TextSmallBlackBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/exposition_block_high_count"
+                        android:visibility="invisible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewVenueExpositionDescription" />
+
+                    <ImageButton
+                        android:id="@+id/imageButtonVenueArrow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@null"

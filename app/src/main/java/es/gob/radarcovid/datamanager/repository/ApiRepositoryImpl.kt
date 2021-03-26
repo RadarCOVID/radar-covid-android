@@ -15,7 +15,9 @@ import es.gob.radarcovid.datamanager.api.ApiInterface
 import es.gob.radarcovid.models.request.RequestKpi
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
+import okhttp3.ResponseBody
 import org.funktionale.either.Either
+import retrofit2.Response
 import javax.inject.Inject
 
 class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterface) :
@@ -79,4 +81,8 @@ class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterfa
         callService {
             apiInterface.sendKpi(body)
         }
+
+    override fun getTraceKeys(keyBundleTag: Long): Response<ResponseBody> =
+        apiInterface.getTraceKeys(keyBundleTag).execute()
+
 }

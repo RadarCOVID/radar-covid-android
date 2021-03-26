@@ -11,21 +11,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
     </style>
 
-    <style name="FullscreenTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="FullscreenTheme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="FloatingDialog" parent="Theme.AppCompat.Light.Dialog">
+    <style name="FloatingDialog" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
@@ -41,7 +42,7 @@
     </style>
 
     <style name="TitleTip" parent="Title">
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
 
@@ -60,6 +61,18 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="StyleRegularBlack24">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="StyleRegularBlack18">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="Title18Black" parent="Title">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
@@ -76,8 +89,13 @@
     </style>
 
     <style name="TitleMedium" parent="Title">
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="Title22Black" parent="Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="TitleExtraBold">
@@ -107,7 +125,7 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
-    
+
     <style name="TextRegular20Black">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">20sp</item>
@@ -116,20 +134,28 @@
 
     <style name="TextSmall">
         <item name="android:fontFamily">@font/roboto_light</item>
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="TextSmallBlack">
-        <item name="android:fontFamily">@font/roboto_light</item>
+    <style name="TextSmallBlack" parent="TextSmall">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextSmallBlack12" parent="TextSmall">
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TextRegular16Black">
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextRegular12Black">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TextSmallBlackBold">
@@ -224,6 +250,16 @@
         <item name="android:background">@drawable/shape_rounded_border_accent</item>
     </style>
 
+    <style name="ButtonFloatingOn" parent="Button">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_circle_border_purple</item>
+    </style>
+
+    <style name="ButtonFloatingOff" parent="Button">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_circle_border_white</item>
+    </style>
+
     <style name="EditTextDigit" parent="TextSemibold">
         <item name="android:clickable">true</item>
         <item name="android:paddingEnd">0dp</item>
@@ -276,7 +312,7 @@
         <item name="android:background">@drawable/background_spinner</item>
     </style>
 
-    <style name="RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+    <style name="RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">@color/black_26</item>
         <item name="android:textSize">16sp</item>
@@ -285,6 +321,23 @@
         <item name="android:button">@drawable/my_health_radio_selector</item>
         <item name="android:padding">26dp</item>
         <item name="android:gravity">start|center</item>
+    </style>
+
+    <style name="SegmentedControlButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/background_segmented_selector_middle</item>
+        <item name="android:textColor">@drawable/selector_segmented</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SegmentedControlButtonLeft" parent="SegmentedControlButton">
+        <item name="android:background">@drawable/background_segmented_selector_left</item>
+    </style>
+
+    <style name="SegmentedControlButtonRight" parent="SegmentedControlButton">
+        <item name="android:background">@drawable/background_segmented_selector_right</item>
     </style>
 
 </resources>

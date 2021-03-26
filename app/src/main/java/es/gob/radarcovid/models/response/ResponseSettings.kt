@@ -25,7 +25,8 @@ data class ResponseSettings(
     val legalTermsVersion: String? = "",
     val radarCovidDownloadUrl: String? = "",
     val notificationReminder: Int? = NOTIFICATION_REMINDER_DEFAULT,
-    val timeBetweenKpi: Int? = ANALYTICS_PERIOD_DEFAULT
+    val timeBetweenKpi: Int? = ANALYTICS_PERIOD_DEFAULT,
+    val venueConfiguration: ResponseVenueConfiguration? = ResponseVenueConfiguration()
 )
 
 data class ResponseSettingsExposureConfiguration(
@@ -65,3 +66,10 @@ data class ResponseSettingsAttenuationFactor(val low: Float? = 0f, val medium: F
 data class ResponseSettingsAppVersion(val android: ResponseSettingsAppVersionItem? = ResponseSettingsAppVersionItem())
 
 data class ResponseSettingsAppVersionItem(val version: String? = "1.0", val compilation: Int? = 1)
+
+data class ResponseVenueConfiguration(
+    val recordNotification: Int = 60,
+    val autoCheckout: Int = 300,
+    val troubledPlaceCheck: Int = 120,
+    val quarentineAfterExposed: Int = 2880
+)

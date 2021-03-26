@@ -55,4 +55,6 @@ interface SplashRouter {
 
     fun navigateToReport(reportCode: String?)
 
+    fun navigateToMainWithQR(capturedQR: String)
+
 }

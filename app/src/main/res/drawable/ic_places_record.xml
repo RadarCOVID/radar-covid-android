@@ -1,0 +1,44 @@
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="39dp"
+    android:height="36dp"
+    android:viewportWidth="39"
+    android:viewportHeight="36">
+  <path
+      android:pathData="M36.5,27.9166H29.5C28.9477,27.9166 28.5,28.439 28.5,29.0833V33.1666C28.5,33.811 28.9477,34.3333 29.5,34.3333H36.5C37.0523,34.3333 37.5,33.811 37.5,33.1666V29.0833C37.5,28.439 37.0523,27.9166 36.5,27.9166Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M30.5,27.9166V25.5833C30.4994,24.86 30.7291,24.1622 31.1447,23.6254C31.5602,23.0887 32.1319,22.7512 32.7488,22.6785C33.3656,22.6058 33.9836,22.8031 34.4827,23.2321C34.9819,23.6611 35.3266,24.2911 35.45,25"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M28.5,14.5C28.5,25 15,34 15,34C15,34 1.5,25 1.5,14.5C1.5,10.9196 2.9223,7.4858 5.4541,4.9541C7.9858,2.4223 11.4196,1 15,1C18.5804,1 22.0142,2.4223 24.5459,4.9541C27.0777,7.4858 28.5,10.9196 28.5,14.5Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M15,19C17.4853,19 19.5,16.9853 19.5,14.5C19.5,12.0147 17.4853,10 15,10C12.5147,10 10.5,12.0147 10.5,14.5C10.5,16.9853 12.5147,19 15,19Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+</vector>

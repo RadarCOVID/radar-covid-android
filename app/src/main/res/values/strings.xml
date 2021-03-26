@@ -65,6 +65,7 @@
     /********** Menu ************/
     <string name="title_home">Radar</string>
     <string name="title_mydata">Mis datos</string>
+    <string name="title_qr">QR</string>
     <string name="title_helpline">Helpline</string>
     <string name="title_stats">Estadísticas</string>
     <string name="title_settings">Ajustes</string>
@@ -457,5 +458,71 @@
     <string name="share_app_description3">Cuantas más personas utilicemos Radar <br /> COVID, antes podremos romper la cadena de contagios.</string>
     <string name="share_app_share_button">Compartir enlace descarg</string>
     <string name="share_app_text">Ayúdanos a frenar juntos la pandemia.\nCuantas más personas utilicemos Radar COVID, antes podremos romper la cadena de contagios.\n\nDescárgate Radar COVID:\nDispositivos iOS:\n<a href="http://apple.co/3bZvdxK" >http://apple.co/3bZvdxK </a> \n\nDispositivos Android:\n<a href="http://bit.ly/32typyT" > http://bit.ly/32typyT </a>\n\nMás información en:\n<a href="radarcovid.gob.es" > radarcovid.gob.es</a> </string>
+
+    /********** Venue Record ************/
+
+    <string name="venue_title">Registro de lugares mediante QR</string>
+    <string name="venue_paragraph_1">Registra los lugares que visitas capturando sus códigos QR.\n\nRecibe notificaciones en caso de coincidir con personas posteriormente diagnosticadas de COVID-19.\n\nTu privacidad está protegida en todo momento.</string>
+    <string name="venue_record_start">Capturar Código QR</string>
+    <string name="venue_record_places">Ver listado de sitios</string>
+    <string name="venue_record_cancel_title">Cancelar registro</string>
+    <string name="venue_record_cancel_text">¿Estás seguro que deseas cancelar el registro de este lugar?</string>
+    <string name="venue_record_cancel_continue">Continuar registro</string>
+
+    <string name="venue_record_scan_title">Escanea el código QR</string>
+    <string name="venue_record_scan_desc">Escanea el código QR para realizar el registro de entrada</string>
+
+    <string name="venue_record_captured_code_title">Código capturado</string>
+    <string name="venue_record_captured_code_desc">Confirmando tu entrada y salida del lugar visitado, podremos notificarte si coincides en el lugar con personas diagnosticadas posteriormente como positivo COVID-19.</string>
+    <string name="venue_record_captured_code_check_in">Confirmar entrada</string>
+
+    <string name="venue_record_error_code_title">Código no reconocido</string>
+    <string name="venue_record_error_code_desc">Puede que estés intentando escanear un código no oficial de Radar COVID o que el código esté dañado.</string>
+    <string name="venue_record_error_not_valid_yet">El código QR escaneado todavía no es válido</string>
+    <string name="venue_record_error_not_valid_anymore">El código QR escaneado ya no es válido</string>
+
+    <string name="venue_record_initiated_title">Registro iniciado</string>
+    <string name="venue_record_initiated_time">Tiempo transcurrido</string>
+    <string name="venue_record_initiated_confirm">Confirmar salida</string>
+
+    <string name="venue_checkout_title">Confirmación de salida</string>
+    <string name="venue_checkout_datetime">Fecha y hora de entrada</string>
+    <string name="venue_checkout_leave_now">SALGO AHORA</string>
+    <string name="venue_checkout_time">¿Cuánto tiempo has estado?</string>
+    <string name="venue_checkout_record_end">Finalizar registro</string>
+    <string name="venue_checkout_time_now">Salgo ahora</string>
+    <string name="venue_checkout_time_30s">30\'</string>
+    <string name="venue_checkout_time_1h">1h</string>
+    <string name="venue_checkout_time_2h">2h</string>
+    <string name="venue_checkout_time_4h">4h</string>
+    <string name="venue_checkout_time_5h">+5h</string>
+    <string name="venue_checkout_today">Hoy, %@</string>
+    <string name="venue_checkout_yesterday">Ayer, %@</string>
+    <string name="venue_checkout_hour">%@ h</string>
+
+    <string name="venue_record_success_title">Se ha registrado la visita con éxito</string>
+    <string name="venue_record_success_paragraph1">El registro se guardará de forma encriptada localmente en tu dispositivo móvil, de forma anónima, durante 14 días.\n\nRecuerda que recibirás una notificación si has tenido contacto en el lugar y horas registradas con personas diagnosticadas posteriormente como positivo COVID-19.</string>
+
+    <string name="venue_record_notification_reminder_title">Recordatorio de registro en marcha</string>
+    <string name="venue_record_notification_reminder_body">¿Deseas confirmar la salida el lugar visitado?</string>
+    <string name="venue_exposure_notification_body">Se ha detectado un contagio masivo de COVID-19 en un lugar que has visitado</string>
+
+    <string name="venue_exposure_block_high_description">Se ha detectado un contagio masivo de COVID-19 en un lugar que has visitado.\n<b>Debes realizar cuarentena domiciliaria.</b>.</string>
+    <string name="venue_exposure_high_detail_description">Hace <b>%1$s días</b> registraste tu visita a un lugar donde también estuvo alguien diagnosticado de COVID-19 (actualizado %2$s)</string>
+
+    <string name="venue_biometric_prompt_tittle">Autenticación</string>
+    <string name="venue_biometric_prompt_message">Por favor identifícate para acceder</string>
+
+    <string name="venue_diary_subtitle">LUGARES VISITADOS</string>
+    <string name="venue_diary_title">Diario</string>
+    <string name="venue_diary_hidden_places">Lugares archivados (%@)</string>
+    <string name="venue_diary_hide">OCULTOS</string>
+    <string name="venue_diary_show">VISIBLES</string>
+    <string name="venue_diary_time">HORA ENTRADA Y TIEMPO</string>
+    <string name="venue_diary_hide_action">Ocultar elementos archivados</string>
+    <string name="venue_diary_show_action">Mostrar todos los elementos</string>
+    <string name="venue_diary_hide_element_action">Ocultar elemento</string>
+    <string name="venue_diary_show_element_action">Mostrar elemento</string>
+    <string name="venue_diary_empty_list">Aún no has registrado ningún lugar visitado</string>
 
 </resources>

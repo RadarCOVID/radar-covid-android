@@ -64,6 +64,17 @@
                     android:text="@string/exposure_detail_title"
                     app:isHeading="true" />
 
+                <ImageView
+                    android:id="@+id/imageViewRisk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_risk_contact"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:importantForAccessibility="no" />
+
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewExpositionDetailTitle"
                     style="@style/TitleMedium"

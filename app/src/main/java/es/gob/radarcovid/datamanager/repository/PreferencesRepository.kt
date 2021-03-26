@@ -84,4 +84,33 @@ interface PreferencesRepository {
     fun setLanguageChanged(changed: Boolean)
 
     fun getLanguageChanged(): Boolean
+
+    fun setRecordInProgress(recordInProgress: Boolean)
+
+    fun isRecordInProgress(): Boolean
+
+    fun setApplicationActive(active: Boolean)
+
+    fun isApplicationActive(): Boolean
+
+    fun setLastKeyBundleTag(keyBundleTag: Long)
+
+    fun getLastKeyBundleTag(): Long
+
+    fun setRecordNotificationTime(time: Int)
+
+    fun getRecordNotificationTime(): Int
+
+    fun setAutoCheckoutTime(time: Int)
+
+    fun getAutoCheckoutTime(): Int
+
+    fun setTroubledPlaceCheckTime(time: Int)
+
+    fun getTroubledPlaceCheckTime(): Int
+
+    fun setQuarantineAfterVenueExposedTime(time: Int)
+
+    fun getQuarantineAfterVenueExposedTime(): Int
+
 }

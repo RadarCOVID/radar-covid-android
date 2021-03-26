@@ -34,7 +34,8 @@ class SettingsDataMapper @Inject constructor() {
                 legalTermsVersion = legalTermsVersion ?: "",
                 radarCovidDownloadUrl = radarCovidDownloadUrl ?: "",
                 notificationReminder = notificationReminder ?: NOTIFICATION_REMINDER_DEFAULT,
-                timeBetweenKpi = timeBetweenKpi ?: ANALYTICS_PERIOD_DEFAULT
+                timeBetweenKpi = timeBetweenKpi ?: ANALYTICS_PERIOD_DEFAULT,
+                venueConfiguration = transform(venueConfiguration)
             )
         }
     } ?: Settings()
@@ -96,4 +97,14 @@ class SettingsDataMapper @Inject constructor() {
         responseSettingsAppVersion?.let {
             SettingsAppInfo(it.android?.version ?: "1.0", it.android?.compilation ?: 1)
         } ?: SettingsAppInfo()
+
+    private fun transform(responseVenueConfiguration: ResponseVenueConfiguration?): VenueConfiguration =
+        responseVenueConfiguration?.let {
+            VenueConfiguration(
+                recordNotification = it.recordNotification,
+                autoCheckout = it.autoCheckout,
+                quarentineAfterExposed = it.quarentineAfterExposed,
+                troubledPlaceCheck = it.troubledPlaceCheck
+            )
+        } ?: VenueConfiguration()
 }

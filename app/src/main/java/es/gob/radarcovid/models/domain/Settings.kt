@@ -38,7 +38,8 @@ data class Settings(
     val legalTermsVersion: String = "",
     val radarCovidDownloadUrl: String = "",
     val notificationReminder: Int = NOTIFICATION_REMINDER_DEFAULT,
-    val timeBetweenKpi: Int = ANALYTICS_PERIOD_DEFAULT
+    val timeBetweenKpi: Int = ANALYTICS_PERIOD_DEFAULT,
+    val venueConfiguration: VenueConfiguration = VenueConfiguration()
 )
 
 data class ExposureConfiguration(
@@ -80,3 +81,10 @@ data class SettingsRiskScore(
 )
 
 data class SettingsAppInfo(val minVersionName: String = "", val minVersionCode: Int = 1)
+
+data class VenueConfiguration(
+    val recordNotification: Int = 60,
+    val autoCheckout: Int = 300,
+    val troubledPlaceCheck: Int = 120,
+    val quarentineAfterExposed: Int = 2880
+)

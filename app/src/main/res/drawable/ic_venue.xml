@@ -1,0 +1,72 @@
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="27dp"
+    android:height="24dp"
+    android:viewportWidth="27"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M25.8421,7H1.1052L3.5263,1H23.421L25.8421,7Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M5.8421,7.5263C5.8421,7.8421 5.8421,9.4211 5.7368,9.7369C5.4211,10.6842 4.4737,11.3158 3.4211,11.3158C2.4737,11.3158 1.5263,10.6842 1.2105,9.8421C1.1053,9.6316 1,7.8421 1,7.5263"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M10.5789,7.5263C10.5789,7.8421 10.5789,9.4211 10.4736,9.7369C10.1578,10.6842 9.2105,11.3158 8.1578,11.3158C7.2105,11.3158 6.2631,10.6842 5.9473,9.8421C5.842,9.6316 5.842,7.8421 5.842,7.5263"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M15.4211,7.5263C15.4211,7.8421 15.4211,9.4211 15.3158,9.7369C15,10.6842 14.0527,11.3158 13,11.3158C12.0527,11.3158 11.1053,10.6842 10.7895,9.8421C10.6842,9.5263 10.579,7.8421 10.579,7.5263"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M20.6841,7.5263C20.6841,7.8421 20.6841,9.4211 20.5789,9.7369C20.2631,10.6842 19.3157,11.3158 18.2631,11.3158C17.3157,11.3158 16.3684,10.6842 16.0526,9.8421C15.9473,9.5263 15.842,7.8421 15.842,7.5263"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M25.8421,7.5263C25.8421,7.8421 25.8421,9.4211 25.7368,9.7369C25.4211,10.6842 24.4737,11.3158 23.4211,11.3158C22.4737,11.3158 21.5263,10.6842 21.2105,9.8421C21.1053,9.5263 21,7.8421 21,7.5263"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M24.4737,11.9474V22.8947H2.6842V12.1579"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M12.9999,14.7895H6.4736V23H12.9999V14.7895Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+</vector>

@@ -13,6 +13,7 @@ package es.gob.radarcovid.features.main.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.core.view.forEach
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
@@ -21,6 +22,7 @@ import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainView
 import es.gob.radarcovid.features.worker.AnalyticsWorker
 import es.gob.radarcovid.features.worker.ReminderWorker
+import es.gob.radarcovid.features.worker.VenueMatcherWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
@@ -30,11 +32,18 @@ class MainActivity : BaseActivity(), MainView {
     companion object {
 
         private const val EXTRA_ACTIVATE_RADAR = "extra_activate_radar"
+        private const val EXTRA_CAPTURED_QR = "extra_captured_qr"
 
         fun open(context: Context, activateRadar: Boolean) =
             context.startActivity(Intent(context, MainActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 putExtra(EXTRA_ACTIVATE_RADAR, activateRadar)
+            })
+
+        fun openWithQR(context: Context, capturedQR: String) =
+            context.startActivity(Intent(context, MainActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                putExtra(EXTRA_CAPTURED_QR, capturedQR)
             })
 
     }
@@ -53,12 +62,18 @@ class MainActivity : BaseActivity(), MainView {
 
         initViews()
 
-        presenter.viewReady(intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false))
+        presenter.onCreate(
+            intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false),
+            intent.getStringExtra(EXTRA_CAPTURED_QR)
+        )
     }
 
     override fun onResume() {
         super.onResume()
-        presenter.onResume()
+        presenter.onResume(
+            bottomNavigation.selectedItemId == R.id.menuItemVenue,
+            bottomNavigation.selectedItemId == R.id.menuItemHome
+        )
     }
 
     override fun onStop() {
@@ -76,8 +91,8 @@ class MainActivity : BaseActivity(), MainView {
             when (it.itemId) {
                 R.id.menuItemHome -> it.title =
                     labelManager.getText("ACC_HOME_TITLE", R.string.title_home)
-                R.id.menuItemProfile -> it.title =
-                    labelManager.getText("ACC_MYDATA_TITLE", R.string.title_mydata)
+                R.id.menuItemVenue -> it.title =
+                    labelManager.getText("ACC_VENUE_TITLE", R.string.title_qr)
                 R.id.menuItemHelpline -> it.title =
                     labelManager.getText("ACC_HELPLINE_TITLE", R.string.title_helpline)
                 R.id.menuItemStats -> it.title =
@@ -89,7 +104,7 @@ class MainActivity : BaseActivity(), MainView {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menuItemHome -> presenter.onHomeButtonClick()
-                R.id.menuItemProfile -> presenter.onProfileButtonClick()
+                R.id.menuItemVenue -> presenter.onVenueButtonClick()
                 R.id.menuItemHelpline -> presenter.onHelplineButtonClick()
                 R.id.menuItemStats -> presenter.onStatsButtonClick()
                 R.id.menuItemSettings -> presenter.onSettingsButtonClick()
@@ -102,11 +117,31 @@ class MainActivity : BaseActivity(), MainView {
         bottomNavigation.selectedItemId = R.id.menuItemSettings
     }
 
+    override fun setHomeSelected() {
+        bottomNavigation.selectedItemId = R.id.menuItemHome
+    }
+
+    override fun setVenueHomeSelected() {
+        bottomNavigation.selectedItemId = R.id.menuItemVenue
+    }
+
     override fun onBackPressed() {
         if (bottomNavigation.selectedItemId == R.id.menuItemHome)
             presenter.onBackPressed()
         else
             bottomNavigation.selectedItemId = R.id.menuItemHome
+    }
+
+    override fun updateVenueIcon(isVenueRecordSelected: Boolean) {
+        if (isVenueRecordSelected) {
+            bottomNavigation.getOrCreateBadge(R.id.menuItemVenue).apply {
+                backgroundColor = ContextCompat.getColor(applicationContext, R.color.red_2300)
+                number = 1
+                badgeTextColor = ContextCompat.getColor(applicationContext, R.color.red_2300)
+            }
+        } else {
+            bottomNavigation.removeBadge(R.id.menuItemVenue)
+        }
     }
 
     override fun showExitConfirmationDialog() {
@@ -140,6 +175,14 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun startAnalyticsWorker(time: Int) {
         AnalyticsWorker.start(this, time)
+    }
+
+    override fun startVenueMatcherWorker(time: Int) {
+        VenueMatcherWorker.set(this, time)
+    }
+
+    override fun cancelVenueMatcherWorker() {
+        VenueMatcherWorker.cancel(this)
     }
 
     override fun createNotificationReminder(time: Int) {

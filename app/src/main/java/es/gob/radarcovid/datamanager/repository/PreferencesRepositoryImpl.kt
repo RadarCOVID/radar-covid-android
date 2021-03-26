@@ -45,6 +45,13 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
         private const val KEY_EXPOSURE_ANALYTICS_COUNT = "key_exposure_analytics_count"
         private const val KEY_ANALYTICS_PERIOD = "key_analytics_period"
         private const val KEY_LANGUAGE_CHANGED = "key_language_changed"
+        private const val KEY_RECORD_IN_PROGRESS = "key_record_in_progress"
+        private const val KEY_APP_ACTIVE = "key_app_active"
+        private const val KEY_BUNDLE_TAG = "key_bundle_tag"
+        private const val KEY_VENUE_RECORD_NOTIFICATION = "key_venue_record_notification"
+        private const val KEY_VENUE_AUTO_CHECK = "key_venue_auto_check"
+        private const val KEY_VENUE_TROUBLE_PLACE_CHECK = "key_venue_trouble_place_check"
+        private const val KEY_VENUE_QUARANTINE = "key_venue_quarantine"
     }
 
     private val preferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
@@ -229,4 +236,57 @@ class PreferencesRepositoryImpl @Inject constructor(@Named("applicationContext")
 
     override fun getLanguageChanged(): Boolean =
         preferences.getBoolean(KEY_LANGUAGE_CHANGED, false)
+
+    override fun setRecordInProgress(recordInProgress: Boolean) {
+        preferences.edit()
+            .putBoolean(KEY_RECORD_IN_PROGRESS, recordInProgress)
+            .apply()
+    }
+
+    override fun isRecordInProgress(): Boolean =
+        preferences.getBoolean(KEY_RECORD_IN_PROGRESS, false)
+
+    override fun setApplicationActive(active: Boolean) {
+        preferences.edit()
+            .putBoolean(KEY_APP_ACTIVE, active)
+            .apply()
+    }
+
+    override fun isApplicationActive(): Boolean =
+        preferences.getBoolean(KEY_APP_ACTIVE, false)
+
+    override fun setLastKeyBundleTag(keyBundleTag: Long) {
+        preferences.edit().putLong(KEY_BUNDLE_TAG, keyBundleTag).apply()
+    }
+
+    override fun getLastKeyBundleTag(): Long =
+        preferences.getLong(KEY_BUNDLE_TAG, 0L)
+
+    override fun setRecordNotificationTime(time: Int) {
+        preferences.edit().putInt(KEY_VENUE_RECORD_NOTIFICATION, time).apply()
+    }
+
+    override fun getRecordNotificationTime(): Int =
+        preferences.getInt(KEY_VENUE_RECORD_NOTIFICATION, 60)
+
+    override fun setAutoCheckoutTime(time: Int) {
+        preferences.edit().putInt(KEY_VENUE_AUTO_CHECK, time).apply()
+    }
+
+    override fun getAutoCheckoutTime(): Int =
+        preferences.getInt(KEY_VENUE_AUTO_CHECK, 300)
+
+    override fun setTroubledPlaceCheckTime(time: Int) {
+        preferences.edit().putInt(KEY_VENUE_TROUBLE_PLACE_CHECK, time).apply()
+    }
+
+    override fun getTroubledPlaceCheckTime(): Int =
+        preferences.getInt(KEY_VENUE_TROUBLE_PLACE_CHECK, 120)
+
+    override fun setQuarantineAfterVenueExposedTime(time: Int) {
+        preferences.edit().putInt(KEY_VENUE_QUARANTINE, time).apply()
+    }
+
+    override fun getQuarantineAfterVenueExposedTime(): Int =
+        preferences.getInt(KEY_VENUE_QUARANTINE, 2880)
 }

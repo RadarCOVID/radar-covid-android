@@ -19,6 +19,7 @@ import es.gob.radarcovid.features.home.protocols.HomeRouter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.models.domain.Environment
 import es.gob.radarcovid.models.domain.ExposureInfo
+import es.gob.radarcovid.models.domain.VenueRecord
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -30,7 +31,8 @@ class HomePresenterImpl @Inject constructor(
     private val exposureInfoUseCase: ExposureInfoUseCase,
     private val fakeExposureInfoUseCase: FakeExposureInfoUseCase,
     private val legalTermsUseCase: LegalTermsUseCase,
-    private val getHealingTimeUseCase: GetHealingTimeUseCase
+    private val getHealingTimeUseCase: GetHealingTimeUseCase,
+    private val venueMatcherUseCase: VenueMatcherUseCase
 ) : HomePresenter {
 
     private var activateRadar: Boolean = false
@@ -48,7 +50,10 @@ class HomePresenterImpl @Inject constructor(
 
     override fun onResume() {
         BUS.register(this)
-        updateViews(exposureInfoUseCase.getExposureInfo())
+        updateViews(
+            exposureInfoUseCase.getExposureInfo(),
+            venueMatcherUseCase.getVenueExposureInfo()
+        )
     }
 
     override fun onPause() {
@@ -56,7 +61,11 @@ class HomePresenterImpl @Inject constructor(
     }
 
     override fun onExposureBlockClick() {
-        router.navigateToExpositionDetail()
+        router.navigateToExpositionDetail(false)
+    }
+
+    override fun onVenueExposureBlockClick() {
+        router.navigateToExpositionDetail(true)
     }
 
     override fun onReportButtonClick() {
@@ -144,9 +153,12 @@ class HomePresenterImpl @Inject constructor(
             view.updateContentDescriptionRadar(exposureRadarUseCase.isRadarEnabled())
     }
 
-    @Subscribe
+    @Subscribe()
     fun onExposureStatusChange(event: EventExposureStatusChange) {
-        updateViews(exposureInfoUseCase.getExposureInfo())
+        updateViews(
+            exposureInfoUseCase.getExposureInfo(),
+            venueMatcherUseCase.getVenueExposureInfo()
+        )
     }
 
     private fun showExposureHealedDialogIfRequired(
@@ -163,7 +175,7 @@ class HomePresenterImpl @Inject constructor(
         }
     }
 
-    private fun updateViews(exposureInfo: ExposureInfo) {
+    private fun updateViews(exposureInfo: ExposureInfo, venueExposureInfo: VenueRecord?) {
         if (!exposureInfo.exposureNotificationsEnabled && exposureRadarUseCase.isRadarEnabled())
             exposureRadarUseCase.setRadarDisabled()
 
@@ -178,9 +190,24 @@ class HomePresenterImpl @Inject constructor(
             view.showReportButton()
         }
 
+        var daysLeftVenueExposure = 0L
+        if (venueExposureInfo != null) {
+            val millisElapsed = System.currentTimeMillis() - venueExposureInfo.dateOut!!.time
+            val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
+            val daysToHeal =
+                getHealingTimeUseCase.getHealingTime().exposureHighMinutes / 60 / 24
+            daysLeftVenueExposure = daysToHeal - daysElapsed
+        }
+
         var daysLeft = 0L
         when (exposureInfo.level) {
-            ExposureInfo.Level.LOW -> view.showExposureBlockLow()
+            ExposureInfo.Level.LOW -> {
+                if (venueExposureInfo != null) {
+                    view.showVenueExposureBlock(daysLeftVenueExposure.toInt(), true)
+                } else {
+                    view.showExposureBlockLow()
+                }
+            }
             ExposureInfo.Level.HIGH -> {
                 val millisElapsed = System.currentTimeMillis() - exposureInfo.lastExposureDate.time
                 val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
@@ -188,7 +215,10 @@ class HomePresenterImpl @Inject constructor(
                     getHealingTimeUseCase.getHealingTime().exposureHighMinutes / 60 / 24
                 daysLeft = daysToHeal - daysElapsed
 
-                view.showExposureBlockHigh(daysLeft.toInt())
+                view.showExposureBlockHigh(daysLeft.toInt(), venueExposureInfo == null)
+                if (venueExposureInfo != null) {
+                    view.showVenueExposureBlock(daysLeftVenueExposure.toInt(), false)
+                }
             }
             ExposureInfo.Level.INFECTED -> view.showExposureBlockInfected()
         }
