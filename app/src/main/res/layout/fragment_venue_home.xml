@@ -55,6 +55,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="24dp"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:importantForAccessibility="no"
                 android:src="@drawable/img_venue" />
 
             <es.gob.radarcovid.common.view.LabelTextView
