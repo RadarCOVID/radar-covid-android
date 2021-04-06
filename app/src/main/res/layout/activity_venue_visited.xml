@@ -64,15 +64,26 @@
             android:id="@+id/emptyMessageLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center"
             android:visibility="gone"
             tools:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:importantForAccessibility="no"
+                android:src="@drawable/img_diary" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextNormal18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@string/venue_diary_empty_list"
                 app:labelId="VENUE_DIARY_EMPTY_LIST" />
 
