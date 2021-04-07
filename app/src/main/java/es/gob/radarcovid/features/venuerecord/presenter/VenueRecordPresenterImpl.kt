@@ -147,7 +147,6 @@ class VenueRecordPresenterImpl @Inject constructor(
     }
 
     private fun doCheckOut() {
-
         //Calculate time out
         val currentVenue = venueRecordUseCase.getCurrentVenue()
 
@@ -173,7 +172,6 @@ class VenueRecordPresenterImpl @Inject constructor(
                 { onCheckOutSuccess() },
                 { onCheckOutError(it) }
             )
-        view.showFragment(RECORD_SUCCESS_FRAGMENT)
     }
 
     private fun onCheckOutSuccess() {
@@ -182,7 +180,8 @@ class VenueRecordPresenterImpl @Inject constructor(
     }
 
     private fun onCheckOutError(error: Throwable) {
-        //TODO: ¿cancel record on error?
+        venueRecordUseCase.cancelCheckIn()
+        view.cancelVenueRecordWorker()
         view.showError(error, true)
     }
 }
