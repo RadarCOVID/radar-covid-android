@@ -50,6 +50,10 @@ class ConfirmRecordFragment : BaseFragment(), ConfirmRecordView {
     private fun initViews() {
         buttonCheckIn.setSafeOnClickListener { presenter.onContinueButtonClick() }
         buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
+    }
+
+    override fun onResume() {
+        super.onResume()
         textViewVenueName.text = (activity as? VenueRecordActivity)?.getCurrentVenueName()
     }
 
