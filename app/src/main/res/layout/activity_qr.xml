@@ -192,6 +192,7 @@
                 android:contentDescription="@string/venue_record_places"
                 app:contentDescriptionLabelId="ACC_VENUE_HOME_PLACES"/>
 
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

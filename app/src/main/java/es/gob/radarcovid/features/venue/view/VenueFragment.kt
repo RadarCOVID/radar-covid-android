@@ -83,31 +83,19 @@ class VenueFragment : BaseFragment(), VenueView {
         if (BiometricManager.from(requireContext())
                 .canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL) == BiometricManager.BIOMETRIC_SUCCESS
         ) {
-            val title = labelManager.getText(
-                "VENUE_BIOMETRIC_PROMPT_TITLE",
-                R.string.venue_biometric_prompt_tittle
-            )
-            val message = labelManager.getText(
-                "VENUE_BIOMETRIC_PROMPT_MESSAGE",
-                R.string.venue_biometric_prompt_message
-            )
-
-            biometricPrompt.authenticate(
-                BiometricPrompt.PromptInfo.Builder()
-                    .setTitle(title)
-                    //.setSubtitle(message)
-                    .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
-                    .build()
-            )
+                biometricPrompt.authenticate(
+                    BiometricPrompt.PromptInfo.Builder()
+                        .setTitle(
+                            labelManager.getText(
+                                "VENUE_BIOMETRIC_PROMPT_TITLE",
+                                R.string.venue_biometric_prompt_tittle
+                            )
+                        )
+                        .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
+                        .build()
+                )
         } else {
             presenter.showPlaces()
-            // Prompts the user to create credentials that your app accepts.
-//            val enrollIntent = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
-//                Intent(android.provider.Settings.ACTION_FINGERPRINT_ENROLL)
-//            } else {
-//                Intent(android.provider.Settings.ACTION_SECURITY_SETTINGS)
-//            }
-//            startActivityForResult(enrollIntent, 0)
         }
     }
 }

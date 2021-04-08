@@ -25,9 +25,13 @@ import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
+import es.gob.radarcovid.common.extensions.setAccessibilityAction
 import es.gob.radarcovid.common.extensions.setSafeOnClickListener
 import es.gob.radarcovid.features.qrcodescan.protocols.ScanQRView
 import kotlinx.android.synthetic.main.activity_qr.*
+import kotlinx.android.synthetic.main.activity_qr.imageButtonBack
+import kotlinx.android.synthetic.main.fragment_venue_record_confirm.*
+import kotlinx.android.synthetic.main.layout_back_navigation.*
 import java.io.IOException
 
 
@@ -52,6 +56,14 @@ class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr)
+
+        imageButtonBack.contentDescription =
+            "${labelManager.getText("ACC_VENUE_TITLE", R.string.title_home)} ${
+                labelManager.getText(
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
+            }"
 
         barcodeDetector = BarcodeDetector.Builder(this)
             .setBarcodeFormats(Barcode.QR_CODE)
@@ -151,6 +163,7 @@ class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
         val camera = getCamera(cameraSource)
         if (camera != null) {
 
+            setFlashButtonAccessibility()
             flashButton.setSafeOnClickListener {
                 try {
                     if (isFlashOn) {
@@ -165,10 +178,24 @@ class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
                         if (!isFlashOn) Camera.Parameters.FLASH_MODE_TORCH else Camera.Parameters.FLASH_MODE_OFF
                     camera.parameters = param
                     isFlashOn = !isFlashOn
+                    setFlashButtonAccessibility()
                 } catch (e: Exception) {
                 }
             }
         }
+    }
+
+    private fun setFlashButtonAccessibility() {
+        if (isFlashOn) {
+            flashButton.contentDescription =
+                "${labelManager.getText("ACC_FLASH_ON", R.string.title_home)}"
+            flashButton.setAccessibilityAction(labelManager.getText("ALERT_HOME_RADAR_OK_BUTTON", R.string.title_home).toString())
+        } else {
+            flashButton.contentDescription =
+                "${labelManager.getText("ACC_FLASH_OFF", R.string.title_home)}"
+            flashButton.setAccessibilityAction(labelManager.getText("ALERT_HOME_COVID_NOTIFICATION_OK_BUTTON", R.string.title_home).toString())
+        }
+
     }
 
     private fun getCamera(cameraSource: CameraSource): Camera? {

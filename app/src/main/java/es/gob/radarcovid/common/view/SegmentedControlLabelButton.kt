@@ -49,8 +49,12 @@ class SegmentedControlLabelButton @JvmOverloads constructor(
                         ?: ""
                 val customContentDescription =
                     labelManager.getText(contentDescriptionLabelId, defaultTextContent).toString()
+                val actualStep = getInteger(R.styleable.SegmentedControlLabelButton_actualStep, 0)
+                val numberSteps = getInteger(R.styleable.SegmentedControlLabelButton_numberSteps, 2)
+                val stepDescription = labelManager.getText("MY_HEALTH_RANGER", R.string.venue_checkout_steps).toString()
                 if (!customContentDescription.isNullOrEmpty()) {
-                    contentDescription = customContentDescription
+                    contentDescription = "$customContentDescription ${stepDescription.replace("$1",actualStep.toString())
+                        .replace("$2",numberSteps.toString())}"
                 }
 
             } finally {
@@ -58,4 +62,5 @@ class SegmentedControlLabelButton @JvmOverloads constructor(
             }
         }
     }
+
 }
