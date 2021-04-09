@@ -20,8 +20,6 @@ import es.gob.radarcovid.common.extensions.*
 import es.gob.radarcovid.common.view.LabelButton
 import es.gob.radarcovid.datamanager.utils.LabelManager
 import es.gob.radarcovid.models.domain.*
-import kotlinx.android.synthetic.main.activity_venue_visited.*
-import javax.inject.Inject
 
 class VenueListAdapter(
     private var items: List<VenueVisitedRecyclerItem>,
@@ -89,7 +87,11 @@ class VenueListAdapter(
         private val textViewTime = itemView.findViewById(R.id.textViewTime) as TextView
         private val archiveButton = itemView.findViewById(R.id.archiveButton) as LabelButton
 
-        fun bind(item: VenueVisitedItem, labelManager: LabelManager, onClick: (VenueRecord) -> Unit) {
+        fun bind(
+            item: VenueVisitedItem,
+            labelManager: LabelManager,
+            onClick: (VenueRecord) -> Unit
+        ) {
             textViewName.text = item.venueItem.name
             textViewTime.text = "${item.venueItem.dateIn.getHourString()} (${
                 item.venueItem.dateIn.getTimeElapsed(item.venueItem.dateOut!!)
@@ -110,11 +112,21 @@ class VenueListAdapter(
             if (isHidden) {
                 archiveButton.contentDescription =
                     "${labelManager.getText("ACC_VENUE_HIDDEN", R.string.acc_venue_hidden)}"
-                archiveButton.setAccessibilityAction(labelManager.getText("ACC_VENUE_SHOW_ACTION", R.string.acc_show_action).toString())
+                archiveButton.setAccessibilityAction(
+                    labelManager.getText(
+                        "ACC_VENUE_SHOW_ACTION",
+                        R.string.acc_show_action
+                    ).toString()
+                )
             } else {
                 archiveButton.contentDescription =
                     "${labelManager.getText("ACC_VENUE_SHOWN", R.string.acc_venue_shown)}"
-                archiveButton.setAccessibilityAction(labelManager.getText("ACC_VENUE_HIDE_ACTION", R.string.acc_hide_action).toString())
+                archiveButton.setAccessibilityAction(
+                    labelManager.getText(
+                        "ACC_VENUE_HIDE_ACTION",
+                        R.string.acc_hide_action
+                    ).toString()
+                )
             }
         }
     }

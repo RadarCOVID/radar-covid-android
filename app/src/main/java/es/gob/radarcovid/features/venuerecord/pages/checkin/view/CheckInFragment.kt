@@ -25,7 +25,6 @@ import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
 import es.gob.radarcovid.models.domain.VenueRecord
 import kotlinx.android.synthetic.main.fragment_venue_record_checkin.*
-import kotlinx.android.synthetic.main.fragment_venue_record_checkin.checkinButtonBack
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject

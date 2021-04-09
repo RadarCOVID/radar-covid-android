@@ -23,10 +23,8 @@ import es.gob.radarcovid.common.view.adapter.VenueListAdapter
 import es.gob.radarcovid.features.venuevisited.protocols.VenueVisitedPresenter
 import es.gob.radarcovid.features.venuevisited.protocols.VenueVisitedView
 import es.gob.radarcovid.models.domain.VenueVisitedRecyclerItem
-import kotlinx.android.synthetic.main.activity_qr.*
 import kotlinx.android.synthetic.main.activity_venue_visited.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
-import kotlinx.android.synthetic.main.layout_back_navigation.imageButtonBack
 import javax.inject.Inject
 
 class VenueVisitedActivity : BaseBackNavigationActivity(), VenueVisitedView {
@@ -135,12 +133,32 @@ class VenueVisitedActivity : BaseBackNavigationActivity(), VenueVisitedView {
     private fun setSwitchAccessibility() {
         if (switchHidden.isChecked) {
             switchHidden.contentDescription =
-                "${labelManager.getText("ACC_DIARY_HIDDEN_SWITCH", R.string.venue_diary_hidden_switch)}"
-            switchHidden.setAccessibilityAction(labelManager.getText("VENUE_DIARY_HIDE_ACTION", R.string.venue_diary_hide_action).toString())
+                "${
+                    labelManager.getText(
+                        "ACC_DIARY_HIDDEN_SWITCH",
+                        R.string.venue_diary_hidden_switch
+                    )
+                }"
+            switchHidden.setAccessibilityAction(
+                labelManager.getText(
+                    "VENUE_DIARY_HIDE_ACTION",
+                    R.string.venue_diary_hide_action
+                ).toString()
+            )
         } else {
             switchHidden.contentDescription =
-                "${labelManager.getText("ACC_DIARY_HIDDEN_SWITCH", R.string.venue_diary_hidden_switch)}"
-            switchHidden.setAccessibilityAction(labelManager.getText("VENUE_DIARY_SHOW_ACTION", R.string.venue_diary_show_action).toString())
+                "${
+                    labelManager.getText(
+                        "ACC_DIARY_HIDDEN_SWITCH",
+                        R.string.venue_diary_hidden_switch
+                    )
+                }"
+            switchHidden.setAccessibilityAction(
+                labelManager.getText(
+                    "VENUE_DIARY_SHOW_ACTION",
+                    R.string.venue_diary_show_action
+                ).toString()
+            )
         }
     }
 }

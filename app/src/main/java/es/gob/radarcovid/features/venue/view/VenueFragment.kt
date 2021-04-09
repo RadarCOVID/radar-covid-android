@@ -83,17 +83,17 @@ class VenueFragment : BaseFragment(), VenueView {
         if (BiometricManager.from(requireContext())
                 .canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL) == BiometricManager.BIOMETRIC_SUCCESS
         ) {
-                biometricPrompt.authenticate(
-                    BiometricPrompt.PromptInfo.Builder()
-                        .setTitle(
-                            labelManager.getText(
-                                "VENUE_BIOMETRIC_PROMPT_TITLE",
-                                R.string.venue_biometric_prompt_tittle
-                            )
+            biometricPrompt.authenticate(
+                BiometricPrompt.PromptInfo.Builder()
+                    .setTitle(
+                        labelManager.getText(
+                            "VENUE_BIOMETRIC_PROMPT_TITLE",
+                            R.string.venue_biometric_prompt_tittle
                         )
-                        .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
-                        .build()
-                )
+                    )
+                    .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
+                    .build()
+            )
         } else {
             presenter.showPlaces()
         }

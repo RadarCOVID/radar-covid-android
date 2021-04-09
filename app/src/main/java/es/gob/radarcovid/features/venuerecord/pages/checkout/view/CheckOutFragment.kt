@@ -23,9 +23,7 @@ import es.gob.radarcovid.features.venuerecord.pages.checkout.protocols.CheckOutV
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
 import es.gob.radarcovid.models.domain.VenueRecord
-import kotlinx.android.synthetic.main.activity_qr.*
 import kotlinx.android.synthetic.main.fragment_venue_record_checkout.*
-import kotlinx.android.synthetic.main.fragment_venue_record_checkout.checkoutButtonBack
 import javax.inject.Inject
 
 class CheckOutFragment : BaseFragment(), CheckOutView {
@@ -68,7 +66,7 @@ class CheckOutFragment : BaseFragment(), CheckOutView {
         buttonCheckOut.setSafeOnClickListener { presenter.onContinueButtonClick() }
         buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
         checkoutButtonBack.setSafeOnClickListener { presenter.onCloseButtonClick() }
-        segmentedControlTime.setOnCheckedChangeListener { r,i -> presenter.onControlTimeClick() }
+        segmentedControlTime.setOnCheckedChangeListener { r, i -> presenter.onControlTimeClick() }
     }
 
     override fun setButtonContinueEnabled(enabled: Boolean) {

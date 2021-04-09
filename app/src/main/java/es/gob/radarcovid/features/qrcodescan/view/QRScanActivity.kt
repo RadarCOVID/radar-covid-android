@@ -29,9 +29,6 @@ import es.gob.radarcovid.common.extensions.setAccessibilityAction
 import es.gob.radarcovid.common.extensions.setSafeOnClickListener
 import es.gob.radarcovid.features.qrcodescan.protocols.ScanQRView
 import kotlinx.android.synthetic.main.activity_qr.*
-import kotlinx.android.synthetic.main.activity_qr.imageButtonBack
-import kotlinx.android.synthetic.main.fragment_venue_record_confirm.*
-import kotlinx.android.synthetic.main.layout_back_navigation.*
 import java.io.IOException
 
 
@@ -189,11 +186,21 @@ class QRScanActivity : BaseBackNavigationActivity(), ScanQRView {
         if (isFlashOn) {
             flashButton.contentDescription =
                 "${labelManager.getText("ACC_FLASH_ON", R.string.title_home)}"
-            flashButton.setAccessibilityAction(labelManager.getText("ALERT_HOME_RADAR_OK_BUTTON", R.string.title_home).toString())
+            flashButton.setAccessibilityAction(
+                labelManager.getText(
+                    "ALERT_HOME_RADAR_OK_BUTTON",
+                    R.string.title_home
+                ).toString()
+            )
         } else {
             flashButton.contentDescription =
                 "${labelManager.getText("ACC_FLASH_OFF", R.string.title_home)}"
-            flashButton.setAccessibilityAction(labelManager.getText("ALERT_HOME_COVID_NOTIFICATION_OK_BUTTON", R.string.title_home).toString())
+            flashButton.setAccessibilityAction(
+                labelManager.getText(
+                    "ALERT_HOME_COVID_NOTIFICATION_OK_BUTTON",
+                    R.string.title_home
+                ).toString()
+            )
         }
 
     }
