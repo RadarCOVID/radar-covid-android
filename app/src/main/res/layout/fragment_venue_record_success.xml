@@ -10,6 +10,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
@@ -22,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButtonBack"
+        android:id="@+id/successButtonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -41,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageButtonBack">
+        app:layout_constraintTop_toBottomOf="@id/successButtonBack">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,7 +66,9 @@
                 android:layout_marginTop="13dp"
                 android:text="@string/venue_record_success_title"
                 app:isHeading="true"
-                app:labelId="VENUE_RECORD_SUCCESS_TITLE" />
+                app:labelId="VENUE_RECORD_SUCCESS_TITLE"
+                android:contentDescription="@string/acc_venue_record_success_title"
+                app:contentDescriptionLabelId="ACC_VENUE_RECORD_SUCCESS_TITLE"/>
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TextNormal18"

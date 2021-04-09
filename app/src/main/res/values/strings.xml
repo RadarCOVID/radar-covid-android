@@ -496,11 +496,18 @@
     <string name="venue_checkout_time_2h">2h</string>
     <string name="venue_checkout_time_4h">4h</string>
     <string name="venue_checkout_time_5h">+5h</string>
+    <string name="acc_venue_checkout_time_30s">30 minutos</string>
+    <string name="acc_venue_checkout_time_1h">1 hora</string>
+    <string name="acc_venue_checkout_time_2h">2 horas</string>
+    <string name="acc_venue_checkout_time_4h">4 horas</string>
+    <string name="acc_venue_checkout_time_5h">mas de 5 horas</string>
     <string name="venue_checkout_today">Hoy, %@</string>
     <string name="venue_checkout_yesterday">Ayer, %@</string>
     <string name="venue_checkout_hour">%@ h</string>
+    <string name="venue_checkout_steps">$1 de $2</string>
 
     <string name="venue_record_success_title">Se ha registrado la visita con éxito</string>
+    <string name="acc_venue_record_success_title">Registrado con éxito</string>
     <string name="venue_record_success_paragraph1">El registro se guardará de forma encriptada localmente en tu dispositivo móvil, de forma anónima, durante 14 días.\n\nRecuerda que recibirás una notificación si has tenido contacto en el lugar y horas registradas con personas diagnosticadas posteriormente como positivo COVID-19.</string>
 
     <string name="venue_record_notification_reminder_title">Recordatorio de registro en marcha</string>
@@ -524,5 +531,10 @@
     <string name="venue_diary_hide_element_action">Ocultar elemento</string>
     <string name="venue_diary_show_element_action">Mostrar elemento</string>
     <string name="venue_diary_empty_list">Aún no has registrado ningún lugar visitado</string>
+    <string name="venue_diary_hidden_switch">Mostrar lugares archivados</string>
+    <string name="acc_venue_hidden">Lugar oculto</string>
+    <string name="acc_show_action">mostrar</string>
+    <string name="acc_venue_shown">Lugar visible</string>
+    <string name="acc_hide_action">ocultar</string>
 
 </resources>

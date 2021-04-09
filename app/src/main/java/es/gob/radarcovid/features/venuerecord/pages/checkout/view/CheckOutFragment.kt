@@ -14,7 +14,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.*
@@ -24,9 +23,7 @@ import es.gob.radarcovid.features.venuerecord.pages.checkout.protocols.CheckOutV
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
 import es.gob.radarcovid.models.domain.VenueRecord
-import kotlinx.android.synthetic.main.fragment_step1_my_health.*
 import kotlinx.android.synthetic.main.fragment_venue_record_checkout.*
-import kotlinx.android.synthetic.main.fragment_venue_record_checkout.buttonCancel
 import javax.inject.Inject
 
 class CheckOutFragment : BaseFragment(), CheckOutView {
@@ -58,10 +55,18 @@ class CheckOutFragment : BaseFragment(), CheckOutView {
     }
 
     private fun initViews() {
+        checkoutButtonBack.contentDescription =
+            "${labelManager.getText("VENUE_RECORD_CHECKIN_TITLE", R.string.title_home)} ${
+                labelManager.getText(
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
+            }"
+
         buttonCheckOut.setSafeOnClickListener { presenter.onContinueButtonClick() }
         buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
-        buttonClose.setSafeOnClickListener { presenter.onCloseButtonClick() }
-        segmentedControlTime.setOnCheckedChangeListener { r,i -> presenter.onControlTimeClick() }
+        checkoutButtonBack.setSafeOnClickListener { presenter.onCloseButtonClick() }
+        segmentedControlTime.setOnCheckedChangeListener { r, i -> presenter.onControlTimeClick() }
     }
 
     override fun setButtonContinueEnabled(enabled: Boolean) {

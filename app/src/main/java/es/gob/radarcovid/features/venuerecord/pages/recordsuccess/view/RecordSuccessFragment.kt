@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_venue_record_success.*
 
 class RecordSuccessFragment : BaseFragment() {
 
@@ -37,6 +38,12 @@ class RecordSuccessFragment : BaseFragment() {
     }
 
     private fun initViews() {
-
+        successButtonBack.contentDescription =
+            "${labelManager.getText("ACC_VENUE_TITLE", R.string.title_home)} ${
+                labelManager.getText(
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
+            }"
     }
 }

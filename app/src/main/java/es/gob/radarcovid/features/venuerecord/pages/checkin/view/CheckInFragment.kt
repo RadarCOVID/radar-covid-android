@@ -78,9 +78,17 @@ class CheckInFragment : BaseFragment(), CheckInView {
     }
 
     private fun initViews() {
+        checkinButtonBack.contentDescription =
+            "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
+                labelManager.getText(
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
+            }"
+
         buttonConfirm.setSafeOnClickListener { presenter.onContinueButtonClick() }
         buttonCancel.setSafeOnClickListener { presenter.onCancelButtonClick() }
-        imageButtonBack.setSafeOnClickListener { presenter.onExitButtonClick() }
+        checkinButtonBack.setSafeOnClickListener { presenter.onExitButtonClick() }
     }
 
     override fun startTimer(date: Date) {

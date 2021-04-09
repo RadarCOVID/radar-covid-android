@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButtonBack"
+        android:id="@+id/errorButtonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/buttonScanQR"
-        app:layout_constraintTop_toBottomOf="@id/imageButtonBack">
+        app:layout_constraintTop_toBottomOf="@id/errorButtonBack">
 
         <LinearLayout
             android:layout_width="match_parent"

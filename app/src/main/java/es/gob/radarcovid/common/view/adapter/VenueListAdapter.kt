@@ -18,11 +18,13 @@ import androidx.recyclerview.widget.RecyclerView
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.extensions.*
 import es.gob.radarcovid.common.view.LabelButton
+import es.gob.radarcovid.datamanager.utils.LabelManager
 import es.gob.radarcovid.models.domain.*
 
 class VenueListAdapter(
     private var items: List<VenueVisitedRecyclerItem>,
-    private val locale: String
+    private val locale: String,
+    private val labelManager: LabelManager
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -60,7 +62,7 @@ class VenueListAdapter(
                 (holder as VenueHeaderViewHolder).bind(item as VenueHeaderItem, locale)
             }
             VenueVisitedRecyclerType.VENUE -> {
-                (holder as VenueItemViewHolder).bind(item as VenueVisitedItem) {
+                (holder as VenueItemViewHolder).bind(item as VenueVisitedItem, labelManager) {
                     onItemClick?.invoke(it)
                 }
             }
@@ -80,11 +82,16 @@ class VenueListAdapter(
     }
 
     class VenueItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         private val textViewName = itemView.findViewById(R.id.textViewName) as TextView
         private val textViewTime = itemView.findViewById(R.id.textViewTime) as TextView
         private val archiveButton = itemView.findViewById(R.id.archiveButton) as LabelButton
 
-        fun bind(item: VenueVisitedItem, onClick: (VenueRecord) -> Unit) {
+        fun bind(
+            item: VenueVisitedItem,
+            labelManager: LabelManager,
+            onClick: (VenueRecord) -> Unit
+        ) {
             textViewName.text = item.venueItem.name
             textViewTime.text = "${item.venueItem.dateIn.getHourString()} (${
                 item.venueItem.dateIn.getTimeElapsed(item.venueItem.dateOut!!)
@@ -94,8 +101,32 @@ class VenueListAdapter(
             } else {
                 archiveButton.setBackgroundResource(R.drawable.ic_archive)
             }
+            setButtonAccessibility(item.venueItem.hidden, labelManager)
             archiveButton.setSafeOnClickListener {
                 onClick(item.venueItem)
+                setButtonAccessibility(item.venueItem.hidden, labelManager)
+            }
+        }
+
+        fun setButtonAccessibility(isHidden: Boolean, labelManager: LabelManager) {
+            if (isHidden) {
+                archiveButton.contentDescription =
+                    "${labelManager.getText("ACC_VENUE_HIDDEN", R.string.acc_venue_hidden)}"
+                archiveButton.setAccessibilityAction(
+                    labelManager.getText(
+                        "ACC_VENUE_SHOW_ACTION",
+                        R.string.acc_show_action
+                    ).toString()
+                )
+            } else {
+                archiveButton.contentDescription =
+                    "${labelManager.getText("ACC_VENUE_SHOWN", R.string.acc_venue_shown)}"
+                archiveButton.setAccessibilityAction(
+                    labelManager.getText(
+                        "ACC_VENUE_HIDE_ACTION",
+                        R.string.acc_hide_action
+                    ).toString()
+                )
             }
         }
     }

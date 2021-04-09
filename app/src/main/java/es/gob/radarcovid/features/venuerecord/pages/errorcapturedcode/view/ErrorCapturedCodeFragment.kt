@@ -24,6 +24,7 @@ import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
 import kotlinx.android.synthetic.main.fragment_venue_record_errorcode.*
+import kotlinx.android.synthetic.main.fragment_venue_record_errorcode.errorButtonBack
 import javax.inject.Inject
 
 class ErrorCapturedCodeFragment : BaseFragment(), ErrorCapturedCodeView {
@@ -48,6 +49,15 @@ class ErrorCapturedCodeFragment : BaseFragment(), ErrorCapturedCodeView {
     }
 
     private fun initViews() {
+
+        errorButtonBack.contentDescription =
+            "${labelManager.getText("ACC_VENUE_TITLE", R.string.title_home)} ${
+                labelManager.getText(
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
+            }"
+
         buttonScanQR.setSafeOnClickListener { presenter.onContinueButtonClick() }
         buttonClose.setSafeOnClickListener { presenter.onCancelButtonClick() }
     }

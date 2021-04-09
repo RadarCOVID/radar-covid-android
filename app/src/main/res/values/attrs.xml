@@ -104,11 +104,14 @@
     </declare-styleable>
 
     <attr name="segmentedControlButtonStyle" format="reference" />
+
     <declare-styleable name="SegmentedControlLabelButton">
         <attr name="labelId" />
         <attr name="android:text" />
         <attr name="contentDescriptionLabelId" />
         <attr name="android:contentDescription" />
+        <attr name="actualStep" />
+        <attr name="numberSteps" />
     </declare-styleable>
 
 </resources>

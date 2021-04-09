@@ -46,6 +46,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
+                android:descendantFocusability="beforeDescendants"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:text="@string/venue_title"
                 app:isHeading="true"
                 app:labelId="VENUE_HOME_TITLE" />
@@ -94,7 +97,7 @@
                     android:textSize="18sp"
                     app:isLink="true"
                     app:removeUnderlineLink="true"
-                    app:labelId="VENUE_INFO_WEB"
+                    app:labelId="VENUE_INFO_WEB_TITLE"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageViewWebIcon"
                     app:layout_constraintTop_toTopOf="parent" />
