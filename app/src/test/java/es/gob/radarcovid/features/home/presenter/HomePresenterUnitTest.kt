@@ -33,6 +33,7 @@ class HomePresenterUnitTest {
     private val fakeExposureInfoUseCase: FakeExposureInfoUseCase = mock()
     private val legalTermsUseCase: LegalTermsUseCase = mock()
     private val getHealingTimeUseCase: GetHealingTimeUseCase = mock()
+    private val venueMatcherUseCase: VenueMatcherUseCase = mock()
 
     private val presenter: HomePresenter = HomePresenterImpl(
         view,
@@ -42,7 +43,8 @@ class HomePresenterUnitTest {
         exposureInfoUseCase,
         fakeExposureInfoUseCase,
         legalTermsUseCase,
-        getHealingTimeUseCase
+        getHealingTimeUseCase,
+        venueMatcherUseCase
     )
 
     @Test
@@ -155,7 +157,7 @@ class HomePresenterUnitTest {
 
         presenter.onResume()
 
-        verify(view).showExposureBlockHigh(14)
+        verify(view).showExposureBlockHigh(14, true)
     }
 
     @Test
