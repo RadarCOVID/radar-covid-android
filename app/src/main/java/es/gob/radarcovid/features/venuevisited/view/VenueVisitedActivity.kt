@@ -84,33 +84,19 @@ class VenueVisitedActivity : BaseBackNavigationActivity(), VenueVisitedView {
 
     private fun initViews() {
         imageButtonBack.contentDescription =
-            "${labelManager.getText("ACC_VENUE_TITLE", R.string.title_home)} ${
+            "${labelManager.getText("VENUE_HOME_TITLE", R.string.title_home)} ${
                 labelManager.getText(
                     "ACC_BUTTON_BACK_TO",
                     R.string.navigation_back_to
                 )
             }"
 
-//        setAccessibilityAction(
-//            switchHidden,
-//            labelManager.getText(
-//                "VENUE_DIARY_SHOW_ACTION",
-//                getString(R.string.venue_diary_show_action)
-//            ).toString()
-//        )
         setSwitchAccessibility()
         switchHidden.setOnClickListener {
             if (!switchHidden.isChecked) {
                 presenter.getVenueList(showHidden = false, reload = true)
                 textViewShowHidden.text =
                     labelManager.getText("VENUE_DIARY_HIDDEN", getString(R.string.venue_diary_hide))
-//                setAccessibilityAction(
-//                    switchHidden,
-//                    labelManager.getText(
-//                        "VENUE_DIARY_SHOW_ACTION",
-//                        getString(R.string.venue_diary_show_action)
-//                    ).toString()
-//                )
             } else {
                 presenter.getVenueList(showHidden = true, reload = true)
                 textViewShowHidden.text =
@@ -118,13 +104,6 @@ class VenueVisitedActivity : BaseBackNavigationActivity(), VenueVisitedView {
                         "VENUE_DIARY_VISIBLE",
                         getString(R.string.venue_diary_show)
                     )
-//                setAccessibilityAction(
-//                    switchHidden,
-//                    labelManager.getText(
-//                        "VENUE_DIARY_HIDE_ACTION",
-//                        getString(R.string.venue_diary_hide_action)
-//                    ).toString()
-//                )
             }
             setSwitchAccessibility()
         }

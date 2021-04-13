@@ -19,6 +19,7 @@ import android.view.ViewGroup
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.extensions.setSafeOnClickListener
+import es.gob.radarcovid.common.view.CommonDialog
 import es.gob.radarcovid.features.venuerecord.pages.checkin.protocols.CheckInPresenter
 import es.gob.radarcovid.features.venuerecord.pages.checkin.protocols.CheckInView
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
@@ -105,6 +106,44 @@ class CheckInFragment : BaseFragment(), CheckInView {
             TimeUnit.MILLISECONDS.toSeconds(millisElapsed) - (hoursElapsed * 60 * 60) - (minutesElapsed * 60)
         textViewTime.text =
             String.format("%02d:%02d:%02d", hoursElapsed, minutesElapsed, secondsElapsed)
+    }
+
+    override fun onHomeButtonClick() {
+        CommonDialog.Builder(this.requireContext())
+            .setTitle(
+                labelManager.getText(
+                    "VENUE_RECORD_BACK_HOME_TITLE",
+                    R.string.venue_record_back_home_title
+                ).toString()
+            )
+            .setMessage(
+                labelManager.getText(
+                    "VENUE_RECORD_BACK_HOME_DESC",
+                    R.string.venue_record_back_home_desc
+                ).toString()
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "VENUE_RECORD_BACK_HOME_BUTTON",
+                    R.string.venue_record_back_home_button
+                ).toString()
+            ) {
+                (activity as? VenueRecordPageCallback)?.onBackButtonClick()
+            }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ALERT_CANCEL_BUTTON",
+                    R.string.cancel
+                ).toString()
+            ) {
+                it.dismiss()
+            }
+            .setCloseButton() {
+                it.dismiss()
+            }
+            .setImage(R.drawable.ic_recording)
+            .build()
+            .show()
     }
 
     override fun setVenueInfo(currentVenue: VenueRecord) {

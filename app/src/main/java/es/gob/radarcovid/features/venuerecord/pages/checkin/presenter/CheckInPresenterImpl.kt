@@ -43,6 +43,6 @@ class CheckInPresenterImpl  @Inject constructor(
     }
 
     override fun onExitButtonClick() {
-        view.performExitButtonClick()
+        view.onHomeButtonClick()
     }
 }

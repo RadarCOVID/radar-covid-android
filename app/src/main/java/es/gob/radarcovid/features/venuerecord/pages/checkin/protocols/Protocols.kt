@@ -27,6 +27,7 @@ interface CheckInView {
 
     fun setVenueData(currentVenue: VenueRecord?)
 
+    fun onHomeButtonClick()
 }
 
 interface CheckInPresenter {

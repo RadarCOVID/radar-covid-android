@@ -15,6 +15,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.extensions.setSafeOnClickListener
@@ -31,6 +32,8 @@ object CommonDialog {
         private val buttonClose = view.findViewById<LabelImageButton>(R.id.buttonClose)
         private val buttonOk = view.findViewById<LabelButton>(R.id.buttonOk)
         private val buttonCancel = view.findViewById<LabelButton>(R.id.buttonCancel)
+        private val imageView = view.findViewById<ImageView>(R.id.imageView)
+        private val spaceView = view.findViewById<View>(R.id.spaceView)
         private val dialog: AlertDialog = AlertDialog.Builder(context)
             .setView(view)
             .setCancelable(false)
@@ -94,6 +97,13 @@ object CommonDialog {
             buttonClose.setSafeOnClickListener {
                 onCloseButtonClick(dialog)
             }
+            return this
+        }
+
+        fun setImage(src: Int): Builder {
+            imageView.visibility = View.VISIBLE
+            spaceView.visibility = View.GONE
+            imageView.setImageResource(src)
             return this
         }
 

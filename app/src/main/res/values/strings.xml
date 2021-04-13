@@ -485,6 +485,10 @@
     <string name="venue_record_initiated_time">Tiempo transcurrido</string>
     <string name="venue_record_initiated_confirm">Confirmar salida</string>
 
+    <string name="venue_record_back_home_title">Acceso a Radar COVID</string>
+    <string name="venue_record_back_home_desc">Recuerda que el tiempo en el establecimiento seguirá contando hasta que no confirmes la salida.\n\n Podrás volver al registro desde el icono “QR” del menú de navegación</string>
+    <string name="venue_record_back_home_button">Acceder a Radar COVID</string>
+
     <string name="venue_checkout_title">Confirmación de salida</string>
     <string name="venue_checkout_datetime">Fecha y hora de entrada</string>
     <string name="venue_checkout_leave_now">SALGO AHORA</string>

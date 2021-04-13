@@ -23,7 +23,6 @@ import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
 import es.gob.radarcovid.features.venuerecord.view.VenueRecordPageCallback
 import kotlinx.android.synthetic.main.fragment_venue_record_confirm.*
-import kotlinx.android.synthetic.main.fragment_venue_record_confirm.confirmButtonBack
 import javax.inject.Inject
 
 class ConfirmRecordFragment : BaseFragment(), ConfirmRecordView {
@@ -50,7 +49,7 @@ class ConfirmRecordFragment : BaseFragment(), ConfirmRecordView {
 
     private fun initViews() {
         confirmButtonBack.contentDescription =
-            "${labelManager.getText("ACC_VENUE_TITLE", R.string.title_home)} ${
+            "${labelManager.getText("VENUE_HOME_TITLE", R.string.title_home)} ${
                 labelManager.getText(
                     "ACC_BUTTON_BACK_TO",
                     R.string.navigation_back_to

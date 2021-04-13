@@ -36,13 +36,16 @@ class ExposurePresenterImpl @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ) : ExposurePresenter {
 
+    private var _isVenueExposed = false
+
     override fun viewReady() {
 
     }
 
     override fun onResume(isVenueExposed: Boolean) {
         BUS.register(this)
-        if (isVenueExposed) {
+        _isVenueExposed = isVenueExposed
+        if (_isVenueExposed) {
             showVenueExposureInfo()
         } else {
             val exposureInfo = exposureInfoUseCase.getExposureInfo()
@@ -65,9 +68,13 @@ class ExposurePresenterImpl @Inject constructor(
 
     @Subscribe
     fun onExposureStatusChange(event: EventExposureStatusChange) {
-        val exposureInfo = exposureInfoUseCase.getExposureInfo()
-        showExposureInfo(exposureInfo)
-        showExposureHealedDialogIfRequired(exposureInfo.level)
+        if (_isVenueExposed) {
+            showVenueExposureInfo()
+        } else {
+            val exposureInfo = exposureInfoUseCase.getExposureInfo()
+            showExposureInfo(exposureInfo)
+            showExposureHealedDialogIfRequired(exposureInfo.level)
+        }
     }
 
     private fun showExposureInfo(exposureInfo: ExposureInfo) {
