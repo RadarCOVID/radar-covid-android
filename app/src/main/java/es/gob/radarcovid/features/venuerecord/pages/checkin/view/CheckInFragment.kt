@@ -128,6 +128,7 @@ class CheckInFragment : BaseFragment(), CheckInView {
                     R.string.venue_record_back_home_button
                 ).toString()
             ) {
+                it.dismiss()
                 (activity as? VenueRecordPageCallback)?.onBackButtonClick()
             }
             .setNegativeButton(

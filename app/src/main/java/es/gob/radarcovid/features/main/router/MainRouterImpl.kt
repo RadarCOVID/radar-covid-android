@@ -23,11 +23,11 @@ import javax.inject.Inject
 
 class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity) : MainRouter {
 
-    override fun navigateToHome(activateRadar: Boolean, manualNavigation: Boolean) {
+    override fun navigateToHome(activateRadar: Boolean, manualNavigation: Boolean, backFromQr: Boolean) {
         activity
             .supportFragmentManager
             .beginTransaction()
-            .replace(R.id.wrapperContent, HomeFragment.newInstance(activateRadar, manualNavigation))
+            .replace(R.id.wrapperContent, HomeFragment.newInstance(activateRadar, manualNavigation, backFromQr))
             .commit()
     }
 
