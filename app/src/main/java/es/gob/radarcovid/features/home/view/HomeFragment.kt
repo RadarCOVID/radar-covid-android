@@ -54,15 +54,17 @@ class HomeFragment : BaseFragment(), HomeView {
         private const val REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS = 1
 
         private const val ARG_ACTIVATE_RADAR = "arg_activate_radar"
-
         private const val MANUAL_NAVIGATION = "arg_manual_navigation"
+        private const val BACK_FROM_QR = "back_from_qr"
 
-        fun newInstance(activateRadar: Boolean, manualNavigation: Boolean) = HomeFragment().apply {
-            arguments = Bundle().apply {
-                putBoolean(ARG_ACTIVATE_RADAR, activateRadar)
-                putBoolean(MANUAL_NAVIGATION, manualNavigation)
+        fun newInstance(activateRadar: Boolean, manualNavigation: Boolean, backFromQr: Boolean) =
+            HomeFragment().apply {
+                arguments = Bundle().apply {
+                    putBoolean(ARG_ACTIVATE_RADAR, activateRadar)
+                    putBoolean(MANUAL_NAVIGATION, manualNavigation)
+                    putBoolean(BACK_FROM_QR, backFromQr)
+                }
             }
-        }
 
     }
 
@@ -91,7 +93,10 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun onResume() {
         super.onResume()
-        updateViewsForAccessibility(arguments?.getBoolean(MANUAL_NAVIGATION) ?: false)
+        updateViewsForAccessibility(
+            arguments?.getBoolean(MANUAL_NAVIGATION) ?: false,
+            arguments?.getBoolean(BACK_FROM_QR) ?: false
+        )
         presenter.onResume()
     }
 
@@ -128,7 +133,7 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     override fun showUpdateLegalTermsDialog() {
-        LegalTermsDialog(context!!).show {
+        LegalTermsDialog(requireContext()).show {
             presenter.legalTermsAccepted()
         }
     }
@@ -300,9 +305,14 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_RADAR_MESSAGE_DISABLED",
                 R.string.radar_block_disabled_description
             )
-            textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
+            textViewRadarDescription.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.black
+                )
+            )
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.roboto_light),
+                ResourcesCompat.getFont(requireContext(), R.font.roboto_light),
                 Typeface.NORMAL
             )
         }
@@ -310,19 +320,19 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     override fun areBatteryOptimizationsIgnored(): Boolean {
-        (context!!.getSystemService(POWER_SERVICE) as PowerManager).let { powerManager ->
-            return powerManager.isIgnoringBatteryOptimizations(context!!.packageName)
+        (requireContext().getSystemService(POWER_SERVICE) as PowerManager).let { powerManager ->
+            return powerManager.isIgnoringBatteryOptimizations(requireContext().packageName)
         }
     }
 
     @SuppressLint("BatteryLife")
     override fun requestIgnoreBatteryOptimizations() {
-        (context!!.getSystemService(POWER_SERVICE) as PowerManager?)?.let {
-            if (!it.isIgnoringBatteryOptimizations(activity!!.packageName)) {
+        (requireContext().getSystemService(POWER_SERVICE) as PowerManager?)?.let {
+            if (!it.isIgnoringBatteryOptimizations(requireContext().packageName)) {
                 try {
                     startActivityForResult(Intent().apply {
                         action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-                        data = Uri.parse("package:${activity!!.packageName}")
+                        data = Uri.parse("package:${requireContext().packageName}")
                     }, REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS)
                 } catch (e: ActivityNotFoundException) {
                     presenter.onBatteryOptimizationsIgnored()
@@ -332,7 +342,7 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     override fun showUnableToReportCovidDialog() {
-        CMDialog.Builder(context!!)
+        CMDialog.Builder(requireContext())
             .setMessage(
                 labelManager.getText(
                     "ALERT_RADAR_REQUIRED_TO_REPORT",
@@ -350,11 +360,11 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     override fun showExposureHealedDialog() {
-        ExposureHealedDialog(context!!).show()
+        ExposureHealedDialog(requireContext()).show()
     }
 
     override fun showShareDialog() {
-        ShareDialog(context!!) {
+        ShareDialog(requireContext()) {
             presenter.doShareApp(
                 labelManager.getText(
                     "SHARE_TEXT",
@@ -365,7 +375,7 @@ class HomeFragment : BaseFragment(), HomeView {
     }
 
     private fun showDialogDisableRadarWarning() {
-        CMDialog.Builder(context!!)
+        CMDialog.Builder(requireContext())
             .setTitle(
                 labelManager.getText(
                     "ALERT_HOME_RADAR_TITLE",
@@ -409,9 +419,14 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_RADAR_CONTENT_ACTIVE",
                 R.string.radar_block_checked_description
             )
-            textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.black))
+            textViewRadarDescription.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.black
+                )
+            )
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.roboto_light),
+                ResourcesCompat.getFont(requireContext(), R.font.roboto_light),
                 Typeface.NORMAL
             )
         } else {
@@ -423,15 +438,20 @@ class HomeFragment : BaseFragment(), HomeView {
                 "HOME_RADAR_CONTENT_INACTIVE",
                 R.string.radar_block_not_checked_description
             )
-            textViewRadarDescription.setTextColor(ContextCompat.getColor(context!!, R.color.red_00))
+            textViewRadarDescription.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.red_00
+                )
+            )
             textViewRadarDescription.setTypeface(
-                ResourcesCompat.getFont(context!!, R.font.roboto_bold),
+                ResourcesCompat.getFont(requireContext(), R.font.roboto_bold),
                 Typeface.NORMAL
             )
         }
     }
 
-    private fun updateViewsForAccessibility(manualNavigation: Boolean) {
+    private fun updateViewsForAccessibility(manualNavigation: Boolean, backFromQr: Boolean) {
         if (isAccessibilityEnabled()) {
             wrapperExposure.isClickable = false
             textViewExpositionTitle.isClickable = true
@@ -440,16 +460,17 @@ class HomeFragment : BaseFragment(), HomeView {
             textViewExpositionTitle.isClickable = false
         }
         if (manualNavigation) {
-            if (isAccessibilityEnabled())
+            if (isAccessibilityEnabled()) {
+                val delay = if (backFromQr) 1000L else 3000L
                 textViewTitle.postDelayed({
                     if (textViewTitle != null) {
                         textViewTitle.isFocusable = true
                         textViewTitle.requestFocus()
                         textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
                     }
-                }, 3000)
+                }, delay)
+            }
         }
-
     }
 
     override fun updateContentDescriptionRadar(enabled: Boolean) {

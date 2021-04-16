@@ -15,6 +15,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.core.view.forEach
+import androidx.core.view.get
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
@@ -118,6 +119,7 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun setHomeSelected() {
+        //bottomNavigation[0].callOnClick()
         bottomNavigation.selectedItemId = R.id.menuItemHome
     }
 

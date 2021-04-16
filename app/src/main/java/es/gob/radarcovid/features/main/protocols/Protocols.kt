@@ -66,7 +66,7 @@ interface MainPresenter {
 
 interface MainRouter {
 
-    fun navigateToHome(activateRadar: Boolean, manualNavigation: Boolean)
+    fun navigateToHome(activateRadar: Boolean, manualNavigation: Boolean, backFromQr: Boolean)
 
     fun navigateToHelpline()
 

@@ -59,7 +59,7 @@ class MainPresenterImpl @Inject constructor(
             router.navigateToVenueRecordWithQR(capturedQR)
         } else {
             //Home redirection
-            router.navigateToHome(activateRadar, false)
+            router.navigateToHome(activateRadar, false, false)
         }
     }
 
@@ -71,7 +71,7 @@ class MainPresenterImpl @Inject constructor(
         if (venueRecordUseCase.isCurrentVenue() && (isVenueRecordSelected || isHomeSelected)) {
             //navigate to home
             view.setHomeSelected()
-            router.navigateToHome(activateRadar = false, manualNavigation = false)
+            router.navigateToHome(activateRadar = false, manualNavigation = true, backFromQr = true)
         } else if (isVenueRecordSelected) {
             router.navigateToVenueRecord(false)
         }
@@ -86,7 +86,7 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onHomeButtonClick() {
-        router.navigateToHome(false, true)
+        router.navigateToHome(activateRadar = false, manualNavigation = true, backFromQr = false)
     }
 
     override fun onVenueButtonClick() {
