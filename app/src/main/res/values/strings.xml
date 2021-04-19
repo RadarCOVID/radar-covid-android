@@ -517,6 +517,8 @@
     <string name="venue_record_notification_reminder_title">Recordatorio de registro en marcha</string>
     <string name="venue_record_notification_reminder_body">¿Deseas confirmar la salida el lugar visitado?</string>
     <string name="venue_exposure_notification_body">Se ha detectado un contagio masivo de COVID-19 en un lugar que has visitado</string>
+    <string name="venue_record_notification_autocheckout_title">Registro de visita a establecimiento finalizado</string>
+    <string name="venue_record_notification_autocheckout_message">Registro de visita a establecimiento finalizado</string>
 
     <string name="venue_exposure_block_high_description">Se ha detectado un contagio masivo de COVID-19 en un lugar que has visitado.\n<b>Debes realizar cuarentena domiciliaria.</b>.</string>
     <string name="venue_exposure_high_detail_description">Hace <b>%1$s días</b> registraste tu visita a un lugar donde también estuvo alguien diagnosticado de COVID-19 (actualizado %2$s)</string>

@@ -32,6 +32,10 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
+enum class VenueRecordNotificationType {
+    REMINDER, AUTO_CHECKOUT
+}
+
 class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
     Worker(context, workerParams) {
 
@@ -91,14 +95,18 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
         if (minutesElapsed > preferencesRepository.getAutoCheckoutTime() && !preferencesRepository.isApplicationActive()) {
             //Auto checkout only if app is in background
             venueRecordUseCase.checkOut(Date()).blockingAwait()
+            showVenueRecordNotification(
+                applicationContext,
+                VenueRecordNotificationType.AUTO_CHECKOUT
+            )
         } else {
-            showVenueRecordNotification(applicationContext)
+            showVenueRecordNotification(applicationContext, VenueRecordNotificationType.REMINDER)
             set(applicationContext, delayMinutes)
         }
         return Result.success()
     }
 
-    private fun showVenueRecordNotification(context: Context) {
+    private fun showVenueRecordNotification(context: Context, type: VenueRecordNotificationType) {
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -123,22 +131,29 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
                 PendingIntent.FLAG_UPDATE_CURRENT
             )
 
-        val message = labelManager.getFormattedText(
-            "VENUE_RECORD_NOTIFICATION_REMINDER_BODY",
-            labelManager.getContactPhone()
-        ).default(context.getString(R.string.venue_record_notification_reminder_body))
+        val message = if (type == VenueRecordNotificationType.REMINDER)
+            labelManager.getFormattedText(
+                "VENUE_RECORD_NOTIFICATION_REMINDER_BODY"
+            ).default(context.getString(R.string.venue_record_notification_reminder_body))
+        else
+            labelManager.getFormattedText(
+                "NOTIFICATION_AUTO_CHECKOUT_MESSAGE",
+                (preferencesRepository.getAutoCheckoutTime() / 60).toString()
+            ).default(context.getString(R.string.venue_record_notification_autocheckout_message))
+
+        val title = if (type == VenueRecordNotificationType.REMINDER)
+            labelManager.getFormattedText(
+                "VENUE_RECORD_NOTIFICATION_REMINDER_TITLE"
+            ).default(context.getString(R.string.venue_record_notification_reminder_title))
+        else
+            labelManager.getFormattedText(
+                "NOTIFICATION_AUTO_CHECKOUT_TITLE"
+            ).default(context.getString(R.string.venue_record_notification_autocheckout_title))
 
         val notification =
             NotificationCompat.Builder(context, context.packageName)
-                .setContentTitle(
-                    labelManager.getFormattedText(
-                        "VENUE_RECORD_NOTIFICATION_REMINDER_TITLE",
-                        labelManager.getContactPhone()
-                    ).default(context.getString(R.string.venue_record_notification_reminder_title))
-                )
-                .setContentText(
-                    message
-                )
+                .setContentTitle(title)
+                .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher))
                 .setSmallIcon(R.drawable.ic_handshakes)
