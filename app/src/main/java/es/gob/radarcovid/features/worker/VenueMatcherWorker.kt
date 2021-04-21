@@ -117,7 +117,7 @@ class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
             notificationManager.createNotificationChannel(channel)
         }
 
-        val splashIntent = SplashActivity.getIntent(context, true).apply {
+        val splashIntent = SplashActivity.getIntent(context, false).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         }
         val pendingIntent =
