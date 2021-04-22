@@ -62,6 +62,7 @@ class NetworkModule {
     fun providesCertificatePinner(): CertificatePinner =
         CertificatePinner.Builder()
             .add(URI(BuildConfig.API_URL).host, BuildConfig.CERTIFICATE_PIN)
+            .add(URI(BuildConfig.API_URL).host, BuildConfig.CERTIFICATE_PIN_NEW)
             .build()
 
     @Provides
