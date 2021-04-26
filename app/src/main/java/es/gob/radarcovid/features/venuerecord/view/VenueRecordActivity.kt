@@ -61,6 +61,7 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == LAUNCH_QR_SCAN) {
+            vibratePhone()
             when (resultCode) {
                 Activity.RESULT_OK -> {
                     val result = data?.getStringExtra(QRScanActivity.EXTRA_QR_RESULT)
