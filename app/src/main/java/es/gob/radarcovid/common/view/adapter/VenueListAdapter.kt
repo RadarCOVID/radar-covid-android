@@ -93,9 +93,13 @@ class VenueListAdapter(
             onClick: (VenueRecord) -> Unit
         ) {
             textViewName.text = item.venueItem.name
-            textViewTime.text = "${item.venueItem.dateIn.getHourString()} (${
-                item.venueItem.dateIn.getTimeElapsed(item.venueItem.dateOut!!)
-            })"
+            textViewTime.text = if (item.venueItem.moreFiveHours) {
+                "${item.venueItem.dateIn.getHourString()} (+5h)"
+            }else {
+                "${item.venueItem.dateIn.getHourString()} (${
+                    item.venueItem.dateIn.getTimeElapsed(item.venueItem.dateOut!!)
+                })"
+            }
             if (item.venueItem.hidden) {
                 archiveButton.setBackgroundResource(R.drawable.ic_archive_hidden)
             } else {
@@ -108,7 +112,7 @@ class VenueListAdapter(
             }
         }
 
-        fun setButtonAccessibility(isHidden: Boolean, labelManager: LabelManager) {
+        private fun setButtonAccessibility(isHidden: Boolean, labelManager: LabelManager) {
             if (isHidden) {
                 archiveButton.contentDescription =
                     "${labelManager.getText("ACC_VENUE_HIDDEN", R.string.acc_venue_hidden)}"
