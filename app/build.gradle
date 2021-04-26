@@ -113,7 +113,7 @@ android {
             buildConfigField 'String', 'PUBLIC_KEY_VERIFICATION', '"LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHYk1CQUdCeXFHU000OUFnRUdCU3VCQkFBakE0R0dBQVFCbUlXU0ptdGVGNkh2VnI0M1V5SzliZStlNkpPQgpDRjlVaXpMeis4a3padkVEc25nMGl3VEF3UVB0QzdBMDlzQjVMM3EwSUl1N250Yzd4U1VqSUdTakZvd0JXL0xPCnFtMTBYQ1NkUWNZT3BMTi85dUI1emZKVUZOY3B6Ynk4dDAzSlg3TUZiYi9vQm1pcFNNNHptSm1UajR3Qm9XZ2sKRlF6ZEJHcnAwR2laUU9WVXRtUT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg=="'
 
             buildConfigField 'String', 'CERTIFICATE_PIN', '"sha256/BZkFfM++uLfyl8jDpVoLvQWjyGm0xNAZRjEXy9jX798="'
-            buildConfigField 'String', 'CERTIFICATE_PIN_NEW', '"sha256/vRU+17BDT2iGsXvOi76E7TQMcTLXAqj0+jGPdW7L1vM="'
+            buildConfigField 'String', 'CERTIFICATE_PIN_NEW', '"sha256/Bf/HXif22OO34dBnWpk7AEktor0HAzDwetIWrzJ39D4="'
 
             buildConfigField("String", "SAFETY_NET_API_KEY", loadProperty("pre.safetyNet"))
 
