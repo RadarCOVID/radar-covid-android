@@ -165,7 +165,9 @@ class VenueRecordPresenterImpl @Inject constructor(
         }
         val dateOut = currentVenue?.dateIn?.addMinutes(minutes)
 
-        venueRecordUseCase.checkOut(dateOut ?: Date())
+        venueRecordUseCase.checkOut(dateOut ?: Date(),
+            moreFiveHours = timeOut == VenueTimeOut.OPT_5
+        )
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

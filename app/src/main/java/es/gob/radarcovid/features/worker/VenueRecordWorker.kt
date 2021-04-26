@@ -94,7 +94,7 @@ class VenueRecordWorker(context: Context, workerParams: WorkerParameters) :
 
         if (minutesElapsed > preferencesRepository.getAutoCheckoutTime() && !preferencesRepository.isApplicationActive()) {
             //Auto checkout only if app is in background
-            venueRecordUseCase.checkOut(Date()).blockingAwait()
+            venueRecordUseCase.checkOut(Date(), moreFiveHours = false).blockingAwait()
             showVenueRecordNotification(
                 applicationContext,
                 VenueRecordNotificationType.AUTO_CHECKOUT

@@ -24,7 +24,8 @@ data class VenueRecord(
     var hidden: Boolean = false,
     var dateIn: Date,
     var dateOut: Date? = null,
-    var isNotified: Boolean = false
+    var isNotified: Boolean = false,
+    var moreFiveHours: Boolean = false
 )
 
 abstract class VenueVisitedRecyclerItem(

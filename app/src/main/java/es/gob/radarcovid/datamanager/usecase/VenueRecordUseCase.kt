@@ -53,7 +53,7 @@ class VenueRecordUseCase @Inject constructor(
             }
         }
 
-    fun checkOut(dateOut: Date): Completable =
+    fun checkOut(dateOut: Date, moreFiveHours: Boolean): Completable =
         Completable.create { emitter ->
             try {
                 val currentVenue = encryptedPreferencesRepository.getCurrentVenue()
@@ -68,6 +68,7 @@ class VenueRecordUseCase @Inject constructor(
                         currentVenue.dateOut!!.time,
                         venueInfo
                     )
+                    currentVenue.moreFiveHours = moreFiveHours
                     listVisited.add(currentVenue)
 
                     encryptedPreferencesRepository.setVisitedVenue(listVisited)
