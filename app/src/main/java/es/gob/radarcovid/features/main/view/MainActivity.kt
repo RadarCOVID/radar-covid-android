@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.features.main.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -134,12 +135,14 @@ class MainActivity : BaseActivity(), MainView {
             bottomNavigation.selectedItemId = R.id.menuItemHome
     }
 
+    @SuppressLint("ResourceType")
     override fun updateVenueIcon(isVenueRecordSelected: Boolean) {
         if (isVenueRecordSelected) {
             bottomNavigation.getOrCreateBadge(R.id.menuItemVenue).apply {
                 backgroundColor = ContextCompat.getColor(applicationContext, R.color.red_2300)
                 number = 1
                 badgeTextColor = ContextCompat.getColor(applicationContext, R.color.red_2300)
+                setContentDescriptionQuantityStringsResource(R.plurals.qr_notification)
             }
         } else {
             bottomNavigation.removeBadge(R.id.menuItemVenue)
