@@ -10,6 +10,11 @@
 
 <!DOCTYPE resources [<!ENTITY appname "Radar COVID">]>
 <resources>
+
+    <plurals name="qr_notification">
+        <item quantity="one">Registro activo</item>
+    </plurals>
+
     <string name="app_name">&appname;</string>
 
     /********** ERROR MESSAGES ************/
