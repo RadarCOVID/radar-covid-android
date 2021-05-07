@@ -13,6 +13,7 @@ package es.gob.radarcovid.features.home.presenter
 import com.squareup.otto.Subscribe
 import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.*
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeRouter
@@ -32,7 +33,8 @@ class HomePresenterImpl @Inject constructor(
     private val fakeExposureInfoUseCase: FakeExposureInfoUseCase,
     private val legalTermsUseCase: LegalTermsUseCase,
     private val getHealingTimeUseCase: GetHealingTimeUseCase,
-    private val venueMatcherUseCase: VenueMatcherUseCase
+    private val venueMatcherUseCase: VenueMatcherUseCase,
+    private val preferencesRepository: PreferencesRepository
 ) : HomePresenter {
 
     private var activateRadar: Boolean = false
@@ -195,7 +197,7 @@ class HomePresenterImpl @Inject constructor(
             val millisElapsed = System.currentTimeMillis() - venueExposureInfo.dateOut!!.time
             val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
             val daysToHeal =
-                getHealingTimeUseCase.getHealingTime().exposureHighMinutes / 60 / 24
+                preferencesRepository.getQuarantineAfterVenueExposedTime() / 60 / 24
             daysLeftVenueExposure = daysToHeal - daysElapsed
         }
 

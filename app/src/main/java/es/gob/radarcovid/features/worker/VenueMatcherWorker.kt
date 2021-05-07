@@ -139,7 +139,7 @@ class VenueMatcherWorker(context: Context, workerParams: WorkerParameters) :
                     labelManager.getFormattedText(
                         "NOTIFICATION_TITLE_EXPOSURE_HIGH",
                         labelManager.getContactPhone()
-                    ).default(context.getString(R.string.venue_record_notification_reminder_title))
+                    ).default(context.getString(R.string.exposure_high_notification_title))
                 )
                 .setContentText(
                     message
