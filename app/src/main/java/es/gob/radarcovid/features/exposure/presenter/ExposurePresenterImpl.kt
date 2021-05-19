@@ -110,7 +110,7 @@ class ExposurePresenterImpl @Inject constructor(
                     TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
 
                 view.setInfectionDates(
-                    exposureInfo.lastUpdateTime.format(),
+                    Date().format(),
                     daysElapsed.toInt(),
                     hoursElapsed.toInt(),
                     minutesElapsed.toInt()
