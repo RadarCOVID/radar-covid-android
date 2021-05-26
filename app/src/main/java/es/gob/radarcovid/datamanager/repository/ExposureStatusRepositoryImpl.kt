@@ -11,8 +11,12 @@
 package es.gob.radarcovid.datamanager.repository
 
 import android.content.Context
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import es.gob.radarcovid.common.extensions.toJson
 import es.gob.radarcovid.datamanager.mapper.ExposureInfoDataMapper
 import es.gob.radarcovid.models.domain.ExposureInfo
+import es.gob.radarcovid.models.domain.VenueRecord
 import org.dpppt.android.sdk.DP3T
 import org.dpppt.android.sdk.internal.AppConfigManager
 import org.dpppt.android.sdk.internal.storage.ExposureDayStorage
@@ -66,4 +70,7 @@ class ExposureStatusRepositoryImpl @Inject constructor(
         DP3T.resetExposureDays(context)
         preferencesRepository.setExposureAnalyticsCount(0)
     }
+
+
+
 }

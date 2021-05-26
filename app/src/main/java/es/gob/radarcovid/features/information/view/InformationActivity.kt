@@ -61,6 +61,10 @@ class InformationActivity : BaseBackNavigationActivity(), InformationView {
         InformationDialog(this).show()
     }
 
+    override fun showExposureRecordDialog() {
+        ExposureRecordDialog(this).show()
+    }
+
     override fun showRadarEnabled(isRadarEnabled: Boolean) {
         if (isRadarEnabled) {
             val activeText = labelManager.getText(
@@ -173,6 +177,9 @@ class InformationActivity : BaseBackNavigationActivity(), InformationView {
     private fun initViews() {
         buttonMaintenance.setSafeOnClickListener {
             presenter.onHelpButtonClick()
+        }
+        buttonExposureRecord.setSafeOnClickListener {
+            presenter.onExposureRecodrClick()
         }
         buttonSupportMail.setSafeOnClickListener {
             val mail = labelManager.getText(

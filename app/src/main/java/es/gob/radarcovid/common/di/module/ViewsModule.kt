@@ -15,6 +15,7 @@ import dagger.android.ContributesAndroidInjector
 import es.gob.radarcovid.common.view.*
 import es.gob.radarcovid.common.view.adapter.SingleChoiceAdapter
 import es.gob.radarcovid.features.home.view.ShareDialog
+import es.gob.radarcovid.features.information.view.ExposureRecordDialog
 import es.gob.radarcovid.features.information.view.InformationDialog
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
 import es.gob.radarcovid.features.stats.view.StatsCountriesDialog
@@ -66,6 +67,9 @@ abstract class ViewsModule {
 
     @ContributesAndroidInjector
     abstract fun bindsInformationDialog(): InformationDialog
+
+    @ContributesAndroidInjector
+    abstract fun bindsExposureRecordDialog(): ExposureRecordDialog
 
     @ContributesAndroidInjector
     abstract fun bindsStatsCountriesDialog(): StatsCountriesDialog
