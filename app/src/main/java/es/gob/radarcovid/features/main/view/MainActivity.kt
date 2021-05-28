@@ -65,15 +65,13 @@ class MainActivity : BaseActivity(), MainView {
         initViews()
 
         presenter.onCreate(
-            intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false),
-            intent.getStringExtra(EXTRA_CAPTURED_QR)
+            intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false), null
         )
     }
 
     override fun onResume() {
         super.onResume()
-        presenter.onResume(
-            bottomNavigation.selectedItemId == R.id.menuItemVenue,
+        presenter.onResume(false,
             bottomNavigation.selectedItemId == R.id.menuItemHome
         )
     }
@@ -93,8 +91,6 @@ class MainActivity : BaseActivity(), MainView {
             when (it.itemId) {
                 R.id.menuItemHome -> it.title =
                     labelManager.getText("ACC_HOME_TITLE", R.string.title_home)
-                R.id.menuItemVenue -> it.title =
-                    labelManager.getText("ACC_VENUE_TITLE", R.string.title_qr)
                 R.id.menuItemHelpline -> it.title =
                     labelManager.getText("ACC_HELPLINE_TITLE", R.string.title_helpline)
                 R.id.menuItemStats -> it.title =
@@ -106,7 +102,6 @@ class MainActivity : BaseActivity(), MainView {
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menuItemHome -> presenter.onHomeButtonClick()
-                R.id.menuItemVenue -> presenter.onVenueButtonClick()
                 R.id.menuItemHelpline -> presenter.onHelplineButtonClick()
                 R.id.menuItemStats -> presenter.onStatsButtonClick()
                 R.id.menuItemSettings -> presenter.onSettingsButtonClick()
@@ -125,7 +120,7 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun setVenueHomeSelected() {
-        bottomNavigation.selectedItemId = R.id.menuItemVenue
+
     }
 
     override fun onBackPressed() {
@@ -137,6 +132,7 @@ class MainActivity : BaseActivity(), MainView {
 
     @SuppressLint("ResourceType")
     override fun updateVenueIcon(isVenueRecordSelected: Boolean) {
+        /*
         if (isVenueRecordSelected) {
             bottomNavigation.getOrCreateBadge(R.id.menuItemVenue).apply {
                 backgroundColor = ContextCompat.getColor(applicationContext, R.color.red_2300)
@@ -147,6 +143,8 @@ class MainActivity : BaseActivity(), MainView {
         } else {
             bottomNavigation.removeBadge(R.id.menuItemVenue)
         }
+
+         */
     }
 
     override fun showExitConfirmationDialog() {
