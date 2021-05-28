@@ -63,7 +63,7 @@
                 android:src="@drawable/img_background_helpline" />
 
             <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/TextNormal18"
+                style="@style/TextSmallBlack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -182,74 +182,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
-
-            <es.gob.radarcovid.common.view.LabelTextView
-                style="@style/Title22Black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="24dp"
-                android:text="@string/my_data_subtitle"
-                app:labelId="MY_DATA_TITLE" />
-
-            <es.gob.radarcovid.common.view.LabelDotTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/my_data_l1"
-                app:labelId="MY_DATA_BULLET_1" />
-
-            <es.gob.radarcovid.common.view.LabelDotTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/my_data_l2"
-                android:contentDescription="@string/my_data_l2_acc"
-                app:contentDescriptionLabelId="ACC_MY_DATA_BULLET_2"
-                app:labelId="MY_DATA_BULLET_2" />
-
-            <es.gob.radarcovid.common.view.LabelDotTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="@string/my_data_l3"
-                app:dotVisibility="invisible"
-                app:labelId="MY_DATA_BULLET_3" />
-
-            <es.gob.radarcovid.common.view.LabelTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextNormal18"
-                android:layout_marginBottom="11dp"
-                android:text="@string/my_data_encription_info"
-                app:labelId="MY_DATA_PARAGRAPH_1" />
-
-            <es.gob.radarcovid.common.view.LabelTextView
-                android:id="@+id/textViewPrivacy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextNormal18"
-                android:paddingTop="13dp"
-                android:paddingBottom="13dp"
-                android:text="@string/my_data_privacy"
-                android:textColorLink="@color/purple_A7"
-                app:isLink="true"
-                app:removeUnderlineLink="true"
-                app:labelId="MY_DATA_PRIVACY" />
-
-            <es.gob.radarcovid.common.view.LabelTextView
-                android:id="@+id/textViewConditions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextNormal18"
-                android:layout_marginBottom="11dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="13dp"
-                android:text="@string/my_data_conditions"
-                android:textColorLink="@color/purple_A7"
-                app:isLink="true"
-                app:removeUnderlineLink="true"
-                app:labelId="MY_DATA_TERMS" />
 
         </LinearLayout>
 

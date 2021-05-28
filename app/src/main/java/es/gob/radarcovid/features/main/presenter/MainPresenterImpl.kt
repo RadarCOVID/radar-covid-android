@@ -89,6 +89,10 @@ class MainPresenterImpl @Inject constructor(
         router.navigateToHome(activateRadar = false, manualNavigation = true, backFromQr = false)
     }
 
+    override fun onProfileButtonClick() {
+        router.navigateToProfile()
+    }
+
     override fun onVenueButtonClick() {
         router.navigateToVenueRecord(venueRecordUseCase.isCurrentVenue())
     }
