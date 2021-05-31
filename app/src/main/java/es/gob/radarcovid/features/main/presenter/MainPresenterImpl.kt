@@ -37,12 +37,15 @@ class MainPresenterImpl @Inject constructor(
         //Setup workers
         view.cancelNotificationReminder()
         view.startAnalyticsWorker(sendAnalyticsUseCase.getAnalyticsPeriod())
+
+        /*
         if (exposureInfoUseCase.getExposureInfo().level != ExposureInfo.Level.INFECTED) {
             //Start QR matcher worker only if no infected
             view.startVenueMatcherWorker(preferencesRepository.getTroubledPlaceCheckTime())
         } else {
             view.cancelVenueMatcherWorker()
         }
+         */
 
         //Redirection logic
         if (getLocaleInfoUseCase.isLanguageChanged()) {
