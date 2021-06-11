@@ -37,12 +37,15 @@ class MainPresenterImpl @Inject constructor(
         //Setup workers
         view.cancelNotificationReminder()
         view.startAnalyticsWorker(sendAnalyticsUseCase.getAnalyticsPeriod())
+
+        /*
         if (exposureInfoUseCase.getExposureInfo().level != ExposureInfo.Level.INFECTED) {
             //Start QR matcher worker only if no infected
             view.startVenueMatcherWorker(preferencesRepository.getTroubledPlaceCheckTime())
         } else {
             view.cancelVenueMatcherWorker()
         }
+         */
 
         //Redirection logic
         if (getLocaleInfoUseCase.isLanguageChanged()) {
@@ -87,6 +90,10 @@ class MainPresenterImpl @Inject constructor(
 
     override fun onHomeButtonClick() {
         router.navigateToHome(activateRadar = false, manualNavigation = true, backFromQr = false)
+    }
+
+    override fun onProfileButtonClick() {
+        router.navigateToProfile()
     }
 
     override fun onVenueButtonClick() {
