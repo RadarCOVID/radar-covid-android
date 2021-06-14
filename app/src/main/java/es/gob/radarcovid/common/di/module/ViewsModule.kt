@@ -13,7 +13,11 @@ package es.gob.radarcovid.common.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import es.gob.radarcovid.common.view.*
+import es.gob.radarcovid.common.view.adapter.SingleChoiceAdapter
+import es.gob.radarcovid.features.home.view.ShareDialog
+import es.gob.radarcovid.features.information.view.InformationDialog
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
+import es.gob.radarcovid.features.stats.view.StatsCountriesDialog
 
 @Module
 abstract class ViewsModule {
@@ -37,5 +41,36 @@ abstract class ViewsModule {
     abstract fun bindsLowRiskInfoDialog(): ExposureHealedDialog
 
     @ContributesAndroidInjector
+    abstract fun bindShareDialog(): ShareDialog
+
+    @ContributesAndroidInjector
     abstract fun bindsLabelCheckBox(): LabelCheckBox
+
+    @ContributesAndroidInjector
+    abstract fun bindsLabelConstraintLayout(): LabelConstraintLayout
+
+    @ContributesAndroidInjector
+    abstract fun bindsMoreInfoButton(): MoreInfoButton
+
+    @ContributesAndroidInjector
+    abstract fun bindsLabelRadioButton(): LabelRadioButton
+
+    @ContributesAndroidInjector
+    abstract fun bindsStepsProgress(): StepsProgress
+
+    @ContributesAndroidInjector
+    abstract fun bindsSingleChoiceAdapter(): SingleChoiceAdapter
+
+    @ContributesAndroidInjector
+    abstract fun bindsLegalTermsDialog(): LegalTermsDialog
+
+    @ContributesAndroidInjector
+    abstract fun bindsInformationDialog(): InformationDialog
+
+    @ContributesAndroidInjector
+    abstract fun bindsStatsCountriesDialog(): StatsCountriesDialog
+
+    @ContributesAndroidInjector
+    abstract fun bindsSegmentedControlLabelButton(): SegmentedControlLabelButton
+
 }

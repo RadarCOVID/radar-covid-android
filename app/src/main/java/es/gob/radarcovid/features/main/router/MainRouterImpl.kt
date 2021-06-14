@@ -16,15 +16,19 @@ import es.gob.radarcovid.features.helpline.view.HelplineFragment
 import es.gob.radarcovid.features.home.view.HomeFragment
 import es.gob.radarcovid.features.main.protocols.MainRouter
 import es.gob.radarcovid.features.mydata.view.MyDataFragment
+import es.gob.radarcovid.features.settings.view.SettingsFragment
+import es.gob.radarcovid.features.stats.view.StatsFragment
+import es.gob.radarcovid.features.venue.view.VenueFragment
+import es.gob.radarcovid.features.venuerecord.view.VenueRecordActivity
 import javax.inject.Inject
 
 class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity) : MainRouter {
 
-    override fun navigateToHome(activateRadar: Boolean) {
+    override fun navigateToHome(activateRadar: Boolean, manualNavigation: Boolean, backFromQr: Boolean) {
         activity
             .supportFragmentManager
             .beginTransaction()
-            .replace(R.id.wrapperContent, HomeFragment.newInstance(activateRadar))
+            .replace(R.id.wrapperContent, HomeFragment.newInstance(activateRadar, manualNavigation, backFromQr))
             .commit()
     }
 
@@ -42,6 +46,38 @@ class MainRouterImpl @Inject constructor(private val activity: AppCompatActivity
             .beginTransaction()
             .replace(R.id.wrapperContent, HelplineFragment.newInstance())
             .commit()
+    }
+
+    override fun navigateToStats() {
+        activity
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.wrapperContent, StatsFragment.newInstance())
+            .commit()
+    }
+
+    override fun navigateToSettings() {
+        activity
+            .supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.wrapperContent, SettingsFragment.newInstance())
+            .commit()
+    }
+
+    override fun navigateToVenueRecord(recordInProgress: Boolean) {
+        if (recordInProgress) {
+            VenueRecordActivity.open(activity)
+        } else {
+            activity
+                .supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.wrapperContent, VenueFragment.newInstance())
+                .commit()
+        }
+    }
+
+    override fun navigateToVenueRecordWithQR(capturedQR: String) {
+        VenueRecordActivity.openWithQR(activity, capturedQR)
     }
 
 }

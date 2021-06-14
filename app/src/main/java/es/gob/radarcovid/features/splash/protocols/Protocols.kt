@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.features.splash.protocols
 
+import android.net.Uri
 import es.gob.radarcovid.common.view.RequestView
 
 interface SplashView : RequestView {
@@ -28,7 +29,7 @@ interface SplashView : RequestView {
 
 interface SplashPresenter {
 
-    fun viewReady(activateRadar: Boolean)
+    fun viewReady(activateRadar: Boolean, data: Uri?)
 
     fun onResume()
 
@@ -51,5 +52,9 @@ interface SplashRouter {
     fun navigateToMain(activateRadar: Boolean)
 
     fun navigateToPlayStore()
+
+    fun navigateToReport(reportCode: String?)
+
+    fun navigateToMainWithQR(capturedQR: String)
 
 }

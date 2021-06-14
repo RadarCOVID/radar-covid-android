@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.datamanager.usecase
 
+import es.gob.radarcovid.BuildConfig
+import es.gob.radarcovid.common.base.Constants.SO_NAME
 import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.datamanager.repository.ApiRepository
 import es.gob.radarcovid.datamanager.repository.PreferencesRepository
@@ -21,6 +23,9 @@ class GetLocaleInfoUseCase @Inject constructor(
     private val preferencesRepository: PreferencesRepository
 ) {
 
+    private val languageCodeCatalan = "ca-ES"
+    private val languageCodeValencian = "va-ES"
+
     fun getLocaleInfo(): LocaleInfo = LocaleInfo(
         preferencesRepository.getLanguages(),
         preferencesRepository.getRegions()
@@ -29,9 +34,21 @@ class GetLocaleInfoUseCase @Inject constructor(
     fun getSelectedLanguage(): String =
         preferencesRepository.getSelectedLanguage()
 
-    fun setSelectedLanguage(languageCode: String) =
-        preferencesRepository.setSelectedLanguage(languageCode)
+    fun getSelectedLanguageForLocale(): String {
+        val language = preferencesRepository.getSelectedLanguage()
+        return if (language == languageCodeValencian) languageCodeCatalan else language
+    }
 
+    fun setSelectedLanguage(languageCode: String) {
+        preferencesRepository.setSelectedLanguage(languageCode)
+        preferencesRepository.setLanguageChanged(true)
+    }
+
+    fun isLanguageChanged(): Boolean =
+        preferencesRepository.getLanguageChanged()
+
+    fun resetLanguageChanged() =
+        preferencesRepository.setLanguageChanged(false)
 
     fun setSelectedRegion(regionCode: String) =
         preferencesRepository.setSelectedRegion(regionCode)
@@ -40,9 +57,10 @@ class GetLocaleInfoUseCase @Inject constructor(
     fun getLabels(onSuccess: (Map<String, String>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
             apiRepository.getLabels(
-                preferencesRepository.getUuid(),
                 preferencesRepository.getSelectedLanguage(),
-                preferencesRepository.getSelectedRegion()
+                preferencesRepository.getSelectedRegion(),
+                SO_NAME,
+                BuildConfig.VERSION_NAME
             )
         }
     }

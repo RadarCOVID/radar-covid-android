@@ -10,8 +10,11 @@
 
 package es.gob.radarcovid.datamanager.usecase
 
+import es.gob.radarcovid.BuildConfig
+import es.gob.radarcovid.common.base.Constants.SO_NAME
 import es.gob.radarcovid.common.base.asyncRequest
 import es.gob.radarcovid.common.base.mapperScope
+import es.gob.radarcovid.common.extensions.default
 import es.gob.radarcovid.datamanager.mapper.LanguagesDataMapper
 import es.gob.radarcovid.datamanager.mapper.RegionsDataMapper
 import es.gob.radarcovid.datamanager.mapper.SettingsDataMapper
@@ -24,7 +27,8 @@ import es.gob.radarcovid.models.domain.Language
 import es.gob.radarcovid.models.domain.Region
 import es.gob.radarcovid.models.domain.Settings
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.functions.Function4
+import io.reactivex.rxjava3.functions.Function3
+import java.util.*
 import javax.inject.Inject
 
 class SplashUseCase @Inject constructor(
@@ -37,56 +41,57 @@ class SplashUseCase @Inject constructor(
     private val buildInfoRepository: BuildInfoRepository
 ) {
 
+    private val languageCodeSpanish = "es-ES"
+
     fun getVersionCode(): Int = buildInfoRepository.getVersionCode()
 
     fun getInitializationObservable(): Observable<InitializationData> =
-        getUuidObservable().flatMap {
-            Observable.zip<Settings, Map<String, String>, List<Language>, List<Region>, InitializationData>(
-                getSettingsObservable(),
-                getLabelsObservable(),
-                getLanguagesObservable(),
-                getRegionsObservable(),
-                Function4 { settings, labels, languages, regions ->
-                    InitializationData(settings, labels, languages, regions)
-                })
-                .map { initializationData ->
+        getLanguagesObservable().flatMap { languages ->
 
-                    preferencesRepository.setHealingTime(initializationData.settings.healingTime)
+            preferencesRepository.setLanguages(languages)
 
-                    if (initializationData.labels.isNotEmpty())
-                        preferencesRepository.setLabels(initializationData.labels)
+            if (initializeDefaultLanguage(languages))
+                getInitializationObservable() // Languages list is not translated in the desired language so we need to make the request again
+            else
+                Observable.zip<Settings, Map<String, String>, List<Region>, InitializationData>(
+                    getSettingsObservable(),
+                    getLabelsObservable(),
+                    getRegionsObservable(),
+                    Function3 { settings, labels, regions ->
+                        InitializationData(settings, labels, regions)
+                    })
+                    .map { initializationData ->
 
-                    if (initializationData.languages.isNotEmpty())
-                        preferencesRepository.setLanguages(initializationData.languages)
+                        if (languages.isNotEmpty())
+                            preferencesRepository.setLanguages(languages)
 
-                    if (initializationData.regions.isNotEmpty())
-                        preferencesRepository.setRegions(initializationData.regions)
+                        preferencesRepository.setHealingTime(initializationData.settings.healingTime)
 
-                    contactTracingRepository.updateTracingSettings(initializationData.settings)
+                        preferencesRepository.setSettingsLegalTermsVersion(initializationData.settings.legalTermsVersion)
 
-                    initializationData
+                        preferencesRepository.setRadarCovidDownloadUrl(initializationData.settings.radarCovidDownloadUrl)
 
-                }
+                        preferencesRepository.setNotificationReminder(initializationData.settings.notificationReminder)
+
+                        preferencesRepository.setAnalyticsPeriod(initializationData.settings.timeBetweenKpi)
+
+                        if (initializationData.labels.isNotEmpty())
+                            preferencesRepository.setLabels(initializationData.labels)
+
+                        if (initializationData.regions.isNotEmpty())
+                            preferencesRepository.setRegions(initializationData.regions)
+
+                        contactTracingRepository.updateTracingSettings(initializationData.settings)
+
+                        preferencesRepository.setRecordNotificationTime(initializationData.settings.venueConfiguration.recordNotification)
+                        preferencesRepository.setAutoCheckoutTime(initializationData.settings.venueConfiguration.autoCheckout)
+                        preferencesRepository.setTroubledPlaceCheckTime(initializationData.settings.venueConfiguration.troubledPlaceCheck)
+                        preferencesRepository.setQuarantineAfterVenueExposedTime(initializationData.settings.venueConfiguration.quarentineAfterExposed)
+
+                        initializationData
+
+                    }
         }
-
-    private fun getUuidObservable(): Observable<String> = Observable.create { emitter ->
-        if (isUuidInitialized()) {
-            emitter.onNext(preferencesRepository.getUuid())
-            emitter.onComplete()
-        } else {
-            getUuid(
-                onSuccess = {
-                    if (it.isNotEmpty())
-                        preferencesRepository.setUuid(it)
-                    emitter.onNext(it)
-                    emitter.onComplete()
-                },
-                onError = {
-                    emitter.onError(it)
-                    emitter.onComplete()
-                })
-        }
-    }
 
     private fun getSettingsObservable(): Observable<Settings> =
         Observable.create { emitter ->
@@ -142,13 +147,6 @@ class SplashUseCase @Inject constructor(
         )
     }
 
-    private fun getUuid(onSuccess: (String) -> Unit, onError: (Throwable) -> Unit) =
-        asyncRequest(onSuccess, onError) {
-            mapperScope(apiRepository.getUuid()) {
-                it.uuid
-            }
-        }
-
     private fun getSettings(onSuccess: (Settings) -> Unit, onError: (Throwable) -> Unit) =
         asyncRequest(onSuccess, onError) {
             mapperScope(apiRepository.getSettings()) {
@@ -159,9 +157,10 @@ class SplashUseCase @Inject constructor(
     private fun getLabels(onSuccess: (Map<String, String>) -> Unit, onError: (Throwable) -> Unit) {
         asyncRequest(onSuccess, onError) {
             apiRepository.getLabels(
-                preferencesRepository.getUuid(),
                 preferencesRepository.getSelectedLanguage(),
-                preferencesRepository.getSelectedRegion()
+                preferencesRepository.getSelectedRegion(),
+                SO_NAME,
+                BuildConfig.VERSION_NAME
             )
         }
     }
@@ -171,8 +170,9 @@ class SplashUseCase @Inject constructor(
         asyncRequest(onSuccess, onError) {
             mapperScope(
                 apiRepository.getLanguages(
-                    preferencesRepository.getUuid(),
-                    preferencesRepository.getSelectedLanguage()
+                    preferencesRepository.getSelectedLanguage().default(languageCodeSpanish),
+                    SO_NAME,
+                    BuildConfig.VERSION_NAME
                 )
             ) {
                 languagesDataMapper.transform(it)
@@ -184,8 +184,9 @@ class SplashUseCase @Inject constructor(
         asyncRequest(onSuccess, onError) {
             mapperScope(
                 apiRepository.getRegions(
-                    preferencesRepository.getUuid(),
-                    preferencesRepository.getSelectedLanguage()
+                    preferencesRepository.getSelectedLanguage(),
+                    SO_NAME,
+                    BuildConfig.VERSION_NAME
                 )
             ) {
                 regionsDataMapper.transform(it)
@@ -193,8 +194,26 @@ class SplashUseCase @Inject constructor(
         }
     }
 
-    fun isUuidInitialized() = preferencesRepository.getUuid().isNotEmpty()
+    private fun initializeDefaultLanguage(languages: List<Language>): Boolean {
 
+        var reloadLanguagesList = false
+
+        if (preferencesRepository.getSelectedLanguage().isEmpty()) {
+
+            val systemLanguageCode = Locale.getDefault().toLanguageTag()
+            val availableLanguageCodes = languages.map { it.code }
+
+            if (availableLanguageCodes.contains(systemLanguageCode) && systemLanguageCode != languageCodeSpanish) {
+                preferencesRepository.setSelectedLanguage(systemLanguageCode)
+                reloadLanguagesList = true
+            } else {
+                preferencesRepository.setSelectedLanguage(languageCodeSpanish)
+            }
+        }
+
+        return reloadLanguagesList
+
+    }
 
     fun checkGaenAvailability(callback: (Boolean) -> Unit) =
         contactTracingRepository.checkGaenAvailability(callback)

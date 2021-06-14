@@ -18,7 +18,7 @@ interface HomeView : RequestView {
 
     fun showExposureBlockLow()
 
-    fun showExposureBlockHigh()
+    fun showExposureBlockHigh(daysToHeal: Int, hideVenueExposureBlock: Boolean)
 
     fun showExposureBlockInfected()
 
@@ -27,6 +27,8 @@ interface HomeView : RequestView {
     fun showReportButton()
 
     fun hideReportButton()
+
+    fun setFakeExposureButton()
 
     fun setRadarBlockChecked(checked: Boolean)
 
@@ -40,6 +42,14 @@ interface HomeView : RequestView {
 
     fun showExposureHealedDialog()
 
+    fun showUpdateLegalTermsDialog()
+
+    fun showShareDialog()
+
+    fun updateContentDescriptionRadar(enabled: Boolean)
+
+    fun showVenueExposureBlock(daysToHeal: Int, hideExposureBlock: Boolean)
+
 }
 
 interface HomePresenter {
@@ -52,24 +62,33 @@ interface HomePresenter {
 
     fun onExposureBlockClick()
 
-    fun onMoreInfoButtonClick(url: String)
+    fun onVenueExposureBlockClick()
 
     fun onReportButtonClick()
 
-    fun onBackgroundImageLongClick()
+    fun onButtonShareClick()
+
+    fun doShareApp(message: String)
+
+    fun onFakeExposureButtonClick()
+
+    fun onFakeShowExposureHealedDialogClick()
 
     fun onSwitchRadarClick(currentlyEnabled: Boolean)
 
     fun onBatteryOptimizationsIgnored()
 
+    fun needChangeLegalTerms(): Boolean
+
+    fun legalTermsAccepted()
+
 }
 
 interface HomeRouter {
 
-    fun navigateToExpositionDetail()
+    fun navigateToExpositionDetail(venueExposure: Boolean)
 
     fun navigateToCovidReport()
 
-    fun navigateToBrowser(url: String)
-
+    fun shareApp(text: String)
 }

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright (c) 2020 Gobierno de España
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -8,12 +9,12 @@
   ~ SPDX-License-Identifier: MPL-2.0
   -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <es.gob.radarcovid.common.view.LabelImageButton
+    <ImageButton
         android:id="@+id/imageButtonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +26,22 @@
         android:paddingRight="22dp"
         android:paddingBottom="32dp"
         android:src="@drawable/ic_arrow_left"
-        app:contentDescriptionLabelId="ACC_MY_HEALTH_REPORTED_BACKBUTTON" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <es.gob.radarcovid.common.view.StepsProgress
+        android:id="@+id/stepsProgress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:actualStep="1"
+        app:labelId="MY_HEALTH_RANGER"
+        android:contentDescription="@string/covid_report_steps_description"
+        app:contentDescriptionLabelId="MY_HEALTH_SCREEN_POSITION"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:numberSteps="2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

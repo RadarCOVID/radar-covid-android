@@ -73,7 +73,6 @@ class LoadingDialog(context: Context) :
     }
 
     fun showError(title: String?, message: String?, button: String, onClick: (() -> Unit) = {}) {
-        buttonClose.setOnClickListener { dismissWithAnimation() }
         title?.let {
             textViewDialogTitle.visibility = View.VISIBLE
             textViewDialogTitle.text = title

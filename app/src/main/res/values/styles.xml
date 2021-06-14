@@ -11,21 +11,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
     </style>
 
-    <style name="FullscreenTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="FullscreenTheme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name="FloatingDialog" parent="Theme.AppCompat.Light.Dialog">
+    <style name="FloatingDialog" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
@@ -36,16 +37,17 @@
     </style>
 
     <style name="Title">
-        <item name="fontFamily">@font/muli_bold</item>
+        <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TitleTip" parent="Title">
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
 
     <style name="TitleTipSmall" parent="TitleTip">
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
 
@@ -59,20 +61,46 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="StyleRegularBlack24">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="StyleRegularBlack18">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Title18Black" parent="Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Title18Purple9C" parent="Title">
+        <item name="android:textColor">@color/purple_9C</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Title18PurpleA7" parent="Title">
+        <item name="android:textColor">@color/purple_A7</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="TitleMedium" parent="Title">
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">28sp</item>
     </style>
 
-    <style name="TitleBig" parent="Title">
-        <item name="android:lineSpacingMultiplier">0.9</item>
-        <item name="android:textColor">@color/black_26</item>
-        <item name="android:textSize">44sp</item>
+    <style name="Title22Black" parent="Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="TitleExtraBold">
         <item name="android:textStyle">bold</item>
-        <item name="fontFamily">@font/muli_extrabold</item>
+        <item name="fontFamily">@font/roboto_bold</item>
     </style>
 
     <style name="TitleExtraBoldSmall" parent="TitleExtraBold">
@@ -81,49 +109,88 @@
     </style>
 
     <style name="TitleEnumPurple">
-        <item name="android:fontFamily">@font/muli_light</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">@color/purple_9C</item>
     </style>
 
-    <style name="TitleExtraBoldPurpleSmall" parent="TitleExtraBold">
-        <item name="android:textColor">@color/purple_9C</item>
+    <style name="TextRegular">
+        <item name="android:textStyle">normal</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black_26</item>
     </style>
 
-    <style name="TextMuliMedium">
-        <item name="android:fontFamily">@font/muli_medium</item>
-        <item name="android:textSize">16sp</item>
+    <style name="TextRegular18Black">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="TextRegular">
+    <style name="TextRegular20Black">
         <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">@font/muli_regular</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextSmall">
-        <item name="android:fontFamily">@font/muli_light</item>
-        <item name="android:textColor">@color/black_26</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="TextSmallBlack">
-        <item name="android:fontFamily">@font/muli_light</item>
+    <style name="TextSmallBlack" parent="TextSmall">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextSmallBlack12" parent="TextSmall">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextRegular16Black">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextRegular12Black">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextSmallBlackBold">
+        <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextNormal">
-        <item name="fontFamily">@font/muli_light</item>
+        <item name="fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="TextNormal18" parent="TextNormal">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextBold18Black" parent="TextNormal">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextNormal22" parent="TextNormal">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextBold22Black">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
     <style name="TextSemibold">
-        <item name="fontFamily">@font/muli_semibold</item>
+        <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
@@ -145,22 +212,22 @@
     </style>
 
     <style name="TextDialogDescription">
-        <item name="fontFamily">@font/muli_light</item>
+        <item name="fontFamily">@font/roboto_light</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black_26</item>
     </style>
 
-    <style name="Button">
-        <item name="fontFamily">@font/muli_semibold</item>
+    <style name="ButtonSelector">
+        <item name="fontFamily">@font/roboto_medium</item>
         <item name="textAllCaps">false</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="ButtonWhite" parent="Button">
-        <item name="android:gravity">center</item>
-        <item name="android:minHeight">56dp</item>
-        <item name="android:textColor">@color/black_26</item>
-        <item name="android:background">@drawable/shape_rounded_corners_white</item>
+    <style name="Button">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="ButtonNormal" parent="Button">
@@ -171,11 +238,26 @@
         <item name="android:background">@drawable/background_button</item>
     </style>
 
-    <style name="EditTextNormal" parent="TextSmall">
-        <item name="android:minHeight">60dp</item>
-        <item name="android:lines">1</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:background">@drawable/shape_rounded_corners_white</item>
+    <style name="ButtonSelection" parent="Button">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/background_button</item>
+        <item name="android:textColor">@color/selector_color_button</item>
+    </style>
+
+    <style name="ButtonSecondary" parent="Button">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/purple_A7</item>
+        <item name="android:background">@drawable/shape_rounded_border_accent</item>
+    </style>
+
+    <style name="ButtonFloatingOn" parent="Button">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_circle_border_purple</item>
+    </style>
+
+    <style name="ButtonFloatingOff" parent="Button">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_circle_border_white</item>
     </style>
 
     <style name="EditTextDigit" parent="TextSemibold">
@@ -198,15 +280,15 @@
     <style name="EditTextCodeAccesibility" parent="TextSemibold">
         <item name="android:clickable">true</item>
         <item name="android:lines">1</item>
+        <item name="android:paddingStart">16sp</item>
         <item name="android:maxLength">12</item>
         <item name="android:minHeight">60dp</item>
-        <item name="android:gravity">center</item>
+        <item name="android:gravity">start|center</item>
         <item name="android:textSize">20sp</item>
         <item name="android:inputType">number</item>
         <item name="android:digits">0123456789</item>
         <item name="android:singleLine">true</item>
-        <item name="android:backgroundTint">@color/gray_f0</item>
-        <item name="android:background">@drawable/shape_rounded_corners_gray</item>
+        <item name="android:background">@drawable/shape_rounded_border_accent</item>
     </style>
 
     <style name="ScrollVertical">
@@ -217,6 +299,45 @@
     <style name="Spinner">
         <item name="android:background">@drawable/background_spinner</item>
         <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="SpinnerButton" parent="TitleTip">
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingEnd">40dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/background_spinner</item>
+    </style>
+
+    <style name="RadioButton" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/black_26</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:background">@drawable/shape_rounded_corners_white</item>
+        <item name="android:button">@drawable/my_health_radio_selector</item>
+        <item name="android:padding">26dp</item>
+        <item name="android:gravity">start|center</item>
+    </style>
+
+    <style name="SegmentedControlButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/background_segmented_selector_middle</item>
+        <item name="android:textColor">@drawable/selector_segmented</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SegmentedControlButtonLeft" parent="SegmentedControlButton">
+        <item name="android:background">@drawable/background_segmented_selector_left</item>
+    </style>
+
+    <style name="SegmentedControlButtonRight" parent="SegmentedControlButton">
+        <item name="android:background">@drawable/background_segmented_selector_right</item>
     </style>
 
 </resources>

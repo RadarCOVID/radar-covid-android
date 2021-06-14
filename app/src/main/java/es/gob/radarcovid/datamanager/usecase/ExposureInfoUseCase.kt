@@ -26,4 +26,8 @@ class ExposureInfoUseCase @Inject constructor(
 
     fun wasExposed(): Boolean = preferencesRepository.wasExposed()
 
+    fun resetExposure() = repository.resetExposure()
+
+    fun resetExposureDays() = repository.resetExposureDays()
+
 }

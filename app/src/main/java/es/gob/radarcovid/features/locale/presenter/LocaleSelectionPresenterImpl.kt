@@ -24,23 +24,30 @@ class LocaleSelectionPresenterImpl @Inject constructor(
 ) : LocaleSelectionPresenter {
 
     private val localeInfo: LocaleInfo = getLocaleInfoUseCase.getLocaleInfo()
-    private val defaultSelectedIndex: Int =
+    private val currentLanguageIndex: Int =
         localeInfo.languages.indexOfFirst { it.code == getLocaleInfoUseCase.getSelectedLanguage() }
+    private var selectedLanguageIndex: Int = currentLanguageIndex
 
     override fun viewReady() {
-        view.setRegions(localeInfo.regions.map { it.name })
-        view.setLanguages(localeInfo.languages.map { it.name })
-        if(defaultSelectedIndex > -1)
-            view.setSelectedLanguageIndex(defaultSelectedIndex)
+        if (currentLanguageIndex > -1)
+            view.setLanguage(localeInfo.languages[currentLanguageIndex].name)
     }
 
-    override fun onApplyButtonClick() {
-        getLocaleInfoUseCase.setSelectedRegion(localeInfo.regions[view.getSelectedRegionIndex()].code)
-        requestLabels()
+    override fun onLanguageDropdownButtonClick() {
+        selectedLanguageIndex = currentLanguageIndex
+        view.showLanguageSelectionDialog(localeInfo.languages.map { it.name }, currentLanguageIndex)
     }
 
     override fun onLanguageSelectionChange(index: Int) {
-        if (isLanguageChanged())
+        selectedLanguageIndex = index
+    }
+
+    override fun onLanguagesListAcceptButtonClick(dialogDismissCallback: () -> Unit) {
+        val selectedLanguageCode = localeInfo.languages[selectedLanguageIndex].code
+        val currentLanguage = getLocaleInfoUseCase.getSelectedLanguage()
+        if (selectedLanguageCode == currentLanguage)
+            dialogDismissCallback()
+        else
             view.showLanguageChangeDialog()
     }
 
@@ -48,29 +55,10 @@ class LocaleSelectionPresenterImpl @Inject constructor(
         applyLocaleSettings()
     }
 
-    override fun isLanguageChanged(): Boolean =
-        defaultSelectedIndex != view.getSelectedLanguageIndex()
-
-    override fun applyLocaleSettings() {
-        val selectedLanguage = localeInfo.languages[view.getSelectedLanguageIndex()].code
+    private fun applyLocaleSettings() {
+        val selectedLanguage = localeInfo.languages[selectedLanguageIndex].code
         getLocaleInfoUseCase.setSelectedLanguage(selectedLanguage)
         router.restartApplication()
-    }
-
-    override fun restoreLocaleSettings() {
-        view.setSelectedLanguageIndex(defaultSelectedIndex)
-    }
-
-    private fun requestLabels() {
-        view.showLoading()
-        getLocaleInfoUseCase.getLabels(
-            onSuccess = {
-                view.hideLoading()
-            },
-            onError = {
-                view.hideLoading()
-            }
-        )
     }
 
 }

@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.common.base
 
+import android.content.Context
+import android.view.accessibility.AccessibilityManager
 import dagger.android.support.DaggerFragment
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.view.CMDialog
@@ -42,6 +44,19 @@ abstract class BaseFragment : DaggerFragment() {
 
     fun hideLoading() {
         progressBar?.dismissWithAnimation()
+    }
+
+    fun hideLoadingWithCommonError() {
+        val title = labelManager.getText("ALERT_GENERIC_ERROR_TITLE", R.string.error_generic_title)
+            .toString()
+        val message = labelManager.getText("ALERT_GENERIC_ERROR", R.string.error_common_message)
+            .toString()
+        val button = labelManager.getText(
+            "ALERT_ACCEPT_BUTTON",
+            R.string.accept
+        ).toString()
+
+        progressBar?.showError(title, message, button)
     }
 
     fun hideLoadingWithError(error: Throwable) {
@@ -100,5 +115,10 @@ abstract class BaseFragment : DaggerFragment() {
             .build()
             .show()
     }
+
+    fun isAccessibilityEnabled(): Boolean =
+        activity?.let {
+            (it.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
+        } ?: false
 
 }

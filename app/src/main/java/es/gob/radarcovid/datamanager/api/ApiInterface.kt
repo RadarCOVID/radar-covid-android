@@ -10,8 +10,10 @@
 
 package es.gob.radarcovid.datamanager.api
 
+import es.gob.radarcovid.models.request.RequestKpi
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -19,41 +21,63 @@ interface ApiInterface {
 
     companion object {
 
-        const val SEDIA_USER_TOKEN = "SEDIA-UserToken"
+        const val EFGS_SHARING = "X-EFGS-Sharing"
 
     }
 
     @GET("/")
     fun test(): Call<String>
 
-    @GET("/configuration/token/uuid")
-    fun getUuid(): Call<ResponseUuid>
-
     @GET("/configuration/settings")
     fun getSettings(): Call<ResponseSettings>
 
     @GET("/configuration/texts")
     fun getLabels(
-        @Header(SEDIA_USER_TOKEN) uuid: String,
         @Query("locale") language: String,
-        @Query("ccaa") region: String
+        @Query("ccaa") region: String,
+        @Query("platform") platform: String,
+        @Query("version") version: String
     ): Call<ResponseLabels>
 
     @GET("/configuration/masterData/locales")
     fun getLanguages(
-        @Header(SEDIA_USER_TOKEN) uuid: String,
-        @Query("locale") language: String
+        @Query("locale") language: String,
+        @Query("platform") platform: String,
+        @Query("version") version: String
     ): Call<ResponseLanguages>
 
     @GET("/configuration/masterData/ccaa")
     fun getRegions(
-        @Header(SEDIA_USER_TOKEN) uuid: String,
         @Query("locale") language: String,
-        @Query("additionalInfo") additionalInfo: Boolean
+        @Query("additionalInfo") additionalInfo: Boolean,
+        @Query("platform") platform: String,
+        @Query("version") version: String
     ): Call<ResponseRegions>
 
     @POST("/verification/verify/code")
-    fun verifyCode(@Body body: RequestVerifyCode): Call<ResponseToken>
+    fun verifyCode(
+        @Body body: RequestVerifyCode,
+        @Header(EFGS_SHARING) sharingEFGSHeader: String
+    ): Call<ResponseToken>
 
+    @GET("/configuration/masterData/countries")
+    fun getCountries(
+        @Query("locale") language: String,
+        @Query("platform") platform: String,
+        @Query("version") version: String
+    ): Call<ResponseRegions>
 
+    @GET("kpi/statistics/basics")
+    fun getStats(): Call<ResponseStats>
+
+    @POST("/kpi/google")
+    fun sendKpi(
+        @Body body: RequestKpi
+    ): Call<String>
+
+    @Headers("Accept: application/x-protobuf")
+    @GET("/notifyme/v1/traceKeys ")
+    fun getTraceKeys(
+        @Query("keyBundleTag") keyBundleTag: Long
+    ): Call<ResponseBody>
 }

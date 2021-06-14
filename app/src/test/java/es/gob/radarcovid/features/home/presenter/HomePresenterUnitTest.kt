@@ -11,15 +11,17 @@
 package es.gob.radarcovid.features.home.presenter
 
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
-import es.gob.radarcovid.datamanager.usecase.ExposureRadarUseCase
-import es.gob.radarcovid.datamanager.usecase.OnboardingCompletedUseCase
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
+import es.gob.radarcovid.datamanager.usecase.*
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeRouter
 import es.gob.radarcovid.features.home.protocols.HomeView
+import es.gob.radarcovid.models.domain.Environment
 import es.gob.radarcovid.models.domain.ExposureInfo
+import es.gob.radarcovid.models.domain.HealingTime
 import org.junit.Assert.assertFalse
 import org.junit.Test
 
@@ -29,6 +31,11 @@ class HomePresenterUnitTest {
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase = mock()
     private val exposureRadarUseCase: ExposureRadarUseCase = mock()
     private val exposureInfoUseCase: ExposureInfoUseCase = mock()
+    private val fakeExposureInfoUseCase: FakeExposureInfoUseCase = mock()
+    private val legalTermsUseCase: LegalTermsUseCase = mock()
+    private val getHealingTimeUseCase: GetHealingTimeUseCase = mock()
+    private val venueMatcherUseCase: VenueMatcherUseCase = mock()
+    private val preferencesRepository: PreferencesRepository = mock()
 
     private val presenter: HomePresenter = HomePresenterImpl(
         view,
@@ -36,8 +43,31 @@ class HomePresenterUnitTest {
         onboardingCompletedUseCase,
         exposureRadarUseCase,
         exposureInfoUseCase,
-        mock()
+        fakeExposureInfoUseCase,
+        legalTermsUseCase,
+        getHealingTimeUseCase,
+        venueMatcherUseCase,
+        preferencesRepository
     )
+
+    @Test
+    fun whenEnvironmentIsProNeverInitializeFakeExposureButton() {
+        whenever(fakeExposureInfoUseCase.getEnvironment()).thenReturn(Environment.PRO)
+
+        presenter.viewReady(false)
+        presenter.viewReady(true)
+
+        verify(view, never()).setFakeExposureButton()
+    }
+
+    @Test
+    fun whenEnvironmentIsProNeverFakeExposure() {
+        whenever(fakeExposureInfoUseCase.getEnvironment()).thenReturn(Environment.PRO)
+
+        presenter.onFakeExposureButtonClick()
+
+        verify(fakeExposureInfoUseCase, never()).addFakeExposureDay()
+    }
 
     @Test
     fun whenIsInfectedShowBackgroundEnabled() {
@@ -100,6 +130,8 @@ class HomePresenterUnitTest {
             level = ExposureInfo.Level.HIGH
         })
 
+        whenever (getHealingTimeUseCase.getHealingTime()).thenReturn(HealingTime())
+
         presenter.onResume()
 
         verify(view).setRadarBlockEnabled(true)
@@ -110,6 +142,8 @@ class HomePresenterUnitTest {
         whenever(exposureInfoUseCase.getExposureInfo()).thenReturn(ExposureInfo().apply {
             level = ExposureInfo.Level.HIGH
         })
+
+        whenever (getHealingTimeUseCase.getHealingTime()).thenReturn(HealingTime())
 
         presenter.onResume()
 
@@ -122,9 +156,11 @@ class HomePresenterUnitTest {
             level = ExposureInfo.Level.HIGH
         })
 
+        whenever (getHealingTimeUseCase.getHealingTime()).thenReturn(HealingTime())
+
         presenter.onResume()
 
-        verify(view).showExposureBlockHigh()
+        verify(view).showExposureBlockHigh(14, true)
     }
 
     @Test

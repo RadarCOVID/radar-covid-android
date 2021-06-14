@@ -14,14 +14,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.common.view.CMDialog
-import es.gob.radarcovid.common.view.HintSpinnerAdapter
+import es.gob.radarcovid.common.view.ListDialog
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionPresenter
 import es.gob.radarcovid.features.locale.protocols.LocaleSelectionView
+import es.gob.radarcovid.features.main.view.MainActivity
+import es.gob.radarcovid.features.onboarding.view.OnboardingActivity
 import kotlinx.android.synthetic.main.fragment_locale_selection.*
 import javax.inject.Inject
 
@@ -39,7 +39,12 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_locale_selection, container, false)
+        return if (activity is MainActivity) {
+            inflater.inflate(R.layout.fragment_locale_selection_settings, container, false)
+        } else {
+            inflater.inflate(R.layout.fragment_locale_selection, container, false)
+        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,42 +52,6 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
         initViews()
         presenter.viewReady()
     }
-
-    override fun setRegions(regions: List<String>) {
-        spinnerRegion.adapter =
-            HintSpinnerAdapter(
-                context!!,
-                labelManager.getText(
-                    "LOCALE_SELECTION_REGION_DEFAULT",
-                    R.string.locale_selection_region_default
-                ).toString(),
-                R.layout.row_spinner,
-                regions
-            )
-    }
-
-    override fun setSelectedRegionIndex(index: Int) {
-        spinnerRegion.setSelection(index + 1) // POSITION 0 IS THE "NON SELECTED" OPTION
-    }
-
-    override fun getSelectedRegionIndex(): Int =
-        spinnerRegion.selectedItemPosition - 1 // POSITION 0 IS THE "NON SELECTED" OPTION
-
-    override fun setLanguages(languages: List<String>) {
-        spinnerLanguage.adapter =
-            ArrayAdapter(
-                context!!,
-                R.layout.row_spinner,
-                languages
-            )
-    }
-
-    override fun setSelectedLanguageIndex(index: Int) {
-        spinnerLanguage.setSelection(index)
-    }
-
-    override fun getSelectedLanguageIndex(): Int =
-        spinnerLanguage.selectedItemPosition
 
     override fun reloadLabels() {
         labelManager.reload()
@@ -95,7 +64,20 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
                     "LOCALE_CHANGE_WARNING",
                     R.string.locale_selection_warning_message
                 ).toString()
+            ).setTitle(
+                labelManager.getText(
+                    "LOCALE_CHANGE_LANGUAGE",
+                    R.string.locale_selection_region_title
+                ).toString()
             )
+            .setNegativeButton(
+                labelManager.getText(
+                    "ALERT_CANCEL_BUTTON",
+                    R.string.cancel
+                ).toString()
+            ) {
+                it.dismiss()
+            }
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_ACCEPT_BUTTON",
@@ -110,41 +92,53 @@ class LocaleSelectionFragment : BaseFragment(), LocaleSelectionView {
     }
 
     private fun initViews() {
-        spinnerRegion.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-
-            }
-
-        }
-
-        spinnerLanguage.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                presenter.onLanguageSelectionChange(position)
-            }
-
+        buttonLanguage.setOnClickListener {
+            presenter.onLanguageDropdownButtonClick()
         }
     }
 
-    fun restoreLocaleSettings() = presenter.restoreLocaleSettings()
+    override fun setLanguage(language: String) {
+        if (activity is OnboardingActivity) {
+            buttonLanguage.text = language
+        }
+        buttonLanguage.contentDescription =
+            "${labelManager.getText(
+                "ACC_BUTTON_SELECTOR_SELECT",
+                R.string.settings_change_language_desc
+            )} $language"
+    }
+
+    override fun showLanguageSelectionDialog(languages: List<String>, selectedIndex: Int) {
+        ListDialog.Builder(context!!)
+            .setTitle(
+                labelManager.getText(
+                    "SETTINGS_LANGUAGE_TITLE",
+                    R.string.settings_language_title
+                ).toString()
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_ACCEPT_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                presenter.onLanguagesListAcceptButtonClick {
+                    it.dismiss()
+                }
+            }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ALERT_CANCEL_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                it.dismiss()
+            }.setItems(languages, selectedIndex) { _, position ->
+                presenter.onLanguageSelectionChange(position)
+            }
+            .build()
+            .show()
+    }
 
 }

@@ -14,37 +14,24 @@ import es.gob.radarcovid.common.view.RequestView
 
 interface LocaleSelectionView : RequestView {
 
-    fun setRegions(regions: List<String>)
-
-    fun setSelectedRegionIndex(index: Int)
-
-    fun getSelectedRegionIndex(): Int
-
-    fun setLanguages(languages: List<String>)
-
-    fun setSelectedLanguageIndex(index: Int)
-
-    fun getSelectedLanguageIndex(): Int
-
     fun reloadLabels()
 
     fun showLanguageChangeDialog()
 
+    fun showLanguageSelectionDialog(languages: List<String>, selectedIndex: Int)
+
+    fun setLanguage(language: String)
 }
 
 interface LocaleSelectionPresenter {
 
     fun viewReady()
 
-    fun onApplyButtonClick()
+    fun onLanguageDropdownButtonClick()
 
     fun onLanguageSelectionChange(index: Int)
 
-    fun isLanguageChanged(): Boolean
-
-    fun applyLocaleSettings()
-
-    fun restoreLocaleSettings()
+    fun onLanguagesListAcceptButtonClick(dialogDismissCallback: () -> Unit)
 
     fun onLocaleChangeConfirm()
 

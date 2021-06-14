@@ -10,12 +10,18 @@
 
 package es.gob.radarcovid.common.di.module
 
+import android.content.Context
+import android.content.SharedPreferences
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import es.gob.radarcovid.BuildConfig
+import es.gob.radarcovid.common.base.Constants.DATE_FORMAT
 import es.gob.radarcovid.common.di.scope.PerApplication
 import es.gob.radarcovid.datamanager.api.ApiInterface
 import es.gob.radarcovid.datamanager.api.UserAgentInterceptor
+import es.gob.radarcovid.datamanager.attestation.AttestationClient
+import es.gob.radarcovid.datamanager.attestation.SafetyNetAttestationClient
 import es.gob.radarcovid.datamanager.repository.BuildInfoRepository
 import es.gob.radarcovid.datamanager.repository.SystemInfoRepository
 import okhttp3.CertificatePinner
@@ -27,6 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.net.URI
 import javax.inject.Named
+
 
 @Module
 class NetworkModule {
@@ -55,6 +62,7 @@ class NetworkModule {
     fun providesCertificatePinner(): CertificatePinner =
         CertificatePinner.Builder()
             .add(URI(BuildConfig.API_URL).host, BuildConfig.CERTIFICATE_PIN)
+            .add(URI(BuildConfig.API_URL).host, BuildConfig.CERTIFICATE_PIN_NEW)
             .build()
 
     @Provides
@@ -76,7 +84,13 @@ class NetworkModule {
     fun providesRetrofit(httpClient: OkHttpClient): Retrofit.Builder = Retrofit.Builder()
         .client(httpClient)
         .addConverterFactory(ScalarsConverterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder()
+                    .setDateFormat(DATE_FORMAT)
+                    .create()
+            )
+        )
 
     @Provides
     @PerApplication
@@ -84,5 +98,19 @@ class NetworkModule {
         retrofitBuilder.baseUrl(BuildConfig.API_URL)
             .build()
             .create(ApiInterface::class.java)
+
+
+    @Provides
+    @PerApplication
+    fun providesAttestationClient(@Named("applicationContext") application: Context): AttestationClient = SafetyNetAttestationClient(
+        application,
+        SafetyNetAttestationClient.AttestationParameters(
+            apiKey = BuildConfig.SAFETY_NET_API_KEY,
+            apkPackageName = application.packageName,
+            requiresBasicIntegrity = false,
+            requiresCtsProfile = false,
+            requiresHardwareAttestation = false
+        )
+    )
 
 }

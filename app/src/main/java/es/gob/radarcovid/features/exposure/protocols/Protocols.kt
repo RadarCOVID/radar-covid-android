@@ -25,6 +25,8 @@ interface ExposureView {
         minutesElapsed: Int?
     )
 
+    fun setDaysToHeal(daysToHeal: Int)
+
     fun showExposureDates(exposureDates: String)
 
     fun hideExposureDates()
@@ -42,13 +44,17 @@ interface ExposureView {
 
     fun showExposureHealedDialog()
 
+    fun showVenueExposureLevelHigh()
+
+    fun setVenueExposureInfo(date: String, daysElapsed: Int?)
+
 }
 
 interface ExposurePresenter {
 
     fun viewReady()
 
-    fun onResume()
+    fun onResume(isVenueExposed: Boolean)
 
     fun onPause()
 
@@ -56,14 +62,10 @@ interface ExposurePresenter {
 
     fun onReportButtonClick()
 
-    fun onUrlButtonClick(url: String)
-
 }
 
 interface ExposureRouter {
 
     fun navigateToCovidReport()
-
-    fun navigateToBrowser(url: String)
 
 }

@@ -31,12 +31,13 @@ class RepositoryModule {
 
     @Provides
     @PerApplication
-    fun providesExposureStatusRepository(repository: ExposureStatusRepositoryImpl): ExposureStatusRepository =
+    fun providesFakeInfectionReportRepository(repository: FakeInfectionReportRepositoryImpl): FakeInfectionReportRepository =
         repository
 
     @Provides
     @PerApplication
-    fun providesDomainRepository(repository: DomainRepositoryImpl): DomainRepository = repository
+    fun providesExposureStatusRepository(repository: ExposureStatusRepositoryImpl): ExposureStatusRepository =
+        repository
 
     @Provides
     @PerApplication
@@ -45,10 +46,14 @@ class RepositoryModule {
 
     @Provides
     @PerApplication
-    fun providesExampleRepository(repository: ExampleRepositoryImpl): ExampleRepository = repository
+    fun providesApiRepository(repository: ApiRepositoryImpl): ApiRepository = repository
 
     @Provides
     @PerApplication
-    fun providesApiRepository(repository: ApiRepositoryImpl): ApiRepository = repository
+    fun providesCrowdNotifierRepository(repository: CrowdNotifierRepositoryImpl): CrowdNotifierRepository = repository
+
+    @Provides
+    @PerApplication
+    fun providesEncryptedPreferencesRepository(repository: EncryptedPreferencesRepositoryImpl): EncryptedPreferencesRepository = repository
 
 }

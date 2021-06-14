@@ -14,6 +14,7 @@ import android.content.Context
 import es.gob.radarcovid.datamanager.mapper.ExposureInfoDataMapper
 import es.gob.radarcovid.models.domain.ExposureInfo
 import org.dpppt.android.sdk.DP3T
+import org.dpppt.android.sdk.internal.AppConfigManager
 import org.dpppt.android.sdk.internal.storage.ExposureDayStorage
 import org.dpppt.android.sdk.models.DayDate
 import org.dpppt.android.sdk.models.ExposureDay
@@ -46,9 +47,23 @@ class ExposureStatusRepositoryImpl @Inject constructor(
             else
                 ExposureDay(-1, DayDate().subtractDays(1), System.currentTimeMillis())
 
-            addExposureDay(context, newExposureDay)
+            addExposureDays(context, listOf(newExposureDay))
         }
 
     }
 
+    override fun resetExposure() {
+        with(AppConfigManager.getInstance(context)) {
+            if (!iAmInfectedIsResettable)
+                iAmInfectedIsResettable = true
+        }
+        DP3T.resetExposureDays(context)
+        DP3T.resetInfectionStatus(context)
+        preferencesRepository.setExposureAnalyticsCount(0)
+    }
+
+    override fun resetExposureDays() {
+        DP3T.resetExposureDays(context)
+        preferencesRepository.setExposureAnalyticsCount(0)
+    }
 }

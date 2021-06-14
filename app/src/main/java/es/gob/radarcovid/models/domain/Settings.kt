@@ -10,6 +10,9 @@
 
 package es.gob.radarcovid.models.domain
 
+import es.gob.radarcovid.common.base.Constants.ANALYTICS_PERIOD_DEFAULT
+import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
+
 data class Settings(
     val exposureConfiguration: ExposureConfiguration = ExposureConfiguration(),
     val healingTime: HealingTime = HealingTime(),
@@ -31,7 +34,12 @@ data class Settings(
             4096
         )
     ),
-    val appInfo: SettingsAppInfo = SettingsAppInfo()
+    val appInfo: SettingsAppInfo = SettingsAppInfo(),
+    val legalTermsVersion: String = "",
+    val radarCovidDownloadUrl: String = "",
+    val notificationReminder: Int = NOTIFICATION_REMINDER_DEFAULT,
+    val timeBetweenKpi: Int = ANALYTICS_PERIOD_DEFAULT,
+    val venueConfiguration: VenueConfiguration = VenueConfiguration()
 )
 
 data class ExposureConfiguration(
@@ -73,3 +81,10 @@ data class SettingsRiskScore(
 )
 
 data class SettingsAppInfo(val minVersionName: String = "", val minVersionCode: Int = 1)
+
+data class VenueConfiguration(
+    val recordNotification: Int = 60,
+    val autoCheckout: Int = 300,
+    val troubledPlaceCheck: Int = 120,
+    val quarentineAfterExposed: Int = 2880
+)

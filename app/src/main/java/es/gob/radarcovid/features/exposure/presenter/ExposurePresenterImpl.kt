@@ -14,11 +14,15 @@ import com.squareup.otto.Subscribe
 import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.common.extensions.format
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
 import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
+import es.gob.radarcovid.datamanager.usecase.GetHealingTimeUseCase
+import es.gob.radarcovid.datamanager.usecase.VenueMatcherUseCase
 import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
 import es.gob.radarcovid.features.exposure.protocols.ExposureRouter
 import es.gob.radarcovid.features.exposure.protocols.ExposureView
 import es.gob.radarcovid.models.domain.ExposureInfo
+import es.gob.radarcovid.models.domain.VenueRecord
 import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -26,18 +30,28 @@ import javax.inject.Inject
 class ExposurePresenterImpl @Inject constructor(
     private val view: ExposureView,
     private val router: ExposureRouter,
-    private val exposureInfoUseCase: ExposureInfoUseCase
+    private val exposureInfoUseCase: ExposureInfoUseCase,
+    private val getHealingTimeUseCase: GetHealingTimeUseCase,
+    private val venueMatcherUseCase: VenueMatcherUseCase,
+    private val preferencesRepository: PreferencesRepository
 ) : ExposurePresenter {
+
+    private var _isVenueExposed = false
 
     override fun viewReady() {
 
     }
 
-    override fun onResume() {
+    override fun onResume(isVenueExposed: Boolean) {
         BUS.register(this)
-        val exposureInfo = exposureInfoUseCase.getExposureInfo()
-        showExposureInfo(exposureInfo)
-        showExposureHealedDialogIfRequired(exposureInfo.level)
+        _isVenueExposed = isVenueExposed
+        if (_isVenueExposed) {
+            showVenueExposureInfo()
+        } else {
+            val exposureInfo = exposureInfoUseCase.getExposureInfo()
+            showExposureInfo(exposureInfo)
+            showExposureHealedDialogIfRequired(exposureInfo.level)
+        }
     }
 
     override fun onPause() {
@@ -52,15 +66,15 @@ class ExposurePresenterImpl @Inject constructor(
         router.navigateToCovidReport()
     }
 
-    override fun onUrlButtonClick(url: String) {
-        router.navigateToBrowser(url)
-    }
-
     @Subscribe
     fun onExposureStatusChange(event: EventExposureStatusChange) {
-        val exposureInfo = exposureInfoUseCase.getExposureInfo()
-        showExposureInfo(exposureInfo)
-        showExposureHealedDialogIfRequired(exposureInfo.level)
+        if (_isVenueExposed) {
+            showVenueExposureInfo()
+        } else {
+            val exposureInfo = exposureInfoUseCase.getExposureInfo()
+            showExposureInfo(exposureInfo)
+            showExposureHealedDialogIfRequired(exposureInfo.level)
+        }
     }
 
     private fun showExposureInfo(exposureInfo: ExposureInfo) {
@@ -96,7 +110,7 @@ class ExposurePresenterImpl @Inject constructor(
                     TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
 
                 view.setInfectionDates(
-                    exposureInfo.lastUpdateTime.format(),
+                    Date().format(),
                     daysElapsed.toInt(),
                     hoursElapsed.toInt(),
                     minutesElapsed.toInt()
@@ -109,6 +123,9 @@ class ExposurePresenterImpl @Inject constructor(
                 val hoursElapsed = TimeUnit.MILLISECONDS.toHours(millisElapsed) - (daysElapsed * 24)
                 val minutesElapsed =
                     TimeUnit.MILLISECONDS.toMinutes(millisElapsed) - (hoursElapsed * 60)
+                val daysToHeal =
+                    getHealingTimeUseCase.getHealingTime().exposureHighMinutes / 60 / 24
+                val daysLeft = daysToHeal - daysElapsed
 
                 view.setExposureInfo(
                     exposureInfo.lastUpdateTime.format(),
@@ -116,10 +133,38 @@ class ExposurePresenterImpl @Inject constructor(
                     hoursElapsed.toInt(),
                     minutesElapsed.toInt()
                 )
+                view.setDaysToHeal(
+                    daysLeft.toInt()
+                )
                 view.hideExposureDates()
                 //view.showExposureDates(exposureInfo.exposureDates.joinToString("\n") { it.format() })
             }
         }
+    }
+
+    private fun showVenueExposureInfo() {
+        val exposureVenue = venueMatcherUseCase.getVenueExposureInfo()
+        if (exposureVenue != null) {
+            view.showVenueExposureLevelHigh()
+            setVenueExposureDates(exposureVenue)
+        }
+    }
+
+    private fun setVenueExposureDates(exposureVenue: VenueRecord) {
+        val millisElapsed = System.currentTimeMillis() - exposureVenue.dateOut!!.time
+        val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
+        val daysToHeal =
+            preferencesRepository.getQuarantineAfterVenueExposedTime() / 60 / 24
+        val daysLeft = daysToHeal - daysElapsed
+
+        view.setVenueExposureInfo(
+            Date().format(),
+            daysElapsed.toInt()
+        )
+        view.setDaysToHeal(
+            daysLeft.toInt()
+        )
+        view.hideExposureDates()
     }
 
     private fun showExposureHealedDialogIfRequired(exposureLevel: ExposureInfo.Level) {

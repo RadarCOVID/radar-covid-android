@@ -11,6 +11,7 @@
 package es.gob.radarcovid.features.home.router
 
 import android.content.Context
+import android.content.Intent
 import es.gob.radarcovid.common.base.utils.NavigationUtils
 import es.gob.radarcovid.features.covidreport.form.view.CovidReportActivity
 import es.gob.radarcovid.features.exposure.view.ExposureActivity
@@ -18,16 +19,22 @@ import es.gob.radarcovid.features.home.protocols.HomeRouter
 import javax.inject.Inject
 
 class HomeRouterImpl @Inject constructor(
-    private val context: Context,
-    private val navigationUtils: NavigationUtils
+    private val context: Context
 ) : HomeRouter {
 
-    override fun navigateToExpositionDetail() = ExposureActivity.open(context)
+    override fun navigateToExpositionDetail(venueExposure: Boolean) = ExposureActivity.open(context, venueExposure)
 
-    override fun navigateToCovidReport() = CovidReportActivity.open(context)
+    override fun navigateToCovidReport() = CovidReportActivity.open(context, null)
 
-    override fun navigateToBrowser(url: String) {
-        navigationUtils.navigateToBrowser(context, url)
+    override fun shareApp(text: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            type = "text/plain"
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        context.startActivity(shareIntent)
     }
 
 }

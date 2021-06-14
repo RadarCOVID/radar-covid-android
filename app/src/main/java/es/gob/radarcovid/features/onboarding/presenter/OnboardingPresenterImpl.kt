@@ -10,6 +10,7 @@
 
 package es.gob.radarcovid.features.onboarding.presenter
 
+import es.gob.radarcovid.datamanager.usecase.GetLocaleInfoUseCase
 import es.gob.radarcovid.features.onboarding.protocols.OnboardingPresenter
 import es.gob.radarcovid.features.onboarding.protocols.OnboardingRouter
 import es.gob.radarcovid.features.onboarding.protocols.OnboardingView
@@ -17,11 +18,12 @@ import javax.inject.Inject
 
 class OnboardingPresenterImpl @Inject constructor(
     private val view: OnboardingView,
-    private val router: OnboardingRouter
+    private val router: OnboardingRouter,
+    private val getLocaleInfoUseCase: GetLocaleInfoUseCase
 ) : OnboardingPresenter {
 
     override fun viewReady() {
-
+        getLocaleInfoUseCase.resetLanguageChanged()
     }
 
     override fun onExitConfirmed() {

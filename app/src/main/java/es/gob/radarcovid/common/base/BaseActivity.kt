@@ -11,7 +11,15 @@
 package es.gob.radarcovid.common.base
 
 import android.content.Context
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.view.View
+import android.view.accessibility.AccessibilityManager
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import dagger.android.support.DaggerAppCompatActivity
 import es.gob.radarcovid.BuildConfig
 import es.gob.radarcovid.R
@@ -45,6 +53,19 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
 
     fun hideLoading() {
         progressBar?.dismissWithAnimation()
+    }
+
+    fun hideLoadingWithCommonError() {
+        val title = labelManager.getText("ALERT_GENERIC_ERROR_TITLE", R.string.error_generic_title)
+            .toString()
+        val message = labelManager.getText("ALERT_GENERIC_ERROR", R.string.error_common_message)
+            .toString()
+        val button = labelManager.getText(
+            "ALERT_ACCEPT_BUTTON",
+            R.string.accept
+        ).toString()
+
+        progressBar?.showError(title, message, button)
     }
 
     fun hideLoadingWithError(error: Throwable) {
@@ -113,6 +134,35 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         } catch (e: Exception) {
             if (BuildConfig.DEBUG)
                 e.printStackTrace()
+        }
+    }
+
+    fun isAccessibilityEnabled() =
+        (getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
+
+    fun setAccessibilityAction(view: View, action: String) {
+        ViewCompat.setAccessibilityDelegate(view, object : AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(
+                host: View,
+                info: AccessibilityNodeInfoCompat
+            ) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                // A custom action description. For example, you could use "pause"
+                // to have TalkBack speak "double-tap to pause."
+                val customClick = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
+                    AccessibilityNodeInfoCompat.ACTION_CLICK, action
+                )
+                info.addAction(customClick)
+            }
+        })
+    }
+
+    fun vibratePhone() {
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            vibrator.vibrate(200)
         }
     }
 

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_covid_report"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/confirmButtonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="@string/description_arrow_button_back"
+        android:onClick="onBackArrowClick"
+        android:paddingLeft="22dp"
+        android:paddingTop="22dp"
+        android:paddingRight="22dp"
+        android:paddingBottom="32dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        style="@style/ScrollVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/buttonCheckIn"
+        app:layout_constraintTop_toBottomOf="@id/confirmButtonBack">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp">
+
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_confirmation_check" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewTitle"
+                style="@style/StyleRegularBlack24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:accessibilityTraversalBefore="@id/confirmButtonBack"
+                android:descendantFocusability="beforeDescendants"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:text="@string/venue_record_captured_code_title"
+                app:isHeading="true"
+                app:labelId="VENUE_RECORD_CAPTURED_CODE_TITLE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_rounded_corners_white"
+                android:elevation="4dp"
+                android:paddingStart="18dp"
+                android:paddingTop="21dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="21dp">
+
+                <ImageView
+                    android:id="@+id/imageViewVenue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_venue" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewVenueName"
+                    style="@style/TextSmallBlackBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    app:labelId="VENUE_RECORD_NAME"
+                    tools:text="Nombre del establecimiento dos líneas" />
+
+            </LinearLayout>
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextNormal18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="29dp"
+                android:text="@string/venue_record_captured_code_desc"
+                app:labelId="VENUE_RECORD_CAPTURED_CODE_PARAGRAPH_1" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonCheckIn"
+        style="@style/ButtonNormal"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/venue_record_captured_code_check_in"
+        app:labelId="VENUE_RECORD_CHECKIN_ACTION"
+        app:layout_constraintBottom_toTopOf="@id/buttonCancel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonCancel"
+        style="@style/ButtonSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/cancel"
+        app:labelId="ALERT_CANCEL_BUTTON"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,7 +41,7 @@ class LabelManager @Inject constructor(
             it,
             HtmlCompat.FROM_HTML_MODE_LEGACY
         )
-    } ?: SpannedString(default)
+    } ?: SpannedString(default ?: "")
 
 
     fun getExposureHighDatesText(
@@ -98,6 +98,15 @@ class LabelManager @Inject constructor(
         return HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
+    fun getVenueExposureHighDatesText(
+        date: String,
+        daysElapsed: Int?
+    ): Spanned {
+        val text = getFormattedText("VENUE_EXPOSITION_HIGH_DESCRIPTION", daysElapsed.toString(), date)
+            .default(context.getString(R.string.venue_exposure_high_detail_description, daysElapsed.toString(), date))
+        return HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
+    }
+
     fun getFormattedText(labelId: String, vararg values: String): String {
         var text: String = labels[labelId] ?: ""
         return if (text.isNotEmpty()) {
@@ -110,7 +119,22 @@ class LabelManager @Inject constructor(
         }
     }
 
+    fun getFormattedTextHtml(labelId: String, default: String, vararg values: String): Spanned {
+        var text: String = labels[labelId] ?: default
+        return if (text.isNotEmpty()) {
+            values.forEach {
+                text = text.replaceFirst("%@", it)
+            }
+            HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        } else {
+            HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        }
+    }
+
     fun getContactPhone(): String =
         getText("CONTACT_PHONE", R.string.contact_support_phone).toString()
+
+    fun getLinkLabel(label: String, url: String): Spanned =
+        HtmlCompat.fromHtml("<a href=\"$url\"><b>$label</b></a>", HtmlCompat.FROM_HTML_MODE_LEGACY)
 
 }

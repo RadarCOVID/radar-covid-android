@@ -13,10 +13,13 @@ package es.gob.radarcovid.features.covidreport.confirmation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.base.utils.NavigationUtils
+import es.gob.radarcovid.features.worker.VenueMatcherWorker
 import kotlinx.android.synthetic.main.activity_confirmation.*
+import kotlinx.android.synthetic.main.layout_back_navigation.*
 import javax.inject.Inject
 
 class ConfirmationActivity : BaseBackNavigationActivity() {
@@ -37,28 +40,22 @@ class ConfirmationActivity : BaseBackNavigationActivity() {
         setContentView(R.layout.activity_confirmation)
 
         initViews()
+
+        //Cancel QR matcher worker if infected
+        VenueMatcherWorker.cancel(this)
     }
 
     private fun initViews() {
-        textViewConfirmationMoreInfo.setOnClickListener {
-            navigationUtils.navigateToBrowser(
-                this,
-                labelManager.getText(
-                    "MY_HEALTH_REPORTED_MORE_INFO_URL",
-                    R.string.confirmation_more_info_url
-                ).toString()
+        imageButtonBack.contentDescription =
+            "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
+            labelManager.getText(
+                "ACC_BUTTON_BACK_TO",
+                R.string.navigation_back_to
             )
-        }
-        buttonMoreInfo.setOnClickListener {
-            navigationUtils.navigateToBrowser(
-                this,
-                labelManager.getText(
-                    "MY_HEALTH_REPORTED_INFO_URL",
-                    R.string.exposure_detail_info_url
-                )
-                    .toString()
-            )
-        }
+            }"
+
+        accessibilityTitle.visibility = if (isAccessibilityEnabled()) View.VISIBLE else View.GONE
+
     }
 
 }

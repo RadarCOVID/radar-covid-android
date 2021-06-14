@@ -11,9 +11,7 @@
 package es.gob.radarcovid.features.onboarding.pages.welcome.protocols
 
 interface WelcomeView {
-
-    fun restorePreviousLanguage()
-
+    
     fun performContinueButtonClick()
 
     fun finish()

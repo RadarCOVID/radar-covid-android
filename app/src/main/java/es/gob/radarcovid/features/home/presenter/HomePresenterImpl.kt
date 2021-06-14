@@ -13,15 +13,15 @@ package es.gob.radarcovid.features.home.presenter
 import com.squareup.otto.Subscribe
 import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
-import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
-import es.gob.radarcovid.datamanager.usecase.ExposureRadarUseCase
-import es.gob.radarcovid.datamanager.usecase.FakeExposureInfoUseCase
-import es.gob.radarcovid.datamanager.usecase.OnboardingCompletedUseCase
+import es.gob.radarcovid.datamanager.repository.PreferencesRepository
+import es.gob.radarcovid.datamanager.usecase.*
 import es.gob.radarcovid.features.home.protocols.HomePresenter
 import es.gob.radarcovid.features.home.protocols.HomeRouter
 import es.gob.radarcovid.features.home.protocols.HomeView
 import es.gob.radarcovid.models.domain.Environment
 import es.gob.radarcovid.models.domain.ExposureInfo
+import es.gob.radarcovid.models.domain.VenueRecord
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class HomePresenterImpl @Inject constructor(
@@ -30,24 +30,32 @@ class HomePresenterImpl @Inject constructor(
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase,
     private val exposureRadarUseCase: ExposureRadarUseCase,
     private val exposureInfoUseCase: ExposureInfoUseCase,
-    private val fakeExposureInfoUseCase: FakeExposureInfoUseCase
+    private val fakeExposureInfoUseCase: FakeExposureInfoUseCase,
+    private val legalTermsUseCase: LegalTermsUseCase,
+    private val getHealingTimeUseCase: GetHealingTimeUseCase,
+    private val venueMatcherUseCase: VenueMatcherUseCase,
+    private val preferencesRepository: PreferencesRepository
 ) : HomePresenter {
+
+    private var activateRadar: Boolean = false
 
     override fun viewReady(activateRadar: Boolean) {
 
-        if (!onboardingCompletedUseCase.isOnBoardingCompleted()) {
-            onboardingCompletedUseCase.setOnboardingCompleted(true)
-            view.showInitializationCheckAnimation()
+        this.activateRadar = activateRadar
+
+        if (needChangeLegalTerms()) {
+            view.showUpdateLegalTermsDialog()
+        } else {
+            whenViewReady(activateRadar)
         }
-
-        if (activateRadar && !exposureRadarUseCase.isRadarEnabled())
-            onSwitchRadarClick(false)
-
     }
 
     override fun onResume() {
         BUS.register(this)
-        updateViews(exposureInfoUseCase.getExposureInfo())
+        updateViews(
+            exposureInfoUseCase.getExposureInfo(),
+            venueMatcherUseCase.getVenueExposureInfo()
+        )
     }
 
     override fun onPause() {
@@ -55,11 +63,11 @@ class HomePresenterImpl @Inject constructor(
     }
 
     override fun onExposureBlockClick() {
-        router.navigateToExpositionDetail()
+        router.navigateToExpositionDetail(false)
     }
 
-    override fun onMoreInfoButtonClick(url: String) {
-        router.navigateToBrowser(url)
+    override fun onVenueExposureBlockClick() {
+        router.navigateToExpositionDetail(true)
     }
 
     override fun onReportButtonClick() {
@@ -69,15 +77,21 @@ class HomePresenterImpl @Inject constructor(
             router.navigateToCovidReport()
     }
 
-    override fun onBackgroundImageLongClick() {
+    override fun onFakeExposureButtonClick() {
         if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
             fakeExposureInfoUseCase.addFakeExposureDay()
+    }
+
+    override fun onFakeShowExposureHealedDialogClick() {
+        if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
+            view.showExposureHealedDialog()
     }
 
     override fun onSwitchRadarClick(currentlyEnabled: Boolean) {
         if (currentlyEnabled) {
             view.setRadarBlockChecked(false)
             exposureRadarUseCase.setRadarDisabled()
+            view.updateContentDescriptionRadar(false)
         } else {
             if (view.areBatteryOptimizationsIgnored())
                 onBatteryOptimizationsIgnored()
@@ -92,30 +106,78 @@ class HomePresenterImpl @Inject constructor(
             onSuccess = {
                 view.hideLoading()
                 view.setRadarBlockChecked(true)
+                view.updateContentDescriptionRadar(true)
             },
             onError = {
                 view.setRadarBlockChecked(false)
-                view.hideLoadingWithError(it)
+                view.hideLoadingWithCommonError()
+                view.updateContentDescriptionRadar(false)
             },
             onCancelled = {
                 view.setRadarBlockChecked(false)
                 view.hideLoading()
+                view.updateContentDescriptionRadar(false)
             })
     }
 
-    @Subscribe
-    fun onExposureStatusChange(event: EventExposureStatusChange) {
-        updateViews(exposureInfoUseCase.getExposureInfo())
+    override fun needChangeLegalTerms(): Boolean {
+        val settingLegalTermsVersionCode = legalTermsUseCase.getSettingsLegalTermsVersionCode()
+        val savedLegalTermsVersionCode = legalTermsUseCase.getSavedLegalTermsVersionCode()
+        return settingLegalTermsVersionCode != savedLegalTermsVersionCode
     }
 
-    private fun showExposureHealedDialogIfRequired(exposureLevel: ExposureInfo.Level) {
+    override fun legalTermsAccepted() {
+        legalTermsUseCase.updateLegalTermsVersionCode()
+        whenViewReady(activateRadar)
+    }
+
+    override fun onButtonShareClick() {
+        view.showShareDialog()
+    }
+
+    override fun doShareApp(message: String) {
+        router.shareApp(message)
+    }
+
+    private fun whenViewReady(activateRadar: Boolean) {
+
+        if (fakeExposureInfoUseCase.getEnvironment() == Environment.PRE)
+            view.setFakeExposureButton()
+
+        if (!onboardingCompletedUseCase.isOnBoardingCompleted()) {
+            onboardingCompletedUseCase.setOnboardingCompleted(true)
+            view.showInitializationCheckAnimation()
+        }
+
+        if (activateRadar && !exposureRadarUseCase.isRadarEnabled())
+            onSwitchRadarClick(false)
+        else
+            view.updateContentDescriptionRadar(exposureRadarUseCase.isRadarEnabled())
+    }
+
+    @Subscribe()
+    fun onExposureStatusChange(event: EventExposureStatusChange) {
+        updateViews(
+            exposureInfoUseCase.getExposureInfo(),
+            venueMatcherUseCase.getVenueExposureInfo()
+        )
+    }
+
+    private fun showExposureHealedDialogIfRequired(
+        exposureLevel: ExposureInfo.Level,
+        daysLeft: Int
+    ) {
         if (exposureLevel == ExposureInfo.Level.LOW && exposureInfoUseCase.wasExposed()) {
             view.showExposureHealedDialog()
+            exposureInfoUseCase.setExposed(false)
+        } else if (exposureLevel == ExposureInfo.Level.HIGH && daysLeft < 0) {
+            view.showExposureHealedDialog()
+            exposureInfoUseCase.resetExposure()
             exposureInfoUseCase.setExposed(false)
         }
     }
 
-    private fun updateViews(exposureInfo: ExposureInfo) {
+    private fun updateViews(exposureInfo: ExposureInfo, venueExposureInfo: VenueRecord?) {
         if (!exposureInfo.exposureNotificationsEnabled && exposureRadarUseCase.isRadarEnabled())
             exposureRadarUseCase.setRadarDisabled()
 
@@ -130,13 +192,40 @@ class HomePresenterImpl @Inject constructor(
             view.showReportButton()
         }
 
+        var daysLeftVenueExposure = 0L
+        if (venueExposureInfo != null) {
+            val millisElapsed = System.currentTimeMillis() - venueExposureInfo.dateOut!!.time
+            val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
+            val daysToHeal =
+                preferencesRepository.getQuarantineAfterVenueExposedTime() / 60 / 24
+            daysLeftVenueExposure = daysToHeal - daysElapsed
+        }
+
+        var daysLeft = 0L
         when (exposureInfo.level) {
-            ExposureInfo.Level.LOW -> view.showExposureBlockLow()
-            ExposureInfo.Level.HIGH -> view.showExposureBlockHigh()
+            ExposureInfo.Level.LOW -> {
+                if (venueExposureInfo != null) {
+                    view.showVenueExposureBlock(daysLeftVenueExposure.toInt(), true)
+                } else {
+                    view.showExposureBlockLow()
+                }
+            }
+            ExposureInfo.Level.HIGH -> {
+                val millisElapsed = System.currentTimeMillis() - exposureInfo.lastExposureDate.time
+                val daysElapsed = TimeUnit.MILLISECONDS.toDays(millisElapsed)
+                val daysToHeal =
+                    getHealingTimeUseCase.getHealingTime().exposureHighMinutes / 60 / 24
+                daysLeft = daysToHeal - daysElapsed
+
+                view.showExposureBlockHigh(daysLeft.toInt(), venueExposureInfo == null)
+                if (venueExposureInfo != null) {
+                    view.showVenueExposureBlock(daysLeftVenueExposure.toInt(), false)
+                }
+            }
             ExposureInfo.Level.INFECTED -> view.showExposureBlockInfected()
         }
 
-        showExposureHealedDialogIfRequired(exposureInfo.level)
+        showExposureHealedDialogIfRequired(exposureInfo.level, daysLeft.toInt())
     }
 
 }

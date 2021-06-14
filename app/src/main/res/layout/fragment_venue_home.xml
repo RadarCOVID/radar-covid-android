@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_covid_report"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        style="@style/ScrollVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layoutButtons">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="60dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="22dp">
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                android:id="@+id/textViewTitle"
+                style="@style/TitleMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:descendantFocusability="beforeDescendants"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:text="@string/venue_title"
+                app:isHeading="true"
+                app:labelId="VENUE_HOME_TITLE" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:importantForAccessibility="no"
+                android:src="@drawable/img_venue" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextNormal18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/venue_paragraph_1"
+                app:labelId="VENUE_HOME_PARAGRAPH_1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:id="@+id/imageViewWebIcon"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_info_link"
+                    app:layout_constraintBottom_toBottomOf="@id/textViewInfoWebTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textViewInfoWebTitle"
+                    app:tint="@color/purple_A7" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewInfoWebTitle"
+                    style="@style/TitleSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/more_info"
+                    android:textColor="@color/purple_A7"
+                    android:textColorLink="@color/purple_A7"
+                    android:textSize="18sp"
+                    app:isLink="true"
+                    app:removeUnderlineLink="true"
+                    app:labelId="VENUE_INFO_WEB_TITLE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageViewWebIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    <es.gob.radarcovid.common.view.LabelButton
+        android:id="@+id/buttonVenueRecord"
+        style="@style/ButtonNormal"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/venue_record_start"
+        app:labelId="VENUE_HOME_BUTTON_START"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonPlaces"/>
+
+        <es.gob.radarcovid.common.view.LabelImageButton
+            android:id="@+id/buttonPlaces"
+            style="@style/ButtonSecondary"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_places_record"
+            android:contentDescription="@string/venue_record_places"
+            app:contentDescriptionLabelId="ACC_VENUE_HOME_PLACES"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/buttonVenueRecord"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

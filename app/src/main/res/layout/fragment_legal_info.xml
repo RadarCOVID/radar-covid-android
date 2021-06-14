@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2020 Gobierno de España
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -130,7 +129,7 @@
                         style="@style/TextNormal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginBottom="10dp"
                         android:text="@string/onboarding_step_2_commitments_detail_3"
                         app:labelId="ONBOARDING_STEP_2_PARAGRAPH_3_DESCRIPTION" />
 
@@ -141,46 +140,65 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/padding_content"
-                android:paddingEnd="@dimen/padding_content"
-                android:paddingBottom="@dimen/padding_content">
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <es.gob.radarcovid.common.view.LabelCheckBox
                     android:id="@+id/checkBoxTermsAndConditions"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
-                    android:contentDescription="@string/legal_info_usage_policy_conditions"
-                    app:contentDescriptionLabelId="ACC_CHECKBOX_PRIVACY"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="15dp"
                     android:button="@drawable/selector_checkbox"
-                    android:gravity="center_horizontal" />
+                    android:contentDescription="@string/legal_info_policy_acc"
+                    android:gravity="center"
+                    app:contentDescriptionLabelId="ACC_CHECKBOX_PRIVACY"/>
 
-                <LinearLayout
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewPrivacyPolicy"
+                    style="@style/TextNormal"
+                    android:textColorLink="@color/purple_A7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/legal_info_privacy_policy"
+                    app:isLink="true"
+                    app:removeUnderlineLink="true"
+                    app:labelId="ONBOARDING_STEP_2_PRIVACY_POLICY"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <es.gob.radarcovid.common.view.LabelCheckBox
+                    android:id="@+id/checkBoxUsageConditions"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="15dp"
+                    android:contentDescription="@string/legal_info_usage_conditions_acc"
+                    app:contentDescriptionLabelId="ACC_CHECKBOX_USAGE_CONDITIONS"
+                    android:button="@drawable/selector_checkbox"
+                    android:gravity="center" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewUsageConditions"
+                    style="@style/TextNormal"
+                    android:textColorLink="@color/purple_A7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <es.gob.radarcovid.common.view.LabelTextView
-                        android:id="@+id/textViewPrivacyPolicy"
-                        style="@style/TextSmall"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="26dp"
-                        android:text="@string/legal_info_privacy_policy"
-                        android:textColor="@color/black_28"
-                        app:labelId="ONBOARDING_STEP_2_PRIVACY_POLICY" />
-
-                    <es.gob.radarcovid.common.view.LabelTextView
-                        android:id="@+id/textViewUsageConditions"
-                        style="@style/TextSmall"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="26dp"
-                        android:text="@string/legal_info_usage_conditions"
-                        android:textColor="@color/black_28"
-                        app:labelId="ONBOARDING_STEP_2_USAGE_CONDITIONS" />
-                </LinearLayout>
+                    android:text="@string/legal_info_usage_conditions"
+                    app:isLink="true"
+                    app:removeUnderlineLink="true"
+                    app:labelId="ONBOARDING_STEP_2_USAGE_CONDITIONS" />
 
             </LinearLayout>
 
@@ -199,11 +217,12 @@
 
         <es.gob.radarcovid.common.view.LabelButton
             android:id="@+id/buttonAccept"
-            style="@style/ButtonNormal"
+            style="@style/ButtonSelection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:enabled="false"
+            android:background="@drawable/selector_button"
             android:text="@string/legal_info_button"
             app:labelId="ONBOARDING_CONTINUE_BUTTON" />
 

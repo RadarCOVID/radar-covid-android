@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2020 Gobierno de España
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -18,11 +17,21 @@
     <item
         android:id="@+id/menuItemProfile"
         android:enabled="true"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ic_mydata"
         android:title="@string/title_mydata" />
     <item
         android:id="@+id/menuItemHelpline"
         android:enabled="true"
         android:icon="@drawable/ic_helpline"
         android:title="@string/title_helpline" />
+    <item
+        android:id="@+id/menuItemStats"
+        android:enabled="true"
+        android:icon="@drawable/ic_stats"
+        android:title="@string/title_stats" />
+    <item
+        android:id="@+id/menuItemSettings"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/title_settings" />
 </menu>

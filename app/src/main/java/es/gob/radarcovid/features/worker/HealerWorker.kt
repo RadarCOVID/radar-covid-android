@@ -56,6 +56,7 @@ class HealerWorker(context: Context, workerParams: WorkerParameters) :
                 val work = OneTimeWorkRequest
                     .Builder(HealerWorker::class.java)
                     .setInitialDelay(minutesToHeal, TimeUnit.MINUTES)
+                    .addTag(TAG)
                     .build()
                 WorkManager.getInstance(context)
                     .enqueueUniqueWork(TAG, ExistingWorkPolicy.REPLACE, work)
@@ -72,12 +73,12 @@ class HealerWorker(context: Context, workerParams: WorkerParameters) :
                     if (!iAmInfectedIsResettable)
                         iAmInfectedIsResettable = true
                 }
-                DP3T.resetExposureDays(applicationContext)
+                exposureInfoUseCase.resetExposureDays()
                 DP3T.resetInfectionStatus(applicationContext)
                 showLowExposureNotification(applicationContext, true)
             }
             ExposureInfo.Level.HIGH -> {
-                DP3T.resetExposureDays(applicationContext)
+                exposureInfoUseCase.resetExposureDays()
                 showLowExposureNotification(applicationContext, false)
             }
             else -> {

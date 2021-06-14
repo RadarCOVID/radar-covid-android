@@ -10,6 +10,9 @@
 
 package es.gob.radarcovid.models.response
 
+import es.gob.radarcovid.common.base.Constants.ANALYTICS_PERIOD_DEFAULT
+import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
+
 data class ResponseSettings(
     val exposureConfiguration: ResponseSettingsExposureConfiguration? = ResponseSettingsExposureConfiguration(),
     val timeBetweenStates: ResponseSettingsTimeBetweenStates? = ResponseSettingsTimeBetweenStates(),
@@ -18,7 +21,12 @@ data class ResponseSettings(
     val riskScoreClassification: List<ResponseSettingsRiskScore>? = emptyList(),
     val attenuationDurationThresholds: ResponseSettingsAttenuationThresholds? = ResponseSettingsAttenuationThresholds(),
     val attenuationFactor: ResponseSettingsAttenuationFactor? = ResponseSettingsAttenuationFactor(),
-    val applicationVersion: ResponseSettingsAppVersion? = ResponseSettingsAppVersion()
+    val applicationVersion: ResponseSettingsAppVersion? = ResponseSettingsAppVersion(),
+    val legalTermsVersion: String? = "",
+    val radarCovidDownloadUrl: String? = "",
+    val notificationReminder: Int? = NOTIFICATION_REMINDER_DEFAULT,
+    val timeBetweenKpi: Int? = ANALYTICS_PERIOD_DEFAULT,
+    val venueConfiguration: ResponseVenueConfiguration? = ResponseVenueConfiguration()
 )
 
 data class ResponseSettingsExposureConfiguration(
@@ -58,3 +66,10 @@ data class ResponseSettingsAttenuationFactor(val low: Float? = 0f, val medium: F
 data class ResponseSettingsAppVersion(val android: ResponseSettingsAppVersionItem? = ResponseSettingsAppVersionItem())
 
 data class ResponseSettingsAppVersionItem(val version: String? = "1.0", val compilation: Int? = 1)
+
+data class ResponseVenueConfiguration(
+    val recordNotification: Int = 60,
+    val autoCheckout: Int = 300,
+    val troubledPlaceCheck: Int = 120,
+    val quarentineAfterExposed: Int = 2880
+)

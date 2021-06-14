@@ -16,6 +16,8 @@ interface RequestView {
 
     fun hideLoading()
 
+    fun hideLoadingWithCommonError()
+
     fun hideLoadingWithError(error: Throwable)
 
     fun hideLoadingWithError(

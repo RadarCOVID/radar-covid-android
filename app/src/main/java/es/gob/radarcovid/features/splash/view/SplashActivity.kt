@@ -46,7 +46,10 @@ class SplashActivity : BaseActivity(), SplashView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        presenter.viewReady(intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false))
+        presenter.viewReady(
+            intent.getBooleanExtra(EXTRA_ACTIVATE_RADAR, false),
+            intent?.data
+        )
     }
 
     override fun onResume() {
@@ -69,10 +72,6 @@ class SplashActivity : BaseActivity(), SplashView {
                     R.string.warning_connection_description
                 ).toString()
             )
-            .setCloseButton {
-                it.dismiss()
-                presenter.onNetworkDialogCloseButtonClick()
-            }
             .setPositiveButton(
                 labelManager.getText(
                     "ALERT_RETRY_BUTTON",
@@ -81,6 +80,15 @@ class SplashActivity : BaseActivity(), SplashView {
             ) {
                 it.dismiss()
                 presenter.onNetworkRetryButtonClick()
+            }
+            .setNegativeButton(
+                labelManager.getText(
+                    "ACC_BUTTON_CLOSE",
+                    R.string.dialog_close_button_description
+                ).toString()
+            ) {
+                it.dismiss()
+                presenter.onNetworkDialogCloseButtonClick()
             }
             .build()
             .apply {

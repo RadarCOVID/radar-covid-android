@@ -10,12 +10,18 @@
 
 package es.gob.radarcovid.features.splash.presenter
 
+import android.net.Uri
 import android.os.Handler
+import es.gob.radarcovid.common.base.Constants.HOST_QR_CODE
+import es.gob.radarcovid.common.base.Constants.HOST_REPORT
+import es.gob.radarcovid.common.base.Constants.INCOMING_CODE_QUERY_PARAM
+import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
 import es.gob.radarcovid.datamanager.usecase.OnboardingCompletedUseCase
 import es.gob.radarcovid.datamanager.usecase.SplashUseCase
 import es.gob.radarcovid.features.splash.protocols.SplashPresenter
 import es.gob.radarcovid.features.splash.protocols.SplashRouter
 import es.gob.radarcovid.features.splash.protocols.SplashView
+import es.gob.radarcovid.models.domain.ExposureInfo
 import es.gob.radarcovid.models.domain.InitializationData
 import es.gob.radarcovid.models.exception.NetworkUnavailableException
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -26,27 +32,28 @@ class SplashPresenterImpl @Inject constructor(
     private val view: SplashView,
     private val router: SplashRouter,
     private val onboardingCompletedUseCase: OnboardingCompletedUseCase,
-    private val splashUseCase: SplashUseCase
+    private val splashUseCase: SplashUseCase,
+    private val exposureInfoUseCase: ExposureInfoUseCase
 ) : SplashPresenter {
 
     private var isWaitingToStart: Boolean = false
     private var isInitializationCompleted: Boolean = false
     private var activateRadar: Boolean = false
+    private var deepLinkData: Uri? = null
 
-    override fun viewReady(activateRadar: Boolean) {
+    override fun viewReady(activateRadar: Boolean, data: Uri?) {
         this.activateRadar = activateRadar
+        deepLinkData = data
         requestInitialization()
     }
 
     override fun onResume() {
         if (isInitializationCompleted) {
-            if (splashUseCase.isUuidInitialized()) {
-                splashUseCase.checkGaenAvailability { available ->
-                    if (available)
-                        navigateToHomeWithDelay()
-                    else
-                        view.showPlayServicesRequiredDialog()
-                }
+            splashUseCase.checkGaenAvailability { available ->
+                if (available)
+                    navigateToHomeWithDelay()
+                else
+                    view.showPlayServicesRequiredDialog()
             }
         }
     }
@@ -105,13 +112,39 @@ class SplashPresenterImpl @Inject constructor(
         if (!isWaitingToStart) {
             isWaitingToStart = true
             Handler().postDelayed({
-                if (onboardingCompletedUseCase.isOnBoardingCompleted())
-                    router.navigateToMain(activateRadar)
-                else
+                if (!onboardingCompletedUseCase.isOnBoardingCompleted())
                     router.navigateToOnboarding()
+                else if (deepLinkData != null)
+                    urlSchemeToSection()
+                else
+                    router.navigateToMain(activateRadar)
                 view.finish()
             }, 2000)
         }
+    }
+
+    private fun urlSchemeToSection() {
+        var match = false
+        when (deepLinkData?.host) {
+            HOST_REPORT -> {
+                match = true
+                val exposureInfo = exposureInfoUseCase.getExposureInfo()
+                if (exposureInfo.level == ExposureInfo.Level.INFECTED) {
+                    router.navigateToMain(activateRadar)
+                } else {
+                    val incomingReportCode =
+                        deepLinkData?.getQueryParameter(INCOMING_CODE_QUERY_PARAM)
+                    router.navigateToReport(incomingReportCode?.filter { it.isDigit() })
+                }
+            }
+            HOST_QR_CODE -> {
+                match = true
+                router.navigateToMainWithQR(deepLinkData.toString())
+            }
+
+        }
+        //Deafult if there is not match
+        if (!match) router.navigateToMain(activateRadar)
     }
 
 }

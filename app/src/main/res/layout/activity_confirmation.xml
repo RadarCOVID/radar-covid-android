@@ -40,18 +40,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:orientation="vertical"
             android:paddingLeft="22dp"
             android:paddingRight="22dp"
             android:paddingBottom="22dp">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginBottom="25dp"
-                android:src="@drawable/ic_confirmation_check" />
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_confirmation_check" />
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/accessibilityTitle"
+                    style="@style/TitleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirmation_sub_title"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:layout_marginStart="20dp"
+                    app:isHeading="true"
+                    app:labelId="ACC_DIAGNOSTIC_SENT_TITLE" />
+
+            </LinearLayout>
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleMedium"
@@ -59,12 +77,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="@string/confirmation_title"
+                app:isHeading="true"
                 app:labelId="MY_HEALTH_REPORTED_TITLE" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:text="@string/confirmation_subtitle"
                 android:textSize="18sp"
                 app:labelId="MY_HEALTH_REPORTED_SUBTITLE" />
@@ -83,9 +103,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:contentDescription="@string/more_info"
                 android:text="@string/confirmation_more_info"
+                android:textColorLink="@color/purple_A7"
                 android:textSize="16sp"
-                app:labelId="MY_HEALTH_REPORTED_MORE_INFO" />
+                app:contentDescriptionLabelId="ACC_MORE_INFO"
+                app:isLink="true"
+                app:labelId="MY_HEALTH_REPORTED_MORE_INFO"
+                app:removeUnderlineLink="true" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleExtraBoldSmall"
@@ -94,6 +119,7 @@
                 android:layout_marginBottom="15dp"
                 android:text="@string/confirmation_what_to_do"
                 android:textSize="22sp"
+                app:isHeading="true"
                 app:labelId="MY_HEALTH_REPORTED_WHAT_TO_DO_TITLE" />
 
             <es.gob.radarcovid.common.view.LabelTextView
@@ -102,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="23dp"
                 android:text="@string/confirmation_tips_title"
-                android:textColor="@color/red"
+                android:textColor="@color/red_00"
                 android:textSize="20sp"
                 app:labelId="MY_HEALTH_REPORTED_BULLET_TITLE" />
 
@@ -220,7 +246,9 @@
                 android:id="@+id/buttonMoreInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:text="@string/more_info_health_reported"
+                app:labelId="MORE_INFO_HEALTH_REPORTED" />
 
             <es.gob.radarcovid.common.view.LabelTextView
                 style="@style/TitleSmall"

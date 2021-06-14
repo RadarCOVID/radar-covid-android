@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_rounded_corners_white"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:paddingTop="23dp">
+
+        <ScrollView
+            android:id="@+id/scrollViewContent"
+            style="@style/ScrollVertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDialogTitle"
+                    style="@style/TitleMedium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:isHeading="true"
+                    android:text="@string/share_app_title"
+                    app:labelId="SHARE_TITLE"
+                    android:accessibilityTraversalAfter="@id/buttonClose"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/buttonClose"/>
+
+                <es.gob.radarcovid.common.view.LabelImageButton
+                    android:id="@+id/buttonClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:src="@drawable/ic_close"
+                    android:background="@null"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:contentDescription="@string/dialog_close_button_description"
+                    app:contentDescriptionLabelId="ACC_BUTTON_CLOSE" />
+
+                <ImageView
+                    android:id="@+id/imageViewLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_share"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/textViewDialogTitle"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDialogParagraph1"
+                    style="@style/TitleTipSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/share_app_description1"
+                    app:labelId="SHARE_DESCRIPTION_1"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewLogo"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDialogParagraph2"
+                    style="@style/TextNormal18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/share_app_description2"
+                    app:labelId="SHARE_DESCRIPTION_2"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewDialogParagraph1"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <es.gob.radarcovid.common.view.LabelTextView
+                    android:id="@+id/textViewDialogParagraph3"
+                    style="@style/TextNormal18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/share_app_description3"
+                    app:labelId="SHARE_DESCRIPTION_3"
+                    app:layout_constraintTop_toBottomOf="@id/textViewDialogParagraph2"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <es.gob.radarcovid.common.view.LabelButton
+            android:id="@+id/buttonShare"
+            style="@style/ButtonNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="2dp"
+            android:text="@string/share_app_share_button"
+            android:textColor="@color/white"
+            app:labelId="SHARE_LINK_DOWNLOAD"
+            app:layout_constraintBottom_toTopOf="@id/buttonCancel" />
+
+        <es.gob.radarcovid.common.view.LabelButton
+            android:id="@+id/buttonCancel"
+            style="@style/ButtonSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:text="@string/cancel"
+            app:labelId="ALERT_CANCEL_BUTTON"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

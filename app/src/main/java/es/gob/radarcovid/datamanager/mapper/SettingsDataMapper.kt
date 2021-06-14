@@ -10,6 +10,8 @@
 
 package es.gob.radarcovid.datamanager.mapper
 
+import es.gob.radarcovid.common.base.Constants.ANALYTICS_PERIOD_DEFAULT
+import es.gob.radarcovid.common.base.Constants.NOTIFICATION_REMINDER_DEFAULT
 import es.gob.radarcovid.models.domain.*
 import es.gob.radarcovid.models.response.*
 import javax.inject.Inject
@@ -28,7 +30,12 @@ class SettingsDataMapper @Inject constructor() {
                 attenuationFactorMedium = attenuationFactor?.medium ?: 0.5f,
                 minDurationForExposure = minDurationForExposure ?: 15,
                 riskScoreClassification = transform(riskScoreClassification),
-                appInfo = transform(applicationVersion)
+                appInfo = transform(applicationVersion),
+                legalTermsVersion = legalTermsVersion ?: "",
+                radarCovidDownloadUrl = radarCovidDownloadUrl ?: "",
+                notificationReminder = notificationReminder ?: NOTIFICATION_REMINDER_DEFAULT,
+                timeBetweenKpi = timeBetweenKpi ?: ANALYTICS_PERIOD_DEFAULT,
+                venueConfiguration = transform(venueConfiguration)
             )
         }
     } ?: Settings()
@@ -90,4 +97,14 @@ class SettingsDataMapper @Inject constructor() {
         responseSettingsAppVersion?.let {
             SettingsAppInfo(it.android?.version ?: "1.0", it.android?.compilation ?: 1)
         } ?: SettingsAppInfo()
+
+    private fun transform(responseVenueConfiguration: ResponseVenueConfiguration?): VenueConfiguration =
+        responseVenueConfiguration?.let {
+            VenueConfiguration(
+                recordNotification = it.recordNotification,
+                autoCheckout = it.autoCheckout,
+                quarentineAfterExposed = it.quarentineAfterExposed,
+                troubledPlaceCheck = it.troubledPlaceCheck
+            )
+        } ?: VenueConfiguration()
 }

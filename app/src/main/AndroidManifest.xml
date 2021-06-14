@@ -14,9 +14,11 @@
     package="es.gob.radarcovid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:name=".RadarCovidApplication"
@@ -41,15 +43,20 @@
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="radarcovid" android:host="report" />
+                <data
+                    android:host="${qrCodeHostName}"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity
             android:name=".features.onboarding.view.OnboardingActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".features.onboarding.pages.legal.view.LegalInfoFragment"
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.main.view.MainActivity"
@@ -62,6 +69,18 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".features.covidreport.confirmation.ConfirmationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.information.view.InformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.qrcodescan.view.QRScanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.venuerecord.view.VenueRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.venuevisited.view.VenueVisitedActivity"
             android:screenOrientation="portrait" />
 
     </application>

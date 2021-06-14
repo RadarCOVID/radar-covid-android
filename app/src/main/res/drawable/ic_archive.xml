@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="22dp"
+    android:height="20dp"
+    android:viewportWidth="22"
+    android:viewportHeight="20">
+  <path
+      android:pathData="M21,17C21,17.5304 20.7893,18.0391 20.4142,18.4142C20.0391,18.7893 19.5304,19 19,19H3C2.4696,19 1.9609,18.7893 1.5858,18.4142C1.2107,18.0391 1,17.5304 1,17V3C1,2.4696 1.2107,1.9609 1.5858,1.5858C1.9609,1.2107 2.4696,1 3,1H8L10,4H19C19.5304,4 20.0391,4.2107 20.4142,4.5858C20.7893,4.9609 21,5.4696 21,6V17Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M8,12H14"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#493BA7"
+      android:strokeLineCap="round"/>
+</vector>

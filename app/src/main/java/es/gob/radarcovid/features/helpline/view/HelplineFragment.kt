@@ -16,6 +16,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseFragment
 import es.gob.radarcovid.features.helpline.protocols.HelplinePresenter
@@ -46,35 +47,12 @@ class HelplineFragment : BaseFragment(), HelplineView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews()
         presenter.viewReady()
     }
 
-    private fun initViews() {
-        textViewFaqsTitle.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "HELPLINE_FAQS_WEB_URL",
-                    R.string.helpline_faqs_web_url
-                ).toString()
-            )
-        }
-        textViewInfoWebTitle.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "HELPLINE_INFO_WEB_URL",
-                    R.string.helpline_info_web_url
-                ).toString()
-            )
-        }
-        textViewOtherWebTitle.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "HELPLINE_OTHER_WEB_URL",
-                    R.string.helpline_other_web_url
-                ).toString()
-            )
-        }
+    override fun onResume() {
+        super.onResume()
+        setAccessibilityFocus()
     }
 
     override fun showDialerForSupport() {
@@ -85,23 +63,15 @@ class HelplineFragment : BaseFragment(), HelplineView {
         })
     }
 
-    override fun sendMailToInterview() {
-        val emailIntent = Intent(Intent.ACTION_SEND).apply {
-            type = "plain/text"
-            putExtra(
-                Intent.EXTRA_EMAIL,
-                arrayOf(labelManager.getText("CONTACT_EMAIL", R.string.contact_email).toString())
-            )
-//            putExtra(Intent.EXTRA_SUBJECT, "Subject")
-//            putExtra(Intent.EXTRA_TEXT, "Text")
-        }
-
-        startActivity(
-            Intent.createChooser(
-                emailIntent,
-                "Send mail..."
-            )
-        )
+    private fun setAccessibilityFocus() {
+        if (isAccessibilityEnabled())
+            textViewTitle.postDelayed({
+                if (textViewTitle != null) {
+                    textViewTitle.isFocusable = true
+                    textViewTitle.requestFocus()
+                    textViewTitle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
+                }
+            }, 3000)
     }
 
 }

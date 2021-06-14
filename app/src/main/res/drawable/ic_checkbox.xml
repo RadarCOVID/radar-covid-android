@@ -7,15 +7,14 @@
   ~
   ~ SPDX-License-Identifier: MPL-2.0
   -->
-
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="16dp"
-    android:height="16dp"
-    android:viewportWidth="16"
-    android:viewportHeight="16">
+    android:width="30dp"
+    android:height="30dp"
+    android:viewportWidth="36"
+    android:viewportHeight="36">
   <path
-      android:pathData="M2,1L14,1A1,1 0,0 1,15 2L15,14A1,1 0,0 1,14 15L2,15A1,1 0,0 1,1 14L1,2A1,1 0,0 1,2 1z"
+      android:pathData="M2,1L34,1A1,1 0,0 1,35 2L35,34A1,1 0,0 1,34 35L2,35A1,1 0,0 1,1 34L1,2A1,1 0,0 1,2 1z"
       android:strokeWidth="2"
       android:fillColor="#00000000"
-      android:strokeColor="#B8B8B8"/>
+      android:strokeColor="#493BA7"/>
 </vector>

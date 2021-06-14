@@ -9,29 +9,25 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerRegion"
-            style="@style/Spinner"
+        <es.gob.radarcovid.common.view.LabelButton
+            android:id="@+id/buttonLanguage"
+            style="@style/ButtonSelector"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dialog"
-            android:visibility="gone" />
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerLanguage"
-            style="@style/Spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dialog" />
-
-    </FrameLayout>
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:background="@drawable/background_spinner"
+            android:text="Castellano"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:contentDescriptionLabelId="ACC_BUTTON_SELECTOR_SELECT"
+            android:contentDescription="@string/settings_change_language_desc"
+            app:actionDescription="@string/settings_list_action"
+            app:actionDescriptionLabelId="ACC_LIST_ACTION"/>
 
 </LinearLayout>

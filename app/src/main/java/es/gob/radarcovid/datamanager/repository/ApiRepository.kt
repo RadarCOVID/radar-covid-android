@@ -10,22 +10,48 @@
 
 package es.gob.radarcovid.datamanager.repository
 
+import es.gob.radarcovid.models.request.RequestKpi
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
+import okhttp3.ResponseBody
 import org.funktionale.either.Either
+import retrofit2.Response
 
 interface ApiRepository {
 
-    fun getUuid(): Either<Throwable, ResponseUuid>
-
     fun getSettings(): Either<Throwable, ResponseSettings>
 
-    fun getLabels(uuid: String, language: String, region: String): Either<Throwable, ResponseLabels>
+    fun getLabels(
+        language: String,
+        region: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseLabels>
 
-    fun getLanguages(uuid: String, language: String): Either<Throwable, ResponseLanguages>
+    fun getLanguages(
+        language: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseLanguages>
 
-    fun getRegions(uuid: String, language: String): Either<Throwable, ResponseRegions>
+    fun getRegions(
+        language: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseRegions>
 
-    fun verifyCode(body: RequestVerifyCode): Either<Throwable, ResponseToken>
+    fun verifyCode(body: RequestVerifyCode, sharingCode: String): Either<Throwable, ResponseToken>
+
+    fun getCountries(
+        language: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseRegions>
+
+    fun getStats(): Either<Throwable, ResponseStats>
+
+    fun sendKpi(body: RequestKpi): Either<Throwable, String>
+
+    fun getTraceKeys(keyBundleTag: Long): Response<ResponseBody>
 
 }

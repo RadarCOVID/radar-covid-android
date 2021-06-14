@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~  This Source Code Form is subject to the terms of the Mozilla Public
+  ~  License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~  SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".features.covidreport.form.pages.step2.view.Step2MyHealthFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        android:src="@drawable/background_covid_report"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/layoutBackButton"
+        layout="@layout/layout_back_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollViewContent"
+        style="@style/ScrollVertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutBackButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="22dp"
+            android:paddingRight="22dp"
+            android:paddingBottom="22dp">
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TitleXSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/covid_report_title_step2"
+                android:textAllCaps="true"
+                app:isHeading="true"
+                app:labelId="MY_HEALTH_TITLE_STEP2" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSemibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/covid_report_step2_p1"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_STEP2_PARAGRAPH_1" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/covid_report_step2_p2"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_STEP2_PARAGRAPH_2" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <es.gob.radarcovid.common.view.LabelRadioButton
+                    android:id="@+id/radioLocale"
+                    style="@style/RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    app:labelId="MY_HEALTH_STEP2_RADIO1"
+                    android:text="@string/covid_report_step2_radio1" />
+
+                <es.gob.radarcovid.common.view.LabelRadioButton
+                    android:id="@+id/radioEurope"
+                    style="@style/RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:checked="true"
+                    app:labelId="MY_HEALTH_STEP2_RADIO2"
+                    android:text="@string/covid_report_step2_radio2" />
+
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:layout_marginBottom="26dp"
+                app:srcCompat="@drawable/img_covid_report_step2" />
+
+            <es.gob.radarcovid.common.view.LabelTextView
+                style="@style/TextSemibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:text="@string/covid_report_step2_p3"
+                android:textColor="@color/black"
+                app:labelId="MY_HEALTH_STEP2_PARAGRAPH_3" />
+
+            <es.gob.radarcovid.common.view.LabelButton
+                android:id="@+id/buttonSend"
+                style="@style/ButtonNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/covid_report_send_button"
+                app:labelId="MY_HEALTH_DIAGNOSTIC_CODE_SEND_BUTTON" />
+
+            <es.gob.radarcovid.common.view.LabelButton
+                android:id="@+id/buttonCancel"
+                style="@style/ButtonSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/covid_report_cancel"
+                app:labelId="ALERT_CANCEL_BUTTON" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

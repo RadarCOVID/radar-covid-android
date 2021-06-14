@@ -12,48 +12,77 @@ package es.gob.radarcovid.datamanager.repository
 
 import es.gob.radarcovid.common.base.BaseRepository
 import es.gob.radarcovid.datamanager.api.ApiInterface
+import es.gob.radarcovid.models.request.RequestKpi
 import es.gob.radarcovid.models.request.RequestVerifyCode
 import es.gob.radarcovid.models.response.*
+import okhttp3.ResponseBody
 import org.funktionale.either.Either
+import retrofit2.Response
 import javax.inject.Inject
 
 class ApiRepositoryImpl @Inject constructor(private val apiInterface: ApiInterface) :
     BaseRepository(), ApiRepository {
-
-    override fun getUuid(): Either<Throwable, ResponseUuid> = callService {
-        apiInterface.getUuid()
-    }
 
     override fun getSettings(): Either<Throwable, ResponseSettings> = callService {
         apiInterface.getSettings()
     }
 
     override fun getLabels(
-        uuid: String,
         language: String,
-        region: String
+        region: String,
+        platform: String,
+        version: String
     ): Either<Throwable, ResponseLabels> =
         callService {
-            apiInterface.getLabels(uuid, language, region)
+            apiInterface.getLabels(language, region, platform, version)
         }
 
     override fun getLanguages(
-        uuid: String,
-        language: String
+        language: String,
+        platform: String,
+        version: String
     ): Either<Throwable, ResponseLanguages> =
         callService {
-            apiInterface.getLanguages(uuid, language)
+            apiInterface.getLanguages(language, platform, version)
         }
 
-    override fun getRegions(uuid: String, language: String): Either<Throwable, ResponseRegions> =
+    override fun getRegions(
+        language: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseRegions> =
         callService {
-            apiInterface.getRegions(uuid, language, true)
+            apiInterface.getRegions(language, true, platform, version)
         }
 
-    override fun verifyCode(body: RequestVerifyCode): Either<Throwable, ResponseToken> =
+    override fun verifyCode(
+        body: RequestVerifyCode,
+        sharingCode: String
+    ): Either<Throwable, ResponseToken> =
         callService {
-            apiInterface.verifyCode(body)
+            apiInterface.verifyCode(body, sharingCode)
         }
 
+    override fun getCountries(
+        language: String,
+        platform: String,
+        version: String
+    ): Either<Throwable, ResponseRegions> =
+        callService {
+            apiInterface.getCountries(language, platform, version)
+        }
+
+    override fun getStats(): Either<Throwable, ResponseStats> =
+        callService {
+            apiInterface.getStats()
+        }
+
+    override fun sendKpi(body: RequestKpi): Either<Throwable, String> =
+        callService {
+            apiInterface.sendKpi(body)
+        }
+
+    override fun getTraceKeys(keyBundleTag: Long): Response<ResponseBody> =
+        apiInterface.getTraceKeys(keyBundleTag).execute()
 
 }

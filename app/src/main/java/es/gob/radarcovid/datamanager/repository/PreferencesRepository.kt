@@ -21,10 +21,6 @@ interface PreferencesRepository {
 
     fun setOnboardingCompleted(onboardingCompleted: Boolean)
 
-    fun getUuid(): String
-
-    fun setUuid(uuid: String)
-
     fun getInfectionReportDate(): Date?
 
     fun setInfectionReportDate(date: Date)
@@ -56,5 +52,65 @@ interface PreferencesRepository {
     fun setHealingTime(healingTime: HealingTime)
 
     fun getHealingTime(): HealingTime
+
+    fun getTDummy(): Long
+
+    fun setTDummy(time: Long)
+
+    fun setSettingsLegalTermsVersion(version: String)
+
+    fun getSettingsLegalTermsVersion(): String
+
+    fun setSavedLegalTermsVersion(version: String)
+
+    fun getSavedLegalTermsVersion(): String
+
+    fun setRadarCovidDownloadUrl(url: String)
+
+    fun getRadarCovidDownloadUrl(): String
+
+    fun setNotificationReminder(time: Int)
+
+    fun getNotificationReminder(): Int
+
+    fun setExposureAnalyticsCount(count: Int)
+
+    fun getExposureAnalyticsCount(): Int
+
+    fun setAnalyticsPeriod(time: Int)
+
+    fun getAnalyticsPeriod(): Int
+
+    fun setLanguageChanged(changed: Boolean)
+
+    fun getLanguageChanged(): Boolean
+
+    fun setRecordInProgress(recordInProgress: Boolean)
+
+    fun isRecordInProgress(): Boolean
+
+    fun setApplicationActive(active: Boolean)
+
+    fun isApplicationActive(): Boolean
+
+    fun setLastKeyBundleTag(keyBundleTag: Long)
+
+    fun getLastKeyBundleTag(): Long
+
+    fun setRecordNotificationTime(time: Int)
+
+    fun getRecordNotificationTime(): Int
+
+    fun setAutoCheckoutTime(time: Int)
+
+    fun getAutoCheckoutTime(): Int
+
+    fun setTroubledPlaceCheckTime(time: Int)
+
+    fun getTroubledPlaceCheckTime(): Int
+
+    fun setQuarantineAfterVenueExposedTime(time: Int)
+
+    fun getQuarantineAfterVenueExposedTime(): Int
 
 }

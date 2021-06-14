@@ -12,6 +12,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.protobuf'
 
 android {
     compileSdkVersion 29
@@ -21,8 +22,9 @@ android {
         applicationId "es.gob.radarcovid"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 6
-        versionName "1.0.6"
+        versionCode 11
+        versionName "1.4.0"
+        resConfigs "en", "es", "ro", "ca", "gl", "eu", "fr"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -111,6 +113,13 @@ android {
             buildConfigField 'String', 'PUBLIC_KEY_VERIFICATION', '"LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHYk1CQUdCeXFHU000OUFnRUdCU3VCQkFBakE0R0dBQVFCbUlXU0ptdGVGNkh2VnI0M1V5SzliZStlNkpPQgpDRjlVaXpMeis4a3padkVEc25nMGl3VEF3UVB0QzdBMDlzQjVMM3EwSUl1N250Yzd4U1VqSUdTakZvd0JXL0xPCnFtMTBYQ1NkUWNZT3BMTi85dUI1emZKVUZOY3B6Ynk4dDAzSlg3TUZiYi9vQm1pcFNNNHptSm1UajR3Qm9XZ2sKRlF6ZEJHcnAwR2laUU9WVXRtUT0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg=="'
 
             buildConfigField 'String', 'CERTIFICATE_PIN', '"sha256/BZkFfM++uLfyl8jDpVoLvQWjyGm0xNAZRjEXy9jX798="'
+            buildConfigField 'String', 'CERTIFICATE_PIN_NEW', '"sha256/Bf/HXif22OO34dBnWpk7AEktor0HAzDwetIWrzJ39D4="'
+
+            buildConfigField("String", "SAFETY_NET_API_KEY", loadProperty("pre.safetyNet"))
+
+            buildConfigField "String", "ENTRY_QR_CODE_PREFIX", '"https://radarcovidpre.covid19.gob.es/qr"'
+            buildConfigField "String", "QR_CODE_HOST_NAME", '"radarcovidpre.covid19.gob.es"'
+            manifestPlaceholders = [qrCodeHostName: "radarcovidpre.covid19.gob.es"]
         }
         pro {
             dimension = 'environment'
@@ -125,6 +134,13 @@ android {
             buildConfigField 'String', 'PUBLIC_KEY_VERIFICATION', '"LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHYk1CQUdCeXFHU000OUFnRUdCU3VCQkFBakE0R0dBQVFBWjM1ZzlhN1M2MjdXMVlpOEVsVmdNS012dkdUUAo5R0hiUHZHTzhLekNLQk84WTZOc0JSTHlJeWUwZmdxR0ZXM2Z5dHVxcnFSNi9wSllDUWFXN1IyUnY3OEF4OXJhCmlYbmRVSmVyVk9KSHJRaFgxbnMrTjZxaVUxT0I4a3dUaWVuaCtuZDVVbXZUN24vK3hod3djK1RYa1lnNDBxOVcKUTRiVjBMbHRWbGRUSUlTK1QxOD0KLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg=="'
 
             buildConfigField 'String', 'CERTIFICATE_PIN', '"sha256/V5NaZx/jvh7NR/Ne6tXTw/g2Pcu9ztv08prWsUh7czI="'
+            buildConfigField 'String', 'CERTIFICATE_PIN_NEW', '"sha256/9psJkMemKz3JXVfw1TiLRoitC2eswaL9FfwF8JFbwrk="'
+
+            buildConfigField("String", "SAFETY_NET_API_KEY", loadProperty("pro.safetyNet"))
+
+            buildConfigField "String", "ENTRY_QR_CODE_PREFIX", '"https://radarcovid.covid19.gob.es/qr"'
+            buildConfigField "String", "QR_CODE_HOST_NAME", '"radarcovid.covid19.gob.es"'
+            manifestPlaceholders = [qrCodeHostName: "radarcovid.covid19.gob.es"]
         }
     }
 
@@ -158,6 +174,20 @@ def existProjectProperties() {
     return propertiesFile.exists()
 }
 
+def loadProperty(String propertyName) {
+    String property = "\"DEFAULT_VALUE\""
+    def propertiesFile = project.rootProject.file("project.properties")
+    if (propertiesFile.exists()) {
+        def properties = new Properties()
+        properties.load(new FileInputStream(propertiesFile))
+        property = properties.getProperty(propertyName)
+    }
+    if (property == null)
+        return "\"DEFAULT_VALUE\""
+    else
+        return property
+}
+
 def loadCredential(String environmentVariableName, String propertyName) {
     String credential = System.getProperty(environmentVariableName)
     if (credential == null) {
@@ -179,6 +209,28 @@ def loadCredential(String environmentVariableName, String propertyName) {
         return credential
 }
 
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.0.0'
+    }
+    plugins {
+        javalite {
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove javanone
+            }
+            task.plugins {
+                javalite {}
+            }
+        }
+    }
+}
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     // The google exposure library, required for DP3T, is resolved by the aar located in libs folder
@@ -187,6 +239,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.lifecycle:lifecycle-process:2.3.0'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
     testImplementation 'junit:junit:4.13'
     testImplementation "org.mockito:mockito-core:3.5.6"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
@@ -195,11 +249,8 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.3.0'
     androidTestImplementation "org.mockito:mockito-core:3.5.6"
 
-    // Recommended: Add the Firebase SDK for Google Analytics.
-    implementation 'com.google.firebase:firebase-analytics-ktx:17.5.0'
-
     //Views
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
 
     implementation "org.funktionale:funktionale-either:1.2"
@@ -230,22 +281,35 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:$rootProject.retrofitVersion"
 
     //WorkerManager
-    implementation 'androidx.work:work-runtime:2.4.0'
+    implementation 'androidx.work:work-runtime:2.5.0-beta01'
 
     //JWT Token
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.1'
-    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.1'
-    runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.11.1') {
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.11.2') {
         exclude group: 'org.json', module: 'json'
     }
     implementation 'org.bouncycastle:bcprov-jdk15on:1.65'
 
     //DP3T
-    implementation 'org.dpppt:dp3t-sdk-android:1.0.3'
+    implementation 'org.dpppt:dp3t-sdk-android:2.0.0'
     implementation 'com.google.android.gms:play-services-tasks:17.2.0'
 
     //DP3T aar dependencies
-    implementation 'com.google.android.gms:play-services-base:17.4.0'
+    implementation 'com.google.android.gms:play-services-base:17.5.0'
     implementation 'androidx.security:security-crypto:1.1.0-alpha02'
+
+    //SafetyNet
+    implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
+
+    // google vision gradle
+    implementation 'com.google.android.gms:play-services-vision:20.1.3'
+
+    //CrowdNotifier
+    implementation 'org.crowdnotifier:crowdnotifier-sdk-android:2.1.0'
+    implementation 'com.google.protobuf:protobuf-lite:3.0.1'
+
+    //Biometrics
+    implementation "androidx.biometric:biometric-ktx:1.2.0-alpha03"
 
 }

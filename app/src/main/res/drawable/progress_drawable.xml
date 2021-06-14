@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020 Gobierno de España
+  ~
+  ~  This Source Code Form is subject to the terms of the Mozilla Public
+  ~  License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~  SPDX-License-Identifier: MPL-2.0
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="11dp"/>
+            <solid android:color="#E7E4E0"/>
+        </shape>
+    </item>
+
+    <item android:id="@android:id/progress"
+        android:top="0dp"
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp">
+
+        <scale android:scaleWidth="100%">
+            <shape>
+                <corners android:radius="11dp"/>
+                <solid android:color="#493BA7"/>
+            </shape>
+        </scale>
+    </item>
+</layer-list>

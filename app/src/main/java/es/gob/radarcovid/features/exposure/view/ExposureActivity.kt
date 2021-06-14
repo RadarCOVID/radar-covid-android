@@ -18,31 +18,39 @@ import android.view.View
 import androidx.core.text.HtmlCompat
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
+import es.gob.radarcovid.common.extensions.default
+import es.gob.radarcovid.common.extensions.parseHtml
 import es.gob.radarcovid.features.exposure.protocols.ExposurePresenter
 import es.gob.radarcovid.features.exposure.protocols.ExposureView
 import es.gob.radarcovid.features.main.view.ExposureHealedDialog
 import kotlinx.android.synthetic.main.activity_exposure.*
+import kotlinx.android.synthetic.main.layout_back_navigation.*
 import kotlinx.android.synthetic.main.layout_exposure_detail_high.*
-import kotlinx.android.synthetic.main.layout_exposure_detail_infected.*
-import kotlinx.android.synthetic.main.layout_exposure_detail_low.*
 import javax.inject.Inject
 
 class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     companion object {
 
-        fun open(context: Context) {
-            context.startActivity(Intent(context, ExposureActivity::class.java))
-        }
+        private const val EXTRA_VENUE_EXPOSURE = "extra_venue_exposure"
 
+        fun open(context: Context, venueExposure: Boolean) {
+            context.startActivity(Intent(context, ExposureActivity::class.java).apply {
+                putExtra(EXTRA_VENUE_EXPOSURE, venueExposure)
+            })
+        }
     }
 
     @Inject
     lateinit var presenter: ExposurePresenter
 
+    private var _isVenueExposure: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exposure)
+
+        _isVenueExposure = intent.getBooleanExtra(EXTRA_VENUE_EXPOSURE, false)
 
         initViews()
         presenter.viewReady()
@@ -50,7 +58,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
 
     override fun onResume() {
         super.onResume()
-        presenter.onResume()
+        presenter.onResume(_isVenueExposure)
     }
 
     override fun onPause() {
@@ -59,63 +67,17 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
     }
 
     private fun initViews() {
-        textViewOtherSymptomsHigh.setOnClickListener {
-            presenter.onUrlButtonClick(
+        imageButtonBack.contentDescription =
+            "${labelManager.getText("ACC_HOME_TITLE", R.string.title_home)} ${
                 labelManager.getText(
-                    "EXPOSITION_HIGH_OTHER_SYMPTOMS_URL",
-                    R.string.exposure_detail_high_other_symptoms_url
-                ).toString()
-            )
-        }
-        textViewSymptomsHighWhatToDo.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSITION_HIGH_SYMPTOMS_WHAT_TO_DO_URL",
-                    R.string.exposure_detail_high_symptoms_what_to_do_url
-                ).toString()
-            )
-        }
-        textViewSymptomsLowWhatToDo.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSITION_LOW_SYMPTOMS_WHAT_TO_DO_URL",
-                    R.string.exposure_detail_low_symptoms_what_to_do_url
-                ).toString()
-            )
-        }
-        textViewMoreInfo.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSITION_HIGH_MORE_INFO_URL",
-                    R.string.exposure_detail_infected_more_info_url
-                ).toString()
-            )
-        }
+                    "ACC_BUTTON_BACK_TO",
+                    R.string.navigation_back_to
+                )
+            }"
+
         wrapperContactButton.setOnClickListener { presenter.onContactButtonClick() }
-        buttonMoreInfoLow.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSURE_LOW_INFO_URL",
-                    R.string.exposure_detail_info_url
-                ).toString()
-            )
-        }
-        buttonMoreInfoHigh.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSURE_HIGH_INFO_URL",
-                    R.string.exposure_detail_info_url
-                ).toString()
-            )
-        }
-        buttonMoreInfoInfected.setOnClickListener {
-            presenter.onUrlButtonClick(
-                labelManager.getText(
-                    "EXPOSURE_INFECTED_INFO_URL",
-                    R.string.exposure_detail_info_url
-                ).toString()
-            )
-        }
+
+        textViewMoreInfo.text = String.format("%s >", textViewMoreInfo.text)
     }
 
     override fun showExposureLevelLow() {
@@ -146,6 +108,7 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         )
         textViewMoreInfo.visibility = View.GONE
 
+        imageViewRisk.visibility = View.VISIBLE
         wrapperExposureHigh.visibility = View.VISIBLE
         wrapperExposureLow.visibility = View.GONE
         wrapperExposureInfected.visibility = View.GONE
@@ -169,6 +132,24 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         wrapperExposureHigh.visibility = View.GONE
     }
 
+    override fun showVenueExposureLevelHigh() {
+        wrapperExposure.setBackgroundResource(R.drawable.background_shape_exposure_high)
+        textViewExpositionDetailTitleSmall.text = labelManager.getText(
+            "EXPOSITION_HIGH_TITLE_1",
+            R.string.exposure_detail_high_title_small
+        )
+        textViewExpositionDetailTitle.text = labelManager.getText(
+            "EXPOSITION_HIGH_TITLE_2", R.string.exposure_detail_high_title
+        )
+        textViewMoreInfo.visibility = View.GONE
+
+        imageViewRisk.setImageResource(R.drawable.ic_risk_place)
+        imageViewRisk.visibility = View.VISIBLE
+        wrapperExposureHigh.visibility = View.VISIBLE
+        wrapperExposureLow.visibility = View.GONE
+        wrapperExposureInfected.visibility = View.GONE
+    }
+
     override fun setExposureInfo(
         date: String,
         daysElapsed: Int?,
@@ -178,6 +159,26 @@ class ExposureActivity : BaseBackNavigationActivity(), ExposureView {
         textViewExposureDescription.visibility = View.VISIBLE
         textViewExposureDescription.text =
             labelManager.getExposureHighDatesText(date, daysElapsed, hoursElapsed, minutesElapsed)
+    }
+
+    override fun setVenueExposureInfo(date: String, daysElapsed: Int?) {
+        textViewExposureDescription.visibility = View.VISIBLE
+        textViewExposureDescription.text =
+            labelManager.getVenueExposureHighDatesText(date, daysElapsed)
+    }
+
+    override fun setDaysToHeal(daysToHeal: Int) {
+        if (daysToHeal >= 0) {
+            textViewExpositionCount.visibility = View.VISIBLE
+            val labelId =
+                if (daysToHeal == 1) "EXPOSED_EXPOSITION_COUNT_ONE_DAY" else "EXPOSED_EXPOSITION_COUNT_ANYMORE"
+            textViewExpositionCount.text =
+                labelManager.getFormattedText(labelId, daysToHeal.toString())
+                    .default(getString(R.string.exposition_block_exposure_high_count)).parseHtml()
+        } else {
+            textViewExpositionCount.visibility = View.INVISIBLE
+        }
+
     }
 
     override fun showExposureDates(exposureDates: String) {
