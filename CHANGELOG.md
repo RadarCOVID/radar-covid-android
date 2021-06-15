@@ -52,3 +52,7 @@ All notable changes to this project will be documented in this file.
 * Accessibility improvements:
     * Fixed "Status Change" header in healed pop-up.
     * Added closing icon on popups.
+
+### 1.3.0 (2021-02-17)
+
+* Certificate update
