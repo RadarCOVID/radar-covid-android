@@ -15,7 +15,6 @@ buildscript {
     repositories {
         google()
         jcenter()
-
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.4'
@@ -28,8 +27,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url  "https://dl.bintray.com/terl/lazysodium-maven"
+        flatDir {
+            dirs "${rootProject.projectDir}/libs"
         }
     }
 }
