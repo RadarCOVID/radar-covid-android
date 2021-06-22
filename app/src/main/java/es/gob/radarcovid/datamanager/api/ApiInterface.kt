@@ -76,7 +76,7 @@ interface ApiInterface {
     ): Call<String>
 
     @Headers("Accept: application/x-protobuf")
-    @GET("/notifyme/v1/traceKeys ")
+    @GET("/notifyme/v1/traceKeys")
     fun getTraceKeys(
         @Query("keyBundleTag") keyBundleTag: Long
     ): Call<ResponseBody>
