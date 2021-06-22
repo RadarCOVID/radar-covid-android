@@ -22,7 +22,7 @@ android {
         applicationId "es.gob.radarcovid"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 11
+        versionCode 12
         versionName "1.4.0"
         resConfigs "en", "es", "ro", "ca", "gl", "eu", "fr"
 
