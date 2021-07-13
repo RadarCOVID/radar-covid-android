@@ -306,7 +306,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-vision:20.1.3'
 
     //CrowdNotifier
-    implementation 'org.crowdnotifier:crowdnotifier-sdk-android:2.1.0'
+    implementation ('org.crowdnotifier:crowdnotifier-sdk-android:2.1.0') {
+        exclude group: 'com.goterl.lazycode', module: 'lazysodium-android'
+    }
+
+    implementation fileTree(include: 'lazysodium-android.aar', dir: 'lazysodium-android-4.2.0')
     implementation 'com.google.protobuf:protobuf-lite:3.0.1'
 
     //Biometrics

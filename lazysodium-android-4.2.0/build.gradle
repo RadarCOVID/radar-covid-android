@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('lazysodium-android-4.2.0.aar'))

@@ -9,4 +9,4 @@
  */
 
 rootProject.name='Radar COVID'
-include ':app'
+include ':app', ':lazysodium-android-4.2.0'
