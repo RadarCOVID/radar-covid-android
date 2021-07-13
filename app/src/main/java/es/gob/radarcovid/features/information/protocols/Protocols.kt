@@ -23,6 +23,7 @@ interface InformationView {
     fun showLastUpdateDate(date: Date, daysElapsed: Int, locale: String)
 
     fun showTerminalData(locale: String)
+    fun showExposureRecordDialog()
 }
 
 interface InformationPresenter {
@@ -34,6 +35,8 @@ interface InformationPresenter {
     fun onHelpButtonClick()
 
     fun onSupportMailClick(text: String, subject: String, email: String)
+
+    fun onExposureRecodrClick()
 
 }
 

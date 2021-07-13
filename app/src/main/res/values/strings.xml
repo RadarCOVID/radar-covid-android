@@ -547,5 +547,8 @@
     <string name="acc_show_action">mostrar</string>
     <string name="acc_venue_shown">Lugar visible</string>
     <string name="acc_hide_action">ocultar</string>
+    <string name="exposure_record_title">Fechas de alta exposición</string>
+    <string name="exposure_record_button_title">Registro de fechas de exposición</string>
+    <string name="exposure_records_no_data">No se ha registrado alta exposición</string>
 
 </resources>
