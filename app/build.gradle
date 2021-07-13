@@ -22,8 +22,8 @@ android {
         applicationId "es.gob.radarcovid"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 12
-        versionName "1.4.0"
+        versionCode 13
+        versionName "1.4.1"
         resConfigs "en", "es", "ro", "ca", "gl", "eu", "fr"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
