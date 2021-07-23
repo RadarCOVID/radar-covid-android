@@ -56,4 +56,8 @@ class RepositoryModule {
     @PerApplication
     fun providesEncryptedPreferencesRepository(repository: EncryptedPreferencesRepositoryImpl): EncryptedPreferencesRepository = repository
 
+    @Provides
+    @PerApplication
+    fun providesExposureRecordRepository(repository: ExposureRecordRepositoryImpl): ExposureRecordRepository = repository
+
 }

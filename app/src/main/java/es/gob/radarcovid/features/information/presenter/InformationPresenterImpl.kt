@@ -45,6 +45,10 @@ class InformationPresenterImpl @Inject constructor(
         router.navigateToMail(text, subject, email)
     }
 
+    override fun onExposureRecodrClick() {
+        view.showExposureRecordDialog()
+    }
+
     private fun updateViews(exposureInfo: ExposureInfo) {
         view.showRadarEnabled(exposureRadarUseCase.isRadarEnabled())
         view.showBluetoothEnabled()

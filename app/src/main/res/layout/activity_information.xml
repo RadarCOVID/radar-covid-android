@@ -265,6 +265,21 @@
                     app:labelId="INFO_KEEP_RADAR_ACTIVE"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textViewBluetoothStatus"/>
+
+                <es.gob.radarcovid.common.view.LabelButton
+                        android:id="@+id/buttonExposureRecord"
+                        style="@style/Title18PurpleA7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="21dp"
+                        android:layout_marginEnd="21dp"
+                        android:background="@android:color/transparent"
+                        android:textAllCaps="false"
+                        android:text="@string/exposure_record_button_title"
+                        android:layout_marginTop="25dp"
+                        app:labelId="EXPOSURE_RECORD_BUTTON_TITLE"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/buttonMaintenance"/>
                 
                 <View
                     android:id="@+id/separator1"
@@ -273,7 +288,7 @@
                     android:background="@color/gray_BD"
                     android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/buttonMaintenance"/>
+                    app:layout_constraintTop_toBottomOf="@id/buttonExposureRecord"/>
 
                 <es.gob.radarcovid.common.view.LabelTextView
                     android:id="@+id/textViewTitleVersion"

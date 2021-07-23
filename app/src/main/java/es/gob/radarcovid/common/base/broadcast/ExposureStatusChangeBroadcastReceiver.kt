@@ -25,6 +25,7 @@ import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.events.BUS
 import es.gob.radarcovid.common.base.events.EventExposureStatusChange
 import es.gob.radarcovid.common.extensions.default
+import es.gob.radarcovid.datamanager.repository.ExposureRecordRepository
 import es.gob.radarcovid.datamanager.usecase.ExposureInfoUseCase
 import es.gob.radarcovid.datamanager.usecase.GetHealingTimeUseCase
 import es.gob.radarcovid.datamanager.utils.LabelManager
@@ -50,6 +51,9 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
     @Inject
     lateinit var labelManager: LabelManager
 
+    @Inject
+    lateinit var exposureRecordRepository: ExposureRecordRepository
+
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
         when (intent?.action) {
@@ -62,6 +66,7 @@ class ExposureStatusChangeBroadcastReceiver : DaggerBroadcastReceiver() {
                             getHealingTimeUseCase.getHealingTime().exposureHighMinutes
                         )
                         showHighExposureNotification(it)
+                        exposureRecordRepository.addExposure(exposureInfoUseCase.getExposureInfo())
                     }
                 }, 2000)
             }
