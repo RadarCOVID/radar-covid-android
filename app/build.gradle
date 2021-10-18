@@ -15,13 +15,13 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.protobuf'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 31
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "es.gob.radarcovid"
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 31
         versionCode 13
         versionName "1.4.1"
         resConfigs "en", "es", "ro", "ca", "gl", "eu", "fr"
