@@ -56,3 +56,15 @@ All notable changes to this project will be documented in this file.
 ### 1.3.0 (2021-02-17)
 
 * Certificate update
+
+### 1.4.0 (2021-06-22)
+
+* Bug fixing
+
+### 1.4.1 (2021-07-23)
+
+* Exposition dates register
+
+### 1.4.2 (2021-10-25)
+
+* Upgrade target sdk
