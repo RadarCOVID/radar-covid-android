@@ -15,15 +15,15 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.protobuf'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "es.gob.radarcovid"
         minSdkVersion 23
-        targetSdkVersion 31
-        versionCode 14
-        versionName "1.4.2"
+        targetSdkVersion 30
+        versionCode 16
+        versionName "1.4.3"
         resConfigs "en", "es", "ro", "ca", "gl", "eu", "fr"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
