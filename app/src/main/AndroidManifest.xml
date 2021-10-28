@@ -30,7 +30,8 @@
 
         <receiver
             android:name=".common.base.broadcast.ExposureStatusChangeBroadcastReceiver"
-            android:permission="com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK">
+            android:permission="com.google.android.gms.nearby.exposurenotification.EXPOSURE_CALLBACK"
+                android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.exposurenotification.ACTION_EXPOSURE_STATE_UPDATED" />
             </intent-filter>
@@ -39,7 +40,8 @@
         <activity
             android:name=".features.splash.view.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/FullscreenTheme"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
