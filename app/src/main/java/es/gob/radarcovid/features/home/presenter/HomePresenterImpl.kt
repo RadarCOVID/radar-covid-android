@@ -52,6 +52,7 @@ class HomePresenterImpl @Inject constructor(
 
     override fun onResume() {
         BUS.register(this)
+        exposureRadarUseCase.setRadarDisabled()
         updateViews(
             exposureInfoUseCase.getExposureInfo(),
             venueMatcherUseCase.getVenueExposureInfo()
@@ -178,8 +179,9 @@ class HomePresenterImpl @Inject constructor(
     }
 
     private fun updateViews(exposureInfo: ExposureInfo, venueExposureInfo: VenueRecord?) {
-        if (!exposureInfo.exposureNotificationsEnabled && exposureRadarUseCase.isRadarEnabled())
+        if (!exposureInfo.exposureNotificationsEnabled && exposureRadarUseCase.isRadarEnabled()) {
             exposureRadarUseCase.setRadarDisabled()
+        }
 
         if (exposureInfo.level == ExposureInfo.Level.INFECTED) {
             view.showBackgroundEnabled(true)

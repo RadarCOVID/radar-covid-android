@@ -19,7 +19,10 @@ class ExposureRadarUseCase @Inject constructor(private val repository: ContactTr
         onSuccess: () -> Unit,
         onError: (Exception) -> Unit,
         onCancelled: () -> Unit
-    ) = repository.startRadar(onSuccess, onError, onCancelled)
+    ) {
+        repository.stopRadar()
+        onSuccess()
+    }
 
 
     fun setRadarDisabled() = repository.stopRadar()

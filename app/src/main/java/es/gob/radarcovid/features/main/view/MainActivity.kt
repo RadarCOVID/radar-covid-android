@@ -14,19 +14,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.core.view.forEach
-import androidx.core.view.get
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.main.protocols.MainPresenter
 import es.gob.radarcovid.features.main.protocols.MainView
-import es.gob.radarcovid.features.worker.AnalyticsWorker
-import es.gob.radarcovid.features.worker.ReminderWorker
-import es.gob.radarcovid.features.worker.VenueMatcherWorker
 import kotlinx.android.synthetic.main.activity_main.*
-import org.dpppt.android.sdk.DP3T
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainView {
@@ -52,11 +46,6 @@ class MainActivity : BaseActivity(), MainView {
 
     @Inject
     lateinit var presenter: MainPresenter
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        DP3T.onActivityResult(this, requestCode, resultCode, data)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -180,22 +169,22 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     override fun startAnalyticsWorker(time: Int) {
-        AnalyticsWorker.start(this, time)
+
     }
 
     override fun startVenueMatcherWorker(time: Int) {
-        VenueMatcherWorker.set(this, time)
+
     }
 
     override fun cancelVenueMatcherWorker() {
-        VenueMatcherWorker.cancel(this)
+
     }
 
     override fun createNotificationReminder(time: Int) {
-        ReminderWorker.set(this, time)
+
     }
 
     override fun cancelNotificationReminder() {
-        ReminderWorker.cancel(this)
+
     }
 }

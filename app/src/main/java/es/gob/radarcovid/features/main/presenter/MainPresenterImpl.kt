@@ -35,17 +35,6 @@ class MainPresenterImpl @Inject constructor(
     override fun onCreate(activateRadar: Boolean, capturedQR: String?) {
 
         //Setup workers
-        view.cancelNotificationReminder()
-        view.startAnalyticsWorker(sendAnalyticsUseCase.getAnalyticsPeriod())
-
-        /*
-        if (exposureInfoUseCase.getExposureInfo().level != ExposureInfo.Level.INFECTED) {
-            //Start QR matcher worker only if no infected
-            view.startVenueMatcherWorker(preferencesRepository.getTroubledPlaceCheckTime())
-        } else {
-            view.cancelVenueMatcherWorker()
-        }
-         */
 
         //Redirection logic
         if (getLocaleInfoUseCase.isLanguageChanged()) {
@@ -81,11 +70,11 @@ class MainPresenterImpl @Inject constructor(
     }
 
     override fun onStop() {
-        view.createNotificationReminder(getReminderTimeUseCase.getReminderTime())
+
     }
 
     override fun onRestart() {
-        view.cancelNotificationReminder()
+
     }
 
     override fun onHomeButtonClick() {

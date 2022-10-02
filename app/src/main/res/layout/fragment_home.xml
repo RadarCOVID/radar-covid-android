@@ -355,6 +355,7 @@
                         android:gravity="center_vertical"
                         android:paddingTop="15dp"
                         android:paddingBottom="15dp"
+                            android:enabled="false"
                         android:src="@drawable/ic_arrow_right"
                         android:thumb="@drawable/selector_switch"
                         app:layout_constraintEnd_toEndOf="parent"

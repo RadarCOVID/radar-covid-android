@@ -51,11 +51,6 @@ class CovidReportActivity : BaseBackNavigationActivity(), CovidReportView, Covid
     private var _incomingReportCode: String? = null
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        DP3T.onActivityResult(this, requestCode, resultCode, data)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_covid_report)

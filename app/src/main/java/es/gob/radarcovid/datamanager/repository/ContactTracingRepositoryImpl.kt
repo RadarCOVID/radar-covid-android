@@ -59,17 +59,11 @@ class ContactTracingRepositoryImpl @Inject constructor(
     ) {
         if (BuildConfig.isMock)
             onSuccess()
-        else
-            DP3T.start(activity,
-                {
-                    onSuccess()
-                },
-                { exception ->
-                    onError(exception)
-                },
-                {
-                    onCancelled.invoke()
-                })
+        else {
+            DP3T.stop(activity)
+            onSuccess()
+        }
+
     }
 
     override fun stopRadar() {

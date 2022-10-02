@@ -17,7 +17,6 @@ import android.view.View
 import es.gob.radarcovid.R
 import es.gob.radarcovid.common.base.BaseBackNavigationActivity
 import es.gob.radarcovid.common.base.utils.NavigationUtils
-import es.gob.radarcovid.features.worker.VenueMatcherWorker
 import kotlinx.android.synthetic.main.activity_confirmation.*
 import kotlinx.android.synthetic.main.layout_back_navigation.*
 import javax.inject.Inject
@@ -41,8 +40,6 @@ class ConfirmationActivity : BaseBackNavigationActivity() {
 
         initViews()
 
-        //Cancel QR matcher worker if infected
-        VenueMatcherWorker.cancel(this)
     }
 
     private fun initViews() {

@@ -319,26 +319,11 @@ class HomeFragment : BaseFragment(), HomeView {
 
     }
 
-    override fun areBatteryOptimizationsIgnored(): Boolean {
-        (requireContext().getSystemService(POWER_SERVICE) as PowerManager).let { powerManager ->
-            return powerManager.isIgnoringBatteryOptimizations(requireContext().packageName)
-        }
-    }
+    override fun areBatteryOptimizationsIgnored(): Boolean = false
 
     @SuppressLint("BatteryLife")
     override fun requestIgnoreBatteryOptimizations() {
-        (requireContext().getSystemService(POWER_SERVICE) as PowerManager?)?.let {
-            if (!it.isIgnoringBatteryOptimizations(requireContext().packageName)) {
-                try {
-                    startActivityForResult(Intent().apply {
-                        action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-                        data = Uri.parse("package:${requireContext().packageName}")
-                    }, REQUEST_CODE_IGNORE_BATTERY_OPTIMIZATIONS)
-                } catch (e: ActivityNotFoundException) {
-                    presenter.onBatteryOptimizationsIgnored()
-                }
-            }
-        }
+
     }
 
     override fun showUnableToReportCovidDialog() {

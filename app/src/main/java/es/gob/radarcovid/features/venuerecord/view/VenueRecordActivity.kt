@@ -31,7 +31,6 @@ import es.gob.radarcovid.features.venuerecord.presenter.QRErrorState
 import es.gob.radarcovid.features.venuerecord.presenter.VenueRecordPresenterImpl
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordPresenter
 import es.gob.radarcovid.features.venuerecord.protocols.VenueRecordView
-import es.gob.radarcovid.features.worker.VenueRecordWorker
 import kotlinx.android.synthetic.main.activity_venue_record.*
 import javax.inject.Inject
 
@@ -196,11 +195,11 @@ class VenueRecordActivity : BaseBackNavigationActivity(), VenueRecordView, Venue
         presenter.setVenueTimeOut(venueTimeOut)
 
     override fun startVenueRecordWorker(notificationTime: Int) {
-        VenueRecordWorker.set(this, notificationTime)
+
     }
 
     override fun cancelVenueRecordWorker() {
-        VenueRecordWorker.cancel(this)
+
     }
 
 }

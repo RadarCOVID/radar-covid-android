@@ -12,7 +12,9 @@ package es.gob.radarcovid.common.di.module
 
 import dagger.Module
 import dagger.Provides
+import es.gob.radarcovid.common.RemovalNotificationHandler
 import es.gob.radarcovid.common.di.scope.PerApplication
+import es.gob.radarcovid.common.di.scope.PerService
 import es.gob.radarcovid.datamanager.repository.*
 
 @Module
@@ -59,5 +61,6 @@ class RepositoryModule {
     @Provides
     @PerApplication
     fun providesExposureRecordRepository(repository: ExposureRecordRepositoryImpl): ExposureRecordRepository = repository
+
 
 }
