@@ -121,15 +121,9 @@ class HomeFragment : BaseFragment(), HomeView {
             event.actionMasked == MotionEvent.ACTION_MOVE
         }
 
-        wrapperExposure.setSafeOnClickListener { presenter.onExposureBlockClick() }
-        textViewExpositionTitle.setSafeOnClickListener { presenter.onExposureBlockClick() }
-
-        wrapperVenueExposure.setSafeOnClickListener { presenter.onVenueExposureBlockClick() }
-        textViewVenueExpositionTitle.setSafeOnClickListener { presenter.onVenueExposureBlockClick() }
-
-        buttonCovidReport.setSafeOnClickListener { presenter.onReportButtonClick() }
-
-        buttonShare.setSafeOnClickListener { presenter.onButtonShareClick() }
+        //Remove radar functionality
+        buttonCovidReport.isEnabled = false
+        buttonShare.isEnabled = false
     }
 
     override fun showUpdateLegalTermsDialog() {

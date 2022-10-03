@@ -68,3 +68,10 @@ All notable changes to this project will be documented in this file.
 ### 1.4.2 (2021-10-25)
 
 * Upgrade target sdk
+
+### 1.5.0 (2022-10-04)
+
+* Update to disable EN functionality based on Google guides
+
+
+

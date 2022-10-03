@@ -100,6 +100,8 @@ class MainActivity : BaseActivity(), MainView {
             }
             true
         }
+
+        showRemovalDialog()
     }
 
     override fun setSettingSelected() {
@@ -137,6 +139,32 @@ class MainActivity : BaseActivity(), MainView {
         }
 
          */
+    }
+
+    private fun showRemovalDialog() {
+        CMDialog.Builder(this)
+            .setTitle(
+                labelManager.getText(
+                    "NOTIFICATION_TITLE_REMOVAL",
+                    R.string.notification_title_removal
+                ).toString()
+            )
+            .setMessage(
+                labelManager.getText(
+                    "NOTIFICATION_MESSAGE_REMOVAL",
+                    R.string.notification_message_removal
+                ).toString()
+            )
+            .setPositiveButton(
+                labelManager.getText(
+                    "ALERT_ACCEPT_BUTTON",
+                    R.string.accept
+                ).toString()
+            ) {
+                it.dismiss()
+            }
+            .build()
+            .show()
     }
 
     override fun showExitConfirmationDialog() {

@@ -16,6 +16,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import es.gob.radarcovid.R
+import es.gob.radarcovid.common.RemovalNotificationHandler
 import es.gob.radarcovid.common.base.BaseActivity
 import es.gob.radarcovid.common.view.CMDialog
 import es.gob.radarcovid.features.splash.protocols.SplashPresenter
@@ -39,6 +40,9 @@ class SplashActivity : BaseActivity(), SplashView {
 
     @Inject
     lateinit var presenter: SplashPresenter
+
+    @Inject
+    lateinit var removalNotificationHandler: RemovalNotificationHandler
 
     private var currentDialog: Dialog? = null
 
@@ -138,6 +142,10 @@ class SplashActivity : BaseActivity(), SplashView {
 
     override fun reloadLabels() {
         labelManager.reload()
+    }
+
+    override fun showRemovalNotification() {
+        removalNotificationHandler.scheduleNotification(this)
     }
 
 }

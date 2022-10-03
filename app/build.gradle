@@ -23,7 +23,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 31
         versionCode 17
-        versionName "1.4.4"
+        versionName "1.5.0"
         resConfigs "en", "es", "ro", "ca", "gl", "eu", "fr"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -211,11 +211,21 @@ def loadCredential(String environmentVariableName, String propertyName) {
 
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.0.0'
+        // for apple m1, please add protoc_platform=osx-x86_64 in gradle.properties
+        if (project.hasProperty('protoc_platform')) {
+            artifact = "com.google.protobuf:protoc:3.0.0:${protoc_platform}"
+        } else {
+            artifact = "com.google.protobuf:protoc:3.0.0"
+        }
     }
     plugins {
         javalite {
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+            // for apple m1, please add protoc_platform=osx-x86_64 in gradle.properties
+            if (project.hasProperty('protoc_platform')) {
+                artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0:${protoc_platform}"
+            } else {
+                artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0"
+            }
         }
     }
     generateProtoTasks {
@@ -275,7 +285,7 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
 
     //Retrofit
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-scalars:$rootProject.retrofitVersion"

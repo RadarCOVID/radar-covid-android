@@ -39,9 +39,6 @@ class RadarCovidApplication : DaggerApplication(), LifecycleObserver {
     lateinit var preferencesRepository: PreferencesRepository
 
     @Inject
-    lateinit var removalNotificationHandler: RemovalNotificationHandler
-
-    @Inject
     @Named("userAgent")
     lateinit var userAgent: String
 
@@ -63,8 +60,6 @@ class RadarCovidApplication : DaggerApplication(), LifecycleObserver {
 
 
         registerReceiver(ExposureStatusChangeBroadcastReceiver(), DP3T.getUpdateIntentFilter())
-
-        removalNotificationHandler.scheduleNotification(this)
 
     }
 

@@ -18,20 +18,24 @@
         android:id="@+id/menuItemProfile"
         android:enabled="true"
         android:icon="@drawable/ic_mydata"
-        android:title="@string/title_mydata" />
+        android:title="@string/title_mydata"
+        android:visible="false"/>
     <item
         android:id="@+id/menuItemHelpline"
         android:enabled="true"
         android:icon="@drawable/ic_helpline"
-        android:title="@string/title_helpline" />
+        android:title="@string/title_helpline"
+        android:visible="false"/>
     <item
         android:id="@+id/menuItemStats"
         android:enabled="true"
         android:icon="@drawable/ic_stats"
-        android:title="@string/title_stats" />
+        android:title="@string/title_stats"
+        android:visible="false"/>
     <item
         android:id="@+id/menuItemSettings"
         android:enabled="true"
         android:icon="@drawable/ic_settings"
-        android:title="@string/title_settings" />
+        android:title="@string/title_settings"
+        android:visible="false"/>
 </menu>

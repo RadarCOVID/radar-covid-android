@@ -367,8 +367,8 @@
     <string name="exposure_low_notification">Tu exposición ahora es baja</string>
     <string name="exposure_low_notification_activate_radar">Tu exposición ahora es baja. Por favor, vuelve a activar el radar.</string>
 
-    <string name="notification_title_removal">Funcionalidad desactivada.</string>
-    <string name="notification_message_removal">La aplización va a dejar de rastrear contactos.</string>
+    <string name="notification_title_removal">Aplicación no activa</string>
+    <string name="notification_message_removal">Radar COVID finalizó su actividad el 9/10/2022. A partir de esa fecha, sus funcionalidades dejaron de estar operativas</string>
 
     <string name="contact_support_title">Horario lunes a viernes de 08H a 20H</string>
     <string name="contact_support_phone">900 112 061</string>

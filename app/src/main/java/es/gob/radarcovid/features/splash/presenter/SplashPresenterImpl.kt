@@ -98,6 +98,9 @@ class SplashPresenterImpl @Inject constructor(
             isInitializationCompleted = true
             onResume()
         }
+
+        view.showRemovalNotification()
+
     }
 
     private fun onInitializationError(error: Throwable) {
@@ -112,12 +115,7 @@ class SplashPresenterImpl @Inject constructor(
         if (!isWaitingToStart) {
             isWaitingToStart = true
             Handler().postDelayed({
-                if (!onboardingCompletedUseCase.isOnBoardingCompleted())
-                    router.navigateToOnboarding()
-                else if (deepLinkData != null)
-                    urlSchemeToSection()
-                else
-                    router.navigateToMain(activateRadar)
+                router.navigateToMain(activateRadar)
                 view.finish()
             }, 2000)
         }

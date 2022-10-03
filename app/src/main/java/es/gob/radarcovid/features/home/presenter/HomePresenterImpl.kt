@@ -43,11 +43,7 @@ class HomePresenterImpl @Inject constructor(
 
         this.activateRadar = activateRadar
 
-        if (needChangeLegalTerms()) {
-            view.showUpdateLegalTermsDialog()
-        } else {
-            whenViewReady(activateRadar)
-        }
+        whenViewReady(activateRadar)
     }
 
     override fun onResume() {

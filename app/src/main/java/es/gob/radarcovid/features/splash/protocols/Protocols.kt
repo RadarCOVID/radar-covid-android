@@ -25,6 +25,8 @@ interface SplashView : RequestView {
 
     fun finish()
 
+    fun showRemovalNotification()
+
 }
 
 interface SplashPresenter {
